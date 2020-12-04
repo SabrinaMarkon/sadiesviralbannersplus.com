@@ -14,5 +14,5 @@ Nodejs
 Bootstrap ?
 Payments - Paypal (?), CoinPayments, Stripe
 User/Admin Login
-
+Docker
 
