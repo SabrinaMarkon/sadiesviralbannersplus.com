@@ -24,15 +24,7 @@ class Setting
         $newadminemail = $_POST['adminemail'];
         $newsitename = $_POST['sitename'];
         $newdomain = $_POST['domain'];
-        $newadminratio = $_POST['adminratio'];
         $newadminautoapprove = $_POST['adminautoapprove'];
-        $newadmindefaultwalletid = $_POST['admindefaultwalletid'];
-        $oldadmindefaultwalletid = $_POST['oldadmindefaultwalletid'];
-        $newadmindefaultcoinsphpid = $_POST['admindefaultcoinsphpid'];
-        $oldadmindefaultcoinsphpid = $_POST['oldadmindefaultcoinsphpid'];
-        $newgiveextratoadmin = $_POST['giveextratoadmin'];
-        $newpaysponsor = $_POST['paysponsor'];
-        $newpayrandom = $_POST['payrandom'];
         $newadclickstogetad = $_POST['adclickstogetad'];
 
         # if either username or password changed, update session.
@@ -45,46 +37,11 @@ class Setting
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        # update any adminwallets.
-        $sql = "select count(1) from adminwallets where walletid=?";
-        $q = $pdo->prepare($sql);
-        $q->execute([$oldadmindefaultwalletid]);
-        $rows = $q->fetchColumn();
-
-        if ($rows) {
-
-            $sql = "update adminwallets set walletid=? where walletid=?";
-            $q = $pdo->prepare($sql);
-            $q->execute([$newadmindefaultwalletid,$oldadmindefaultwalletid]);
-        } else {
-
-            $sql = "insert into adminwallets (name,walletid) values ('Admin Default Wallet ID',?)";
-            $q = $pdo->prepare($sql);
-            $q->execute([$newadmindefaultwalletid]);
-        }
-
-        $sql = "select count(1) from adminwallets where coinsphpid=?";
-        $q = $pdo->prepare($sql);
-        $q->execute([$oldadmindefaultcoinsphpid]);
-        $rows = $q->fetchColumn();
-
-        if ($rows) {
-
-            $sql = "update adminwallets set coinsphpid=? where coinsphpid=?";
-            $q = $pdo->prepare($sql);
-            $q->execute([$newadmindefaultcoinsphpid,$oldadmindefaultcoinsphpid]);
-        } else {
-
-            $sql = "insert into adminwallets (name,coinsphpid) values ('Admin Default Coins.ph Peso ID',?)";
-            $q = $pdo->prepare($sql);
-            $q->execute([$newadmindefaultcoinsphpid]);
-        }
-
         $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, sitename=?, 
-        domain=?, adminratio=?, adminautoapprove=?, admindefaultwalletid=?, admindefaultcoinsphpid=?, giveextratoadmin=?, paysponsor=?, payrandom=?, adclickstogetad=?";
+        domain=?, adminautoapprove=?, adclickstogetad=?";
         $q = $pdo->prepare($sql);
         $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newsitename, 
-        $newdomain, $newadminratio, $newadminautoapprove, $newadmindefaultwalletid, $newadmindefaultcoinsphpid, $newgiveextratoadmin, $newpaysponsor, $newpayrandom, $newadclickstogetad));
+        $newdomain, $newadminautoapprove, $newadmindefaultwalletid, $newadclickstogetad));
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Site Settings Were Saved!</strong></div>";

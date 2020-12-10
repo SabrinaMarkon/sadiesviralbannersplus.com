@@ -35,7 +35,7 @@ foreach ($settings as $key => $value)
                 <label for="confirm_adminpass" class="ja-toppadding">Confirm Password:</label>
                 <input type="password" name="confirm_adminpass" id="confirm_adminpass" value="<?php echo $adminpass ?>" class="form-control input-lg" placeholder="Confirm Password" required>
 
-                <label for="adminemail" class="ja-toppadding">Admin Name:</label>
+                <label for="adminname" class="ja-toppadding">Admin Name:</label>
                 <input type="text" name="adminname" value="<?php echo $adminname ?>" class="form-control input-lg" placeholder="Admin Name" required>
 
                 <label for="adminemail" class="ja-toppadding">Your Admin Email:</label>
@@ -46,44 +46,6 @@ foreach ($settings as $key => $value)
 
                 <label for="domain" class="ja-toppadding">Your Domain:</label>
                 <input type="url" name="domain" value="<?php echo $domain ?>" class="form-control input-lg" placeholder="Website URL (start with http://)" required>
-
-                <label for="admindefaultwalletid" class="ja-toppadding">Admin Default Wallet ID:</label>
-                <input type="hidden" name="oldadmindefaultwalletid" value="<?php echo $admindefaultwalletid ?>">
-                <input type="text" name="admindefaultwalletid" value="<?php echo $admindefaultwalletid ?>" class="form-control input-lg" placeholder="Admin Default Wallet ID">
-
-                <label for="admindefaultcoinsphpid" class="ja-toppadding">Admin Default Coins.ph Peso ID:</label>
-                <input type="hidden" name="oldadmindefaultcoinsphpid" value="<?php echo $admindefaultcoinsphpid ?>">
-                <input type="text" name="admindefaultcoinsphpid" value="<?php echo $admindefaultcoinsphpid ?>" class="form-control input-lg" placeholder="Admin Default Coins.ph Peso ID">
-
-                <div>
-                    <label for="adminratio" class="ja-toppadding">Admin Ratio for Randomizer:</label>
-                    <br/>Show an Admin Wallet ID Every&nbsp;
-                    <select name="adminratio" class="form-control smallselect">
-                        <?php
-                        for ($i = 0; $i <= 50; $i++) {
-                            ?>
-                            <option value="<?php echo $i ?>" <?php if ($i === intval($adminratio)) { echo "selected"; } ?>><?php echo $i ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>&nbsp;Times (0 for never, 1 for every single time)
-                </div>
-                
-                <label for="paysponsor" class="ja-toppadding">Users Should Pay Their Sponsor:</label>
-                $&nbsp;<input type="text" name="paysponsor" value="<?php echo $paysponsor ?>" class="form-control smallselect" required>
-
-                <div></div>
-
-                <label for="payrandom" class="ja-toppadding">Users Should Pay a Random Member:</label>
-                $&nbsp;<input type="text" name="payrandom" value="<?php echo $payrandom ?>" class="form-control smallselect" required>
-
-                <div>
-                    <label for="giveextratoadmin" class="ja-toppadding">If Member is Deleted, Give Randomizer Positions to Admin:</label>
-                    <select name="giveextratoadmin" class="form-control smallselect">
-                        <option value="1" <?php if (intval($giveextratoadmin) === 1) { echo "selected"; } ?>>Yes</option>
-                        <option value="0" <?php if (intval($giveextratoadmin) !== 1) { echo "selected"; } ?>>No</option>
-                    </select>
-                </div>
 
                 <div>
                     <label for="adminautoapprove" class="ja-toppadding">Auto-approve Ads:</label>

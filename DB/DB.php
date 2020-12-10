@@ -6,22 +6,7 @@ adminname varchar(255) not null,
 adminemail varchar(255) not null,
 sitename varchar(255) not null,
 domain varchar(255) not null,
-adminratio integer unsigned not null default '5',
-ratiocounter tinyint(4) unsigned not null default '0',
-adminautoapprove tinyint(1) not null default '0',
-admindefaultwalletid varchar(500) not null default '',
-admindefaultcoinsphpid varchar(500) not null default '',
-giveextratoadmin tinyint(1) not null default '1',
-paysponsor decimal(9,2) not null default '5.00',
-payrandom decimal(9,2) not null default '3.00',
 adclickstogetad integer unsigned not null default '100'
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
-
-CREATE TABLE adminwallets (
-  id integer unsigned not null primary key auto_increment,
-  name varchar(255) not null default 'Main Admin',
-  walletid varchar(500) not null,
-  coinsphpid varchar(500) not null
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 CREATE TABLE `adminnotes` (
