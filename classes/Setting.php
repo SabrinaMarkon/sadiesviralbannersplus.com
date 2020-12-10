@@ -41,7 +41,7 @@ class Setting
         domain=?, adminautoapprove=?, adclickstogetad=?";
         $q = $pdo->prepare($sql);
         $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newsitename, 
-        $newdomain, $newadminautoapprove, $newadmindefaultwalletid, $newadclickstogetad));
+        $newdomain, $newadminautoapprove, $newadclickstogetad));
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Site Settings Were Saved!</strong></div>";

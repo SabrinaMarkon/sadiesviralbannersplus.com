@@ -114,7 +114,7 @@ class Member
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Member " . $username . " was Saved!</strong></div>";
     }
 
-    public function deleteMember($id,$giveextratoadmin) {
+    public function deleteMember($id) {
 
         $username = $_POST['username'];
         $pdo = Database::connect();

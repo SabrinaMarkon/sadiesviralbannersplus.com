@@ -72,7 +72,7 @@ adclicks integer unsigned not null default '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pages` (
-  `id` int(10) unsigned not null auto_increment primary key,
+  `id` int(10) unsigned not null primary key auto_increment,
   `name` varchar(255) not null,
   `htmlcode` longtext not null,
   `slug` varchar(255) not null,
@@ -81,7 +81,7 @@ CREATE TABLE `pages` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 CREATE TABLE `promotional` (
-  `id` int(10) unsigned not null auto_increment primary key,
+  `id` int(10) unsigned not null primary key auto_increment,
   `name` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL DEFAULT 'banner',
   `promotionalimage` varchar(255) NOT NULL,
@@ -89,16 +89,8 @@ CREATE TABLE `promotional` (
   `promotionaladbody` longtext NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-create table randomizer (
-  id integer unsigned not null auto_increment primary key,
-  username varchar(255) not null,
-  walletid varchar(500) not null,
-  coinsphpid varchar(500) not null,
-  foreign key (username) references members(username)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
-
 create table transactions (
-  id integer unsigned not null auto_increment primary key,
+  id integer unsigned not null primary key auto_increment,
   adid integer unsigned not null,
   randomizerid integer unsigned not null,
   username varchar(255) not null,
