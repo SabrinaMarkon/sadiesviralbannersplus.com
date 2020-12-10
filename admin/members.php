@@ -45,17 +45,10 @@ $members = $allmembers->getAllMembers();
                 <label sr-only for="confirm_password" class="ja-toppadding">Confirm Password:</label>
                 <input type="password" name="confirm_password" id="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password" required>
 
-                <label sr-only for="walletid" class="ja-toppadding">Bitcoin Wallet ID:</label>
-                <input type="text" name="walletid" value="" class="form-control input-lg" placeholder="Bitcoin Wallet ID">
-
-                <label sr-only for="coinsphpid" class="ja-toppadding">Coins.php Peso Wallet ID:</label>
-                <input type="text" name="coinsphpid" value="" class="form-control input-lg" placeholder="Coins.php Peso Wallet ID">
-
                 <label sr-only for="country" class="ja-toppadding">Country:</label>
                 <select name="country" class="form-control input-lg">
-                    <option value="Philippines">Philippines</option>
-                    <option value="United States">United States</option>
                     <option value="Canada">Canada</option>
+                    <option value="United States">United States</option>
                     <?php
                     $country = '';
                     $countrylist = new Countries();
@@ -83,8 +76,6 @@ $members = $allmembers->getAllMembers();
                         <th class="text-center small">#</th>
                         <th class="text-center small">Username</th>
                         <th class="text-center small">Password</th>
-                        <th class="text-center small">Bitcoin</th>
-                        <th class="text-center small">Coins.ph</th>
                         <th class="text-center small">First&nbsp;Name</th>
                         <th class="text-center small">Last&nbsp;Name</th>
                         <th class="text-center small">Email&nbsp;Address</th>
@@ -124,12 +115,6 @@ $members = $allmembers->getAllMembers();
                                 <input type="text" name="password" value="<?php echo $member['password']; ?>" class="form-control input-sm widetableinput" placeholder="Password" required>
                             </td>
                             <td>
-                                <input type="text" name="walletid" value="<?php echo $member['walletid']; ?>" class="form-control input-sm widetableinput" placeholder="Bitcoin">
-                            </td>
-                            <td>
-                                <input type="text" name="coinsphpid" value="<?php echo $member['coinsphpid']; ?>" class="form-control input-sm widetableinput" placeholder="Coins.ph">
-                            </td>
-                            <td>
                                 <input type="text" name="firstname" value="<?php echo $member['firstname']; ?>" class="form-control input-sm widetableinput" placeholder="First Name" required>
                             </td>
                             <td>
@@ -143,9 +128,8 @@ $members = $allmembers->getAllMembers();
                             </td>
                             <td>
                                 <select name="country" class="form-control widetableselect">
-                                    <option value="Philippines"<?php if ($member['country'] === "Philippines") { echo " selected"; } ?>>Philippines</option>
-                                    <option value="United States"<?php if ($member['country'] == "United States") { echo " selected"; } ?> >United States</option>
                                     <option value="Canada"<?php if ($member['country'] === "Canada") { echo " selected"; } ?>>Canada</option>
+                                    <option value="United States"<?php if ($member['country'] == "United States") { echo " selected"; } ?> >United States</option>
                                     <?php
                                     $countrylist = new Countries();
                                     echo $countrylist->showCountries($member['country']);
