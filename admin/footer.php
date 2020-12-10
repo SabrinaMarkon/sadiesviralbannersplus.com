@@ -10,7 +10,7 @@
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">
-		&copy;2018 RandomBTCAds.com. All rights reserved. 
+		&copy;2020 SadiesViralBannersPlus.com. All rights reserved. 
 		<br />Made with <i class="fa fa-heart" aria-hidden="true" style="color:#be1931"></i> by <a href="http://sabrinamarkon.com" target="_blank">Sabrina Markon</a></p>
 		</p>
       </div>

@@ -1,5 +1,12 @@
 Options +FollowSymLinks
 RewriteEngine On
+
+# force all web traffic to use https urls:
+RewriteCond %{HTTPS} !on
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
 # urls with /admin/somepage/id go to the matching somepage.php file with the id of the record. ie. /admin/members/2 is /admin/members.php where $id=2
 RewriteRule ^admin/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)[/]*$ /admin/index.php?page=$1&id=$2 [L,NC]
 # urls with /admin/somepage go to the matching somepage.php file. ie. /admin/settings is /admin/settings.php:

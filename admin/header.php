@@ -10,7 +10,7 @@
   <meta name="author" content="Sabrina Markon" />
   <base href = "/" />
 
-  <title>RandomBTCAds.com</title>
+  <title>SadiesViralBannersPlus.com</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ja-navbottomadmin">
       <div class="container">
-        <a class="navbar-brand" href="/">Random BTC Ads</a>
+        <a class="navbar-brand" href="/">Sadie's Viral Banners Plus</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
