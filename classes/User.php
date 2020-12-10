@@ -18,8 +18,6 @@ class User
 	private $pdo;
 	private $username;
 	private $password;
-	private $walletid;
-	private $coinsphpid;
 	private $firstname;
 	private $lastname;
 	private $email;
@@ -34,8 +32,6 @@ class User
 
 		$username = $post['username'];
 		$password = $post['password'];
-		$walletid = $post['walletid'];
-		$coinsphpid = $post['coinsphpid'];
 		$firstname = $post['firstname'];
 		$lastname = $post['lastname'];
 		$email = $post['email'];
@@ -65,88 +61,10 @@ class User
 		{
 			$verificationcode = time() . mt_rand(10, 100);
 
-			$sql = "insert into members (username,password,walletid,coinsphpid,firstname,lastname,email,country,referid,signupdate,signupip,verificationcode) 
+			$sql = "insert into members (username,password,firstname,lastname,email,country,referid,signupdate,signupip,verificationcode) 
 			values (?,?,?,?,?,?,?,?,?,NOW(),?,?)";
 			$q = $pdo->prepare($sql);
-			$q->execute([$username,$password,$walletid,$coinsphpid,$firstname,$lastname,$email,$country,$referid,$signupip,$verificationcode]);
-
-
-			# get the walletid & coinsphpid of the sponsor.
-			if ($referid === 'admin') {
-
-				$referidwalletid = $settings['admindefaultwalletid'];
-				$referidcoinsphpid = $settings['admindefaultcoinsphpid'];
-			} else {
-				$sql = "select walletid,coinsphpid from members where username=?";
-				$q = $pdo->prepare($sql);
-				$q->execute([$username]);
-				$data = $q->fetch();
-				
-				if ($data) {
-
-					$referidwalletid = $data['walletid'];
-					$referidcoinsphpid = $data['coinsphpid'];
-				}
-			}
-
-			# get a random payee from the randomizer, or an admin wallet depending on the ratio. Then add 1 to the ratiocounter.
-			if ($settings['ratiocounter'] === $settings['adminratio']) {
-				
-				# time to give the admin a random payment.
-				$randompayee = 'admin';
-				$sql = "select walletid,coinsphpid from adminwallets order by rand() limit 1";
-				$q = $pdo->query($sql);
-				$data = $q->fetch();
-
-				if ($data) {
-
-					$randomwalletid = $data['walletid'];
-					$randomcoinsphpid = $data['coinsphpid'];
-				}
-				
-				# reset the ratiocounter.
-				$sql = "update adminsettings set adminratio=0";
-				$q = $pdo->query($sql);
-			} else {
-
-				# get a random wallet,coinsphpid from the randomizer.
-				$sql = "select * from randomizer order by rand() limit 1";
-				$q = $pdo->query($sql);
-				$data = $q->fetch();
-
-				if ($data) {
-
-					$randompayee = $data['username'];
-					$randomwalletid = $data['walletid'];
-					$randomcoinsphpid = $data['coinsphpid'];
-				} else {
-
-					# time to give the admin a random payment because there are no people in the randomizer yet.
-					$randompayee = 'admin';
-					$sql = "select walletid,coinsphpid from adminwallets order by rand() limit 1";
-					$q = $pdo->query($sql);
-					$data = $q->fetch();
-
-					if ($data) {
-
-						$randomwalletid = $data['walletid'];
-						$randomcoinsphpid = $data['coinsphpid'];
-					}					
-				}
-
-				# add 1 to the ratiocounter.
-				$sql = "update adminsettings set adminratio=adminratio+1";
-				$q = $pdo->query($sql);
-			}
-
-			# create two unpaid transactions, one for the sponsor, and one for a random walletid in the randomizer. If none exist, add admin walletid.
-			$sql = "insert into transactions (username,amount,recipient,recipientwalletid,recipientcoinsphpid,recipienttype) values (?,?,?,?,?,'sponsor')";
-			$q = $pdo->prepare($sql);
-			$q->execute([$username,$settings['paysponsor'],$referid,$referidwalletid,$referidcoinsphpid]);
-
-			$sql = "insert into transactions (username,amount,recipient,recipientwalletid,recipientcoinsphpid,recipienttype) values (?,?,?,?,?,'random')";
-			$q = $pdo->prepare($sql);
-			$q->execute([$username,$settings['payrandom'],$randompayee,$randomwalletid,$referidcoinsphpid]);
+			$q->execute([$username,$password,$firstname,$lastname,$email,$country,$referid,$signupip,$verificationcode]);
 
 			Database::disconnect();
 
@@ -154,29 +72,6 @@ class User
 			$message = "Click to Verify your Email: " . $settings['domain'] . "/verify/" . $verificationcode . "\n\n";
 			$message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
 			$message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
-			$message .= "Before receiving your ad and randomizer spot, you will need to send:\n";
-
-			if ($referidwalletid !== '') {
-				$message .= "to Bitcoin Wallet ID: " . $referidwalletid;
-			}
-			if ($referidwalletid !== '' && $referidcoinsphpid !== '') {
-				$message .= "\nOR\n";
-			}
-			if ($referidcoinsphpid !== '') {
-				$message .= "to Coins.ph Peso Wallet ID: " . $referidcoinsphpid . "\n\n";
-			}
-			
-			$message .= "2) To a Random Member: " . $settings['payrandom'] . "\n";
-			
-			if ($randomwalletid !== '') {
-				$message .= " to Bitcoin Wallet ID: " . $randomwalletid; 
-			}
-			if ($randomwalletid !== '' && $randomcoinsphpid !== '') {
-				$message .= "\nOR\n";
-			}
-			if ($randomcoinsphpid !== '') {
-				$message .= "to Coins.ph Peso Wallet ID: " . $randomcoinsphpid . "\n\n";
-			}
 
 			$sendsiteemail = new Email();
 			$send = $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
@@ -186,8 +81,6 @@ class User
 
 			$username = null;
 			$password = null;
-			$walletid = null;
-			$coinsphpid = null;
 			$firstname = null;
 			$lastname = null;
 			$email = null;
@@ -314,25 +207,13 @@ class User
 		$email = $post['email'];
 		$oldemail = $post['oldemail'];
 		$country = $post['country'];
-		$walletid = $post['walletid'];
-		$coinsphpid = $post['coinsphpid'];
 		$signupip = $_SERVER['REMOTE_ADDR'];
 
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		$sql = "update members set password=?, firstname=?, lastname=?, email=?, country=?, signupip=?, walletid=?, coinsphpid=? where username=?";
+		$sql = "update members set password=?, firstname=?, lastname=?, email=?, country=?, signupip=? where username=?";
 		$q = $pdo->prepare($sql);
-		$q->execute(array($password, $firstname, $lastname, $email, $country, $signupip, $walletid, $coinsphpid, $username));
-
-		# update randomizer wallet ids.
-		$sql = "update randomizer set walletid=?, coinsphpid=? where username=?";
-		$q = $pdo->prepare($sql);
-		$q->execute([$walletid,$coinsphpid,$username]);
-
-		# update transactions wallet ids.
-		$sql = "update transactions set recipientwalletid=?, recipientcoinsphpid=? where recipient=?";
-		$q = $pdo->prepare($sql);
-		$q->execute([$walletid,$coinsphpid,$username]);
+		$q->execute(array($password, $firstname, $lastname, $email, $country, $signupip, $username));
 
 		if ($email !== $oldemail) {
 			
@@ -354,8 +235,6 @@ class User
 		Database::disconnect();
 
 		$_SESSION['password'] = $password;
-		$_SESSION['walletid'] = $walletid;
-		$_SESSION['coinsphpid'] = $coinsphpid;
 		$_SESSION['firstname'] = $firstname;
 		$_SESSION['lastname'] = $lastname;
 		$_SESSION['email'] = $email;
@@ -377,15 +256,6 @@ class User
 		
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-		# delete randomizer positions - reassign to admin or delete depending on admin setting giveextratoadmin.
-		if ($giveextratoadmin === 1) {
-			$sql = "update randomizer set username='admin' where username=?";
-		} else {
-			$sql = "delete from randomizer where username=?";
-		}
-		$q = $pdo->prepare($sql);
-		$q->execute(array($username));
 
 		# delete ads.
 		$sql = "delete from ads where username=?";

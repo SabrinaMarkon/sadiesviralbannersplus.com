@@ -9,10 +9,10 @@ require_once "config/Database.php";
 require_once "config/Settings.php";
 require_once "config/Layout.php";
 
-function sabrina_autoloader($class) {
+function autoloader($class) {
 	require "classes/" . $class . ".php";
 }
-spl_autoload_register("sabrina_autoloader");
+spl_autoload_register("autoloader");
 
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
@@ -39,7 +39,6 @@ $errors = '';
 
 # get the form validation class instance to use for all the pages that post.
 if (isset($_POST)) {
-
     $formvalidation = new FormValidation($_POST);
 }
 
