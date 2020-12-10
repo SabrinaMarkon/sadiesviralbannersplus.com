@@ -92,18 +92,11 @@ CREATE TABLE `promotional` (
 create table transactions (
   id integer unsigned not null primary key auto_increment,
   adid integer unsigned not null,
-  randomizerid integer unsigned not null,
   username varchar(255) not null,
   amount decimal(9,2) not null default '0.00',
-  recipient varchar(255) not null default 'admin',
-  recipientwalletid varchar(500) not null,
-  recipientcoinsphpid varchar(500) not null,
-  recipienttype varchar(255) not null default 'sponsor',
-  recipientapproved tinyint(1) not null default '0',
   datepaid varchar(255) not null,
-  transaction varchar(255) not null default 'Bitcoin',
-  foreign key (adid) references ads(id),
-  foreign key (randomizerid) references randomizer(id)
+  transaction varchar(255) not null default 'PayPal',
+  foreign key (adid) references ads(id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 insert into adminsettings (adminuser, adminpass, adminname, adminemail, sitename, domain) values ('Admin', 'admin', 'YOUR NAME', 'YOUR ADMIN EMAIL', 'YOUR SITE NAME','http://YOURDOMAIN.COM');
@@ -114,7 +107,6 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Login Page', '', 'login'
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Main Page', '', 'members', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Profile Page', '', 'profile', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion Page', '', 'promotion', 'yes');
-INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Randomizer Page', '', 'randomizer', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Ads Page', '', 'ads', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Registration Page', '', 'register', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Thank You Page - New Member Signup', '', 'thankyou', 'yes');
