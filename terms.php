@@ -6,5 +6,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 }
 
 $showcontent = new PageContent();
-echo $showcontent->showPage('Terms Page');
+$content = $showcontent->showPage('Terms Page');
+$content = str_ireplace('~SITENAME~', $sitename, $content);
+echo $content;
 ?>
