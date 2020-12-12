@@ -29,12 +29,7 @@ class FormValidation {
         'confirm_adminpass' => 'admin password confirmation',
         'adminuser' => 'admin username',
         'referid' => 'referid',
-        'walletid' => 'Bitcoin wallet ID',
-        'coinsphpid' => 'Coins.ph Peso wallet ID',
-        'admindefaultwalletid' => 'admin Bitcoin wallet ID',
-        'admindefaultcoinsphpid' => 'admin Coins.php Peso wallet ID',
         'sitename' => 'site name',
-        'recipient' => 'recipient',
         'transaction' => 'transaction',
         'slug' => 'slug',
         'title' => 'title',
@@ -52,15 +47,9 @@ class FormValidation {
         'url' => 'URL',
         'imageurl' => 'Image URL',
         'domain' => 'domain',
-        'recipienttype' => 'type of recipient',
-        'giveextratoadmin' => 'the value give admin deleted positions',
         'adminautoapprove' => 'for auto approve ads',
-        'recipientapproved' => 'the value to show if the recipient has approved payment',
         'signupip' => 'signup IP',
-        'adminration' => 'the admin ratio for randomizer',
         'id' => 'id',
-        'paysponsor' => 'the amount a member should pay their sponsor',
-        'payrandom' => 'the amount a member should pay a random member',
         'amount' => 'amount',
         'type' => 'ad type',
         'promotionalimage' => 'promotional banner image URL',
@@ -81,37 +70,16 @@ class FormValidation {
                 # if a username was submitted for registration or added in admin, does it already exist in the system?
                 $errors = $this->checkUsernameDuplicates($post['username'],$errors);
             }
-            elseif (isset($post['addrandomizer']) || isset($post['saverandomizer']) || isset($post['addtransaction']) || isset($post['savetransaction'])) {
+            elseif (isset($post['addtransaction']) || isset($post['savetransaction'])) {
 
-                # if a username was submitted to add a randomizer position or transaction, it should already exist in the system.
+                # if a username was submitted to add a transaction for them, that username should already exist in the system.
                 $errors = $this->checkUserExists($post['username'],'username',$errors);
             }
-
-        }
-        if (isset($post['recipient'])) {
-
-                # if a recipient username was submitted to add a randomizer position or transaction, it should already exist in the system.
-                $errors = $this->checkUserExists($post['recipient'],'recipient',$errors);
         }
         if (isset($post['password']) && isset($post['confirm_password'])) {
     
             # if password fields were submitted, are they the same?
             $errors = $this->checkPasswordsMatch($post['password'],$post['confirm_password'],$errors);
-        }
-        if (isset($post['walletid']) || isset($post['coinsphpid'])) {
-
-            # if walletid and/or coinsphpid are submitted, one or both must be filled in.
-            $errors = $this->checkOneOrBothWalletTypes($post['walletid'],$post['coinsphpid'],$errors);
-        }
-        if (isset($post['admindefaultwalletid']) || isset($post['admindefaultcoinsphpid'])) {
-
-            # if admindefaultwalletid and/or admindefaultcoinsphpid are submitted, one or both must be filled in.
-            $errors = $this->checkOneOrBothWalletTypes($post['admindefaultwalletid'],$post['admindefaultcoinsphpid'],$errors);
-        }
-        if (isset($post['recipientwalletid']) || isset($post['recipientcoinsphpid'])) {
-
-            # if recipientwalletid and/or recipientcoinsphpid are submitted (for a new transaction added by admin), one or both must be filled in.
-            $errors = $this->checkOneOrBothWalletTypes($post['recipientwalletid'],$post['recipientcoinsphpid'],$errors);
         }
         if (isset($post['adminpass']) && isset($post['confirm_adminpass'])) {
     
@@ -148,7 +116,6 @@ class FormValidation {
             # user's username, password, confirm_password.
             # admin's username, password, confirm_password, sitename.
             # admin money area's transaction.
-            # admin area randomizer's username for randomizer positions.
 
             if (in_array($varname, $this->PRETTY_VARNAMES)) {
 
@@ -160,7 +127,7 @@ class FormValidation {
 
             if ($varname === 'username' || $varname === 'password' || $varname === 'confirm_password' || 
             $varname === 'adminuser' || $varname === 'adminpass' || $varname === 'confirm_adminpass' 
-            || $varname === 'sitename' || $varname === 'recipient' || $varname === 'transaction') {
+            || $varname === 'sitename' || $varname === 'transaction') {
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_STRING);
                 $numchars = strlen($varvalue);
@@ -177,14 +144,13 @@ class FormValidation {
                 }
 
             } elseif ($varname === 'firstname' || $varname === 'lastname' || $varname === 'name' || $varname === 'subject' || $varname === 'country' || 
-                        $varname === 'adminname' || $varname === 'datepaid') {
+                        $varname === 'adminname') {
 
                 # user's firstname, lastname.
                 # user's country.
-                # ad's name, admin's walletid's/coinsphpid's name.
+                # ad's name.
                 # admin email's subject.
                 # admin's settings name.
-                # randomizer's datapaid.
                 # page name.
                 # promotional ad's name.
                 
@@ -292,14 +258,6 @@ class FormValidation {
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid URL.</strong></div>";
                 }
 
-            } elseif ($varname === 'recipienttype') {
-
-                # whether a randomizer payee is a sponsor or random.
-                if ($varvalue !== 'random' && $varvalue !== 'sponsor') {
-
-                    $errors .= "<div><strong>The type of randomizer recipient must be either a random member or a sponsor.</strong></div>";
-                }
-
             } elseif ($varname === 'type') {
 
                 # whether a promotional ad is a banner or email.
@@ -308,10 +266,9 @@ class FormValidation {
                     $errors .= "<div><strong>The type of promotional ad resource must be either a banner or an email.</strong></div>";
                 }
 
-            } elseif ($varname === 'giveextratoadmin' || $varname === 'adminautoapprove' || $varname === 'recipientapproved') {
+            } elseif ($varname === 'adminautoapprove') {
 
-                # make sure the flag to auto-approve ads or give deleted randomizer positions to the admin area boolean values.
-                # make sure flag on tranactions that a recipient has approved a transaction is boolean.
+                # make sure the flag to auto-approve ads are boolean values.
 
                 if ($varvalue !== '0' && $varvalue !== '1') {
 
@@ -331,9 +288,8 @@ class FormValidation {
                     
                 }
 
-            } elseif ($varname === 'adminratio' || $varname === 'id') {
+            } elseif ($varname === 'id') {
 
-                # admin settings adminratio for randomizer.
                 # any posted id value for a database record.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_INT);
@@ -344,7 +300,7 @@ class FormValidation {
                     
                 }
                  
-            } elseif ($varname === 'paysponsor' || $varname === 'payrandom' || $varname === 'amount') {
+            } elseif ($varname === 'amount') {
 
                 # admin settings paysponsor,payrandom.
                 # amount owed to a recipient in the transactions money table.
@@ -523,51 +479,6 @@ class FormValidation {
         return $errors;
     }
 
-    # make sure that either a walletid or coinsphpid or both are filled in.
-    public function checkOneOrBothWalletTypes($walletid,$coinsphpid,$errors) {
-
-        if ($walletid === '' && $coinsphpid === '') {
-
-            $errors .= "<div><strong>You need to add either a Bitcoin wallet ID, a Coins.php Peso wallet ID, or both.</strong></div>";
-        }
-        
-        if ($walletid !== '') {
-
-            $walletid = filter_var($walletid, FILTER_SANITIZE_STRING);
-            $numchars = strlen($walletid);
-    
-            if ($numchars < 5) {
-    
-                $errors .= "<div><strong>The size of the Bitcoin Wallet ID must be 5 or more characters.</strong></div>";
-            } elseif ($numchars === 0) {
-    
-                $errors .= "<div><strong>Bitcoin Wallet ID cannot be blank.</strong></div>";
-            } elseif ($numchars > 50) {
-    
-                $errors .= "<div><strong>The size of the Bitcoin Wallet ID must be 50 or less characters.</strong></div>";
-            }
-        }
-
-        if ($coinsphpid !== '') {
-
-            $coinsphpid = filter_var($coinsphpid, FILTER_SANITIZE_STRING);
-            $numchars = strlen($coinsphpid);
-    
-            if ($numchars < 5) {
-    
-                $errors .= "<div><strong>The size of the Coins.php Peso Wallet ID must be 5 or more characters.</strong></div>";
-            } elseif ($numchars === 0) {
-    
-                $errors .= "<div><strong>Coins.php Peso Wallet ID cannot be blank.</strong></div>";
-            } elseif ($numchars > 50) {
-    
-                $errors .= "<div><strong>The size of the Coins.php Peso Wallet ID must be 50 or less characters.</strong></div>";
-            }
-        }
-
-        return $errors;
-    }
-
     # make sure that a non-admin referring member exists in the database.
     public function checkReferidExists($referid,$errors) {
 
@@ -592,7 +503,7 @@ class FormValidation {
 
     }
 
-        # make sure that a user exists in the system.
+    # make sure that a user exists in the system.
     public function checkUserExists($username,$usertype,$errors) {
 
         if ($username !== 'admin') {
