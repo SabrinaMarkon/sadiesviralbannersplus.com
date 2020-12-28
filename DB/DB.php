@@ -71,6 +71,13 @@ lastlogin datetime not null,
 adclicks integer unsigned not null default '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+CREATE TABLE `membershiplevels` (
+  `id` int(10) unsigned not null primary key auto_increment,
+  `name` varchar(255) not null default '',
+  `price` decimal(9, 2) not null default 0,
+  `interval` varchar(12) default 'lifetime'
+  ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
 CREATE TABLE `pages` (
   `id` int(10) unsigned not null primary key auto_increment,
   `name` varchar(255) not null,
