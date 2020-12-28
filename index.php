@@ -178,12 +178,6 @@ if (isset($_POST['deletead'])) {
 	$showad = $delete->deleteAd($id,$_POST['name']);
 }
 
-if (isset($_POST['confirmpaid'])) {
-
-	$confirm = new ConfirmPayment();
-	$show = $confirm->confirmedPayment($id);	
-}
-
 if (isset($_GET['page']) && ($_GET['page'] === "logout")) {
 
 	$logout = new User();
@@ -202,7 +196,7 @@ if (isset($_GET['page']) && ($_GET['page'] === 'click')) {
 }
 
 $Layout = new Layout();
-$Layout->showHeader();
+$Layout->showHeader($metatitle, $metadescription);
 
 if ((!empty($_GET['page'])) && ((file_exists($_GET['page'] . ".php") && ($_GET['page'] !== "index")))) {
 
