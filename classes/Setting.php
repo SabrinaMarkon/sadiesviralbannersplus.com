@@ -40,7 +40,7 @@ class Setting
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, sitename=?, 
-        domain=?, metadescription=?, adminautoapprove=?, adclickstogetad=?";
+        domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogetad=?";
         $q = $pdo->prepare($sql);
         $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newsitename, 
         $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogetad));
