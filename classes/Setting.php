@@ -24,6 +24,8 @@ class Setting
         $newadminemail = $_POST['adminemail'];
         $newsitename = $_POST['sitename'];
         $newdomain = $_POST['domain'];
+        $newmetadescription = $_POST['metadescription'];
+        $newmetatitle = $_POST['metatitle'];
         $newadminautoapprove = $_POST['adminautoapprove'];
         $newadclickstogetad = $_POST['adclickstogetad'];
 
@@ -38,10 +40,10 @@ class Setting
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, sitename=?, 
-        domain=?, adminautoapprove=?, adclickstogetad=?";
+        domain=?, metadescription=?, adminautoapprove=?, adclickstogetad=?";
         $q = $pdo->prepare($sql);
         $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newsitename, 
-        $newdomain, $newadminautoapprove, $newadclickstogetad));
+        $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogetad));
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Site Settings Were Saved!</strong></div>";

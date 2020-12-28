@@ -6,14 +6,12 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 }
 
 require "control.php";
-if (isset($show))
-{
+if (isset($show)) {
     echo $show;
 }
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
-foreach ($settings as $key => $value)
-{
+foreach ($settings as $key => $value) {
     $$key = $value;
 }
 ?>
@@ -47,11 +45,21 @@ foreach ($settings as $key => $value)
                 <label for="domain" class="ja-toppadding">Your Domain:</label>
                 <input type="url" name="domain" value="<?php echo $domain ?>" class="form-control input-lg" placeholder="Website URL (start with http://)" required>
 
+                <label for="metatitle" class="ja-toppadding">SEO: Meta Title:</label>
+                <input type="text" name="metatitle" value="<?php echo $metatitle ?>" class="form-control input-lg" placeholder="SEO meta title for search engines" required>
+
+                <label for="metadescription" class="ja-toppadding">SEO: Meta Description:</label>
+                <input type="text" name="metadescription" value="<?php echo $metadescription ?>" class="form-control input-lg" placeholder="SEO meta description for search engines" required>
+
                 <div>
                     <label for="adminautoapprove" class="ja-toppadding">Auto-approve Ads:</label>
                     <select name="adminautoapprove" class="form-control smallselect">
-                        <option value="1" <?php if (intval($adminautoapprove) === 1) { echo "selected"; } ?>>Yes</option>
-                        <option value="0" <?php if (intval($adminautoapprove) !== 1) { echo "selected"; } ?>>No</option>
+                        <option value="1" <?php if (intval($adminautoapprove) === 1) {
+                                                echo "selected";
+                                            } ?>>Yes</option>
+                        <option value="0" <?php if (intval($adminautoapprove) !== 1) {
+                                                echo "selected";
+                                            } ?>>No</option>
                     </select>
                 </div>
 

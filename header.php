@@ -5,12 +5,12 @@
 
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
 	<meta name="author" content="Sabrina Markon" />
 	<base href = "/" />
 
-    <title>SadiesViralBannersPlus.com</title>
+    <title>SadiesViralBannersPlus.com - Online Banner Maker, Design & Create Banners of all Sizes for your websites and business!</title>
 
     <!-- Bootstrap core CSS -->
 	<link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -48,10 +48,7 @@
           <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/randomizer">Randomizer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/ads">Ads</a>
+          <a class="nav-link" href="/ads">Banner Ads</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/promotional">Promote</a>

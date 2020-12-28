@@ -6,6 +6,9 @@ adminname varchar(255) not null,
 adminemail varchar(255) not null,
 sitename varchar(255) not null,
 domain varchar(255) not null,
+metatitle varchar(60) not null,
+metadescription varchar(160) not null,
+adminautoapprove tinyint(1) not null default '0',
 adclickstogetad integer unsigned not null default '100'
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 

@@ -9,10 +9,10 @@ require_once "../config/Database.php";
 require_once "../config/Settings.php";
 require_once "../config/Layout.php";
 
-function sabrina_autoloader($class) {
+function autoloader($class) {
     require '../classes/' . $class . ".php";
 }
-spl_autoload_register("sabrina_autoloader");
+spl_autoload_register("autoloader");
 
 # get main site settings.
 $sitesettings = new Settings();
