@@ -109,7 +109,7 @@ create table transactions (
   foreign key (adid) references ads(id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
-insert into adminsettings (adminuser, adminpass, adminname, adminemail, sitename, domain) values ('Admin', 'admin', 'YOUR NAME', 'YOUR ADMIN EMAIL', 'YOUR SITE NAME','http://YOURDOMAIN.COM');
+insert into adminsettings (adminuser, adminpass, adminname, adminemail, sitename, domain, metatitle, metadescription) values ('Admin', 'admin', 'YOUR NAME', 'YOUR ADMIN EMAIL', 'YOUR SITE NAME','http://YOURDOMAIN.COM', 'YOUR SITE META TITLE', 'YOUR SITE META DESCRIPTION');
 
 INSERT INTO `adminnotes` (`id`, `name`, `htmlcode`) values (1, 'Admin Notes', '');
 
