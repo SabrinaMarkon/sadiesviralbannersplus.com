@@ -39,6 +39,9 @@ foreach ($settings as $key => $value) {
                 <label for="adminemail" class="ja-toppadding">Your Admin Email:</label>
                 <input type="text" name="adminemail" value="<?php echo $adminemail ?>" class="form-control input-lg" placeholder="Admin Email" maxlength="300" required>
 
+                <label for="adminpaypal" class="ja-toppadding">Your Paypal Email:</label>
+                <input type="text" name="adminpaypal" value="<?php echo $adminpaypal ?>" class="form-control input-lg" placeholder="Paypal Email" maxlength="300">
+
                 <label for="sitename" class="ja-toppadding">Your Website Name:</label>
                 <input type="text" name="sitename" value="<?php echo $sitename ?>" class="form-control input-lg" placeholder="Website Name" maxlength="50" required>
 

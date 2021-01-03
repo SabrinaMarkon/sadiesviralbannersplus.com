@@ -22,6 +22,7 @@ class Setting
         $newadminpass = $_POST['adminpass'];
         $newadminname = $_POST['adminname'];
         $newadminemail = $_POST['adminemail'];
+        $newadminpaypal = $_POST['adminpaypal'];
         $newsitename = $_POST['sitename'];
         $newdomain = $_POST['domain'];
         $newmetadescription = $_POST['metadescription'];
@@ -39,10 +40,10 @@ class Setting
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, sitename=?, 
+        $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, adminpaypal=?, sitename=?, 
         domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogetad=?";
         $q = $pdo->prepare($sql);
-        $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newsitename, 
+        $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newadminpaypal, $newsitename, 
         $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogetad));
         Database::disconnect();
 
