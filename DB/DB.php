@@ -141,6 +141,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Main Page',
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Profile Page', '', 'profile', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion Page', '', 'promotion', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Ads Page', '', 'ads', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Ads Page', '', 'banners', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Registration Page', '', 'register', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Thank You Page - New Member Signup', '', 'thankyou', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Logout Page', '', 'logout', 'yes');
