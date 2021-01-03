@@ -59,8 +59,8 @@ class Member
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-        $compareusername = $data['username'] ?? null;
-		if ($compareusername == $username)
+        $data['username'] ??= null;
+		if ($data['username'] == $username)
 		{
 			Database::disconnect();
 

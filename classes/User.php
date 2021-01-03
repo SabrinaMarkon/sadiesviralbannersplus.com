@@ -51,7 +51,8 @@ class User
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-		if ($data['username'] === $username)
+		$data['username'] ??= null;
+		if ($data['username'] == $username)
 		{
 			Database::disconnect();
 
