@@ -481,9 +481,9 @@ class FormValidation {
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-		if ($data['username'] === $username)
+        $compareusername = $data['username'] ?? null;
+		if ($compareusername === $username)
 		{
-            
 			$errors .= "<div><strong>The username you chose isn't available.</strong></div>";
         }
 
