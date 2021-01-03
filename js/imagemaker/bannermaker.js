@@ -1,47 +1,51 @@
 // PHPSS-BannerMakerApp by Sabrina Markon 2016 phpsitescripts@outlook.com
-
+// 2020 TODO: Rewrite without jQuery - React component would be cool.
+// TODO: arrows to allow layers to be moved up or down in the stack.
+// TODO: image uploads.
+// TODO: Make mobile friendly.
 $(function() {
 
+    // *** Uncomment if license watermarks will be used in this website:
     // ADD WATERMARK IF USER IS UNLICENSED:
-    var userid = $('#userid').val();
-    $.ajax({
-        url: 'banners/licensecheck/' + userid,
-        type: 'post',
-        data: { 'userid' : userid, '_token' : $('input[name=_token]').val(), '_method' : 'POST' },
-        success: function(data) {
-            // data = yes if a watermark is needed.
-            if (data === 'no') {
-                $('#canvascontainer').append($('<div id="watermark"  class="ui-widget-content"></div>')
-                    .draggable({ containment : "#canvascontainer" }));
-            } else {
-                $('#canvascontainer').append($('<div id="watermark"  class="ui-widget-content">SadiesBannerCreator.com</div>')
-                    .draggable({ containment : "#canvascontainer" }));
-            }
-            $('#watermark').css({
-                'background' : '#fff',
-                'border' : '1px solid #000',
-                'color' : '#000',
-                'font-family' : 'Roboto, sans-serif',
-                'padding-left' : '1px',
-                'padding-right' : '1px',
-                'font-size' : '10px',
-                'z-index' : '1001',
-                'cursor' : 'pointer',
-                'position' : 'absolute',
-                'right' : '0',
-                'bottom' : '0'
-            });
-            if (data === 'no') {
-                $('#watermark').css({
-                    'display' : 'none'
-                });
-            } else {
-                $('#watermark').css({
-                    'display' : 'inline-block'
-                });
-            }
-        }
-    });
+    // var userid = $('#userid').val();
+    // $.ajax({
+    //     url: 'banners/licensecheck/' + userid,
+    //     type: 'post',
+    //     data: { 'userid' : userid, '_token' : $('input[name=_token]').val(), '_method' : 'POST' },
+    //     success: function(data) {
+    //         // data = yes if a watermark is needed.
+    //         if (data === 'no') {
+    //             $('#canvascontainer').append($('<div id="watermark"  class="ui-widget-content"></div>')
+    //                 .draggable({ containment : "#canvascontainer" }));
+    //         } else {
+    //             $('#canvascontainer').append($('<div id="watermark"  class="ui-widget-content">SadiesBannerCreator.com</div>')
+    //                 .draggable({ containment : "#canvascontainer" }));
+    //         }
+    //         $('#watermark').css({
+    //             'background' : '#fff',
+    //             'border' : '1px solid #000',
+    //             'color' : '#000',
+    //             'font-family' : 'Roboto, sans-serif',
+    //             'padding-left' : '1px',
+    //             'padding-right' : '1px',
+    //             'font-size' : '10px',
+    //             'z-index' : '1001',
+    //             'cursor' : 'pointer',
+    //             'position' : 'absolute',
+    //             'right' : '0',
+    //             'bottom' : '0'
+    //         });
+    //         if (data === 'no') {
+    //             $('#watermark').css({
+    //                 'display' : 'none'
+    //             });
+    //         } else {
+    //             $('#watermark').css({
+    //                 'display' : 'inline-block'
+    //             });
+    //         }
+    //     }
+    // });
 
     // BANNER WIDTH:
     $('#bannerwidth').on('keyup mouseup', function() {
