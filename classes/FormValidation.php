@@ -217,7 +217,7 @@ class FormValidation {
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_EMAIL);
                 $numchars = strlen($varvalue);
 
-                if ($numchars === 0) {
+                if ($numchars === 0 && $varname !== 'paypal') {
 
                     $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
                 }
