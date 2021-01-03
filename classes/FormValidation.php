@@ -43,6 +43,7 @@ class FormValidation {
         'message' => 'message',
         'email' => 'email',
         'paypal' => 'paypal',
+        'adminpaypal' => 'admin paypal',
         'adminemail' => 'admin email',
         'url' => 'URL',
         'imageurl' => 'image URL',
@@ -210,14 +211,14 @@ class FormValidation {
                     $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
                 } 
 
-            } elseif ($varname === 'email' || $varname === 'adminemail' || $varname === 'paypal') {
+            } elseif ($varname === 'email' || $varname === 'adminemail') {
 
-                # user's or admin's email address or paypal address.
+                # user's or admin's email address.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_EMAIL);
                 $numchars = strlen($varvalue);
-
-                if ($numchars === 0 && $varname !== 'paypal') {
+                
+                if ($numchars === 0) {
 
                     $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
                 }
@@ -232,6 +233,32 @@ class FormValidation {
                 elseif (!filter_var($varvalue,FILTER_VALIDATE_EMAIL)) {
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
+                }
+
+            } elseif ($varname === 'paypal' || $varname === 'adminpaypal') {
+
+                # user's or admin's paypal email.
+
+                $varvalue = filter_var($varvalue, FILTER_SANITIZE_EMAIL);
+                $numchars = strlen($varvalue);
+
+                if ($varvalue !== '') {
+                    if ($numchars === 0) {
+
+                        $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
+                    }
+                    elseif ($numchars < 8) {
+    
+                        $errors .= "<div><strong>". $pretty_varname . " must be 8 or more characters.</strong></div>";
+                    }
+                    elseif ($numchars > 300) {
+    
+                        $errors .= "<div><strong>The size of " . $pretty_varname . " must be 300 or less characters.</strong></div>";
+                    }
+                    elseif (!filter_var($varvalue,FILTER_VALIDATE_EMAIL)) {
+    
+                        $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
+                    }
                 }
 
             } elseif ($varname === 'url' || $varname === 'imageurl' || $varname === 'domain') {
