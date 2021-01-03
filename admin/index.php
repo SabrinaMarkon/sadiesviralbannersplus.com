@@ -235,7 +235,7 @@ if (isset($_POST['login'])) {
         
             # admin deleted a member and their ads and positions.
             $delete = new Member();
-            $show = $delete->deleteMember($id,$giveextratoadmin);
+            $show = $delete->deleteMember($id);
         }
     }
 

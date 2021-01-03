@@ -253,7 +253,7 @@ class User
 
 	}
 
-	public function deleteUser($username,$giveextratoadmin) {
+	public function deleteUser($username) {
 		
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
