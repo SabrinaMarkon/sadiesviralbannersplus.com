@@ -12,6 +12,7 @@ if (isset($show))
 }
 $alltransactions = new Money();
 $transactions = $alltransactions->getAllTransactions();
+$transactions ??= [];
 ?>
 <div class="container">
     <div class="row">
