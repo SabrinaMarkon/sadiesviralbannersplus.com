@@ -42,6 +42,7 @@ class FormValidation {
         'description' => 'ad description',
         'message' => 'message',
         'email' => 'email',
+        'paypal' => 'paypal',
         'adminemail' => 'admin email',
         'url' => 'URL',
         'imageurl' => 'image URL',
@@ -209,9 +210,9 @@ class FormValidation {
                     $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
                 } 
 
-            } elseif ($varname === 'email' || $varname === 'adminemail') {
+            } elseif ($varname === 'email' || $varname === 'adminemail' || $varname === 'paypal') {
 
-                # user's or admin's email address.
+                # user's or admin's email address or paypal address.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_EMAIL);
                 $numchars = strlen($varvalue);

@@ -21,6 +21,7 @@ class User
 	private $firstname;
 	private $lastname;
 	private $email;
+	private $paypal;
 	private $country;
 	private $signupip;
 	private $referid;
@@ -35,6 +36,7 @@ class User
 		$firstname = $post['firstname'];
 		$lastname = $post['lastname'];
 		$email = $post['email'];
+		$paypal = $post['paypal'];
 		$country = $post['country'];
 		$signupip = $_SERVER['REMOTE_ADDR'];
 		$referid = $post['referid'];
@@ -62,10 +64,10 @@ class User
 		{
 			$verificationcode = time() . mt_rand(10, 100);
 
-			$sql = "insert into members (username,password,firstname,lastname,email,country,referid,signupdate,signupip,verificationcode) 
-			values (?,?,?,?,?,?,?,?,?,NOW(),?,?)";
+			$sql = "insert into members (username,password,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) 
+			values (?,?,?,?,?,?,?,?,?,?,NOW(),?,?)";
 			$q = $pdo->prepare($sql);
-			$q->execute([$username,$password,$firstname,$lastname,$email,$country,$referid,$signupip,$verificationcode]);
+			$q->execute([$username,$password,$firstname,$lastname,$email,$paypal,$country,$referid,$signupip,$verificationcode]);
 
 			Database::disconnect();
 
@@ -207,14 +209,15 @@ class User
 		$lastname = $post['lastname'];
 		$email = $post['email'];
 		$oldemail = $post['oldemail'];
+		$paypal = $post['paypal'];
 		$country = $post['country'];
 		$signupip = $_SERVER['REMOTE_ADDR'];
 
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		$sql = "update members set password=?, firstname=?, lastname=?, email=?, country=?, signupip=? where username=?";
+		$sql = "update members set password=?, firstname=?, lastname=?, email=?, paypal=?, country=?, signupip=? where username=?";
 		$q = $pdo->prepare($sql);
-		$q->execute(array($password, $firstname, $lastname, $email, $country, $signupip, $username));
+		$q->execute(array($password, $firstname, $lastname, $email, $paypal, $country, $signupip, $username));
 
 		if ($email !== $oldemail) {
 			
@@ -239,6 +242,7 @@ class User
 		$_SESSION['firstname'] = $firstname;
 		$_SESSION['lastname'] = $lastname;
 		$_SESSION['email'] = $email;
+		$_SESSION['paypal'] = $paypal;
 		$_SESSION['country'] = $country;
 		$_SESSION['signupip'] = $signupip;
 

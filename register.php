@@ -49,6 +49,9 @@ echo $showcontent->showPage('Registration Page');
 						<label for="confirm_password" class="ja-toppadding">Confirm Password:</label>
 						<input type="password" name="confirm_password" id="password2" value="" class="form-control input-lg" placeholder="Confirm Password" required>
 
+						<label for="paypal" class="ja-toppadding">Paypal Email:</label>
+						<input type="email" name="paypal" value="" class="form-control input-lg" placeholder="Paypal Email">
+
 						<label for="country" class="ja-toppadding">Country:</label>
 						<select name="country" class="form-control input-lg">
 							<option value="Canada">Canada</option>

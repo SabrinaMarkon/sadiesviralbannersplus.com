@@ -44,6 +44,7 @@ class Member
         $lastname = $_POST['lastname'];
         $country = $_POST['country'];
         $email = $_POST['email'];
+        $paypal = $_POST['paypal'];
         $signupip = $_SERVER['REMOTE_ADDR'];
         $referid = $_POST['referid'];
 
@@ -71,9 +72,9 @@ class Member
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "insert into members (username,password,firstname,lastname,email,country,referid,signupdate,signupip,verificationcode) values (?,?,?,?,?,?,?,NOW(),?,?)";
+        $sql = "insert into members (username,password,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) values (?,?,?,?,?,?,?,?,NOW(),?,?)";
         $q = $pdo->prepare($sql);
-        $q->execute(array($username,$password,$firstname,$lastname,$email,$country,$referid,$signupip,$verificationcode));
+        $q->execute(array($username,$password,$firstname,$lastname,$email,$paypal,$country,$referid,$signupip,$verificationcode));
       
         Database::disconnect();
 
@@ -96,6 +97,7 @@ class Member
         $lastname = $_POST['lastname'];
         $country = $_POST['country'];
         $email = $_POST['email'];
+        $paypal = $_POST['paypal'];
         $signupip = $_POST['signupip'];
         $referid = $_POST['referid'];
 
@@ -106,9 +108,9 @@ class Member
         
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "update `members` set username=?, password=?, firstname=?, lastname=?, country=?, email=?, signupip=?, referid=? where id=?";
+        $sql = "update `members` set username=?, password=?, firstname=?, lastname=?, country=?, email=?, paypal=?, signupip=?, referid=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute(array($username, $password, $firstname, $lastname, $country, $email, $signupip, $referid, $id));
+        $q->execute(array($username, $password, $firstname, $lastname, $country, $email, $paypal, $signupip, $referid, $id));
 
         Database::disconnect();
 
