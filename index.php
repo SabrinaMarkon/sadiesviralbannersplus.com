@@ -150,7 +150,7 @@ if (isset($_POST['createad'])) {
 
 		# user submitted a new ad.
 		$create = new Ad();
-		$showad = $create->createAd($id,$_SESSION['username'],$adminautoapprove,0,$_POST);
+		$showad = $create->createAd($id,$adminautoapprove,0,$_POST);
 	}
 }
 

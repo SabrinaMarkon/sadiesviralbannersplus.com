@@ -15,7 +15,6 @@ $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Ads Page');
 
 $ads = new Ad();
-$transactions = new Money();
 
 # see if the user has any blank ads, and if so, get the first one (by id).
 $oneblankad = $ads->getBlankAd($username);
@@ -23,14 +22,6 @@ $oneblankad = $ads->getBlankAd($username);
 # get all the user's active ads (to see clicks,hits,edit,etc.)
 $activeads = $ads->getAllUsersAds($username);
 
-# get all the transactions the user still owes.
-// $owed = $alltransactions->getUserTransactions($username,'owes');
-
-# get all the transactions the user will get paid or has already been paid.
-// $gets = $alltransactions->getUserTransactions($username,'gets');
-
-# get all the transactinos that the user owed but already paid.
-// $paid = $alltransactions->getUserTransactions($username,'paid');
 ?>
 
 <div class="container">
@@ -38,45 +29,12 @@ $activeads = $ads->getAllUsersAds($username);
 			<?php
 			if (empty($oneblankad)) {
 
-				# There are no blank ads, so check to see if there are any transactions that the member needs to pay.
-				$owed = $transactions->getUserTransactions($username,'owes');
-
-				if (!empty($owed)) {
-
-					# user has transactions to pay.
-
-					echo "<div class=\"ja-bottompadding ja-topadding my-5\">You currently have no blank ads. Please pay BOTH your sponsor and a random member below. 
-					If you already have, please wait for BOTH recipients to verify that they have received a payment from you,
-					then the form to create your ad will become available here.</p><p>If you have ALREADY paid them BOTH, and have
-					been waiting a long time for the recipients to validate, please contact us with PROOF of
-					both your payments, so we can approve release of your ads, as well as your position in the randomizer.</div>";
-	
-					# Show bitcoin and coinsph wallet IDs for BOTH sponsor and the random payee.
-					$bitcoin = new Bitcoin();
-					$showbitcoin = $bitcoin->showBitCoinWalletIds($username,$settings);
-					
-					if ($showbitcoin) {
-
-						echo "<div class=\"ja-yellowbg ja-bitcoinbox\">" . $showbitcoin . "</div>";
-					}
-				
-				} else {
-
-					# user has no blank ads but doesn't owe anyone either.
-					echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid ads available.</div>";
-
-				}
-
+				echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid ads available. Please purchase one below!</div>";
 				echo "<div class=\"ja-bottompadding mb-5\"></div>";
-
 			
 			} else {
 				
-				# the user has at least one blank ad they can submit, so they must have paid the sponsor and random user to have received it.
-
-				/* person has at least one blank ad they paid (2 people) for.
-				show form to create ad with an id to update the 2 paid transactions' adid. */
-
+				# the user has at least one blank ad they can submit.
 				# get the ad's id for the adid.
 				$adid = $oneblankad['id'];
 
@@ -115,16 +73,15 @@ $activeads = $ads->getAllUsersAds($username);
 			<h1 class="ja-bottompadding ja-toppadding">Your Ads</h1>
 			
 			<?php
-			# dpes the user have existing ads in the rotation already?
+			# does the user have existing ads in the rotation already?
 			if (empty($activeads)) {
 
 				# the person has no ads yet. Say so, and tell them once they've paid they can create one.
-				echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no ads yet. After paying for one to both your sponsor and another random member, 
-				you can create one using the form which will appear above.</div>";
+				echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no text ads yet.</div>";
 			
 			} else {
 				
-				# person has at least one ad they paid for (paid both sponsor and a random user), and have added it to the system.
+				# person has at least one ad they paid for, and have added it to the system.
 				# show those ads and allow edit, save, delete.
 
 				?>

@@ -319,7 +319,7 @@ if (isset($_POST['login'])) {
     
             # user submitted a new ad.
             $create = new Ad();
-            $showad = $create->createAd($id,'admin',$adminautoapprove,1,$_POST);
+            $showad = $create->createAd($id,$adminautoapprove,1,$_POST);
         }
     }
     

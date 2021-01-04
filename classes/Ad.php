@@ -71,7 +71,7 @@ class Ad {
     }
 
     /* Call this when the user or admin submits their ad. */
-    public function createAd($id,$username,$adminautoapprove,$isadmin,$post) {
+    public function createAd($id,$adminautoapprove,$isadmin,$post) {
 
         $name = $post['name'];
         $title = $post['title'];
@@ -79,7 +79,7 @@ class Ad {
         $description = $post['description'];
         $imageurl = $post['imageurl'];
 
-        # generate shorturl - FIREBASE LINKS ****
+        # TODO: generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
         
         $pdo = DATABASE::connect();
@@ -88,7 +88,6 @@ class Ad {
         # is it a user or the admin posting the ad?
         if ($isadmin) {
 
-            $username = 'admin';
             $sql = "insert into ads (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
             $q->execute([$name,$title,$url,$shorturl,$description,$imageurl]);
@@ -105,8 +104,7 @@ class Ad {
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
     }
 
-    /* When the second recipient (either the sponsor or the random member) confirms that they have received payment from the user, we
-    call this method to create the blank ad for the user. */
+    /* When a user has paid for an ad and we receive the IPN notification, we create a blank ad for that user. */
     public function createBlankAd($username) {
        
         $pdo = DATABASE::connect();
