@@ -1,0 +1,187 @@
+/* styles */
+/* called by your view template */
+
+/* You might want to try something fancier: */
+/* less: http://lesscss.org/ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  /* background: #E2F4BE; */
+}
+
+
+.bold {
+    font-weight: bold;
+}
+.italic {
+    font-style: italic;
+}
+.underline {
+    text-decoration: underline;
+}
+
+#canvascontainer {
+  position: relative;
+  margin: auto;
+  margin-top: 20px;
+  width: 468px;
+  height: 60px;
+  background: transparent url('https://cdn.hyperdev.com/dbecfea0-0dc9-41b6-8883-d975dd25172d%2Fcanvasbg.gif');
+}
+
+#savediv {
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.canvaslayer {
+  cursor: pointer;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  background: none;
+  display: inline;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.picture {
+  border: 0;
+}
+
+#lefteditpane {
+    background-color: #FFC125;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+}
+ 
+#bgimagepreview, #imagepreview {
+  margin: auto;
+  display: none;
+  text-align: center;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+#downloadbuttondiv {
+  display: none;
+  text-align: center;
+  padding: 0;
+}
+
+.checkbox-last {
+  padding-bottom: 20px;
+} 
+
+#maineditpane {
+  background-color: #E2F4BE;
+}
+
+.has-error {
+    color: #FF7256;
+    margin-left: 5px;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.ui-resizable-handle {
+    width: 9px !important;
+    height: 9px !important;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+}
+.ui-resizable-nw
+{
+     left: -5px;
+     top: -5px;    
+}
+.ui-resizable-ne
+{
+     top: -5px;
+     right: -5px; 
+}
+.ui-resizable-sw
+{
+    bottom: -5px;
+    left: -5px;
+}
+.ui-resizable-se
+{
+    bottom: -5px;
+    right: -5px;
+}
+.ui-icon {
+    width: 9px !important;
+    height: 9px !important;
+}
+
+input, select {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button, .btn-file {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  box-shadow: 2px 2px teal;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: yellow;
+}
+
+.btn-file:hover {
+  background: yellow;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+}
+
+footer > a {
+  color: #BBBBBB;
+}
+
+#preloadedImages {
+       width: 0px;
+       height: 0px;
+       display: inline;
+       background-image: url('https://cdn.hyperdev.com/f14e33fd-c8e8-4b03-87c3-79a0da8b287a%2FDHK577B552.jpg');
+       background-image: url('https://cdn.hyperdev.com/3971052c-4afb-4cf1-af63-4f808be90f90%2FS3XBRRS2D9.jpg');
+       background-image: url('https://cdn.hyperdev.com/3971052c-4afb-4cf1-af63-4f808be90f90%2FO4DWC2WG2U.jpg');
+       background-image: url('https://cdn.hyperdev.com/3971052c-4afb-4cf1-af63-4f808be90f90%2FIUVI2VVDXJ.jpg');
+       background-image: url('https://cdn.hyperdev.com/3971052c-4afb-4cf1-af63-4f808be90f90%2FQMA508CSJ4.jpg');
+       background-image: url('https://cdn.hyperdev.com/3971052c-4afb-4cf1-af63-4f808be90f90%2FSQY05ME36U.jpg');
+       background-image: url('https://cdn.hyperdev.com/3971052c-4afb-4cf1-af63-4f808be90f90%2FCHSQY94U6T.jpg');
+}

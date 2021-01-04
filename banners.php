@@ -304,8 +304,3 @@ echo $showcontent->showPage('Members Area Banner Ads Page');
     </div>
     <div class="ja-bottompadding"></div>
 </div>
-
-<script src="/js/imagemaker/bannermaker.js"></script>
-<script type="text/javascript">
-    $.unblockUI();
-</script>

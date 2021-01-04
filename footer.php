@@ -36,14 +36,6 @@
 <!-- Custom JavaScript -->
 <script src="js/customjs.js"></script>
 
-<script>
-  // show user character counter for input fields.
-  $('#inputform input[maxlength]').CWCharCount({
-    default_class: 'input',
-    warning_level: 3
-  });
-</script>
-
 </body>
 
 </html>
