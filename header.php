@@ -48,7 +48,10 @@
           <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/ads">Banner Ads</a>
+          <a class="nav-link" href="/banners">Your Banners</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ads">Buy Text Ads</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/promotional">Promote</a>
