@@ -1,16 +1,16 @@
 CREATE TABLE `adminsettings` (
-id integer unsigned not null primary key auto_increment,
-adminuser varchar(255) not null,
-adminpass varchar(255) not null,
-adminname varchar(255) not null,
-adminemail varchar(300) not null,
-adminpaypal varchar(300) not null,
-sitename varchar(255) not null,
-domain varchar(300) not null,
-metatitle varchar(60) not null,
-metadescription varchar(160) not null,
-adminautoapprove tinyint(1) not null default '0',
-adclickstogetad integer unsigned not null default '100'
+`id` integer unsigned not null primary key auto_increment,
+`adminuser` varchar(255) not null,
+`adminpass` varchar(255) not null,
+`adminname` varchar(255) not null,
+`adminemail` varchar(300) not null,
+`adminpaypal` varchar(300) not null,
+`sitename` varchar(255) not null,
+`domain` varchar(300) not null,
+`metatitle` varchar(60) not null,
+`metadescription` varchar(160) not null,
+`adminautoapprove` tinyint(1) not null default '0',
+`adclickstogetad` integer unsigned not null default '100'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `adminnotes` (
@@ -18,22 +18,6 @@ CREATE TABLE `adminnotes` (
 `name` varchar(25) NOT NULL default '',
 `htmlcode` longtext NOT NULL,
 KEY `index` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-create table ads (
-id integer unsigned not null primary key auto_increment,
-username varchar(255) not null default 'admin',
-name varchar(255) not null,
-title varchar(255) not null,
-url varchar(300) not null,
-shorturl varchar(255) not null,
-description varchar(255) not null,
-imageurl varchar(300) not null,
-added tinyint(1) not null default '0',
-approved tinyint(1) not null default '0',
-hits integer unsigned not null default '0',
-clicks integer unsigned not null default '0',
-adddate datetime not null
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `banners` (
@@ -125,6 +109,22 @@ CREATE TABLE `promotional` (
 `promotionalimage` varchar(300) NOT NULL,
 `promotionalsubject` varchar(255) NOT NULL,
 `promotionaladbody` longtext NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+create table `textads` (
+`id` integer unsigned not null primary key auto_increment,
+`username` varchar(255) not null default 'admin',
+`name` varchar(255) not null,
+`title` varchar(255) not null,
+`url` varchar(300) not null,
+`shorturl` varchar(255) not null,
+`description` varchar(255) not null,
+`imageurl` varchar(300) not null,
+`added` tinyint(1) not null default '0',
+`approved` tinyint(1) not null default '0',
+`hits` integer unsigned not null default '0',
+`clicks` integer unsigned not null default '0',
+`adddate` datetime not null
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 create table transactions (

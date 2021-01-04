@@ -17,18 +17,16 @@ class Ad {
 
     private $pdo;
 
-    // public function __construct($adtable) {
-    //     $this->adtable = $adtable;
-    // }
-
-    // TODO: CHANGE 'ads' table and pages to $adtable (which will be textads, banners, etc. any kind of ad table).
+    public function __construct($adtable) {
+        $this->adtable = $adtable;
+    }
 
     /* Get all the ads for all members. */
     public function getAllAds() {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from ads order by approved asc, id desc";
+        $sql = "select * from " . $this->adtable . " order by approved asc, id desc";
         $q = $pdo->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -44,7 +42,7 @@ class Ad {
         
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from ads where username=? and added=1 order by id desc";
+        $sql = "select * from " . $this->adtable . " where username=? and added=1 order by id desc";
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -63,7 +61,7 @@ class Ad {
         
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from ads where username=? and added=0 order by id limit 1";
+        $sql = "select * from " . $this->adtable . " where username=? and added=0 order by id limit 1";
         $q = $pdo->prepare($sql);
         $q->execute([$username]);
         $blankad = $q->fetch();
@@ -94,13 +92,13 @@ class Ad {
         # is it a user or the admin posting the ad?
         if ($isadmin) {
 
-            $sql = "insert into ads (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,?,1,1,NOW())";
+            $sql = "insert into " . $this->adtable . " (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
             $q->execute([$name,$title,$url,$shorturl,$description,$imageurl]);
 
         } else {
 
-            $sql = "update ads set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
+            $sql = "update " . $this->adtable . " set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
             $q = $pdo->prepare($sql);
             $q->execute([$name,$title,$url,$description,$imageurl,$shorturl,$adminautoapprove,$id]);
         }
@@ -115,7 +113,7 @@ class Ad {
        
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "insert into ads (username,adddate) values (?,NOW())";
+        $sql = "insert into " . $this->adtable . " (username,adddate) values (?,NOW())";
         $q = $pdo->prepare($sql);
         $q->execute([$username]);
 
@@ -150,7 +148,7 @@ class Ad {
 
             $autoapprove = $adminautoapprove;
         }
-        $sql = "update ads set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
+        $sql = "update " . $this->adtable . " set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$name,$title,$url,$description,$imageurl,$shorturl,$autoapprove,$id]);
         
@@ -164,7 +162,7 @@ class Ad {
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "delete from ads where id=?";
+        $sql = "delete from " . $this->adtable . " where id=?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
 

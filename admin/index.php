@@ -318,7 +318,8 @@ if (isset($_POST['login'])) {
         } else {
     
             # user submitted a new ad.
-            $create = new Ad();
+            $adtable = $_POST['adtable']; 
+            $create = new Ad($adtable);
             $showad = $create->createAd($id,$adminautoapprove,1,$_POST);
         }
     }
@@ -330,16 +331,17 @@ if (isset($_POST['login'])) {
     
             $showad = $errors;
         } else {
-    
+
             # user saved changes made to their ad.
-            $save = new Ad();
+            $adtable = $_POST['adtable']; 
+            $save = new Ad($adtable);
             $showad = $save->saveAd($id,$adminautoapprove,1,$_POST);
         }
     }
     
     if (isset($_POST['deletead'])) {
-          
-        $delete = new Ad();
+        $adtable = $_POST['adtable'];  
+        $delete = new Ad($adtable);
         $showad = $delete->deleteAd($id,$_POST['name']);
     }
 

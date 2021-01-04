@@ -9,7 +9,8 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 $id = $_SESSION['referid'];
 // session_unset();
 
-$giveclicks = new Rotator();
+$adtable = 'textads';
+$giveclicks = new Rotator($adtable);
 $click = $giveclicks->giveClick($id);
 
 if ($click) {

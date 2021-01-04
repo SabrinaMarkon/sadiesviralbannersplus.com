@@ -17,18 +17,22 @@ class Rotator {
 
     private $pdo;
 
+    public function __construct($adtable) {
+        $this->adtable = $adtable;
+    }
+
     public function giveClick($id) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select url from ads where id=?";
+        $sql = "select url from " . $this->adtable . " where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$id]);
         $url = $q->fetchColumn();
 
         if ($url) {
 
-            $sql = "update ads set clicks=clicks+1 where id=?";
+            $sql = "update " . $this->adtable . " set clicks=clicks+1 where id=?";
             $q = $pdo->prepare($sql);
             $q->execute([$id]);
             
@@ -48,7 +52,7 @@ class Rotator {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,ERRMODE_EXCEPTION);
-        $sql = "update ads set hits=hits+1 where id=?";
+        $sql = "update " . $this->adtable . " set hits=hits+1 where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$id]);
 
@@ -59,7 +63,7 @@ class Rotator {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select id,title,url,shorturl,description,imageurl from ads where added=1 and approved=1 order by rand() limit 6";
+        $sql = "select id,title,url,shorturl,description,imageurl from " . $this->adtable . " where added=1 and approved=1 order by rand() limit 6";
         $q = $pdo->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);

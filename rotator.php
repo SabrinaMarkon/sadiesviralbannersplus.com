@@ -5,12 +5,14 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-$allrotators = new Rotator();
+$adtable = 'textads';
+
+$allrotators = new Rotator($adtable);
 $rotators = $allrotators->getAds();
 
 if ($rotators) {
 
-    $ads = new Ad();    
+    $ads = new Ad($adtable);    
 
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -24,7 +26,7 @@ if ($rotators) {
         $rdescription = $rotator['description'];
         $rimageurl = $rotator['imageurl'];
 
-        $sql = "update ads set hits=hits+1 where id=?";
+        $sql = "update " . $adtable . " set hits=hits+1 where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$rid]);
 

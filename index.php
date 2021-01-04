@@ -149,7 +149,8 @@ if (isset($_POST['createad'])) {
 	} else {
 
 		# user submitted a new ad.
-		$create = new Ad();
+		$adtable = $_POST['adtable']; 
+		$create = new Ad($adtable);
 		$showad = $create->createAd($id,$adminautoapprove,0,$_POST);
 	}
 }
@@ -165,7 +166,8 @@ if (isset($_POST['savead'])) {
 	} else {
 
 		# user saved changes made to their ad.
-		$save = new Ad();
+		$adtable = $_POST['adtable']; 
+		$save = new Ad($adtable);
 		$showad = $save->saveAd($id,$adminautoapprove,0,$_POST);
 	}
 }
@@ -174,7 +176,8 @@ if (isset($_POST['deletead'])) {
 
 	$id = $_SESSION['referid']; // the var name referid is what is in the url, but it has the id of the ad in this case.
 	
-	$delete = new Ad();
+	$adtable = $_POST['adtable']; 
+	$delete = new Ad($adtable);
 	$showad = $delete->deleteAd($id,$_POST['name']);
 }
 

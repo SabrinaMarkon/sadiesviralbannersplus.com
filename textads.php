@@ -14,8 +14,8 @@ echo $showad;
 $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Text Ads Page');
 
-// $ads = new Ad('textads');
-$ads = new Ad();
+$adtable = 'textads';
+$ads = new Ad($adtable);
 
 # see if the user has any blank ads, and if so, get the first one (by id).
 $oneblankad = $ads->getBlankAd($username);
@@ -43,7 +43,7 @@ $activeads = $ads->getAllUsersAds($username);
 				?>
 				<h1 class="ja-bottompadding">Create Text Ad</h1>
 
-				<form action="/ads/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
+				<form action="/textads/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
 
 					<label for="name">Name of Ad (only you see):</label>
 					<input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name" required>
@@ -61,7 +61,8 @@ $activeads = $ads->getAllUsersAds($username);
 					<input type="url" name="imageurl" id="imageurl" class="form-control input-lg" placeholder="Image URL" required>
 
 					<div class="ja-bottompadding"></div>
-
+					 
+					<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 					<input type="hidden" name="id" value="<?php echo $adid ?>">
 					<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE AD</button>
 
@@ -116,7 +117,7 @@ $activeads = $ads->getAllUsersAds($username);
 							$dateadadded = date('Y-m-d');
 							?>
 							<tr>
-								<form action="/ads/<?php echo $activead['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
+								<form action="/textads/<?php echo $activead['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
 									<td class="small"><?php echo $activead['id']; ?>
 									</td>
 									<td class="small">
@@ -156,12 +157,14 @@ $activeads = $ads->getAllUsersAds($username);
 										<?php echo $dateadadded ?>
 									</td>
 									<td>
+										<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 										<input type="hidden" name="_method" value="PATCH">
 										<button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
 									</td>
 								</form>
 								<td>
-									<form action="/ads/<?php echo $activead['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+									<form action="/textads/<?php echo $activead['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+										<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 										<input type="hidden" name="_method" value="DELETE">
 										<input type="hidden" name="name" value="<?php echo $activead['name']; ?>">
 										<button class="btn btn-sm btn-primary" type="submit" name="deletead">DELETE</button>

@@ -13,7 +13,13 @@ if (isset($showad)) {
 $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Banner Ads Page');
 
-// $bannerads = new Ad('banners');
+$bannerads = new Ad('banners');
+
+# see if the user has any blank ads, and if so, get the first one (by id).
+$oneblankad = $ads->getBlankAd($username);
+
+# get all the user's active ads (to see clicks,hits,edit,etc.)
+$activeads = $ads->getAllUsersAds($username);
 ?>
 
 <div class="container">

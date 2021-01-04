@@ -10,7 +10,8 @@ if (isset($showad))
 {
     echo $showad;
 }
-$allads = new Ad();
+$adtable = 'textads';
+$allads = new Ad($adtable);
 $ads = $allads->getAllAds();
 ?>
 
@@ -22,7 +23,7 @@ $ads = $allads->getAllAds();
 				?>
 				<h1 class="ja-bottompadding">Create Text Ad</h1>
 
-				<form action="/admin/ads" method="post" accept-charset="utf-8" class="form" role="form">
+				<form action="/admin/textads" method="post" accept-charset="utf-8" class="form" role="form">
 
 					<label for="name">Name of Ad (only you see):</label>
 					<input type="text" name="name" class="form-control input-lg" placeholder="Name" required>
@@ -41,6 +42,7 @@ $ads = $allads->getAllAds();
 
 					<div class="ja-bottompadding"></div>
 
+					<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 					<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE AD</button>
 
 				</form>
@@ -90,7 +92,7 @@ $ads = $allads->getAllAds();
 								}
 								?>
 								<tr>
-									<form action="/admin/ads/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
+									<form action="/admin/textads/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
 										<td class="small"><?php echo $ad['id']; ?>
 										</td>
 										<td class="small">
@@ -130,12 +132,14 @@ $ads = $allads->getAllAds();
 											<?php echo $dateadadded ?>
 										</td>
 										<td>
+											<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 											<input type="hidden" name="_method" value="PATCH">
 											<button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
 										</td>
 									</form>
 									<td>
-										<form action="/admin/ads/<?php echo $ad['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+										<form action="/admin/textads/<?php echo $ad['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+											<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 											<input type="hidden" name="_method" value="DELETE">
 											<input type="hidden" name="name" value="<?php echo $ad['name']; ?>">
 											<button class="btn btn-sm btn-primary" type="submit" name="deletead">DELETE</button>
