@@ -1,5 +1,5 @@
 // PHPSS-BannerMakerApp by Sabrina Markon 2016 phpsitescripts@outlook.com
-// 2020 TODO: Rewrite without jQuery - React component would be cool.
+// 2020 TODO: Rewrite without jQuery - make a React component or library.
 // TODO: arrows to allow layers to be moved up or down in the stack.
 // TODO: image uploads.
 // TODO: Make mobile friendly.
@@ -7,11 +7,11 @@ $(function() {
 
     // *** Uncomment if license watermarks will be used in this website:
     // ADD WATERMARK IF USER IS UNLICENSED:
-    // var userid = $('#userid').val();
+    // var username = $('#username').val();
     // $.ajax({
-    //     url: 'banners/licensecheck/' + userid,
+    //     url: 'banners/licensecheck/' + username,
     //     type: 'post',
-    //     data: { 'userid' : userid, '_token' : $('input[name=_token]').val(), '_method' : 'POST' },
+    //     data: { 'username' : username, '_token' : $('input[name=_token]').val(), '_method' : 'POST' },
     //     success: function(data) {
     //         // data = yes if a watermark is needed.
     //         if (data === 'no') {

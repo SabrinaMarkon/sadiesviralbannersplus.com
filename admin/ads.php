@@ -20,7 +20,7 @@ $ads = $allads->getAllAds();
 
 
 				?>
-				<h1 class="ja-bottompadding">Create Ad</h1>
+				<h1 class="ja-bottompadding">Create Text Ad</h1>
 
 				<form action="/admin/ads" method="post" accept-charset="utf-8" class="form" role="form">
 
@@ -47,7 +47,7 @@ $ads = $allads->getAllAds();
 
 			<div class="ja-bottompadding ja-toppadding"></div>
 
-			<h1 class="ja-bottompadding ja-toppadding mb-4">All Member Ads</h1>
+			<h1 class="ja-bottompadding ja-toppadding mb-4">All Member Text Ads</h1>
 			
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped table-hover text-center table-sm">

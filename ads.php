@@ -12,8 +12,9 @@ echo $showad;
 }
 
 $showcontent = new PageContent();
-echo $showcontent->showPage('Members Area Ads Page');
+echo $showcontent->showPage('Members Area Text Ads Page');
 
+// $ads = new Ad('textads');
 $ads = new Ad();
 
 # see if the user has any blank ads, and if so, get the first one (by id).
@@ -29,7 +30,8 @@ $activeads = $ads->getAllUsersAds($username);
 			<?php
 			if (empty($oneblankad)) {
 
-				echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid ads available. Please purchase one below!</div>";
+				echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid text ads available. Please purchase one below!</div>";
+				//TODO: PAYPAL BUTTON!!!
 				echo "<div class=\"ja-bottompadding mb-5\"></div>";
 			
 			} else {
@@ -39,7 +41,7 @@ $activeads = $ads->getAllUsersAds($username);
 				$adid = $oneblankad['id'];
 
 				?>
-				<h1 class="ja-bottompadding">Create Ad</h1>
+				<h1 class="ja-bottompadding">Create Text Ad</h1>
 
 				<form action="/ads/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
 
@@ -70,7 +72,7 @@ $activeads = $ads->getAllUsersAds($username);
 
 			<div class="ja-bottompadding ja-toppadding"></div>
 
-			<h1 class="ja-bottompadding ja-toppadding">Your Ads</h1>
+			<h1 class="ja-bottompadding ja-toppadding">Your Text Ads</h1>
 			
 			<?php
 			# does the user have existing ads in the rotation already?

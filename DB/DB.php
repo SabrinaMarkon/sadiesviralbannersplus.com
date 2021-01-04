@@ -39,6 +39,7 @@ adddate datetime not null
 CREATE TABLE `banners` (
 `id` int(10) unsigned not null primary key auto_increment,
 `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`name` varchar(255) not null default '',
 `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 `htmlcode` longtext COLLATE utf8_unicode_ci NOT NULL,
 `width` int(11) NOT NULL DEFAULT '1000',
@@ -48,8 +49,11 @@ CREATE TABLE `banners` (
 `bordercolor` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'transparent',
 `borderwidth` int(11) NOT NULL DEFAULT '0',
 `borderstyle` varchar(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'solid',
-`created_at` timestamp NULL DEFAULT NULL,
-`updated_at` timestamp NULL DEFAULT NULL,
+`added` tinyint(1) not null default '0',
+`approved` tinyint(1) not null default '0',
+`hits` integer unsigned not null default '0',
+`clicks` integer unsigned not null default '0',
+`adddate` datetime not null,
 UNIQUE KEY `banners_filename_unique` (`filename`),
 KEY `banners_username_foreign` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -142,7 +146,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Login Page', '', 'login'
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Main Page', '', 'members', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Profile Page', '', 'profile', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion Page', '', 'promotion', 'yes');
-INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Ads Page', '', 'ads', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Text Ads Page', '', 'ads', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Ads Page', '', 'banners', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Registration Page', '', 'register', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Thank You Page - New Member Signup', '', 'thankyou', 'yes');

@@ -17,12 +17,18 @@ class Ad {
 
     private $pdo;
 
+    // public function __construct($adtable) {
+    //     $this->adtable = $adtable;
+    // }
+
+    // TODO: CHANGE 'ads' table and pages to $adtable (which will be textads, banners, etc. any kind of ad table).
+
     /* Get all the ads for all members. */
     public function getAllAds() {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from ads order by approved asc,id desc";
+        $sql = "select * from ads order by approved asc, id desc";
         $q = $pdo->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);

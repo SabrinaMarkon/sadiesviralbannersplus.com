@@ -12,6 +12,8 @@ if (isset($showad)) {
 
 $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Banner Ads Page');
+
+// $bannerads = new Ad('banners');
 ?>
 
 <div class="container">
@@ -289,7 +291,7 @@ echo $showcontent->showPage('Members Area Banner Ads Page');
 
                 </div>
                 <div id="savebuttondiv">
-                    <input type="hidden" id="userid" value="<?php echo $username ?>">
+                    <input type="hidden" id="username" value="<?php echo $username ?>">
                     <form method="post" enctype="multipart/form-data" action="/banners" id="saveform">
                         <input type="hidden" name="editingexistingimageid" id="editingexistingimageid" value="">
                         <input type="hidden" name="img_val" id="img_val" value="">
