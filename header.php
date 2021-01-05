@@ -24,16 +24,13 @@
 
     <!-- Magnific Popup CSS -->
     <!-- <link rel="stylesheet" href="css/magnific-popup.css"> -->
-        
+
     <!-- Slick CSS -->
     <!-- <link rel="stylesheet" href="css/slick.css"> -->
-        
+
     <!-- Line Icons CSS -->
     <!-- <link rel="stylesheet" href="css/LineIcons.css"> -->
-        
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-    
+
     <!-- Style CSS -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -42,10 +39,18 @@
     <link href="css/imagemaker.css" rel="stylesheet">
 </head>
 
-<body>
+<?php
+$urlfile = basename($_SERVER['REQUEST_URI']);
+?>
+<body <?php if ($urlfile !== '/' && $urlfile !== '') {
+    echo 'style="padding-top: 100px;"';
+} else {
+    echo 'style="padding-top: 0;"';
+}
+?>>
 
     <!-- Preloader -->
-    <!-- <div class="preloader">
+    <div class="preloader">
         <div class="loader">
             <div class="ytp-spinner">
                 <div class="ytp-spinner-container">
@@ -60,7 +65,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Navigation -->
     <section class="navbar-area">
@@ -70,7 +75,7 @@
                     <nav class="navbar navbar-expand-lg">
 
                         <a class="navbar-brand" href="#">
-                            <img src="images/sadieslogoSM.png" alt="Sadie's Viral Banners Plus Logo" style="border: 5px solid #fff; border-radius: 3px; width: 100px;">
+                            <img src="images/sadieslogoSM.png" alt="Sadie's Viral Banners Plus Logo" style="border: 5px solid #fff; border-radius: 3px; width: 75px;">
                         </a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,7 +89,7 @@
                         ?>
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                                 <ul class="navbar-nav m-auto">
-                                    <li class="nav-item active"><a class="page-scroll" href="/members">Main</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/members">Main</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/profile">Profile</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/banners">Your Banners</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/textads">Buy Text Ads</a></li>
@@ -105,7 +110,8 @@
                         ?>
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                                 <ul class="navbar-nav m-auto">
-                                    <li class="nav-item active"><a class="page-scroll" href="/">Home</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/">Home</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/#memberships">Memberships</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/ads">Banners</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/about">About</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/faq">FAQ</a></li>
@@ -131,7 +137,6 @@
 
     <!-- Header with Background Image -->
     <?php
-    $urlfile = basename($_SERVER['REQUEST_URI']);
     if ($urlfile === '/' || $urlfile === '') {
     ?>
         <section id="home" class="slider_area">
@@ -149,7 +154,7 @@
                                 <div class="col-lg-6">
                                     <div class="slider-content">
                                         <h1 class="title">Sadie's Viral Banners Plus</h1>
-                                        <p class="text">Sadies Viral Banners Jetting Your's Around The Globe Free!</p>
+                                        <p class="text">Jetting Your's Around The Globe Free!</p>
                                         <ul class="slider-btn rounded-buttons">
                                             <li><a class="main-btn rounded-one" href="#">GET STARTED FREE!</a></li>
                                         </ul>
@@ -173,11 +178,10 @@
     }
     ?>
 
+
+
     <!-- Page Content -->
-    <br><br><br><br><br>
-    <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
 
-        <div class="row">
-            <div class="col-sm-12">
-
-                <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->
+<!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->

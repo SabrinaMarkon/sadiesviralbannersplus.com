@@ -2,24 +2,11 @@
 </div>
 </div>
 <!-- /.row -->
-
-
-<div class="centered">
-
-  <section class="cards">
-
-    <?php include_once 'rotator.php'; ?>
-
-  </section>
-
-</div>
-<!-- /.row -->
-
 </div>
 <!-- /.container -->
 
 <!-- Footer -->
-<section class="footer-area footer-dark">
+<section class="footer-area footer-dark mt-1">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">
