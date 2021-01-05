@@ -1,7 +1,7 @@
 <?php
 /**
 Set up the header and footer of the layout template.
-PHP 5.4++
+PHP 7.4+
 @author Sabrina Markon
 @copyright 2018 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md

@@ -8,6 +8,8 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 // TODO: Put this somewhere nicer.
 $showcontent = new PageContent();
 echo $showcontent->showPage('Home Page');
+
+// TODO: PAYPAL BUTTON CLASS + IPN CLASS
 ?>
 
 <!-- Text ad rotator -->

@@ -1,7 +1,7 @@
 <?php
 /**
 Users can contact the admin.
-PHP 5.4++
+PHP 7.4+
 @author Sabrina Markon
 @copyright 2018 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
