@@ -20,7 +20,7 @@ $promotionals = $allpromotionals->getAllPromotionals();
 
 <div class="container">
 
-<h1 class="ja-bottompadding my-5">Promotional Material</h1>
+<h1 class="ja-bottompadding mb-3">Promotional Material</h1>
 
 <?php
 foreach ($promotionals as $promotional) {
