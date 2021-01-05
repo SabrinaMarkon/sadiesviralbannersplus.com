@@ -83,7 +83,7 @@ $(window).on('scroll', function (event) {
   if (scroll < 20) {
       $(".navbar-area").removeClass("sticky");
       $(".navbar-area img").attr("src", "images/sadieslogoSM.png");
-<!--             $(".navbar-area img").css("border", "3px solid #0067f4"); -->
+      $(".navbar-area img").css("border", "3px solid #0067f4");
   } else {
       $(".navbar-area").addClass("sticky");
       $(".navbar-area img").attr("src", "images/sadieslogoSM.png");

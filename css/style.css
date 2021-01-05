@@ -2169,6 +2169,7 @@ p {
   left: 0;
   width: 100%;
   padding: 10px 0;
+  background: #0067f4;
   z-index: 99; }
   .navbar-area .navbar {
     position: relative;
