@@ -4,6 +4,13 @@ body {
   /* padding-top: 100px; */
 }
 
+.alert {
+	margin: auto;
+	margin-bottom: 30px;
+	font-weight: 100;
+	text-align: center;
+}
+
 .ja-headerimage {
   height: 50vh;
   min-height: 300px;
