@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
+
 body {
-  padding-top: 54px;
+  /* padding-top: 54px; */
 }
 
 .ja-headerimage {
@@ -60,11 +62,11 @@ body {
 }
 
 .container {
-	width: 100%;
+	/* width: 100%; */
 }
 
 img {
-	width: 100%;
+	/* width: 100%; */
 }
 
 .ja-promotionalimg {
@@ -134,7 +136,7 @@ img {
 }
 
 @media (min-width: 992px) {
-	body { padding-top: 56px; }
+	/* body { padding-top: 56px; } */
 }
 
 @media (min-width:200px)
