@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL);
 /**
 IPN for payments.
 PHP 7.4+

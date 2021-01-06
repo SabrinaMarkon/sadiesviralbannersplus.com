@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 /**
 Value checking for form input.
 PHP 7.4+
