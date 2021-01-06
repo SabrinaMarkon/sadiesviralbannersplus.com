@@ -127,9 +127,11 @@ create table `textads` (
 `adddate` datetime not null
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+# Membership upgrades do not have adid so that can be null.
 create table transactions (
 id integer unsigned not null primary key auto_increment,
-adid integer unsigned not null,
+adid integer unsigned null,
+item varchar(255) not null,
 username varchar(255) not null,
 amount decimal(9,2) not null default '0.00',
 datepaid varchar(255) not null,
