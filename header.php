@@ -42,12 +42,13 @@
 <?php
 $urlfile = basename($_SERVER['REQUEST_URI']);
 ?>
+
 <body <?php if ($urlfile !== '/' && $urlfile !== '') {
-    echo 'style="padding-top: 100px;"';
-} else {
-    echo 'style="padding-top: 0;"';
-}
-?>>
+            echo 'style="padding-top: 100px;"';
+        } else {
+            echo 'style="padding-top: 0;"';
+        }
+        ?>>
 
     <!-- Preloader -->
     <div class="preloader">
@@ -75,7 +76,8 @@ $urlfile = basename($_SERVER['REQUEST_URI']);
                     <nav class="navbar navbar-expand-lg">
 
                         <a class="navbar-brand" href="#">
-                            <img src="images/sadieslogoSM.png" alt="Sadie's Viral Banners Plus Logo" style="border: 5px solid #fff; border-radius: 3px; width: 75px;">
+                            <!-- <img src="images/sadieslogoSM.png" alt="Sadie's Viral Banners Plus Logo" style="border: 5px solid #fff; border-radius: 3px; width: 75px;"> -->
+                            <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
                         </a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +118,7 @@ $urlfile = basename($_SERVER['REQUEST_URI']);
                                     <li class="nav-item"><a class="page-scroll" href="/about">About</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/faq">FAQ</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/terms">Terms</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/contact">Contact</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/#contact">Contact</a></li>
                                 </ul>
                             </div>
 
@@ -164,7 +166,7 @@ $urlfile = basename($_SERVER['REQUEST_URI']);
                         </div> <!-- container -->
                         <div class="slider-image-box d-none d-lg-flex align-items-center">
                             <div class="slider-image">
-                                <img src="images/globeandairplaneandstars.png" alt="Sadie's Viral Banners Plus! Hero Image">
+                                <img src="images/globeandairplaneandstars.png" alt="Sadie's Viral Banners Plus!">
                             </div> <!-- slider-imgae -->
                         </div> <!-- slider-imgae box -->
                     </div> <!-- carousel-item -->
@@ -184,4 +186,4 @@ $urlfile = basename($_SERVER['REQUEST_URI']);
     <div class="row">
         <div class="col-sm-12">
 
-<!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->
+            <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->

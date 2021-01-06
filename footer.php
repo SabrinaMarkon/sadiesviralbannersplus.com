@@ -11,18 +11,21 @@
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="footer-logo text-center">
-          <a class="mt-30" href="/"><img src="images/sadieslogoSM.png" alt="Logo" style="border: 5px solid #0067f4; border-radius: 3px;"></a>
+          <a class="mt-30" href="/">
+          <!-- <img src="images/sadieslogoSM.png" alt="Logo" style="border: 5px solid #0067f4; border-radius: 3px;"> -->
+          <span class="logo">Sadie's <i class="fas fa-star fa-xs"></i></span>
+        </a>
         </div> <!-- footer logo -->
-        <!--                     <ul class="social text-center mt-60">
+        <!--        <ul class="social text-center mt-60">
                         <li><a href="https://facebook.com/uideckHQ"><i class="lni lni-facebook-filled"></i></a></li>
                         <li><a href="https://twitter.com/uideckHQ"><i class="lni lni-twitter-original"></i></a></li>
                         <li><a href="https://instagram.com/uideckHQ"><i class="lni lni-instagram-original"></i></a></li>
                         <li><a href="#"><i class="lni lni-linkedin-original"></i></a></li>
                     </ul> -->
         <!-- social -->
-        <div class="footer-support text-center">
+        <!-- <div class="footer-support text-center">
           <span class="mail"></span>
-        </div>
+        </div> -->
         <div class="copyright text-center mt-35">
           <p class="text">&copy;2020 <a href="https://sadiesviralbannersplus.com" target="_blank" rel="nofollow">SadiesViralBannersPlus.com</a><br />Made with &#10084; by <a rel="nofollow" href="https://sabrinamarkon.com" target="_blank">Sabrina Markon</a></p>
         </div> <!--  copyright -->

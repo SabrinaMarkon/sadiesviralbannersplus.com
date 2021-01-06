@@ -1,8 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 body {
   /* padding-top: 100px; */
 }
+
+.logo {
+	font-size: 5.0rem;
+}
+.logo-small {
+	font-size: 2.6rem;
+}
+.logo, .logo-small {
+	font-family: 'Lobster', sans-serif;
+	color: #ff4343;
+}
+.logo .fas, .logo-small .fas {
+	vertical-align: 22%;
+}
+.logo:hover, .logo-small:hover {
+	color: #ffd633;
+}
+
 
 .alert {
 	margin: auto;
@@ -132,7 +151,7 @@ img {
 }
 
 .ja-yellowbg {
-	background:#fffa96;
+	background:#f7c916;
 }
 
 @media (min-width: 992px) {

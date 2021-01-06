@@ -45,7 +45,7 @@ echo $showcontent->showPage('Home Page');
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="pricing-style mt-30">
                     <div class="pricing-icon text-center">
-                        <img src="assets/images/basic.svg" alt="">
+                        <img src="images/free.svg" alt="">
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Free</h5>
@@ -66,7 +66,7 @@ echo $showcontent->showPage('Home Page');
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="pricing-style mt-30">
                     <div class="pricing-icon text-center">
-                        <img src="assets/images/pro.svg" alt="">
+                        <img src="images/pro.svg" alt="">
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Pro</h5>
@@ -87,7 +87,7 @@ echo $showcontent->showPage('Home Page');
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="pricing-style mt-30">
                     <div class="pricing-icon text-center">
-                        <img src="assets/images/enterprise.svg" alt="">
+                        <img src="images/gold.svg" alt="">
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Gold</h5>
@@ -107,3 +107,72 @@ echo $showcontent->showPage('Home Page');
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
+
+<!-- Contact -->
+
+<section id="contact" class="contact-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-10">
+                    <div class="section-title text-center pb-30">
+                        <h3 class="title">Contact</h3>
+                        <p class="text">Please contact us if you need help or have any questions.</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact-wrapper form-style-two pt-15">
+                        <h4 class="contact-title pb-10"><i class="lni lni-envelope"></i> Leave <span>A Message.</span></h4>
+                        
+                        <form id="contact-form" action="/#contact.php" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-input mt-25">
+                                        <label>Name or Username</label>
+                                        <div class="input-items default">
+                                            <input name="username" type="text" placeholder="Name or Username" required>
+                                            <i class="lni lni-user"></i>
+                                        </div>
+                                    </div> <!-- form input -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-input mt-25">
+                                        <label>Email</label>
+                                        <div class="input-items default">
+                                            <input type="email" name="email" placeholder="Email" required>
+                                            <i class="lni lni-envelope"></i>
+                                        </div>
+                                    </div> <!-- form input -->
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-input mt-25">
+                                        <label>Subject</label>
+                                        <div class="input-items default">
+                                            <input type="text" name="subject" placeholder="Subject" required>
+                                            <i class="lni lni-pencil-alt"></i>
+                                        </div>
+                                    </div> <!-- form input -->
+                                <div class="col-md-12">
+                                    <div class="form-input mt-25">
+                                        <label>Message</label>
+                                        <div class="input-items default">
+                                            <textarea name="message" placeholder="Message" required></textarea>
+                                            <i class="lni lni-pencil-alt"></i>
+                                        </div>
+                                    </div> <!-- form input -->
+                                </div>
+                                <p class="form-message"></p>
+                                <div class="col-md-12">
+                                    <div class="form-input light-rounded-buttons mt-30">
+                                        <button class="main-btn light-rounded-two">Send Message</button>
+                                    </div> <!-- form input -->
+                                </div>
+                            </div> <!-- row -->
+                        </form>
+                    </div> <!-- contact wrapper form -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>

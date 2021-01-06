@@ -2174,6 +2174,9 @@ p {
   .navbar-area .navbar {
     position: relative;
     padding: 0; }
+    .navbar-area .navbar .navbar-toggler:hover {
+      background: #f7c916;
+    }
     .navbar-area .navbar .navbar-toggler .toggler-icon {
       width: 30px;
       height: 2px;
@@ -2186,6 +2189,9 @@ p {
       -ms-transition: all 0.3s ease-out 0s;
       -o-transition: all 0.3s ease-out 0s;
       transition: all 0.3s ease-out 0s; }
+    .navbar-area .navbar .navbar-toggler:hover .toggler-icon {
+      background-color: #121212;
+    }
     .navbar-area .navbar .navbar-toggler.active .toggler-icon:nth-of-type(1) {
       -webkit-transform: rotate(45deg);
       -moz-transform: rotate(45deg);
@@ -2339,6 +2345,12 @@ p {
     -webkit-box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05);
     -moz-box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05);
     box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05); }
+    .navbar-area.sticky .logo-small {
+      color: #ff4343
+    }
+    .navbar-area.sticky .logo-small:hover {
+      color: #0067f4;
+    }
     .navbar-area.sticky .navbar .navbar-toggler .toggler-icon {
       background-color: #121212; }
     .navbar-area.sticky .navbar .navbar-nav .nav-item a {

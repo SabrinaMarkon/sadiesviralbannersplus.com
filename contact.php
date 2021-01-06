@@ -20,13 +20,13 @@ echo $showcontact;
 			<input type="text" name="username" value="<?php if (isset($_SESSION['username'])) { echo $_SESSION['username']; } ?>" class="form-control input-lg" placeholder="Username">
 
 			<label class="sr-only" for="email">Email</label>
-			<input type="text" name="email" value="<?php if (isset($_SESSION['email'])) { echo $_SESSION['email']; } ?>" class="form-control input-lg" placeholder="Email">
+			<input type="email" name="email" value="<?php if (isset($_SESSION['email'])) { echo $_SESSION['email']; } ?>" class="form-control input-lg" placeholder="Email" required>
 
-			<label class="sr-only" for="subject">Message Subject</label>
-			<input type="text" name="subject" value="" class="form-control input-lg" placeholder="Message Subject">
+			<label class="sr-only" for="subject">Subject</label>
+			<input type="text" name="subject" value="" class="form-control input-lg" placeholder="Subject" required>
 
-			<label class="sr-only" for="message">Message Body</label>
-			<textarea name="message" value="" class="form-control input-lg" rows="10" placeholder="Message Body"></textarea>
+			<label class="sr-only" for="message">Message</label>
+			<textarea name="message" value="" class="form-control input-lg" rows="10" placeholder="Message" required></textarea>
 
 			<div class="ja-bottompadding"></div>
 
