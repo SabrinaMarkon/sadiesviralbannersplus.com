@@ -27,7 +27,7 @@ class PageContent
 		$q->execute(array($pagename,$pagename));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-		$content = $data['htmlcode'];
+		$content = $data['htmlcode'] ?? '';
 $content = <<<HEREDOC
 $content
 HEREDOC;
