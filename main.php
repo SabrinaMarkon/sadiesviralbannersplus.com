@@ -100,7 +100,7 @@ echo $showcontent->showPage('Home Page');
                         </ul>
                     </div>
                     <div class="pricing-btn rounded-buttons text-center">
-                        <a class="main-btn rounded-one" href="#">GET STARTED</a>
+                        <a class="main-btn rounded-one" href="/register">GET STARTED</a>
                     </div>
                 </div> <!-- pricing style one -->
             </div>

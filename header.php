@@ -158,7 +158,7 @@ $urlfile = basename($_SERVER['REQUEST_URI']);
                                         <h1 class="title">Sadie's Viral Banners Plus</h1>
                                         <p class="text">Jetting Your's Around The Globe Free!</p>
                                         <ul class="slider-btn rounded-buttons">
-                                            <li><a class="main-btn rounded-one" href="#">GET STARTED FREE!</a></li>
+                                            <li><a class="main-btn rounded-one" href="/register">GET STARTED FREE!</a></li>
                                         </ul>
                                     </div>
                                 </div>
