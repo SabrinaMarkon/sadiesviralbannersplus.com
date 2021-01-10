@@ -27,13 +27,12 @@ class PageContent
 		$q->execute(array($pagename,$pagename));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-		if (isset($data['htmlcode'])) {
+		$content = '';
+		if (!empty($data['htmlcode'])) {
 			$content = $data['htmlcode'];
 			$content = <<<HEREDOC
 $content
 HEREDOC;
-		} else {
-			$content = '';
 		}
 
 		Database::disconnect();

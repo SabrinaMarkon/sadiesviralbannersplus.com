@@ -510,11 +510,8 @@ class FormValidation {
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-        if (isset($data['username'])) {
-            if ($data['username'] == $username)
-            {
-                $errors .= "<div><strong>The username you chose isn't available.</strong></div>";
-            }
+        if (!empty($data['username']) && $data['username'] === $username) {
+            $errors .= "<div><strong>The username you chose isn't available.</strong></div>";
         }
         
         return $errors;
@@ -544,8 +541,7 @@ class FormValidation {
             $q->execute(array($referid));
             $q->setFetchMode(PDO::FETCH_ASSOC);
             $data = $q->fetch();
-            if (!$data['referid'])
-            {
+            if (empty($data['referid'])) {
                 
                 $errors .= "<div><strong>The sponsor you entered does not exist in the system. Please check your spelling, or please just use 'admin' in the field if you are unsure.</strong></div>";
             }
@@ -568,12 +564,9 @@ class FormValidation {
             $q->execute(array($username));
             $q->setFetchMode(PDO::FETCH_ASSOC);
             $data = $q->fetch();
-            if (isset($data['username'])) {
-                if ($data['username'] === null)
-                {
-                    
+            if (empty($data['username'])) {
+  
                     $errors .= "<div><strong>The " . $usertype . " you entered does not exist in the system. Please check the spelling.</strong></div>";
-                }
             }
         }
 

@@ -60,8 +60,7 @@ class Member
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-        $data['username'] ??= null;
-		if ($data['username'] == $username)
+		if (!empty($data['username']) && $data['username'] == $username)
 		{
 			Database::disconnect();
 

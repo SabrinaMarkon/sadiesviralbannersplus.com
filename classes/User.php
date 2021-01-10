@@ -53,15 +53,14 @@ class User
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-		if (isset($data['username'])) {
-			if ($data['username'] == $username)
-			{
-				Database::disconnect();
+		if (!empty($data['username']) && $data['username'] == $username) {
+				
+			Database::disconnect();
 	
-				return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
-			}
-			else
-			{
+			return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
+		}
+		else
+		{
 				$verificationcode = time() . mt_rand(10, 100);
 	
 				$sql = "insert into members (username,password,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) 
@@ -90,7 +89,6 @@ class User
 				$country = null;
 				$referid = null;
 				$signupip = null;
-			}
 		}
 	}
 
@@ -168,11 +166,10 @@ class User
 		$sql = "select * from members where username=? or email=? limit 1";
 		$q = $pdo->prepare($sql);
 		$q->execute(array($usernameoremail,$usernameoremail));
-		$found = $q->rowCount();
-		if ($found > 0)
-			{
-			$q->setFetchMode(PDO::FETCH_ASSOC);
-			$data = $q->fetch();
+		$q->setFetchMode(PDO::FETCH_ASSOC);
+		$data = $q->fetch();
+		if (!empty($data))
+		{
 			$email = $data['email'];
 			$username = $data['username'];
 			$password = $data['password'];
@@ -184,12 +181,12 @@ class User
 			
 			Database::disconnect();
 			return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your login details were sent to your email address.</strong></div>";
-			}
+		}
 		else
-			{
+		{
 			Database::disconnect();
 			return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username or email address you entered was not found.</strong></div>";
-			}
+		}
 
 	}
 
@@ -286,5 +283,4 @@ class User
 		return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Account " . $username . " Was Deleted</strong></div>";
 
 	}
-
 }
