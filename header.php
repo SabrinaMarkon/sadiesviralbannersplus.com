@@ -41,15 +41,16 @@
 
 <?php
 $urlfile = basename($_SERVER['REQUEST_URI']);
+$referurl = dirname($_SERVER['REQUEST_URI']);
 ?>
 
-<body <?php if ($urlfile !== '/' && $urlfile !== '') {
+<body <?php if ($urlfile !== '/' && $urlfile !== '' && $referurl !== '/r') {
             echo 'style="padding-top: 100px;"';
         } else {
             echo 'style="padding-top: 0;"';
         }
         ?>>
-
+<?php echo $referurl ?>
     <!-- Preloader -->
     <div class="preloader">
         <div class="loader">
@@ -139,7 +140,7 @@ $urlfile = basename($_SERVER['REQUEST_URI']);
 
     <!-- Header with Background Image -->
     <?php
-    if ($urlfile === '/' || $urlfile === '') {
+    if ($urlfile === '/' || $urlfile === '' || $referurl === '/r') {
     ?>
         <section id="home" class="slider_area">
             <div id="carouselThree" class="carousel slide" data-interval="false" data-ride="carousel">
