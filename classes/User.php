@@ -53,45 +53,45 @@ class User
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-		$data['username'] ??= null;
-		if ($data['username'] == $username)
-		{
-			Database::disconnect();
-
-			return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
+		if (isset($data['username'])) {
+			if ($data['username'] == $username)
+			{
+				Database::disconnect();
+	
+				return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
+			}
+			else
+			{
+				$verificationcode = time() . mt_rand(10, 100);
+	
+				$sql = "insert into members (username,password,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) 
+				values (?,?,?,?,?,?,?,?,?,?,NOW(),?,?)";
+				$q = $pdo->prepare($sql);
+				$q->execute([$username,$password,$firstname,$lastname,$email,$paypal,$country,$referid,$signupip,$verificationcode]);
+	
+				Database::disconnect();
+	
+				$subject = "Welcome to " . $settings['sitename'] . "!";
+				$message = "Click to Verify your Email: " . $settings['domain'] . "/verify/" . $verificationcode . "\n\n";
+				$message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
+				$message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
+	
+				$sendsiteemail = new Email();
+				$send = $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
+	
+				return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Success! Thanks for Joining!</strong>
+				<p>Please click the link in the email we sent to you to verify your email address.</p></div>";
+	
+				$username = null;
+				$password = null;
+				$firstname = null;
+				$lastname = null;
+				$email = null;
+				$country = null;
+				$referid = null;
+				$signupip = null;
+			}
 		}
-		else
-		{
-			$verificationcode = time() . mt_rand(10, 100);
-
-			$sql = "insert into members (username,password,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) 
-			values (?,?,?,?,?,?,?,?,?,?,NOW(),?,?)";
-			$q = $pdo->prepare($sql);
-			$q->execute([$username,$password,$firstname,$lastname,$email,$paypal,$country,$referid,$signupip,$verificationcode]);
-
-			Database::disconnect();
-
-			$subject = "Welcome to " . $settings['sitename'] . "!";
-			$message = "Click to Verify your Email: " . $settings['domain'] . "/verify/" . $verificationcode . "\n\n";
-			$message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
-			$message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
-
-			$sendsiteemail = new Email();
-			$send = $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
-
-			return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Success! Thanks for Joining!</strong>
-			<p>Please click the link in the email we sent to you to verify your email address.</p></div>";
-
-			$username = null;
-			$password = null;
-			$firstname = null;
-			$lastname = null;
-			$email = null;
-			$country = null;
-			$referid = null;
-			$signupip = null;
-		}
-
 	}
 
 	public function userLogin($username,$password) {

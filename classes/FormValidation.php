@@ -510,14 +510,14 @@ class FormValidation {
 		$q->execute(array($username));
 		$q->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $q->fetch();
-        $data['username'] ??= null;
-		if ($data['username'] == $username)
-		{
-			$errors .= "<div><strong>The username you chose isn't available.</strong></div>";
+        if (isset($data['username'])) {
+            if ($data['username'] == $username)
+            {
+                $errors .= "<div><strong>The username you chose isn't available.</strong></div>";
+            }
         }
-
+        
         return $errors;
-
     }
 
     # make sure that password and confirm password match.
@@ -568,11 +568,12 @@ class FormValidation {
             $q->execute(array($username));
             $q->setFetchMode(PDO::FETCH_ASSOC);
             $data = $q->fetch();
-            $data['username'] ??= null;
-            if ($data['username'] === null)
-            {
-                
-                $errors .= "<div><strong>The " . $usertype . " you entered does not exist in the system. Please check the spelling.</strong></div>";
+            if (isset($data['username'])) {
+                if ($data['username'] === null)
+                {
+                    
+                    $errors .= "<div><strong>The " . $usertype . " you entered does not exist in the system. Please check the spelling.</strong></div>";
+                }
             }
         }
 

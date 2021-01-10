@@ -14,6 +14,7 @@ $Layout = new Layout();
 $Layout->showFooter();
 exit;
 }
+
 # ajax request?
 
 $showcontent = new PageContent();
@@ -70,7 +71,7 @@ echo $showcontent->showPage('Registration Page');
 						
 						<div class="ja-bottompadding"></div>
 
-						<button class="btn btn-lg btn-primary" type="submit" name="register">Create My Account</button>
+						<button class="btn btn-lg btn-primary" type="submit" name="register">Create My <?php echo $level ?> Account</button>
 
 			</form>
 
