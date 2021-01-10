@@ -4,15 +4,9 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
     exit;
 }
-
-// TODO: Put this somewhere nicer.
-$showcontent = new PageContent();
-echo $showcontent->showPage('Home Page');
-
-// TODO: PAYPAL BUTTON CLASS + IPN CLASS
 ?>
 
-<!-- Text ad rotator -->
+<!-- Home page content written by admin -->
 <section>
     <div>
         <div class="row">
@@ -20,17 +14,18 @@ echo $showcontent->showPage('Home Page');
                 <div class="centered">
                     <section class="cards">
 
-                        <?php include_once 'rotatortextads.php'; ?>
+                        <?php
+                        $showcontent = new PageContent();
+                        echo $showcontent->showPage('Home Page');
+                        ?>
 
                     </section>
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
+            </div>
+        </div>
 </section>
 
 <!-- Different Membership Levels -->
-<!-- TODO: CHANGE BUTTONS TO PAYPAL BUTTONS! -->
-
 <section id="memberships" class="pricing-area">
     <div class="container">
         <div class="row justify-content-center">
@@ -108,52 +103,68 @@ echo $showcontent->showPage('Home Page');
     </div> <!-- container -->
 </section>
 
+<!-- Text ad rotator -->
+<section>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="centered">
+                    <section class="cards">
+
+                        <?php include_once 'rotatortextads.php'; ?>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+</section>
+
 <!-- Contact -->
 
 <section id="contact" class="contact-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-10">
-                    <div class="section-title text-center pb-30">
-                        <h3 class="title">Contact</h3>
-                        <p class="text">Please contact us if you need help or have any questions.</p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-10">
+                <div class="section-title text-center pb-30">
+                    <h3 class="title">Contact</h3>
+                    <p class="text">Please contact us if you need help or have any questions.</p>
+                </div> <!-- section title -->
+            </div>
+        </div> <!-- row -->
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact-wrapper form-style-two pt-15">
-                        <h4 class="contact-title pb-10"><i class="lni lni-envelope"></i> Leave <span>A Message.</span></h4>
-                        
-                        <form id="contact-form" action="/#contact.php" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-input mt-25">
-                                        <label>Name or Username</label>
-                                        <div class="input-items default">
-                                            <input name="username" type="text" placeholder="Name or Username" required>
-                                            <i class="lni lni-user"></i>
-                                        </div>
-                                    </div> <!-- form input -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-input mt-25">
-                                        <label>Email</label>
-                                        <div class="input-items default">
-                                            <input type="email" name="email" placeholder="Email" required>
-                                            <i class="lni lni-envelope"></i>
-                                        </div>
-                                    </div> <!-- form input -->
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-input mt-25">
-                                        <label>Subject</label>
-                                        <div class="input-items default">
-                                            <input type="text" name="subject" placeholder="Subject" required>
-                                            <i class="lni lni-pencil-alt"></i>
-                                        </div>
-                                    </div> <!-- form input -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact-wrapper form-style-two pt-15">
+                    <h4 class="contact-title pb-10"><i class="lni lni-envelope"></i> Leave <span>A Message.</span></h4>
+
+                    <form id="contact-form" action="/#contact.php" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input mt-25">
+                                    <label>Name or Username</label>
+                                    <div class="input-items default">
+                                        <input name="username" type="text" placeholder="Name or Username" required>
+                                        <i class="lni lni-user"></i>
+                                    </div>
+                                </div> <!-- form input -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input mt-25">
+                                    <label>Email</label>
+                                    <div class="input-items default">
+                                        <input type="email" name="email" placeholder="Email" required>
+                                        <i class="lni lni-envelope"></i>
+                                    </div>
+                                </div> <!-- form input -->
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-input mt-25">
+                                    <label>Subject</label>
+                                    <div class="input-items default">
+                                        <input type="text" name="subject" placeholder="Subject" required>
+                                        <i class="lni lni-pencil-alt"></i>
+                                    </div>
+                                </div> <!-- form input -->
                                 <div class="col-md-12">
                                     <div class="form-input mt-25">
                                         <label>Message</label>
@@ -170,9 +181,9 @@ echo $showcontent->showPage('Home Page');
                                     </div> <!-- form input -->
                                 </div>
                             </div> <!-- row -->
-                        </form>
-                    </div> <!-- contact wrapper form -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
+                    </form>
+                </div> <!-- contact wrapper form -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
