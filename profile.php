@@ -12,6 +12,8 @@ echo $showsaveprofile;
 }
 $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Profile Page');
+
+// TODO: Upgrade buttons form id="payform"
 ?>
 
 <div class="container">

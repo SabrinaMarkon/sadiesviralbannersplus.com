@@ -10,7 +10,11 @@ CREATE TABLE `adminsettings` (
 `metatitle` varchar(60) not null,
 `metadescription` varchar(160) not null,
 `adminautoapprove` tinyint(1) not null default '0',
-`adclickstogetad` integer unsigned not null default '100'
+`adclickstogetad` integer unsigned not null default '100',
+`proprice` decimal(9, 2) not null default 5.99,
+`propayinterval` varchar(12) not null default 'monthly',
+`goldprice` decimal(9, 2) not null default '9.99',
+`goldpayinterval` varchar(12) not null default 'monthly'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `adminnotes` (
