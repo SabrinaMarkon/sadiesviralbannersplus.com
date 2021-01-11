@@ -29,6 +29,10 @@ class Setting
         $newmetatitle = $_POST['metatitle'];
         $newadminautoapprove = $_POST['adminautoapprove'];
         $newadclickstogetad = $_POST['adclickstogetad'];
+        $newproprice = $_POST['proprice'];
+        $newpropayinterval = $_POST['propayinterval'];
+        $newgoldprice = $_POST['proprice'];
+        $newgoldpayinterval = $_POST['propayinterval'];
 
         # if either username or password changed, update session.
         if (($adminuser !== $newadminuser) or ($adminpass !== $newadminpass)) {
@@ -41,10 +45,10 @@ class Setting
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, adminpaypal=?, sitename=?, 
-        domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogetad=?";
+        domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogetad=?, proprice=?, propayinterval=?, goldprice=?, goldpayinterval=?";
         $q = $pdo->prepare($sql);
         $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newadminpaypal, $newsitename, 
-        $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogetad));
+        $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogetad, $newproprice, $newpropayinterval, $newgoldprice, $newgoldpayinterval));
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Site Settings Were Saved!</strong></div>";

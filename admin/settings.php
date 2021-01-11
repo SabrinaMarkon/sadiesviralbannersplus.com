@@ -49,10 +49,46 @@ foreach ($settings as $key => $value) {
                 <input type="url" name="domain" value="<?php echo $domain ?>" class="form-control input-lg" placeholder="Website URL (start with http://)" maxlength="300" required>
 
                 <label for="metatitle" class="ja-toppadding">SEO: Meta Title:</label>
-                <input type="text" name="metatitle" value="<?php echo $metatitle ?>" class="form-control input-lg" placeholder="SEO meta title for search engines"  maxlength="60" required>
+                <input type="text" name="metatitle" value="<?php echo $metatitle ?>" class="form-control input-lg" placeholder="SEO meta title for search engines" maxlength="60" required>
 
                 <label for="metadescription" class="ja-toppadding">SEO: Meta Description:</label>
-                <input type="text" name="metadescription" value="<?php echo $metadescription ?>" class="form-control input-lg" placeholder="SEO meta description for search engines"  maxlength="160" required>
+                <input type="text" name="metadescription" value="<?php echo $metadescription ?>" class="form-control input-lg" placeholder="SEO meta description for search engines" maxlength="160" required>
+
+                <label for="proprice" class="ja-toppadding">Price for Pro Membership:</label>
+                $&nbsp;<input type="text" name="proprice" value="<?php echo $proprice ?>" class="form-control input-lg" placeholder="Price for Pro Membership" maxlength="8" required>
+
+                <div>
+                    <label for="propayinterval" class="ja-toppadding">Pay Interval for Pro Membership:</label>
+                    <select name="propayinterval" class="form-control input-lg">
+                        <option value="lifetime" <?php if ($propayinterval === "lifetime") {
+                                                        echo "selected";
+                                                    } ?>>Lifetime</option>
+                        <option value="monthly" <?php if ($propayinterval === "monthly") {
+                                                    echo "selected";
+                                                } ?>>Monthly</option>
+                        <option value="annually" <?php if ($propayinterval === "annually") {
+                                                    echo "selected";
+                                                } ?>>Annually</option>
+                    </select>
+                </div>
+
+                <label for="goldprice" class="ja-toppadding">Price for Gold Membership:</label>
+                $&nbsp;<input type="text" name="goldprice" value="<?php echo $goldprice ?>" class="form-control input-lg" placeholder="Price for Gold Membership" maxlength="8" required>
+
+                <div>
+                    <label for="goldpayinterval" class="ja-toppadding">Pay Interval for Gold Membership:</label>
+                    <select name="goldpayinterval" class="form-control input-lg">
+                        <option value="lifetime" <?php if ($goldpayinterval === "lifetime") {
+                                                        echo "selected";
+                                                    } ?>>Lifetime</option>
+                        <option value="monthly" <?php if ($goldpayinterval === "monthly") {
+                                                    echo "selected";
+                                                } ?>>Monthly</option>
+                        <option value="annually" <?php if ($goldpayinterval === "annually") {
+                                                    echo "selected";
+                                                } ?>>Annually</option>
+                    </select>
+                </div>
 
                 <div>
                     <label for="adminautoapprove" class="ja-toppadding">Auto-approve Ads:</label>
