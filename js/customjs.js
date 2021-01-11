@@ -3,12 +3,14 @@ const payForm = document.getElementById("payform");
 const payButtonForm = document.getElementById("paybuttonform");
 
 // Listen for submission of form that needs payment:
-payForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  // The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values:
-  const formattedFormFields = new FormData(payForm);
-  handlePayForm(formattedFormFields);
-});
+if (payForm) {
+  payForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    // The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values:
+    const formattedFormFields = new FormData(payForm);
+    handlePayForm(formattedFormFields);
+  });
+}
 
 async function handlePayForm(formattedFormFields) {
   // First, save the purchase data into the database to retrieve after successful payment.
