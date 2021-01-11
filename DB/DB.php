@@ -102,6 +102,11 @@ CREATE TABLE `pages` (
 UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+CREATE TABLE `pendingpurchases` (
+`id` int(10) unsigned not null primary key auto_increment,
+`formfields` text not null
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 CREATE TABLE `promotional` (
 `id` int(10) unsigned not null primary key auto_increment,
 `name` varchar(255) NOT NULL,
