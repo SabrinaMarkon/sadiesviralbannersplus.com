@@ -5,7 +5,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-$level = "Gold";
+$level = "gold";
 include_once "register.php";
 
 ?>
