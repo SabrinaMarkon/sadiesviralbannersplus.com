@@ -15,8 +15,6 @@ $Layout->showFooter();
 exit;
 }
 
-# ajax request?
-
 $showcontent = new PageContent();
 echo $showcontent->showPage('Registration Page');
 ?>
@@ -25,7 +23,7 @@ echo $showcontent->showPage('Registration Page');
 
 		<h1 class="ja-bottompadding">Sign Up</h1>
 
-			<form action="/register" method="post" id="registerform" accept-charset="utf-8" class="form" role="form">
+			<form action="/register" method="post" id="payform" accept-charset="utf-8" class="form" role="form">
 			
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
@@ -69,9 +67,17 @@ echo $showcontent->showPage('Registration Page');
 
 						<span class="help-block">By clicking Create My Account, you agree to our <a href="#" data-toggle="modal" data-target="#termsModal">Terms</a></span>
 						
-						<div class="ja-bottompadding"></div>
+						<div class="ja-bottompadding"></div>  
 
-						<button class="btn btn-lg btn-primary" type="submit" name="register">Create My <?php echo $level ?> Account</button>
+						<button class="btn btn-lg btn-primary" type="submit" name="register">
+							<?php
+							if (!empty($level)) {
+								echo "Create My " . $level . " Account";
+							} else {
+								echo "Create My Free Account";
+							}
+							?>
+						</button>
 
 			</form>
 

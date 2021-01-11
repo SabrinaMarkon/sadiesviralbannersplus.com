@@ -126,7 +126,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                             <div class="navbar-btn d-none d-sm-inline-block">
                                 <ul>
                                     <li><a class="solid" href="/login">Login</a></li>
-                                    <li><a class="solid" href="/register">Register</a></li>
+                                    <li><a class="solid page-scroll" href="/#memberships">Register</a></li>
                                 </ul>
                             </div>
                         <?php
@@ -159,7 +159,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                         <h1 class="title">Sadie's Viral Banners Plus</h1>
                                         <p class="text">Jetting Your's Around The Globe Free!</p>
                                         <ul class="slider-btn rounded-buttons">
-                                            <li><a class="main-btn rounded-one" href="/free">GET STARTED FREE!</a></li>
+                                            <li><a class="main-btn rounded-one page-scroll" href="/#memberships">GET STARTED FREE!</a></li>
                                         </ul>
                                     </div>
                                 </div>
