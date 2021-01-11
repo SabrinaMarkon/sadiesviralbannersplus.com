@@ -127,60 +127,47 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
             <div class="col-lg-6 col-md-10">
                 <div class="section-title text-center pb-30">
                     <h3 class="title">Contact</h3>
-                    <p class="text">Please contact us if you need help or have any questions.</p>
-                </div> <!-- section title -->
+                    <?php
+                    if (isset($showcontact))
+                    {
+                        echo '<div class="ja-bottompadding"></div>';
+                        echo $showcontact;
+                    } 
+                    else 
+                    {
+                        echo '<p class="text">Please send us a message if you need help or have any questions.</p>';
+                        echo '<div class="ja-bottompadding"></div>';
+                    }
+                    ?>
+                </div>
             </div>
-        </div> <!-- row -->
+        </div>
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="contact-wrapper form-style-two pt-15">
-                    <h4 class="contact-title pb-10"><i class="lni lni-envelope"></i> Leave <span>A Message.</span></h4>
+                    <form action="/#contact" method="post" accept-charset="utf-8" class="form" role="form">
 
-                    <form id="contact-form" action="/#contact.php" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-input mt-25">
-                                    <label>Name or Username</label>
-                                    <div class="input-items default">
-                                        <input name="username" type="text" placeholder="Name or Username" required>
-                                        <i class="lni lni-user"></i>
-                                    </div>
-                                </div> <!-- form input -->
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-input mt-25">
-                                    <label>Email</label>
-                                    <div class="input-items default">
-                                        <input type="email" name="email" placeholder="Email" required>
-                                        <i class="lni lni-envelope"></i>
-                                    </div>
-                                </div> <!-- form input -->
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-input mt-25">
-                                    <label>Subject</label>
-                                    <div class="input-items default">
-                                        <input type="text" name="subject" placeholder="Subject" required>
-                                        <i class="lni lni-pencil-alt"></i>
-                                    </div>
-                                </div> <!-- form input -->
-                                <div class="col-md-12">
-                                    <div class="form-input mt-25">
-                                        <label>Message</label>
-                                        <div class="input-items default">
-                                            <textarea name="message" placeholder="Message" required></textarea>
-                                            <i class="lni lni-pencil-alt"></i>
-                                        </div>
-                                    </div> <!-- form input -->
-                                </div>
-                                <p class="form-message"></p>
-                                <div class="col-md-12">
-                                    <div class="form-input light-rounded-buttons mt-30">
-                                        <button class="main-btn light-rounded-two">Send Message</button>
-                                    </div> <!-- form input -->
-                                </div>
-                            </div> <!-- row -->
+                        <label class="sr-only" for="username">Name or Username</label>
+                        <input type="text" name="username" value="<?php if (isset($_SESSION['username'])) {
+                                                                        echo $_SESSION['username'];
+                                                                    } ?>" class="form-control input-lg" placeholder="Name or Username">
+
+                        <label class="sr-only" for="email">Email</label>
+                        <input type="email" name="email" value="<?php if (isset($_SESSION['email'])) {
+                                                                    echo $_SESSION['email'];
+                                                                } ?>" class="form-control input-lg" placeholder="Email" required>
+
+                        <label class="sr-only" for="subject">Subject</label>
+                        <input type="text" name="subject" value="" class="form-control input-lg" placeholder="Subject" required>
+
+                        <label class="sr-only" for="message">Message</label>
+                        <textarea name="message" value="" class="form-control input-lg" rows="10" placeholder="Message" required></textarea>
+
+                        <div class="ja-bottompadding"></div>
+
+                        <button class="btn btn-lg btn-primary" type="submit" name="contactus">Send Message</button>
+
                     </form>
                 </div> <!-- contact wrapper form -->
             </div>
