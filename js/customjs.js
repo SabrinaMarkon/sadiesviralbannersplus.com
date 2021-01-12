@@ -7,8 +7,12 @@ if (payForm) {
   payForm.addEventListener("submit", (event) => {
     event.preventDefault();
     // The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values:
-    const formattedFormFields = new FormData(payForm);
-    handlePayForm(formattedFormFields);
+    const formattedFormFields = new FormData(this);
+    for (const formElement of formData) {
+      console.log(formElement);
+    }
+    // handlePayForm(formattedFormFields);
+    // console.log(formattedFormFields);
   });
 }
 
@@ -127,20 +131,23 @@ $(window).on("scroll", function (event) {
 });
 
 // Section Menu Active:
-var scrollLink = $(".page-scroll");
-// Active link switching
-$(window).scroll(function () {
-  var scrollbarLocation = $(this).scrollTop();
-
-  scrollLink.each(function () {
-    var sectionOffset = $(this.hash).offset().top - 73;
-
-    if (sectionOffset <= scrollbarLocation) {
-      $(this).parent().addClass("active");
-      $(this).parent().siblings().removeClass("active");
-    }
+// Nice scrolling from menu is for main.php only."
+const currentUrl = window.location.pathname;
+const currentRoute = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
+if (currentRoute === "") {
+  var scrollLink = $(".page-scroll");
+  // Active link switching
+  $(window).scroll(function () {
+    var scrollbarLocation = $(this).scrollTop();
+    scrollLink.each(function () {
+      var sectionOffset = $(this).offset().top - 73;
+      if (sectionOffset <= scrollbarLocation) {
+        $(this).parent().addClass("active");
+        $(this).parent().siblings().removeClass("active");
+      }
+    });
   });
-});
+}
 
 // Close navbar-collapse when 'a' clicked:
 $(".navbar-nav a").on("click", function () {
