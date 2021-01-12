@@ -1,18 +1,46 @@
 // Purchase handling:
-const payForm = document.getElementById("payform");
-const payButtonForm = document.getElementById("paybuttonform");
+const userForm = document.getElementById("userform");
+const paypalButtonForm = document.getElementById("paypalbuttonform");
+const paypalButton = document.getElementById("paypalbutton");
 
-// Listen for submission of form that needs payment:
-if (payForm) {
-  payForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    // The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values:
-    const formattedFormFields = new FormData(this);
-    for (const formElement of formData) {
-      console.log(formElement);
+// Listen for submission of payment button forms.
+// The only values that are == null are null and undefined:
+if (paypalButtonForm != null && paypalbutton != null) { 
+  paypalbutton.addEventListener("click", (event) => {
+
+    let formattedFormFields = '';
+
+    // Possible form fields:
+    let username = document.getElementById("username").value;
+    let password1 = document.getElementById("password1").value;
+    let password2 = document.getElementById("password2").value;
+    let firstname = document.getElementById("firstname").value;
+    let lastname = document.getElementById("lastname").value;
+    let email = document.getElementById("email").value;
+    let paypal = document.getElementById("paypal").value;
+    let country = document.getElementById("country").value;
+    let signupip = document.getElementById("signupip").value;
+    let referid = document.getElementById("referid").value;
+    if (referid === '') {
+      referid = "admin";
     }
+
+    // Build the JSON object out of the form fields that are NOT null (exist on the page):
+    let formFields = {
+      username,
+      password1,
+      password2,
+      firstname,
+      lastname,
+      email,
+      paypal,
+      country,
+      signupip,
+      referid
+    }
+    formattedFormFields = JSON.stringify(formFields);
+    console.log(formattedFormFields);
     // handlePayForm(formattedFormFields);
-    // console.log(formattedFormFields);
   });
 }
 

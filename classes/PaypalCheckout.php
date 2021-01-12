@@ -64,7 +64,7 @@ class PaypalCheckout extends PaymentGateway
         }
 
         $paybutton = '
-            <form method="POST" id="paybuttonform" action="https://www.paypal.com/cgi-bin/webscr" accept-charset="UTF-8" class="form-horizontal form-page-small">'
+            <form method="POST" id="paypalbuttonform" action="https://www.paypal.com/cgi-bin/webscr" accept-charset="UTF-8" class="form-horizontal form-page-small">'
             . $payintervalcode .
             '<input name="business" type="hidden" value="' . $this->adminemail . '">
             <input name="item_name" type="hidden" value="' . $this->sitename . ' - ' . $this->itemname . '">
@@ -79,7 +79,7 @@ class PaypalCheckout extends PaymentGateway
             <input name="on0" type="hidden" value="Purchase ID">
             <input name="os0" id="pendingId" type="hidden" value="">
             <input name="notify_url" type="hidden" value="' . $this->domain . '/ipn">
-            <button class="btn btn-lg btn-primary" type="submit" name="paypalbutton">
+            <button class="btn btn-lg btn-primary" type="button" name="paypalbutton" id="paypalbutton">
             Buy ' . $this->itemname . ' for $' . $this->price . ' with Paypal!</button>
             </form>';
         return $paybutton;
@@ -149,6 +149,7 @@ class PaypalCheckout extends PaymentGateway
 
             if ($payment_status === "Completed") {
 
+                // Get buyer info from pendingpurchases table with pendingId returned by Paypal:
                 
                 // User purchased pro or gold paid membership.
                 if ($item_name === 'Pro Membership') {
@@ -174,6 +175,9 @@ class PaypalCheckout extends PaymentGateway
             } else {
                 // Status is NOT completed. Cancellation of subscription?
             }
+        } else if (strcmp($res, "INVALID") == 0) {
+            echo "INVALID TRANSACTION";
+            exit;
         }
     }
 }
