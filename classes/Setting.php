@@ -31,8 +31,8 @@ class Setting
         $newadclickstogetad = $_POST['adclickstogetad'];
         $newproprice = $_POST['proprice'];
         $newpropayinterval = $_POST['propayinterval'];
-        $newgoldprice = $_POST['proprice'];
-        $newgoldpayinterval = $_POST['propayinterval'];
+        $newgoldprice = $_POST['goldprice'];
+        $newgoldpayinterval = $_POST['goldpayinterval'];
 
         # if either username or password changed, update session.
         if (($adminuser !== $newadminuser) or ($adminpass !== $newadminpass)) {
