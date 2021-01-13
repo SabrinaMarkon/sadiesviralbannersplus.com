@@ -5,15 +5,16 @@ const paypalButton = document.getElementById("paypalbutton");
 
 // Listen for submission of payment button forms.
 // The only values that are == null are null and undefined:
-if (paypalButtonForm != null && paypalbutton != null) { 
+if (paypalButtonForm != null && paypalbutton != null) {
   paypalbutton.addEventListener("click", (event) => {
-
-    let formattedFormFields = '';
+    document.getElementById("errormsg").innerHTML = "";
+    document.getElementById("errormsg").style.display = "hidden";
+    let formattedFormFields = "";
 
     // Possible form fields:
     let username = document.getElementById("username").value;
-    let password1 = document.getElementById("password1").value;
-    let password2 = document.getElementById("password2").value;
+    let password = document.getElementById("password").value;
+    let confirm_password = document.getElementById("confirm_password").value;
     let firstname = document.getElementById("firstname").value;
     let lastname = document.getElementById("lastname").value;
     let email = document.getElementById("email").value;
@@ -21,26 +22,28 @@ if (paypalButtonForm != null && paypalbutton != null) {
     let country = document.getElementById("country").value;
     let signupip = document.getElementById("signupip").value;
     let referid = document.getElementById("referid").value;
-    if (referid === '') {
+    if (referid === "") {
       referid = "admin";
     }
+
+    // Validate form fields.
 
     // Build the JSON object out of the form fields that are NOT null (exist on the page):
     let formFields = {
       username,
-      password1,
-      password2,
+      password,
+      confirm_password,
       firstname,
       lastname,
       email,
       paypal,
       country,
       signupip,
-      referid
-    }
+      referid,
+    };
     formattedFormFields = JSON.stringify(formFields);
-    console.log(formattedFormFields);
-    // handlePayForm(formattedFormFields);
+    // console.log(formattedFormFields);
+    handlePayForm(formattedFormFields);
   });
 }
 
@@ -50,15 +53,19 @@ async function handlePayForm(formattedFormFields) {
     method: "POST",
     body: formattedFormFields,
   });
-  const pendingId = await response.text();
-  console.log(pendingId);
-  if (!is_null(pendingId)) {
+  let idOrError = await response.text();
+  idOrError = await JSON.parse(idOrError);
+  if (idOrError["pendingId"] != "") {
     // Add the purchase id to the pay button's custom form field.
-    document.getElementById("pendingId").value = pendingId;
-    console.log(document.getElementById("pendingId").value);
+    document.getElementById("pendingId").value = idOrError["pendingId"];
+    // Submit the pay button (even the id fails so the user can still purchase, but will need help from admin to give them their order if no purchase ID).
+    // paypalButtonForm.submit();
+  } else {
+    document.getElementById(
+      "errormsg"
+    ).innerHTML = `<div class="ja-bottompadding"></div>${idOrError["errors"]}`;
+    document.getElementById("errormsg").style.display = "block";
   }
-  // Submit the pay button (even the id fails so the user can still purchase, but will need help from admin to give them their order if no purchase ID).
-  payButtonForm.submit();
 }
 
 // Copy to clipboard:

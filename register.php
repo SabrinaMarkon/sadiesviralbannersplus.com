@@ -46,6 +46,8 @@ if (!empty($level)) {
 
 	<h1 class="ja-bottompadding">Sign Up</h1>
 
+	<div id="errormsg"></diV>
+
 	<!-- 
 This form does NOT submit for PAID MEMBERSHIPS. Rather, we just want the field values with JS. 
 We submit the PAYMENT forms after getting these field values to store in the db. 
@@ -81,10 +83,10 @@ For FREE memberships we submit this form normally though.
 			<input type="text" id="username" name="username" value="" class="form-control input-lg" placeholder="Username" required>
 
 			<label for="password" class="ja-toppadding">Password:</label>
-			<input type="password" id="password1" name="password" value="" class="form-control input-lg" placeholder="Password" required>
+			<input type="password" id="password" name="password" value="" class="form-control input-lg" placeholder="Password" required>
 
 			<label for="confirm_password" class="ja-toppadding">Confirm Password:</label>
-			<input type="password" id="password2" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password" required>
+			<input type="password" id="confirm_password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password" required>
 
 			<label for="paypal" class="ja-toppadding">Paypal Email:</label>
 			<input type="email" id="paypal" name="paypal" value="" class="form-control input-lg" placeholder="Paypal Email">
