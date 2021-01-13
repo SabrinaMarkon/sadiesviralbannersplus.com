@@ -11,6 +11,7 @@ PHP 7.4+
 
 require_once "config/Database.php";
 require_once "classes/FormValidation.php";
+require_once "classes/User.php"; // TODO: We need to check for duplicate usernames/emails.
 
 // php://input here is the formfields in JSON format.
 $formfields = file_get_contents('php://input');
@@ -45,7 +46,7 @@ function addToDatabase($formfields) {
     
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $sql = "insert into pendingpurchases (formfields) values (?)";
+    $sql = "insert into pendingpurchases (formfields, dateadded) values (?, NOW())";
     $q = $pdo->prepare($sql);
     $q->execute([$formfields]);
     $last_insert_id = $pdo->lastInsertId();

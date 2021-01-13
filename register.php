@@ -35,7 +35,7 @@ if (!empty($level)) {
 	);
 	$user = new User();
 	$paypal = new PaypalCheckout($paymentdata, $user);
-	$paymentbutton = $paypal->getPayButton();
+	$paymentbuttons = $paypal->getPayButton();
 } else {
 	$level = "";
 }
@@ -54,16 +54,16 @@ We submit the PAYMENT forms after getting these field values to store in the db.
 For FREE memberships we submit this form normally though.
 -->
 	<?php
-	if (!empty($paymentbutton)) {
-		?>
-		<form id="userform" accept-charset="utf-8" class="form" role="form">
-		<?php
-	} else {
+		if (!empty($paymentbuttons)) {
 			?>
-			<form action="/register" method="post" accept-charset="utf-8" class="form" role="form">
+			<form id="userform" accept-charset="utf-8" class="form" role="form">
 			<?php
+		} else {
+				?>
+				<form action="/register" method="post" accept-charset="utf-8" class="form" role="form">
+				<?php
 		}
-		?>
+	?>
 
 			<div class="row">
 				<div class="col-xs-6 col-md-6">
@@ -112,9 +112,9 @@ For FREE memberships we submit this form normally though.
 			<div class="ja-bottompadding"></div>
 
 			<?php
-			if (!empty($paymentbutton)) {
+			if (!empty($paymentbuttons)) {
 				echo "</form>"; // End user fields form
-				echo $paymentbutton; // Payment button form
+				echo $paymentbuttons; // Payment button forms
 			} else {
 			?>
 					<button class="btn btn-lg btn-primary" type="submit" name="register">

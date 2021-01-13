@@ -11,10 +11,24 @@ CREATE TABLE `adminsettings` (
 `metadescription` varchar(160) not null,
 `adminautoapprove` tinyint(1) not null default '0',
 `adclickstogetad` integer unsigned not null default '100',
+
+`freevisitsbeforesignup` integer unsigned not null default 8,
+`freetopbanners` integer unsigned not null default 3,
+`freebottombanners` integer unsigned not null default 0,
+
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
+
+`provisitsbeforesignup` integer unsigned not null default 8,
+`protopbanners` integer unsigned not null default 3,
+`probottombanners` integer unsigned not null default 0,
+
 `goldprice` decimal(9, 2) not null default '9.99',
-`goldpayinterval` varchar(12) not null default 'monthly'
+`goldpayinterval` varchar(12) not null default 'monthly',
+
+`goldvisitsbeforesignup` integer unsigned not null default 8,
+`goldtopbanners` integer unsigned not null default 3,
+`goldbottombanners` integer unsigned not null default 0
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `adminnotes` (
@@ -86,17 +100,6 @@ lastlogin datetime not null,
 adclicks integer unsigned not null default '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-CREATE TABLE `membershiplevels` (
-`id` int(10) unsigned not null primary key auto_increment,
-`name` varchar(255) not null default '',
-`price` decimal(9, 2) not null default 0,
-`interval` varchar(12) default 'lifetime',
-`visitsbeforesignup` integer unsigned not null default 8,
-`topbanners` integer unsigned not null default 3,
-`bottombanners` integer unsigned not null default 0,
-
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 CREATE TABLE `pages` (
 `id` int(10) unsigned not null primary key auto_increment,
 `name` varchar(255) not null,
@@ -108,7 +111,8 @@ UNIQUE KEY `name` (`name`)
 
 CREATE TABLE `pendingpurchases` (
 `id` int(10) unsigned not null primary key auto_increment,
-`formfields` text not null
+`formfields` text not null,
+`dateadded` datetime default null,
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `promotional` (
