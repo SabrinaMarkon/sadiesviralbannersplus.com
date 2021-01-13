@@ -65,7 +65,11 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Pro</h5>
-                        <p class="month"><span class="price">$ 11</span>/month</p>
+                        <p class="month"><span class="price">$ <?php echo $proprice ?></span>
+                        <?php
+                            echo $propayinterval === 'lifetime' ? 'lifetime' : '/' . $propayinterval;
+                        ?>
+                        </p>
                     </div>
                     <div class="pricing-list">
                         <ul>
@@ -86,7 +90,11 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Gold</h5>
-                        <p class="month"><span class="price">$ 15</span>/month</p>
+                        <p class="month"><span class="price">$ <?php echo $goldprice ?></span>
+                        <?php
+                            echo $goldpayinterval === 'lifetime' ? 'lifetime' : '/' . $goldpayinterval;
+                        ?>
+                        </p>
                     </div>
                     <div class="pricing-list">
                         <ul>
