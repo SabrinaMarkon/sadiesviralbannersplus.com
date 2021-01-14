@@ -58,7 +58,9 @@ async function handlePayForm(formattedFormFields) {
   if (idOrError["pendingId"] != "") {
     // Add the purchase id to the pay button's custom form field.
     document.getElementById("pendingId").value = idOrError["pendingId"];
+    
     // Submit the pay button (even the id fails so the user can still purchase, but will need help from admin to give them their order if no purchase ID).
+    // TODO: there are csp errors on the paypal site in the console.
     paypalButtonForm.submit();
   } else {
     document.getElementById(

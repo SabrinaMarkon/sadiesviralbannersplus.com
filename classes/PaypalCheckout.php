@@ -85,6 +85,11 @@ class PaypalCheckout extends PaymentGateway
         return $paybutton;
     }
 
+    public function getIPN()
+    {
+        return $this->_ipn();
+    }
+
     protected function _ipn()
     {
         

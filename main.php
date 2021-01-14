@@ -43,7 +43,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                         <img src="images/free.svg" alt="">
                     </div>
                     <div class="pricing-header text-center">
-                        <h5 class="sub-title">Free</h5>
+                        <h5 class="sub-title">Free Member</h5>
                         <p class="month"><span class="price">$0</span></p>
                     </div>
                     <div class="pricing-list">
@@ -64,7 +64,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                         <img src="images/pro.svg" alt="">
                     </div>
                     <div class="pricing-header text-center">
-                        <h5 class="sub-title">Pro</h5>
+                        <h5 class="sub-title">Pro Member</h5>
                         <p class="month"><span class="price">$ <?php echo $proprice ?></span>
                         <?php
                             echo $propayinterval === 'lifetime' ? 'lifetime' : '/' . $propayinterval;
@@ -89,7 +89,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                         <img src="images/gold.svg" alt="">
                     </div>
                     <div class="pricing-header text-center">
-                        <h5 class="sub-title">Gold</h5>
+                        <h5 class="sub-title">Gold Member</h5>
                         <p class="month"><span class="price">$ <?php echo $goldprice ?></span>
                         <?php
                             echo $goldpayinterval === 'lifetime' ? 'lifetime' : '/' . $goldpayinterval;

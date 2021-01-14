@@ -46,8 +46,6 @@ if (!empty($level)) {
 
 	<h1 class="ja-bottompadding">Sign Up</h1>
 
-	<div id="errormsg"></diV>
-
 	<!-- 
 This form does NOT submit for PAID MEMBERSHIPS. Rather, we just want the field values with JS. 
 We submit the PAYMENT forms after getting these field values to store in the db. 
@@ -110,6 +108,8 @@ For FREE memberships we submit this form normally though.
 			<span class="help-block">By creating an account, you agree to our <a href="#" data-toggle="modal" data-target="#termsModal">Terms</a></span>
 
 			<div class="ja-bottompadding"></div>
+
+			<div id="errormsg"></diV>
 
 			<?php
 			if (!empty($paymentbuttons)) {

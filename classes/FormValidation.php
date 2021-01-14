@@ -21,7 +21,7 @@ class FormValidation {
     $post,
     $errors;
 
-    private $PRETTY_VARNAMES = [
+    const PRETTY_VARNAMES = [
 
         'username' => 'username',
         'password' => 'password',
@@ -121,9 +121,9 @@ class FormValidation {
             # admin's username, password, confirm_password, sitename.
             # admin money area's transaction.
 
-            if (in_array($varname, $this->PRETTY_VARNAMES)) {
+            if (array_key_exists($varname, self::PRETTY_VARNAMES)) {
 
-                $pretty_varname = $this->PRETTY_VARNAMES[$varname];
+                $pretty_varname = self::PRETTY_VARNAMES[$varname];
             } else {
 
                 $pretty_varname = $varname;
@@ -379,7 +379,7 @@ class FormValidation {
         if (!isset($post['type'])) {
 
             # check for promotional ad type.
-            $pretty_varname = $this->PRETTY_VARNAMES['type'];
+            $pretty_varname = self::PRETTY_VARNAMES['type'];
             $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
 
         } else {
@@ -389,7 +389,7 @@ class FormValidation {
             # check for promotional ad name field.
             if (!isset($post['name'])) {
 
-                $pretty_varname = $this->PRETTY_VARNAMES['name'];
+                $pretty_varname = self::PRETTY_VARNAMES['name'];
                 $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
             } else {
 
@@ -401,7 +401,7 @@ class FormValidation {
 
                 if(isset($post['promotionalimage'])) {
 
-                    $pretty_varname = $this->PRETTY_VARNAMES['promotionalimage']; 
+                    $pretty_varname = self::PRETTY_VARNAMES['promotionalimage']; 
                     $promotionalimage = $post['promotionalimage'];
 
                     $promotionalimage = filter_var($promotionalimage, FILTER_SANITIZE_URL);
@@ -426,7 +426,7 @@ class FormValidation {
 
                 } else {
 
-                    $pretty_varname = $this->PRETTY_VARNAMES['promotionalimage']; 
+                    $pretty_varname = self::PRETTY_VARNAMES['promotionalimage']; 
                     $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
                 }
 
@@ -434,7 +434,7 @@ class FormValidation {
     
                 if(isset($post['promotionalsubject'])) {
                     
-                    $pretty_varname = $this->PRETTY_VARNAMES['promotionalsubject']; 
+                    $pretty_varname = self::PRETTY_VARNAMES['promotionalsubject']; 
 
                     $promotionalsubject = $post['promotionalsubject'];                  
                     $promotionalsubject = filter_var($promotionalsubject, FILTER_SANITIZE_STRING);
@@ -451,13 +451,13 @@ class FormValidation {
 
                 } else {
 
-                    $pretty_varname = $this->PRETTY_VARNAMES['promotionalsubject'];
+                    $pretty_varname = self::PRETTY_VARNAMES['promotionalsubject'];
                     $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
                 }
 
                 if(isset($post['promotionaladbody'])) {
 
-                    $pretty_varname = $this->PRETTY_VARNAMES['promotionaladbody'];
+                    $pretty_varname = self::PRETTY_VARNAMES['promotionaladbody'];
 
                     $promotionaladbody = $post['promotionaladbody'];
 
@@ -468,7 +468,7 @@ class FormValidation {
                     
                 } else {
 
-                    $pretty_varname = $this->PRETTY_VARNAMES['promotionaladbody'];
+                    $pretty_varname = self::PRETTY_VARNAMES['promotionaladbody'];
                     $errors .= "<div><strong>". $pretty_varname . " cannot be blank.</strong></div>";
                 }
 

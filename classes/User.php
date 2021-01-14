@@ -64,7 +64,7 @@ class User
 				$verificationcode = time() . mt_rand(10, 100);
 	
 				$sql = "insert into members (username,password,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) 
-				values (?,?,?,?,?,?,?,?,?,?,NOW(),?,?)";
+				values (?,?,?,?,?,?,?,?,NOW(),?,?)";
 				$q = $pdo->prepare($sql);
 				$q->execute([$username,$password,$firstname,$lastname,$email,$paypal,$country,$referid,$signupip,$verificationcode]);
 	
