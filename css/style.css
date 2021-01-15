@@ -2351,10 +2351,14 @@ p {
     -moz-box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05);
     box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05); }
     .navbar-area.sticky .logo-small {
+      text-shadow: none;
       color: #ff4343
     }
     .navbar-area.sticky .logo-small:hover {
       color: #0067f4;
+    }
+    .navbar-area.sticky .logo-small .fas {
+      text-shadow: none;
     }
     .navbar-area.sticky .navbar .navbar-toggler .toggler-icon {
       background-color: #121212; }
@@ -2435,7 +2439,7 @@ p {
     text-shadow: 1px 1px 1px #0031B3;
     font-size: 78px;
     line-height: 96px;
-    color: #fff;
+    color: #ffd633;
     font-weight: 700; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .slider-content .title {
@@ -2450,7 +2454,7 @@ p {
         font-size: 34px;
         line-height: 45px; } }
   .slider-content .text {
-    color: #fff;
+    color: #ffd633;
     text-shadow: 1px 1px 1px #0031B3;
     font-size: 16px;
     line-height: 24px;
@@ -2798,6 +2802,12 @@ p {
         -moz-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16);
         box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16); }
 
+/*===========================
+       15.TEXTADS css 
+===========================*/
+.textads-area {
+  background: #0067f4;
+}
 /*===========================
        15.ABOUT css 
 ===========================*/

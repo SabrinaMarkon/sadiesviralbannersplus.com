@@ -118,7 +118,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
 </section>
 
 <!-- Text ad rotator -->
-<section>
+<section id="textads" class="textads-area">
     <div>
         <div class="row">
             <div class="col-md-12">
