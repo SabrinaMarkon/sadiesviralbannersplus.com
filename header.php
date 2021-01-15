@@ -113,7 +113,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                         ?>
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                                 <ul class="navbar-nav m-auto">
-                                    <li class="nav-item"><a class="page-scroll" href="/">Home</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/#home">Home</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/#memberships">Memberships</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/ads">Banners</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/about">About</a></li>
@@ -154,7 +154,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                     <div class="carousel-item active">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4" style="display: flex; align-items: center;">
                                     <div class="slider-content">
                                         <h1 class="title">Sadie's Viral Banners Plus</h1>
                                         <p class="text">Jetting Your's Around The Globe Free!</p>
@@ -162,6 +162,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                             <li><a class="main-btn rounded-one page-scroll" href="/#memberships">GET STARTED FREE!</a></li>
                                         </ul>
                                     </div>
+                                        &nbsp;&nbsp;<img src="images/sadie-transparent-shadow.png" alt="Sadie's Viral Banners Plus!">
                                 </div>
                             </div> <!-- row -->
                         </div> <!-- container -->
@@ -176,7 +177,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
     <?php
     } else {
     ?>
-        <div class="ja-toppadding2"></div>
+        <div class="ja-toppadding2" id="home"></div>
     <?php
     }
     ?>

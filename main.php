@@ -46,7 +46,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="pricing-style mt-30">
                     <div class="pricing-icon text-center">
-                        <img src="images/free.svg" alt="">
+                        <img src="images/rocket-red.png" alt="">
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Free Member</h5>
@@ -67,7 +67,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="pricing-style mt-30">
                     <div class="pricing-icon text-center">
-                        <img src="images/pro.svg" alt="">
+                        <img src="images/rocket-yellow.png" alt="">
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Pro Member</h5>
@@ -92,7 +92,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="pricing-style mt-30">
                     <div class="pricing-icon text-center">
-                        <img src="images/gold.svg" alt="">
+                        <img src="images/rocket-blue.png" alt="">
                     </div>
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Gold Member</h5>
