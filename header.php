@@ -162,7 +162,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                             <li><a class="main-btn rounded-one page-scroll" href="/#memberships">GET STARTED FREE!</a></li>
                                         </ul>
                                     </div>
-                                        &nbsp;&nbsp;<img src="images/sadie-transparent-shadow.png" alt="Sadie's Viral Banners Plus!">
+                                    <img id="sadie" src="images/sadie-transparent-shadow.png" alt="Sadie's Viral Banners Plus!">
                                 </div>
                             </div> <!-- row -->
                         </div> <!-- container -->
