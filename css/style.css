@@ -15,13 +15,14 @@
     03. Hero
 	04. Footer
 
-OLD f7f4f4 color #2 - f4f6f7
+OLD f7f4f4 color #2 - ffd633
 
 -----------------------------------------------------------------------------------*/
 /*===========================
       01.COMMON css 
 ===========================*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 body {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
@@ -96,9 +97,9 @@ p {
   margin: 0px; }
 
 .bg_cover {
-  f7f4f4-position: center center;
-  f7f4f4-size: cover;
-  f7f4f4-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
   height: 100%; }
 
@@ -108,9 +109,11 @@ p {
 
 /*===== All Section Title Style =====*/
 .section-title .title {
+  font-family: 'Lobster', 'sans-serif';
   font-size: 44px;
-  font-weight: 600;
-  color: #121212;
+  font-weight: 200;
+  color: #0031B3;
+  text-shadow: 1px 1px 1px #fff;
   line-height: 55px; }
   @media (max-width: 767px) {
     .section-title .title {
@@ -121,7 +124,9 @@ p {
   line-height: 24px;
   color: #6c6c6c;
   margin-top: 24px; }
-
+  .section-title .title .fas {
+    vertical-align: 22%;
+  }
 /*===== All Preloader Style =====*/
 .preloader {
   /* Body Overlay */
@@ -2214,7 +2219,7 @@ p {
         top: 115%;
         left: 0;
         width: 100%;
-        background-color: #f7f4f4;
+        background-color: #ffd633;
         z-index: 8;
         padding: 10px 0;
         -webkit-box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05);
@@ -2226,7 +2231,7 @@ p {
         top: 115%;
         left: 0;
         width: 100%;
-        background-color: #f7f4f4;
+        background-color: #ffd633;
         z-index: 8;
         padding: 10px 0;
         -webkit-box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05);
@@ -2426,6 +2431,8 @@ p {
       padding-top: 190px;
       padding-bottom: 150px; } }
   .slider-content .title {
+    /* -webkit-text-stroke: 2px #0031B3; */
+    text-shadow: 1px 1px 1px #0031B3;
     font-size: 78px;
     line-height: 96px;
     color: #fff;
@@ -2444,6 +2451,7 @@ p {
         line-height: 45px; } }
   .slider-content .text {
     color: #fff;
+    text-shadow: 1px 1px 1px #0031B3;
     font-size: 16px;
     line-height: 24px;
     margin-top: 16px; }
@@ -2543,7 +2551,7 @@ p {
 ===========================*/
 /*===== features TWO =====*/
 .features-area {
-  background-color: #f7f4f4;
+  background-color: #ffd633;
   padding-top: 120px;
   padding-bottom: 130px; }
 
@@ -2712,22 +2720,25 @@ p {
       16.PRICING css 
 ===========================*/
 .pricing-area {
-  background-color: #f7f4f4;
+  background-color: #ffd633;
   padding-top: 120px;
   padding-bottom: 130px; }
 
 /*===== PRICING STYLE NINE =====*/
 .pricing-style {
-  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  /* -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
+  -webkit-box-shadow: 0 3px 6px 0 rgba(255, 255, 255, 0.8);
+  -moz-box-shadow: 0 3px 6px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 6px 0 rgba(255, 255, 255, 0.8);
   padding: 24px 20px 38px;
   border-radius: 8px;
   position: relative;
   overflow: hidden;
-  background: -webkit-linear-gradient(#2bdbdc 0%, #0067f4 100%);
-  background: -o-linear-gradient(#2bdbdc 0%, #0067f4 100%);
-  background: linear-gradient(#2bdbdc 0%, #0067f4 100%); }
+  background: -webkit-linear-gradient(#0031B3 0%, #0067f4 100%);
+  background: -o-linear-gradient(#0031B3 0%, #0067f4 100%);
+  background: linear-gradient(#0031B3 0%, #0067f4 100%); }
   .pricing-style .pricing-icon img {
     width: 190px; }
   .pricing-style .pricing-header .sub-title {
@@ -2858,7 +2869,7 @@ p {
 .testimonial-area {
   padding-top: 80px;
   padding-bottom: 130px;
-  background-color: #f7f4f4; }
+  background-color: #ffd633; }
   .testimonial-area .testimonial-left-content .sub-title {
     font-size: 18px;
     font-weight: 400;
@@ -3120,7 +3131,7 @@ p {
 .contact-area {
   padding-top: 120px;
   padding-bottom: 130px;
-  background-color: #f7f4f4; }
+  background-color: #ffd633; }
 
 p.form-message.success, p.form-message.error {
   font-size: 16px;
@@ -3176,7 +3187,7 @@ p.form-message.success, p.form-message.error {
 ===========================*/
 /*===== FOOTER FIVE =====*/
 .footer-area {
-  background-color: #f7f4f4;
+  background-color: #ffd633;
   padding-top: 90px;
   padding-bottom: 120px; }
   .footer-area .social li {

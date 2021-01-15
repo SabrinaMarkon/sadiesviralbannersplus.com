@@ -167,7 +167,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                         </div> <!-- container -->
                         <div class="slider-image-box d-none d-lg-flex align-items-center">
                             <div class="slider-image">
-                                <img src="images/globeandairplaneandstars.png" alt="Sadie's Viral Banners Plus!">
+                                <img src="images/globeandairplaneandyellowstars.png" alt="Sadie's Viral Banners Plus!">
                             </div> <!-- slider-imgae -->
                         </div> <!-- slider-imgae box -->
                     </div> <!-- carousel-item -->

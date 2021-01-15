@@ -7,23 +7,29 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 ?>
 
 <!-- Home page content written by admin -->
-<section>
-    <div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="centered">
-                    <section class="cards">
+<?php
+$showcontent = new PageContent();
+if (!empty($showcontent->showPage('Home Page'))) {
+?>
+    <section>
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="centered">
+                        <section class="cards">
 
-                        <?php
-                        $showcontent = new PageContent();
-                        echo $showcontent->showPage('Home Page');
-                        ?>
+                            <?php
+                            echo $showcontent->showPage('Home Page');
+                            ?>
 
-                    </section>
+                        </section>
+                    </div>
                 </div>
             </div>
-        </div>
-</section>
+    </section>
+<?php
+}
+?>
 
 <!-- Different Membership Levels -->
 <section id="memberships" class="pricing-area">
@@ -31,7 +37,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">
                 <div class="section-title text-center">
-                    <h3 class="title">Membership Plans</h3>
+                    <h3 class="title">Membership Plans <i class="fas fa-star fa-xs"></i></h3>
                     <p class="text">Stop wasting time and money designing and managing banners that don't get results. Happiness guaranteed!</p><br>
                 </div> <!-- section title -->
             </div>
@@ -66,9 +72,9 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Pro Member</h5>
                         <p class="month"><span class="price">$ <?php echo $proprice ?></span>
-                        <?php
+                            <?php
                             echo $propayinterval === 'lifetime' ? 'lifetime' : '/' . $propayinterval;
-                        ?>
+                            ?>
                         </p>
                     </div>
                     <div class="pricing-list">
@@ -91,9 +97,9 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
                     <div class="pricing-header text-center">
                         <h5 class="sub-title">Gold Member</h5>
                         <p class="month"><span class="price">$ <?php echo $goldprice ?></span>
-                        <?php
+                            <?php
                             echo $goldpayinterval === 'lifetime' ? 'lifetime' : '/' . $goldpayinterval;
-                        ?>
+                            ?>
                         </p>
                     </div>
                     <div class="pricing-list">
@@ -134,15 +140,12 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">
                 <div class="section-title text-center pb-30">
-                    <h3 class="title">Contact</h3>
+                    <h3 class="title">Contact <i class="fas fa-star fa-xs"></i></h3>
                     <?php
-                    if (isset($showcontact))
-                    {
+                    if (isset($showcontact)) {
                         echo '<div class="ja-bottompadding"></div>';
                         echo $showcontact;
-                    } 
-                    else 
-                    {
+                    } else {
                         echo '<p class="text">Please send us a message if you need help or have any questions.</p>';
                         echo '<div class="ja-bottompadding"></div>';
                     }

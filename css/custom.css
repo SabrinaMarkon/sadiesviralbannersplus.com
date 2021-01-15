@@ -5,23 +5,38 @@ body {
   /* padding-top: 100px; */
 }
 
-.logo {
-	font-size: 5.0rem;
-}
-.logo-small {
-	font-size: 2.6rem;
-}
-.logo, .logo-small {
-	font-family: 'Lobster', sans-serif;
-	color: #ff4343;
-}
 .logo .fas, .logo-small .fas {
+	text-shadow: 1px 1px 1px #0031B3;
 	vertical-align: 22%;
 }
-.logo:hover, .logo-small:hover {
+.logo .fas:hover, .logo-small .fas:hover {
+	text-shadow: 0;
+}
+.logo {
+	text-shadow: 1px 1px 1px #0031B3;
+	font-family: 'Lobster', sans-serif;
+	font-size: 5.0rem;
+	/* color: #ffd633; */
+	color: #ff4343;
+}
+.logo-small {
+	text-shadow: 1px 1px 1px #0031B3;
+	font-family: 'Lobster', sans-serif;
+	font-size: 2.6rem;
+	font-family: 'Lobster', sans-serif;
+	/* color: #ff4343; */
 	color: #ffd633;
 }
-
+.logo:hover {
+	text-shadow: 0;
+	font-size: 5.0rem;
+	/* color: #ffd633; */
+	color: #ffd633;
+}
+.logo-small:hover {
+	text-shadow: 0;
+	color: #ff4343;
+}
 
 .alert {
 	margin: auto;
