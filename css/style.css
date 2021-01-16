@@ -111,7 +111,7 @@ p {
 /*===== All Section Title Style =====*/
 .section-title .title {
   font-family: 'Lobster', 'sans-serif';
-  font-size: 44px;
+  font-size: 54px;
   font-weight: 200;
   color: #0031B3;
   text-shadow: 1px 1px 1px #fff;
@@ -403,6 +403,7 @@ p {
     -ms-transform: rotate(-130deg);
     -o-transform: rotate(-130deg);
     transform: rotate(-130deg); } }
+    
 /*===========================
     11.BUTTON css 
 ===========================*/
@@ -2334,32 +2335,34 @@ p {
         -o-transition: all 0.3s ease-out 0s;
         transition: all 0.3s ease-out 0s; }
         .navbar-area .navbar .navbar-btn li a.light {
+          box-shadow: -1px -1px 1px #fff;
           border-color: #fff; }
           .navbar-area .navbar .navbar-btn li a.light:hover {
             background-color: rgba(255, 255, 255, 0.4); }
         .navbar-area .navbar .navbar-btn li a.solid {
-          background-color: #fff;
-          border-color: #fff;
+          background-color: #ffd633;
+          border-color: #0067f4;
           color: #0067f4; }
           .navbar-area .navbar .navbar-btn li a.solid:hover {
             background-color: transparent;
+            border-color: #fff;
             color: #fff; }
   .navbar-area.sticky {
-    background-color: #fff;
+    background-color: #f7c916;
     z-index: 999;
     position: fixed;
     -webkit-box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05);
     -moz-box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05);
     box-shadow: 0px 10px 25px 0px rgba(18, 18, 18, 0.05); }
     .navbar-area.sticky .logo-small {
-      text-shadow: none;
-      color: #ff4343
-    }
-    .navbar-area.sticky .logo-small:hover {
+      text-shadow: 1px 1px 0 #fff;
       color: #0067f4;
     }
+    .navbar-area.sticky .logo-small:hover {
+      color: #ff4343;
+    }
     .navbar-area.sticky .logo-small .fas {
-      text-shadow: none;
+      text-shadow: 1px 1px 0 #fff;
     }
     .navbar-area.sticky .navbar .navbar-toggler .toggler-icon {
       background-color: #121212; }
@@ -2379,8 +2382,13 @@ p {
     .navbar-area.sticky .navbar .navbar-btn li a.solid {
       border-color: #0067f4;
       background-color: #0067f4;
-      color: #fff; }
-
+      color: #fff;
+      box-shadow: -1px -1px 1px #fff;
+      }
+      .navbar-area.sticky .navbar .navbar-btn li a.solid:hover {
+      border-color: #fff;
+      background-color: #ff4343;
+      }
 /*===========================
        10.SLIDER css 
 ===========================*/
@@ -2749,12 +2757,15 @@ p {
     padding-top: 20px;
     width: 190px; }
   .pricing-style .pricing-header .sub-title {
-    font-size: 20px;
-    font-weight: 600;
+    font-family: 'Lobster', sans-serif;
+    font-size: 40px;
+    font-weight: 200;
     line-height: 25px;
-    color: #fff;
+    color: #ffd633;
     position: relative;
-    margin-top: 24px; }
+    margin-top: 24px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 1px #0031B3; }
   .pricing-style .pricing-header .month {
     font-size: 20px;
     font-weight: 300;
@@ -2797,13 +2808,17 @@ p {
   .pricing-style .pricing-btn {
     margin-top: 31px; }
     .pricing-style .pricing-btn .main-btn {
-      background-color: #fff;
-      border-color: #fff; }
+      background-color: #ffd633;
+      box-shadow: 1px 1px 1px #0031B3;
+      /* border-color: #fff;  */
+    }
       .pricing-style .pricing-btn .main-btn:hover {
+        border: 2px solid #fff;
         color: #0067f4;
-        -webkit-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16);
+        /* -webkit-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16);
         -moz-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16);
-        box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16); }
+        box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16);  */
+      }
 
 /*===========================
        15.TEXTADS css 

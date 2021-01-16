@@ -10,7 +10,7 @@ body {
 	vertical-align: 22%;
 }
 .logo .fas:hover, .logo-small .fas:hover {
-	text-shadow: 0;
+	text-shadow: none;
 }
 .logo {
 	text-shadow: 1px 1px 0 #0031B3;
@@ -46,6 +46,7 @@ body {
 }
 
 #sadie {
+	margin-left: 10px;
 	max-width: 216px;
 	height: auto;
 }
