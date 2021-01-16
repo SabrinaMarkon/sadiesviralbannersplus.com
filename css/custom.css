@@ -1,40 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-body {
-  /* padding-top: 100px; */
+.logo .fas {
+	vertical-align: 22%;
 }
-
-.logo .fas, .logo-small .fas {
+.logo-small .fas {
 	text-shadow: 1px 1px 0 #0031B3;
 	vertical-align: 22%;
 }
-.logo .fas:hover, .logo-small .fas:hover {
+.logo-small .fas:hover {
 	text-shadow: none;
 }
 .logo {
-	text-shadow: 1px 1px 0 #0031B3;
 	font-family: 'Lobster', sans-serif;
 	font-size: 5.0rem;
-	/* color: #ffd633; */
-	color: #ff4343;
+	color: #ffd633;
 }
 .logo-small {
 	text-shadow: 1px 1px 0 #0031B3;
 	font-family: 'Lobster', sans-serif;
 	font-size: 2.6rem;
 	font-family: 'Lobster', sans-serif;
-	/* color: #ff4343; */
 	color: #ffd633;
 }
 .logo:hover {
-	text-shadow: 0;
+	text-shadow: 1px 1px 0 #fff;
 	font-size: 5.0rem;
-	/* color: #ffd633; */
-	color: #ffd633;
+	color: #ff4343;
 }
 .logo-small:hover {
-	text-shadow: 0;
+	text-shadow: none;
 	color: #ff4343;
 }
 
@@ -76,7 +71,7 @@ body {
 .card {
 	flex: 0 1 14%;
 	background: #fff;
-	color: #121212;
+	color: #393939;
 	text-align: center;
 	font-size: 1rem;
 	padding: 1rem;

@@ -27,7 +27,7 @@
           <span class="mail"></span>
         </div> -->
         <div class="copyright text-center mt-35">
-          <p class="text">&copy;2020 <a href="https://sadiesviralbannersplus.com" target="_blank" rel="nofollow">SadiesViralBannersPlus.com</a><br />Made with &#10084; by <a rel="nofollow" href="https://sabrinamarkon.com" target="_blank">Sabrina Markon</a></p>
+          <p class="text">&copy;2021 <a href="https://sadiesviralbannersplus.com" target="_blank" rel="nofollow">SadiesViralBannersPlus.com</a><br />Made with <span class="heart">&#10084;</span> by <a rel="nofollow" href="https://sabrinamarkon.com" target="_blank">Sabrina Markon</a></p>
         </div> <!--  copyright -->
       </div>
     </div> <!-- row -->

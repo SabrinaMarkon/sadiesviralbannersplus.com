@@ -123,7 +123,7 @@ p {
 .section-title .text {
   font-size: 16px;
   line-height: 24px;
-  color: #6c6c6c;
+  color: #393939;
   margin-top: 24px; }
   .section-title .title .fas {
     vertical-align: 22%;
@@ -410,7 +410,7 @@ p {
 .buttons-title .title {
   font-size: 36px;
   line-height: 45px;
-  color: #6c6c6c; }
+  color: #393939; }
   @media (max-width: 767px) {
     .buttons-title .title {
       font-size: 24px;
@@ -2003,7 +2003,7 @@ p {
   font-size: 36px;
   font-weight: 600;
   line-height: 45px;
-  color: #6c6c6c; }
+  color: #393939; }
   @media (max-width: 767px) {
     .form-elements-title {
       font-size: 24px;
@@ -2021,7 +2021,7 @@ p {
 .form-input label {
   font-size: 12px;
   line-height: 18px;
-  color: #6c6c6c;
+  color: #393939;
   margin-bottom: 8px;
   display: inline-block; }
 .form-input .input-items {
@@ -2046,23 +2046,23 @@ p {
     z-index: 9; }
   .form-input .input-items.default input, .form-input .input-items.default textarea {
     border-color: #a4a4a4;
-    color: #6c6c6c; }
+    color: #393939; }
     .form-input .input-items.default input:focus, .form-input .input-items.default textarea:focus {
       border-color: #0067f4; }
     .form-input .input-items.default input::placeholder, .form-input .input-items.default textarea::placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
     .form-input .input-items.default input::-moz-placeholder, .form-input .input-items.default textarea::-moz-placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
     .form-input .input-items.default input::-moz-placeholder, .form-input .input-items.default textarea::-moz-placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
     .form-input .input-items.default input::-webkit-input-placeholder, .form-input .input-items.default textarea::-webkit-input-placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
   .form-input .input-items.default i {
-    color: #6c6c6c; }
+    color: #393939; }
   .form-input .input-items.active input, .form-input .input-items.active textarea {
     border-color: #0067f4;
     color: #121212; }
@@ -2116,22 +2116,22 @@ p {
     color: #4da422; }
   .form-input .input-items.disabled input, .form-input .input-items.disabled textarea {
     border-color: #a4a4a4;
-    color: #6c6c6c;
+    color: #393939;
     background: none; }
     .form-input .input-items.disabled input::placeholder, .form-input .input-items.disabled textarea::placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
     .form-input .input-items.disabled input::-moz-placeholder, .form-input .input-items.disabled textarea::-moz-placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
     .form-input .input-items.disabled input::-moz-placeholder, .form-input .input-items.disabled textarea::-moz-placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
     .form-input .input-items.disabled input::-webkit-input-placeholder, .form-input .input-items.disabled textarea::-webkit-input-placeholder {
-      color: #6c6c6c;
+      color: #393939;
       opacity: 1; }
   .form-input .input-items.disabled i {
-    color: #6c6c6c; }
+    color: #393939; }
 
 .form-style-two .form-input .input-items input, .form-style-two .form-input .input-items textarea {
   border-radius: 5px;
@@ -2478,11 +2478,14 @@ p {
         .slider-content .slider-btn li {
           margin: 16px 3px 0; } }
       .slider-content .slider-btn li a.rounded-one {
-        background-color: #fff;
-        border-color: #fff; }
+        background-color: #ffd633;
+        border: 3px solid #0067f4;
+        box-shadow: 1px 1px 1px #0031B3; }
         .slider-content .slider-btn li a.rounded-one:hover {
-          background-color: transparent;
-          color: #fff; }
+          /* background-color: transparent; */
+          color: #0067f4;
+          border: 3px solid #fff;
+        }
       .slider-content .slider-btn li a.rounded-two {
         border-color: #fff; }
         .slider-content .slider-btn li a.rounded-two:hover {
@@ -2631,7 +2634,7 @@ p {
 .portfolio-menu ul li {
   font-size: 16px;
   font-weight: 700;
-  color: #6c6c6c;
+  color: #393939;
   line-height: 48px;
   padding: 0 30px;
   position: relative;
@@ -2809,11 +2812,11 @@ p {
     margin-top: 31px; }
     .pricing-style .pricing-btn .main-btn {
       background-color: #ffd633;
+      border: 3px solid #0067f4;
       box-shadow: 1px 1px 1px #0031B3;
-      /* border-color: #fff;  */
     }
       .pricing-style .pricing-btn .main-btn:hover {
-        border: 2px solid #fff;
+        border: 3px solid #fff;
         color: #0067f4;
         /* -webkit-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16);
         -moz-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16);
@@ -3223,7 +3226,8 @@ p.form-message.success, p.form-message.error {
     margin: 0 5px; }
     .footer-area .social li a {
       font-size: 24px;
-      color: #6c6c6c;
+      /* color: #6c6c6c; OLD */
+      color: #393939;
       -webkit-transition: all 0.3s ease-out 0s;
       -moz-transition: all 0.3s ease-out 0s;
       -ms-transition: all 0.3s ease-out 0s;
@@ -3275,6 +3279,10 @@ p.form-message.success, p.form-message.error {
         color: #fff; }
     .footer-area.footer-dark .copyright .text {
       color: #fff; }
+    .footer-area.footer-dark .copyright .text .heart, .footer-area.footer-dark .copyright .text a {
+      color: #ff4343; }
+    .footer-area.footer-dark .copyright .text .heart:hover, .footer-area.footer-dark .copyright .text a:hover{
+      color: #ffd633; }
 
 /*===== BACK TO TOP =====*/
 .back-to-top {
