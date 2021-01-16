@@ -3284,6 +3284,25 @@ p.form-message.success, p.form-message.error {
     .footer-area.footer-dark .copyright .text .heart:hover, .footer-area.footer-dark .copyright .text a:hover{
       color: #ffd633; }
 
+    #contact > div > div:nth-child(2) > div > div > form > div.form-input.light-rounded-buttons.mt-30 > button {
+      padding: 10px 16px;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 700;
+      border: 2px solid #0067f4;
+      border-radius: 4px;
+      transition: all 0.3s ease-out 0s;
+      background-color: #0067f4;
+      color: #fff;
+      box-shadow: -1px -1px 1px #fff;
+    }
+    #contact > div > div:nth-child(2) > div > div > form > div.form-input.light-rounded-buttons.mt-30 > button:hover {
+      background-color: #ff4343;
+      border: 2px solid #fff;
+    }
+
+
+
 /*===== BACK TO TOP =====*/
 .back-to-top {
   font-size: 20px;

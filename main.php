@@ -177,7 +177,9 @@ if (!empty($showcontent->showPage('Home Page'))) {
 
                         <div class="ja-bottompadding"></div>
 
-                        <button class="btn btn-lg btn-primary" type="submit" name="contactus">Send Message</button>
+                        <div class="form-input light-rounded-buttons mt-30">
+                            <button class="mail-btn light-rounded-two" type="submit" name="contactus">Send Message</button>
+                        </div>
 
                     </form>
                 </div> <!-- contact wrapper form -->
