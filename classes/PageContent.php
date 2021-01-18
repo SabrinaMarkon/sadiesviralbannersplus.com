@@ -31,7 +31,7 @@ class PageContent
 		if (!empty($data['htmlcode'])) {
 			$content = $data['htmlcode'];
 			$content = <<<HEREDOC
-$content
+<div class="content-wrapper">$content</div>
 HEREDOC;
 		}
 
