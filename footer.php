@@ -12,7 +12,6 @@
       <div class="col-lg-6">
         <div class="footer-logo text-center">
           <a class="mt-30" href="/">
-            <!-- <img src="images/sadieslogoSM.png" alt="Logo" style="border: 5px solid #0067f4; border-radius: 3px;"> -->
             <span class="logo">Sadie's <i class="fas fa-star fa-xs"></i></span>
           </a>
         </div> <!-- footer logo -->

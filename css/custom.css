@@ -12,6 +12,7 @@
 	text-shadow: none;
 }
 .logo {
+	text-shadow: 1px 1px 0 #fff;
 	font-family: 'Lobster', sans-serif;
 	font-size: 5.0rem;
 	color: #ffd633;
@@ -105,14 +106,6 @@
 	margin-top: 0.2rem;
 }
 
-.container {
-	/* width: 100%; */
-}
-
-img {
-	/* width: 100%; */
-}
-
 .ja-promotionalimg {
 	max-width: 468px !important;
 	display: inline-block;
@@ -138,6 +131,10 @@ img {
 
 .ja-toppadding2 {
 	margin-top: 50px;
+}
+
+.ja-toppadding3 {
+	margin-top: 100px;
 }
 
 .ja-horizontaldivider {

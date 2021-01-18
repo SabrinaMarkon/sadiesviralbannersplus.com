@@ -2181,13 +2181,18 @@ p {
   .navbar-area .navbar {
     position: relative;
     padding: 0; }
-    .navbar-area .navbar .navbar-toggler:hover {
+    .navbar-area .navbar .navbar-toggler {
       background: #f7c916;
+      height: 45px;
+    }
+    .navbar-area .navbar .navbar-toggler:hover {
+      background: #0067f4;
+      border: 2px solid #fff;
     }
     .navbar-area .navbar .navbar-toggler .toggler-icon {
       width: 30px;
       height: 2px;
-      background-color: #fff;
+      background-color: #0067f4;
       margin: 5px 0;
       display: block;
       position: relative;
@@ -2197,7 +2202,7 @@ p {
       -o-transition: all 0.3s ease-out 0s;
       transition: all 0.3s ease-out 0s; }
     .navbar-area .navbar .navbar-toggler:hover .toggler-icon {
-      background-color: #121212;
+      background-color: #fff;
     }
     .navbar-area .navbar .navbar-toggler.active .toggler-icon:nth-of-type(1) {
       -webkit-transform: rotate(45deg);
@@ -2311,13 +2316,15 @@ p {
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .navbar-area .navbar .navbar-btn {
         position: absolute;
+        height: 45px;
         right: 70px;
-        top: 7px; } }
+        top: 12px; } }
     @media (max-width: 767px) {
       .navbar-area .navbar .navbar-btn {
         position: absolute;
+        height: 45px;
         right: 60px;
-        top: 7px; } }
+        top: 12px; } }
     .navbar-area .navbar .navbar-btn li {
       display: inline-block;
       margin-right: 5px; }
@@ -2364,8 +2371,16 @@ p {
     .navbar-area.sticky .logo-small .fas {
       text-shadow: 1px 1px 0 #fff;
     }
+    .navbar-area.sticky .navbar .navbar-toggler {
+      height: 46px;
+      background: #0067f4;
+      box-shadow: -1px -1px 1px #fff;
+    }
+    .navbar-area.sticky .navbar .navbar-toggler:hover {
+      background: #ff4343;
+    }
     .navbar-area.sticky .navbar .navbar-toggler .toggler-icon {
-      background-color: #121212; }
+      background-color: #fff; }
     .navbar-area.sticky .navbar .navbar-nav .nav-item a {
       color: #121212;
       opacity: 0.7; }

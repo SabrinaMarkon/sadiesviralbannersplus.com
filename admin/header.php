@@ -13,7 +13,7 @@
   <title><?php echo $metatitle ?></title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
 
   <!-- Bootstrap core CSS -->
   <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,82 +21,95 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
 
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
   <!-- Custom styles -->
   <link href="../css/custom.css" rel="stylesheet" />
 
 </head>
 
-<body>
+<body style="padding-top: 0;">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ja-navbottomadmin">
-    <div class="container">
-      <a class="navbar-brand" href="/">Sadie's Viral Banners Plus</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-
-          <?php
-          if ((!isset($_SESSION['adminusername'])) || (!isset($_SESSION['adminpassword']))) {
-          ?>
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin">Admin Login</a>
-            </li>
-          <?php
-          } else {
-          ?>
-            <li class="nav-item active">
-              <a class="nav-link" href="/../" target="_blank">Site</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/main">Main</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/settings">Settings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/members">Members</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/banners">Banners</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/textads">Text Ads</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/money">Money</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/mail">Mail</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/promotional">Promotional</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/pages">Pages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/logout">Logout</a>
-            </li>
-          <?php
-          }
-          ?>
-
-        </ul>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="loader">
+      <div class="ytp-spinner">
+        <div class="ytp-spinner-container">
+          <div class="ytp-spinner-rotator">
+            <div class="ytp-spinner-left">
+              <div class="ytp-spinner-circle"></div>
+            </div>
+            <div class="ytp-spinner-right">
+              <div class="ytp-spinner-circle"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+
+  <!-- Navigation -->
+  <section class="navbar-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+
+            <a class="navbar-brand" href="/" target="_blank">
+              <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+
+            <?php
+            if ((!isset($_SESSION['adminusername'])) || (!isset($_SESSION['adminpassword']))) {
+            ?>
+              <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                <ul class="navbar-nav m-auto">
+                  <li class="nav-item"><a href="/">Home</a></li>
+                  <li class="nav-item"><a href="/admin">Admin Login</a></li>
+                </ul>
+              </div>
+            <?php
+            } else {
+            ?>
+              <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                <ul class="navbar-nav m-auto">
+                  <li class="nav-item"><a href="/admin/main">Main</a></li>
+                  <li class="nav-item"><a href="/admin/settings">Settings</a></li>
+                  <li class="nav-item"><a href="/admin/members">Members</a></li>
+                  <li class="nav-item"><a href="/admin/banners">Banners</a></li>
+                  <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>
+                  <li class="nav-item"><a href="/admin/money">Money</a></li>
+                  <li class="nav-item"><a href="/admin/mail">Mail</a></li>
+                  <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
+                  <li class="nav-item"><a href="/admin/pages">Pages</a></li>
+                </ul>
+              </div>
+
+              <div class="navbar-btn d-none d-sm-inline-block">
+                <ul>
+                  <li><a class="solid" href="/admin/logout">Logout</a></li>
+                </ul>
+              </div>
+            <?php
+            }
+            ?>
+          </nav> <!-- navbar -->
+        </div>
+      </div> <!-- row -->
+    </div> <!-- container -->
+  </section>
 
   <!-- Page Content -->
-  <div class="container ja-toppadding">
+  <div class="ja-toppadding3" id="home"></div>
 
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 py-5">
 
-        <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->
+<!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->

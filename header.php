@@ -36,6 +36,8 @@
 
     <!-- Custom styles -->
     <link href="css/custom.css" rel="stylesheet" />
+
+    <!-- Image/banner maker app -->
     <link href="css/imagemaker.css" rel="stylesheet">
 </head>
 
@@ -77,7 +79,6 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                     <nav class="navbar navbar-expand-lg">
 
                         <a class="navbar-brand" href="#">
-                            <!-- <img src="images/sadieslogoSM.png" alt="Sadie's Viral Banners Plus Logo" style="border: 5px solid #fff; border-radius: 3px; width: 75px;"> -->
                             <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
                         </a>
 
@@ -94,11 +95,11 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                 <ul class="navbar-nav m-auto">
                                     <li class="nav-item"><a class="page-scroll" href="/members">Main</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/profile">Profile</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/banners">Your Banners</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/textads">Buy Text Ads</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/promotional">Earn Money</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/faq">FAQ</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/terms">Terms</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/banners">Your&nbsp;Banners</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/textads">Buy&nbsp;Text&nbsp;Ads</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/promotional">Earn&nbsp;Money</a></li>
+                                    <!-- <li class="nav-item"><a class="page-scroll" href="/faq">FAQ</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="/terms">Terms</a></li> -->
                                     <li class="nav-item"><a class="page-scroll" href="/contact">Contact</a></li>
                                 </ul>
                             </div>
@@ -123,7 +124,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                 </ul>
                             </div>
 
-                            <div class="navbar-btn d-none d-sm-inline-block">
+                            <div class="navbar-btn">
                                 <ul>
                                     <li><a class="solid" href="/login">Login</a></li>
                                     <li><a class="solid page-scroll" href="/#memberships">Register</a></li>
@@ -186,6 +187,6 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
 
     <!-- Page Content -->
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 pb-2">
 
             <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->

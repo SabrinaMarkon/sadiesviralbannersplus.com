@@ -34,4 +34,5 @@ echo $showcontact;
 
 		</form>
 
+		<div class="ja-bottompadding"></div>
 </div>

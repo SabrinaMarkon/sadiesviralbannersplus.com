@@ -144,7 +144,7 @@ button, .btn-file {
   border-radius: 3px;
   background-color: lightgrey;
   border: 1px solid grey;
-  box-shadow: 2px 2px teal;
+  /* box-shadow: 2px 2px teal; */
   cursor: pointer;
 }
 
