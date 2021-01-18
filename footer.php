@@ -6,7 +6,7 @@
 <!-- /.container -->
 
 <!-- Footer -->
-<section class="footer-area footer-dark mt-1">
+<section class="footer-area footer-dark">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">

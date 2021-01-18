@@ -124,7 +124,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                 </ul>
                             </div>
 
-                            <div class="navbar-btn">
+                            <div class="navbar-btn d-none d-sm-inline-block">
                                 <ul>
                                     <li><a class="solid" href="/login">Login</a></li>
                                     <li><a class="solid page-scroll" href="/#memberships">Register</a></li>
@@ -187,6 +187,6 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
 
     <!-- Page Content -->
     <div class="row">
-        <div class="col-sm-12 pb-2">
+        <div class="col-sm-12">
 
             <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->
