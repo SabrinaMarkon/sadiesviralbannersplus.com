@@ -67,16 +67,7 @@
             </button>
 
             <?php
-            if ((!isset($_SESSION['adminusername'])) || (!isset($_SESSION['adminpassword']))) {
-            ?>
-              <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
-                <ul class="navbar-nav m-auto">
-                  <li class="nav-item"><a href="/">Home</a></li>
-                  <li class="nav-item"><a href="/admin">Admin Login</a></li>
-                </ul>
-              </div>
-            <?php
-            } else {
+            if ((isset($_SESSION['adminusername'])) && (isset($_SESSION['adminpassword']))) {
             ?>
               <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                 <ul class="navbar-nav m-auto">
