@@ -49,6 +49,7 @@ if (paypalButtonForm != null && paypalbutton != null) {
 
 async function handlePayForm(formattedFormFields) {
   // First, save the purchase data into the database to retrieve after successful payment.
+  // $('#userform')[0].checkValidity(); // default browser validation? doesn't seem to work here but not needed I just wanted to know.
   const response = await fetch("payformtodatabase.php", {
     method: "POST",
     body: formattedFormFields,
