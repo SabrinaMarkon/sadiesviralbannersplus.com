@@ -16,6 +16,8 @@ PHP 7.4+
 
 # get the end part of the url, which is normally the referid for the main site files, but will be actually the name of the payment company for this file only.
 $paidwith = $_SESSION['referid'];
+unset($_SESSION['referid']); // We don't need to remember this now that we know paidwith.
+
 echo $paidwith;
 
 // require_once "classes/User.php"; // TODO: We need to check for duplicate usernames/emails.
