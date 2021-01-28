@@ -20,6 +20,7 @@ unset($_SESSION['referid']); // We don't need to remember this now that we know 
 
 echo $paidwith;
 
+
 // require_once "classes/User.php"; // TODO: We need to check for duplicate usernames/emails.
 // require_once "classes/PaypalCheckout.php"; // Paypal.
 // require_once "classes/FormValidation.php"; // Check that username isn't duplicate if this is a new signup. Don't do for upgrades.
