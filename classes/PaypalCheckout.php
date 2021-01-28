@@ -78,7 +78,7 @@ class PaypalCheckout extends PaymentGateway
             <input name="bn" type="hidden" value="PP-BuyNowBF">
             <input name="on0" type="hidden" value="Purchase ID">
             <input name="os0" id="pendingId" type="hidden" value="">
-            <input name="notify_url" type="hidden" value="' . $this->domain . '/ipn">
+            <input name="notify_url" type="hidden" value="' . $this->domain . '/ipn/paypal">
             <button class="btn btn-lg btn-primary" type="button" name="paypalbutton" id="paypalbutton">
             Buy ' . $this->itemname . ' for $' . $this->price . ' with Paypal!</button>
             </form>';

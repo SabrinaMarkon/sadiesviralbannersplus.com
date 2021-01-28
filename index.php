@@ -193,8 +193,14 @@ if (isset($_GET['page']) && ($_GET['page'] === "logout")) {
 # if an ad is clicked (we don't want a header.php)
 if (isset($_GET['page']) && ($_GET['page'] === 'click')) {
 
-	$page = $_GET['page'];
 	include "click.php";
+	exit;	
+}
+
+# if we are receiving an ipn notification from a payment processor (we don't want header.php).
+if (isset($_GET['page']) && ($_GET['page'] === 'ipn')) {
+
+	include "ipn.php";
 	exit;	
 }
 
@@ -208,7 +214,7 @@ if ((!empty($_GET['page'])) && ((file_exists($_GET['page'] . ".php") && ($_GET['
 	
 } elseif ((!empty($_GET['page'])) && (!file_exists($_GET['page'] . ".php"))) {
 
-	# show the admin create page.
+	# show the dynamic page file that shows pages the admin has created from the admin area.
 	$page = $_GET['page'];
 	include "dynamic.php";
 
