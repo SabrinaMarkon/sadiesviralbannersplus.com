@@ -45,6 +45,7 @@ class FormValidation {
         'email' => 'email',
         'paypal' => 'paypal',
         'adminpaypal' => 'admin paypal',
+        'admincoinpayments' => 'admin coinpayments.net api',
         'adminemail' => 'admin email',
         'url' => 'URL',
         'imageurl' => 'image URL',
@@ -236,9 +237,9 @@ class FormValidation {
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
                 }
 
-            } elseif ($varname === 'paypal' || $varname === 'adminpaypal') {
+            } elseif ($varname === 'paypal' || $varname === 'adminpaypal' || $varname === 'admincoinpayments') {
 
-                # user's or admin's paypal email.
+                # user's or admin's paypal email or coinpayments key.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_EMAIL);
                 $numchars = strlen($varvalue);
@@ -256,7 +257,7 @@ class FormValidation {
     
                         $errors .= "<div><strong>The size of " . $pretty_varname . " must be 300 or less characters.</strong></div>";
                     }
-                    elseif (!filter_var($varvalue,FILTER_VALIDATE_EMAIL)) {
+                    elseif (!filter_var($varvalue,FILTER_VALIDATE_EMAIL) && $varname !== 'admincoinpayments') {
     
                         $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
                     }

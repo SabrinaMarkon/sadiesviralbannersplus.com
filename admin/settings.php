@@ -42,6 +42,9 @@ foreach ($settings as $key => $value) {
                 <label for="adminpaypal" class="ja-toppadding">Your Paypal Email:</label>
                 <input type="text" name="adminpaypal" value="<?php echo $adminpaypal ?>" class="form-control input-lg" placeholder="Paypal Email" maxlength="300">
 
+                <label for="admincoinpayments" class="ja-toppadding">Your CoinPayments API Key:</label>
+                <input type="text" name="admincoinpayments" value="<?php echo $admincoinpayments ?>" class="form-control input-lg" placeholder="CoinPayments API Key" maxlength="300">
+                                
                 <label for="sitename" class="ja-toppadding">Your Website Name:</label>
                 <input type="text" name="sitename" value="<?php echo $sitename ?>" class="form-control input-lg" placeholder="Website Name" maxlength="50" required>
 

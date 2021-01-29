@@ -5,6 +5,7 @@ CREATE TABLE `adminsettings` (
 `adminname` varchar(255) not null,
 `adminemail` varchar(300) not null,
 `adminpaypal` varchar(300) not null,
+`admincoinpayments` varchar(300) not null,
 `sitename` varchar(255) not null,
 `domain` varchar(300) not null,
 `metatitle` varchar(60) not null,
