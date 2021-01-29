@@ -16,18 +16,35 @@ PHP 7.4+
 
 # get the end part of the url, which is normally the referid for the main site files, but will be actually the name of the payment company for this file only.
 $paidwith = $_SESSION['referid'];
-unset($_SESSION['referid']); // We don't need to remember this now that we know paidwith.
 
-echo $paidwith;
+$paymentcompanies = ["paypal", "coinpayments"];
 
+if (in_array($paidwith, $paymentcompanies)) {
+    unset($_SESSION['referid']); // We don't need to remember this now that we know paidwith.
 
-// require_once "classes/User.php"; // TODO: We need to check for duplicate usernames/emails.
-// require_once "classes/PaypalCheckout.php"; // Paypal.
-// require_once "classes/FormValidation.php"; // Check that username isn't duplicate if this is a new signup. Don't do for upgrades.
+    require_once "classes/User.php"; // TODO: We need to check for duplicate usernames/emails.
+    require_once "classes/FormValidation.php"; // Check that username isn't duplicate if this is a new signup. Don't do for upgrades.
+    $user = new User();
+    $validator = new FormValidation();
+    
+    echo $paidwith;
 
-// $user = new User();
-// $validator = new FormValidation();
-// $paypal = new PaypalCheckout($paymentdata, $user);
-// $paypalIPN = $paypal->getIPN();
+    if ($paidwith === "paypal") {
+        require_once "classes/PaypalCheckout.php"; // Paypal.
+        $pay = new PaypalCheckout($paymentdata, $user);
+        $ipn = $pay->getIPN();
+    }
+
+    elseif ($paidwith === "coinpayments") {
+        require_once "classes/CoinPaymentsCheckout.php"; // Paypal.
+        $pay = new CoinPaymentsCheckout($paymentdata, $user);
+        $ipn = $pay->getIPN();
+    }
+
+    else {
+        exit;
+    }
+
+}
 
 
