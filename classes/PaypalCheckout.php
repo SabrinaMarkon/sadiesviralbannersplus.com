@@ -1,13 +1,12 @@
 <?php
 error_reporting(E_ALL);
 /**
-Paypal payments module.
+Paypal payment module.
 PHP 7.4+
 @author Sabrina Markon
 @copyright 2020 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
  **/
-// if (count(get_included_files()) === 1) { exit('Direct Access is not Permitted'); }
 # Prevent direct access to this file. Show browser's default 404 error instead.
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
@@ -19,19 +18,23 @@ class PaypalCheckout extends PaymentGateway
     protected
         $user,
         $paymentdata,
+        $postdata,
         $paybutton,
         $payperiod,
         $payintervalcode;
 
-    public function __construct(array $paymentdata, User $user)
+    public function __construct(array $paymentdata = [], User $user, array $postdata = [])
     {
         $this->user = $user;
+        $this->postdata = $postdata;
         $this->itemname = $paymentdata['itemname'];
         $this->price = $paymentdata['price'];
         $this->payinterval = $paymentdata['payinterval'];
         $this->adminemail = $paymentdata['adminemail'];
         $this->sitename = $paymentdata['sitename'];
         $this->domain = $paymentdata['domain'];
+        $this->adminpaypal = $paymentdata['adminpaypal'];
+        $this->admincoinpayments = $paymentdata['admincoinpayments'];
         $this->username = $paymentdata['username'];
         $this->referid = $paymentdata['referid'];
     }
@@ -66,7 +69,7 @@ class PaypalCheckout extends PaymentGateway
         $paybutton = '
             <form method="POST" id="paypalbuttonform" action="https://www.paypal.com/cgi-bin/webscr" accept-charset="UTF-8" class="form-horizontal form-page-small">'
             . $payintervalcode .
-            '<input name="business" type="hidden" value="' . $this->adminemail . '">
+            '<input name="business" type="hidden" value="' . $this->adminpaypal . '">
             <input name="item_name" type="hidden" value="' . $this->sitename . ' - ' . $this->itemname . '">
             <input name="no_note" type="hidden" value="1">
             <input name="page_style" type="hidden" value="PayPal">
@@ -142,19 +145,21 @@ class PaypalCheckout extends PaymentGateway
         if (strcmp($res, "VERIFIED") == 0) {
             echo "VERIFIED";
 
-            $payment_status = $_POST['payment_status'];
-            $amount = $_POST['mc_gross'];
-            $payment_currency = $_POST['mc_currency'];
-            $txn_id = $_POST['txn_id'];
-            $receiver_email = $_POST['receiver_email'];
-            $paypal = $_POST['payer_email'];
-            $quantity = $_POST['quantity'];
-            $pendingId = $_POST['option_selection1'];
-            $item_name = $_POST['item_name'];
+            $payment_status = $this->postdata['payment_status'];
+            $amount = $this->postdata['mc_gross'];
+            $payment_currency = $this->postdata['mc_currency'];
+            $txn_id = $this->postdata['txn_id'];
+            $receiver_email = $this->postdata['receiver_email'];
+            $paypal = $this->postdata['payer_email'];
+            $quantity = $this->postdata['quantity'];
+            $pendingId = $this->postdata['option_selection1'];
+            $item_name = $this->postdata['item_name'];
 
             if ($payment_status === "Completed") {
 
                 // Get buyer info from pendingpurchases table with pendingId returned by Paypal:
+
+                // Check if buyer is an existing user (need to know if it is a new signup or an existing member upgrading)
                 
                 // User purchased pro or gold paid membership.
                 if ($item_name === 'Pro Membership') {

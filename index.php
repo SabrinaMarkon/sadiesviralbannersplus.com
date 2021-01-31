@@ -198,7 +198,7 @@ if (isset($_GET['page']) && ($_GET['page'] === 'click')) {
 }
 
 # if we are receiving an ipn notification from a payment processor (we don't want header.php).
-if (isset($_GET['page']) && ($_GET['page'] === 'ipn')) {
+if (isset($_POST['page']) && ($_POST['page'] === 'ipn')) {
 
 	include "ipn.php";
 	exit;	

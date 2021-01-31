@@ -30,12 +30,22 @@ if (!empty($level)) {
 		"adminemail" => $adminemail,
 		"sitename" => $sitename,
 		"domain" => $domain,
+		"adminpaypal" => $adminpaypal,
+		"admincoinpayments" => $admincoinpayments,
 		"username" => "",
 		"referid" => $_SESSION['referid']
 	);
 	$user = new User();
-	$paypal = new PaypalCheckout($paymentdata, $user);
-	$paymentbuttons = $paypal->getPayButton();
+	$paymentbuttons = "";
+	if (!empty($adminpaypal)) {
+		$paypal = new PaypalCheckout($paymentdata, $user);
+		$paymentbuttons .= $paypal->getPayButton();
+	}
+	if (!empty($admincoinpayments)) {
+		$coinpayments = new CoinPaymentsCheckout($paymentdata, $user);
+		$paymentbuttons .= $coinpayments->getPayButton();
+	}
+
 } else {
 	$level = "";
 }

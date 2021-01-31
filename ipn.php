@@ -14,30 +14,30 @@ PHP 7.4+
 //     exit;
 // }
 
-# get the end part of the url, which is normally the referid for the main site files, but will be actually the name of the payment company for this file only.
+# get the end part of the url, which is normally the referid for the main site files (set in index.php), 
+# but will be actually the name of the payment company for this file only.
 $paidwith = $_SESSION['referid'];
 
 $paymentcompanies = ["paypal", "coinpayments"];
 
 if (in_array($paidwith, $paymentcompanies)) {
-    unset($_SESSION['referid']); // We don't need to remember this now that we know paidwith.
-
-    require_once "classes/User.php"; // TODO: We need to check for duplicate usernames/emails.
-    require_once "classes/FormValidation.php"; // Check that username isn't duplicate if this is a new signup. Don't do for upgrades.
-    $user = new User();
-    $validator = new FormValidation();
     
-    echo $paidwith;
+    unset($_SESSION['referid']); // We don't need to remember this anymore now that we know the value of paidwith.
+
+    $user = new User();
 
     if ($paidwith === "paypal") {
-        require_once "classes/PaypalCheckout.php"; // Paypal.
-        $pay = new PaypalCheckout($paymentdata, $user);
+        require_once "classes/PaypalCheckout.php";
+        // Note below that the paymentdata array (first parameter) isn't needed for ipn (it is only for storing the data in pendingpurchases to retrieve.)
+        $pay = new PaypalCheckout([], $user, $_POST); 
         $ipn = $pay->getIPN();
     }
 
     elseif ($paidwith === "coinpayments") {
-        require_once "classes/CoinPaymentsCheckout.php"; // Paypal.
-        $pay = new CoinPaymentsCheckout($paymentdata, $user);
+        require_once "config/CoinPaymentsAPI.php";
+        require_once "classes/CoinPaymentsCheckout.php";
+        $api = new CoinPaymentsAPI();
+        $pay = new CoinPaymentsCheckout([], $user, $_POST, $api); 
         $ipn = $pay->getIPN();
     }
 
