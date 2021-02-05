@@ -30,7 +30,7 @@ if (in_array($paidwith, $paymentcompanies)) {
         require_once "classes/PaypalCheckout.php";
         // Note below that the paymentdata array (first parameter) isn't needed for ipn (it is only for storing the data in pendingpurchases to retrieve.)
         $pay = new PaypalCheckout([], $user, $_POST); 
-        $ipn = $pay->getIPN();
+        $pay->getIPN();
     }
 
     elseif ($paidwith === "coinpayments") {
@@ -38,7 +38,7 @@ if (in_array($paidwith, $paymentcompanies)) {
         require_once "classes/CoinPaymentsCheckout.php";
         $api = new CoinPaymentsAPI();
         $pay = new CoinPaymentsCheckout([], $user, $_POST, $api); 
-        $ipn = $pay->getIPN();
+        $pay->getIPN();
     }
 
     else {

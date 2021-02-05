@@ -21,7 +21,8 @@ class PaypalCheckout extends PaymentGateway
         $postdata,
         $paybutton,
         $payperiod,
-        $payintervalcode;
+        $payintervalcode,
+        $formfields;
 
     public function __construct(array $paymentdata = [], User $user, array $postdata = [])
     {
@@ -95,7 +96,7 @@ class PaypalCheckout extends PaymentGateway
 
     protected function _ipn()
     {
-        
+
         // STEP 1: Read POST data:
 
         $raw_post_data = file_get_contents('php://input');
@@ -157,10 +158,38 @@ class PaypalCheckout extends PaymentGateway
 
             if ($payment_status === "Completed") {
 
-                // Get buyer info from pendingpurchases table with pendingId returned by Paypal:
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+                // Get buyer info from pendingpurchases table with pendingId returned by Paypal:
+                $sql = "select * from pendingpurchases where id=?";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($pendingId));
+                $q->setFetchMode(PDO::FETCH_ASSOC);
+                $data = $q->fetch();
+                if (!empty($data)) {
+                    
+                    $formfields = $data['formfields'];
+                    $formfields = json_decode($formfields);
+                    
+                    $username = $formfields['username'];
+                    $password = $formfields['password'];
+                    $confirm_password = $formfields['confirm_password'];
+                    $firstname = $formfields['firstname'];
+                    $lastname = $formfields['lastname'];
+                    $email = $formfields['email'];
+                    $paypal = $formfields['paypal'];
+                    $country = $formfields['country'];
+                    $signupip = $formfields['REMOTE_ADDR'];
+                    $referid = $formfields['referid'];
+
+                } else {
+                    // ID not found?
+
+                    exit;
+                }
                 // Check if buyer is an existing user (need to know if it is a new signup or an existing member upgrading)
-                
+
                 // User purchased pro or gold paid membership.
                 if ($item_name === 'Pro Membership') {
 
@@ -182,6 +211,8 @@ class PaypalCheckout extends PaymentGateway
                 // User purchased network banner.
                 if ($item_name === 'Network Banner') {
                 }
+
+                Database::disconnect();
             } else {
                 // Status is NOT completed. Cancellation of subscription?
             }
