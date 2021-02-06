@@ -31,11 +31,16 @@ class User
 	protected $gravatarimagelg;
 	protected $usernameoremail;
 
-	public function __construct(Email $sendsiteemail) {
+	public function __construct(Email $sendsiteemail)
+	{
 		$this->sendsiteemail = $sendsiteemail;
 	}
 
-	public function newSignup(array $settings, array $post, string $accounttype, Commission $commission)
+	/**
+	 * @param settings[] $settings An array of admin settings.
+	 * @param post[] $post An array of values originally posted from the registration form.
+	 */
+	public function newSignup(array $settings, array $post, string $accounttype, Commission $commission): string|null
 	{
 
 		$username = $post['username'];
@@ -67,7 +72,7 @@ class User
 			if ($accounttype === "Free") {
 				return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
 			}
-			return;
+
 		} else {
 			$verificationcode = time() . mt_rand(10, 100);
 
@@ -100,7 +105,7 @@ class User
 				return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Success! Thanks for Joining!</strong>
 				<p>Please click the link in the email we sent to you to verify your email address.</p></div>";
 			}
-		
+
 			$username = null;
 			$password = null;
 			$accounttype = null;
@@ -111,11 +116,13 @@ class User
 			$referid = null;
 			$signupip = null;
 
-			return;
 		}
 	}
 
-	public function upgradeUser(array $settings, string $username, string $referid, string $accounttype, Commission $commission)
+	/**
+	 * @param settings[] $settings An array of admin settings.
+	 */
+	public function upgradeUser(array $settings, string $username, string $referid, string $accounttype, Commission $commission): void
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -128,15 +135,14 @@ class User
 			$commission->addNewReferralCommission($referid, $accounttype);
 		}
 
-			// send email to admin:
-			$subject = "A member has upgraded to " . $accounttype . " at " . $settings['sitename'] . "!";
-			$message = "Username: " . $username . "\n";
-			$message .= "Membership Level: " . $accounttype . "\n\n";
-			$this->sendsiteemail->sendEmail($settings['adminemail'], $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
-
+		// send email to admin:
+		$subject = "A member has upgraded to " . $accounttype . " at " . $settings['sitename'] . "!";
+		$message = "Username: " . $username . "\n";
+		$message .= "Membership Level: " . $accounttype . "\n\n";
+		$this->sendsiteemail->sendEmail($settings['adminemail'], $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 	}
 
-	public function userLogin(string $username, string $password)
+	public function userLogin(string $username, string $password): string|bool
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -160,7 +166,7 @@ class User
 		Database::disconnect();
 	}
 
-	public function verifyUser(string $verificationcode)
+	public function verifyUser(string $verificationcode): string
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -180,7 +186,10 @@ class User
 		}
 	}
 
-	public function resendVerify(string $username, string $password, string $email, array $settings)
+	/**
+	 * @param settings[] $settings An array of admin settings.
+	 */
+	public function resendVerify(string $username, string $password, string $email, array $settings): string
 	{
 
 		$verificationcode = time() . mt_rand(10, 100);
@@ -201,7 +210,10 @@ class User
 		return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your verification email was resent!</strong></div>";
 	}
 
-	public function forgotLogin(string $sitename, string $domain, string $adminemail, array $post)
+	/**
+	 * @param post[] $post An array of values originally posted from the forgot login form.
+	 */
+	public function forgotLogin(string $sitename, string $domain, string $adminemail, array $post): string
 	{
 
 		$usernameoremail = $post['usernameoremail'];
@@ -229,7 +241,7 @@ class User
 		}
 	}
 
-	public function getGravatar(string $username, string $email)
+	public function getGravatar(string $username, string $email): string
 	{
 
 		$emailhash = trim($email);
@@ -238,7 +250,11 @@ class User
 		return $gravatarimagelg;
 	}
 
-	public function saveProfile(string $username, array $settings, array $post)
+	/**
+	 * @param settings[] $settings An array of admin settings.
+	 * @param post[] $post An array of values originally posted from the profile form.
+	 */
+	public function saveProfile(string $username, array $settings, array $post): string
 	{
 
 		$password = $post['password'];
@@ -284,14 +300,14 @@ class User
 		return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Account Details Were Saved!</strong><p>If you changed your email address, you will need to re-verify your account.</p></div>";
 	}
 
-	public function userLogout()
+	public function userLogout(): void
 	{
 
 		session_unset();
 		return;
 	}
 
-	public function deleteUser(string $username)
+	public function deleteUser(string $username): string
 	{
 
 		$pdo = Database::connect();
