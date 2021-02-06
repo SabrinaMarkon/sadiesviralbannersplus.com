@@ -6,7 +6,6 @@ PHP 5.4+
 @copyright 2018 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
 **/
-// if (count(get_included_files()) === 1) { exit('Direct Access is not Permitted'); }
 # Prevent direct access to this file. Show browser's default 404 error instead.
 // Commented out for CRON:
 // if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
@@ -39,7 +38,7 @@ class SendEmails
     private $headers;
     private $pdo;
 
-    public function getMails($domain, $sitename, $adminemail, $adminname)
+    public function getMails(string $domain, string $sitename, string $adminemail, string $adminname)
     {
         // get all mails that are marked as pending mailout.
         $pdo = Database::connect();

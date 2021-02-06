@@ -1,15 +1,15 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-if (!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
     session_start();
 }
 require_once "../config/Database.php";
 require_once "../config/Settings.php";
 require_once "../config/Layout.php";
 
-function autoloader($class) {
+function autoloader($class)
+{
     require '../classes/' . $class . ".php";
 }
 spl_autoload_register("autoloader");
@@ -48,7 +48,7 @@ if (isset($_POST['login'])) {
     $_SESSION['adminpassword'] = $_REQUEST['adminpass'];
 
     $logincheck = new Admin($_POST);
-    $newlogin = $logincheck->adminLogin($_SESSION['adminusername'],$_SESSION['adminpassword']);
+    $newlogin = $logincheck->adminLogin($_SESSION['adminusername'], $_SESSION['adminpassword']);
 
     if ($newlogin === false) {
 
@@ -77,9 +77,9 @@ if (isset($_POST['login'])) {
         $update = new AdminNote();
         $show = $update->setAdminNote($_POST['htmlcode']);
     }
-    
+
     if (isset($_POST['savesettings'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
@@ -88,19 +88,19 @@ if (isset($_POST['login'])) {
 
             # admin clicked the button to save main settings.
             $update = new Setting();
-            $show = $update->saveSettings($_SESSION['adminusername'], $_SESSION['adminpassword']);   
+            $show = $update->saveSettings($_SESSION['adminusername'], $_SESSION['adminpassword']);
         }
     }
-    
+
     if (isset($_POST['editmail'])) {
-    
+
         # admin clicked to edit a saved email.
         $editmail = new Mail();
         $showeditmail = $editmail->editMail($id);
     }
-    
+
     if (isset($_POST['addmail'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
@@ -112,9 +112,9 @@ if (isset($_POST['login'])) {
             $show = $update->addMail();
         }
     }
-    
+
     if (isset($_POST['savemail'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
@@ -126,23 +126,23 @@ if (isset($_POST['login'])) {
             $show = $update->saveMail($id);
         }
     }
-    
+
     if (isset($_POST['sendverifications'])) {
-    
+
         # admin resent verification emails to all unverified members.
         $verify = new Mail();
         $show = $verify->sendVerifications($settings);
     }
-    
+
     if (isset($_POST['deletemail'])) {
-    
+
         # admin deleted an email.
         $delete = new Mail();
         $show = $delete->deleteMail($id);
     }
-    
+
     if (isset($_POST['sendmail'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
@@ -154,71 +154,71 @@ if (isset($_POST['login'])) {
             $show = $send->sendMail($id);
         }
     }
-    
+
     if (isset($_POST['editpage'])) {
-    
+
         # admin selected an existing page to edit.
         $editpage = new Page();
         $showeditpage = $editpage->editPage($id);
     }
-    
+
     if (isset($_POST['addpage'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin added a new page.
             $update = new Page();
             $show = $update->addPage($domain);
         }
     }
-    
+
     if (isset($_POST['savepage'])) {
-        
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin saved a page they were editing.
             $update = new Page();
             $show = $update->savePage($id);
         }
     }
-    
+
     if (isset($_POST['deletepage'])) {
-    
+
         # admin deleted a page.
         $delete = new Page();
         $show = $delete->deletePage($id);
     }
-    
+
     if (isset($_POST['adminaddmember'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin added a new member.
             $add = new Member();
             $show = $add->addMember($settings);
         }
     }
-    
+
     if (isset($_POST['adminsavemember'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin saved a member they edited.
             $update = new Member();
             $show = $update->saveMember($id);
@@ -226,13 +226,13 @@ if (isset($_POST['login'])) {
     }
 
     if (isset($_POST['admindeletemember'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin deleted a member and their ads and positions.
             $delete = new Member();
             $show = $delete->deleteMember($id);
@@ -240,35 +240,35 @@ if (isset($_POST['login'])) {
     }
 
     if (isset($_POST['addtransaction'])) {
-     
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin added a new transaction (invoice).
             $create = new Money();
             $show = $create->addTransaction();
         }
     }
-  
+
     if (isset($_POST['savetransaction'])) {
-    
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin saved a transaction they were editing.
             $update = new Money();
             $show = $update->saveTransaction($id);
         }
     }
-    
+
     if (isset($_POST['deletetransaction'])) {
-    
+
         # admin deleted a transaction.
         $delete = new Money();
         $show = $delete->deleteTransaction($id);
@@ -281,29 +281,29 @@ if (isset($_POST['login'])) {
 
             $show = $errors;
         } else {
-        
+
             # admin added a new promotional ad.
             $add = new Promotional();
             $show = $add->addPromotional($_POST);
-        }     
+        }
     }
-    
+
     if (isset($_POST['savepromotional'])) {
-   
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
             $show = $errors;
         } else {
-        
+
             # admin saved a promotional ad they edited.
             $update = new Promotional();
-            $show = $update->savePromotional($id,$_POST);
-        } 
+            $show = $update->savePromotional($id, $_POST);
+        }
     }
-    
+
     if (isset($_POST['deletepromotional'])) {
-    
+
         # admin deleted a promotional ad
         $delete = new Promotional();
         $show = $delete->deletePromotional($id);
@@ -313,42 +313,43 @@ if (isset($_POST['login'])) {
 
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
-    
+
             $showad = $errors;
         } else {
-    
+
             # user submitted a new ad.
-            $adtable = $_POST['adtable']; 
+            $adtable = $_POST['adtable'];
             $create = new Ad($adtable);
-            $showad = $create->createAd($id,$adminautoapprove,1,$_POST);
+            $showad = $create->createAd($id, $adminautoapprove, 1, $_POST);
         }
     }
-    
+
     if (isset($_POST['savead'])) {
-       
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
-    
+
             $showad = $errors;
         } else {
 
             # user saved changes made to their ad.
-            $adtable = $_POST['adtable']; 
+            $adtable = $_POST['adtable'];
             $save = new Ad($adtable);
-            $showad = $save->saveAd($id,$adminautoapprove,1,$_POST);
+            $showad = $save->saveAd($id, $adminautoapprove, 1, $_POST);
         }
     }
-    
+
     if (isset($_POST['deletead'])) {
-        $adtable = $_POST['adtable'];  
+        $adtable = $_POST['adtable'];
         $delete = new Ad($adtable);
-        $showad = $delete->deleteAd($id,$_POST['name']);
+        $showad = $delete->deleteAd($id, $_POST['name']);
     }
 
-    if ((empty($_REQUEST['page'])) or 
-    ((!empty($_REQUEST['page']) and ($_REQUEST['page'] === 'index' or $_REQUEST['page'] === 'logout' or $_REQUEST['page'] === 'forgot' or $_REQUEST['page'] === 'control'))) or 
-    ((!empty($_GET['page'])) and ((!file_exists($_GET['page'] . ".php"))))) {
-    
+    if ((empty($_REQUEST['page'])) or
+        ((!empty($_REQUEST['page']) and ($_REQUEST['page'] === 'index' or $_REQUEST['page'] === 'logout' or $_REQUEST['page'] === 'forgot' or $_REQUEST['page'] === 'control'))) or
+        ((!empty($_GET['page'])) and ((!file_exists($_GET['page'] . ".php"))))
+    ) {
+
         # 1 - the URL is simply /admin without a /page on the end, so just go to the login form.
         # 2 - OR the URL has a page like /admin/page, but that page is /admin/index (this file).
         # 3 - OR the URL has a page like /admin/page, but that page is /admin/logout.
@@ -357,30 +358,27 @@ if (isset($_POST['login'])) {
         # 6 - OR the session control.php file was requested.
         ### going to admin/index (this file) or /admin/logout or /admin/forgot or /admin/adfadsfadslkjal or /admin/control is the same as going to admin/ and killing the login session.
         $logout = new Admin();
-        $logout->adminLogout();  
+        $logout->adminLogout();
         $showcontent = new AdminLoginForm();
-    
+
         $Layout->showHeader($metatitle, $metadescription);
-        
+
         # admin clicked the forgotten password link.
         if ((!empty($_REQUEST['page']) and $_REQUEST['page'] === 'forgot')) {
-    
+
             # we need to email the forgotten login details, and say so before we show the login form.
-            echo $logout->forgotLogin($sitename,$domain,$adminemail,$adminuser,$adminpass);
+            echo $logout->forgotLogin($sitename, $domain, $adminemail, $adminuser, $adminpass);
         }
 
         echo $showcontent->showLoginForm(0);
-    
     } elseif ((!empty($_GET['page'])) and ((file_exists($_GET['page'] . ".php")))) {
-    
+
         # there is a page.php that exists, and is not /admin/index (this file) or /admin/logout or /admin/forgot or some non-existent file. 
         $Layout->showHeader($metatitle, $metadescription);
         $page = $_REQUEST['page'];
         include $page . ".php";
-    }
-    
-    else {
-        
+    } else {
+
         # show the main admin area page because everything was ok to login, but no specific admin page was specified in the request.
         $Layout->showHeader($metatitle, $metadescription);
         include "main.php";
@@ -388,7 +386,6 @@ if (isset($_POST['login'])) {
 
     # show the admin footer design.
     $Layout->showFooter();
-
 }
 
 
