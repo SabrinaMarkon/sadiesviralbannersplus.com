@@ -89,8 +89,12 @@ class User
 			$message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
 			$this->sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 
-			// TODO: EMAIL ADMIN!!!!
-			// TODO: ONLY SHOW ALERT MESSAGES if FREE MEMBER (email for paid members since they only see the thank you page)
+			// send email to admin:
+			$subject = "A new " . $accounttype . " member has joined " . $settings['sitename'] . "!";
+			$message = "Username: " . $username . "\n";
+			$message .= "Email: " . $email . "\n";
+			$message .= "Membership Level: " . $accounttype . "\n\n";
+			$this->sendsiteemail->sendEmail($settings['adminemail'], $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 
 			if ($accounttype === "Free") {
 				return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Success! Thanks for Joining!</strong>
@@ -124,8 +128,11 @@ class User
 			$commission->addNewReferralCommission($referid, $accounttype);
 		}
 
-		// TODO: EMAIL ADMIN!!!!
-
+			// send email to admin:
+			$subject = "A member has upgraded to " . $accounttype . " at " . $settings['sitename'] . "!";
+			$message = "Username: " . $username . "\n";
+			$message .= "Membership Level: " . $accounttype . "\n\n";
+			$this->sendsiteemail->sendEmail($settings['adminemail'], $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 
 	}
 
