@@ -20,7 +20,7 @@ if (!empty($formfields)) {
     echo $response;
 }
 
-function validateFormFields($formfields) {
+function validateFormFields(string $formfields) {
     // Validate form fields:
         $formvalidation = new FormValidation(json_decode($formfields, true));
         $errors = $formvalidation->validateAll(json_decode($formfields, true));
@@ -41,7 +41,7 @@ function validateFormFields($formfields) {
         }
 }
 
-function addToDatabase($formfields) {
+function addToDatabase(string $formfields) {
     
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
