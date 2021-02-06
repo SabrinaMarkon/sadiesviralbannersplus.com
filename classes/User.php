@@ -31,6 +31,10 @@ class User
 	protected $gravatarimagelg;
 	protected $usernameoremail;
 
+	public function __construct(Email $sendsiteemail) {
+		$this->sendsiteemail = $sendsiteemail;
+	}
+
 	public function newSignup(array $settings, array $post, string $accounttype, Commission $commission)
 	{
 
@@ -80,9 +84,7 @@ class User
 			$message = "Click to Verify your Email: " . $settings['domain'] . "/verify/" . $verificationcode . "\n\n";
 			$message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
 			$message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
-
-			$sendsiteemail = new Email();
-			$sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
+			$this->sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 
 			// TODO: EMAIL ADMIN!!!!
 			// TODO: ONLY SHOW ALERT MESSAGES if FREE MEMBER (email for paid members since they only see the thank you page)
@@ -180,8 +182,7 @@ class User
 		$message = "Click to Verify your Email: " . $settings['domain'] . "/verify/" . $verificationcode . "\n\n";
 		$message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
 		$message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
-		$sendsiteemail = new Email();
-		$send = $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
+		$this->sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 
 		return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your verification email was resent!</strong></div>";
 	}
@@ -204,9 +205,7 @@ class User
 			$password = $data['password'];
 			$subject = "Your " . $sitename . " Login Details";
 			$message = "Login URL: " . $domain . "\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
-
-			$sendsiteemail = new Email();
-			$send = $sendsiteemail->sendEmail($email, $adminemail, $subject, $message, $sitename, $adminemail, '');
+			$this->sendsiteemail->sendEmail($email, $adminemail, $subject, $message, $sitename, $adminemail, '');
 
 			Database::disconnect();
 			return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your login details were sent to your email address.</strong></div>";
@@ -255,8 +254,7 @@ class User
 			$message = "Click to Verify your Email: " . $settings['domain'] . "/verify/" . $verificationcode . "\n\n";
 			$message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
 			$message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
-			$sendsiteemail = new Email();
-			$send = $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
+			$this->sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 		}
 
 		Database::disconnect();
