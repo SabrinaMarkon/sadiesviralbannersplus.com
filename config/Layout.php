@@ -14,7 +14,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 class Layout
 {
-	function showHeader($metatitle, $metadescription) {
+	function showHeader(string $metatitle, string $metadescription) {
 		include "header.php";
 	}
 	function showFooter() {
