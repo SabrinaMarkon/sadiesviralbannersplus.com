@@ -2,49 +2,54 @@
 const userForm = document.getElementById("userform");
 const paypalButtonForm = document.getElementById("paypalbuttonform");
 const paypalButton = document.getElementById("paypalbutton");
+const coinpaymentsButtonForm = document.getElementById("coinpaymentsbuttonform");
+const coinpaymentsButton = document.getElementById("coinpaymentsbutton");
 
 // Listen for submission of payment button forms.
-// The only values that are == null are null and undefined:
-if (paypalButtonForm != null && paypalbutton != null) {
-  paypalbutton.addEventListener("click", (event) => {
-    document.getElementById("errormsg").innerHTML = "";
-    document.getElementById("errormsg").style.display = "hidden";
-    let formattedFormFields = "";
+// The only values that are == null are null and undefined (!=)
+if (paypalButtonForm != null && paypalButton != null) {
+  paypalButton.addEventListener("click", formFieldsToJSON);
+}
+if (coinpaymentsButtonForm != null && coinpaymentsButton != null) {
+  coinpaymentsButton.addEventListener("click", formFieldsToJSON);
+}
 
-    // Possible form fields:
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    let confirm_password = document.getElementById("confirm_password").value;
-    let firstname = document.getElementById("firstname").value;
-    let lastname = document.getElementById("lastname").value;
-    let email = document.getElementById("email").value;
-    let paypal = document.getElementById("paypal").value;
-    let country = document.getElementById("country").value;
-    let signupip = document.getElementById("signupip").value;
-    let referid = document.getElementById("referid").value;
-    if (referid === "") {
-      referid = "admin";
-    }
+function formFieldsToJSON() {
+  document.getElementById("errormsg").innerHTML = "";
+  document.getElementById("errormsg").style.display = "hidden";
+  let formattedFormFields = "";
 
-    // Validate form fields.
+  // Possible form fields:
+  let username = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
+  let confirm_password = document.getElementById("confirm_password").value;
+  let firstname = document.getElementById("firstname").value;
+  let lastname = document.getElementById("lastname").value;
+  let email = document.getElementById("email").value;
+  let paypal = document.getElementById("paypal").value;
+  let country = document.getElementById("country").value;
+  let signupip = document.getElementById("signupip").value;
+  let referid = document.getElementById("referid").value;
+  if (referid === "") {
+    referid = "admin";
+  }
 
-    // Build the JSON object out of the form fields that are NOT null (exist on the page):
-    let formFields = {
-      username,
-      password,
-      confirm_password,
-      firstname,
-      lastname,
-      email,
-      paypal,
-      country,
-      signupip,
-      referid,
-    };
-    formattedFormFields = JSON.stringify(formFields);
-    // console.log(formattedFormFields);
-    handlePayForm(formattedFormFields);
-  });
+  // Build the JSON object out of the form fields that are NOT null (exist on the page):
+  let formFields = {
+    username,
+    password,
+    confirm_password,
+    firstname,
+    lastname,
+    email,
+    paypal,
+    country,
+    signupip,
+    referid,
+  };
+  formattedFormFields = JSON.stringify(formFields);
+  // console.log(formattedFormFields);
+  handlePayForm(formattedFormFields);
 }
 
 async function handlePayForm(formattedFormFields) {
