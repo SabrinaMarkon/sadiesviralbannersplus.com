@@ -21,7 +21,7 @@ class Contact
 	private $message;
 	private $headers;
 
-	public function sendContact($settings) {
+	public function sendContact(array $settings) {
 
 	$username = $_POST['username'];
 	$email = $_POST['email'];

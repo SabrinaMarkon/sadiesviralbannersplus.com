@@ -16,7 +16,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 class Setting
 {
 
-    public function saveSettings($adminuser, $adminpass) {
+    public function saveSettings(string $adminuser, string $adminpass) {
 
         $newadminuser = $_POST['adminuser'];
         $newadminpass = $_POST['adminpass'];

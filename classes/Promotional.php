@@ -1,11 +1,12 @@
 <?php
+
 /**
 Handles admin promotional banners and emails for the site.
 PHP 7.4+
 @author Sabrina Markon
 @copyright 2018 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
-**/
+ **/
 // if (count(get_included_files()) === 1) { exit('Direct Access is not Permitted'); }
 # Prevent direct access to this file. Show browser's default 404 error instead.
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
@@ -13,15 +14,17 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-class Promotional {
+class Promotional
+{
 
     public $pdo;
 
-    public function getAllPromotionals() {
+    public function getAllPromotionals()
+    {
 
         # create db connection.
         $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "select * from promotional order by type,id";
         $q = $pdo->prepare($sql);
         $q->execute();
@@ -33,11 +36,12 @@ class Promotional {
         return $promotionals;
     }
 
-    public function editPromotional($id) {
+    public function editPromotional(int $id)
+    {
 
         # create db connection.
         $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "select * from promotional where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$id]);
@@ -46,17 +50,17 @@ class Promotional {
         Database::disconnect();
 
         if ($promotional) {
-            
+
             return $promotional;
         }
-
     }
 
-    public function addPromotional($post) {
+    public function addPromotional(array $post)
+    {
 
         $name = $post['name'];
         $type = $post['type'];
-        
+
         if (isset($post['promotionalimage'])) {
 
             $promotionalimage = $post['promotionalimage'];
@@ -64,8 +68,8 @@ class Promotional {
             $promotionalimage = '';
         }
         if (isset($post['promotionalsubject'])) {
-           
-            $promotionalsubject = $post['promotionalsubject'];  
+
+            $promotionalsubject = $post['promotionalsubject'];
         } else {
 
             $promotionalsubject = '';
@@ -80,10 +84,10 @@ class Promotional {
 
         # create db connection.
         $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "insert into promotional (name,type,promotionalimage,promotionalsubject,promotionaladbody) values (?,?,?,?,?)";
         $q = $pdo->prepare($sql);
-        $q->execute([$name,$type,$promotionalimage,$promotionalsubject,$promotionaladbody]);
+        $q->execute([$name, $type, $promotionalimage, $promotionalsubject, $promotionaladbody]);
 
         Database::disconnect();
 
@@ -96,10 +100,10 @@ class Promotional {
         }
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Promotional " . $prettytype . " was Added!</strong></div>";
-
     }
 
-    public function savePromotional($id,$post) {
+    public function savePromotional(int $id, array $post)
+    {
 
         $name = $post['name'];
 
@@ -113,8 +117,8 @@ class Promotional {
             $promotionalimage = '';
         }
         if (isset($post['promotionalsubject'])) {
-           
-            $promotionalsubject = $post['promotionalsubject'];  
+
+            $promotionalsubject = $post['promotionalsubject'];
         } else {
 
             $promotionalsubject = '';
@@ -129,21 +133,22 @@ class Promotional {
 
         # create db connection.
         $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "update promotional set name=?,promotionalimage=?,promotionalsubject=?,promotionaladbody=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute([$name,$promotionalimage,$promotionalsubject,$promotionaladbody,$id]);
+        $q->execute([$name, $promotionalimage, $promotionalsubject, $promotionaladbody, $id]);
 
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Promotional Ad ID#" . $id . " was Saved!</strong></div>";
     }
 
-    public function deletePromotional($id) {
+    public function deletePromotional(int $id)
+    {
 
         # create db connection.
         $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "delete from promotional where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$id]);
@@ -153,4 +158,3 @@ class Promotional {
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Promotional Ad ID#" . $id . " Was Deleted</strong></div>";
     }
 }
-

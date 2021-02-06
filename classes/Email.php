@@ -21,7 +21,7 @@ class Email
 	private $toemail;
 	private $fromemail;
 
-	public function sendEmail($toemail, $fromemail, $subject, $message, $sitename, $adminemail, $htmlheader) {
+	public function sendEmail(string $toemail, string $fromemail, string $subject, string $message, string $sitename, string $adminemail, string $htmlheader) {
 		
 	$headers = "From: " . $sitename . "<" . $fromemail . ">\n";
 	$headers .= "Reply-To: <" . $adminemail . ">\n";

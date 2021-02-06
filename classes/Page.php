@@ -34,7 +34,7 @@ class Page
 
     }
 
-    public function editPage($id) {
+    public function editPage(int $id) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -50,7 +50,7 @@ class Page
         }
     }
 
-    public function addPage($domain) {
+    public function addPage(string $domain) {
 
         $name = $_POST['name'];
         $htmlcode = $_POST['htmlcode'];
@@ -66,7 +66,7 @@ class Page
 
     }
 
-    public function savePage($id) {
+    public function savePage(int $id) {
 
         $name = $_POST['name'];
         $htmlcode = $_POST['htmlcode'];
@@ -92,7 +92,7 @@ class Page
 
     }
 
-    public function deletePage($id) {
+    public function deletePage(int $id) {
 
         $name = $_POST['name'];
         $pdo = Database::connect();

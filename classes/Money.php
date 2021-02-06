@@ -39,7 +39,7 @@ class Money
     }
 
     /* Find out how much a user owes or is owed by others. */
-    public function getUserTransactions($username) {
+    public function getUserTransactions(string $username) {
 
         
         $pdo = DATABASE::connect();
@@ -80,7 +80,7 @@ class Money
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Transaction Created where " . $username . " owes " . $amount . "</strong></div>";
     }
 
-    public function saveTransaction($id) {
+    public function saveTransaction(int $id) {
 
         $username = $_POST['username'];
         $amount = $_POST['amount'];
@@ -103,7 +103,7 @@ class Money
     }        
 
 
-    public function deleteTransaction($id) {
+    public function deleteTransaction(int $id) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

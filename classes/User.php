@@ -122,7 +122,7 @@ class User
 
 	}
 
-	public function userLogin($username, $password)
+	public function userLogin(string $username, string $password)
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -146,7 +146,7 @@ class User
 		Database::disconnect();
 	}
 
-	public function verifyUser($verificationcode)
+	public function verifyUser(string $verificationcode)
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -166,7 +166,7 @@ class User
 		}
 	}
 
-	public function resendVerify($username, $password, $email, $settings)
+	public function resendVerify(string $username, string $password, string $email, array $settings)
 	{
 
 		$verificationcode = time() . mt_rand(10, 100);
@@ -187,7 +187,7 @@ class User
 		return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your verification email was resent!</strong></div>";
 	}
 
-	public function forgotLogin($sitename, $domain, $adminemail, $post)
+	public function forgotLogin(string $sitename, string $domain, string $adminemail, array $post)
 	{
 
 		$usernameoremail = $post['usernameoremail'];
@@ -215,7 +215,7 @@ class User
 		}
 	}
 
-	public function getGravatar($username, $email)
+	public function getGravatar(string $username, string $email)
 	{
 
 		$emailhash = trim($email);
@@ -224,7 +224,7 @@ class User
 		return $gravatarimagelg;
 	}
 
-	public function saveProfile($username, $settings, $post)
+	public function saveProfile(string $username, array $settings, array $post)
 	{
 
 		$password = $post['password'];
@@ -277,7 +277,7 @@ class User
 		return;
 	}
 
-	public function deleteUser($username)
+	public function deleteUser(string $username)
 	{
 
 		$pdo = Database::connect();

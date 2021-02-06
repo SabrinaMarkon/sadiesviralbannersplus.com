@@ -17,7 +17,7 @@ class ShortURL {
 
     private $pdo;
 
-    private function createURL($username) {
+    private function createURL(string $username) {
 
         # FIREBASE.
 

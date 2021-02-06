@@ -1,11 +1,12 @@
 <?php
+
 /**
 Handles user interactions with the application.
 PHP 7.4+
 @author Sabrina Markon
 @copyright 2018 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
-**/
+ **/
 // if (count(get_included_files()) === 1) { exit('Direct Access is not Permitted'); }
 # Prevent direct access to this file. Show browser's default 404 error instead.
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
@@ -13,19 +14,22 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-class Ad {
+class Ad
+{
 
     private $pdo;
 
-    public function __construct($adtable) {
+    public function __construct($adtable)
+    {
         $this->adtable = $adtable;
     }
 
     /* Get all the ads for all members. */
-    public function getAllAds() {
+    public function getAllAds()
+    {
 
         $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "select * from " . $this->adtable . " order by approved asc, id desc";
         $q = $pdo->prepare($sql);
         $q->execute();
@@ -38,8 +42,9 @@ class Ad {
     }
 
     /* Get all the ads for one member. */
-    public function getAllUsersAds($username) {
-        
+    public function getAllUsersAds(string $username)
+    {
+
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "select * from " . $this->adtable . " where username=? and added=1 order by id desc";
@@ -49,7 +54,7 @@ class Ad {
         $ads = $q->fetchAll();
 
         Database::disconnect();
-        
+
         if ($ads) {
 
             return $ads;
@@ -57,8 +62,9 @@ class Ad {
     }
 
     /* Call this when we need to get the member a blank ad to create a new ad in the form. */
-    public function getBlankAd($username) {
-        
+    public function getBlankAd(string $username)
+    {
+
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "select * from " . $this->adtable . " where username=? and added=0 order by id limit 1";
@@ -71,11 +77,12 @@ class Ad {
         if ($blankad) {
 
             return $blankad;
-        }        
+        }
     }
 
     /* Call this when the user or admin submits their ad. */
-    public function createAd($id,$adminautoapprove,$isadmin,$post) {
+    public function createAd(int $id, int $adminautoapprove, int $isadmin, array $post)
+    {
 
         $name = $post['name'];
         $title = $post['title'];
@@ -85,7 +92,7 @@ class Ad {
 
         # TODO: generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
-        
+
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -94,23 +101,23 @@ class Ad {
 
             $sql = "insert into " . $this->adtable . " (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
-            $q->execute([$name,$title,$url,$shorturl,$description,$imageurl]);
-
+            $q->execute([$name, $title, $url, $shorturl, $description, $imageurl]);
         } else {
 
             $sql = "update " . $this->adtable . " set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
             $q = $pdo->prepare($sql);
-            $q->execute([$name,$title,$url,$description,$imageurl,$shorturl,$adminautoapprove,$id]);
+            $q->execute([$name, $title, $url, $description, $imageurl, $shorturl, $adminautoapprove, $id]);
         }
-        
+
         Database::disconnect();
-        
+
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
     }
 
     /* When a user has paid for an ad and we receive the IPN notification, we create a blank ad for that user. */
-    public function createBlankAd($username) {
-       
+    public function createBlankAd(string $username)
+    {
+
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "insert into " . $this->adtable . " (username,adddate) values (?,NOW())";
@@ -126,7 +133,8 @@ class Ad {
     }
 
     /* Call this when the user edits their existing ad. */
-    public function saveAd($id,$adminautoapprove,$isadmin,$post) {
+    public function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post)
+    {
 
         $name = $post['name'];
         $title = $post['title'];
@@ -138,7 +146,7 @@ class Ad {
         $shorturl = '';
 
         $pdo = DATABASE::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if ($isadmin) {
 
@@ -150,15 +158,16 @@ class Ad {
         }
         $sql = "update " . $this->adtable . " set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute([$name,$title,$url,$description,$imageurl,$shorturl,$autoapprove,$id]);
-        
-         Database::disconnect();
+        $q->execute([$name, $title, $url, $description, $imageurl, $shorturl, $autoapprove, $id]);
+
+        Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Ad " . $name . " was Saved!</strong></div>";
     }
 
     /* Call this to delete an ad. */
-    public function deleteAd($id, $name) {
+    public function deleteAd(int $id, string $name)
+    {
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -170,5 +179,4 @@ class Ad {
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Ad " . $name . " was Deleted</strong></div>";
     }
-
 }

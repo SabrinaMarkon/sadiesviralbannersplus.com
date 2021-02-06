@@ -18,7 +18,7 @@ class PageContent
 	public $content;
 	public $pagename;
 
-	public function showPage($pagename) {
+	public function showPage(string $pagename) {
 		
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

@@ -17,11 +17,11 @@ class Rotator {
 
     private $pdo;
 
-    public function __construct($adtable) {
+    public function __construct(string $adtable) {
         $this->adtable = $adtable;
     }
 
-    public function giveClick($id) {
+    public function giveClick(int $id) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -48,10 +48,10 @@ class Rotator {
 
     }
 
-    public function giveHit($id) {
+    public function giveHit(int $id) {
 
         $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $sql = "update " . $this->adtable . " set hits=hits+1 where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$id]);

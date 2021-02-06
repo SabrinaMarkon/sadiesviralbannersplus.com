@@ -19,7 +19,7 @@ class LoginForm
 	public $showloginerror;
 	public $content;
 
-	public function showLoginForm($loginerror) {
+	public function showLoginForm(string $loginerror) {
 
 		$showloginerror = "";
 		if ($loginerror == 1)

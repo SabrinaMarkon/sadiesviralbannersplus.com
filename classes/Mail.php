@@ -41,7 +41,7 @@ class Mail
         return $savedmailarray;
     }
 
-    public function editMail($id) {
+    public function editMail(int $id) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -58,7 +58,7 @@ class Mail
 
     }
 
-    public function saveMail($id) {
+    public function saveMail(int $id) {
 
         $subject = $_POST['subject'];
         $message = $_POST['message'];
@@ -90,7 +90,7 @@ class Mail
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Mail was Added!</strong></div>";
     }
 
-    public function sendMail($id) {
+    public function sendMail(int $id) {
 
         $subject = $_POST['subject'];
         $message = $_POST['message'];
@@ -112,7 +112,7 @@ class Mail
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Mail was Sent!</strong></div>";
     }
 
-    public function sendVerifications($settings) {
+    public function sendVerifications(array $settings) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -152,7 +152,7 @@ class Mail
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Verification Emails were Resent!</strong></div>";
     }
 
-    public function deleteMail($id) {
+    public function deleteMail(int $id) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

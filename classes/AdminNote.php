@@ -29,7 +29,7 @@ class AdminNote
 
     }
 
-    public function setAdminNote($htmlcode) {
+    public function setAdminNote(string $htmlcode) {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
