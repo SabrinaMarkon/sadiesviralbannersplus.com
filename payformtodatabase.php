@@ -11,7 +11,6 @@ PHP 7.4+
 
 require_once "config/Database.php";
 require_once "classes/FormValidation.php";
-require_once "classes/User.php"; // TODO: We need to check for duplicate usernames/emails.
 
 // php://input here is the formfields in JSON format.
 $formfields = file_get_contents('php://input');
