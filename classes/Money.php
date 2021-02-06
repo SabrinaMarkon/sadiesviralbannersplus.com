@@ -65,25 +65,27 @@ class Money
 
         $username = $_POST['username'];
         $amount = $_POST['amount'];
+        $item = $_POST['item'];
         $transaction = $_POST['transaction'];
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
         # create a transactions.
-        $sql = "insert into transactions (username,amount,transaction) values (?,?,?)";
+        $sql = "insert into transactions (username,amount,item,transaction) values (?,?,?,?)";
         $q = $pdo->prepare($sql);
-        $q->execute([$username,$amount,$transaction]);
+        $q->execute([$username,$amount,$item,$transaction]);
         
         DATABASE::disconnect();
 
-        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Transaction Created where " . $username . " owes " . $amount . "</strong></div>";
+        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Transaction Created: " . $username . " owes " . $amount . " for " . $item . "</strong></div>";
     }
 
     public function saveTransaction(int $id) {
 
         $username = $_POST['username'];
         $amount = $_POST['amount'];
+        $item = $_POST['item'];
         $datepaid = $_POST['datepaid'];
         if (($datepaid === '') or ($datepaid === 'Not Yet')) { 
             $datepaid = ''; 
@@ -92,9 +94,9 @@ class Money
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "update transactions set username=?, amount=?, datepaid=?, transaction=? where id=?";
+        $sql = "update transactions set username=?, amount=?, item=?, datepaid=?, transaction=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute(array($username, $amount, $datepaid, $transaction, $id));
+        $q->execute(array($username, $amount, $item, $datepaid, $transaction, $id));
 
         DATABASE::disconnect();
 

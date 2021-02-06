@@ -30,6 +30,9 @@ if (empty($transactions)) {
                 <label for="amount" class="ja-toppadding">Amount Owing:</label>
                 <input type="text" name="amount" value="" class="form-control input-lg" placeholder="Amount Owing" required>
 
+                <label for="item" class="ja-toppadding">Item Name:</label>
+                <input type="text" name="item" value="" class="form-control input-lg" placeholder="Item Name" required>
+
                 <label for="transaction" class="ja-toppadding">Transaction:</label>
                 <input type="text" name="transaction" value="" class="form-control input-lg" placeholder="Transaction" required>
 
@@ -50,6 +53,7 @@ if (empty($transactions)) {
                         <th class="text-center small">#</th>
                         <th class="text-center small">Payer</th>
                         <th class="text-center small">Amount</th>
+                        <th class="text-center small">Item</th>
                         <th class="text-center small">Date&nbsp;Paid</th>
                         <th class="text-center small">Transaction</th>
                         <th class="text-center small">Edit</th>
@@ -75,6 +79,10 @@ if (empty($transactions)) {
                             <td>
                                 <label class="sr-only" for="amount">Amount:</label>
                                 <input type="text" name="amount" value="<?php echo $transaction['amount']; ?>" class="form-control input-sm widetableinput" placeholder="Amount" required>
+                            </td>
+                            <td>
+                                <label class="sr-only" for="item">Item Name:</label>
+                                <input type="text" name="item" value="<?php echo $transaction['item']; ?>" class="form-control input-sm widetableinput" placeholder="Item Name" required>
                             </td>
                             <td>
                                 <label class="sr-only" for="datepaid">Date Paid:</label>
