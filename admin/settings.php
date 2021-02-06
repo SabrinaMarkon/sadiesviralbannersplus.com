@@ -57,8 +57,13 @@ foreach ($settings as $key => $value) {
                 <label for="metadescription" class="ja-toppadding">SEO: Meta Description:</label>
                 <input type="text" name="metadescription" value="<?php echo $metadescription ?>" class="form-control input-lg" placeholder="SEO meta description for search engines" maxlength="160" required>
 
+                <label for="freerefersproearn" class="ja-toppadding">Commission when Free members sponsor a Pro member:</label>
+                <input type="text" name="freerefersproearn" value="<?php echo $freerefersproearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Pro member" maxlength="8" required>
+                <label for="freerefersgoldearn" class="ja-toppadding">Commission when Free members sponsor a Gold member:</label>
+                <input type="text" name="freerefersgoldearn" value="<?php echo $freerefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Gold member" maxlength="8" required>
+
                 <label for="proprice" class="ja-toppadding">Price for Pro Membership:</label>
-                $&nbsp;<input type="text" name="proprice" value="<?php echo $proprice ?>" class="form-control input-lg" placeholder="Price for Pro Membership" maxlength="8" required>
+                <input type="text" name="proprice" value="<?php echo $proprice ?>" class="form-control input-lg" placeholder="Price for Pro Membership" maxlength="8" required>
 
                 <div>
                     <label for="propayinterval" class="ja-toppadding">Pay Interval for Pro Membership:</label>
@@ -75,8 +80,13 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
+                <label for="prorefersproearn" class="ja-toppadding">Commission when Pro members sponsor a Pro member:</label>
+                <input type="text" name="prorefersproearn" value="<?php echo $prorefersproearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Pro member" maxlength="8" required>
+                <label for="prorefersgoldearn" class="ja-toppadding">Commission when Pro members sponsor a Gold member:</label>
+                <input type="text" name="prorefersgoldearn" value="<?php echo $prorefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Gold member" maxlength="8" required>
+
                 <label for="goldprice" class="ja-toppadding">Price for Gold Membership:</label>
-                $&nbsp;<input type="text" name="goldprice" value="<?php echo $goldprice ?>" class="form-control input-lg" placeholder="Price for Gold Membership" maxlength="8" required>
+                <input type="text" name="goldprice" value="<?php echo $goldprice ?>" class="form-control input-lg" placeholder="Price for Gold Membership" maxlength="8" required>
 
                 <div>
                     <label for="goldpayinterval" class="ja-toppadding">Pay Interval for Gold Membership:</label>
@@ -93,6 +103,11 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
+                <label for="goldrefersproearn" class="ja-toppadding">Commission when Gold members sponsor a Pro member:</label>
+                <input type="text" name="goldrefersproearn" value="<?php echo $goldrefersproearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Pro member" maxlength="8" required>
+                <label for="goldrefersgoldearn" class="ja-toppadding">Commission when Gold members sponsor a Gold member:</label>
+                <input type="text" name="goldrefersgoldearn" value="<?php echo $goldrefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Gold member" maxlength="8" required>
+
                 <div>
                     <label for="adminautoapprove" class="ja-toppadding">Auto-approve Ads:</label>
                     <select name="adminautoapprove" class="form-control smallselect">
@@ -106,7 +121,7 @@ foreach ($settings as $key => $value) {
                 </div>
 
                 <label for="adclickstogetad" class="ja-toppadding">Click How Many Ads to get another Free Ad:</label>
-                $&nbsp;<input type="number" min="1" step="1" name="adclickstogetad" value="<?php echo $adclickstogetad ?>" class="form-control smallselect" required>
+                <input type="number" min="1" step="1" name="adclickstogetad" value="<?php echo $adclickstogetad ?>" class="form-control smallselect" required>
 
                 <div class="ja-bottompadding"></div>
 

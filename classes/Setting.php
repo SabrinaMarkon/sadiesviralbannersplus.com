@@ -34,6 +34,12 @@ class Setting
         $newpropayinterval = $_POST['propayinterval'];
         $newgoldprice = $_POST['goldprice'];
         $newgoldpayinterval = $_POST['goldpayinterval'];
+        $newfreerefersproearn = $_POST['freerefersproearn'];
+        $newfreerefersgoldearn = $_POST['freerefersgoldearn'];
+        $newprorefersproearn = $_POST['prorefersproearn'];
+        $newprorefersgoldearn = $_POST['prorefersgoldearn'];
+        $newgoldrefersproearn = $_POST['goldrefersproearn'];
+        $newgoldrefersgoldearn = $_POST['goldrefersgoldearn'];
 
         # if either username or password changed, update session.
         if (($adminuser !== $newadminuser) or ($adminpass !== $newadminpass)) {
@@ -45,11 +51,13 @@ class Setting
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // TODO: Form validation of admin areas!
+
         $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, adminpaypal=?, admincoinpayments=?, sitename=?, 
-        domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogetad=?, proprice=?, propayinterval=?, goldprice=?, goldpayinterval=?";
+        domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogetad=?, proprice=?, propayinterval=?, goldprice=?, goldpayinterval=?, freerefersproearn=?, freerefersgoldearn=?, prorefersproearn=?, prorefersgoldearn=?, goldrefersproearn=?, goldrefersgoldearn=?";
         $q = $pdo->prepare($sql);
         $q-> execute(array($newadminuser, $newadminpass, $newadminname, $newadminemail, $newadminpaypal, $newadmincoinpayments, $newsitename, 
-        $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogetad, $newproprice, $newpropayinterval, $newgoldprice, $newgoldpayinterval));
+        $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogetad, $newproprice, $newpropayinterval, $newgoldprice, $newgoldpayinterval, $newfreerefersproearn, $newfreerefersgoldearn, $newprorefersproearn, $newprorefersgoldearn, $newgoldrefersproearn, $newgoldrefersgoldearn));
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Site Settings Were Saved!</strong></div>";
