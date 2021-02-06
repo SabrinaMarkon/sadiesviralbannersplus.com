@@ -16,5 +16,6 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 abstract class PaymentGateway {
     abstract protected function _payButton();
-    abstract protected function _ipn();
+    abstract public function getIPN(Commission $commission);
+    abstract protected function _ipn(Commission $commission);
 }

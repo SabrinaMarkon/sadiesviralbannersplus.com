@@ -24,7 +24,7 @@ class CoinPaymentsCheckout extends PaymentGateway
         $payperiod,
         $payintervalcode;
 
-    public function __construct(array $paymentdata = [], User $user, array $postdata = [], CoinPaymentsAPI $api = null)
+    public function __construct(array $paymentdata = [], User $user, array $postdata = [], array $settings = [], CoinPaymentsAPI $api = null)
     {
         if ($api !== null) {
             $this->api = $api;
@@ -113,12 +113,13 @@ class CoinPaymentsCheckout extends PaymentGateway
         return $paybutton;
     }
 
-    public function getIPN()
+    public function getIPN(Commission $commission)
     {
-        return $this->_ipn();
+        return $this->_ipn($commission);
     }
 
-    protected function _ipn()
+
+    protected function _ipn(Commission $commission)
     {
         if (empty($this->api)) {
             exit;

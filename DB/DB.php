@@ -16,6 +16,8 @@ CREATE TABLE `adminsettings` (
 `freevisitsbeforesignup` integer unsigned not null default 8,
 `freetopbanners` integer unsigned not null default 3,
 `freebottombanners` integer unsigned not null default 0,
+`freerefersproearn` decimal(9,2) not null default 4.00,
+`freerefersgoldearn` decimal(9,2) not null default 6.00,
 
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
@@ -23,13 +25,17 @@ CREATE TABLE `adminsettings` (
 `provisitsbeforesignup` integer unsigned not null default 8,
 `protopbanners` integer unsigned not null default 3,
 `probottombanners` integer unsigned not null default 0,
+`prorefersproearn` decimal(9,2) not null default 6.00,
+`prorefersgoldearn` decimal(9,2) not null default 8.00,
 
 `goldprice` decimal(9, 2) not null default '9.99',
 `goldpayinterval` varchar(12) not null default 'monthly',
 
 `goldvisitsbeforesignup` integer unsigned not null default 8,
 `goldtopbanners` integer unsigned not null default 3,
-`goldbottombanners` integer unsigned not null default 0
+`goldbottombanners` integer unsigned not null default 0,
+`goldrefersproearn` decimal(9,2) not null default 8.00,
+`goldrefersgoldearn` decimal(9,2) not null default 10.00
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `adminnotes` (
@@ -99,7 +105,8 @@ verificationcode varchar(255) not null,
 verified varchar(255) not null,
 referid varchar(255) not null,
 lastlogin datetime not null,
-adclicks integer unsigned not null default '0'
+adclicks integer unsigned not null default '0',
+owed decimal(9,2) not null default 0.00
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pages` (

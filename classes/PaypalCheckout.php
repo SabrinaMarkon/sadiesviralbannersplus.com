@@ -22,11 +22,13 @@ class PaypalCheckout extends PaymentGateway
         $paybutton,
         $payperiod,
         $payintervalcode,
-        $formfields;
+        $formfields,
+        $isexistinguser;
 
-    public function __construct(array $paymentdata = [], User $user, array $postdata = [])
+    public function __construct(array $paymentdata = [], User $user, array $postdata = [], array $settings = [])
     {
         $this->user = $user;
+        $this->settings = $settings;
         $this->postdata = $postdata;
         $this->itemname = $paymentdata['itemname'];
         $this->price = $paymentdata['price'];
@@ -89,12 +91,12 @@ class PaypalCheckout extends PaymentGateway
         return $paybutton;
     }
 
-    public function getIPN()
+    public function getIPN(Commission $commission)
     {
-        return $this->_ipn();
+        return $this->_ipn($commission);
     }
 
-    protected function _ipn()
+    protected function _ipn(Commission $commission)
     {
 
         // STEP 1: Read POST data:
@@ -168,36 +170,35 @@ class PaypalCheckout extends PaymentGateway
                 $q->setFetchMode(PDO::FETCH_ASSOC);
                 $data = $q->fetch();
                 if (!empty($data)) {
-                    
+
                     $formfields = $data['formfields'];
                     $formfields = json_decode($formfields);
-                    
                     $username = $formfields['username'];
-                    $password = $formfields['password'];
-                    $confirm_password = $formfields['confirm_password'];
-                    $firstname = $formfields['firstname'];
-                    $lastname = $formfields['lastname'];
-                    $email = $formfields['email'];
-                    $paypal = $formfields['paypal'];
-                    $country = $formfields['country'];
-                    $signupip = $formfields['REMOTE_ADDR'];
                     $referid = $formfields['referid'];
-
                 } else {
-                    // ID not found?
-
+                    // Temporary purchase ID not found?
                     exit;
                 }
                 // Check if buyer is an existing user (need to know if it is a new signup or an existing member upgrading)
+                $sql = "select * from members where username=?";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($username));
+                $isexistinguser = $q->rowCount();
 
-                // User purchased pro or gold paid membership.
+                // User purchased pro or gold paid membership. Commission and transaction done in User class.
                 if ($item_name === 'Pro Membership') {
-
-                    // commission:
+                    if ($isexistinguser < 1) {
+                        $this->user->newSignup($this->settings, $formfields, 'Pro', $commission);
+                    } else {
+                        $this->user->upgradeUser($this->settings, $username, $referid, 'Pro', $commission);
+                    }
                 }
                 if ($item_name === 'Gold Membership') {
-
-                    // commission:
+                    if (empty($isexistinguser)) {
+                        $this->user->newSignup($this->settings, $formfields, 'Gold', $commission);
+                    } else {
+                        $this->user->upgradeUser($this->settings, $username, $referid, 'Gold', $commission);
+                    }
                 }
 
                 // User purchased text ad.

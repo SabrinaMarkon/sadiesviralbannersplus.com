@@ -26,20 +26,18 @@ if (in_array($paidwith, $paymentcompanies)) {
     unset($_SESSION['referid']); // We don't need to remember this anymore now that we know the value of paidwith.
 
     $user = new User();
+    $commission = new Commission();
 
     if ($paidwith === "paypal") {
-        require_once "classes/PaypalCheckout.php";
         // Note below that the paymentdata array (first parameter) isn't needed for ipn (it is only for storing the data in pendingpurchases to retrieve.)
         $pay = new PaypalCheckout([], $user, $_POST, $settings); 
-        $pay->getIPN();
+        $pay->getIPN($commission);
     }
 
     elseif ($paidwith === "coinpayments") {
-        require_once "config/CoinPaymentsAPI.php";
-        require_once "classes/CoinPaymentsCheckout.php";
         $api = new CoinPaymentsAPI();
         $pay = new CoinPaymentsCheckout([], $user, $_POST, $settings, $api); 
-        $pay->getIPN();
+        $pay->getIPN($commission);
     }
 
     else {

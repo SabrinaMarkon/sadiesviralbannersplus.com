@@ -56,10 +56,10 @@ if (!empty($level)) {
 
 	<h1 class="ja-bottompadding">Sign Up</h1>
 
-	<!-- 
+<!-- 
 This form does NOT submit for PAID MEMBERSHIPS. Rather, we just want the field values with JS. 
 We submit the PAYMENT forms after getting these field values to store in the db. 
-For FREE memberships we submit this form normally though.
+For FREE memberships we submit this form normally though (the post is picked up by index.php).
 -->
 	<?php
 		if (!empty($paymentbuttons)) {
