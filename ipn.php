@@ -9,6 +9,7 @@ PHP 7.4+
 @license LICENSE.md
  **/
 # Prevent direct access to this file. Show browser's default 404 error instead.
+// TODO: UNCOMMENT BELOW WHEN DONE TESTING!
 // if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 //     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
 //     exit;
@@ -29,7 +30,7 @@ if (in_array($paidwith, $paymentcompanies)) {
     if ($paidwith === "paypal") {
         require_once "classes/PaypalCheckout.php";
         // Note below that the paymentdata array (first parameter) isn't needed for ipn (it is only for storing the data in pendingpurchases to retrieve.)
-        $pay = new PaypalCheckout([], $user, $_POST); 
+        $pay = new PaypalCheckout([], $user, $_POST, $settings); 
         $pay->getIPN();
     }
 
@@ -37,7 +38,7 @@ if (in_array($paidwith, $paymentcompanies)) {
         require_once "config/CoinPaymentsAPI.php";
         require_once "classes/CoinPaymentsCheckout.php";
         $api = new CoinPaymentsAPI();
-        $pay = new CoinPaymentsCheckout([], $user, $_POST, $api); 
+        $pay = new CoinPaymentsCheckout([], $user, $_POST, $settings, $api); 
         $pay->getIPN();
     }
 
