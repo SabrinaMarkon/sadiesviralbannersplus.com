@@ -25,7 +25,8 @@ if (in_array($paidwith, $paymentcompanies)) {
     
     unset($_SESSION['referid']); // We don't need to remember this anymore now that we know the value of paidwith.
 
-    $user = new User();
+    $sendsiteemail = new Email();
+    $user = new User($sendsiteemail);
     $commission = new Commission();
 
     if ($paidwith === "paypal") {

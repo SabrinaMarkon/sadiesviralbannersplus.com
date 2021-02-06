@@ -35,7 +35,8 @@ if (!empty($level)) {
 		"username" => "",
 		"referid" => $_SESSION['referid']
 	);
-	$user = new User();
+	$sendsiteemail = new Email();
+	$user = new User($sendsiteemail);
 	$paymentbuttons = "";
 	if (!empty($adminpaypal)) {
 		$paypal = new PaypalCheckout($paymentdata, $user);

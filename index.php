@@ -1,15 +1,15 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-if (!isset($_SESSION))
-{
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
 }
 require_once "config/Database.php";
 require_once "config/Settings.php";
 require_once "config/Layout.php";
 
-function autoloader($class) {
+function autoloader($class)
+{
 	require "classes/" . $class . ".php";
 }
 spl_autoload_register("autoloader");
@@ -22,16 +22,16 @@ foreach ($settings as $key => $value) {
 
 # Get the sponsor if there is one.
 if (isset($_GET['referid'])) {
-		$_SESSION['referid'] = $_GET['referid'];
+	$_SESSION['referid'] = $_GET['referid'];
 } elseif (!isset($_SESSION['referid'])) {
-		$_SESSION['referid'] = 'admin';
+	$_SESSION['referid'] = 'admin';
 }
 
 # id variable is for the id of a single member, mail, etc. to update in the database.
 if (isset($_REQUEST['id'])) {
-    $id = $_REQUEST['id'];
+	$id = $_REQUEST['id'];
 } else {
-    $id = "";
+	$id = "";
 }
 
 $show = '';
@@ -39,7 +39,7 @@ $errors = '';
 
 # get the form validation class instance to use for all the pages that post.
 if (isset($_POST)) {
-    $formvalidation = new FormValidation($_POST);
+	$formvalidation = new FormValidation($_POST);
 }
 
 ######################################
@@ -47,23 +47,20 @@ if (isset($_POST['login'])) {
 
 	$_SESSION['username'] = $_REQUEST['username'];
 	$_SESSION['password'] = $_REQUEST['password'];
-	$logincheck = new User();
-	$newlogin = $logincheck->userLogin($_SESSION['username'],$_SESSION['password']);
-	if ($newlogin === false)
-		{
-		$logout = new User();
+	$sendsiteemail = new Email();
+	$logincheck = new User($sendsiteemail);
+	$newlogin = $logincheck->userLogin($_SESSION['username'], $_SESSION['password']);
+	if ($newlogin === false) {
+		$logout = new User($sendsiteemail);
 		$logout->userLogout();
-		}
-	else
-		{
+	} else {
 		# returned member details.
-		foreach ($newlogin as $key => $value)
-			{
+		foreach ($newlogin as $key => $value) {
 			$$key = $value;
 			$_SESSION[$key] = $value;
-			}
-		$showgravatar = $logincheck->getGravatar($_SESSION['username'],$_SESSION['email']);
 		}
+		$showgravatar = $logincheck->getGravatar($_SESSION['username'], $_SESSION['email']);
+	}
 }
 ###################################### Want to refactor below.
 
@@ -77,8 +74,9 @@ if (isset($_POST['forgotlogin'])) {
 	} else {
 
 		# member clicked button to recover login details.
-		$forgot = new User();
-		$showforgot = $forgot->forgotLogin($sitename,$domain,$adminemail,$_POST); 
+		$sendsiteemail = new Email();
+		$forgot = new User($sendsiteemail);
+		$showforgot = $forgot->forgotLogin($sitename, $domain, $adminemail, $_POST);
 	}
 }
 
@@ -105,24 +103,25 @@ if (isset($_POST['register'])) {
 	} else {
 
 		# new signup clicked to submit registration.
-		$register = new User();
+		$sendsiteemail = new Email();
+		$register = new User($sendsiteemail);
 		$commission = new Commission();
-		$showregister = $register->newSignup($settings,$_POST,'Free',$commission);
+		$showregister = $register->newSignup($settings, $_POST, 'Free', $commission);
 	}
 }
 
 if (isset($_GET['page']) && ($_GET['page'] === "verify")) {
 
 	# user clicked their email verification link.
-	$verify = new User();
+	$sendsiteemail = new Email();
+	$verify = new User($sendsiteemail);
 	# the last part of the url is code this time not referid like other urls. Don't fix cuz it ain't broke.
-	$verificationcode = $_SESSION['referid']; 
+	$verificationcode = $_SESSION['referid'];
 	$showverify = $verify->verifyUser($verificationcode);
-
 }
 
 if (isset($_POST['saveprofile'])) {
-	
+
 	$errors = $formvalidation->validateAll($_POST);
 	if (!empty($errors)) {
 
@@ -130,15 +129,17 @@ if (isset($_POST['saveprofile'])) {
 	} else {
 
 		# user clicked to submit profile updates.
-		$update = new User();
-		$showsaveprofile = $update->saveProfile($_SESSION['username'],$settings,$_POST);
+		$sendsiteemail = new Email();
+		$update = new User($sendsiteemail);
+		$showsaveprofile = $update->saveProfile($_SESSION['username'], $settings, $_POST);
 	}
 }
 
 if (isset($_POST['resendverification'])) {
 
-	$resend = new User();
-	$showresend = $resend->resendVerify($_SESSION['username'],$_SESSION['password'],$_SESSION['email'],$settings);
+	$sendsiteemail = new Email();
+	$resend = new User($sendsiteemail);
+	$showresend = $resend->resendVerify($_SESSION['username'], $_SESSION['password'], $_SESSION['email'], $settings);
 }
 
 if (isset($_POST['createad'])) {
@@ -150,9 +151,9 @@ if (isset($_POST['createad'])) {
 	} else {
 
 		# user submitted a new ad.
-		$adtable = $_POST['adtable']; 
+		$adtable = $_POST['adtable'];
 		$create = new Ad($adtable);
-		$showad = $create->createAd($id,$adminautoapprove,0,$_POST);
+		$showad = $create->createAd($id, $adminautoapprove, 0, $_POST);
 	}
 }
 
@@ -167,24 +168,25 @@ if (isset($_POST['savead'])) {
 	} else {
 
 		# user saved changes made to their ad.
-		$adtable = $_POST['adtable']; 
+		$adtable = $_POST['adtable'];
 		$save = new Ad($adtable);
-		$showad = $save->saveAd($id,$adminautoapprove,0,$_POST);
+		$showad = $save->saveAd($id, $adminautoapprove, 0, $_POST);
 	}
 }
 
 if (isset($_POST['deletead'])) {
 
 	$id = $_SESSION['referid']; // the var name referid is what is in the url, but it has the id of the ad in this case.
-	
-	$adtable = $_POST['adtable']; 
+
+	$adtable = $_POST['adtable'];
 	$delete = new Ad($adtable);
-	$showad = $delete->deleteAd($id,$_POST['name']);
+	$showad = $delete->deleteAd($id, $_POST['name']);
 }
 
 if (isset($_GET['page']) && ($_GET['page'] === "logout")) {
 
-	$logout = new User();
+	$sendsiteemail = new Email();
+	$logout = new User($sendsiteemail);
 	$logout->userLogout();
 	$logoutpage = new PageContent();
 	$show = $logoutpage->showPage('Logout Page');
@@ -195,14 +197,14 @@ if (isset($_GET['page']) && ($_GET['page'] === "logout")) {
 if (isset($_GET['page']) && ($_GET['page'] === 'click')) {
 
 	include "click.php";
-	exit;	
+	exit;
 }
 
 # if we are receiving an ipn notification from a payment processor (we don't want header.php).
 if (isset($_POST['page']) && ($_POST['page'] === 'ipn')) {
 
 	include "ipn.php";
-	exit;	
+	exit;
 }
 
 $Layout = new Layout();
@@ -212,17 +214,14 @@ if ((!empty($_GET['page'])) && ((file_exists($_GET['page'] . ".php") && ($_GET['
 
 	$page = $_REQUEST['page'];
 	include $page . ".php";
-	
 } elseif ((!empty($_GET['page'])) && (!file_exists($_GET['page'] . ".php"))) {
 
 	# show the dynamic page file that shows pages the admin has created from the admin area.
 	$page = $_GET['page'];
 	include "dynamic.php";
-
 } else {
 
 	include "main.php";
-	
 }
 
 $Layout->showFooter();
