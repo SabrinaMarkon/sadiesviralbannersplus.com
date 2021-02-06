@@ -64,7 +64,10 @@ class User
 
 			Database::disconnect();
 
-			return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
+			if ($accounttype === "Free") {
+				return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
+			}
+			return;
 		} else {
 			$verificationcode = time() . mt_rand(10, 100);
 
@@ -89,9 +92,11 @@ class User
 			// TODO: EMAIL ADMIN!!!!
 			// TODO: ONLY SHOW ALERT MESSAGES if FREE MEMBER (email for paid members since they only see the thank you page)
 
-			return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Success! Thanks for Joining!</strong>
+			if ($accounttype === "Free") {
+				return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Success! Thanks for Joining!</strong>
 				<p>Please click the link in the email we sent to you to verify your email address.</p></div>";
-
+			}
+		
 			$username = null;
 			$password = null;
 			$accounttype = null;
@@ -101,6 +106,8 @@ class User
 			$country = null;
 			$referid = null;
 			$signupip = null;
+
+			return;
 		}
 	}
 
