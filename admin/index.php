@@ -249,7 +249,7 @@ if (isset($_POST['login'])) {
 
             # admin added a new transaction (invoice).
             $create = new Money();
-            $show = $create->addTransaction();
+            $show = $create->addTransaction($_POST);
         }
     }
 

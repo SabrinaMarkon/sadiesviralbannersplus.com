@@ -28,17 +28,18 @@ if (in_array($paidwith, $paymentcompanies)) {
     $sendsiteemail = new Email();
     $user = new User($sendsiteemail);
     $commission = new Commission();
+    $money = new Money();
 
     if ($paidwith === "paypal") {
         // Note below that the paymentdata array (first parameter) isn't needed for ipn (it is only for storing the data in pendingpurchases to retrieve.)
         $pay = new PaypalCheckout([], $user, $_POST, $settings); 
-        $pay->getIPN($commission);
+        $pay->getIPN($commission, $money);
     }
 
     elseif ($paidwith === "coinpayments") {
         $api = new CoinPaymentsAPI();
         $pay = new CoinPaymentsCheckout([], $user, $_POST, $settings, $api); 
-        $pay->getIPN($commission);
+        $pay->getIPN($commission, $money);
     }
 
     else {

@@ -23,7 +23,8 @@ class PaypalCheckout extends PaymentGateway
         $payperiod,
         $payintervalcode,
         $formfields,
-        $isexistinguser;
+        $isexistinguser,
+        $transaction;
 
     public function __construct(array $paymentdata = [], User $user, array $postdata = [], array $settings = [])
     {
@@ -91,12 +92,12 @@ class PaypalCheckout extends PaymentGateway
         return $paybutton;
     }
 
-    public function getIPN(Commission $commission)
+    public function getIPN(Commission $commission, Money $money): object
     {
-        return $this->_ipn($commission);
+        return $this->_ipn($commission, $money);
     }
 
-    protected function _ipn(Commission $commission)
+    protected function _ipn(Commission $commission, Money $money): void
     {
 
         // STEP 1: Read POST data:
@@ -192,13 +193,18 @@ class PaypalCheckout extends PaymentGateway
                     } else {
                         $this->user->upgradeUser($this->settings, $username, $referid, 'Pro', $commission);
                     }
+                    // commission
+                    $commission->addNewReferralCommission($referid, 'Pro');
                 }
+
                 if ($item_name === 'Gold Membership') {
                     if (empty($isexistinguser)) {
                         $this->user->newSignup($this->settings, $formfields, 'Gold', $commission);
                     } else {
                         $this->user->upgradeUser($this->settings, $username, $referid, 'Gold', $commission);
                     }
+                    // commission
+                    $commission->addNewReferralCommission($referid, 'Gold');
                 }
 
                 // User purchased text ad.
@@ -212,6 +218,19 @@ class PaypalCheckout extends PaymentGateway
                 // User purchased network banner.
                 if ($item_name === 'Network Banner') {
                 }
+                
+                // Add transaction record.
+                $transaction = [
+                    "item" => $item_name,
+                    "username" => $username,
+                    "amount" => $amount,
+                    "datepaid" => date("M d, Y"),
+                    "paymethod" => "Paypal",
+                    "transaction" => $txn_id
+                ];
+                $money->addTransaction($transaction);
+
+                # Membership upgrades do not have adid so that can be null.
 
                 Database::disconnect();
             } else {

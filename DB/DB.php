@@ -156,8 +156,9 @@ adid integer unsigned null,
 item varchar(255) not null,
 username varchar(255) not null,
 amount decimal(9,2) not null default '0.00',
-datepaid varchar(255) not null,
-transaction varchar(255) not null default 'PayPal',
+datepaid varchar(255) null,
+paymethod varchar(255) null,
+transaction varchar(255) null,
 foreign key (adid) references ads(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

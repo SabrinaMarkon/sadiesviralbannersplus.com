@@ -40,7 +40,7 @@ class User
 	 * @param settings[] $settings An array of admin settings.
 	 * @param post[] $post An array of values originally posted from the registration form.
 	 */
-	public function newSignup(array $settings, array $post, string $accounttype, Commission $commission): string|null
+	public function newSignup(array $settings, array $post, string $accounttype): string|null
 	{
 
 		$username = $post['username'];
@@ -81,11 +81,6 @@ class User
 			$q = $pdo->prepare($sql);
 			$q->execute([$username, $password, $accounttype, $firstname, $lastname, $email, $paypal, $country, $referid, $signupip, $verificationcode]);
 
-			// commission:
-			if ($accounttype !== "Free") {
-				$commission->addNewReferralCommission($referid, $accounttype);
-			}
-
 			Database::disconnect();
 
 			$subject = "Welcome to your " . $accounttype . " " . $settings['sitename'] . " membership!";
@@ -122,18 +117,13 @@ class User
 	/**
 	 * @param settings[] $settings An array of admin settings.
 	 */
-	public function upgradeUser(array $settings, string $username, string $referid, string $accounttype, Commission $commission): void
+	public function upgradeUser(array $settings, string $username, string $referid, string $accounttype): void
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "update members set accounttype=? where username=?";
 		$q = $pdo->prepare($sql);
 		$q->execute(array($accounttype, $username));
-
-		// commission:
-		if ($accounttype !== "Free") {
-			$commission->addNewReferralCommission($referid, $accounttype);
-		}
 
 		// send email to admin:
 		$subject = "A member has upgraded to " . $accounttype . " at " . $settings['sitename'] . "!";

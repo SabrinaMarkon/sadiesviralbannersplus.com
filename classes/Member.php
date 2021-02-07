@@ -18,7 +18,7 @@ class Member
 {
     private $pdo, $username, $password, $firstname, $lastname, $country, $email, $signupip, $referid;
 
-    public function getAllMembers()
+    public function getAllMembers(): array
     {
 
         $pdo = Database::connect();
@@ -37,7 +37,7 @@ class Member
         return $memberarray;
     }
 
-    public function addMember(array $settings)
+    public function addMember(array $settings): string
     {
 
         $username = $_POST['username'];
@@ -89,7 +89,7 @@ class Member
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Member " . $username . " was Added!</strong></div>";
     }
 
-    public function saveMember(int $id)
+    public function saveMember(int $id): string
     {
 
         $username = $_POST['username'];
@@ -118,7 +118,7 @@ class Member
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Member " . $username . " was Saved!</strong></div>";
     }
 
-    public function deleteMember(int $id)
+    public function deleteMember(int $id): string
     {
 
         $username = $_POST['username'];

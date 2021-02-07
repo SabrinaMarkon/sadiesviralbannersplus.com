@@ -105,8 +105,7 @@ if (isset($_POST['register'])) {
 		# new signup clicked to submit registration.
 		$sendsiteemail = new Email();
 		$register = new User($sendsiteemail);
-		$commission = new Commission();
-		$showregister = $register->newSignup($settings, $_POST, 'Free', $commission);
+		$showregister = $register->newSignup($settings, $_POST, 'Free');
 	}
 }
 

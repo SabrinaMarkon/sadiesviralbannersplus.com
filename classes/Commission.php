@@ -15,7 +15,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 class Commission
 {
-    public function addNewReferralCommission(string $referid, string $accounttype)
+    public function addNewReferralCommission(string $referid, string $accounttype): void
     {
         // get sponsor's account level to compute correct commissions.
         $pdo = Database::connect();

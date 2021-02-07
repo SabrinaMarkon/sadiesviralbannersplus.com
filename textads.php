@@ -31,8 +31,11 @@ $activeads = $ads->getAllUsersAds($username);
 
 		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid text ads available. Please purchase one below!</div>";
 		//TODO: PAYPAL BUTTON!!!
-		echo "<div class=\"ja-bottompadding mb-5\"></div>";
+		
 	} else {
+
+		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">Please purchase a text ad below!</div>";
+		//TODO: PAYPAL BUTTON!!!
 
 		# the user has at least one blank ad they can submit.
 		# get the ad's id for the adid.
@@ -65,6 +68,7 @@ $activeads = $ads->getAllUsersAds($username);
 		</form>
 	<?php
 	}
+	echo "<div class=\"ja-bottompadding mb-5\"></div>";
 	?>
 
 	<div class="ja-bottompadding ja-toppadding"></div>
