@@ -24,23 +24,24 @@ class PaypalCheckout extends PaymentGateway
         $payintervalcode,
         $formfields,
         $isexistinguser,
-        $transaction;
+        $transaction,
+        $error_msg,
+        $adminemail;
 
     public function __construct(array $paymentdata = [], User $user, array $postdata = [], array $settings = [])
     {
+
         $this->user = $user;
         $this->settings = $settings;
         $this->postdata = $postdata;
-        $this->itemname = $paymentdata['itemname'];
-        $this->price = $paymentdata['price'];
-        $this->payinterval = $paymentdata['payinterval'];
-        $this->adminemail = $paymentdata['adminemail'];
-        $this->sitename = $paymentdata['sitename'];
-        $this->domain = $paymentdata['domain'];
-        $this->adminpaypal = $paymentdata['adminpaypal'];
-        $this->admincoinpayments = $paymentdata['admincoinpayments'];
-        $this->username = $paymentdata['username'];
-        $this->referid = $paymentdata['referid'];
+
+        if (sizeof($paymentdata) > 0) {
+            $this->itemname = $paymentdata['itemname'];
+            $this->price = $paymentdata['price'];
+            $this->payinterval = $paymentdata['payinterval'];
+            $this->username = $paymentdata['username'];
+            $this->referid = $paymentdata['referid'];
+        }
     }
 
     public function getPayButton(): string
@@ -73,23 +74,34 @@ class PaypalCheckout extends PaymentGateway
         $paybutton = '
             <form method="POST" id="paypalbuttonform" action="https://www.paypal.com/cgi-bin/webscr" accept-charset="UTF-8" class="form-horizontal form-page-small">'
             . $payintervalcode .
-            '<input name="business" type="hidden" value="' . $this->adminpaypal . '">
-            <input name="item_name" type="hidden" value="' . $this->sitename . ' - ' . $this->itemname . '">
+            '<input name="business" type="hidden" value="' . $this->settings['adminpaypal'] . '">
+            <input name="item_name" type="hidden" value="' . $this->settings['sitename'] . ' - ' . $this->itemname . '">
             <input name="no_note" type="hidden" value="1">
             <input name="page_style" type="hidden" value="PayPal">
             <input name="no_shipping" type="hidden" value="1">
-            <input name="return" type="hidden" value="' . $this->domain . '/thankyou">
-            <input name="cancel" type="hidden" value="' . $this->domain . '">
+            <input name="return" type="hidden" value="' . $this->settings['domain'] . '/thankyou">
+            <input name="cancel" type="hidden" value="' . $this->settings['domain'] . '">
             <input name="currency_code" type="hidden" value="USD">
             <input name="lc" type="hidden" value="US">
             <input name="bn" type="hidden" value="PP-BuyNowBF">
             <input name="on0" type="hidden" value="Purchase ID">
             <input name="os0" id="pendingId" type="hidden" value="">
-            <input name="notify_url" type="hidden" value="' . $this->domain . '/ipn/paypal">
+            <input name="notify_url" type="hidden" value="' . $this->settings['domain'] . '/ipn/paypal">
             <button class="btn btn-lg btn-primary" type="button" name="paypalbutton" id="paypalbutton">
             Buy ' . $this->itemname . ' for $' . $this->price . ' with Paypal!</button>
             </form>';
         return $paybutton;
+    }
+
+    public function errorAndDie(string $error_msg, string $pp_debug_email): void
+    {
+        $report = 'Error: ' . $error_msg . "\n\n";
+        $report .= "POST Data\n\n";
+        foreach ($_POST as $k => $v) {
+            $report .= "|$k| = |$v|\n";
+            // mail($pp_debug_email, 'Paypal IPN Error', $report);
+        }
+        die('IPN Error: ' . $error_msg);
     }
 
     public function getIPN(Commission $commission, Money $money): void
@@ -218,7 +230,7 @@ class PaypalCheckout extends PaymentGateway
                 // User purchased network banner.
                 if ($item_name === 'Network Banner') {
                 }
-                
+
                 // Add transaction record.
                 $transaction = [
                     "item" => $item_name,
@@ -233,9 +245,16 @@ class PaypalCheckout extends PaymentGateway
                 Database::disconnect();
             } else {
                 // Status is NOT completed. Cancellation of subscription?
+                $error_msg = "Payment/subscription failed";
+                $adminemail = $this->settings['adminemail'];
+                errorAndDie($error_msg, $adminemail);
+                exit;
             }
         } else if (strcmp($res, "INVALID") == 0) {
-            echo "INVALID TRANSACTION";
+
+            $error_msg = "Invalid Transaction";
+            $adminemail = $this->settings['adminemail'];
+            errorAndDie($error_msg, $adminemail);
             exit;
         }
     }
