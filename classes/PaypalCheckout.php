@@ -43,12 +43,12 @@ class PaypalCheckout extends PaymentGateway
         $this->referid = $paymentdata['referid'];
     }
 
-    public function getPayButton()
+    public function getPayButton(): string
     {
         return $this->_payButton();
     }
 
-    protected function _payButton()
+    protected function _payButton(): string
     {
         if ($this->payinterval === 'monthly' || $this->payinterval === 'annually') {
 
@@ -92,9 +92,9 @@ class PaypalCheckout extends PaymentGateway
         return $paybutton;
     }
 
-    public function getIPN(Commission $commission, Money $money): object
+    public function getIPN(Commission $commission, Money $money): void
     {
-        return $this->_ipn($commission, $money);
+        $this->_ipn($commission, $money);
     }
 
     protected function _ipn(Commission $commission, Money $money): void
@@ -229,8 +229,6 @@ class PaypalCheckout extends PaymentGateway
                     "transaction" => $txn_id
                 ];
                 $money->addTransaction($transaction);
-
-                # Membership upgrades do not have adid so that can be null.
 
                 Database::disconnect();
             } else {
