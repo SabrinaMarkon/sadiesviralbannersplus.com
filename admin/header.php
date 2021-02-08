@@ -31,76 +31,79 @@
 
 <body style="padding-top: 0;">
 
-  <!-- Preloader -->
-  <div class="preloader">
-    <div class="loader">
-      <div class="ytp-spinner">
-        <div class="ytp-spinner-container">
-          <div class="ytp-spinner-rotator">
-            <div class="ytp-spinner-left">
-              <div class="ytp-spinner-circle"></div>
-            </div>
-            <div class="ytp-spinner-right">
-              <div class="ytp-spinner-circle"></div>
+  <div id="page-wrapper">
+    <main>
+
+      <!-- Preloader -->
+      <div class="preloader">
+        <div class="loader">
+          <div class="ytp-spinner">
+            <div class="ytp-spinner-container">
+              <div class="ytp-spinner-rotator">
+                <div class="ytp-spinner-left">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+                <div class="ytp-spinner-right">
+                  <div class="ytp-spinner-circle"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Navigation -->
-  <section class="navbar-area">
-    <div class="container">
+      <!-- Navigation -->
+      <section class="navbar-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+
+                <a class="navbar-brand" href="/" target="_blank">
+                  <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                </button>
+
+                <?php
+                if ((isset($_SESSION['adminusername'])) && (isset($_SESSION['adminpassword']))) {
+                ?>
+                  <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                    <ul class="navbar-nav m-auto">
+                      <li class="nav-item"><a href="/admin/main">Main</a></li>
+                      <li class="nav-item"><a href="/admin/settings">Settings</a></li>
+                      <li class="nav-item"><a href="/admin/members">Members</a></li>
+                      <li class="nav-item"><a href="/admin/banners">Banners</a></li>
+                      <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>
+                      <li class="nav-item"><a href="/admin/money">Money</a></li>
+                      <li class="nav-item"><a href="/admin/mail">Mail</a></li>
+                      <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
+                      <li class="nav-item"><a href="/admin/pages">Pages</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="navbar-btn d-none d-sm-inline-block">
+                    <ul>
+                      <li><a class="solid" href="/admin/logout">Logout</a></li>
+                    </ul>
+                  </div>
+                <?php
+                }
+                ?>
+              </nav> <!-- navbar -->
+            </div>
+          </div> <!-- row -->
+        </div> <!-- container -->
+      </section>
+
+      <!-- Page Content -->
+      <div class="ja-toppadding3" id="home"></div>
+
       <div class="row">
-        <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg">
+        <div class="col-sm-12 py-5">
 
-            <a class="navbar-brand" href="/" target="_blank">
-              <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
-            </button>
-
-            <?php
-            if ((isset($_SESSION['adminusername'])) && (isset($_SESSION['adminpassword']))) {
-            ?>
-              <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
-                <ul class="navbar-nav m-auto">
-                  <li class="nav-item"><a href="/admin/main">Main</a></li>
-                  <li class="nav-item"><a href="/admin/settings">Settings</a></li>
-                  <li class="nav-item"><a href="/admin/members">Members</a></li>
-                  <li class="nav-item"><a href="/admin/banners">Banners</a></li>
-                  <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>
-                  <li class="nav-item"><a href="/admin/money">Money</a></li>
-                  <li class="nav-item"><a href="/admin/mail">Mail</a></li>
-                  <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
-                  <li class="nav-item"><a href="/admin/pages">Pages</a></li>
-                </ul>
-              </div>
-
-              <div class="navbar-btn d-none d-sm-inline-block">
-                <ul>
-                  <li><a class="solid" href="/admin/logout">Logout</a></li>
-                </ul>
-              </div>
-            <?php
-            }
-            ?>
-          </nav> <!-- navbar -->
-        </div>
-      </div> <!-- row -->
-    </div> <!-- container -->
-  </section>
-
-  <!-- Page Content -->
-  <div class="ja-toppadding3" id="home"></div>
-
-    <div class="row">
-      <div class="col-sm-12 py-5">
-
-<!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->
+          <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->

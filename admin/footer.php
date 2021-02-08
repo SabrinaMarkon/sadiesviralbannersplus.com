@@ -2,8 +2,8 @@
 </div>
 </div>
 <!-- /.row -->
-</div>
-<!-- /.container -->
+
+</main>
 
 <!-- Footer -->
 <section class="footer-area footer-dark mt-1">
@@ -22,6 +22,8 @@
     </div> <!-- row -->
   </div> <!-- container -->
 </section>
+
+</div> <!-- / #page-wrapper -->
 
 <!-- Bootstrap core JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

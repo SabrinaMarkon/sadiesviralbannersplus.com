@@ -53,135 +53,138 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
         }
         ?>>
 
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left">
-                            <div class="ytp-spinner-circle"></div>
-                        </div>
-                        <div class="ytp-spinner-right">
-                            <div class="ytp-spinner-circle"></div>
+    <div id="page-wrapper">
+        <main>
+
+            <!-- Preloader -->
+            <div class="preloader">
+                <div class="loader">
+                    <div class="ytp-spinner">
+                        <div class="ytp-spinner-container">
+                            <div class="ytp-spinner-rotator">
+                                <div class="ytp-spinner-left">
+                                    <div class="ytp-spinner-circle"></div>
+                                </div>
+                                <div class="ytp-spinner-right">
+                                    <div class="ytp-spinner-circle"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Navigation -->
-    <section class="navbar-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg">
+            <!-- Navigation -->
+            <section class="navbar-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <nav class="navbar navbar-expand-lg">
 
-                        <a class="navbar-brand" href="#">
-                            <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
-                        </a>
+                                <a class="navbar-brand" href="#">
+                                    <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
+                                </a>
 
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="toggler-icon"></span>
-                            <span class="toggler-icon"></span>
-                            <span class="toggler-icon"></span>
-                        </button>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggler-icon"></span>
+                                    <span class="toggler-icon"></span>
+                                    <span class="toggler-icon"></span>
+                                </button>
 
-                        <?php
-                        if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
-                        ?>
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
-                                <ul class="navbar-nav m-auto">
-                                    <li class="nav-item"><a class="page-scroll" href="/members">Main</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/profile">Profile</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/banners">Your&nbsp;Banners</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/textads">Buy&nbsp;Text&nbsp;Ads</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/promotional">Earn&nbsp;Money</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/contact">Contact</a></li>
-                                </ul>
-                            </div>
+                                <?php
+                                if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
+                                ?>
+                                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                                        <ul class="navbar-nav m-auto">
+                                            <li class="nav-item"><a class="page-scroll" href="/members">Main</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/profile">Profile</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/banners">Your&nbsp;Banners</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/textads">Buy&nbsp;Text&nbsp;Ads</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/promotional">Earn&nbsp;Money</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/contact">Contact</a></li>
+                                        </ul>
+                                    </div>
 
-                            <div class="navbar-btn d-none d-sm-inline-block">
-                                <ul>
-                                    <li><a class="solid" href="/logout">Logout</a></li>
-                                </ul>
-                            </div>
-                        <?php
-                        } else {
-                        ?>
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
-                                <ul class="navbar-nav m-auto">
-                                    <li class="nav-item"><a class="page-scroll" href="/#home">Home</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/#memberships">Memberships</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/ads">Banners</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/#contact">Contact</a></li>
-                                </ul>
-                            </div>
+                                    <div class="navbar-btn d-none d-sm-inline-block">
+                                        <ul>
+                                            <li><a class="solid" href="/logout">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+                                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                                        <ul class="navbar-nav m-auto">
+                                            <li class="nav-item"><a class="page-scroll" href="/#home">Home</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/#memberships">Memberships</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/ads">Banners</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/#contact">Contact</a></li>
+                                        </ul>
+                                    </div>
 
-                            <div class="navbar-btn d-none d-sm-inline-block">
-                                <ul>
-                                    <li><a class="solid" href="/login">Login</a></li>
-                                    <li><a class="solid page-scroll" href="/#memberships">Register</a></li>
-                                </ul>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                    </nav> <!-- navbar -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
+                                    <div class="navbar-btn d-none d-sm-inline-block">
+                                        <ul>
+                                            <li><a class="solid" href="/login">Login</a></li>
+                                            <li><a class="solid page-scroll" href="/#memberships">Register</a></li>
+                                        </ul>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </nav> <!-- navbar -->
+                        </div>
+                    </div> <!-- row -->
+                </div> <!-- container -->
+            </section>
 
-    <!-- Header with Background Image -->
-    <?php
-    if ($urlfile === '/' || $urlfile === '' || $referurl === '/r') {
-    ?>
-        <section id="home" class="slider_area">
-            <div id="carouselThree" class="carousel slide" data-interval="false" data-ride="carousel">
-                <!--             <ol class="carousel-indicators">
+            <!-- Header with Background Image -->
+            <?php
+            if ($urlfile === '/' || $urlfile === '' || $referurl === '/r') {
+            ?>
+                <section id="home" class="slider_area">
+                    <div id="carouselThree" class="carousel slide" data-interval="false" data-ride="carousel">
+                        <!--             <ol class="carousel-indicators">
                 <li data-target="#carouselThree" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselThree" data-slide-to="1"></li>
                 <li data-target="#carouselThree" data-slide-to="2"></li>
             </ol> -->
 
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-4" style="display: flex; align-items: center;">
-                                    <div class="slider-content">
-                                        <h1 class="title">Sadie's Viral Banners +Plus</h1>
-                                        <p class="text">Jetting Your's Around The Globe Free!</p>
-                                        <ul class="slider-btn rounded-buttons">
-                                            <li><a class="main-btn rounded-one page-scroll" href="/#memberships">GET STARTED FREE!</a></li>
-                                        </ul>
-                                    </div>
-                                    <img id="sadie" src="images/sadie-transparent-shadow.png" alt="Sadie's Viral Banners Plus!">
-                                </div>
-                            </div> <!-- row -->
-                        </div> <!-- container -->
-                        <div class="slider-image-box d-none d-lg-flex align-items-center">
-                            <div class="slider-image">
-                                <img src="images/globeandairplaneandyellowstars.png" alt="Sadie's Viral Banners Plus!">
-                            </div> <!-- slider-imgae -->
-                        </div> <!-- slider-imgae box -->
-                    </div> <!-- carousel-item -->
-                </div>
-        </section>
-    <?php
-    } else {
-    ?>
-        <div class="ja-toppadding2" id="home"></div>
-    <?php
-    }
-    ?>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4" style="display: flex; align-items: center;">
+                                            <div class="slider-content">
+                                                <h1 class="title">Sadie's Viral Banners +Plus</h1>
+                                                <p class="text">Jetting Your's Around The Globe Free!</p>
+                                                <ul class="slider-btn rounded-buttons">
+                                                    <li><a class="main-btn rounded-one page-scroll" href="/#memberships">GET STARTED FREE!</a></li>
+                                                </ul>
+                                            </div>
+                                            <img id="sadie" src="images/sadie-transparent-shadow.png" alt="Sadie's Viral Banners Plus!">
+                                        </div>
+                                    </div> <!-- row -->
+                                </div> <!-- container -->
+                                <div class="slider-image-box d-none d-lg-flex align-items-center">
+                                    <div class="slider-image">
+                                        <img src="images/globeandairplaneandyellowstars.png" alt="Sadie's Viral Banners Plus!">
+                                    </div> <!-- slider-imgae -->
+                                </div> <!-- slider-imgae box -->
+                            </div> <!-- carousel-item -->
+                        </div>
+                </section>
+            <?php
+            } else {
+            ?>
+                <div class="ja-toppadding2" id="home"></div>
+            <?php
+            }
+            ?>
 
 
 
-    <!-- Page Content -->
-    <div class="row">
-        <div class="col-sm-12">
+            <!-- Page Content -->
+            <div class="row">
+                <div class="col-sm-12">
 
-            <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->
+                    <!-- CENTRAL PAGE CONTENT APPEARS BELOW HERE -->
