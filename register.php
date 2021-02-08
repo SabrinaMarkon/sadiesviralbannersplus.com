@@ -34,11 +34,12 @@ if (!empty($level)) {
 	$user = new User($sendsiteemail);
 	$paymentbuttons = "";
 	if (!empty($adminpaypal)) {
-		$paypal = new PaypalCheckout($paymentdata, $user);
+		$paypal = new PaypalCheckout($paymentdata, $user, [], $settings);
 		$paymentbuttons .= $paypal->getPayButton();
 	}
 	if (!empty($admincoinpayments)) {
-		$coinpayments = new CoinPaymentsCheckout($paymentdata, $user);
+		$api = new CoinPaymentsAPI();
+		$coinpayments = new CoinPaymentsCheckout($paymentdata, $user, [], $settings, $api);
 		$paymentbuttons .= $coinpayments->getPayButton();
 	}
 

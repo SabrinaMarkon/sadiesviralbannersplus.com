@@ -10,6 +10,27 @@ if (isset($showad)) {
 	echo $showad;
 }
 
+$itemname = "";
+$paymentdata = array(
+	"itemname" => $itemname,
+	"price" => $textadprice,
+	"payinterval" => "",
+	"username" => $username,
+	"referid" => $referid
+);
+$sendsiteemail = new Email();
+$user = new User($sendsiteemail);
+$paymentbuttons = "";
+if (!empty($adminpaypal)) {
+	$paypal = new PaypalCheckout($paymentdata, $user, [], $settings);
+	$paymentbuttons .= $paypal->getPayButton();
+}
+if (!empty($admincoinpayments)) {
+	$api = new CoinPaymentsAPI();
+	$coinpayments = new CoinPaymentsCheckout($paymentdata, $user, [], $settings, $api);
+	$paymentbuttons .= $coinpayments->getPayButton();
+}
+
 $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Text Ads Page');
 
@@ -30,12 +51,16 @@ $activeads = $ads->getAllUsersAds($username);
 	if (empty($oneblankad)) {
 
 		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid text ads available. Please purchase one below!</div>";
-		//TODO: PAYPAL BUTTON!!!
+		if (!empty($paymentbuttons)) {
+			echo $paymentbuttons;
+		}
 		
 	} else {
 
 		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">Please purchase a text ad below!</div>";
-		//TODO: PAYPAL BUTTON!!!
+		if (!empty($paymentbuttons)) {
+			echo $paymentbuttons;
+		}
 
 		# the user has at least one blank ad they can submit.
 		# get the ad's id for the adid.
