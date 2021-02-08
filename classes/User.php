@@ -132,7 +132,7 @@ class User
 		$this->sendsiteemail->sendEmail($settings['adminemail'], $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 	}
 
-	public function userLogin(string $username, string $password): string|bool
+	public function userLogin(string $username, string $password): array|bool
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
