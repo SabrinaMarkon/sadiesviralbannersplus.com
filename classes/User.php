@@ -40,7 +40,7 @@ class User
 	 * @param settings[] $settings An array of admin settings.
 	 * @param post[] $post An array of values originally posted from the registration form.
 	 */
-	public function newSignup(array $settings, array $post, string $accounttype): string|null
+	public function newSignup(array $settings, array $post, string $accounttype): ?string
 	{
 
 		$username = $post['username'];
@@ -132,7 +132,7 @@ class User
 		$this->sendsiteemail->sendEmail($settings['adminemail'], $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 	}
 
-	public function userLogin(string $username, string $password): array|bool
+	public function userLogin(string $username, string $password): ?array
 	{
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -149,9 +149,6 @@ class User
 			$q = $pdo->prepare($sql);
 			$q->execute(array($username));
 			return $memberdetails;
-		} else {
-			# incorrect login.
-			return false;
 		}
 		Database::disconnect();
 	}

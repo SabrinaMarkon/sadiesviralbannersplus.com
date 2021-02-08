@@ -10,7 +10,7 @@ if ((isset($_SESSION['username'])) && (isset($_SESSION['password'])))
 $sendsiteemail = new Email();
 $logincheck = new User($sendsiteemail);
 $newlogin = $logincheck->userLogin($_SESSION['username'],$_SESSION['password']);
- if ($newlogin === false)
+ if (empty($newlogin))
 	{
 	$showcontent = new LoginForm();
 	echo $showcontent->showLoginForm(1);
