@@ -27,11 +27,6 @@ if (!empty($level)) {
 		"itemname" => $itemname,
 		"price" => $$price,
 		"payinterval" => $$payinterval,
-		"adminemail" => $adminemail,
-		"sitename" => $sitename,
-		"domain" => $domain,
-		"adminpaypal" => $adminpaypal,
-		"admincoinpayments" => $admincoinpayments,
 		"username" => "",
 		"referid" => $_SESSION['referid']
 	);
