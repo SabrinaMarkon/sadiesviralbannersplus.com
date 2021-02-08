@@ -30,7 +30,7 @@ foreach ($promotionals as $promotional) {
         ?>
         <div class="table-responsive border border-dark mb-5">
             
-            <table class="table table-condensed table-bordered table-striped text-center">
+            <table class="table table-condensed table-bordered table-striped text-center" style="margin-bottom: 0;">
                 <tbody>
                     <tr class="table-active">
                         <td>
@@ -73,7 +73,7 @@ foreach ($promotionals as $promotional) {
         ?>
         <div class="table-responsive border border-dark mb-5">
 
-            <table class="table table-condensed table-bordered table-striped text-center">
+            <table class="table table-condensed table-bordered table-striped text-center" style="margin-bottom: 0;">
                 <tbody>
                     <tr class="table-active">
                         <td>
