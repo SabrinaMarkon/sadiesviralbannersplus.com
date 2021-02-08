@@ -10,7 +10,7 @@ if (isset($showad)) {
 	echo $showad;
 }
 
-$itemname = "";
+$itemname = "Text Ad";
 $paymentdata = array(
 	"itemname" => $itemname,
 	"price" => $textadprice,

@@ -19,20 +19,20 @@ class Ad
 
     private $pdo;
 
-    public function __construct($adtable)
+    public function __construct(string $adtable)
     {
-        $this->adtable = $adtable;
+        $this->adtable = $adtable; // Name of database table for this kind of ad (ie. banners, textads, etc.)
     }
 
     /* Get all the ads for all members. */
-    public function getAllAds()
+    public function getAllAds(): array
     {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "select * from " . $this->adtable . " order by approved asc, id desc";
         $q = $pdo->prepare($sql);
-        $q->execute();
+        // $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $ads = $q->fetchAll();
 
@@ -42,7 +42,7 @@ class Ad
     }
 
     /* Get all the ads for one member. */
-    public function getAllUsersAds(string $username)
+    public function getAllUsersAds(string $username): ?array
     {
 
         $pdo = DATABASE::connect();
@@ -59,10 +59,12 @@ class Ad
 
             return $ads;
         }
+
+        return null;
     }
 
     /* Call this when we need to get the member a blank ad to create a new ad in the form. */
-    public function getBlankAd(string $username)
+    public function getBlankAd(string $username): ?array
     {
 
         $pdo = DATABASE::connect();
@@ -78,12 +80,15 @@ class Ad
 
             return $blankad;
         }
+
+        return null;
     }
 
     /* Call this when the user or admin submits their ad. */
-    public function createAd(int $id, int $adminautoapprove, int $isadmin, array $post)
+    public function createAd(int $id, int $adminautoapprove, string $source, array $post): ?string
     {
 
+        $username = $post['username'];
         $name = $post['name'];
         $title = $post['title'];
         $url = $post['url'];
@@ -97,25 +102,33 @@ class Ad
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         # is it a user or the admin posting the ad?
-        if ($isadmin) {
+        if ($source === 'admin') {
 
             $sql = "insert into " . $this->adtable . " (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
             $q->execute([$name, $title, $url, $shorturl, $description, $imageurl]);
+            Database::disconnect();
+
+            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
+        } elseif ($source === 'ipn') {
+
+            $sql = "insert into " . $this->adtable . " (username) values (?)";
+            $q = $pdo->prepare($sql);
+            $q->execute([$username]);
+            Database::disconnect();
+            return null;
         } else {
 
             $sql = "update " . $this->adtable . " set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
             $q = $pdo->prepare($sql);
             $q->execute([$name, $title, $url, $description, $imageurl, $shorturl, $adminautoapprove, $id]);
+            Database::disconnect();
+            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
         }
-
-        Database::disconnect();
-
-        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
     }
 
     /* When a user has paid for an ad and we receive the IPN notification, we create a blank ad for that user. */
-    public function createBlankAd(string $username)
+    public function createBlankAd(string $username): int
     {
 
         $pdo = DATABASE::connect();
@@ -133,7 +146,7 @@ class Ad
     }
 
     /* Call this when the user edits their existing ad. */
-    public function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post)
+    public function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post): string
     {
 
         $name = $post['name'];
@@ -166,7 +179,7 @@ class Ad
     }
 
     /* Call this to delete an ad. */
-    public function deleteAd(int $id, string $name)
+    public function deleteAd(int $id, string $name): string
     {
 
         $pdo = DATABASE::connect();
@@ -178,5 +191,34 @@ class Ad
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Ad " . $name . " was Deleted</strong></div>";
+    }
+
+    /* Save ad settings */
+    public function saveAdSettings(array $post): string
+    {
+        if ($this->adtable === "textads") {
+            $adprice = $post['textadprice'];
+            $adhits = $post['textadhits'];
+            $sql = "update adminsettings set textadprice=?, textadhits=?";
+        }
+        if ($this->adtable === "banners") {
+            $adprice = $post['bannerprice'];
+            $adhits = $post['bannerhits'];
+            $sql = "update adminsettings set bannerprice=?, bannerhits=?";
+        }
+        if ($this->adtable === "networksolo") {
+            $adprice = $post['networksoloprice'];
+            $sql = "update adminsettings set networksoloprice=?";
+        }
+
+        $pdo = DATABASE::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $q = $pdo->prepare($sql);
+        $q->execute([$adprice, $adhits]);
+
+        Database::disconnect();
+
+        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Ad Settings Saved!</strong></div>";
     }
 }

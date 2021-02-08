@@ -60,7 +60,12 @@ class FormValidation
         'type' => 'ad type',
         'promotionalimage' => 'promotional banner image URL',
         'promotionalsubject' => 'promotional email ad subject',
-        'promotionaladbody' => 'promotional email ad message'
+        'promotionaladbody' => 'promotional email ad message',
+        'textadprice' => 'price to buy a text ad',
+        'textadhits' => 'number of impressions per text ad',
+        'bannerprice' => 'price to buy a banner ad',
+        'bannerhits' => 'number of impressions per banner ad',
+        'networksoloprice' => 'price to buy a network solo ad'
     ];
 
     public function validateAll(array $post)
@@ -316,9 +321,10 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an IP address. </strong></div>";
                 }
-            } elseif ($varname === 'id') {
+            } elseif ($varname === 'id' || $varname === 'textadhits' || 'bannerhits') {
 
                 # any posted id value for a database record.
+                # number of hits for sold banners or textads.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_INT);
 
@@ -326,10 +332,10 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an integer greater than 0. </strong></div>";
                 }
-            } elseif ($varname === 'amount') {
+            } elseif ($varname === 'amount' || $varname === 'textadprice' || $varname === 'bannnerprice' || $varname === 'networksoloprice') {
 
-                # admin settings paysponsor,payrandom.
                 # amount owed to a recipient in the transactions money table.
+                # prices for different kinds of advertising.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_FLOAT);
 

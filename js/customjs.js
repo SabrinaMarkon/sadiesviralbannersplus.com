@@ -2,7 +2,9 @@
 const userForm = document.getElementById("userform");
 const paypalButtonForm = document.getElementById("paypalbuttonform");
 const paypalButton = document.getElementById("paypalbutton");
-const coinpaymentsButtonForm = document.getElementById("coinpaymentsbuttonform");
+const coinpaymentsButtonForm = document.getElementById(
+  "coinpaymentsbuttonform"
+);
 const coinpaymentsButton = document.getElementById("coinpaymentsbutton");
 
 // Listen for submission of payment button forms.
@@ -15,6 +17,10 @@ if (coinpaymentsButtonForm != null && coinpaymentsButton != null) {
 }
 
 function formFieldsToJSON() {
+
+  const buttonId = this.id;
+  console.log(buttonId);
+
   document.getElementById("errormsg").innerHTML = "";
   document.getElementById("errormsg").style.display = "hidden";
   let formattedFormFields = "";
@@ -49,10 +55,11 @@ function formFieldsToJSON() {
   };
   formattedFormFields = JSON.stringify(formFields);
   // console.log(formattedFormFields);
-  handlePayForm(formattedFormFields);
+  handlePayForm(formattedFormFields, buttonId);
 }
 
-async function handlePayForm(formattedFormFields) {
+async function handlePayForm(formattedFormFields, buttonId) {
+
   // First, save the purchase data into the database to retrieve after successful payment.
   // $('#userform')[0].checkValidity(); // default browser validation? doesn't seem to work here but not needed I just wanted to know.
   const response = await fetch("payformtodatabase.php", {
@@ -64,10 +71,16 @@ async function handlePayForm(formattedFormFields) {
   if (idOrError["pendingId"] != "") {
     // Add the purchase id to the pay button's custom form field.
     document.getElementById("pendingId").value = idOrError["pendingId"];
-    
+
     // Submit the pay button (even the id fails so the user can still purchase, but will need help from admin to give them their order if no purchase ID).
     // TODO: there are csp errors on the paypal site in the console.
-    paypalButtonForm.submit();
+    
+    if (buttonId === "paypalbutton") {
+      paypalButtonForm.submit();
+    }
+    if(buttonId === "coinpaymentsButton") {
+      coinpaymentsButtonForm.submit();
+    }
   } else {
     document.getElementById(
       "errormsg"

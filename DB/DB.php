@@ -17,6 +17,12 @@ CREATE TABLE `adminsettings` (
 `adminautoapprove` tinyint(1) not null default '0',
 `adclickstogetad` integer unsigned not null default '100',
 
+`textadprice` decimal(9, 2) not null default '2.00',
+`textadhits` integer unsigned not null default '2000',
+`bannerprice` decimal(9, 2) not null default '2.00',
+`bannerhits` integer unsigned not null default '2000',
+`networksoloprice` decimal(9, 2) not null default '5.00',
+
 `freevisitsbeforesignup` integer unsigned not null default 8,
 `freetopbanners` integer unsigned not null default 3,
 `freebottombanners` integer unsigned not null default 0,

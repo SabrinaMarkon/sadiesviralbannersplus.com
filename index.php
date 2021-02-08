@@ -152,7 +152,7 @@ if (isset($_POST['createad'])) {
 		# user submitted a new ad.
 		$adtable = $_POST['adtable'];
 		$create = new Ad($adtable);
-		$showad = $create->createAd($id, $adminautoapprove, 0, $_POST);
+		$showad = $create->createAd($id, $adminautoapprove, 'member', $_POST);
 	}
 }
 

@@ -309,6 +309,21 @@ if (isset($_POST['login'])) {
         $show = $delete->deletePromotional($id);
     }
 
+    if (isset($_POST['saveadsettings'])) {
+
+        $errors = $formvalidation->validateAll($_POST);
+        if (!empty($errors)) {
+
+            $showad = $errors;
+        } else {
+
+            # admin clicked the button to save main settings.
+            $adtable = $_POST['adtable'];
+            $update = new Ad($adtable);
+            $showad = $update->saveAdSettings($_POST);
+        }
+    }
+
     if (isset($_POST['createad'])) {
 
         $errors = $formvalidation->validateAll($_POST);
@@ -320,7 +335,7 @@ if (isset($_POST['login'])) {
             # user submitted a new ad.
             $adtable = $_POST['adtable'];
             $create = new Ad($adtable);
-            $showad = $create->createAd($id, $adminautoapprove, 1, $_POST);
+            $showad = $create->createAd($id, $adminautoapprove, 'admin', $_POST);
         }
     }
 

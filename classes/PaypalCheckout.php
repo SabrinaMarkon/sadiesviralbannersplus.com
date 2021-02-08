@@ -189,7 +189,7 @@ class PaypalCheckout extends PaymentGateway
                     $username = $formfields['username'];
                     $referid = $formfields['referid'];
                 } else {
-                    // Temporary purchase ID not found?
+                    // Temporary purchase ID not found.
                     exit;
                 }
                 // Check if buyer is an existing user (need to know if it is a new signup or an existing member upgrading)
@@ -199,7 +199,7 @@ class PaypalCheckout extends PaymentGateway
                 $isexistinguser = $q->rowCount();
 
                 // User purchased pro or gold paid membership. Commission and transaction done in User class.
-                if ($item_name === 'Pro Membership') {
+                if ($item_name === $this->settings['sitename'] . ' - Pro Membership') {
                     if ($isexistinguser < 1) {
                         $this->user->newSignup($this->settings, $formfields, 'Pro', $commission);
                     } else {
@@ -209,7 +209,7 @@ class PaypalCheckout extends PaymentGateway
                     $commission->addNewReferralCommission($referid, 'Pro');
                 }
 
-                if ($item_name === 'Gold Membership') {
+                if ($item_name === $this->settings['sitename'] . ' - Gold Membership') {
                     if (empty($isexistinguser)) {
                         $this->user->newSignup($this->settings, $formfields, 'Gold', $commission);
                     } else {
@@ -220,15 +220,24 @@ class PaypalCheckout extends PaymentGateway
                 }
 
                 // User purchased text ad.
-                if ($item_name === 'Text Ad') {
+                if ($item_name === $this->settings['sitename'] . ' - Text Ad') {
+                    $adtable = "textads";
+                    $create = new Ad($adtable);
+                    $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }
 
                 // User purchased network solo.
-                if ($item_name === 'Network Solo') {
+                if ($item_name === $this->settings['sitename'] . ' - Network Solo') {
+                    $adtable = "networksolos";
+                    $create = new Ad($adtable);
+                    $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }
 
                 // User purchased network banner.
-                if ($item_name === 'Network Banner') {
+                if ($item_name === $this->settings['sitename'] . ' - Banner') {
+                    $adtable = "banners";
+                    $create = new Ad($adtable);
+                    $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }
 
                 // Add transaction record.

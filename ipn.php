@@ -29,6 +29,7 @@ if (in_array($paidwith, $paymentcompanies)) {
     $user = new User($sendsiteemail);
     $commission = new Commission();
     $money = new Money();
+    // TODO: $ad = new Ad() here - have to get rid of $adtable in constructor though.
 
     if ($paidwith === "paypal") {
         // Note below that the paymentdata array (first parameter) isn't needed for ipn (it is only for storing the data in pendingpurchases to retrieve.)
