@@ -3236,6 +3236,20 @@ p.form-message.success, p.form-message.error {
   background-color: #ffd633;
   padding-top: 90px;
   padding-bottom: 120px; }
+.footer-area .footer-links {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+/* .footer-area .footer-links span {
+  margin: 0 20px;
+} */
+.footer-area .footer-links .footer-link {
+  color: #fff;
+}
+.footer-area .footer-links .footer-link:hover {
+  text-decoration: underline;
+}
   .footer-area .social li {
     display: inline-block;
     margin: 0 5px; }

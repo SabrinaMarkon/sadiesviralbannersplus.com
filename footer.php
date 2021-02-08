@@ -9,12 +9,20 @@
 <section class="footer-area footer-dark">
   <div class="container">
     <div class="row justify-content-center">
+      <div class="footer-links col-lg-6 text-center">
+        <a href="/about" class="footer-link">About</a>
+        <a href="/faq" class="footer-link">FAQ</a>
+        <a href="/terms" class="footer-link">Terms</a>
+      </div>
+    </div>
+    <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="footer-logo text-center">
           <a class="mt-30" href="/">
             <span class="logo">Sadie's <i class="fas fa-star fa-xs"></i></span>
           </a>
         </div> <!-- footer logo -->
+
         <!--        <ul class="social text-center mt-60">
                         <li><a href="https://facebook.com/uideckHQ"><i class="lni lni-facebook-filled"></i></a></li>
                         <li><a href="https://twitter.com/uideckHQ"><i class="lni lni-twitter-original"></i></a></li>
@@ -25,6 +33,7 @@
         <!-- <div class="footer-support text-center">
           <span class="mail"></span>
         </div> -->
+
         <div class="copyright text-center mt-35">
           <p class="text">&copy;2021 <a href="https://sadiesviralbannersplus.com" target="_blank" rel="nofollow">SadiesViralBannersPlus.com</a><br />Made with <span class="heart">&#10084;</span> by <a rel="nofollow" href="https://sabrinamarkon.com" target="_blank">Sabrina Markon</a></p>
         </div> <!--  copyright -->

@@ -98,8 +98,6 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                     <li class="nav-item"><a class="page-scroll" href="/banners">Your&nbsp;Banners</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/textads">Buy&nbsp;Text&nbsp;Ads</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/promotional">Earn&nbsp;Money</a></li>
-                                    <!-- <li class="nav-item"><a class="page-scroll" href="/faq">FAQ</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/terms">Terms</a></li> -->
                                     <li class="nav-item"><a class="page-scroll" href="/contact">Contact</a></li>
                                 </ul>
                             </div>
@@ -117,9 +115,6 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                     <li class="nav-item"><a class="page-scroll" href="/#home">Home</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/#memberships">Memberships</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="/ads">Banners</a></li>
-                                    <!-- <li class="nav-item"><a class="page-scroll" href="/about">About</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/faq">FAQ</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="/terms">Terms</a></li> -->
                                     <li class="nav-item"><a class="page-scroll" href="/#contact">Contact</a></li>
                                 </ul>
                             </div>
