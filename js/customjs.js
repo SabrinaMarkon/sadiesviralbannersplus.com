@@ -19,7 +19,6 @@ if (coinpaymentsButtonForm != null && coinpaymentsButton != null) {
 
 function formFieldsToJSON() {
   const buttonId = this.id;
-  // console.log(buttonId);
 
   if (errormsg != null) {
     document.getElementById("errormsg").innerHTML = "";
@@ -29,19 +28,52 @@ function formFieldsToJSON() {
   let formattedFormFields = "";
 
   // Possible form fields:
-  let username = (document.getElementById("username") != null) ? document.getElementById("username").value : "";
-  let password = (document.getElementById("password") != null) ? document.getElementById("password").value : "";
-  let confirm_password = (document.getElementById("confirm_password") != null) ? document.getElementById("confirm_password").value : "";
-  let firstname = (document.getElementById("firstname") != null) ? document.getElementById("firstname").value : "";
-  let lastname = (document.getElementById("lastname") != null) ? document.getElementById("lastname").value : "";
-  let email = (document.getElementById("email") != null) ? document.getElementById("email").value : "";
-  let paypal = (document.getElementById("paypal") != null) ? document.getElementById("paypal").value : "";
-  let country = (document.getElementById("country") != null) ? document.getElementById("country").value : "";
-  let signupip = (document.getElementById("signupip") != null) ? document.getElementById("signupip").value : "";
-  let referid = (document.getElementById("referid") != null) ? document.getElementById("referid").value : "admin";
+  let username =
+    document.getElementById("username") != null
+      ? document.getElementById("username").value
+      : "";
+  let password =
+    document.getElementById("password") != null
+      ? document.getElementById("password").value
+      : "";
+  let confirm_password =
+    document.getElementById("confirm_password") != null
+      ? document.getElementById("confirm_password").value
+      : "";
+  let firstname =
+    document.getElementById("firstname") != null
+      ? document.getElementById("firstname").value
+      : "";
+  let lastname =
+    document.getElementById("lastname") != null
+      ? document.getElementById("lastname").value
+      : "";
+  let email =
+    document.getElementById("email") != null
+      ? document.getElementById("email").value
+      : "";
+  let paypal =
+    document.getElementById("paypal") != null
+      ? document.getElementById("paypal").value
+      : "";
+  let country =
+    document.getElementById("country") != null
+      ? document.getElementById("country").value
+      : "";
+  let signupip =
+    document.getElementById("signupip") != null
+      ? document.getElementById("signupip").value
+      : "";
+  let referid =
+    document.getElementById("referid") != null
+      ? document.getElementById("referid").value
+      : "admin";
 
   // For ads username is hidden field in pay forms. Use also for upgrade pay buttons:
-  let usernamefieldforads = (document.getElementById("usernamefieldforads") != null) ? document.getElementById("usernamefieldforads").value : "";
+  let usernamefieldforads =
+    document.getElementById("usernamefieldforads") != null
+      ? document.getElementById("usernamefieldforads").value
+      : "";
 
   // TODO: Make sure that upgrade form in members area includes username!!!!!!to add to the formFields below!!!
 
@@ -72,9 +104,8 @@ async function handlePayForm(formattedFormFields, buttonId) {
   });
   let idOrError = await response.text();
   idOrError = await JSON.parse(idOrError);
+  // console.log(idOrError);
 
-  console.log(idOrError);
-  
   if (idOrError["pendingId"] != "") {
     // Add the purchase id to the pay button's custom form field.
     document.getElementById("pendingId").value = idOrError["pendingId"];
