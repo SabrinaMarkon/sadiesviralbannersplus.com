@@ -1,10 +1,10 @@
 <?php
 
 /**
-Handles user interactions with the application.
+Handles user advertising.
 PHP 7.4+
 @author Sabrina Markon
-@copyright 2018 Sabrina Markon, PHPSiteScripts.com
+@copyright 2021 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
  **/
 // if (count(get_included_files()) === 1) { exit('Direct Access is not Permitted'); }
@@ -91,6 +91,7 @@ class Ad
         $username = $post['username'];
         $name = $post['name'];
         $title = $post['title'];
+        $alt = $post['alt'];
         $url = $post['url'];
         $description = $post['description'];
         $imageurl = $post['imageurl'];
@@ -201,12 +202,12 @@ class Ad
             $adhits = $post['textadhits'];
             $sql = "update adminsettings set textadprice=?, textadhits=?";
         }
-        if ($this->adtable === "banners") {
+        if ($this->adtable === "bannerspaid") {
             $adprice = $post['bannerprice'];
             $adhits = $post['bannerhits'];
             $sql = "update adminsettings set bannerprice=?, bannerhits=?";
         }
-        if ($this->adtable === "networksolo") {
+        if ($this->adtable === "networksolos") {
             $adprice = $post['networksoloprice'];
             $sql = "update adminsettings set networksoloprice=?";
         }

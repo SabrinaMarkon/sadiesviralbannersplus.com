@@ -32,9 +32,9 @@ if (!empty($admincoinpayments)) {
 }
 
 $showcontent = new PageContent();
-echo $showcontent->showPage('Members Area Banner Ads Page');
+echo $showcontent->showPage('Members Area Paid Banner Ads Page');
 
-$adtable = 'banners';
+$adtable = 'bannerspaid';
 $ads = new Ad($adtable);
 
 # see if the user has any blank ads, and if so, get the first one (by id).
@@ -50,7 +50,7 @@ $activeads = $ads->getAllUsersAds($username);
 	<?php
 	if (empty($oneblankad)) {
 
-		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid rotation banner ads available. Please purchase one below!</div>";
+		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no banner ads available for the paid rotation. Please purchase one below!</div>";
 		if (!empty($paymentbuttons)) {
 			echo $paymentbuttons;
 		}
@@ -67,7 +67,7 @@ $activeads = $ads->getAllUsersAds($username);
 		$adid = $oneblankad['id'];
 
 	?>
-		<form action="/banners/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
+		<form action="/bannerspaid/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
 
 			<label for="name">Name of Ad (only you see):</label>
 			<input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name" required>
@@ -137,7 +137,7 @@ $activeads = $ads->getAllUsersAds($username);
 						$dateadadded = date('Y-m-d');
 					?>
 						<tr>
-							<form action="/banners/<?php echo $activead['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
+							<form action="/bannerspaid/<?php echo $activead['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
 								<td class="small"><?php echo $activead['id']; ?>
 								</td>
 								<td class="small">
@@ -183,7 +183,7 @@ $activeads = $ads->getAllUsersAds($username);
 								</td>
 							</form>
 							<td>
-								<form action="/banners/<?php echo $activead['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+								<form action="/bannerspaid/<?php echo $activead['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
 									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 									<input type="hidden" name="_method" value="DELETE">
 									<input type="hidden" name="name" value="<?php echo $activead['name']; ?>">

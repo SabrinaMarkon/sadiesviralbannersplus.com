@@ -241,9 +241,9 @@ class CoinPaymentsCheckout extends PaymentGateway
                     $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }
 
-                // User purchased network banner.
+                // User purchased banner.
                 if ($item_name === $this->settings['sitename'] . ' - Banner') {
-                    $adtable = "banners";
+                    $adtable = "bannerspaid";
                     $create = new Ad($adtable);
                     $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }

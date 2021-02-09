@@ -77,6 +77,20 @@ UNIQUE KEY `banners_filename_unique` (`filename`),
 KEY `banners_username_foreign` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+create table `bannerspaid` (
+`id` integer unsigned not null primary key auto_increment,
+`username` varchar(255) not null default 'admin',
+`name` varchar(255) not null,
+`alt` varchar(255) not null,
+`url` varchar(300) not null,
+`shorturl` varchar(255) not null,
+`imageurl` varchar(300) not null,
+`added` tinyint(1) not null default '0',
+`approved` tinyint(1) not null default '0',
+`hits` integer unsigned not null default '0',
+`clicks` integer unsigned not null default '0',
+`adddate` datetime not null
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `countries` (
 `country_id` int(11) not null primary key auto_increment,
@@ -198,7 +212,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Main Page',
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Profile Page', '', 'profile', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion Page', '', 'promotion', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Text Ads Page', '', 'ads', 'yes');
-INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Ads Page', '', 'banners', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Paid Banner Ads Page', '', 'bannerspaid', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Network Solos Page', '', 'networksolos', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Registration Page', '', 'register', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Thank You Page - New Member Signup', '<h4 align="center">Thank you so much for your membership purchase!</h4><br>', 'thankyou', 'yes');
