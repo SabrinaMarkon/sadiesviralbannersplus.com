@@ -6,6 +6,7 @@ const coinpaymentsButtonForm = document.getElementById(
   "coinpaymentsbuttonform"
 );
 const coinpaymentsButton = document.getElementById("coinpaymentsbutton");
+let errormsg = document.getElementById("errormsg");
 
 // Listen for submission of payment button forms.
 // The only values that are == null are null and undefined (!=)
@@ -17,31 +18,36 @@ if (coinpaymentsButtonForm != null && coinpaymentsButton != null) {
 }
 
 function formFieldsToJSON() {
-
   const buttonId = this.id;
-  console.log(buttonId);
+  // console.log(buttonId);
 
-  document.getElementById("errormsg").innerHTML = "";
-  document.getElementById("errormsg").style.display = "hidden";
+  if (errormsg != null) {
+    document.getElementById("errormsg").innerHTML = "";
+    document.getElementById("errormsg").style.display = "hidden";
+  }
+
   let formattedFormFields = "";
 
   // Possible form fields:
-  let username = document.getElementById("username").value;
-  let password = document.getElementById("password").value;
-  let confirm_password = document.getElementById("confirm_password").value;
-  let firstname = document.getElementById("firstname").value;
-  let lastname = document.getElementById("lastname").value;
-  let email = document.getElementById("email").value;
-  let paypal = document.getElementById("paypal").value;
-  let country = document.getElementById("country").value;
-  let signupip = document.getElementById("signupip").value;
-  let referid = document.getElementById("referid").value;
-  if (referid === "") {
-    referid = "admin";
-  }
+  let username = (document.getElementById("username") != null) ? document.getElementById("username").value : "";
+  let password = (document.getElementById("password") != null) ? document.getElementById("password").value : "";
+  let confirm_password = (document.getElementById("confirm_password") != null) ? document.getElementById("confirm_password").value : "";
+  let firstname = (document.getElementById("firstname") != null) ? document.getElementById("firstname").value : "";
+  let lastname = (document.getElementById("lastname") != null) ? document.getElementById("lastname").value : "";
+  let email = (document.getElementById("email") != null) ? document.getElementById("email").value : "";
+  let paypal = (document.getElementById("paypal") != null) ? document.getElementById("paypal").value : "";
+  let country = (document.getElementById("country") != null) ? document.getElementById("country").value : "";
+  let signupip = (document.getElementById("signupip") != null) ? document.getElementById("signupip").value : "";
+  let referid = (document.getElementById("referid") != null) ? document.getElementById("referid").value : "admin";
+
+  // For ads username is hidden field in pay forms. Use also for upgrade pay buttons:
+  let usernamefieldforads = (document.getElementById("usernamefieldforads") != null) ? document.getElementById("usernamefieldforads").value : "";
+
+  // TODO: Make sure that upgrade form in members area includes username!!!!!!to add to the formFields below!!!
 
   // Build the JSON object out of the form fields that are NOT null (exist on the page):
   let formFields = {
+    usernamefieldforads,
     username,
     password,
     confirm_password,
@@ -59,33 +65,36 @@ function formFieldsToJSON() {
 }
 
 async function handlePayForm(formattedFormFields, buttonId) {
-
   // First, save the purchase data into the database to retrieve after successful payment.
-  // $('#userform')[0].checkValidity(); // default browser validation? doesn't seem to work here but not needed I just wanted to know.
   const response = await fetch("payformtodatabase.php", {
     method: "POST",
     body: formattedFormFields,
   });
   let idOrError = await response.text();
   idOrError = await JSON.parse(idOrError);
+
+  console.log(idOrError);
+  
   if (idOrError["pendingId"] != "") {
     // Add the purchase id to the pay button's custom form field.
     document.getElementById("pendingId").value = idOrError["pendingId"];
 
     // Submit the pay button (even the id fails so the user can still purchase, but will need help from admin to give them their order if no purchase ID).
     // TODO: there are csp errors on the paypal site in the console.
-    
+
     if (buttonId === "paypalbutton") {
       paypalButtonForm.submit();
     }
-    if(buttonId === "coinpaymentsButton") {
+    if (buttonId === "coinpaymentsButton") {
       coinpaymentsButtonForm.submit();
     }
   } else {
-    document.getElementById(
-      "errormsg"
-    ).innerHTML = `<div class="ja-bottompadding"></div>${idOrError["errors"]}`;
-    document.getElementById("errormsg").style.display = "block";
+    if (errormsg != null) {
+      document.getElementById(
+        "errormsg"
+      ).innerHTML = `<div class="ja-bottompadding"></div>${idOrError["errors"]}`;
+      document.getElementById("errormsg").style.display = "block";
+    }
   }
 }
 

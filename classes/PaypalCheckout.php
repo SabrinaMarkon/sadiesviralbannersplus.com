@@ -20,6 +20,7 @@ class PaypalCheckout extends PaymentGateway
         $paymentdata,
         $postdata,
         $paybutton,
+        $usernamefieldforads,
         $payperiod,
         $payintervalcode,
         $formfields,
@@ -71,9 +72,16 @@ class PaypalCheckout extends PaymentGateway
             <input name="cmd" type="hidden" value="_xclick">';
         }
 
+        if ($this->itemname === "Pro Membership" || $this->itemname === "Gold Membership") {
+            $usernamefieldforads = "";
+        } else {
+            $usernamefieldforads = '<input type="hidden" id="usernamefieldforads" value="' . $this->username . '">';
+        }
+
         $paybutton = '
             <form method="POST" id="paypalbuttonform" action="https://www.paypal.com/cgi-bin/webscr" accept-charset="UTF-8" class="form-horizontal form-page-small">'
             . $payintervalcode .
+            $usernamefieldforads .
             '<input name="business" type="hidden" value="' . $this->settings['adminpaypal'] . '">
             <input name="item_name" type="hidden" value="' . $this->settings['sitename'] . ' - ' . $this->itemname . '">
             <input name="no_note" type="hidden" value="1">

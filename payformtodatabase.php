@@ -20,31 +20,35 @@ if (!empty($formfields)) {
     echo $response;
 }
 
-function validateFormFields(string $formfields) {
-    // Validate form fields:
-        $formvalidation = new FormValidation(json_decode($formfields, true));
-        $errors = $formvalidation->validateAll(json_decode($formfields, true));
-        if($errors) {
+function validateFormFields(string $formfields)
+{
+    $formfieldsarray = json_decode($formfields, true);
+    $usernamefieldforads = $formfieldsarray['usernamefieldforads'];
+    if ($usernamefieldforads === "") {
+        // Validate form fields:
+        $formvalidation = new FormValidation($formfieldsarray);
+        $errors = $formvalidation->validateAll($formfieldsarray);
+        if ($errors) {
             $response = array(
                 "errors" => $errors,
                 "pendingId" => ''
             );
             return $response;
         }
-        else {
-            $pendingId = addToDatabase($formfields);
-            $response = array(
-                "errors" => '',
-                "pendingId" => $pendingId
-            );
-            return $response;
-        }
+    }
+    $pendingId = addToDatabase($formfields);
+    $response = array(
+        "errors" => '',
+        "pendingId" => $pendingId
+    );
+    return $response;
 }
 
-function addToDatabase(string $formfields) {
-    
+function addToDatabase(string $formfields)
+{
+
     $pdo = Database::connect();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "insert into pendingpurchases (formfields, dateadded) values (?, NOW())";
     $q = $pdo->prepare($sql);
     $q->execute([$formfields]);

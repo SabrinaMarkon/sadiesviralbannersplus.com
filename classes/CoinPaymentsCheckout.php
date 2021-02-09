@@ -21,6 +21,7 @@ class CoinPaymentsCheckout extends PaymentGateway
         $paymentdata,
         $postdata,
         $paybutton,
+        $usernamefieldforads,
         $payperiod,
         $payintervalcode,
         $formfields,
@@ -52,10 +53,18 @@ class CoinPaymentsCheckout extends PaymentGateway
 
     protected function _payButton(): string
     {
+
+        if ($this->itemname === "Pro Membership" || $this->itemname === "Gold Membership") {
+            $usernamefieldforads = "";
+        } else {
+            $usernamefieldforads = '<input type="hidden" id="usernamefieldforads" value="' . $this->username . '">';
+        }
+
         // TODO: IMPORTANT - Coinpayments does not have automatic subscriptions!! Need to keep track of when next payment is due for users and send invoice every time.
         $paybutton = '
-            <form method="post" id="coinpaymentsbuttonform" action="https://www.coinpayments.net/index.php" accept-charset="UTF-8" class="form-horizontal form-page-small">
-            <input type="hidden" name="cmd" value="_pay_simple">
+            <form method="post" id="coinpaymentsbuttonform" action="https://www.coinpayments.net/index.php" accept-charset="UTF-8" class="form-horizontal form-page-small">'
+            . $usernamefieldforads .
+            '<input type="hidden" name="cmd" value="_pay_simple">
             <input type="hidden" name="reset" value="1">
             <input type="hidden" name="merchant" value="' . $this->settings['admincoinpayments'] . '">
             <input type="hidden" name="item_name" value="' . $this->settings['sitename'] . ' - ' . $this->itemname . '">
