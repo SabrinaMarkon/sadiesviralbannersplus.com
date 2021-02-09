@@ -77,6 +77,7 @@ UNIQUE KEY `banners_filename_unique` (`filename`),
 KEY `banners_username_foreign` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 CREATE TABLE `countries` (
 `country_id` int(11) not null primary key auto_increment,
 `country_name` varchar(64) not null DEFAULT '',
@@ -117,6 +118,21 @@ referid varchar(255) not null,
 lastlogin datetime not null,
 adclicks integer unsigned not null default '0',
 owed decimal(9,2) not null default 0.00
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+create table `networksolos` (
+`id` integer unsigned not null primary key auto_increment,
+`username` varchar(255) not null default 'admin',
+`name` varchar(255) not null,
+`subject` varchar(255) not null,
+`url` varchar(300) not null,
+`shorturl` varchar(255) not null,
+`message` longtext not null,
+`added` tinyint(1) not null default '0',
+`approved` tinyint(1) not null default '0',
+`sent` varchar(30) not null default 'Not Yet',
+`clicks` integer unsigned not null default '0',
+`adddate` datetime not null
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pages` (
@@ -183,6 +199,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Profile Pag
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion Page', '', 'promotion', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Text Ads Page', '', 'ads', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Ads Page', '', 'banners', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Network Solos Page', '', 'networksolos', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Registration Page', '', 'register', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Thank You Page - New Member Signup', '<h4 align="center">Thank you so much for your membership purchase!</h4><br>', 'thankyou', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Logout Page', '', 'logout', 'yes');
