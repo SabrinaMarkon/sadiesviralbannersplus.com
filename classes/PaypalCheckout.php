@@ -230,21 +230,21 @@ class PaypalCheckout extends PaymentGateway
                 // User purchased text ad.
                 if ($item_name === $this->settings['sitename'] . ' - Text Ad') {
                     $adtable = "textads";
-                    $create = new Ad($adtable);
+                    $create = new TextAd($adtable);
                     $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }
 
                 // User purchased network solo.
                 if ($item_name === $this->settings['sitename'] . ' - Network Solo') {
                     $adtable = "networksolos";
-                    $create = new Ad($adtable);
+                    $create = new NetworkSolo($adtable);
                     $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }
 
                 // User purchased banner.
                 if ($item_name === $this->settings['sitename'] . ' - Banner') {
                     $adtable = "bannerspaid";
-                    $create = new Ad($adtable);
+                    $create = new Banner($adtable);
                     $create->createAd(0, $this->settings['adminautoapprove'], 'ipn', [$username]);
                 }
 

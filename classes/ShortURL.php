@@ -19,7 +19,11 @@ class ShortURL {
 
     private function createURL(string $username) {
 
-        # FIREBASE.
+        # FIREBASE. // TODO: AUTOGENERATE these for ad urls and put them in the saved record for the ad automatically if people want to use them.
+
+        // TODO: NOT HERE but I need to add wallet info to member accounts. Also show earnings in members area etc.
+
+        // Screenshots of APP or animated gifs for main page!
 
     }
 
