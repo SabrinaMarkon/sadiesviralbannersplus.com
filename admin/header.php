@@ -77,12 +77,13 @@
                       <li class="nav-item"><a href="/admin/main">Main</a></li>
                       <li class="nav-item"><a href="/admin/settings">Settings</a></li>
                       <li class="nav-item"><a href="/admin/members">Members</a></li>
-                      <li class="nav-item"><a href="/admin/banners">Banners</a></li>
-                      <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>
                       <li class="nav-item"><a href="/admin/money">Money</a></li>
                       <li class="nav-item"><a href="/admin/mail">Mail</a></li>
-                      <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
                       <li class="nav-item"><a href="/admin/pages">Pages</a></li>
+                      <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
+                      <li class="nav-item"><a href="/admin/bannerspaid">Paid&nbsp;Banners</a></li>
+                      <li class="nav-item"><a href="/admin/networksolos">Network&nbsp;Solos</a></li>
+                      <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>
                     </ul>
                   </div>
 

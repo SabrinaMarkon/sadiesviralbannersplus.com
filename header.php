@@ -99,7 +99,9 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                             <li class="nav-item"><a class="page-scroll" href="/members">Main</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/profile">Profile</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/banners">Your&nbsp;Banners</a></li>
-                                            <li class="nav-item"><a class="page-scroll" href="/textads">Buy&nbsp;Text&nbsp;Ads</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/bannerspaid">Paid&nbsp;Banners</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/textads">Text&nbsp;Ads</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/networksolos">Network&nbsp;Solos</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/promotional">Earn&nbsp;Money</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/contact">Contact</a></li>
                                         </ul>
