@@ -17,7 +17,8 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 class Ad
 {
 
-    private $pdo;
+    // TODO: Extract database stuff to the Database class instead of in all the classes not DRY at all.
+    protected $pdo;
 
     public function __construct(string $adtable)
     {
@@ -84,50 +85,6 @@ class Ad
         return null;
     }
 
-    /* Call this when the user or admin submits their ad. */
-    public function createAd(int $id, int $adminautoapprove, string $source, array $post): ?string
-    {
-
-        $username = $post['username'];
-        $name = $post['name'];
-        $title = $post['title'];
-        $alt = $post['alt'];
-        $url = $post['url'];
-        $description = $post['description'];
-        $imageurl = $post['imageurl'];
-
-        # TODO: generate shorturl - FIREBASE LINKS ****
-        $shorturl = '';
-
-        $pdo = DATABASE::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        # is it a user or the admin posting the ad?
-        if ($source === 'admin') {
-
-            $sql = "insert into " . $this->adtable . " (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,?,1,1,NOW())";
-            $q = $pdo->prepare($sql);
-            $q->execute([$name, $title, $url, $shorturl, $description, $imageurl]);
-            Database::disconnect();
-
-            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
-        } elseif ($source === 'ipn') {
-
-            $sql = "insert into " . $this->adtable . " (username) values (?)";
-            $q = $pdo->prepare($sql);
-            $q->execute([$username]);
-            Database::disconnect();
-            return null;
-        } else {
-
-            $sql = "update " . $this->adtable . " set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
-            $q = $pdo->prepare($sql);
-            $q->execute([$name, $title, $url, $description, $imageurl, $shorturl, $adminautoapprove, $id]);
-            Database::disconnect();
-            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
-        }
-    }
-
     /* When a user has paid for an ad and we receive the IPN notification, we create a blank ad for that user. */
     public function createBlankAd(string $username): int
     {
@@ -144,39 +101,6 @@ class Ad
         Database::disconnect();
 
         return $adid;
-    }
-
-    /* Call this when the user edits their existing ad. */
-    public function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post): string
-    {
-
-        $name = $post['name'];
-        $title = $post['title'];
-        $url = $post['url'];
-        $description = $post['description'];
-        $imageurl = $post['imageurl'];
-
-        # generate shorturl - FIREBASE LINKS ****
-        $shorturl = '';
-
-        $pdo = DATABASE::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        if ($isadmin) {
-
-            # admin has the option to choose to approve right away or not.
-            $autoapprove = $post['approved'];
-        } else {
-
-            $autoapprove = $adminautoapprove;
-        }
-        $sql = "update " . $this->adtable . " set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
-        $q = $pdo->prepare($sql);
-        $q->execute([$name, $title, $url, $description, $imageurl, $shorturl, $autoapprove, $id]);
-
-        Database::disconnect();
-
-        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Ad " . $name . " was Saved!</strong></div>";
     }
 
     /* Call this to delete an ad. */
