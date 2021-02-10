@@ -34,7 +34,7 @@ foreach ($promotionals as $promotional) {
                 <tbody>
                     <tr class="table-active">
                         <td>
-                            <h4 class="text-body">BANNER: <?php echo $promotional['name']; ?></h4>
+                            <h4 class="ja-white">BANNER: <?php echo $promotional['name']; ?></h4>
                         </td>
                     </tr>
                     <tr>
@@ -77,7 +77,7 @@ foreach ($promotionals as $promotional) {
                 <tbody>
                     <tr class="table-active">
                         <td>
-                            <h4 class="text-body">EMAIL: <?php echo $promotional['name']; ?></h4>
+                            <h4 class="ja-white">EMAIL: <?php echo $promotional['name']; ?></h4>
                         </td>
                     </tr>
                     <tr>

@@ -111,6 +111,13 @@
   height: auto;
 }
 
+.table-striped tbody tr:first-child {
+  background-color: #0067f4;
+}
+h4.ja-white {
+  color: #fff;
+}
+
 .ja-promotionalimg {
   max-width: 468px !important;
   display: inline-block;
