@@ -35,7 +35,7 @@ $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Network Solos Page');
 
 $adtable = 'networksolos';
-$ads = new Ad($adtable);
+$ads = new NetworkSolo($adtable);
 
 # see if the user has any blank ads, and if so, get the first one (by id).
 $oneblankad = $ads->getBlankAd($username);

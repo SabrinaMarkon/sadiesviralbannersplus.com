@@ -161,8 +161,7 @@ if (isset($_POST['createad'])) {
 				break;
 			case "networksolos":
 				$ad = new NetworkSolo($adtable);
-			default:
-				$ad = new Ad($adtable);
+				break;
 		}
 		if ($ad) {
 			$showad = $ad->createAd($id, $adminautoapprove, 'member', $_POST);
@@ -192,8 +191,6 @@ if (isset($_POST['savead'])) {
 				break;
 			case "networksolos":
 				$ad = new NetworkSolo($adtable);
-			default:
-				$ad = new Ad($adtable);
 		}
 		if ($ad) {
 			$showad = $ad->saveAd($id, $adminautoapprove, 0, $_POST);
@@ -205,9 +202,22 @@ if (isset($_POST['deletead'])) {
 
 	$id = $_SESSION['referid']; // the var name referid is what is in the url, but it has the id of the ad in this case.
 
+	$ad = "";
 	$adtable = $_POST['adtable'];
-	$delete = new Ad($adtable);
-	$showad = $delete->deleteAd($id, $_POST['name']);
+	switch ($adtable) {
+		case "textads":
+			$ad = new TextAds($adtable);
+			break;
+		case "bannerspaid":
+			$ad = new Banner($adtable);
+			break;
+		case "networksolos":
+			$ad = new NetworkSolo($adtable);
+			break;
+	}
+	if ($ad) {
+		$showad = $ad->deleteAd($id, $_POST['name']);
+	}
 }
 
 if (isset($_GET['page']) && ($_GET['page'] === "logout")) {

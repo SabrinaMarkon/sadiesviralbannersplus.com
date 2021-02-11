@@ -318,9 +318,22 @@ if (isset($_POST['login'])) {
         } else {
 
             # admin clicked the button to save main settings.
+            $ad = "";
             $adtable = $_POST['adtable'];
-            $update = new Ad($adtable);
-            $showad = $update->saveAdSettings($_POST);
+            switch($adtable) {
+                case "textads":
+                    $ad = new TextAds($adtable);
+                    break;
+                case "bannerspaid":
+                    $ad = new Banner($adtable);
+                    break;
+                case "networksolos":
+                    $ad = new NetworkSolo($adtable);
+                    break;
+            }
+            if ($ad) {
+                $showad = $ad->saveAdSettings($_POST);
+            }            
         }
     }
 

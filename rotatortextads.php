@@ -12,7 +12,7 @@ $rotators = $allrotators->getAds();
 
 if ($rotators) {
 
-    $ads = new Ad($adtable);    
+    $ads = new TextAd($adtable);    
 
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

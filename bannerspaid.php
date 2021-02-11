@@ -35,7 +35,7 @@ $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Paid Banner Ads Page');
 
 $adtable = 'bannerspaid';
-$ads = new Ad($adtable);
+$ads = new Banner($adtable);
 
 # see if the user has any blank ads, and if so, get the first one (by id).
 $oneblankad = $ads->getBlankAd($username);
