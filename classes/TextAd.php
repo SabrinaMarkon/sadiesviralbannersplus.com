@@ -18,6 +18,10 @@ class TextAd extends Ad
 {
 
     // Constructor is inherited from Ad parent class.
+    public function __construct(string $adtable) {
+        parent::__construct($adtable);
+    }
+    
     /* Call this when the user or admin submits their ad. */
     public function createAd(int $id, int $adminautoapprove, string $source, array $post): ?string
     {

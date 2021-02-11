@@ -150,9 +150,23 @@ if (isset($_POST['createad'])) {
 	} else {
 
 		# user submitted a new ad.
+		$ad = "";
 		$adtable = $_POST['adtable'];
-		$create = new Ad($adtable);
-		$showad = $create->createAd($id, $adminautoapprove, 'member', $_POST);
+		switch ($adtable) {
+			case "textads":
+				$ad = new TextAds($adtable);
+				break;
+			case "bannerspaid":
+				$ad = new Banner($adtable);
+				break;
+			case "networksolos":
+				$ad = new NetworkSolo($adtable);
+			default:
+				$ad = new Ad($adtable);
+		}
+		if ($ad) {
+			$showad = $ad->createAd($id, $adminautoapprove, 'member', $_POST);
+		}
 	}
 }
 
@@ -167,9 +181,23 @@ if (isset($_POST['savead'])) {
 	} else {
 
 		# user saved changes made to their ad.
+		$ad = "";
 		$adtable = $_POST['adtable'];
-		$save = new Ad($adtable);
-		$showad = $save->saveAd($id, $adminautoapprove, 0, $_POST);
+		switch ($adtable) {
+			case "textads":
+				$ad = new TextAds($adtable);
+				break;
+			case "bannerspaid":
+				$ad = new Banner($adtable);
+				break;
+			case "networksolos":
+				$ad = new NetworkSolo($adtable);
+			default:
+				$ad = new Ad($adtable);
+		}
+		if ($ad) {
+			$showad = $ad->saveAd($id, $adminautoapprove, 0, $_POST);
+		}
 	}
 }
 

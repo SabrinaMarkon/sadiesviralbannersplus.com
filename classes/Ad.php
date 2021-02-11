@@ -14,7 +14,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-class Ad
+abstract class Ad
 {
 
     // TODO: Extract database stuff to the Database class instead of in all the classes not DRY at all.
@@ -24,6 +24,10 @@ class Ad
     {
         $this->adtable = $adtable; // Name of database table for this kind of ad (ie. banners, textads, etc.)
     }
+
+    // Child classes each need to be able to create an ad or edit and save an ad.
+    abstract function createAd(int $id, int $adminautoapprove, string $source, array $post): ?string;
+    abstract function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post): string;
 
     /* Get all the ads for all members. */
     public function getAllAds(): array

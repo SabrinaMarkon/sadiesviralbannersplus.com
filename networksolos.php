@@ -45,7 +45,7 @@ $activeads = $ads->getAllUsersAds($username);
 
 ?>
 <!-- tinyMCE -->
-<script language="javascript" type="text/javascript" src="/../js/tinymce/tinymce.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
 <script language="javascript" type="text/javascript">
     tinymce.init({
         setup : function(ed) {
@@ -117,7 +117,7 @@ $activeads = $ads->getAllUsersAds($username);
 			<input type="url" name="url" id="url" class="form-control input-lg" placeholder="URL" required>
 
 			<label for="description">Message:</label>
-			<textarea name="message" value="" class="form-control input-lg" rows="10" placeholder="Message" required></textarea>
+			<textarea name="message" value="" class="form-control input-lg" rows="50" placeholder="Message" required></textarea>
 
             <div class="ja-bottompadding"></div>
 
@@ -156,7 +156,7 @@ $activeads = $ads->getAllUsersAds($username);
 						<th class="text-center small" style="min-width: 100px;">Subject</th>
 						<th class="text-center small" style="min-width: 200px;">URL</th>
 						<th class="text-center small">Short&nbsp;URL</th>
-						<th class="text-center small" style="min-width: 200px;">message</th>
+						<th class="text-center small" style="min-width: 200px;">Message</th>
 						<th class="text-center small">Approved</th>
 						<th class="text-center small">Sent</th>
 						<th class="text-center small">Clicks</th>

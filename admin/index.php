@@ -333,9 +333,22 @@ if (isset($_POST['login'])) {
         } else {
 
             # user submitted a new ad.
+            $ad = "";
             $adtable = $_POST['adtable'];
-            $create = new Ad($adtable);
-            $showad = $create->createAd($id, $adminautoapprove, 'admin', $_POST);
+            switch($adtable) {
+                case "textads":
+                    $ad = new TextAds($adtable);
+                    break;
+                case "bannerspaid":
+                    $ad = new Banner($adtable);
+                    break;
+                case "networksolos":
+                    $ad = new NetworkSolo($adtable);
+                    break;
+            }
+            if ($ad) {
+                $showad = $ad->createAd($id, $adminautoapprove, 'admin', $_POST);
+            }
         }
     }
 
@@ -348,9 +361,21 @@ if (isset($_POST['login'])) {
         } else {
 
             # user saved changes made to their ad.
+            $ad = "";
             $adtable = $_POST['adtable'];
-            $save = new Ad($adtable);
-            $showad = $save->saveAd($id, $adminautoapprove, 1, $_POST);
+            switch($adtable) {
+                case "textads":
+                    $ad = new TextAds($adtable);
+                    break;
+                case "bannerspaid":
+                    $ad = new Banner($adtable);
+                    break;
+                case "networksolos":
+                    $ad = new NetworkSolo($adtable);
+            }
+            if ($ad) {
+                $showad = $ad->saveAd($id, $adminautoapprove, 1, $_POST);
+            }
         }
     }
 
