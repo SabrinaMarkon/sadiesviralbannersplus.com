@@ -88,7 +88,18 @@ if (isset($_POST['login'])) {
 
             # admin clicked the button to save main settings.
             $update = new Setting();
-            $show = $update->saveSettings($_SESSION['adminusername'], $_SESSION['adminpassword']);
+            if (isset($_SESSION['adminusername']) && isset($_SESSION['adminpassword'])) {
+                $show = $update->saveSettings($_SESSION['adminusername'], $_SESSION['adminpassword']);
+            } else {
+                # failed login.
+                $logout = new Admin();
+                $logout->adminLogout();
+                $Layout->showHeader($metatitle, $metadescription);
+                $showcontent = new AdminLoginForm();
+                echo $showcontent->showLoginForm(1);
+                $Layout->showFooter();
+                exit;
+            }
         }
     }
 
@@ -320,7 +331,7 @@ if (isset($_POST['login'])) {
             # admin clicked the button to save main settings.
             $ad = "";
             $adtable = $_POST['adtable'];
-            switch($adtable) {
+            switch ($adtable) {
                 case "textads":
                     $ad = new TextAds($adtable);
                     break;
@@ -333,7 +344,7 @@ if (isset($_POST['login'])) {
             }
             if ($ad) {
                 $showad = $ad->saveAdSettings($_POST);
-            }            
+            }
         }
     }
 
@@ -348,7 +359,7 @@ if (isset($_POST['login'])) {
             # user submitted a new ad.
             $ad = "";
             $adtable = $_POST['adtable'];
-            switch($adtable) {
+            switch ($adtable) {
                 case "textads":
                     $ad = new TextAds($adtable);
                     break;
@@ -376,7 +387,7 @@ if (isset($_POST['login'])) {
             # user saved changes made to their ad.
             $ad = "";
             $adtable = $_POST['adtable'];
-            switch($adtable) {
+            switch ($adtable) {
                 case "textads":
                     $ad = new TextAds($adtable);
                     break;
