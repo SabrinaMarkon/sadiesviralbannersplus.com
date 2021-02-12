@@ -42,8 +42,8 @@ foreach ($settings as $key => $value) {
                 <label for="adminpaypal" class="ja-toppadding">Your Paypal Email:</label>
                 <input type="text" name="adminpaypal" value="<?php echo $adminpaypal ?>" class="form-control input-lg" placeholder="Paypal Email" maxlength="300">
 
-                <label for="admincoinpayments" class="ja-toppadding">Your CoinPayments API Key:</label>
-                <input type="text" name="admincoinpayments" value="<?php echo $admincoinpayments ?>" class="form-control input-lg" placeholder="CoinPayments API Key" maxlength="300">
+                <label for="admincoinpayments" class="ja-toppadding">Your CoinPayments Merchant ID:</label>
+                <input type="text" name="admincoinpayments" value="<?php echo $admincoinpayments ?>" class="form-control input-lg" placeholder="CoinPayments Merchant ID" maxlength="300">
                                 
                 <label for="sitename" class="ja-toppadding">Your Website Name:</label>
                 <input type="text" name="sitename" value="<?php echo $sitename ?>" class="form-control input-lg" placeholder="Website Name" maxlength="50" required>
@@ -120,8 +120,11 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
-                <label for="adclickstogetad" class="ja-toppadding">Click How Many Ads to get another Free Ad:</label>
-                <input type="number" min="1" step="1" name="adclickstogetad" value="<?php echo $adclickstogetad ?>" class="form-control smallselect" required>
+                <label for="adclickstogettextad" class="ja-toppadding">Click How Many Text Ads to get a Free Text Ad (0 to disable click reward):</label>
+                <input type="number" min="0" step="1" name="adclickstogettextad" value="<?php echo $adclickstogettextad ?>" class="form-control smallselect" required>
+
+                <label for="adclickstogetbannerspaidad" class="ja-toppadding">Click How Many Banner Ads to get a Free Banner Ad (0 to disable click reward):</label>
+                <input type="number" min="0" step="1" name="adclickstogetbannerspaidad" value="<?php echo $adclickstogetbannerspaidad ?>" class="form-control smallselect" required>
 
                 <div class="ja-bottompadding"></div>
 

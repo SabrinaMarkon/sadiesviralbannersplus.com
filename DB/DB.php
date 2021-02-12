@@ -15,7 +15,8 @@ CREATE TABLE `adminsettings` (
 `metatitle` varchar(60) not null,
 `metadescription` varchar(160) not null,
 `adminautoapprove` tinyint(1) not null default '0',
-`adclickstogetad` integer unsigned not null default '100',
+`adclickstogettextad` integer unsigned not null default '100',
+`adclickstogetbannerspaidad` integer unsigned not null default '100',
 
 `textadprice` decimal(9, 2) not null default '2.00',
 `textadhits` integer unsigned not null default '2000',

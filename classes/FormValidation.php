@@ -54,6 +54,8 @@ class FormValidation
         'metatitle' => 'meta title',
         'metadescription' => 'meta description',
         'adminautoapprove' => 'for auto approve ads',
+        'adclickstogettextad' => 'text ads to click to get a free text ad',
+        'adclickstogetbannerspaidad' => 'banner ads to click to get a free banner ad',
         'signupip' => 'signup IP',
         'id' => 'id',
         'amount' => 'amount',
@@ -65,7 +67,18 @@ class FormValidation
         'textadhits' => 'number of impressions per text ad',
         'bannerprice' => 'price to buy a banner ad',
         'bannerhits' => 'number of impressions per banner ad',
-        'networksoloprice' => 'price to buy a network solo ad'
+        'networksoloprice' => 'price to buy a network solo ad',
+        'proprice' => 'price of a pro membership',
+        'propayinterval' => 'how often members pay for a pro membership',
+        'goldprice' => 'price of a gold membership',
+        'goldpayinterval' => 'how often members pay for a gold membership',
+        'freerefersproearn' => 'how much a free member is paid for referring a pro member',
+        'freerefersgoldearn' => 'how much a free member is paid for referring a gold member',
+        'prorefersproearn' => 'how much a pro member is paid for referring a pro member',
+        'prorefersgoldearn' => 'how much a pro member is paid for referring a gold member',
+        'goldrefersproearn' => 'how much a gold member is paid for referring a pro member',
+        'goldrefersgoldearn' => 'how much a gold member is paid for referring a gold member'
+
     ];
 
     public function validateAll(array $post)
@@ -163,7 +176,7 @@ class FormValidation
                 # user's country.
                 # ad's name.
                 # admin email's subject.
-                # admin's settings name.
+                # admin's name.
                 # page name.
                 # promotional ad's name.
 
@@ -309,8 +322,16 @@ class FormValidation
 
                 if ($varvalue !== '0' && $varvalue !== '1') {
 
-                    $errors .= "<div><strong>The value of " . $pretty_varname . " must be Yes or No. </strong></div>";
+                    $errors .= "<div><strong>The value " . $pretty_varname . " must be Yes or No. </strong></div>";
                 }
+            } elseif ($varname === 'adclickstogettextad' || $varname === 'adclickstogetbannerspaidad') {
+
+                # make sure that the number of ads clicked to get a free ad is an integer greater than or equal to 0 (0 means disabled).
+                if ($varvalue < 0) {
+
+                    $errors .= "<div><strong>The value of " . $pretty_varname . " must be an integer greater than or equal to 0. </strong></div>";
+                }
+
             } elseif ($varname === 'signupip') {
 
                 # admin area signupip for members.
@@ -321,7 +342,7 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an IP address. </strong></div>";
                 }
-            } elseif ($varname === 'id' || $varname === 'textadhits' || 'bannerhits') {
+            } elseif ($varname === 'id' || $varname === 'textadhits' || $varname === 'bannerhits') {
 
                 # any posted id value for a database record.
                 # number of hits for sold banners or textads.
@@ -332,16 +353,24 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an integer greater than 0. </strong></div>";
                 }
-            } elseif ($varname === 'amount' || $varname === 'textadprice' || $varname === 'bannnerprice' || $varname === 'networksoloprice') {
+            } elseif ($varname === 'amount' || $varname === 'textadprice' || $varname === 'bannnerprice' || $varname === 'networksoloprice' || $varname === 'proprice' || $varname === 'goldprice' || $varname === 'freerefersproearn' || $varname === 'freerefersgoldearn' || $varname === 'prorefersproearn' || $varname === 'prorefersgoldearn' || $varname === 'goldrefersproearn' || $varname === 'goldrefersgoldearn') {
 
                 # amount owed to a recipient in the transactions money table.
                 # prices for different kinds of advertising.
+                # prices for pro or gold membership.
+                # referral earnings.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_FLOAT);
 
                 if (!filter_var($varvalue, FILTER_VALIDATE_FLOAT)) {
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be a dollar figure (optionally with a decimal i.e. 5.42). </strong></div>";
+                }
+            } elseif ($varname === 'propayinterval' || $varname === 'goldpayinterval') {
+                if ($varvalue !== 'lifetime' && $varvalue !== 'monthly' && $varvalue !== 'annually') {
+
+                    # payment intervals for pro or gold membership.
+                    $errors .= "<div><strong>The value of " . $pretty_varname . " needs to be either lifetime, monthly, or annually. </strong></div>";
                 }
             }
         }
