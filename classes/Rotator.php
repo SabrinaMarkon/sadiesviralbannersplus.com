@@ -62,7 +62,7 @@ class Rotator {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select id,title,url,shorturl,description,imageurl from " . $this->adtable . " where added=1 and approved=1 order by rand() limit 6";
+        $sql = "select * from " . $this->adtable . " where added=1 and approved=1 order by rand() limit 6";
         $q = $pdo->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);

@@ -5,21 +5,17 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-# get the end part of the url, which is normally the referid for the main site files, but will be actually the id of the clicked ad for this php file only.
-$id = $_SESSION['referid'];
-// session_unset();
+$adtable = $_GET['adtable'] ?? '';
+$id = $_GET['id'] ?? '';
 
-$adtable = 'textads';
-$giveclicks = new Rotator($adtable);
-$click = $giveclicks->giveClick($id);
-
-if ($click) {
-
-    header('Location: ' . $click);
-    exit;
-
-} else {
-
-    echo "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The URL for this ad was invalid.</strong></div>";
+if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid')) {
+    $rotator = new Rotator($adtable);
+    $click = $rotator->giveClick($id);
+    if ($click) {
+        header('Location: ' . $click);
+        exit;
+    }
 }
+echo "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The URL for this ad was invalid.</strong></div>";
+exit;
 

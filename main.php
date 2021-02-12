@@ -6,17 +6,33 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 }
 ?>
 
+<!-- Paid Banner Rotators -->
+<section id="bannerspaid" class="bannerspaid-area">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="centered">
+                    <section class="cards">
+
+                        <?php include 'rotatorbannerspaid.php'; ?>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+</section>
+
 <!-- Home page content written by admin -->
 <?php
 $showcontent = new PageContent();
 if (!empty($showcontent->showPage('Home Page'))) {
 ?>
-    <section>
+    <section id="homecontent">
         <div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="centered">
-                        <section class="cards">
+                        <section>
 
                             <?php
                             echo $showcontent->showPage('Home Page');
@@ -135,7 +151,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
 
 <!-- Contact -->
 
-<section id="contact" class="contact-area">
+<section id="contact" class="c">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">

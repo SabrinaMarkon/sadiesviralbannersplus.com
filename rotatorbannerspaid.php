@@ -5,7 +5,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-$adtable = 'textads';
+$adtable = 'bannerspaid';
 
 $rotator = new Rotator($adtable);
 $allrotators = $rotator->getAds();
@@ -15,22 +15,15 @@ if ($allrotators) {
     foreach ($allrotators as $ad) {
 
         $rid = $ad['id'];
-        $rtitle = $ad['title'];
+        $ralt = $ad['alt'];
         $rurl = $ad['url'];
         $rshorturl = $ad['shorturl']; // TODO: use short url if available.
-        $rdescription = $ad['description'];
         $rimageurl = $ad['imageurl'];
 
         $rotator->giveHit($rid);
         # get clicks when people click too.
-        ?>
-        <article class="card">
-            
-            <div class="text-center"><img class="card-image" alt="<?php echo $rtitle; ?>" src="<?php echo $rimageurl; ?>" /></div>
-            <p><div><a id="textad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank"><?php echo $rtitle; ?></a></div><div><?php echo $rdescription; ?></div></p>
-
-        </article>
-        <?php
+?>
+        <div><a id="bannerad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
+<?php
     }
 }
-

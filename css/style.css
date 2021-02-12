@@ -2763,7 +2763,8 @@ p {
 ===========================*/
 .pricing-area {
   background-color: #ffd633;
-  padding-top: 120px;
+  /* padding-top: 120px; */
+  padding-top: 3em;
   padding-bottom: 130px; }
 
 /*===== PRICING STYLE NINE =====*/
@@ -2849,10 +2850,16 @@ p {
       }
 
 /*===========================
-       15.TEXTADS css 
+       15.TEXTADS/BANNERSPAID css #f7f4f4 -light gray
 ===========================*/
-.textads-area {
+#homecontent, #contact {
+  padding: 3em;
+}
+#textads.textads-area {
   background: #0067f4;
+}
+#bannerspaid.bannerspaid-area {
+  background: #ffd633;
 }
 /*===========================
        15.ABOUT css 
