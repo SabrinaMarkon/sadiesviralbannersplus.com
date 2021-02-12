@@ -7,7 +7,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 $adtable = 'textads';
 
-$rotator = new Rotator($adtable, $sitesettings);
+$rotator = new Rotator($adtable, $settings);
 $allrotators = $rotator->getAds();
 
 if ($allrotators) {
