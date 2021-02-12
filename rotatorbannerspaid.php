@@ -7,7 +7,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 $adtable = 'bannerspaid';
 
-$rotator = new Rotator($adtable);
+$rotator = new Rotator($adtable, $sitesettings);
 $allrotators = $rotator->getAds();
 
 if ($allrotators) {

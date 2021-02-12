@@ -232,7 +232,7 @@ if (isset($_GET['page']) && ($_GET['page'] === "logout")) {
 
 # if an ad is clicked (we don't want a header.php)
 if (isset($_GET['page']) && ($_GET['page'] === 'click')) {
-
+	
 	include "click.php";
 	exit;
 }

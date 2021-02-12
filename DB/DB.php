@@ -131,7 +131,8 @@ verificationcode varchar(255) not null,
 verified varchar(255) not null,
 referid varchar(255) not null,
 lastlogin datetime not null,
-adclicks integer unsigned not null default '0',
+textadclicks integer unsigned not null default '0',
+banneradclicks integer unsigned not null default '0',
 owed decimal(9,2) not null default 0.00
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
