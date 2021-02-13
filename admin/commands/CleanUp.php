@@ -1,15 +1,7 @@
 <?php
 /**
-Handles admin or member submitted mail outs and should be called as a scheduled job.
-PHP 5.4+
-@author Sabrina Markon
-@copyright 2018 Sabrina Markon, PHPSiteScripts.com
-@license LICENSE.md
-**/
-
-/**
  * CleanUp deletes old records from the database.
- *
+ * PHP 5.4+
  * @author Sabrina Markon
  * @copyright 2021 Sabrina Markon, PHPSiteScripts.com
  * @license LICENSE.md

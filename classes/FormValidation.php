@@ -77,8 +77,25 @@ class FormValidation
         'prorefersproearn' => 'how much a pro member is paid for referring a pro member',
         'prorefersgoldearn' => 'how much a pro member is paid for referring a gold member',
         'goldrefersproearn' => 'how much a gold member is paid for referring a pro member',
-        'goldrefersgoldearn' => 'how much a gold member is paid for referring a gold member'
-
+        'goldrefersgoldearn' => 'how much a gold member is paid for referring a gold member',
+        'freesignupbonustextads' => 'how many text ads a free member gets as a signup bonus',
+        'freesignupbonusbannerspaid' => 'how many paid banners a free member gets as a signup bonus',
+        'freesignupbonusnetworksolos' => 'how many network solos a free member gets as a signup bonus',
+        'freemonthlybonustextads' => 'how many bonus text ads a free member gets per month',
+        'freemonthlybonusbannerspaid' => 'how many bonus paid banner ads a free member gets per month',
+        'freemonthlybonusnetworksolos' => 'how many bonus network solos a free member gets per month',
+        'prosignupbonustextads' => 'how many text ads a pro member gets as a signup bonus',
+        'prosignupbonusbannerspaid' => 'how many paid banners a pro member gets as a signup bonus',
+        'prosignupbonusnetworksolos' => 'how many network solos a pro member gets as a signup bonus',
+        'promonthlybonustextads' => 'how many bonus text ads a pro member gets per month',
+        'promonthlybonusbannerspaid' => 'how many bonus paid banner ads a pro member gets per month',
+        'promonthlybonusnetworksolos' => 'how many bonus network solos a pro member gets per month',
+        'goldsignupbonustextads' => 'how many text ads a gold member gets as a signup bonus',
+        'goldsignupbonusbannerspaid' => 'how many paid banners a gold member gets as a signup bonus',
+        'goldsignupbonusnetworksolos' => 'how many network solos a gold member gets as a signup bonus',
+        'goldmonthlybonustextads' => 'how many bonus text ads a gold member gets per month',
+        'goldmonthlybonusbannerspaid' => 'how many bonus paid banner ads a gold member gets per month',
+        'goldmonthlybonusnetworksolos' => 'how many bonus network solos a gold member gets per month'
     ];
 
     public function validateAll(array $post)
@@ -324,7 +341,7 @@ class FormValidation
 
                     $errors .= "<div><strong>The value " . $pretty_varname . " must be Yes or No. </strong></div>";
                 }
-            } elseif ($varname === 'adclickstogettextad' || $varname === 'adclickstogetbannerspaidad') {
+            } elseif ($varname === 'adclickstogettextad' || $varname === 'adclickstogetbannerspaidad' || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false) {
 
                 # make sure that the number of ads clicked to get a free ad is an integer greater than or equal to 0 (0 means disabled).
                 if ($varvalue < 0) {

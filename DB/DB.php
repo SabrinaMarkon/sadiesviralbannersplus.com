@@ -15,38 +15,58 @@ CREATE TABLE `adminsettings` (
 `metatitle` varchar(60) not null,
 `metadescription` varchar(160) not null,
 `adminautoapprove` tinyint(1) not null default '0',
-`adclickstogettextad` integer unsigned not null default '100',
-`adclickstogetbannerspaidad` integer unsigned not null default '100',
-
+`adclickstogettextad` integer unsigned not null default '100', ##########members area 
+`adclickstogetbannerspaidad` integer unsigned not null default '100',##########fixxxx
+`adclickstogetnetworksolo` integer unsigned not null default '100',##########newwww
 `textadprice` decimal(9, 2) not null default '2.00',
 `textadhits` integer unsigned not null default '2000',
 `bannerprice` decimal(9, 2) not null default '2.00',
 `bannerhits` integer unsigned not null default '2000',
 `networksoloprice` decimal(9, 2) not null default '5.00',
 
-`freevisitsbeforesignup` integer unsigned not null default 8,
+`freevisitsbeforesignup` integer unsigned not null default 8, ##### don't have this yet.
 `freetopbanners` integer unsigned not null default 3,
 `freebottombanners` integer unsigned not null default 0,
 `freerefersproearn` decimal(9,2) not null default 4.00,
 `freerefersgoldearn` decimal(9,2) not null default 6.00,
 
+`freesignupbonustextads` integer unsigned not null default '0',
+`freesignupbonusbannerspaid` integer unsigned not null default '0',
+`freesignupbonusnetworksolos` integer unsigned not null default '0',
+`freemonthlybonustextads` integer unsigned not null default '0',
+`freemonthlybonusbannerspaid` integer unsigned not null default '0',
+`freemonthlybonusnetworksolos` integer unsigned not null default '0',
+
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
-
 `provisitsbeforesignup` integer unsigned not null default 8,
 `protopbanners` integer unsigned not null default 3,
 `probottombanners` integer unsigned not null default 0,
 `prorefersproearn` decimal(9,2) not null default 6.00,
 `prorefersgoldearn` decimal(9,2) not null default 8.00,
 
+`prosignupbonustextads` integer unsigned not null default '1',
+`prosignupbonusbannerspaid` integer unsigned not null default '1',
+`prosignupbonusnetworksolos` integer unsigned not null default '0',
+`promonthlybonustextads` integer unsigned not null default '1',
+`promonthlybonusbannerspaid` integer unsigned not null default '1',
+`promonthlybonusnetworksolos` integer unsigned not null default '0',
+
 `goldprice` decimal(9, 2) not null default '9.99',
 `goldpayinterval` varchar(12) not null default 'monthly',
-
 `goldvisitsbeforesignup` integer unsigned not null default 8,
 `goldtopbanners` integer unsigned not null default 3,
 `goldbottombanners` integer unsigned not null default 0,
 `goldrefersproearn` decimal(9,2) not null default 8.00,
-`goldrefersgoldearn` decimal(9,2) not null default 10.00
+`goldrefersgoldearn` decimal(9,2) not null default 10.00,
+
+`goldsignupbonustextads` integer unsigned not null default '2',
+`goldsignupbonusbannerspaid` integer unsigned not null default '2',
+`goldsignupbonusnetworksolos` integer unsigned not null default '1',
+`goldmonthlybonustextads` integer unsigned not null default '2',
+`goldmonthlybonusbannerspaid` integer unsigned not null default '2',
+`goldmonthlybonusnetworksolos` integer unsigned not null default '1'
+
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `adminnotes` (
@@ -175,6 +195,11 @@ CREATE TABLE `promotional` (
 `promotionaladbody` longtext NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+CREATE TABLE `memberresources` (
+`id` int(10) unsigned not null primary key auto_increment,
+###################################################################################################
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 create table `textads` (
 `id` integer unsigned not null primary key auto_increment,
 `username` varchar(255) not null default 'admin',
@@ -216,6 +241,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion P
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Text Ads Page', '', 'ads', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Paid Banner Ads Page', '', 'bannerspaid', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Network Solos Page', '', 'networksolos', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Maker Page', '', 'imagemaker', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Registration Page', '', 'register', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Thank You Page - New Member Signup', '<h4 align="center">Thank you so much for your membership purchase!</h4><br>', 'thankyou', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Logout Page', '', 'logout', 'yes');

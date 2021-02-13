@@ -44,7 +44,7 @@ foreach ($settings as $key => $value) {
 
                 <label for="admincoinpayments" class="ja-toppadding">Your CoinPayments Merchant ID:</label>
                 <input type="text" name="admincoinpayments" value="<?php echo $admincoinpayments ?>" class="form-control input-lg" placeholder="CoinPayments Merchant ID" maxlength="300">
-                                
+
                 <label for="sitename" class="ja-toppadding">Your Website Name:</label>
                 <input type="text" name="sitename" value="<?php echo $sitename ?>" class="form-control input-lg" placeholder="Website Name" maxlength="50" required>
 
@@ -57,10 +57,34 @@ foreach ($settings as $key => $value) {
                 <label for="metadescription" class="ja-toppadding">SEO: Meta Description:</label>
                 <input type="text" name="metadescription" value="<?php echo $metadescription ?>" class="form-control input-lg" placeholder="SEO meta description for search engines" maxlength="160" required>
 
+                <div>
+                    <label for="adminautoapprove" class="ja-toppadding">Auto-approve Ads:</label>
+                    <select name="adminautoapprove" class="form-control smallselect">
+                        <option value="1" <?php if (intval($adminautoapprove) === 1) {
+                                                echo "selected";
+                                            } ?>>Yes</option>
+                        <option value="0" <?php if (intval($adminautoapprove) !== 1) {
+                                                echo "selected";
+                                            } ?>>No</option>
+                    </select>
+                </div>
+
+                <label for="adclickstogettextad" class="ja-toppadding">Click How Many Text Ads to get a Free Text Ad (0 to disable):</label>
+                <input type="number" min="0" step="1" name="adclickstogettextad" value="<?php echo $adclickstogettextad ?>" class="form-control smallselect" required>
+
+                <label for="adclickstogetbannerspaidad" class="ja-toppadding">Click How Many Banner Ads to get a Free Banner Ad (0 to disable):</label>
+                <input type="number" min="0" step="1" name="adclickstogetbannerspaidad" value="<?php echo $adclickstogetbannerspaidad ?>" class="form-control smallselect" required>
+
+                <br /><br />
+                <h1>Basic Settings for Free Members</h1>
+
                 <label for="freerefersproearn" class="ja-toppadding">Commission when Free members sponsor a Pro member:</label>
                 <input type="text" name="freerefersproearn" value="<?php echo $freerefersproearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Pro member" maxlength="8" required>
                 <label for="freerefersgoldearn" class="ja-toppadding">Commission when Free members sponsor a Gold member:</label>
                 <input type="text" name="freerefersgoldearn" value="<?php echo $freerefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Gold member" maxlength="8" required>
+
+                <br /><br />
+                <h1>Basic Settings for Pro Members</h1>
 
                 <label for="proprice" class="ja-toppadding">Price for Pro Membership:</label>
                 <input type="text" name="proprice" value="<?php echo $proprice ?>" class="form-control input-lg" placeholder="Price for Pro Membership" maxlength="8" required>
@@ -75,8 +99,8 @@ foreach ($settings as $key => $value) {
                                                     echo "selected";
                                                 } ?>>Monthly</option>
                         <option value="annually" <?php if ($propayinterval === "annually") {
-                                                    echo "selected";
-                                                } ?>>Annually</option>
+                                                        echo "selected";
+                                                    } ?>>Annually</option>
                     </select>
                 </div>
 
@@ -84,6 +108,9 @@ foreach ($settings as $key => $value) {
                 <input type="text" name="prorefersproearn" value="<?php echo $prorefersproearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Pro member" maxlength="8" required>
                 <label for="prorefersgoldearn" class="ja-toppadding">Commission when Pro members sponsor a Gold member:</label>
                 <input type="text" name="prorefersgoldearn" value="<?php echo $prorefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Gold member" maxlength="8" required>
+
+                <br /><br />
+                <h1>Basic Settings for Gold Members</h1>
 
                 <label for="goldprice" class="ja-toppadding">Price for Gold Membership:</label>
                 <input type="text" name="goldprice" value="<?php echo $goldprice ?>" class="form-control input-lg" placeholder="Price for Gold Membership" maxlength="8" required>
@@ -98,8 +125,8 @@ foreach ($settings as $key => $value) {
                                                     echo "selected";
                                                 } ?>>Monthly</option>
                         <option value="annually" <?php if ($goldpayinterval === "annually") {
-                                                    echo "selected";
-                                                } ?>>Annually</option>
+                                                        echo "selected";
+                                                    } ?>>Annually</option>
                     </select>
                 </div>
 
@@ -108,23 +135,53 @@ foreach ($settings as $key => $value) {
                 <label for="goldrefersgoldearn" class="ja-toppadding">Commission when Gold members sponsor a Gold member:</label>
                 <input type="text" name="goldrefersgoldearn" value="<?php echo $goldrefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Gold member" maxlength="8" required>
 
-                <div>
-                    <label for="adminautoapprove" class="ja-toppadding">Auto-approve Ads:</label>
-                    <select name="adminautoapprove" class="form-control smallselect">
-                        <option value="1" <?php if (intval($adminautoapprove) === 1) {
-                                                echo "selected";
-                                            } ?>>Yes</option>
-                        <option value="0" <?php if (intval($adminautoapprove) !== 1) {
-                                                echo "selected";
-                                            } ?>>No</option>
-                    </select>
-                </div>
+                <br /><br />
+                <h1>Sign Up Bonuses</h1>
 
-                <label for="adclickstogettextad" class="ja-toppadding">Click How Many Text Ads to get a Free Text Ad (0 to disable click reward):</label>
-                <input type="number" min="0" step="1" name="adclickstogettextad" value="<?php echo $adclickstogettextad ?>" class="form-control smallselect" required>
+                <label for="freesignupbonustextads" class="ja-toppadding">Free Text Ads a Free member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="freesignupbonustextads" value="<?php echo $freesignupbonustextads ?>" class="form-control smallselect" required>
+                <label for="freesignupbonusbannerspaid" class="ja-toppadding">Free Banners a Free member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="freesignupbonusbannerspaid" value="<?php echo $freesignupbonusbannerspaid ?>" class="form-control smallselect" required>
+                <label for="freesignupbonusnetworksolos" class="ja-toppadding">Free Network Solos a Free member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="freesignupbonusnetworksolos" value="<?php echo $freesignupbonusnetworksolos ?>" class="form-control smallselect" required>
 
-                <label for="adclickstogetbannerspaidad" class="ja-toppadding">Click How Many Banner Ads to get a Free Banner Ad (0 to disable click reward):</label>
-                <input type="number" min="0" step="1" name="adclickstogetbannerspaidad" value="<?php echo $adclickstogetbannerspaidad ?>" class="form-control smallselect" required>
+                <label for="prosignupbonustextads" class="ja-toppadding">Free Text Ads a Pro member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="prosignupbonustextads" value="<?php echo $prosignupbonustextads ?>" class="form-control smallselect" required>
+                <label for="prosignupbonusbannerspaid" class="ja-toppadding">Free Banners a Pro member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="prosignupbonusbannerspaid" value="<?php echo $prosignupbonusbannerspaid ?>" class="form-control smallselect" required>
+                <label for="prosignupbonusnetworksolos" class="ja-toppadding">Free Network Solos a Pro member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="prosignupbonusnetworksolos" value="<?php echo $prosignupbonusnetworksolos ?>" class="form-control smallselect" required>
+
+                <label for="goldsignupbonustextads" class="ja-toppadding">Free Text Ads a Gold member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="goldsignupbonustextads" value="<?php echo $goldsignupbonustextads ?>" class="form-control smallselect" required>
+                <label for="goldsignupbonusbannerspaid" class="ja-toppadding">Free Banners a Gold member gets as a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="goldsignupbonusbannerspaid" value="<?php echo $goldsignupbonusbannerspaid ?>" class="form-control smallselect" required>
+                <label for="goldsignupbonusnetworksolos" class="ja-toppadding">Free Network Solos a Gold member as for a sign up bonus :</label>
+                <input type="number" min="0" step="1" name="goldsignupbonusnetworksolos" value="<?php echo $goldsignupbonusnetworksolos ?>" class="form-control smallselect" required>
+
+                <br /><br />
+                <h1>Monthly Bonuses</h1>
+
+                <label for="freemonthlybonustextads" class="ja-toppadding">Free Text Ads a Free member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="freemonthlybonustextads" value="<?php echo $freemonthlybonustextads ?>" class="form-control smallselect" required>
+                <label for="freemonthlybonusbannerspaid" class="ja-toppadding">Free Banners a Free member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="freemonthlybonusbannerspaid" value="<?php echo $freemonthlybonusbannerspaid ?>" class="form-control smallselect" required>
+                <label for="freemonthlybonusnetworksolos" class="ja-toppadding">Free Network Solos a Free member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="freemonthlybonusnetworksolos" value="<?php echo $freemonthlybonusnetworksolos ?>" class="form-control smallselect" required>
+
+                <label for="promonthlybonustextads" class="ja-toppadding">Free Text Ads a Pro member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="promonthlybonustextads" value="<?php echo $promonthlybonustextads ?>" class="form-control smallselect" required>
+                <label for="promonthlybonusbannerspaid" class="ja-toppadding">Free Banners a Pro member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="promonthlybonusbannerspaid" value="<?php echo $promonthlybonusbannerspaid ?>" class="form-control smallselect" required>
+                <label for="promonthlybonusnetworksolos" class="ja-toppadding">Free Network Solos a Pro member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="promonthlybonusnetworksolos" value="<?php echo $promonthlybonusnetworksolos ?>" class="form-control smallselect" required>
+
+                <label for="goldmonthlybonustextads" class="ja-toppadding">Free Text Ads a Gold member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="goldmonthlybonustextads" value="<?php echo $goldmonthlybonustextads ?>" class="form-control smallselect" required>
+                <label for="goldmonthlybonusbannerspaid" class="ja-toppadding">Free Banners a Gold member gets as a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="goldmonthlybonusbannerspaid" value="<?php echo $goldmonthlybonusbannerspaid ?>" class="form-control smallselect" required>
+                <label for="goldmonthlybonusnetworksolos" class="ja-toppadding">Free Network Solos a Gold member as for a monthly bonus :</label>
+                <input type="number" min="0" step="1" name="goldmonthlybonusnetworksolos" value="<?php echo $goldmonthlybonusnetworksolos ?>" class="form-control smallselect" required>
 
                 <div class="ja-bottompadding"></div>
 

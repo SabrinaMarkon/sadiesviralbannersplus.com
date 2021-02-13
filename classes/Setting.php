@@ -44,6 +44,24 @@ class Setting
         $newprorefersgoldearn = $_POST['prorefersgoldearn'];
         $newgoldrefersproearn = $_POST['goldrefersproearn'];
         $newgoldrefersgoldearn = $_POST['goldrefersgoldearn'];
+        $newfreesignupbonustextads = $_POST['freesignupbonustextads'];
+        $newfreesignupbonusbannerspaid = $_POST['freesignupbonusbannerspaid'];
+        $newfreesignupbonusnetworksolos = $_POST['freesignupbonusnetworksolos'];
+        $newfreemonthlybonustextads = $_POST['freemonthlybonustextads'];
+        $newfreemonthlybonusbannerspaid = $_POST['freemonthlybonusbannerspaid'];
+        $newfreemonthlybonusnetworksolos = $_POST['freemonthlybonusnetworksolos'];
+        $newprosignupbonustextads = $_POST['prosignupbonustextads'];
+        $newprosignupbonusbannerspaid = $_POST['prosignupbonusbannerspaid'];
+        $newprosignupbonusnetworksolos = $_POST['prosignupbonusnetworksolos'];
+        $newpromonthlybonustextads = $_POST['promonthlybonustextads'];
+        $newpromonthlybonusbannerspaid = $_POST['promonthlybonusbannerspaid'];
+        $newpromonthlybonusnetworksolos = $_POST['promonthlybonusnetworksolos'];
+        $newgoldsignupbonustextads = $_POST['goldsignupbonustextads'];
+        $newgoldsignupbonusbannerspaid = $_POST['goldsignupbonusbannerspaid'];
+        $newgoldsignupbonusnetworksolos = $_POST['goldsignupbonusnetworksolos'];
+        $newgoldmonthlybonustextads = $_POST['goldmonthlybonustextads'];
+        $newgoldmonthlybonusbannerspaid = $_POST['goldmonthlybonusbannerspaid'];
+        $newgoldmonthlybonusnetworksolos = $_POST['goldmonthlybonusnetworksolos'];
 
         # if either username or password changed, update session.
         if (($adminuser !== $newadminuser) or ($adminpass !== $newadminpass)) {
@@ -58,11 +76,11 @@ class Setting
         // Form validation of admin areas called from admin/index.php.
 
         $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, adminpaypal=?, admincoinpayments=?, sitename=?, 
-        domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogettextad=?, adclickstogetbannerspaidad=?, proprice=?, propayinterval=?, goldprice=?, goldpayinterval=?, freerefersproearn=?, freerefersgoldearn=?, prorefersproearn=?, prorefersgoldearn=?, goldrefersproearn=?, goldrefersgoldearn=?";
+        domain=?, metadescription=?, metatitle=?, adminautoapprove=?, adclickstogettextad=?, adclickstogetbannerspaidad=?, proprice=?, propayinterval=?, goldprice=?, goldpayinterval=?, freerefersproearn=?, freerefersgoldearn=?, prorefersproearn=?, prorefersgoldearn=?, goldrefersproearn=?, goldrefersgoldearn=?, freesignupbonustextads=?, freesignupbonusbannerspaid=?, freesignupbonusnetworksolos=?, freemonthlybonustextads=?, freemonthlybonusbannerspaid=?, freemonthlybonusnetworksolos=?, prosignupbonustextads=?, prosignupbonusbannerspaid=?, prosignupbonusnetworksolos=?, promonthlybonustextads=?, promonthlybonusbannerspaid=?, promonthlybonusnetworksolos=?, goldsignupbonustextads=?, goldsignupbonusbannerspaid=?, goldsignupbonusnetworksolos=?, goldmonthlybonustextads=?, goldmonthlybonusbannerspaid=?, goldmonthlybonusnetworksolos=?";
         $q = $pdo->prepare($sql);
         $q->execute(array(
             $newadminuser, $newadminpass, $newadminname, $newadminemail, $newadminpaypal, $newadmincoinpayments, $newsitename,
-            $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogettextad, $newadclickstogetbannerspaidad, $newproprice, $newpropayinterval, $newgoldprice, $newgoldpayinterval, $newfreerefersproearn, $newfreerefersgoldearn, $newprorefersproearn, $newprorefersgoldearn, $newgoldrefersproearn, $newgoldrefersgoldearn
+            $newdomain, $newmetadescription, $newmetatitle, $newadminautoapprove, $newadclickstogettextad, $newadclickstogetbannerspaidad, $newproprice, $newpropayinterval, $newgoldprice, $newgoldpayinterval, $newfreerefersproearn, $newfreerefersgoldearn, $newprorefersproearn, $newprorefersgoldearn, $newgoldrefersproearn, $newgoldrefersgoldearn, $newfreesignupbonustextads, $newfreesignupbonusbannerspaid, $newfreesignupbonusnetworksolos, $newfreemonthlybonustextads, $newfreemonthlybonusbannerspaid, $newfreemonthlybonusnetworksolos, $newprosignupbonustextads, $newprosignupbonusbannerspaid, $newprosignupbonusnetworksolos, $newpromonthlybonustextads, $newpromonthlybonusbannerspaid, $newpromonthlybonusnetworksolos, $newgoldsignupbonustextads, $newgoldsignupbonusbannerspaid, $newgoldsignupbonusnetworksolos, $newgoldmonthlybonustextads, $newgoldmonthlybonusbannerspaid, $newgoldmonthlybonusnetworksolos
         ));
         Database::disconnect();
 
