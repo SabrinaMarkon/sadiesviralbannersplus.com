@@ -69,22 +69,23 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
-                <label for="adclickstogettextad" class="ja-toppadding">Click How Many Text Ads to get a Free Text Ad (0 to disable):</label>
-                <input type="number" min="0" step="1" name="adclickstogettextad" value="<?php echo $adclickstogettextad ?>" class="form-control smallselect" required>
-
-                <label for="adclickstogetbannerspaid" class="ja-toppadding">Click How Many Banner Ads to get a Free Banner (0 to disable):</label>
-                <input type="number" min="0" step="1" name="adclickstogetbannerspaid" value="<?php echo $adclickstogetbannerspaid ?>" class="form-control smallselect" required>
-
-                <label for="adclickstogetnetworksolo" class="ja-toppadding">Click How Many Banner Ads to get a Free Network Solo (0 to disable):</label>
-                <input type="number" min="0" step="1" name="adclickstogetnetworksolo" value="<?php echo $adclickstogetnetworksolo ?>" class="form-control smallselect" required>
-
                 <br /><br />
                 <h1>Basic Settings for Free Members</h1>
 
                 <label for="freerefersproearn" class="ja-toppadding">Commission when Free members sponsor a Pro member:</label>
                 <input type="text" name="freerefersproearn" value="<?php echo $freerefersproearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Pro member" maxlength="8" required>
+                
                 <label for="freerefersgoldearn" class="ja-toppadding">Commission when Free members sponsor a Gold member:</label>
                 <input type="text" name="freerefersgoldearn" value="<?php echo $freerefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Gold member" maxlength="8" required>
+                
+                <label for="freeadclickstogettextad" class="ja-toppadding">Clicks on Text Ads for a Free member to get a Free Text Ad (0 to disable):</label>
+                <input type="number" min="0" step="1" name="freeadclickstogettextad" value="<?php echo $freeadclickstogettextad ?>" class="form-control smallselect" required>
+                
+                <label for="freeadclickstogetbannerspaid" class="ja-toppadding">Clicks on Banners for a Free member to get a Free Banner (0 to disable):</label>
+                <input type="number" min="0" step="1" name="freeadclickstogetbannerspaid" value="<?php echo $freeadclickstogetbannerspaid ?>" class="form-control smallselect" required>
+                
+                <label for="freeadclickstogetnetworksolo" class="ja-toppadding">Clicks on Network Solo links for a Free member to get a Free Network Solo (0 to disable):</label>
+                <input type="number" min="0" step="1" name="freeadclickstogetnetworksolo" value="<?php echo $freeadclickstogetnetworksolo ?>" class="form-control smallselect" required>
 
                 <br /><br />
                 <h1>Basic Settings for Pro Members</h1>
@@ -109,8 +110,18 @@ foreach ($settings as $key => $value) {
 
                 <label for="prorefersproearn" class="ja-toppadding">Commission when Pro members sponsor a Pro member:</label>
                 <input type="text" name="prorefersproearn" value="<?php echo $prorefersproearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Pro member" maxlength="8" required>
+                
                 <label for="prorefersgoldearn" class="ja-toppadding">Commission when Pro members sponsor a Gold member:</label>
                 <input type="text" name="prorefersgoldearn" value="<?php echo $prorefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Gold member" maxlength="8" required>
+
+                <label for="proadclickstogettextad" class="ja-toppadding">Clicks on Text Ads for a Pro member to get a Free Text Ad (0 to disable):</label>
+                <input type="number" min="0" step="1" name="proadclickstogettextad" value="<?php echo $proadclickstogettextad ?>" class="form-control smallselect" required>
+                
+                <label for="proadclickstogetbannerspaid" class="ja-toppadding">Clicks on Banners for a Pro member to get a Free Banner (0 to disable):</label>
+                <input type="number" min="0" step="1" name="proadclickstogetbannerspaid" value="<?php echo $proadclickstogetbannerspaid ?>" class="form-control smallselect" required>
+                
+                <label for="proadclickstogetnetworksolo" class="ja-toppadding">Clicks on Network Solo links for a Pro member to get a Free Network Solo (0 to disable):</label>
+                <input type="number" min="0" step="1" name="proadclickstogetnetworksolo" value="<?php echo $proadclickstogetnetworksolo ?>" class="form-control smallselect" required>
 
                 <br /><br />
                 <h1>Basic Settings for Gold Members</h1>
@@ -135,8 +146,18 @@ foreach ($settings as $key => $value) {
 
                 <label for="goldrefersproearn" class="ja-toppadding">Commission when Gold members sponsor a Pro member:</label>
                 <input type="text" name="goldrefersproearn" value="<?php echo $goldrefersproearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Pro member" maxlength="8" required>
+                
                 <label for="goldrefersgoldearn" class="ja-toppadding">Commission when Gold members sponsor a Gold member:</label>
                 <input type="text" name="goldrefersgoldearn" value="<?php echo $goldrefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Gold member" maxlength="8" required>
+
+                <label for="goldadclickstogettextad" class="ja-toppadding">Clicks on Text Ads for a Gold member to get a Free Text Ad (0 to disable):</label>
+                <input type="number" min="0" step="1" name="goldadclickstogettextad" value="<?php echo $goldadclickstogettextad ?>" class="form-control smallselect" required>
+                
+                <label for="goldadclickstogetbannerspaid" class="ja-toppadding">Clicks on Banners for a Gold member to get a Free Banner (0 to disable):</label>
+                <input type="number" min="0" step="1" name="goldadclickstogetbannerspaid" value="<?php echo $goldadclickstogetbannerspaid ?>" class="form-control smallselect" required>
+                
+                <label for="goldadclickstogetnetworksolo" class="ja-toppadding">Clicks on Network Solo links for a Gold member to get a Free Network Solo (0 to disable):</label>
+                <input type="number" min="0" step="1" name="goldadclickstogetnetworksolo" value="<?php echo $goldadclickstogetnetworksolo ?>" class="form-control smallselect" required>
 
                 <br /><br />
                 <h1>Sign Up Bonuses</h1>

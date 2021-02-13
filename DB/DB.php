@@ -15,21 +15,17 @@ CREATE TABLE `adminsettings` (
 `metatitle` varchar(60) not null,
 `metadescription` varchar(160) not null,
 `adminautoapprove` tinyint(1) not null default '0',
-`adclickstogettextad` integer unsigned not null default '100', ##########members area 
-`adclickstogetbannerspaid` integer unsigned not null default '100',
-`adclickstogetnetworksolo` integer unsigned not null default '100',
 `textadprice` decimal(9, 2) not null default '2.00',
 `textadhits` integer unsigned not null default '2000',
 `bannerprice` decimal(9, 2) not null default '2.00',
 `bannerhits` integer unsigned not null default '2000',
 `networksoloprice` decimal(9, 2) not null default '5.00',
 
-`freevisitsbeforesignup` integer unsigned not null default 8, ##### don't have this yet.
-`freetopbanners` integer unsigned not null default 3,
-`freebottombanners` integer unsigned not null default 0,
+`freevisitsbeforesignup` integer unsigned not null default 8, ####################
+`freetopbanners` integer unsigned not null default 3,####################
+`freebottombanners` integer unsigned not null default 0,####################
 `freerefersproearn` decimal(9,2) not null default 4.00,
 `freerefersgoldearn` decimal(9,2) not null default 6.00,
-
 `freesignupbonustextads` integer unsigned not null default '0',
 `freesignupbonusbannerspaid` integer unsigned not null default '0',
 `freesignupbonusnetworksolos` integer unsigned not null default '0',
@@ -37,14 +33,17 @@ CREATE TABLE `adminsettings` (
 `freemonthlybonusbannerspaid` integer unsigned not null default '0',
 `freemonthlybonusnetworksolos` integer unsigned not null default '0',
 
+`freeadclickstogettextad` integer unsigned not null default '100', ##########members area 
+`freeadclickstogetbannerspaid` integer unsigned not null default '100',##########
+`freeadclickstogetnetworksolo` integer unsigned not null default '100',##########
+
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
-`provisitsbeforesignup` integer unsigned not null default 8,
-`protopbanners` integer unsigned not null default 3,
-`probottombanners` integer unsigned not null default 0,
+`provisitsbeforesignup` integer unsigned not null default 8,####################
+`protopbanners` integer unsigned not null default 3,####################
+`probottombanners` integer unsigned not null default 0,####################
 `prorefersproearn` decimal(9,2) not null default 6.00,
 `prorefersgoldearn` decimal(9,2) not null default 8.00,
-
 `prosignupbonustextads` integer unsigned not null default '1',
 `prosignupbonusbannerspaid` integer unsigned not null default '1',
 `prosignupbonusnetworksolos` integer unsigned not null default '0',
@@ -52,20 +51,27 @@ CREATE TABLE `adminsettings` (
 `promonthlybonusbannerspaid` integer unsigned not null default '1',
 `promonthlybonusnetworksolos` integer unsigned not null default '0',
 
+`proadclickstogettextad` integer unsigned not null default '100', ##########members area 
+`proadclickstogetbannerspaid` integer unsigned not null default '100',##########
+`proadclickstogetnetworksolo` integer unsigned not null default '100',##########
+
 `goldprice` decimal(9, 2) not null default '9.99',
 `goldpayinterval` varchar(12) not null default 'monthly',
-`goldvisitsbeforesignup` integer unsigned not null default 8,
-`goldtopbanners` integer unsigned not null default 3,
-`goldbottombanners` integer unsigned not null default 0,
+`goldvisitsbeforesignup` integer unsigned not null default 8,####################
+`goldtopbanners` integer unsigned not null default 3,####################
+`goldbottombanners` integer unsigned not null default 0,####################
 `goldrefersproearn` decimal(9,2) not null default 8.00,
 `goldrefersgoldearn` decimal(9,2) not null default 10.00,
-
 `goldsignupbonustextads` integer unsigned not null default '2',
 `goldsignupbonusbannerspaid` integer unsigned not null default '2',
 `goldsignupbonusnetworksolos` integer unsigned not null default '1',
 `goldmonthlybonustextads` integer unsigned not null default '2',
 `goldmonthlybonusbannerspaid` integer unsigned not null default '2',
-`goldmonthlybonusnetworksolos` integer unsigned not null default '1'
+`goldmonthlybonusnetworksolos` integer unsigned not null default '1',
+
+`goldadclickstogettextad` integer unsigned not null default '100', ##########members area 
+`goldadclickstogetbannerspaid` integer unsigned not null default '100',##########
+`goldadclickstogetnetworksolo` integer unsigned not null default '100' ##########
 
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

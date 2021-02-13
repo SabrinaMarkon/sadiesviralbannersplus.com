@@ -8,14 +8,14 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 $adtable = $_GET['adtable'] ?? '';
 $id = $_GET['id'] ?? '';
 
-if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid')) {
+if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adtable === 'networksolos')) {
 
     $rotator = new Rotator($adtable, $settings);
     $click = $rotator->giveClick($id);
     if ($click) {
         # If it was a member who clicked, add a click to their counters towards a free ad and check if they get a free ad.
         if (isset($_SESSION['username'])) {
-            $rotator->countMemberClick($_SESSION['username']);
+            $rotator->countMemberClick($_SESSION['username']); // TODO: Need to get the username from network solo urls too!!!
         }
         header('Location: ' . $click);
         exit;

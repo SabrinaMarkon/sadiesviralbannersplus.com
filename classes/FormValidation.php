@@ -54,9 +54,6 @@ class FormValidation
         'metatitle' => 'meta title',
         'metadescription' => 'meta description',
         'adminautoapprove' => 'for auto approve ads',
-        'adclickstogettextad' => 'text ads to click to get a free text ad',
-        'adclickstogetbannerspaid' => 'banner ads to click to get a free banner ad',
-        'adclickstogetnetworksolo' => 'network solo links to click to get a network solo',
         'signupip' => 'signup IP',
         'id' => 'id',
         'amount' => 'amount',
@@ -75,10 +72,19 @@ class FormValidation
         'goldpayinterval' => 'how often members pay for a gold membership',
         'freerefersproearn' => 'how much a free member is paid for referring a pro member',
         'freerefersgoldearn' => 'how much a free member is paid for referring a gold member',
+        'freeadclickstogettextad' => 'text ads to click for a free member to get a free text ad',
+        'freeadclickstogetbannerspaid' => 'banners to click for a free member to get a free banner',
+        'freeadclickstogetnetworksolo' => 'network solo links to click for a free member to get a network solo',
         'prorefersproearn' => 'how much a pro member is paid for referring a pro member',
         'prorefersgoldearn' => 'how much a pro member is paid for referring a gold member',
+        'proadclickstogettextad' => 'text ads to click for a pro member to get a free text ad',
+        'proadclickstogetbannerspaid' => 'banners to click for a pro member to get a free banner',
+        'proadclickstogetnetworksolo' => 'network solo links to click for a pro member to get a network solo',
         'goldrefersproearn' => 'how much a gold member is paid for referring a pro member',
         'goldrefersgoldearn' => 'how much a gold member is paid for referring a gold member',
+        'goldadclickstogettextad' => 'text ads to click for a gold member to get a free text ad',
+        'goldadclickstogetbannerspaid' => 'banners to click for a gold member to get a free banner',
+        'goldadclickstogetnetworksolo' => 'network solo links to click for a gold member to get a network solo',
         'freesignupbonustextads' => 'how many text ads a free member gets as a signup bonus',
         'freesignupbonusbannerspaid' => 'how many paid banners a free member gets as a signup bonus',
         'freesignupbonusnetworksolos' => 'how many network solos a free member gets as a signup bonus',
@@ -342,7 +348,7 @@ class FormValidation
 
                     $errors .= "<div><strong>The value " . $pretty_varname . " must be Yes or No. </strong></div>";
                 }
-            } elseif ($varname === 'adclickstogettextad' || $varname === 'adclickstogetbannerspaid' || $varname === 'adclickstogetnetworksolo' || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false) {
+            } elseif (stripos($varname, "adclickstoget") !== false || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false) {
 
                 # make sure that the number of ads clicked to get a free ad is an integer greater than or equal to 0 (0 means disabled).
                 if ($varvalue < 0) {
