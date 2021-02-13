@@ -112,7 +112,6 @@
 
 #coinpaymentsbuttonform > button, #paypalbuttonform > button {
   margin: 1em auto;
-  width: 400px;
 }
 
 .table-striped tbody tr:first-child {
