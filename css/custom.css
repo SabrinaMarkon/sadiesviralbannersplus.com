@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("http://fonts.cdnfonts.com/css/hole-hearted");
 
 .logo .fas {
   vertical-align: 22%;
@@ -21,7 +22,6 @@
   text-shadow: 1px 1px 0 #0031b3;
   font-family: "Lobster", sans-serif;
   font-size: 2.6rem;
-  font-family: "Lobster", sans-serif;
   color: #ffd633;
 }
 .logo:hover {
@@ -37,6 +37,65 @@
 .membership-checkbox.fas.fa-check-circle {
   color: #ffd633;
   text-shadow: 1px 1px 0 #121212;
+}
+
+/* Members area Sadie  */
+figure {
+  display: flex;
+  align-items: flex-start;
+}
+figcaption {
+  background: #fff6f6;
+  border: 2px solid #0031b3;
+  border-radius: 10px;
+  padding: 2em;
+  box-shadow: 1px 1px 0 #0031b3;
+}
+figcaption .sadietalkbig {
+  color: #ff4343;
+  font-family: "Lobster", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  /* text-shadow: 1px 1px 0 #0031b3; */
+}
+figcaption .sadietalkbig .hiya {
+  color: #0067f4;
+  font-style: italic;
+  font-size: 3em;
+  margin-right: 20px;
+  margin-top: -20px;
+}
+figcaption .sadietalkbig .im {
+  color: #121212;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  margin-right: 20px;
+}
+figcaption .sadietalkbig .sadie {
+  color: #ff4343;
+  font-size: 5em;
+  margin-right: 20px;
+  margin-top: -20px;
+}
+figcaption .sadietalkbig .heart {
+  color: #ff4343;
+  font-size: 3em;
+  vertical-align: top;
+}
+figcaption .sadietalkbig .heart2 {
+  color: #ff4343;
+  font-size: 2.4em;
+  vertical-align: baseline;
+}
+figcaption .sadietalkbig .heart3 {
+  color: #ff4343;
+  font-size: 2.6em;
+  vertical-align: top;
+}
+figcaption .sadietalknormal {
+  color: #121212;
+  font-size: 1.2em;
 }
 
 .alert {
@@ -115,7 +174,8 @@
   height: 26px;
 }
 
-#coinpaymentsbuttonform > button, #paypalbuttonform > button {
+#coinpaymentsbuttonform > button,
+#paypalbuttonform > button {
   margin: 1em auto;
 }
 
@@ -304,19 +364,23 @@ h4.ja-white {
   font-size: 10pt;
   min-width: 100px;
 }
-#userbannerspaidtable, #usertextadstable {
+#userbannerspaidtable,
+#usertextadstable {
   border: 1px solid #121212;
   border-collapse: collapse;
-  background: #fff; 
+  background: #fff;
 }
-#userbannerspaidtable thead tr:first-child, #usertextadstable thead tr:first-child {
+#userbannerspaidtable thead tr:first-child,
+#usertextadstable thead tr:first-child {
   color: #fff;
   background: #0067f4;
 }
-#userbannerspaidtable th, td {
+#userbannerspaidtable th,
+td {
   border: 1px solid #121212;
 }
-#usertextadstable th, td {
+#usertextadstable th,
+td {
   border: 1px solid #121212;
 }
 table.table-condensed.table-bordered {
@@ -328,8 +392,8 @@ table.table-condensed.table-bordered tr {
   border: 2px solid #121212;
 }
 table.table-condensed.table-bordered td {
-	border: 2px solid #121212;
-  }
+  border: 2px solid #121212;
+}
 .smallselect {
   max-width: 100px;
   display: inline-block;
