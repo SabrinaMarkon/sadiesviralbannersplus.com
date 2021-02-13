@@ -50,16 +50,18 @@ $activeads = $ads->getAllUsersAds($username);
 	<?php
 	if (empty($oneblankad)) {
 
-		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no banner ads available for the paid rotation. Please purchase one below!</div>";
+		echo "<div class=\"ja-toppadding mb-5\">You have no banner ads available for the paid rotation. Please purchase one below!</div>";
 		if (!empty($paymentbuttons)) {
 			echo $paymentbuttons;
+			echo "<div class=\"mb-5\"></div>";
 		}
 		
 	} else {
 
-		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">Please purchase a banner ad for the paid rotation below!</div>";
+		echo "<div class=\"ja-toppadding mb-5\">Please purchase a banner ad below, or set up an existing ad using the form!</div>";
 		if (!empty($paymentbuttons)) {
 			echo $paymentbuttons;
+			echo "<div class=\"mb-5\"></div>";
 		}
 
 		# the user has at least one blank ad they can submit.
@@ -102,7 +104,7 @@ $activeads = $ads->getAllUsersAds($username);
 	if (empty($activeads)) {
 
 		# the person has no ads yet. Say so, and tell them once they've paid they can create one.
-		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid banner ads yet.</div>";
+		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">You have no paid banners you've added to the system yet.</div>";
 	} else {
 
 		# person has at least one ad they paid for, and have added it to the system.
@@ -110,7 +112,7 @@ $activeads = $ads->getAllUsersAds($username);
 
 	?>
 		<div class="table-responsive">
-			<table class="table table-bordered table-striped table-hover text-center table-sm">
+			<table id="userbannerspaidtable" class="table table-hover text-center table-sm">
 				<thead>
 					<tr>
 						<th class="text-center small">Ad&nbsp;#</th>
@@ -141,7 +143,7 @@ $activeads = $ads->getAllUsersAds($username);
 								<td class="small"><?php echo $activead['id']; ?>
 								</td>
 								<td class="small">
-									<img src="<?php echo $activead['imageurl']; ?>" alt="<?php echo $activead['alt'] ?>" class="mini-banner-image">
+									<img src="<?php echo $activead['imageurl']; ?>" alt="<?php echo $activead['alt'] ?>" >
 								</td>
 								<td class="small">
 									<input type="text" name="name" value="<?php echo $activead['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>

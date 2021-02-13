@@ -99,7 +99,6 @@
 }
 
 .card-image {
-  background: #0031b3;
   width: 100px;
   height: 100px;
   border: 2px solid #ffd633;
@@ -108,7 +107,11 @@
 
 .mini-banner-image {
   width: 200px;
-  height: auto;
+  height: 26px;
+}
+
+#coinpaymentsbuttonform, #paypalbuttonform {
+  padding: 1em;
 }
 
 .table-striped tbody tr:first-child {
@@ -295,6 +298,21 @@ h4.ja-white {
 .widetableselect {
   font-size: 10pt;
   min-width: 100px;
+}
+#userbannerspaidtable, #usertextadstable {
+  border: 1px solid #121212;
+  border-collapse: collapse;
+  background: #fff; 
+}
+#userbannerspaidtable thead tr:first-child, #usertextadstable thead tr:first-child {
+  color: #fff;
+  background: #0067f4;
+}
+#userbannerspaidtable th, td {
+  border: 1px solid #121212;
+}
+#usertextadstable th, td {
+  border: 1px solid #121212;
 }
 table.table-condensed.table-bordered {
   border: 2px solid #121212;
