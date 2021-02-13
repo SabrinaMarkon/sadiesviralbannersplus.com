@@ -365,13 +365,14 @@ h4.ja-white {
   min-width: 100px;
 }
 #userbannerspaidtable,
-#usertextadstable {
+#usertextadstable,
+#usernetworksolostable {
   border: 1px solid #121212;
   border-collapse: collapse;
   background: #fff;
 }
 #userbannerspaidtable thead tr:first-child,
-#usertextadstable thead tr:first-child {
+#usertextadstable thead tr:first-child, #usernetworksolostable thead tr:first-child {
   color: #fff;
   background: #0067f4;
 }
@@ -380,6 +381,10 @@ td {
   border: 1px solid #121212;
 }
 #usertextadstable th,
+td {
+  border: 1px solid #121212;
+}
+#usernetworksolostable th,
 td {
   border: 1px solid #121212;
 }

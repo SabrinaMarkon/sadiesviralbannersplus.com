@@ -110,7 +110,7 @@ $ads = $allads->getAllAds();
     <h1 class="ja-bottompadding ja-toppadding mb-4">All Member Network Solos</h1>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover text-center table-sm">
+        <table id="usernetworksolostable" class="table table-hover text-center table-sm">
             <thead>
                 <tr>
                     <th class="text-center small">Ad&nbsp;#</th>
@@ -147,23 +147,23 @@ $ads = $allads->getAllAds();
                 ?>
                         <tr>
                             <form action="/admin/networksolos/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
-                            <td class="small"><?php echo $ad['id']; ?>
-								</td>
-								<td class="small">
-									<input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
-								</td>
-								<td class="small">
-									<input type="text" name="subject" value="<?php echo $ad['subject']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Subject" required>
-								</td>
-								<td>
-									<input type="url" name="url" value="<?php echo $ad['url']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="http://" required>
-								</td>
-								<td>
-									<a href="<?php echo $ad['shorturl'] ?>" target="_blank"><?php echo $ad['shorturl'] ?></a>
-								</td>
-								<td>
+                                <td class="small"><?php echo $ad['id']; ?>
+                                </td>
+                                <td class="small">
+                                    <input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
+                                </td>
+                                <td class="small">
+                                    <input type="text" name="subject" value="<?php echo $ad['subject']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Subject" required>
+                                </td>
+                                <td>
+                                    <input type="url" name="url" value="<?php echo $ad['url']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="http://" required>
+                                </td>
+                                <td>
+                                    <a href="<?php echo $ad['shorturl'] ?>" target="_blank"><?php echo $ad['shorturl'] ?></a>
+                                </td>
+                                <td>
                                     <textarea class="form-control input-sm widetableinput" name="message" id="message" style="width: 400px; height: 150px;" placeholder="Message"><?php echo $ad['message'] ?></textarea>
-								</td>
+                                </td>
                                 <td class="small">
                                     <select name="approved" class="form-control widetableselect<?php if ($ad['approved'] !== "1") {
                                                                                                     echo ' ja-yellowbg';
@@ -177,7 +177,7 @@ $ads = $allads->getAllAds();
                                     </select>
                                 </td>
                                 <td class="small">
-                                <input type="sent" name="sent" value="<?php echo $ad['sent']; ?>" class="form-control input-sm widetableinput" size="12" placeholder="Sent">
+                                    <input type="sent" name="sent" value="<?php echo $ad['sent']; ?>" class="form-control input-sm widetableinput" size="12" placeholder="Sent">
                                 </td>
                                 <td class="small">
                                     <?php echo $ad['clicks']; ?>

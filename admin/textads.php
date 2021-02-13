@@ -13,7 +13,7 @@ if (isset($showad)) {
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {
-    $$key = $value;
+	$$key = $value;
 }
 
 $adtable = 'textads';
@@ -73,7 +73,7 @@ $ads = $allads->getAllAds();
 	<h1 class="ja-bottompadding ja-toppadding mb-4">All Member Text Ads</h1>
 
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped table-hover text-center table-sm">
+		<table id="usertextadstable" class="table table-hover text-center table-sm">
 			<thead>
 				<tr>
 					<th class="text-center small">Ad&nbsp;#</th>

@@ -47,39 +47,44 @@ $activeads = $ads->getAllUsersAds($username);
 <!-- tinyMCE -->
 <script language="javascript" type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
 <script language="javascript" type="text/javascript">
-    tinymce.init({
-        setup : function(ed) {
-            ed.on('init', function() {
-                this.getDoc().body.style.fontSize = '22px';
-                this.getDoc().body.style.fontFamily = 'Calibri';
-                this.getDoc().body.style.backgroundColor = $('.ja-content').css('background-color');
-                this.getDoc().body.style.color = $('.ja-content').css('color');
-            });
-        },
-        selector: 'textarea',  // change this value according to your HTML
-        body_id: 'elm1=htmlcode',
-        body_class: 'elm1=ja-content',
-        height: 600,
-        theme: 'modern',
-        plugins: [
-            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-            'searchreplace wordcount visualblocks visualchars code fullscreen',
-            'insertdatetime media nonbreaking save table contextmenu directionality',
-            'emoticons template paste textcolor colorpicker textpattern imagetools'
-        ],
-        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        toolbar2: 'print preview media | forecolor backcolor emoticons',
-        image_advtab: true,
-        templates: [
-            { title: 'Test template 1', content: 'Test 1' },
-            { title: 'Test template 2', content: 'Test 2' }
-        ],
-        content_css: [
-//            '/../css/bootstrap.min.css',
-//            '/../css/bootstrap-theme.min.css',
-//            '/../css/custom.css'
-        ]
-    });
+	tinymce.init({
+		setup: function(ed) {
+			ed.on('init', function() {
+				this.getDoc().body.style.fontSize = '22px';
+				this.getDoc().body.style.fontFamily = 'Calibri';
+				this.getDoc().body.style.backgroundColor = $('.ja-content').css('background-color');
+				this.getDoc().body.style.color = $('.ja-content').css('color');
+			});
+		},
+		selector: 'textarea', // change this value according to your HTML
+		body_id: 'elm1=htmlcode',
+		body_class: 'elm1=ja-content',
+		height: 600,
+		theme: 'modern',
+		plugins: [
+			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+			'searchreplace wordcount visualblocks visualchars code fullscreen',
+			'insertdatetime media nonbreaking save table contextmenu directionality',
+			'emoticons template paste textcolor colorpicker textpattern imagetools'
+		],
+		toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+		toolbar2: 'print preview media | forecolor backcolor emoticons',
+		image_advtab: true,
+		templates: [{
+				title: 'Test template 1',
+				content: 'Test 1'
+			},
+			{
+				title: 'Test template 2',
+				content: 'Test 2'
+			}
+		],
+		content_css: [
+			//            '/../css/bootstrap.min.css',
+			//            '/../css/bootstrap-theme.min.css',
+			//            '/../css/custom.css'
+		]
+	});
 </script>
 <!-- /tinyMCE -->
 
@@ -92,7 +97,6 @@ $activeads = $ads->getAllUsersAds($username);
 		if (!empty($paymentbuttons)) {
 			echo $paymentbuttons;
 		}
-		
 	} else {
 
 		echo "<div class=\"ja-bottompadding ja-topadding mb-5\">Please purchase a network solo ad below!</div>";
@@ -119,7 +123,7 @@ $activeads = $ads->getAllUsersAds($username);
 			<label for="description">Message:</label>
 			<textarea name="message" value="" class="form-control input-lg" rows="50" placeholder="Message" required></textarea>
 
-            <div class="ja-bottompadding"></div>
+			<div class="ja-bottompadding"></div>
 
 			<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 			<input type="hidden" name="id" value="<?php echo $adid ?>">
@@ -148,7 +152,7 @@ $activeads = $ads->getAllUsersAds($username);
 
 	?>
 		<div class="table-responsive">
-			<table class="table table-bordered table-striped table-hover text-center table-sm">
+			<table id="usernetworksolostable" class="table table-hover text-center table-sm">
 				<thead>
 					<tr>
 						<th class="text-center small">Ad&nbsp;#</th>
@@ -190,7 +194,7 @@ $activeads = $ads->getAllUsersAds($username);
 									<a href="<?php echo $activead['shorturl'] ?>" target="_blank"><?php echo $activead['shorturl'] ?></a>
 								</td>
 								<td>
-                                    <textarea class="form-control input-sm widetableinput" name="message" id="message" style="width: 400px; height: 150px;" placeholder="Message"><?php echo $activead['message'] ?></textarea>
+									<textarea class="form-control input-sm widetableinput" name="message" id="message" style="width: 400px; height: 150px;" placeholder="Message"><?php echo $activead['message'] ?></textarea>
 								</td>
 								<td class="small">
 									<?php
