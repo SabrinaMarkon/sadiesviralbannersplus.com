@@ -16,8 +16,8 @@ CREATE TABLE `adminsettings` (
 `metadescription` varchar(160) not null,
 `adminautoapprove` tinyint(1) not null default '0',
 `adclickstogettextad` integer unsigned not null default '100', ##########members area 
-`adclickstogetbannerspaidad` integer unsigned not null default '100',##########fixxxx
-`adclickstogetnetworksolo` integer unsigned not null default '100',##########newwww
+`adclickstogetbannerspaid` integer unsigned not null default '100',
+`adclickstogetnetworksolo` integer unsigned not null default '100',
 `textadprice` decimal(9, 2) not null default '2.00',
 `textadhits` integer unsigned not null default '2000',
 `bannerprice` decimal(9, 2) not null default '2.00',
@@ -153,6 +153,7 @@ referid varchar(255) not null,
 lastlogin datetime not null,
 textadclicks integer unsigned not null default '0',
 banneradclicks integer unsigned not null default '0',
+networksoloclicks integer unsigned not null default '0',
 owed decimal(9,2) not null default 0.00
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

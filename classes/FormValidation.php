@@ -55,7 +55,8 @@ class FormValidation
         'metadescription' => 'meta description',
         'adminautoapprove' => 'for auto approve ads',
         'adclickstogettextad' => 'text ads to click to get a free text ad',
-        'adclickstogetbannerspaidad' => 'banner ads to click to get a free banner ad',
+        'adclickstogetbannerspaid' => 'banner ads to click to get a free banner ad',
+        'adclickstogetnetworksolo' => 'network solo links to click to get a network solo',
         'signupip' => 'signup IP',
         'id' => 'id',
         'amount' => 'amount',
@@ -341,7 +342,7 @@ class FormValidation
 
                     $errors .= "<div><strong>The value " . $pretty_varname . " must be Yes or No. </strong></div>";
                 }
-            } elseif ($varname === 'adclickstogettextad' || $varname === 'adclickstogetbannerspaidad' || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false) {
+            } elseif ($varname === 'adclickstogettextad' || $varname === 'adclickstogetbannerspaid' || $varname === 'adclickstogetnetworksolo' || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false) {
 
                 # make sure that the number of ads clicked to get a free ad is an integer greater than or equal to 0 (0 means disabled).
                 if ($varvalue < 0) {

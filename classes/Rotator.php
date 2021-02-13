@@ -71,15 +71,18 @@ class Rotator
         if ($this->settings['adclickstogettextad'] > 0 && $this->adtable === 'textads') {
             $sql = "update members set textadclicks=textadclicks+1 where username=?";
         }
-        if ($this->settings['adclickstogetbannerspaidad'] > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'banners')) {
+        if ($this->settings['adclickstogetbannerspaid'] > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'banners')) {
             $sql = "update members set banneradclicks=banneradclicks+1 where username=?";
+        }
+        if ($this->settings['adclickstogetnetworksolo'] > 0 && $this->adtable === 'networksolos') {
+            $sql = "update members set networksoloclicks=networksoloclicks+1 where username=?";
         }
 
         $q = $pdo->prepare($sql);
         $q->execute([$username]);
 
         // Does the member get a free ad?
-        $sql = "select textadclicks, banneradclicks from members where username=?";
+        $sql = "select textadclicks, banneradclicks, networksoloclicks from members where username=?";
         $q = $pdo->prepare($sql);
         $q->execute([$username]);
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -95,13 +98,22 @@ class Rotator
                 $q->execute([$this->settings['adclickstogettextad'], $username]);
             }
             $banneradclicks = $res['banneradclicks'];
-            if ($banneradclicks >= $this->settings['adclickstogetbannerspaidad'] && $this->settings['adclickstogetbannerspaidad'] > 0) {
+            if ($banneradclicks >= $this->settings['adclickstogetbannerspaid'] && $this->settings['adclickstogetbannerspaid'] > 0) {
                 $ad = new TextAd($this->adtable);
                 $ad->createBlankAd($username);
                 // Reset click counter:
                 $sql = "update members set banneradclicks=banneradclicks-? where username=?";
                 $q = $pdo->prepare($sql);
-                $q->execute([$this->settings['adclickstogetbannerspaidad'], $username]);
+                $q->execute([$this->settings['adclickstogetbannerspaid'], $username]);
+            }
+            $networksoloclicks = $res['networksoloclicks'];
+            if ($networksoloclicks >= $this->settings['adclickstogetnetworksolo'] && $this->settings['adclickstogetnetworksolo'] > 0) {
+                $ad = new NetworkSolo($this->adtable);
+                $ad->createBlankAd($username);
+                // Reset click counter:
+                $sql = "update members set networksoloclicks=networksoloclicks-? where username=?";
+                $q = $pdo->prepare($sql);
+                $q->execute([$this->settings['adclickstogetnetworksolo'], $username]);
             }
         }
 

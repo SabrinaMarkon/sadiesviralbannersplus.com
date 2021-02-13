@@ -72,8 +72,11 @@ foreach ($settings as $key => $value) {
                 <label for="adclickstogettextad" class="ja-toppadding">Click How Many Text Ads to get a Free Text Ad (0 to disable):</label>
                 <input type="number" min="0" step="1" name="adclickstogettextad" value="<?php echo $adclickstogettextad ?>" class="form-control smallselect" required>
 
-                <label for="adclickstogetbannerspaidad" class="ja-toppadding">Click How Many Banner Ads to get a Free Banner Ad (0 to disable):</label>
-                <input type="number" min="0" step="1" name="adclickstogetbannerspaidad" value="<?php echo $adclickstogetbannerspaidad ?>" class="form-control smallselect" required>
+                <label for="adclickstogetbannerspaid" class="ja-toppadding">Click How Many Banner Ads to get a Free Banner (0 to disable):</label>
+                <input type="number" min="0" step="1" name="adclickstogetbannerspaid" value="<?php echo $adclickstogetbannerspaid ?>" class="form-control smallselect" required>
+
+                <label for="adclickstogetnetworksolo" class="ja-toppadding">Click How Many Banner Ads to get a Free Network Solo (0 to disable):</label>
+                <input type="number" min="0" step="1" name="adclickstogetnetworksolo" value="<?php echo $adclickstogetnetworksolo ?>" class="form-control smallselect" required>
 
                 <br /><br />
                 <h1>Basic Settings for Free Members</h1>
