@@ -110,8 +110,9 @@
   height: 26px;
 }
 
-#coinpaymentsbuttonform, #paypalbuttonform {
-  padding: 1em;
+#coinpaymentsbuttonform > button, #paypalbuttonform > button {
+  margin: 1em auto;
+  width: 400px;
 }
 
 .table-striped tbody tr:first-child {
