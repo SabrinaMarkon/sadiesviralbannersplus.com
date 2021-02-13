@@ -38,7 +38,9 @@ class SendEmails
     private $headers;
     private $pdo;
 
-    public function getMails(string $domain, string $sitename, string $adminemail, string $adminname)
+    private function __construct() {}
+
+    public static function getMails(string $domain, string $sitename, string $adminemail, string $adminname)
     {
         // get all mails that are marked as pending mailout.
         $pdo = Database::connect();
@@ -147,6 +149,4 @@ foreach ($settings as $key => $value)
     $$key = $value;
 }
 
-$mail = new SendEmails();
-$mail->getMails($domain, $sitename, $adminemail, $adminname);
-
+$mail = SendEmails::getMails($domain, $sitename, $adminemail, $adminname);
