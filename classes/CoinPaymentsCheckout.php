@@ -57,7 +57,7 @@ class CoinPaymentsCheckout extends PaymentGateway
         if ($this->itemname === "Pro Membership" || $this->itemname === "Gold Membership") {
             $usernamefieldforads = "";
         } else {
-            $usernamefieldforads = '<input type="hidden" id="usernamefieldforads" value="' . $this->username . '">';
+            $usernamefieldforads = '<input type="hidden" id="coinpaymentsusernamefieldforads" value="' . $this->username . '">';
         }
 
         // TODO: IMPORTANT - Coinpayments does not have automatic subscriptions!! Need to keep track of when next payment is due for users and send invoice every time.
@@ -76,7 +76,7 @@ class CoinPaymentsCheckout extends PaymentGateway
             <input type="hidden" name="cancel_url" value="' . $this->settings['domain'] . '">
             <input type="hidden" name="ipn_url" value="' . $this->settings['domain'] . '/ipn/coinpayments">
             <input type="hidden" name="invoice" value="">
-            <input type="hidden" name="custom" id="pendingId" value="">
+            <input type="hidden" name="custom" id="coinpaymentspendingId" value="">
             <button class="btn btn-lg btn-primary" type="button" name="coinpaymentsbutton" id="coinpaymentsbutton">
             Buy ' . $this->itemname . ' for $' . $this->price . ' with CoinPayments!</button>
             </form>';

@@ -70,10 +70,19 @@ function formFieldsToJSON() {
       : "admin";
 
   // For ads username is hidden field in pay forms. Use also for upgrade pay buttons:
-  let usernamefieldforads =
-    document.getElementById("usernamefieldforads") != null
-      ? document.getElementById("usernamefieldforads").value
-      : "";
+  let usernamefieldforads = "";
+  if (buttonId === "paypalbutton") {
+    usernamefieldforads =
+      document.getElementById("paypalusernamefieldforads") != null
+        ? document.getElementById("paypalusernamefieldforads").value
+        : "";
+  }
+  if (buttonId === "coinpaymentsbutton") {
+    usernamefieldforads =
+      document.getElementById("coinpaymentsusernamefieldforads") != null
+        ? document.getElementById("coinpaymentsusernamefieldforads").value
+        : "";
+  }
 
   // TODO: Make sure that upgrade form in members area includes username!!!!!!to add to the formFields below!!!
 
@@ -91,6 +100,7 @@ function formFieldsToJSON() {
     signupip,
     referid,
   };
+
   formattedFormFields = JSON.stringify(formFields);
   // console.log(formattedFormFields);
   handlePayForm(formattedFormFields, buttonId);
@@ -104,19 +114,20 @@ async function handlePayForm(formattedFormFields, buttonId) {
   });
   let idOrError = await response.text();
   idOrError = await JSON.parse(idOrError);
-  // console.log(idOrError);
 
   if (idOrError["pendingId"] != "") {
-    // Add the purchase id to the pay button's custom form field.
-    document.getElementById("pendingId").value = idOrError["pendingId"];
-
     // Submit the pay button (even the id fails so the user can still purchase, but will need help from admin to give them their order if no purchase ID).
     // TODO: there are csp errors on the paypal site in the console.
 
     if (buttonId === "paypalbutton") {
+      // Add the purchase id to the paypal button's custom form field.
+      document.getElementById("paypalpendingId").value = idOrError["pendingId"];
       paypalButtonForm.submit();
     }
-    if (buttonId === "coinpaymentsButton") {
+    if (buttonId === "coinpaymentsbutton") {
+      // Add the purchase id to the coinpayments button's custom form field.
+      document.getElementById("coinpaymentspendingId").value =
+        idOrError["pendingId"];
       coinpaymentsButtonForm.submit();
     }
   } else {

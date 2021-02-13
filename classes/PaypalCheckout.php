@@ -75,7 +75,7 @@ class PaypalCheckout extends PaymentGateway
         if ($this->itemname === "Pro Membership" || $this->itemname === "Gold Membership") {
             $usernamefieldforads = "";
         } else {
-            $usernamefieldforads = '<input type="hidden" id="usernamefieldforads" value="' . $this->username . '">';
+            $usernamefieldforads = '<input type="hidden" id="paypalusernamefieldforads" value="' . $this->username . '">';
         }
 
         $paybutton = '
@@ -93,7 +93,7 @@ class PaypalCheckout extends PaymentGateway
             <input name="lc" type="hidden" value="US">
             <input name="bn" type="hidden" value="PP-BuyNowBF">
             <input name="on0" type="hidden" value="Purchase ID">
-            <input name="os0" id="pendingId" type="hidden" value="">
+            <input name="os0" id="paypalpendingId" type="hidden" value="">
             <input name="notify_url" type="hidden" value="' . $this->settings['domain'] . '/ipn/paypal">
             <button class="btn btn-lg btn-primary" type="button" name="paypalbutton" id="paypalbutton">
             Buy ' . $this->itemname . ' for $' . $this->price . ' with Paypal!</button>
