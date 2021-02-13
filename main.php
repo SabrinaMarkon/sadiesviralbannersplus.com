@@ -70,8 +70,8 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     </div>
                     <div class="pricing-list">
                         <ul>
-                            <li><i class="lni lni-check-mark-circle"></i> Feature 1</li>
-                            <li><i class="lni lni-check-mark-circle"></i> Feature 2</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $freerefersproearn ?> for referring Pro members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $freerefersgoldearn ?> for referring Gold members!</li>
                         </ul>
                     </div>
                     <div class="pricing-btn rounded-buttons text-center">
@@ -95,8 +95,8 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     </div>
                     <div class="pricing-list">
                         <ul>
-                            <li><i class="lni lni-check-mark-circle"></i> Feature 1</li>
-                            <li><i class="lni lni-check-mark-circle"></i> Feature 2</li>
+                        <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $prorefersproearn ?> for referring Pro members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $prorefersgoldearn ?> for referring Gold members!</li>
                         </ul>
                     </div>
                     <div class="pricing-btn rounded-buttons text-center">
@@ -120,8 +120,8 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     </div>
                     <div class="pricing-list">
                         <ul>
-                            <li><i class="lni lni-check-mark-circle"></i> Feature 1</li>
-                            <li><i class="lni lni-check-mark-circle"></i> Feature 2</li>
+                        <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $goldrefersproearn ?> for referring Pro members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $goldrefersgoldearn ?> for referring Gold members!</li>
                         </ul>
                     </div>
                     <div class="pricing-btn rounded-buttons text-center">

@@ -34,6 +34,11 @@
   color: #ff4343;
 }
 
+.membership-checkbox.fas.fa-check-circle {
+  color: #ffd633;
+  text-shadow: 1px 1px 0 #121212;
+}
+
 .alert {
   margin: auto;
   margin-bottom: 30px;
