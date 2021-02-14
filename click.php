@@ -15,7 +15,7 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
     if ($click) {
         # If it was a member who clicked, add a click to their counters towards a free ad and check if they get a free ad.
         if (isset($_SESSION['username'])) {
-            $rotator->countMemberClick($_SESSION['username']); // TODO: Need to get the username from network solo urls too!!!
+            $rotator->countMemberClick($_SESSION['username']);
         }
         header('Location: ' . $click);
         exit;

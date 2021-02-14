@@ -66,17 +66,7 @@ class Rotator
 
     public function countMemberClick(string $username): void
     {
-
-        $freeadclickstogettextad = $this->settings['freeadclickstogettextad'];
-        $freeadclickstogetbannerspaid = $this->settings['freeadclickstogetbannerspaid'];
-        $freeadclickstogetnetworksolo = $this->settings['freeadclickstogetnetworksolo'];
-        $proadclickstogettextad = $this->settings['proadclickstogettextad'];
-        $proadclickstogetbannerspaid = $this->settings['proadclickstogetbannerspaid'];
-        $proadclickstogetnetworksolo = $this->settings['proadclickstogetnetworksolo'];
-        $goldadclickstogettextad = $this->settings['goldadclickstogettextad'];
-        $goldadclickstogetbannerspaid = $this->settings['goldadclickstogetbannerspaid'];
-        $goldadclickstogetnetworksolo = $this->settings['goldadclickstogetnetworksolo'];
-
+        
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
