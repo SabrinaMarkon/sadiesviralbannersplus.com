@@ -5,6 +5,12 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
+$sitesettings = new Settings();
+$settings = $sitesettings->getSettings();
+foreach ($settings as $key => $value) {
+	$$key = $value;
+}
+
 $adtable = 'textads';
 
 $rotator = new Rotator($adtable, $settings);

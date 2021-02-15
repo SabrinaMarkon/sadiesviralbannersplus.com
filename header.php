@@ -178,12 +178,11 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
             <?php
             } else {
             ?>
+                <div class="my-3 text-center"><?php include 'rotatorbannerspaid.php'; ?></div>
                 <div class="ja-toppadding2" id="home"></div>
             <?php
             }
             ?>
-
-
 
             <!-- Page Content -->
             <div class="row">
