@@ -4,6 +4,37 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
     exit;
 }
+
+$levels = ["gold", "pro", "free"];
+foreach($levels as $level) {
+    $signupbonustextads = $level . "signupbonustextads";
+    $signupbonusbannerspaid = $level . "signupbonusbannerspaid";
+    $signupbonusnetworksolos = $level . "signupbonusnetworksolos";
+    $monthlybonustextads = $level . "monthlybonustextads";
+    $monthlybonusbannerspaid = $level . "monthlybonusbannerspaid";
+    $monthlybonusnetworksolos = $level . "monthlybonusnetworksolos";
+    $features = $level . "features";
+    $$features = "";
+
+    if ($$signupbonustextads > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free sign up bonus of ' . $$signupbonustextads . ' MAIN PAGE text ad(s)!</li>';
+    }
+    if ($$signupbonusbannerspaid > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free sign up bonus of ' . $$signupbonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
+    }
+    if ($$signupbonusnetworksolos > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free sign up bonus of ' . $$signupbonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
+    }
+    if ($$monthlybonustextads > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free monthly bonus of ' . $$monthlybonustextads . ' MAIN PAGE text ad(s)!</li>';
+    }
+    if ($$monthlybonusbannerspaid > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free monthly bonus of ' . $$monthlybonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
+    }
+    if ($$monthlybonusnetworksolos > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free monthly bonus of ' . $$monthlybonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
+    }
+}
 ?>
 
 <!-- Paid Banner Rotators -->
@@ -72,6 +103,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         <ul>
                             <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $freerefersproearn ?> for referring Pro members!</li>
                             <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $freerefersgoldearn ?> for referring Gold members!</li>
+                            <?php echo $freefeatures; ?>
                         </ul>
                     </div>
                     <div class="pricing-btn rounded-buttons text-center">
@@ -97,6 +129,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         <ul>
                         <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $prorefersproearn ?> for referring Pro members!</li>
                             <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $prorefersgoldearn ?> for referring Gold members!</li>
+                            <?php echo $profeatures; ?>
                         </ul>
                     </div>
                     <div class="pricing-btn rounded-buttons text-center">
@@ -122,6 +155,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         <ul>
                         <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $goldrefersproearn ?> for referring Pro members!</li>
                             <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $goldrefersgoldearn ?> for referring Gold members!</li>
+                            <?php echo $goldfeatures; ?>
                         </ul>
                     </div>
                     <div class="pricing-btn rounded-buttons text-center">
