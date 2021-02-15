@@ -73,8 +73,14 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
             </div>
 
             <!-- Navigation -->
-            <section class="navbar-area">
-                <div class="container">
+            <section class="navbar-area px-5">
+                <?php
+                if ($urlfile === '/' || $urlfile === '' || $referurl === '/r') {
+                    ?>
+                    <div class="container">
+                        <?php
+                }
+                ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <nav class="navbar navbar-expand-lg">
@@ -134,7 +140,13 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                             </nav> <!-- navbar -->
                         </div>
                     </div> <!-- row -->
-                </div> <!-- container -->
+                    <?php
+                    if ($urlfile === '/' || $urlfile === '' || $referurl === '/r') {
+                        ?>
+                        </div> <!-- container -->
+                        <?php
+                    }
+                    ?>
             </section>
 
             <!-- Header with Background Image -->

@@ -182,7 +182,6 @@ figcaption .sadietalknormal {
   margin: 1em auto;
 }
 
-
 h4.ja-white {
   color: #fff;
 }
@@ -368,7 +367,7 @@ h4.ja-white {
 #admintable {
   border: 1px solid #121212;
   border-collapse: collapse;
-  background: #fff;
+  background:  #fff;
 }
 #admintable thead tr:first-child {
   color: #fff;
@@ -393,6 +392,27 @@ h4.ja-white {
 }
 #admintable tbody tr td.reorder {
   cursor: move;
+}
+
+.faqpanel {
+  background:  #fff;
+  border-radius: 10px;
+  border-collapse: collapse;
+  margin: 1.2em;
+}
+.faqpanel .panel-heading {
+  background: #0067f4;
+  border-radius: 10px 10px 0 0;
+  padding: 1em;
+}
+.faqpanel .panel-heading a {
+  color: #fff;
+  font-size: 0.8em;
+  padding-bottom: 7px;
+}
+.faqpanel .panel-body {
+  padding: 1em;
+  font-size: 0.6em
 }
 
 table.table-condensed.table-bordered {

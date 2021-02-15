@@ -17,22 +17,22 @@ foreach($levels as $level) {
     $$features = "";
 
     if ($$signupbonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free sign up bonus of ' . $$signupbonustextads . ' MAIN PAGE text ad(s)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonustextads . ' MAIN PAGE text ad(s)!</li>';
     }
     if ($$signupbonusbannerspaid > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free sign up bonus of ' . $$signupbonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
     }
     if ($$signupbonusnetworksolos > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free sign up bonus of ' . $$signupbonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
     }
     if ($$monthlybonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free monthly bonus of ' . $$monthlybonustextads . ' MAIN PAGE text ad(s)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonustextads . ' MAIN PAGE text ad(s)!</li>';
     }
     if ($$monthlybonusbannerspaid > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free monthly bonus of ' . $$monthlybonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
     }
     if ($$monthlybonusnetworksolos > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A free monthly bonus of ' . $$monthlybonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
     }
 }
 ?>
@@ -103,7 +103,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     <div class="flexcard-list pricing-list">
                         <ul>
                             <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $freerefersproearn ?> for referring Pro members!</li>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid</strong> $<?php echo $freerefersgoldearn ?> for referring Gold members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $freerefersgoldearn ?> for referring Gold members!</li>
                             <?php echo $freefeatures; ?>
                         </ul>
                     </div>
