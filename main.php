@@ -83,15 +83,16 @@ if (!empty($showcontent->showPage('Home Page'))) {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">
-                <div class="section-title text-center">
+                <div id="getstarted" class="section-title text-center">
                     <h3 class="title">Membership Plans <i class="fas fa-star fa-xs"></i></h3>
-                    <p class="text">Stop wasting time and money designing and managing banners that don't get results. Happiness guaranteed!</p><br>
+                    <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results. Happiness guaranteed!</strong></p>
+                    <p class="text"><strong>Choose your membership!</strong></p><br>
                 </div> <!-- section title -->
             </div>
         </div> <!-- row -->
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-7 col-sm-9">
-                <div class="pricing-style mt-30">
+        <div class="flexcards-equalheight row justify-content-center">
+            <div class="flexcard col-lg-4 col-md-7 col-sm-9">
+                <div class="flexcard-content pricing-style mt-30">
                     <div class="pricing-icon text-center">
                         <img src="images/rocket-red.png" alt="">
                     </div>
@@ -99,10 +100,10 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         <h5 class="sub-title">Free Member</h5>
                         <p class="month"><span class="price">$0</span></p>
                     </div>
-                    <div class="pricing-list">
+                    <div class="flexcard-list pricing-list">
                         <ul>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $freerefersproearn ?> for referring Pro members!</li>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $freerefersgoldearn ?> for referring Gold members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $freerefersproearn ?> for referring Pro members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid</strong> $<?php echo $freerefersgoldearn ?> for referring Gold members!</li>
                             <?php echo $freefeatures; ?>
                         </ul>
                     </div>
@@ -112,8 +113,8 @@ if (!empty($showcontent->showPage('Home Page'))) {
                 </div> <!-- pricing style one -->
             </div>
 
-            <div class="col-lg-4 col-md-7 col-sm-9">
-                <div class="pricing-style mt-30">
+            <div class="flexcard col-lg-4 col-md-7 col-sm-9">
+                <div class="flexcard-content pricing-style mt-30">
                     <div class="pricing-icon text-center">
                         <img src="images/rocket-yellow.png" alt="">
                     </div>
@@ -125,10 +126,10 @@ if (!empty($showcontent->showPage('Home Page'))) {
                             ?>
                         </p>
                     </div>
-                    <div class="pricing-list">
+                    <div class="flexcard-list pricing-list">
                         <ul>
-                        <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $prorefersproearn ?> for referring Pro members!</li>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $prorefersgoldearn ?> for referring Gold members!</li>
+                        <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $prorefersproearn ?> for referring Pro members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $prorefersgoldearn ?> for referring Gold members!</li>
                             <?php echo $profeatures; ?>
                         </ul>
                     </div>
@@ -138,8 +139,8 @@ if (!empty($showcontent->showPage('Home Page'))) {
                 </div> <!-- pricing style one -->
             </div>
 
-            <div class="col-lg-4 col-md-7 col-sm-9">
-                <div class="pricing-style mt-30">
+            <div class="flexcard col-lg-4 col-md-7 col-sm-9">
+                <div class="flexcard-content pricing-style mt-30">
                     <div class="pricing-icon text-center">
                         <img src="images/rocket-blue.png" alt="">
                     </div>
@@ -151,10 +152,10 @@ if (!empty($showcontent->showPage('Home Page'))) {
                             ?>
                         </p>
                     </div>
-                    <div class="pricing-list">
+                    <div class="flexcard-list pricing-list">
                         <ul>
-                        <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $goldrefersproearn ?> for referring Pro members!</li>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i>Get paid $<?php echo $goldrefersgoldearn ?> for referring Gold members!</li>
+                        <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $goldrefersproearn ?> for referring Pro members!</li>
+                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $goldrefersgoldearn ?> for referring Gold members!</li>
                             <?php echo $goldfeatures; ?>
                         </ul>
                     </div>
@@ -196,7 +197,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         echo '<div class="ja-bottompadding"></div>';
                         echo $showcontact;
                     } else {
-                        echo '<p class="text">Please send us a message if you need help or have any questions.</p>';
+                        echo '<p class="text"><strong>Please send us a message if you need help or have any questions.</strong></p>';
                         echo '<div class="ja-bottompadding"></div>';
                     }
                     ?>

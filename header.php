@@ -127,7 +127,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                     <div class="navbar-btn d-none d-sm-inline-block">
                                         <ul>
                                             <li><a class="solid" href="/login">Login</a></li>
-                                            <li><a class="solid page-scroll" href="/#memberships">Register</a></li>
+                                            <li><a class="solid page-scroll" href="/#getstarted">Register</a></li>
                                         </ul>
                                     </div>
                                 <?php

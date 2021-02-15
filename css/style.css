@@ -2767,6 +2767,26 @@ p {
   padding-top: 3em;
   padding-bottom: 130px; }
 
+.flexcards-equalheight {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flexcards-equalheight .flexcard {
+  display: flex; 
+  padding: 0.5em;
+	width: 100%;
+}
+.flexcards-equalheight .flexcard .flexcard-content {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+	width: 100%;
+  font-weight: 500;
+}
+.flexcards-equalheight .flexcard .flexcard-content .flexcard-list {
+	flex: 1 0 auto;
+}
+
 /*===== PRICING STYLE NINE =====*/
 .pricing-style {
   /* -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
