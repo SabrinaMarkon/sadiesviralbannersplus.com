@@ -43,7 +43,7 @@ class Faq {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select positionnumber from faqs order by positionnumber";
+        $sql = "select positionnumber from faqs order by positionnumber desc limit 1";
         $q = $pdo->prepare($sql);
         $q->execute();
         $lastpositionnumber = $q->fetch() ?? 0;
