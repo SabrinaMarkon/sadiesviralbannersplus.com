@@ -36,19 +36,19 @@ $faqs = $allfaqs->getAllFaqs();
     <h1 class="ja-bottompadding ja-toppadding mb-4">All FAQs</h1>
 
     <div class="table-responsive">
-        <table id="faqtable" class="table table-hover table-condensed table-bordered text-center">
+        <table id="admintable" class="table table-hover table-condensed table-bordered text-center">
             <thead>
                 <tr>
-                    <th class="text-center small">Reorder</th>
-                    <th class="text-center small">ID</th>
-                    <th class="text-center small" style="min-width: 100px;">Question</th>
-                    <th class="text-center small" style="min-width: 100px;">Answer</th>
-                    <th class="text-center small">Order</th>
-                    <th class="text-center small">Save</th>
-                    <th class="text-center small">Delete</th>
+                    <th class="text-center">Reorder</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center" style="min-width: 100px;">Question</th>
+                    <th class="text-center" style="min-width: 100px;">Answer</th>
+                    <th class="text-center">Order</th>
+                    <th class="text-center">Save</th>
+                    <th class="text-center">Delete</th>
                 </tr>
             </thead>
-            <tbody id="faqtable">
+            <tbody class="faqtable">
 
                 <?php
                 if (!$faqs) {
@@ -59,17 +59,17 @@ $faqs = $allfaqs->getAllFaqs();
                 ?>
                         <tr>
                             <form action="/admin/faq/<?php echo $faq['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
-                                <td><i class="icon-reorder"></i></td>
-                                <td class="small">
+                                <td class="reorder"><i class="fas fa-sort fa-lg"></i></td>
+                                <td>
                                     <?php echo $faq['id']; ?>
                                 </td>
-                                <td class="small">
-                                    <input type="text" name="question" value="<?php echo $faq['question']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="FAQ Question" required>
+                                <td>
+                                    <textarea name="question" class="form-control input-lg" rows="3" placeholder="FAQ Question" required><?php echo $faq['question']; ?></textarea>
                                 </td>
                                 <td>
                                     <textarea name="answer" class="form-control input-lg" rows="3" placeholder="FAQ Answer" required><?php echo $faq['answer']; ?></textarea>
                                 </td>
-                                <td class="small">
+                                <td>
                                     <?php echo $faq['positionnumber']; ?>
                                 </td>
                                 <td>

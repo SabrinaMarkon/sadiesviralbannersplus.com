@@ -5,6 +5,46 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
+$faqarray = new Faq();
+$faqs = $faqarray->getAllFaqs();
+
 $showcontent = new PageContent();
 echo $showcontent->showPage('FAQ Page');
 ?>
+<div class="container">
+
+    <div class="panel-group panel-faqs" id="accordion">
+
+        <?php
+        foreach ($faqs as $faq) {
+        ?>
+            <div class="panel panel-default text-left pb-2">
+                <div class="panel-heading pb-2">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $faq['positionnumber']; ?>">
+                        <?php echo $faq['positionnumber']; ?>.&nbsp;&nbsp;<?php echo $faq['question']; ?>
+                    </a>
+                    </h4>
+                </div>
+                <?php
+                if ($faq['positionnumber'] === 1) {
+                ?>
+                    <div class="panel-collapse collapse in" id="collapse<?php echo $faq['positionnumber']; ?>">
+                <?php
+                } else {
+                ?>
+                    <div class="panel-collapse collapse" id="collapse<?php echo $faq['positionnumber']; ?>">
+                <?php
+                }
+                ?>
+                    <div class="panel-body">
+                        <p><?php echo $faq['answer']; ?></p>
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+    <div class="pb-4"></div>
+</div>

@@ -52,7 +52,7 @@ if (empty($transactions)) {
             <h1 class="ja-bottompadding">Transaction Records</h1>
 
             <div class="table-responsive">
-                <table class="table table-condensed table-bordered table-striped table-hover text-center table-sm">
+                <table id="admintable" class="table table-condensed table-bordered table-striped table-hover text-center table-sm">
                     <thead>
                     <tr>
                         <th class="text-center small">#</th>

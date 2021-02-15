@@ -33,6 +33,10 @@
   color: #ff4343;
 }
 
+i .fas.fa-sort {
+  color: #ff4343;
+}
+
 .membership-checkbox.fas.fa-check-circle {
   color: #ffd633;
   text-shadow: 1px 1px 0 #121212;
@@ -178,9 +182,7 @@ figcaption .sadietalknormal {
   margin: 1em auto;
 }
 
-.table-striped tbody tr:first-child {
-  background-color: #0067f4;
-}
+
 h4.ja-white {
   color: #fff;
 }
@@ -363,31 +365,36 @@ h4.ja-white {
   font-size: 10pt;
   min-width: 100px;
 }
-#userbannerspaidtable,
-#usertextadstable,
-#usernetworksolostable,
-#faqtable {
+#admintable {
   border: 1px solid #121212;
   border-collapse: collapse;
   background: #fff;
 }
-#userbannerspaidtable thead tr:first-child,
-#usertextadstable thead tr:first-child, #usernetworksolostable thead tr:first-child {
+#admintable thead tr:first-child {
   color: #fff;
   background: #0067f4;
 }
-#userbannerspaidtable th,
-td {
-  border: 1px solid #121212;
+#admintable thead tr:first-child h4 {
+  color: #fff;
 }
-#usertextadstable th,
-td {
+#admintable th {
   border: 1px solid #121212;
+  font-weight: bold;
 }
-#usernetworksolostable th,
-td {
-  border: 1px solid #121212;
+#admintable tbody tr td {
+  vertical-align : middle;
 }
+#admintable tbody td .fas.fa-sort {
+  color: #0067f4;
+  font-size: 2em;
+}
+#admintable tbody td .fas.fa-sort:hover {
+  color: #ff4343;
+}
+#admintable tbody tr td.reorder {
+  cursor: move;
+}
+
 table.table-condensed.table-bordered {
   border: 2px solid #121212;
   border-collapse: collapse;

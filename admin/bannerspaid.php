@@ -70,7 +70,7 @@ $ads = $allads->getAllAds();
 	<h1 class="ja-bottompadding ja-toppadding mb-4">All Member Paid Banners</h1>
 
 	<div class="table-responsive">
-		<table id="userbannerspaidtable" class="table table-hover text-center table-sm">
+		<table id="admintable" class="table table-hover text-center table-sm">
 			<thead>
 				<tr>
 					<th class="text-center small">Ad&nbsp;#</th>
