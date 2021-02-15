@@ -53,6 +53,7 @@
 
 <!-- jQuery UI CSS, Libraries to help with Drag & Drop in FAQ admin and banner maker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
 <script src="js/draganddrop/kinetic-v3.9.3.js"></script>
 <!-- <script type="text/javascript" src="../js/draganddrop/version1.js"></script> TODO: gives error - needed for banner maker or not? -->  -->
 <script src="js/html2canvas/html2canvas.js"></script>
