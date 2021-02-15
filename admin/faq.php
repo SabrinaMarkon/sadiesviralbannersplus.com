@@ -74,7 +74,6 @@ $faqs = $allfaqs->getAllFaqs();
                                 </td>
                                 <td>
                                     <input type="hidden" name="_method" value="PATCH">
-                                    <input type="hidden" name="positionnumber" value="<?php echo $faq['positionnumber']; ?>">
                                     <input type="hidden" name="id" value="<?php echo $faq['id']; ?>">
                                     <button class="btn btn-sm btn-primary" type="submit" name="savefaq">SAVE</button>
                                 </td>
@@ -82,7 +81,6 @@ $faqs = $allfaqs->getAllFaqs();
                             <td>
                                 <form action="/admin/faq/<?php echo $faq['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="positionnumber">
                                     <input type="hidden" name="id" value="<?php echo $faq['id']; ?>">
                                     <button class="btn btn-sm btn-primary" type="submit" name="deletefaq">DELETE</button>
                                 </form>
