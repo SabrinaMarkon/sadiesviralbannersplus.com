@@ -78,13 +78,12 @@ class Faq {
         $id = $post['id'];
         $question = $post['question'];
         $answer = $post['answer'];
-        $positionnumber = $post['positionnumber'];
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "update faqs set question=?,answer=?,positionnumber=? where id=?";
+        $sql = "update faqs set question=?,answer=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute([$question, $answer, $positionnumber, $id]);
+        $q->execute([$question, $answer, $id]);
 
         Database::disconnect();
 
@@ -98,6 +97,17 @@ class Faq {
         $sql = "delete from faqs where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$id]);
+
+        // Reorder position numbers:
+        $faqs = $this->getAllFaqs();
+        $positioncount = 1;
+        foreach ($faqs as $faq) {
+            $id = $faq["id"];
+            $sql = "update faqs set positionnumber=? where id=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$positioncount, $id]);
+            $positioncount++;
+        }
 
         Database::disconnect();
 

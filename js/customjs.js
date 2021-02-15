@@ -146,17 +146,20 @@ $(document).ready(() => {
     opacity: 0.6,
     cursor: "move",
     stop: function (event, ui) {
+      let positionnumberIdsArray = [];
       $(this)
         .find("tr")
         .each(function (i) {
-          var pn = i + 1;
-          // update the text in the order column to show the order that the faqs will appear to people.
+
+          var pn = i + 1; // New position number for this record.
+          // update the text in the order column to show the order that the faqs will appear to people:
           $(this).find("td:nth-last-child(3)").text(pn);
-          var order = $("tbody").sortable("serialize");
-          $(this).find("input[type=hidden]:eq(2)").val(order);
-          //var v = $(this).find("input[type=hidden]:eq(2)").val();
-          //alert(v);
+
+          // Create array with the order the id's should be in in the database:
+          let id = $(this).find("input[type=hidden]:eq(2)").val(); // id field.
+          positionnumberIdsArray.push(id);
         });
+        // console.log(positionnumberIdsArray);
     },
   });
 });
