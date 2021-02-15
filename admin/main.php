@@ -26,7 +26,7 @@ $htmlcode = $adminnote->getAdminNote();
 
                 <label class="sr-only" for="adminnotes">Your Admin Notes</label>
 
-                <input type="text" name="htmlcode" value="<?php echo $htmlcode['htmlcode']; ?>" class="form-control input-lg" placeholder="Admin Notes">
+                <textarea name="htmlcode" class="form-control input-lg my-4" placeholder="Admin Notes" rows="10" cols="50"><?php echo $htmlcode['htmlcode']; ?></textarea>
 
                 <div class="ja-bottompadding"></div>
 

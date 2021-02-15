@@ -78,10 +78,9 @@ CREATE TABLE `adminsettings` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `adminnotes` (
-`id` int(11) NOT NULL auto_increment,
+`id` int(11) NOT NULL primary key auto_increment,
 `name` varchar(25) NOT NULL default '',
-`htmlcode` longtext NOT NULL,
-KEY `index` (`id`)
+`htmlcode` longtext NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `banners` (
