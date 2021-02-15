@@ -33,9 +33,11 @@ CREATE TABLE `adminsettings` (
 `freemonthlybonusbannerspaid` integer unsigned not null default '0',
 `freemonthlybonusnetworksolos` integer unsigned not null default '0',
 
-`freeadclickstogettextad` integer unsigned not null default '100', ##########members area 
-`freeadclickstogetbannerspaid` integer unsigned not null default '100',##########
-`freeadclickstogetnetworksolo` integer unsigned not null default '100',##########
+##########members area 
+
+`freeadclickstogettextad` integer unsigned not null default '100', 
+`freeadclickstogetbannerspaid` integer unsigned not null default '100',
+`freeadclickstogetnetworksolo` integer unsigned not null default '100',
 
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
@@ -51,9 +53,9 @@ CREATE TABLE `adminsettings` (
 `promonthlybonusbannerspaid` integer unsigned not null default '1',
 `promonthlybonusnetworksolos` integer unsigned not null default '0',
 
-`proadclickstogettextad` integer unsigned not null default '100', ##########members area 
-`proadclickstogetbannerspaid` integer unsigned not null default '100',##########
-`proadclickstogetnetworksolo` integer unsigned not null default '100',##########
+`proadclickstogettextad` integer unsigned not null default '100',
+`proadclickstogetbannerspaid` integer unsigned not null default '100',
+`proadclickstogetnetworksolo` integer unsigned not null default '100',
 
 `goldprice` decimal(9, 2) not null default '9.99',
 `goldpayinterval` varchar(12) not null default 'monthly',
@@ -69,9 +71,9 @@ CREATE TABLE `adminsettings` (
 `goldmonthlybonusbannerspaid` integer unsigned not null default '2',
 `goldmonthlybonusnetworksolos` integer unsigned not null default '1',
 
-`goldadclickstogettextad` integer unsigned not null default '100', ##########members area 
-`goldadclickstogetbannerspaid` integer unsigned not null default '100',##########
-`goldadclickstogetnetworksolo` integer unsigned not null default '100' ##########
+`goldadclickstogettextad` integer unsigned not null default '100',
+`goldadclickstogetbannerspaid` integer unsigned not null default '100',
+`goldadclickstogetnetworksolo` integer unsigned not null default '100'
 
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -127,6 +129,13 @@ CREATE TABLE `countries` (
 `reserved1` int(11) not null DEFAULT '0',
 KEY `IDX_COUNTRIES_NAME` (`country_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `faqs` (
+  `id` int(10) UNSIGNED NOT NULL primary key auto_increment,
+  `question` text COLLATE utf8_unicode_ci NOT NULL,
+  `answer` text COLLATE utf8_unicode_ci NOT NULL,
+  `positionnumber` int(11) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE mail (
 `id` int(10) unsigned not null primary key auto_increment,

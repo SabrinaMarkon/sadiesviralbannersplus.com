@@ -140,6 +140,23 @@ async function handlePayForm(formattedFormFields, buttonId) {
   }
 }
 
+// reorder the FAQ position numbers.
+$("#faqtable.tbody").sortable({
+  opacity: 0.6,
+  cursor: 'move',
+  stop: function(event, ui) {
+      $(this).find('tr').each(function(i) {
+          var pn = i + 1;
+          // update the text in the order column to show the order that the faqs will appear to people.
+          $(this).find('td:nth-last-child(3)').text(pn);
+          var order = $("tbody").sortable("serialize");
+          $(this).find("input[type=hidden]:eq(2)").val(order);
+          //var v = $(this).find("input[type=hidden]:eq(2)").val();
+          //alert(v);
+      });
+  }
+});
+
 // Copy to clipboard:
 const copyToClipboard = (str) => {
   const el = document.createElement("textarea"); // Create a <textarea> element

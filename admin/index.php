@@ -208,6 +208,44 @@ if (isset($_POST['login'])) {
         $show = $delete->deletePage($id);
     }
 
+    if (isset($_POST['createfaq'])) {
+
+        $errors = $formvalidation->validateAll($_POST);
+        if (!empty($errors)) {
+
+            $show = $errors;
+        } else {
+
+            # admin added a new faq.
+            $add = new Faq();
+            $show = $add->createFaq($_POST);
+        }
+    }
+
+    if (isset($_POST['savefaq'])) {
+
+        $errors = $formvalidation->validateAll($_POST);
+        if (!empty($errors)) {
+
+            $show = $errors;
+        } else {
+
+            # admin edited and saved an faq.
+            $update = new Faq();
+            $show = $update->saveFaq($_POST);
+        }
+    }
+
+    if (isset($_POST['deletefaq'])) {
+
+        # admin deleted an faq.
+        $delete = new Faq();
+        $show = $delete->deleteFaq($id);
+    }
+
+
+
+
     if (isset($_POST['adminaddmember'])) {
 
         $errors = $formvalidation->validateAll($_POST);

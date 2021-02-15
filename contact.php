@@ -26,7 +26,7 @@ echo $showcontact;
 			<input type="text" name="subject" value="" class="form-control input-lg" placeholder="Subject" required>
 
 			<label class="sr-only" for="message">Message</label>
-			<textarea name="message" value="" class="form-control input-lg" rows="10" placeholder="Message" required></textarea>
+			<textarea name="message" class="form-control input-lg" rows="10" placeholder="Message" required></textarea>
 
 			<div class="ja-bottompadding"></div>
 

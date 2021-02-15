@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-@import url("http://fonts.cdnfonts.com/css/hole-hearted");
 
 .logo .fas {
   vertical-align: 22%;
@@ -366,7 +365,8 @@ h4.ja-white {
 }
 #userbannerspaidtable,
 #usertextadstable,
-#usernetworksolostable {
+#usernetworksolostable,
+#faqtable {
   border: 1px solid #121212;
   border-collapse: collapse;
   background: #fff;

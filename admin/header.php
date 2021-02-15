@@ -81,6 +81,7 @@
                       <li class="nav-item"><a href="/admin/mail">Mail</a></li>
                       <li class="nav-item"><a href="/admin/pages">Pages</a></li>
                       <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
+                      <li class="nav-item"><a href="/admin/faq">FAQ&nbsp;Builder</a></li>
                       <li class="nav-item"><a href="/admin/bannerspaid">Paid&nbsp;Banners</a></li>
                       <li class="nav-item"><a href="/admin/networksolos">Network&nbsp;Solos</a></li>
                       <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>

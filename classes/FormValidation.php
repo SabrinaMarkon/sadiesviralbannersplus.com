@@ -61,6 +61,8 @@ class FormValidation
         'promotionalimage' => 'promotional banner image URL',
         'promotionalsubject' => 'promotional email ad subject',
         'promotionaladbody' => 'promotional email ad message',
+        'question' => 'faq question',
+        'answer' => 'faq answer',
         'textadprice' => 'price to buy a text ad',
         'textadhits' => 'number of impressions per text ad',
         'bannerprice' => 'price to buy a banner ad',
@@ -243,12 +245,13 @@ class FormValidation
 
                     $errors .= "<div><strong>The size of " . $pretty_varname . " must be 20 or less characters.</strong></div>";
                 }
-            } elseif ($varname === 'message') {
+            } elseif ($varname === 'message' || $varname === 'question' || $varname === 'answer') {
 
                 # admin email message body.
+                # faq question or answer.
 
                 if (empty($varvalue)) {
-
+                    
                     $errors .= "<div><strong>" . $pretty_varname . " cannot be blank.</strong></div>";
                 }
             } elseif ($varname === 'email' || $varname === 'adminemail') {
@@ -348,14 +351,13 @@ class FormValidation
 
                     $errors .= "<div><strong>The value " . $pretty_varname . " must be Yes or No. </strong></div>";
                 }
-            } elseif (stripos($varname, "adclickstoget") !== false || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false) {
+            } elseif (stripos($varname, "adclickstoget") !== false || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false || $varname === 'positionnumber') {
 
                 # make sure that the number of ads clicked to get a free ad is an integer greater than or equal to 0 (0 means disabled).
                 if ($varvalue < 0) {
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an integer greater than or equal to 0. </strong></div>";
                 }
-
             } elseif ($varname === 'signupip') {
 
                 # admin area signupip for members.
