@@ -32,6 +32,20 @@
 
 <script src="../js/modernizr-3.7.1.min.js"></script>
 
+<!-- jQuery UI CSS, Libraries to help with Drag & Drop in FAQ admin and banner maker -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="../js/draganddrop/kinetic-v3.9.3.js"></script>
+<!-- <script type="text/javascript" src="../js/draganddrop/version1.js"></script> TODO: gives error - needed for banner maker or not? --> 
+<script src="../js/html2canvas/html2canvas.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.auto.min.js"></script> <!-- IE support -->
+<script src="../js/sweetalert2/sweetalert2.js"></script>
+<link rel="stylesheet" href="../css/sweetalert2.min.css">
+
 <!-- Isotope js -->
 <script src="../js/imagesloaded.pkgd.min.js"></script>
 <script src="../js/isotope.pkgd.min.js"></script>
