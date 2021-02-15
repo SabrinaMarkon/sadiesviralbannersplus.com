@@ -9,8 +9,8 @@ PHP 7.4+
 @license LICENSE.md
  **/
 
-require_once "config/Database.php";
-require_once "classes/FormValidation.php";
+require_once "../config/Database.php";
+require_once "../classes/FormValidation.php";
 
 // php://input here is the formfields in JSON format.
 $formfields = file_get_contents('php://input');

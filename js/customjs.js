@@ -108,7 +108,7 @@ function formFieldsToJSON() {
 
 async function handlePayForm(formattedFormFields, buttonId) {
   // First, save the purchase data into the database to retrieve after successful payment.
-  const response = await fetch("payformtodatabase.php", {
+  const response = await fetch("apis/payformtodatabase.php", {
     method: "POST",
     body: formattedFormFields,
   });
@@ -161,7 +161,7 @@ $(document).ready(() => {
         });
         // Post to the database.
         formattedPositionnumberIdsArray = JSON.stringify(positionnumberIdsArray);
-        const response = await fetch("admin/faqformtodatabase.php", {
+        const response = await fetch("apis/faqformtodatabase.php", {
           method: "POST",
           body: formattedPositionnumberIdsArray,
         });
