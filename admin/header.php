@@ -53,53 +53,51 @@
       </div>
 
       <!-- Navigation -->
-      <section class="navbar-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
+      <section class="navbar-area px-5">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
 
-                <a class="navbar-brand" href="/" target="_blank">
-                  <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
-                </a>
+              <a class="navbar-brand" href="/" target="_blank">
+                <span class="logo-small">Sadie's <i class="fas fa-star fa-xs"></i></span>
+              </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+              </button>
 
-                <?php
-                if ((isset($_SESSION['adminusername'])) && (isset($_SESSION['adminpassword']))) {
-                ?>
-                  <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
-                    <ul class="navbar-nav m-auto">
-                      <li class="nav-item"><a href="/admin/main">Main</a></li>
-                      <li class="nav-item"><a href="/admin/settings">Settings</a></li>
-                      <li class="nav-item"><a href="/admin/members">Members</a></li>
-                      <li class="nav-item"><a href="/admin/money">Money</a></li>
-                      <li class="nav-item"><a href="/admin/mail">Mail</a></li>
-                      <li class="nav-item"><a href="/admin/pages">Pages</a></li>
-                      <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
-                      <li class="nav-item"><a href="/admin/faq">FAQ&nbsp;Builder</a></li>
-                      <li class="nav-item"><a href="/admin/bannerspaid">Paid&nbsp;Banners</a></li>
-                      <li class="nav-item"><a href="/admin/networksolos">Network&nbsp;Solos</a></li>
-                      <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>
-                    </ul>
-                  </div>
+              <?php
+              if ((isset($_SESSION['adminusername'])) && (isset($_SESSION['adminpassword']))) {
+              ?>
+                <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                  <ul class="navbar-nav m-auto">
+                    <li class="nav-item"><a href="/admin/main">Main</a></li>
+                    <li class="nav-item"><a href="/admin/settings">Settings</a></li>
+                    <li class="nav-item"><a href="/admin/members">Members</a></li>
+                    <li class="nav-item"><a href="/admin/money">Money</a></li>
+                    <li class="nav-item"><a href="/admin/mail">Mail</a></li>
+                    <li class="nav-item"><a href="/admin/pages">Pages</a></li>
+                    <li class="nav-item"><a href="/admin/promotional">Promotional</a></li>
+                    <li class="nav-item"><a href="/admin/faq">FAQ&nbsp;Builder</a></li>
+                    <li class="nav-item"><a href="/admin/bannerspaid">Paid&nbsp;Banners</a></li>
+                    <li class="nav-item"><a href="/admin/networksolos">Network&nbsp;Solos</a></li>
+                    <li class="nav-item"><a href="/admin/textads">Text&nbsp;Ads</a></li>
+                  </ul>
+                </div>
 
-                  <div class="navbar-btn d-none d-sm-inline-block">
-                    <ul>
-                      <li><a class="solid" href="/admin/logout">Logout</a></li>
-                    </ul>
-                  </div>
-                <?php
-                }
-                ?>
-              </nav> <!-- navbar -->
-            </div>
-          </div> <!-- row -->
-        </div> <!-- container -->
+                <div class="navbar-btn d-none d-sm-inline-block">
+                  <ul>
+                    <li><a class="solid" href="/admin/logout">Logout</a></li>
+                  </ul>
+                </div>
+              <?php
+              }
+              ?>
+            </nav> <!-- navbar -->
+          </div>
+        </div> <!-- row -->
       </section>
 
       <!-- Page Content -->
