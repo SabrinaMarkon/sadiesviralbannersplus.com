@@ -15,38 +15,32 @@ echo $showcontent->showPage('FAQ Page');
 
     <h1 class="text-center mb-5">FAQ</h1>
 
-    <div class="panel-group panel-faqs" id="accordion">
+    <div id="faqpanel" class="faqpanel" role="tablist" aria-multiselectable="true">
 
         <?php
         foreach ($faqs as $faq) {
         ?>
-            <div class="faqpanel panel panel-default text-left pb-2">
-                <div class="panel-heading pb-2">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $faq['positionnumber']; ?>">
-                            <?php echo $faq['question']; ?>
-                        </a>
-                    </h4>
-                </div>
-                <?php
-                if ($faq['positionnumber'] === 1) {
-                ?>
-                    <div class="panel-collapse collapse in" id="collapse<?php echo $faq['positionnumber']; ?>">
-                    <?php
-                } else {
-                    ?>
-                        <div class="panel-collapse collapse" id="collapse<?php echo $faq['positionnumber']; ?>">
-                        <?php
-                    }
-                        ?>
-                        <div class="panel-body">
-                            <p><?php echo $faq['answer']; ?></p>
-                        </div>
-                        </div>
+
+            <div class="faq mb-4">
+                <h5 class="faq-heading" role="tab" id="heading<?php echo $faq['positionnumber']; ?>">
+                    <a data-toggle="collapse" data-parent="#faqpanel" href="#collapse<?php echo $faq['positionnumber']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $faq['positionnumber']; ?>" class="collapsed d-block">
+                        <i class="fa fa-chevron-down"></i> <?php echo $faq['question']; ?>
+                    </a>
+                </h5>
+
+                <div id="collapse<?php echo $faq['positionnumber']; ?>" class="collapse" role="tabpanel" aria-labelledby="heading<?php echo $faq['positionnumber']; ?>">
+                    <div class="faq-body p-3">
+                        <p><?php echo $faq['answer']; ?></p>
                     </div>
-                <?php
-            }
-                ?>
+                </div>
             </div>
-            <div class="pb-4"></div>
+
+        <?php
+        }
+        ?>
+
+        <div class="mb-5"></div>
+
     </div>
+
+</div>

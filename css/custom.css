@@ -395,24 +395,36 @@ h4.ja-white {
 }
 
 .faqpanel {
-  background:  #fff;
   border-radius: 10px;
   border-collapse: collapse;
   margin: 1.2em;
 }
-.faqpanel .panel-heading {
+.faqpanel .faq-heading {
   background: #0067f4;
   border-radius: 10px 10px 0 0;
   padding: 1em;
+  box-shadow: 1px 1px 1px #121212;
 }
-.faqpanel .panel-heading a {
+.faqpanel .faq-heading a {
   color: #fff;
-  font-size: 0.8em;
+  font-size: 1.2rem;
   padding-bottom: 7px;
 }
-.faqpanel .panel-body {
+.faqpanel .faq-body {
+  background:  #fff;
+  color: #121212;
   padding: 1em;
-  font-size: 0.6em
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 1px 1px 1px #121212;
+}
+.faq-heading .fa {
+  font-size: 1.6rem;
+  float: right;
+  transition: .3s transform ease-in-out;
+}
+.faq-heading .collapsed .fa {
+  transform: rotate(90deg);
 }
 
 table.table-condensed.table-bordered {
