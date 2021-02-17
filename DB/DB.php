@@ -133,16 +133,17 @@ CREATE TABLE `downloadaccess` (
   `id` int(10) UNSIGNED NOT NULL,
   `downloadid` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) NOT NULL,
-  `dategiven` datetime NOT NULL
+  `dategiven` datetime NOT NULL,
+  KEY downloadaccess_downloadid_foreign (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `downloads` (
   `id` int(11) NOT NULL,
-  `downloadname` varchar(255) NOT NULL DEFAULT '',
-  `downloadtype` varchar(255) NOT NULL DEFAULT 'link',
-  `downloaddescription` longtext NOT NULL,
-  `downloadurl` varchar(255) NOT NULL,
-  `downloadfile` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `type` varchar(255) NOT NULL DEFAULT 'link',
+  `description` longtext NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL DEFAULT '',
   `filesize` int(11) NOT NULL DEFAULT '0',
   `filetype` varchar(255) NOT NULL DEFAULT '',
   `dateadded` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
