@@ -146,7 +146,7 @@ CREATE TABLE `downloads` (
   `file` varchar(255) NOT NULL DEFAULT '',
   `filesize` int(11) NOT NULL DEFAULT '0',
   `filetype` varchar(255) NOT NULL DEFAULT '',
-  `dateadded` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `dateadded` datetime DEFAULT NULL,
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `faqs` (
