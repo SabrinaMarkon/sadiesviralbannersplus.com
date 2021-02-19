@@ -35,15 +35,19 @@ class Banner extends Ad
         # TODO: generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
 
+        if (empty($username)) {
+            $username = 'admin';
+        }
+
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         # is it a user or the admin posting the ad?
         if ($source === 'admin') {
 
-            $sql = "insert into bannerspaid (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,1,1,NOW())";
+            $sql = "insert into bannerspaid (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values (?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
-            $q->execute([$name, $alt, $url, $shorturl, $imageurl]);
+            $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl]);
             Database::disconnect();
 
             return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
@@ -68,6 +72,7 @@ class Banner extends Ad
     public function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post): string
     {
 
+        $username = $post['username'];
         $name = $post['name'];
         $alt = $post['alt'];
         $url = $post['url'];
@@ -76,6 +81,10 @@ class Banner extends Ad
         # generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
 
+        if (empty($username)) {
+            $username = 'admin';
+        }
+        
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -88,9 +97,9 @@ class Banner extends Ad
             $autoapprove = $adminautoapprove;
         }
 
-        $sql = "update bannerspaid set name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
+        $sql = "update bannerspaid set username=?,name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute([$name, $alt, $url, $imageurl, $shorturl, $autoapprove, $id]);
+        $q->execute([$username, $name, $alt, $url, $imageurl, $shorturl, $autoapprove, $id]);
 
         Database::disconnect();
 

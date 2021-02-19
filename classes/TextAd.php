@@ -36,15 +36,19 @@ class TextAd extends Ad
         # TODO: generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
 
+        if (empty($username)) {
+            $username = 'admin';
+        }
+
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         # is it a user or the admin posting the ad?
         if ($source === 'admin') {
 
-            $sql = "insert into textads (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values ('admin',?,?,?,?,?,?,1,1,NOW())";
+            $sql = "insert into textads (username,name,title,url,shorturl,description,imageurl,added,approved,adddate) values (?,?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
-            $q->execute([$name, $title, $url, $shorturl, $description, $imageurl]);
+            $q->execute([$username, $name, $title, $url, $shorturl, $description, $imageurl]);
             Database::disconnect();
 
             return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
@@ -68,7 +72,8 @@ class TextAd extends Ad
     /* Call this when the user edits their existing ad. */
     public function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post): string
     {
-
+        
+        $username = $post['username'];
         $name = $post['name'];
         $title = $post['title'];
         $url = $post['url'];
@@ -78,6 +83,10 @@ class TextAd extends Ad
         # generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
 
+        if (empty($username)) {
+            $username = 'admin';
+        }
+        
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -90,9 +99,9 @@ class TextAd extends Ad
             $autoapprove = $adminautoapprove;
         }
         
-        $sql = "update textads set name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
+        $sql = "update textads set username=?,name=?,title=?,url=?,description=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute([$name, $title, $url, $description, $imageurl, $shorturl, $autoapprove, $id]);
+        $q->execute([$username, $name, $title, $url, $description, $imageurl, $shorturl, $autoapprove, $id]);
 
         Database::disconnect();
 

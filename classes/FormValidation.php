@@ -120,7 +120,7 @@ class FormValidation
 
                 # if a username was submitted for registration or added in admin, does it already exist in the system?
                 $errors = $this->checkUsernameDuplicates($post['username'], $errors);
-            } elseif (isset($post['addtransaction']) || isset($post['savetransaction'])) {
+            } elseif (isset($post['addtransaction']) || isset($post['savetransaction']) || isset($post['createad']) || isset($post['savead'])) {
 
                 # if a username was submitted to add a transaction for them, that username should already exist in the system.
                 $errors = $this->checkUserExists($post['username'], 'username', $errors);

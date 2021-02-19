@@ -36,15 +36,19 @@ class NetworkSolo extends Ad
         # TODO: generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
 
+        if (empty($username)) {
+            $username = 'admin';
+        }
+
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         # is it a user or the admin posting the ad?
         if ($source === 'admin') {
 
-            $sql = "insert into networksolos (username,name,subject,url,shorturl,message,added,approved,adddate) values ('admin',?,?,?,?,?,1,1,NOW())";
+            $sql = "insert into networksolos (username,name,subject,url,shorturl,message,added,approved,adddate) values (?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
-            $q->execute([$name, $subject, $url, $shorturl, $message]);
+            $q->execute([$username, $name, $subject, $url, $shorturl, $message]);
             Database::disconnect();
 
             return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
@@ -69,6 +73,7 @@ class NetworkSolo extends Ad
     public function saveAd(int $id, int $adminautoapprove, int $isadmin, array $post): string
     {
 
+        $username = $post['username'];
         $name = $post['name'];
         $subject = $post['subject'];
         $url = $post['url'];
@@ -77,6 +82,10 @@ class NetworkSolo extends Ad
         # generate shorturl - FIREBASE LINKS ****
         $shorturl = '';
 
+        if (empty($username)) {
+            $username = 'admin';
+        }
+        
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -89,9 +98,9 @@ class NetworkSolo extends Ad
             $autoapprove = $adminautoapprove;
         }
 
-        $sql = "update networksolos set name=?,subject=?,url=?,message=?,shorturl=?,added=1,approved=? where id=?";
+        $sql = "update networksolos set username=?,name=?,subject=?,url=?,message=?,shorturl=?,added=1,approved=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute([$name, $subject, $url, $message, $shorturl, $autoapprove, $id]);
+        $q->execute([$username, $name, $subject, $url, $message, $shorturl, $autoapprove, $id]);
 
         Database::disconnect();
 

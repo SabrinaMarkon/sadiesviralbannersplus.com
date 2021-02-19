@@ -46,7 +46,10 @@ $ads = $allads->getAllAds();
 
 	<form action="/admin/bannerspaid" method="post" accept-charset="utf-8" class="form" role="form">
 
-		<label for="name">Name of Ad (only you see):</label>
+		<label for="name">For Username (blank for admin):</label>
+		<input type="text" name="username" class="form-control input-lg" placeholder="For Username" required>
+
+		<label for="name">Name of Ad:</label>
 		<input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name" required>
 
 		<label for="title">Alt Text:</label>
@@ -75,6 +78,7 @@ $ads = $allads->getAllAds();
 				<tr>
 					<th class="text-center small">Ad&nbsp;#</th>
 					<th class="text-center small" style="min-width: 100px;">Image</th>
+					<th class="text-center small" style="min-width: 100px;">Username</th>
 					<th class="text-center small" style="min-width: 100px;">Name</th>
 					<th class="text-center small" style="min-width: 100px;">Alt</th>
 					<th class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
@@ -112,6 +116,9 @@ $ads = $allads->getAllAds();
 								</td>
 								<td class="small">
 									<img src="<?php echo $ad['imageurl']; ?>" alt="<?php echo $ad['alt'] ?>" class="mini-banner-image">
+								</td>
+								<td class="small">
+									<input type="text" name="username" value="<?php echo $ad['username']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Username" required>
 								</td>
 								<td class="small">
 									<input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
