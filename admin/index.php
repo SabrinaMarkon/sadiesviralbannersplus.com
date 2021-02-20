@@ -247,8 +247,8 @@ if (isset($_POST['login'])) {
     if (isset($_POST['givedownload'])) {
 
         # admin deleted an faq.
-        $delete = new Download();
-        $show = $delete->giveDownload($id);
+        $give = new Download();
+        $show = $give->giveDownload($_POST);
     }
 
     if (isset($_POST['adddownload'])) {
