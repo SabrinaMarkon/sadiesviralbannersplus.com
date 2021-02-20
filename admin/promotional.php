@@ -70,7 +70,7 @@ $promotionals = $allpromotionals->getAllPromotionals();
                     <input type="text" name="name" value="" class="form-control input-lg w-50" placeholder="Name" required>
 
                     <label for="type">Type:</label>
-                    <select name="type" id="type" class="form-control w-50" onchange="setuppromotional(document.getElementById('type').value)">
+                    <select name="type" id="type" class="form-control w-50" onchange="setupExtraFields(document.getElementById('type').value)">
                         <option value=""> - Select - </option>
                         <option value="banner">Banner</option>
                         <option value="email">Email</option>
