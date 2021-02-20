@@ -244,6 +244,47 @@ if (isset($_POST['login'])) {
     }
 
 
+    if (isset($_POST['givedownload'])) {
+
+        # admin deleted an faq.
+        $delete = new Download();
+        $show = $delete->giveDownload($id);
+    }
+
+    if (isset($_POST['adddownload'])) {
+
+        $errors = $formvalidation->validateAll($_POST);
+        if (!empty($errors)) {
+
+            $show = $errors;
+        } else {
+
+            # admin added a new faq.
+            $add = new Download();
+            $show = $add->addDownload($_POST);
+        }
+    }
+
+    if (isset($_POST['savedownload'])) {
+
+        $errors = $formvalidation->validateAll($_POST);
+        if (!empty($errors)) {
+
+            $show = $errors;
+        } else {
+
+            # admin edited and saved an faq.
+            $update = new Download();
+            $show = $update->saveDownload($_POST);
+        }
+    }
+
+    if (isset($_POST['deletedownload'])) {
+
+        # admin deleted an faq.
+        $delete = new Download();
+        $show = $delete->deleteDownload($id);
+    }
 
 
     if (isset($_POST['adminaddmember'])) {
