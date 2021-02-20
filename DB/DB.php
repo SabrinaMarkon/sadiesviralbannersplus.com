@@ -14,6 +14,7 @@ CREATE TABLE `adminsettings` (
 `domain` varchar(300) not null,
 `metatitle` varchar(60) not null,
 `metadescription` varchar(160) not null,
+`downloadsfolder` varchar(300) not null default '../downloads/',
 `adminautoapprove` tinyint(1) not null default '0',
 `textadprice` decimal(9, 2) not null default '2.00',
 `textadhits` integer unsigned not null default '2000',
