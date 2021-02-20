@@ -150,7 +150,6 @@ $(document).ready(() => {
       $(this)
         .find("tr")
         .each(function (i) {
-
           // update the text in the order column to show the order that the faqs will appear to people:
           let pn = i + 1; // New position number for this record.
           $(this).find("td:nth-last-child(3)").text(pn);
@@ -159,14 +158,14 @@ $(document).ready(() => {
           let id = $(this).find("input[type=hidden]:eq(1)").val(); // id field.
           positionnumberIdsArray.push(id);
         });
-        // Post to the database.
-        formattedPositionnumberIdsArray = JSON.stringify(positionnumberIdsArray);
-        const response = await fetch("apis/faqformtodatabase.php", {
-          method: "POST",
-          body: formattedPositionnumberIdsArray,
-        });
-        let res = await response.text();
-        // console.log(res);
+      // Post to the database.
+      formattedPositionnumberIdsArray = JSON.stringify(positionnumberIdsArray);
+      const response = await fetch("apis/faqformtodatabase.php", {
+        method: "POST",
+        body: formattedPositionnumberIdsArray,
+      });
+      let res = await response.text();
+      // console.log(res);
     },
   });
 });
@@ -193,48 +192,79 @@ const copyToClipboard = (str) => {
   }
 };
 
-// building the form for the admin promotional page depending on what was selected.
-function setuppromotional(ans) {
+// building the form for the admin promotional or download page depending on what was selected.
+function setupExtraFields(ans) {
   if (ans != "") {
-    var litfields = "";
+    let litfields = "";
+
+    let previewfield = document.getElementById("previewfield");
+    let promotionaloptionsfields = document.getElementById(
+      "promotionaloptionsfields"
+    );
+    let downloadoptionsfields = document.getElementById(
+      "downloadoptionsfields"
+    );
+
+    // Admin promotional material:
     if (ans == "banner") {
       litfields =
         litfields +
         '<label for="promotionalimage">Image URL:</label><input type="text" name="promotionalimage" id="promotionalimage" size="55" maxlength="255" class="form-control w-50">';
-      document.getElementById("previewfield").style.visibility = "visible";
-      document.getElementById("previewfield").style.display = "block";
-      document.getElementById("promotionaloptionsfields").style.visibility =
-        "visible";
-      document.getElementById("promotionaloptionsfields").innerHTML = litfields;
+      previewfield.style.visibility = "visible";
+      previewfield.style.display = "block";
+      promotionaloptionsfields.style.visibility = "visible";
+      promotionaloptionsfields.innerHTML = litfields;
       tinyMCE.execCommand("mceFocus", false, "promotionaladbody");
       tinyMCE.execCommand("mceRemoveEditor", false, "promotionaladbody");
       document.getElementById("type").focus();
     }
-
     if (ans == "email") {
       litfields =
         litfields +
         '<label for="promotionalsubject">Email Subject:</label><input type="text" name="promotionalsubject" size="55" maxlength="255" class="form-control w-50">';
       litfields +=
         '<label for="promotionaladbody">Email Message:</label><br><textarea name="promotionaladbody" id="promotionaladbody" rows="20"></textarea>';
-      document.getElementById("previewfield").style.visibility = "hidden";
-      document.getElementById("previewfield").style.display = "none";
-      document.getElementById("promotionaloptionsfields").style.visibility =
-        "visible";
-      document.getElementById("promotionaloptionsfields").innerHTML = litfields;
+      previewfield.style.visibility = "hidden";
+      previewfield.style.display = "none";
+      promotionaloptionsfields.style.visibility = "visible";
+      promotionaloptionsfields.innerHTML = litfields;
       tinyMCE.execCommand("mceAddEditor", true, "promotionaladbody");
       document.getElementById("type").focus();
+    }
+
+    // Admin download library:
+    if (ans == "link") {
+      litfields =
+        litfields +
+        '<label for="url">Download URL:</label><input type="text" name="url" size="55" maxlength="255" class="form-control w-50" placeholder="Download URL">';
+      downloadoptionsfields.style.visibility = "visible";
+      downloadoptionsfields.style.display = "block";
+      downloadoptionsfields.innerHTML = litfields;
+    }
+    if (ans == "file") {
+      litfields =
+        litfields +
+        '<label for="file">Download File:</label><input type="file" name="file" size="55" maxlength="255" class="form-control w-50" placeholder="Download File">';
+      downloadoptionsfields.style.visibility = "visible";
+      downloadoptionsfields.style.display = "block";
+      downloadoptionsfields.innerHTML = litfields;
     }
   }
 
   if (ans == "") {
-    document.getElementById("previewfield").style.visibility = "hidden";
-    document.getElementById("previewfield").style.display = "none";
-    tinyMCE.execCommand("mceFocus", false, "promotionaladbody");
-    tinyMCE.execCommand("mceRemoveEditor", false, "promotionaladbody");
-    document.getElementById("promotionaloptionsfields").style.visibility =
-      "hidden";
-    document.getElementById("promotionaloptionsfields").innerHTML = "";
+    if (previewfield && promotionaloptionsfields) {
+      previewfield.style.visibility = "hidden";
+      previewfield.style.display = "none";
+      tinyMCE.execCommand("mceFocus", false, "promotionaladbody");
+      tinyMCE.execCommand("mceRemoveEditor", false, "promotionaladbody");
+      promotionaloptionsfields.style.visibility = "hidden";
+      promotionaloptionsfields.innerHTML = "";
+    }
+    if (downloadoptionsfields) {
+      downloadoptionsfields.style.visibility = "hidden";
+      downloadoptionsfields.style.display = "none";
+      downloadoptionsfields.innerHTML = "";
+    }
     document.getElementById("type").focus();
   }
 }
