@@ -246,7 +246,7 @@ if (isset($_POST['login'])) {
 
     if (isset($_POST['givedownload'])) {
 
-        # admin deleted an faq.
+        # admin gave one or more downloads to a specific member.
         $give = new Download();
         $show = $give->giveDownload($_POST);
     }
@@ -259,7 +259,7 @@ if (isset($_POST['login'])) {
             $show = $errors;
         } else {
 
-            # admin added a new faq.
+            # admin added a new download.
             $add = new Download();
             $show = $add->addDownload($_POST);
         }
@@ -273,7 +273,7 @@ if (isset($_POST['login'])) {
             $show = $errors;
         } else {
 
-            # admin edited and saved an faq.
+            # admin edited and saved a download.
             $update = new Download();
             $show = $update->saveDownload($_POST);
         }
@@ -281,7 +281,7 @@ if (isset($_POST['login'])) {
 
     if (isset($_POST['deletedownload'])) {
 
-        # admin deleted an faq.
+        # admin deleted a downloads.
         $delete = new Download();
         $show = $delete->deleteDownload($id);
     }

@@ -236,7 +236,7 @@ function setupExtraFields(ans) {
     if (ans == "link") {
       litfields =
         litfields +
-        '<label for="url">Download URL:</label><input type="text" name="url" size="55" maxlength="255" class="form-control w-50" placeholder="Download URL">';
+        '<label for="downloadurl">Download URL:</label><input type="text" name="downloadurl" size="55" maxlength="255" class="form-control w-50" placeholder="Download URL">';
       downloadoptionsfields.style.visibility = "visible";
       downloadoptionsfields.style.display = "block";
       downloadoptionsfields.innerHTML = litfields;
@@ -244,7 +244,7 @@ function setupExtraFields(ans) {
     if (ans == "file") {
       litfields =
         litfields +
-        '<label for="file">Download File:</label><input type="file" name="file" size="55" maxlength="255" class="form-control w-50" placeholder="Download File">';
+        '<label for="downloadfile">Download File:</label><input type="downloadfile" name="file" size="55" maxlength="255" class="form-control w-50" placeholder="Download File">';
       downloadoptionsfields.style.visibility = "visible";
       downloadoptionsfields.style.display = "block";
       downloadoptionsfields.innerHTML = litfields;

@@ -61,6 +61,11 @@ class FormValidation
         'promotionalimage' => 'promotional banner image URL',
         'promotionalsubject' => 'promotional email ad subject',
         'promotionaladbody' => 'promotional email ad message',
+        'downloadname' => 'download name',
+        'downloadtype' => 'type of download',
+        'downloaddescription' => 'download description',
+        'downloadurl' => 'download url',
+        'downloadfile' => 'file to upload',
         'question' => 'faq question',
         'answer' => 'faq answer',
         'textadprice' => 'price to buy a text ad',
@@ -146,6 +151,11 @@ class FormValidation
             # A promotional ad was created or saved.
             $errors = $this->checkPromotionalValidation($post, $errors);
         }
+        if (isset($post['downloadtype'])) {
+
+            # A download was created or saved.
+            $errors = $this->checkDownloadValidation($post, $errors);
+        }
         if (!empty($errors)) {
 
             return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>" . $errors . "</strong></div>";
@@ -195,7 +205,7 @@ class FormValidation
                 }
             } elseif (
                 $varname === 'firstname' || $varname === 'lastname' || $varname === 'name' || $varname === 'subject' || $varname === 'country' ||
-                $varname === 'adminname'
+                $varname === 'adminname' || $varname === 'downloadname'
             ) {
 
                 # user's firstname, lastname.
@@ -205,6 +215,7 @@ class FormValidation
                 # admin's name.
                 # page name.
                 # promotional ad's name.
+                # download name.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_STRING);
                 $numchars = strlen($varvalue);
@@ -245,13 +256,14 @@ class FormValidation
 
                     $errors .= "<div><strong>The size of " . $pretty_varname . " must be 20 or less characters.</strong></div>";
                 }
-            } elseif ($varname === 'message' || $varname === 'question' || $varname === 'answer') {
+            } elseif ($varname === 'message' || $varname === 'question' || $varname === 'answer' || $varname === 'downloaddescription') {
 
                 # admin email message body.
                 # faq question or answer.
+                # download description.
 
                 if (empty($varvalue)) {
-                    
+
                     $errors .= "<div><strong>" . $pretty_varname . " cannot be blank.</strong></div>";
                 }
             } elseif ($varname === 'email' || $varname === 'adminemail') {
@@ -342,6 +354,13 @@ class FormValidation
                 if ($varvalue !== 'banner' && $varvalue !== 'email') {
 
                     $errors .= "<div><strong>The type of promotional ad resource must be either a banner or an email.</strong></div>";
+                }
+            } elseif ($varname === 'downloadtype') {
+
+                # whether a download is a link or a file.
+                if ($varvalue !== 'link' && $varvalue !== 'file') {
+
+                    $errors .= "<div><strong>The type of download must be either a link or an file.</strong></div>";
                 }
             } elseif ($varname === 'adminautoapprove') {
 
@@ -500,6 +519,96 @@ class FormValidation
         return $errors;
     }
 
+
+
+
+     # validate downloads separately because some fields should be blank depending on type of ad.
+     public function checkDownloadValidation(array $post, string $errors)
+     {
+ 
+         if (!isset($post['downloadtype'])) {
+ 
+             # check for download type.
+             $pretty_varname = self::PRETTY_VARNAMES['downloadtype'];
+             $errors .= "<div><strong>" . $pretty_varname . " cannot be blank.</strong></div>";
+         } else {
+ 
+             $downloadtype = $post['downloadtype'];
+ 
+             # check for download name field.
+             if (!isset($post['downloadname'])) {
+ 
+                 $pretty_varname = self::PRETTY_VARNAMES['downloadname'];
+                 $errors .= "<div><strong>" . $pretty_varname . " cannot be blank.</strong></div>";
+             } 
+
+             # check fields dependent on download type.
+             if ($downloadtype === 'link') {
+ 
+                 if (isset($post['downloadurl'])) {
+ 
+                     $pretty_varname = self::PRETTY_VARNAMES['downloadurl'];
+                     $downloadurl = $post['downloadurl'];
+ 
+                     $downloadurl = filter_var($downloadurl, FILTER_SANITIZE_URL);
+                     $numchars = strlen($downloadurl);
+ 
+                     if ($numchars === 0) {
+ 
+                         $errors .= "<div><strong>" . $pretty_varname . " cannot be blank.</strong></div>";
+                     } elseif ($numchars < 8) {
+ 
+                         $errors .= "<div><strong>" . $pretty_varname . " must be 8 or more characters.</strong></div>";
+                     } elseif ($numchars > 300) {
+ 
+                         $errors .= "<div><strong>The size of " . $pretty_varname . " must be 300 or less characters.</strong></div>";
+                     } elseif (!filter_var($downloadurl, FILTER_VALIDATE_URL)) {
+ 
+                         $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid URL.</strong></div>";
+                     }
+                 } else {
+ 
+                     $pretty_varname = self::PRETTY_VARNAMES['downloadurl'];
+                     $errors .= "<div><strong>" . $pretty_varname . " cannot be blank.</strong></div>";
+                 }
+             } elseif ($downloadtype === 'file') {
+ 
+                 if (isset($_FILES['downloadfile']) && isset($post['downloadsfolder'])) {
+
+                    $downloadsfolder = $post['downloadsfolder'];
+ 
+                     $pretty_varname = self::PRETTY_VARNAMES['downloadfile'];
+ 
+                     $downloadfile = $_FILES['downloadfile'];
+                     $downloadfile_name = $_FILES['downloadfile']['name'];
+                     $downloadfile_name = filter_var($downloadfile_name, FILTER_SANITIZE_STRING);
+                     $numchars = strlen($downloadfile);
+ 
+                     if ($numchars === 0) {
+ 
+                         $errors .= "<div><strong>You need to include a" . $pretty_varname . ".</strong></div>";
+                     }
+                     
+                     if (file_exists("$downloadsfolder$downloadfile_name"))
+                     {
+                     $error .= "<div>Filename already exists on the system.</div>";
+                     }
+                     else
+                     {
+                     @unlink($downloadsfolder . $downloadfile_name);
+                     }
+                 } else {
+ 
+                     $pretty_varname = self::PRETTY_VARNAMES['downloadfile'];
+                     $errors .= "<div><strong>You need to include a " . $pretty_varname . ".</strong></div>";
+                 }
+             }
+         }
+ 
+         return $errors;
+     }
+     
+     
     # check if a username/recipient/referid exists.
     public function invalidMemberCheck(string $username, string $errors)
     {
