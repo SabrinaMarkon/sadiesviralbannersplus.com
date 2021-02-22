@@ -244,7 +244,7 @@ function setupExtraFields(ans) {
     if (ans == "file") {
       litfields =
         litfields +
-        '<label for="downloadfile">Download File:</label><input type="downloadfile" name="file" size="55" maxlength="255" class="form-control w-50" placeholder="Download File">';
+        '<label for="downloadfile">Download File:</label><input type="file" name="downloadfile" size="55" maxlength="255" class="form-control w-50" placeholder="Download File">';
       downloadoptionsfields.style.visibility = "visible";
       downloadoptionsfields.style.display = "block";
       downloadoptionsfields.innerHTML = litfields;
