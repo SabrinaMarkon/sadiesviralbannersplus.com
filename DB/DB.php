@@ -139,7 +139,7 @@ CREATE TABLE `downloadaccess` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `downloads` (
-  `id` int(11) NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL primary key auto_increment,
   `name` varchar(255) NOT NULL DEFAULT '',
   `type` varchar(255) NOT NULL DEFAULT 'link',
   `description` longtext NOT NULL,
