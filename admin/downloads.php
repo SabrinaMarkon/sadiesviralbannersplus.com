@@ -152,15 +152,15 @@ $downloads = $alldownloads->getAllDownloads();
         <table id="admintable" class="table table-hover table-condensed table-bordered text-center">
             <thead>
                 <tr>
-                    <th class="text-center">#</th>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Type</th>
-                    <th class="text-center" style="min-width: 100px;">URL</th>
-                    <th class="text-center">File</th>
-                    <th class="text-center">Date Added</th>
-                    <th class="text-center" style="min-width: 100px;">Description</th>
-                    <th class="text-center">Save</th>
-                    <th class="text-center">Delete</th>
+                    <th class="text-center small">#</th>
+                    <th class="text-center small">Name</th>
+                    <th class="text-center small">Type</th>
+                    <th class="text-center small" style="min-width: 100px;">URL</th>
+                    <th class="text-center small">File</th>
+                    <th class="text-center small">Date&nbsp;Added</th>
+                    <th class="text-center small" style="min-width: 100px;">Description</th>
+                    <th class="text-center small">Save</th>
+                    <th class="text-center small">Delete</th>
                 </tr>
             </thead>
             <tbody class="downloadtable">
@@ -188,10 +188,10 @@ $downloads = $alldownloads->getAllDownloads();
                                     <?php echo $download['id']; ?>
                                 </td>
                                 <td>
-                                    <input type="text" name="downloadname" value="<?php echo $download['name']; ?>" class="form-control input-sm" placeholder="Download Name" required>
+                                    <input type="text" name="downloadname" value="<?php echo $download['name']; ?>" class="form-control input-sm widetableinput" placeholder="Download Name" required>
                                 </td>
                                 <td>
-                                    <select name="downloadtype" class="form-control widetableselect">
+                                    <select name="downloadtype" class="form-control input-sm widetableselect">
                                         <option value="link" <?php if ($download['type'] == "link") {
                                                                     echo "selected";
                                                                 } ?>>Link</option>
@@ -201,25 +201,26 @@ $downloads = $alldownloads->getAllDownloads();
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="downloadurl" value="<?php echo $download['url']; ?>" class="form-control input-sm" placeholder="Download URL" required>
+                                    <input type="text" name="downloadurl" value="<?php echo $download['url']; ?>" class="form-control input-sm widetableinput" placeholder="Download URL" required>
                                 </td>
                                 <td>
                                     <?php
-                                    if ($file != "") {
+                                    if ($download['file'] !== "") {
                                     ?>
-                                        <br><a href="<?php echo $domain ?>/downloads/<?php echo $file ?>" target="_blank"><?php echo $domain ?>/downloads/<?php echo $file ?></a><br><br>
+                                        <br><a href="<?php echo $domain ?>/downloads/<?php echo $file ?>" target="_blank"><?php echo $domain ?>/downloads/<?php echo $download['file']; ?></a><br><br>
                                     <?php
                                     }
                                     ?>
-                                    <input type="file" name="downloadfile" size="14" maxlength="255" class="typein">
+                                    <input type="file" name="downloadfile" size="14" maxlength="255" class="form-control input-sm widetableinput">
                                 </td>
                                 <td><?php echo $dateadded ?></td>
                                 <td>
-                                    <textarea name="downloaddescription" class="form-control input-sm" rows="3" placeholder="Download Description" required><?php echo $download['description']; ?></textarea>
+                                    <textarea name="downloaddescription" class="form-control input-sm widetableinput012" rows="3" placeholder="Download Description" required><?php echo $download['description']; ?></textarea>
                                 </td>
                                 <td>
                                     <input type="hidden" name="_method" value="PATCH">
                                     <input type="hidden" name="downloadsfolder" value="<?php echo $downloadsfolder ?>" />
+                                    <input type="hidden" name="olddownloadfile" value="<?php echo $download['file']; ?>">
                                     <input type="hidden" name="id" value="<?php echo $download['id']; ?>">
                                     <button class="btn btn-sm btn-primary" type="submit" name="savedownload">SAVE</button>
                                 </td>
@@ -228,6 +229,7 @@ $downloads = $alldownloads->getAllDownloads();
                                 <form action="/admin/downloads/<?php echo $download['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="downloadsfolder" value="<?php echo $downloadsfolder ?>" />
+                                    <input type="hidden" name="deletedownloadfile" value="<?php echo $download['file']; ?>">
                                     <input type="hidden" name="id" value="<?php echo $download['id']; ?>">
                                     <button class="btn btn-sm btn-primary" type="submit" name="deletedownload">DELETE</button>
                                 </form>
