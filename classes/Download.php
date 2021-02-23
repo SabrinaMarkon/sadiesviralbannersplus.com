@@ -47,14 +47,14 @@ class Download
         $q->execute([$username]);
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $downloads = $q->fetchAll();
-        $downloadsarray = array();
+        $downloadidarray = array();
         foreach ($downloads as $download) {
-            array_push($downloadsarray, $download);
+            array_push($downloadidarray, $download['downloadid']);
         }
 
         Database::disconnect();
 
-        return $downloadsarray;
+        return $downloadidarray;
     }
 
     public function giveDownload(array $post): string

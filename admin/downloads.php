@@ -77,6 +77,8 @@ $downloads = $alldownloads->getAllDownloads();
                                 <?php
                                 foreach ($members as $member) {
                                     $username = $member['username'];
+                                    // TODO: Show "yes" for the downloads the user already has access to.
+                                    $downloadaccessarray = $alldownloads->getAllUserDownloads($username);
                                 ?>
                                     <option value="<?php echo $username ?>"><?php echo $username ?></option>
                                 <?php
