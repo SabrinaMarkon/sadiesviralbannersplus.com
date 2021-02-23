@@ -582,16 +582,16 @@ class FormValidation
                      $downloadfile = $_FILES['downloadfile'];
                      $downloadfile_name = $_FILES['downloadfile']['name'];
                      $downloadfile_name = filter_var($downloadfile_name, FILTER_SANITIZE_STRING);
-                     $numchars = strlen($downloadfile);
+                     $numchars = strlen($downloadfile_name);
  
                      if ($numchars === 0) {
  
-                         $errors .= "<div><strong>You need to include a" . $pretty_varname . ".</strong></div>";
+                         $errors .= "<div><strong>You need to include a " . $pretty_varname . ".</strong></div>";
                      }
                      
-                     if (file_exists("$downloadsfolder$downloadfile_name"))
+                     if (file_exists($downloadsfolder . $downloadfile_name))
                      {
-                     $error .= "<div>Filename already exists on the system.</div>";
+                     $errors .= "<div>Filename already exists on the system.</div>";
                      }
                      else
                      {

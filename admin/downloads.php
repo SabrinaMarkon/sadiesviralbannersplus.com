@@ -119,7 +119,7 @@ $downloads = $alldownloads->getAllDownloads();
 
     <h1 class="ja-bottompadding">Create New Download</h1>
 
-    <form action="/admin/downloads" method="post" accept-charset="utf-8" class="form" role="form">
+    <form action="/admin/downloads" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="form" role="form">
 
         <label for="downloadname">Download Name:</label>
         <input type="text" name="downloadname" class="form-control input-lg" placeholder="Download Name" required>
@@ -153,12 +153,12 @@ $downloads = $alldownloads->getAllDownloads();
             <thead>
                 <tr>
                     <th class="text-center small">#</th>
-                    <th class="text-center small">Name</th>
+                    <th class="text-center small" style="min-width: 150px;">Name</th>
                     <th class="text-center small">Type</th>
-                    <th class="text-center small" style="min-width: 100px;">URL</th>
+                    <th class="text-center small" style="min-width: 200px;">URL</th>
                     <th class="text-center small">File</th>
-                    <th class="text-center small">Date&nbsp;Added</th>
-                    <th class="text-center small" style="min-width: 100px;">Description</th>
+                    <th class="text-center small" style="min-width: 150px;">Date&nbsp;Added</th>
+                    <th class="text-center small" style="min-width: 500px;">Description</th>
                     <th class="text-center small">Save</th>
                     <th class="text-center small">Delete</th>
                 </tr>
@@ -183,7 +183,7 @@ $downloads = $alldownloads->getAllDownloads();
 
                 ?>
                         <tr>
-                            <form action="/admin/downloads/<?php echo $download['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
+                            <form action="/admin/downloads/<?php echo $download['id']; ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="form" role="form">
                                 <td>
                                     <?php echo $download['id']; ?>
                                 </td>
@@ -201,7 +201,7 @@ $downloads = $alldownloads->getAllDownloads();
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="downloadurl" value="<?php echo $download['url']; ?>" class="form-control input-sm widetableinput" placeholder="Download URL" required>
+                                    <input type="text" name="downloadurl" value="<?php echo $download['url']; ?>" class="form-control input-sm widetableinput" placeholder="Download URL">
                                 </td>
                                 <td>
                                     <?php
@@ -214,7 +214,7 @@ $downloads = $alldownloads->getAllDownloads();
                                     <input type="file" name="downloadfile" size="14" maxlength="255" class="form-control input-sm widetableinput">
                                 </td>
                                 <td><?php echo $dateadded ?></td>
-                                <td>
+                                <td style="min-width: 500px;">
                                     <textarea name="downloaddescription" class="form-control input-sm widetableinput012" rows="3" placeholder="Download Description" required><?php echo $download['description']; ?></textarea>
                                 </td>
                                 <td>

@@ -253,6 +253,9 @@ if (isset($_POST['login'])) {
 
     if (isset($_POST['adddownload'])) {
 
+        // print_r($_FILES);
+        // exit;
+
         $errors = $formvalidation->validateAll($_POST);
         if (!empty($errors)) {
 
@@ -283,7 +286,7 @@ if (isset($_POST['login'])) {
 
         # admin deleted a downloads.
         $delete = new Download();
-        $show = $delete->deleteDownload($id);
+        $show = $delete->deleteDownload($_POST);
     }
 
 

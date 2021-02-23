@@ -76,7 +76,7 @@ class Download
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Download(s) Added for Member " . $username . "</strong></div>";
     }
 
-    public function addDOwnload(array $post): string
+    public function addDownload(array $post): string
     {
 
         $downloadsfolder = $post["downloadsfolder"];
@@ -99,7 +99,7 @@ class Download
             $file_size = $_FILES['downloadfile']['size'];
             $file_type = $_FILES['downloadfile']['type'];
 
-            if (file_exists("$downloadsfolder$file_name")) {
+            if (file_exists($downloadsfolder . $file_name)) {
                 return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
             } else {
                 @unlink($downloadsfolder . $file_name);
@@ -110,6 +110,8 @@ class Download
 
             if (@move_uploaded_file($_FILES['downloadfile']['tmp_name'], $temp)) {
                 @chmod($temp, 0755);
+            } else {
+                return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>There was a problem uploading the file!</strong></div>";
             }
         }
 
@@ -152,7 +154,7 @@ class Download
             if (file_exists("$downloadsfolder$file_name")) {
                 return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
             } else {
-                @unlink($downloadsfolder . $file_name);
+                @unlink($downloadsfolder . $olddownloadfile);
             }
 
             $ext = pathinfo($file_name, PATHINFO_EXTENSION);
