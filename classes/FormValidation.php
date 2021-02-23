@@ -66,6 +66,7 @@ class FormValidation
         'downloaddescription' => 'download description',
         'downloadurl' => 'download url',
         'downloadfile' => 'file to upload',
+        'downloadsfolder' => 'path to downloads folder',
         'question' => 'faq question',
         'answer' => 'faq answer',
         'textadprice' => 'price to buy a text ad',
@@ -286,9 +287,10 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
                 }
-            } elseif ($varname === 'paypal' || $varname === 'adminpaypal' || $varname === 'admincoinpayments') {
+            } elseif ($varname === 'paypal' || $varname === 'adminpaypal' || $varname === 'admincoinpayments' || $varname === 'downloadsfolder') {
 
                 # user's or admin's paypal email or coinpayments key.
+                # the path to the downloads folder.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_EMAIL);
                 $numchars = strlen($varvalue);
@@ -303,7 +305,7 @@ class FormValidation
                     } elseif ($numchars > 300) {
 
                         $errors .= "<div><strong>The size of " . $pretty_varname . " must be 300 or less characters.</strong></div>";
-                    } elseif (!filter_var($varvalue, FILTER_VALIDATE_EMAIL) && $varname !== 'admincoinpayments') {
+                    } elseif (!filter_var($varvalue, FILTER_VALIDATE_EMAIL) && $varname !== 'admincoinpayments' && $varname !== 'downloadsfolder') {
 
                         $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
                     }

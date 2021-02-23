@@ -57,6 +57,9 @@ foreach ($settings as $key => $value) {
                 <label for="metadescription" class="ja-toppadding">SEO: Meta Description:</label>
                 <input type="text" name="metadescription" value="<?php echo $metadescription ?>" class="form-control input-lg" placeholder="SEO meta description for search engines" maxlength="160" required>
 
+                <label for="downloadsfolder" class="ja-toppadding">Path to Downloads Folder:</label>
+                <input type="text" name="downloadsfolder" value="<?php echo $downloadsfolder ?>" class="form-control input-lg" placeholder="Path to Downloads Folder" maxlength="300" required>
+
                 <div>
                     <label for="adminautoapprove" class="ja-toppadding">Auto-approve Ads:</label>
                     <select name="adminautoapprove" class="form-control smallselect">
