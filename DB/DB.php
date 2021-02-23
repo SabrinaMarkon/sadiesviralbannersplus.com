@@ -131,7 +131,7 @@ KEY `IDX_COUNTRIES_NAME` (`country_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `downloadaccess` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL primary key auto_increment,
   `downloadid` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) NOT NULL,
   `dategiven` datetime NOT NULL,
