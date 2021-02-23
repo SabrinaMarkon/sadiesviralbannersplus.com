@@ -135,12 +135,23 @@ class Download
         $type = $post["downloadtype"];
         $description = $post["downloaddescription"];
 
+        $pdo = DATABASE::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         if ($type === "link") {
 
             $url = $post["downloadurl"];
             $file_name = "";
             $file_size = "";
             $file_type = "";
+
+            if (!empty($post['olddownloadfile'])) {
+                @unlink($downloadsfolder . $post['olddownloadfile']);
+            }
+
+            $sql = "update downloads set name=?,type=?,description=?,url=?,file=?,filesize=?,filetype=? where id=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$name, $type, $description, $url, $file_name, $file_size, $file_type, $id]);    
         }
 
         if ($type === "file") {
@@ -151,36 +162,51 @@ class Download
             $file_type = $_FILES['downloadfile']['type'];
             $olddownloadfile = $post["olddownloadfile"];
 
-            if (file_exists($downloadsfolder . $file_name)) {
-                return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
+            if ((empty($file_name) && !empty($olddownloadfile)) || ($file_name === $olddownloadfile)) {
+
+                // There is no file upload but there is already an existing filename for this record.
+                // OR
+                // The file upload name is the same as the one already in the database. 
+                // Means nothing is changed with the file.
+                $sql = "update downloads set name=?,type=?,description=?,url=? where id=?";
+                $q = $pdo->prepare($sql);
+                $q->execute([$name, $type, $description, $url, $id]);      
+
             } else {
-                @unlink($downloadsfolder . $olddownloadfile);
-            }
 
-            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                // The filename has changed.
+                if (file_exists($downloadsfolder . $file_name) && !empty($filename)) {
 
-            // TODO: Decide which extensions are allowed:
-            // $disallowed = ['exe', 'bat', 'php', 'pl', 'cgi'];            
-            // $allowed = array('gif', 'png', 'jpg');
-            // $filename = $_FILES['video_file']['name'];
-            // $ext = pathinfo($filename, PATHINFO_EXTENSION);
-            // if (!in_array($ext, $allowed)) {
-            //     echo 'error';
-            // }
+                    // The admin tried to upload a file that is already present on the server.
+                    return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
+                } else {
 
-            $temp = $downloadsfolder . $file_name;
+                    // Remove the old file.
+                    @unlink($downloadsfolder . $olddownloadfile);
 
-            if (@move_uploaded_file($_FILES['downloadfile']['tmp_name'], $temp)) {
-                @chmod($temp, 0755);
+                    $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                    // TODO: Decide which extensions are allowed:
+                    // $disallowed = ['exe', 'bat', 'php', 'pl', 'cgi'];            
+                    // $allowed = array('gif', 'png', 'jpg');
+                    // $filename = $_FILES['video_file']['name'];
+                    // $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    // if (!in_array($ext, $allowed)) {
+                    //     echo 'error';
+                    // }
+                    
+                    // Then upload the new one.
+                    $temp = $downloadsfolder . $file_name;
+
+                    if (@move_uploaded_file($_FILES['downloadfile']['tmp_name'], $temp)) {
+                        @chmod($temp, 0755);
+                    }
+
+                    $sql = "update downloads set name=?,type=?,description=?,url=?,file=?,filesize=?,filetype=? where id=?";
+                    $q = $pdo->prepare($sql);
+                    $q->execute([$name, $type, $description, $url, $file_name, $file_size, $file_type, $id]);            
+                }
             }
         }
-
-
-        $pdo = DATABASE::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "update downloads set name=?,type=?,description=?,url=?,file=?,filesize=?,filetype=? where id=?";
-        $q = $pdo->prepare($sql);
-        $q->execute([$name, $type, $description, $url, $file_name, $file_size, $file_type, $id]);
 
         Database::disconnect();
 
