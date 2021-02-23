@@ -194,7 +194,9 @@ class Download
         $deletedownloadfile = $post["deletedownloadfile"];
         $id = $post["id"];
 
-        @unlink($downloadsfolder . $deletedownloadfile);
+        if (!empty($downloadsfolder) && !empty($deletedownloadfile)) {
+            @unlink($downloadsfolder . $deletedownloadfile);
+        }
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

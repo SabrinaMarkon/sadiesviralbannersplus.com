@@ -591,14 +591,6 @@ class FormValidation
                          $errors .= "<div><strong>You need to include a " . $pretty_varname . ".</strong></div>";
                      }
                      
-                     if (file_exists($downloadsfolder . $downloadfile_name))
-                     {
-                     $errors .= "<div>Filename already exists on the system.</div>";
-                     }
-                     else
-                     {
-                     @unlink($downloadsfolder . $downloadfile_name);
-                     }
                  } else {
  
                      $pretty_varname = self::PRETTY_VARNAMES['downloadfile'];
