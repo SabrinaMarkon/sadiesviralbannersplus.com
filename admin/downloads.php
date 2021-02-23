@@ -29,7 +29,7 @@ $downloads = $alldownloads->getAllDownloads();
         },
         selector: 'textarea', // change this value according to your HTML
         body_id: 'elm1=message',
-        height: 600,
+        // height: 600,
         theme: 'modern',
         plugins: [
             'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -134,7 +134,7 @@ $downloads = $alldownloads->getAllDownloads();
         <span name="downloadoptionsfields" id="downloadoptionsfields" style="visibility: hidden; display: none;"></span>
 
         <label for="downloaddescription">Download Description:</label>
-        <textarea name="downloaddescription" value="" class="form-control input-lg" rows="50" placeholder="Download Description"></textarea>
+        <textarea name="downloaddescription" value="" class="form-control input-lg" rows="50" placeholder="Download Description" style="height: 600px;"></textarea>
 
         <div class="ja-bottompadding"></div>
 
