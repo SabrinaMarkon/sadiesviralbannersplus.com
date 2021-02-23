@@ -18,14 +18,20 @@ class Download
 
     private $pdo, $sql, $q, $count, $downloadpostedvariablename;
 
-    public function getAllDownloads(): array
+    public function getAllDownloads(string $username = ""): array
     {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from downloads order by id";
-        $q = $pdo->prepare($sql);
-        $q->execute();
+        if (empty($username)) {
+            $sql = "select * from downloads order by id";
+            $q = $pdo->prepare($sql);
+            $q->execute();
+        } else {
+            $sql = "select * from downloads where username=? order by id";
+            $q = $pdo->prepare($sql);
+            $q->execute([$username]);
+        }        
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $downloads = $q->fetchAll();
         $downloadsarray = array();
