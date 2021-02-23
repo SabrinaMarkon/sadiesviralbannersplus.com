@@ -63,7 +63,7 @@ class Download
                 $q->execute([$downloadid, $username]);
                 $count = $q->fetchColumn();
 
-                if ($count === 0) {
+                if ($count == 0) {
                     $sql = "insert into downloadaccess (downloadid,username,dategiven) values (?,?,NOW())";
                     $q = $pdo->prepare($sql);
                     $q->execute([$downloadid, $username]);
@@ -151,7 +151,7 @@ class Download
             $file_type = $_FILES['downloadfile']['type'];
             $olddownloadfile = $post["olddownloadfile"];
 
-            if (file_exists("$downloadsfolder$file_name")) {
+            if (file_exists($downloadsfolder . $file_name)) {
                 return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
             } else {
                 @unlink($downloadsfolder . $olddownloadfile);

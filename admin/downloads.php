@@ -207,7 +207,7 @@ $downloads = $alldownloads->getAllDownloads();
                                     <?php
                                     if ($download['file'] !== "") {
                                     ?>
-                                        <br><a href="<?php echo $domain ?>/downloads/<?php echo $file ?>" target="_blank"><?php echo $domain ?>/downloads/<?php echo $download['file']; ?></a><br><br>
+                                        <br><a href="<?php echo $domain ?>/downloads/<?php echo $download['file']; ?>" target="_blank"><?php echo $domain ?>/downloads/<?php echo $download['file']; ?></a><br><br>
                                     <?php
                                     }
                                     ?>
