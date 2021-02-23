@@ -148,40 +148,39 @@ $downloads = $alldownloads->getAllDownloads();
 
     <h1 class="ja-bottompadding ja-toppadding mb-4">All Downloads</h1>
 
-    <div class="table-responsive">
-        <table id="admintable" class="table table-hover table-condensed table-bordered text-center">
-            <thead>
-                <tr>
-                    <th class="text-center small">#</th>
-                    <th class="text-center small" style="min-width: 150px;">Name</th>
-                    <th class="text-center small">Type</th>
-                    <th class="text-center small" style="min-width: 200px;">URL</th>
-                    <th class="text-center small">File</th>
-                    <th class="text-center small" style="min-width: 150px;">Date&nbsp;Added</th>
-                    <th class="text-center small" style="min-width: 500px;">Description</th>
-                    <th class="text-center small">Save</th>
-                    <th class="text-center small">Delete</th>
-                </tr>
-            </thead>
-            <tbody class="downloadtable">
+    <?php
+    if (!$downloads) {
+    } else {
 
-                <?php
-                if (!$downloads) {
-                } else {
+        foreach ($downloads as $download) {
 
-                    foreach ($downloads as $download) {
+            $dateadded = $download['dateadded'];
 
-                        $dateadded = $download['dateadded'];
+            if (trim($dateadded) == '' || substr($dateadded, 0, 10) == '0000-00-00') {
 
-                        if (trim($dateadded) == '' || substr($dateadded, 0, 10) == '0000-00-00') {
+                $dateadded = '';
+            } else {
 
-                            $dateadded = '';
-                        } else {
+                $dateadded = date('Y-m-d');
+            }
 
-                            $dateadded = date('Y-m-d');
-                        }
-
-                ?>
+    ?>
+            <div class="table-responsive">
+                <table id="admintable" class="table table-hover table-condensed table-bordered text-center" style="margin-bottom: 2px;">
+                    <thead>
+                        <tr>
+                            <th class="text-center small">#</th>
+                            <th class="text-center small" style="min-width: 150px;">Name</th>
+                            <th class="text-center small">Type</th>
+                            <th class="text-center small" style="min-width: 200px;">URL</th>
+                            <th class="text-center small">File</th>
+                            <th class="text-center small" style="min-width: 150px;">Date&nbsp;Added</th>
+                            <th class="text-center small" style="min-width: 500px;">Description</th>
+                            <th class="text-center small">Save</th>
+                            <th class="text-center small">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="downloadtable">
                         <tr>
                             <form action="/admin/downloads/<?php echo $download['id']; ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="form" role="form">
                                 <td>
@@ -235,15 +234,12 @@ $downloads = $alldownloads->getAllDownloads();
                                 </form>
                             </td>
                         </tr>
-                <?php
-                    }
-                }
-                ?>
-
-            </tbody>
-        </table>
-    </div>
-
-    <div class="ja-bottompadding"></div>
-
+                    </tbody>
+                </table>
+            </div>
+            <div class="ja-bottompadding"></div>
+    <?php
+        }
+    }
+    ?>
 </div>
