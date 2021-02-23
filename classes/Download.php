@@ -16,7 +16,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 class Download
 {
 
-    private $pdo, $sql, $q, $downloadpostedvariablename;
+    private $pdo, $sql, $q, $count, $downloadpostedvariablename;
 
     public function getAllDownloads(): array
     {
@@ -58,10 +58,17 @@ class Download
 
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "insert into downloadaccess (downloadid,username,dategiven) values (?,?,NOW())";
+                $sql = "select count(*) from downloadaccess where downloadid=? and username=?";
                 $q = $pdo->prepare($sql);
                 $q->execute([$downloadid, $username]);
-        
+                $count = $q->fetchColumn();
+
+                if ($count === 0) {
+                    $sql = "insert into downloadaccess (downloadid,username,dategiven) values (?,?,NOW())";
+                    $q = $pdo->prepare($sql);
+                    $q->execute([$downloadid, $username]);
+                }
+
                 Database::disconnect();
             }
         }
@@ -72,13 +79,39 @@ class Download
     public function addDOwnload(array $post): string
     {
 
+        $downloadsfolder = $post["downloadsfolder"];
         $name = $post["downloadname"];
         $type = $post["downloadtype"];
         $description = $post["downloaddescription"];
-        $url = $post["downloadurl"];
-        $file_name = $_FILES['downloadfile']['name'];
-        $file_size = $_FILES['downloadfile']['size'];
-        $file_type = $_FILES['downloadfile']['type'];
+
+        if ($type === "link") {
+
+            $url = $post["downloadurl"];
+            $file_name = "";
+            $file_size = "";
+            $file_type = "";
+        }
+
+        if ($type === "file") {
+
+            $url = "";
+            $file_name = $_FILES['downloadfile']['name'];
+            $file_size = $_FILES['downloadfile']['size'];
+            $file_type = $_FILES['downloadfile']['type'];
+
+            if (file_exists("$downloadsfolder$file_name")) {
+                return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
+            } else {
+                @unlink($downloadsfolder . $file_name);
+            }
+
+            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            $temp = $downloadsfolder . $file_name;
+
+            if (@move_uploaded_file($_FILES['downloadfile']['tmp_name'], $temp)) {
+                @chmod($temp, 0755);
+            }
+        }
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -94,14 +127,52 @@ class Download
     public function saveDownload(array $post): string
     {
 
+        $downloadsfolder = $post["downloadsfolder"];
         $id = $post["id"];
         $name = $post["downloadname"];
         $type = $post["downloadtype"];
         $description = $post["downloaddescription"];
-        $url = $post["downloadurl"];
-        $file_name = $_FILES['downloadfile']['name'];
-        $file_size = $_FILES['downloadfile']['size'];
-        $file_type = $_FILES['downloadfile']['type'];
+
+        if ($type === "link") {
+
+            $url = $post["downloadurl"];
+            $file_name = "";
+            $file_size = "";
+            $file_type = "";
+        }
+
+        if ($type === "file") {
+
+            $url = "";
+            $file_name = $_FILES['downloadfile']['name'];
+            $file_size = $_FILES['downloadfile']['size'];
+            $file_type = $_FILES['downloadfile']['type'];
+            $olddownloadfile = $post["olddownloadfile"];
+
+            if (file_exists("$downloadsfolder$file_name")) {
+                return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
+            } else {
+                @unlink($downloadsfolder . $file_name);
+            }
+
+            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+            // TODO: Decide which extensions are allowed:
+            // $disallowed = ['exe', 'bat', 'php', 'pl', 'cgi'];            
+            // $allowed = array('gif', 'png', 'jpg');
+            // $filename = $_FILES['video_file']['name'];
+            // $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            // if (!in_array($ext, $allowed)) {
+            //     echo 'error';
+            // }
+
+            $temp = $downloadsfolder . $file_name;
+
+            if (@move_uploaded_file($_FILES['downloadfile']['tmp_name'], $temp)) {
+                @chmod($temp, 0755);
+            }
+        }
+
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -114,12 +185,22 @@ class Download
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Download was Saved!</strong></div>";
     }
 
-    public function deleteDownload(int $id): string
+    public function deleteDownload(array $post): string
     {
+
+        $downloadsfolder = $post["downloadsfolder"];
+        $deletedownloadfile = $post["deletedownloadfile"];
+        $id = $post["id"];
+
+        @unlink($downloadsfolder . $deletedownloadfile);
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "delete from downloads where id=?";
+        $q = $pdo->prepare($sql);
+        $q->execute([$id]);
+
+        $sql = "delete from downloadaccess where downloadid=?";
         $q = $pdo->prepare($sql);
         $q->execute([$id]);
 
