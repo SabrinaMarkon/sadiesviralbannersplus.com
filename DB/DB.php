@@ -14,7 +14,7 @@ CREATE TABLE `adminsettings` (
 `domain` varchar(300) not null,
 `metatitle` varchar(60) not null,
 `metadescription` varchar(160) not null,
-`downloadsfolder` varchar(300) not null default '../downloads/',
+`downloadsfolder` varchar(300) not null default '/downloads/',
 `adminautoapprove` tinyint(1) not null default '0',
 `textadprice` decimal(9, 2) not null default '2.00',
 `textadhits` integer unsigned not null default '2000',
@@ -278,6 +278,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Text Ads Pa
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Paid Banner Ads Page', '', 'bannerspaid', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Network Solos Page', '', 'networksolos', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Maker Page', '', 'imagemaker', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Downloads Page', '', 'downloads', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Registration Page', '', 'register', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Thank You Page - New Member Signup', '<h4 align="center">Thank you so much for your membership purchase!</h4><br>', 'thankyou', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Logout Page', '', 'logout', 'yes');

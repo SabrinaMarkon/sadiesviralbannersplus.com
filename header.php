@@ -107,6 +107,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                             <li class="nav-item"><a class="page-scroll" href="/textads">Text&nbsp;Ads</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/networksolos">Network&nbsp;Solos</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/promotional">Earn&nbsp;Money</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/downloads">Free&nbsp;Downloads</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/contact">Contact</a></li>
                                         </ul>
                                     </div>
@@ -123,7 +124,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                         <ul class="navbar-nav m-auto">
                                             <li class="nav-item"><a class="page-scroll" href="/#home">Home</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/#memberships">Memberships</a></li>
-                                            <li class="nav-item"><a class="page-scroll" href="/ads">Banners</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/banners">Banners</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/#contact">Contact</a></li>
                                         </ul>
                                     </div>

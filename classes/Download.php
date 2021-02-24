@@ -57,6 +57,18 @@ class Download
         return $downloadidarray;
     }
 
+    public function getOneDownload(int $downloadid): array {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "select * from downloads where id=?";
+        $q = $pdo->prepare($sql);
+        $q->execute([$downloadid]);
+        $download = $q->fetch();
+
+        return $download;
+    }
+
     public function giveDownload(array $post): string
     {
         $username = $post["username"];
@@ -118,14 +130,14 @@ class Download
             $file_size = $_FILES['downloadfile']['size'];
             $file_type = $_FILES['downloadfile']['type'];
 
-            if (file_exists($downloadsfolder . $file_name)) {
+            if (file_exists(".." . $downloadsfolder . $file_name)) {
                 return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
             } else {
-                @unlink($downloadsfolder . $file_name);
+                @unlink(".." . $downloadsfolder . $file_name);
             }
 
             $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-            $temp = $downloadsfolder . $file_name;
+            $temp = ".." . $downloadsfolder . $file_name;
 
             if (@move_uploaded_file($_FILES['downloadfile']['tmp_name'], $temp)) {
                 @chmod($temp, 0755);
@@ -165,7 +177,7 @@ class Download
             $file_type = "";
 
             if (!empty($post['olddownloadfile'])) {
-                @unlink($downloadsfolder . $post['olddownloadfile']);
+                @unlink(".." . $downloadsfolder . $post['olddownloadfile']);
             }
 
             $sql = "update downloads set name=?,type=?,description=?,url=?,file=?,filesize=?,filetype=? where id=?";
@@ -194,14 +206,14 @@ class Download
             } else {
 
                 // The filename has changed.
-                if (file_exists($downloadsfolder . $file_name) && !empty($filename)) {
+                if (file_exists(".." . $downloadsfolder . $file_name) && !empty($filename)) {
 
                     // The admin tried to upload a file that is already present on the server.
                     return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The file already exists!</strong></div>";
                 } else {
 
                     // Remove the old file.
-                    @unlink($downloadsfolder . $olddownloadfile);
+                    @unlink(".." . $downloadsfolder . $olddownloadfile);
 
                     $ext = pathinfo($file_name, PATHINFO_EXTENSION);
                     // TODO: Decide which extensions are allowed:
@@ -214,7 +226,7 @@ class Download
                     // }
                     
                     // Then upload the new one.
-                    $temp = $downloadsfolder . $file_name;
+                    $temp = ".." . $downloadsfolder . $file_name;
 
                     if (@move_uploaded_file($_FILES['downloadfile']['tmp_name'], $temp)) {
                         @chmod($temp, 0755);
@@ -240,7 +252,7 @@ class Download
         $id = $post["id"];
 
         if (!empty($downloadsfolder) && !empty($deletedownloadfile)) {
-            @unlink($downloadsfolder . $deletedownloadfile);
+            @unlink(".." . $downloadsfolder . $deletedownloadfile);
         }
 
         $pdo = DATABASE::connect();

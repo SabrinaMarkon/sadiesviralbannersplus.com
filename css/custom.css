@@ -394,23 +394,30 @@ h4.ja-white {
   cursor: move;
 }
 
-.faqpanel {
+.faqpanel, .downloadpanel {
   border-radius: 10px;
   border-collapse: collapse;
   margin: 1.2em;
 }
-.faqpanel .faq-heading {
+.faqpanel .faq-heading, .downloadpanel .download-heading {
   background: #0067f4;
   border-radius: 10px 10px 0 0;
   padding: 1em;
   box-shadow: 1px 1px 1px #121212;
 }
-.faqpanel .faq-heading a {
+.faqpanel .faq-heading a, .downloadpanel .download-heading a {
   color: #fff;
   font-size: 1.2rem;
-  padding-bottom: 7px;
 }
-.faqpanel .faq-body {
+.downloadpanel .download-heading {
+  text-decoration: underline;
+  text-align: center;
+}
+.faqpanel .faq-heading a:hover, .downloadpanel .download-heading a:hover {
+  color: #ffd633;
+}
+
+.faqpanel .faq-body, .downloadpanel .download-body {
   background:  #fff;
   color: #121212;
   padding: 1em;
