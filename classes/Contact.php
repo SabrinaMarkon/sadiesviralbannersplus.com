@@ -13,7 +13,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-class Contact
+class Contact extends Email
 {
 	private $username;
 	private $email;
@@ -33,8 +33,8 @@ class Contact
 		$message .= "\n\nSent by Username: " . $username . "\n\n";
 		}
 	
-	$sendsiteemail = new Email();
-	$sendsiteemail->sendEmail($settings['adminemail'],$email,$subject,$message,$settings['sitename'],$settings['adminemail'],'');
+	// $sendsiteemail = new Email();
+	$this->sendEmail($settings['adminemail'],$email,$subject,$message,$settings['sitename'],$settings['adminemail'],'');
 
 	return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Message was Sent!</strong></div>";
 	
