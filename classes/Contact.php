@@ -33,7 +33,6 @@ class Contact extends Email
 		$message .= "\n\nSent by Username: " . $username . "\n\n";
 		}
 	
-	// $sendsiteemail = new Email();
 	$this->sendEmail($settings['adminemail'],$email,$subject,$message,$settings['sitename'],$settings['adminemail'],'');
 
 	return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Message was Sent!</strong></div>";

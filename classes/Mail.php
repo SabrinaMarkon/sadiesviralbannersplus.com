@@ -22,7 +22,7 @@ class Mail
     private $headers;
     private $pdo;
 
-    public function getAllSavedMails() {
+    public function getAllSavedMails(): array {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -41,7 +41,7 @@ class Mail
         return $savedmailarray;
     }
 
-    public function editMail(int $id) {
+    public function editMail(int $id): array {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -58,11 +58,12 @@ class Mail
 
     }
 
-    public function saveMail(int $id) {
+    public function saveMail(array $post): string {
 
-        $subject = $_POST['subject'];
-        $message = $_POST['message'];
-        $url = $_POST['url'];
+        $id = $post['id'];
+        $subject = $post['subject'];
+        $message = $post['message'];
+        $url = $post['url'];
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $sql = "update mail set subject=?, message=?, url=?, save=1 where id=?";
@@ -74,11 +75,11 @@ class Mail
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Mail was Saved!</strong></div>";
     }
 
-    public function addMail() {
+    public function addMail(array $post): string {
 
-        $subject = $_POST['subject'];
-        $message = $_POST['message'];
-        $url = $_POST['url'];
+        $subject = $post['subject'];
+        $message = $post['message'];
+        $url = $post['url'];
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $sql = "insert into mail set subject=?, message=?, url=?, save=1";
@@ -90,11 +91,12 @@ class Mail
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Mail was Added!</strong></div>";
     }
 
-    public function sendMail(int $id) {
+    public function sendMail(array $post): string {
 
-        $subject = $_POST['subject'];
-        $message = $_POST['message'];
-        $url = $_POST['url'];
+        $id = $post['id'];
+        $subject = $post['subject'];
+        $message = $post['message'];
+        $url = $post['url'];
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         if ($id !== '') {
@@ -112,7 +114,7 @@ class Mail
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your Mail was Sent!</strong></div>";
     }
 
-    public function sendVerifications(array $settings) {
+    public function sendVerifications(array $settings): string {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -143,7 +145,7 @@ class Mail
                 $message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
                 $message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
                 $sendsiteemail = new Email();
-                $send = $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
+                $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
             }
         }
 
@@ -152,7 +154,7 @@ class Mail
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Verification Emails were Resent!</strong></div>";
     }
 
-    public function deleteMail(int $id) {
+    public function deleteMail(int $id): string {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

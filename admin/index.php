@@ -120,7 +120,7 @@ if (isset($_POST['login'])) {
 
             # admin added a new email.
             $update = new Mail();
-            $show = $update->addMail();
+            $show = $update->addMail($_POST);
         }
     }
 
@@ -134,7 +134,7 @@ if (isset($_POST['login'])) {
 
             # admin saved an existing email they were editing. 
             $update = new Mail();
-            $show = $update->saveMail($id);
+            $show = $update->saveMail($_POST);
         }
     }
 
@@ -162,7 +162,7 @@ if (isset($_POST['login'])) {
 
             # admin clicked to send an email.
             $send = new Mail();
-            $show = $send->sendMail($id);
+            $show = $send->sendMail($_POST);
         }
     }
 
