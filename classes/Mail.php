@@ -13,7 +13,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-class Mail
+class Mail extends Email
 {
     private $email;
     private $url;
@@ -144,8 +144,7 @@ class Mail
                 $message = "Click to Verify your Email: " . $settings['domain'] . "/verify/" . $verificationcode . "\n\n";
                 $message .= "Login URL: " . $settings['domain'] . "/login\nUsername: " . $username . "\nPassword: " . $password . "\n\n";
                 $message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
-                $sendsiteemail = new Email();
-                $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
+                $this->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
             }
         }
 
