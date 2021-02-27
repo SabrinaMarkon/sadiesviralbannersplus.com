@@ -19,6 +19,8 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
         }
         header('Location: ' . $click);
         exit;
+    } else {
+        echo "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The URL for this ad was invalid.</strong></div>";
     }
 }
 echo "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The URL for this ad was invalid.</strong></div>";

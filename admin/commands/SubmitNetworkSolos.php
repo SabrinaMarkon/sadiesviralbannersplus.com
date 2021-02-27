@@ -51,7 +51,7 @@ class SubmitNetworkSolos
                 $message = $sendmail['message'];
                 $url = $sendmail['url'];
                 $shorturl = $sendmail['shorturl'];
-                $networkclickurl = $settings['domain'] . '/networksoloclick/' . $id;
+                $networkclickurl = $settings['domain'] . '/click/networksolos/' . $id;
 
                 $sent = date('Y-m-d');
 

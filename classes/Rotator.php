@@ -16,9 +16,12 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 class Rotator
 {
 
-    private $pdo;
-    private $sql;
-    private $data;
+    private 
+    $pdo,
+    $sql,
+    $q,
+    $data,
+    $url;
 
     public function __construct(string $adtable, array $settings)
     {
