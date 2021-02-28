@@ -72,7 +72,6 @@ class User
 			if ($accounttype === "Free") {
 				return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username you chose isn't available.</strong></div>";
 			}
-
 		} else {
 			$verificationcode = time() . mt_rand(10, 100);
 
@@ -110,7 +109,6 @@ class User
 			$country = null;
 			$referid = null;
 			$signupip = null;
-
 		}
 	}
 
@@ -151,6 +149,7 @@ class User
 			return $memberdetails;
 		}
 		Database::disconnect();
+		return null;
 	}
 
 	public function verifyUser(string $verificationcode): string

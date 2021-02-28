@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
 	$sendsiteemail = new Email();
 	$logincheck = new User($sendsiteemail);
 	$newlogin = $logincheck->userLogin($_SESSION['username'], $_SESSION['password']);
-	if ($newlogin === false) {
+	if ($newlogin === null) {
 		$logout = new User($sendsiteemail);
 		$logout->userLogout();
 	} else {

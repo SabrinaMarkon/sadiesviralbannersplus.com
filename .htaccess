@@ -24,6 +24,7 @@ RewriteRule ^r/([A-Za-z0-9-]+)[/]*$ /index.php?referid=$1 [L,NC]
 # For ad clicks.
 RewriteRule ^([A-Za-z0-9-]+)/(textads|bannerspaid|networksolos)/([0-9]+)[/]*$ /index.php?page=$1&adtable=$2&id=$3 [L,NC]
 
+# The referid comes after the page name in the url.
 RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)[/]*$ /index.php?page=$1&referid=$2 [L,NC]
 
 # If there is no sponsor name section, just load the page ie. /register goes to register.php with no sponsor userid:
