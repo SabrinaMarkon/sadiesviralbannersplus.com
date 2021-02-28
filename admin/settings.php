@@ -75,6 +75,9 @@ foreach ($settings as $key => $value) {
                 <br /><br />
                 <h1>Basic Settings for Free Members</h1>
 
+                <label for="freebannerclickstosignup" class="ja-toppadding">Clicks on member banners needed before a new Free member's sign up is complete (0 to disable):</label>
+                <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
+
                 <label for="freerefersproearn" class="ja-toppadding">Commission when Free members sponsor a Pro member:</label>
                 <input type="text" name="freerefersproearn" value="<?php echo $freerefersproearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Pro member" maxlength="8" required>
                 
@@ -111,6 +114,9 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
+                <label for="probannerclickstosignup" class="ja-toppadding">Clicks on member banners needed before a new Pro member's sign up is complete (0 to disable):</label>
+                <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
+
                 <label for="prorefersproearn" class="ja-toppadding">Commission when Pro members sponsor a Pro member:</label>
                 <input type="text" name="prorefersproearn" value="<?php echo $prorefersproearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Pro member" maxlength="8" required>
                 
@@ -146,6 +152,9 @@ foreach ($settings as $key => $value) {
                                                     } ?>>Annually</option>
                     </select>
                 </div>
+
+                <label for="goldbannerclickstosignup" class="ja-toppadding">Clicks on member banners needed before a new Gold member's sign up is complete (0 to disable):</label>
+                <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
 
                 <label for="goldrefersproearn" class="ja-toppadding">Commission when Gold members sponsor a Pro member:</label>
                 <input type="text" name="goldrefersproearn" value="<?php echo $goldrefersproearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Pro member" maxlength="8" required>

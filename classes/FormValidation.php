@@ -69,6 +69,7 @@ class FormValidation
         'downloadsfolder' => 'path to downloads folder',
         'question' => 'faq question',
         'answer' => 'faq answer',
+        'position' => 'faq order position',
         'textadprice' => 'price to buy a text ad',
         'textadhits' => 'number of impressions per text ad',
         'bannerprice' => 'price to buy a banner ad',
@@ -78,16 +79,19 @@ class FormValidation
         'propayinterval' => 'how often members pay for a pro membership',
         'goldprice' => 'price of a gold membership',
         'goldpayinterval' => 'how often members pay for a gold membership',
+        'freebannerclickstosignup' => 'banner clicks for free members to sign up',
         'freerefersproearn' => 'how much a free member is paid for referring a pro member',
         'freerefersgoldearn' => 'how much a free member is paid for referring a gold member',
         'freeadclickstogettextad' => 'text ads to click for a free member to get a free text ad',
         'freeadclickstogetbannerspaid' => 'banners to click for a free member to get a free banner',
         'freeadclickstogetnetworksolo' => 'network solo links to click for a free member to get a network solo',
+        'probannerclickstosignup' => 'banner clicks for pro members to sign up',
         'prorefersproearn' => 'how much a pro member is paid for referring a pro member',
         'prorefersgoldearn' => 'how much a pro member is paid for referring a gold member',
         'proadclickstogettextad' => 'text ads to click for a pro member to get a free text ad',
         'proadclickstogetbannerspaid' => 'banners to click for a pro member to get a free banner',
         'proadclickstogetnetworksolo' => 'network solo links to click for a pro member to get a network solo',
+        'goldbannerclickstosignup' => 'banner clicks for gold members to sign up',
         'goldrefersproearn' => 'how much a gold member is paid for referring a pro member',
         'goldrefersgoldearn' => 'how much a gold member is paid for referring a gold member',
         'goldadclickstogettextad' => 'text ads to click for a gold member to get a free text ad',
@@ -372,7 +376,7 @@ class FormValidation
 
                     $errors .= "<div><strong>The value " . $pretty_varname . " must be Yes or No. </strong></div>";
                 }
-            } elseif (stripos($varname, "adclickstoget") !== false || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false || $varname === 'positionnumber') {
+            } elseif (stripos($varname, "adclickstoget") !== false || stripos($varname, "monthlybonus") !== false || stripos($varname, "signupbonus") !== false || stripos($varname, "bannerclickstosignup") !== false  || $varname === 'positionnumber') {
 
                 # make sure that the number of ads clicked to get a free ad is an integer greater than or equal to 0 (0 means disabled).
                 if ($varvalue < 0) {

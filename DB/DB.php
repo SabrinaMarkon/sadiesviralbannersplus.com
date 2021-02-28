@@ -22,7 +22,7 @@ CREATE TABLE `adminsettings` (
 `bannerhits` integer unsigned not null default '2000',
 `networksoloprice` decimal(9, 2) not null default '5.00',
 
-`freevisitsbeforesignup` integer unsigned not null default 8, ####################
+`freebannerclickstosignup` integer unsigned not null default 8,
 `freetopbanners` integer unsigned not null default 3,####################
 `freebottombanners` integer unsigned not null default 0,####################
 `freerefersproearn` decimal(9,2) not null default 4.00,
@@ -42,7 +42,7 @@ CREATE TABLE `adminsettings` (
 
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
-`provisitsbeforesignup` integer unsigned not null default 8,####################
+`probannerclickstosignup` integer unsigned not null default 5,
 `protopbanners` integer unsigned not null default 3,####################
 `probottombanners` integer unsigned not null default 0,####################
 `prorefersproearn` decimal(9,2) not null default 6.00,
@@ -60,7 +60,7 @@ CREATE TABLE `adminsettings` (
 
 `goldprice` decimal(9, 2) not null default '9.99',
 `goldpayinterval` varchar(12) not null default 'monthly',
-`goldvisitsbeforesignup` integer unsigned not null default 8,####################
+`goldbannerclickstosignup` integer unsigned not null default 3,
 `goldtopbanners` integer unsigned not null default 3,####################
 `goldbottombanners` integer unsigned not null default 0,####################
 `goldrefersproearn` decimal(9,2) not null default 8.00,
