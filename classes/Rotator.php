@@ -89,7 +89,7 @@ class Rotator
             if ($$adclickstogettextad > 0 && $this->adtable === 'textads') {
                 $sql = "update members set textadclicks=textadclicks+1 where username=?";
             }
-            if ($$adclickstogetbannerspaid > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'banners')) {
+            if ($$adclickstogetbannerspaid > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'bannersformembers')) {
                 $sql = "update members set banneradclicks=banneradclicks+1 where username=?";
             }
             if ($$adclickstogetnetworksolo > 0 && $this->adtable === 'networksolos') {

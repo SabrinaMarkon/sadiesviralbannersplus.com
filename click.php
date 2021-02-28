@@ -8,7 +8,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 $adtable = $_GET['adtable'] ?? '';
 $id = $_GET['id'] ?? '';
 
-if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adtable === 'networksolos')) {
+if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adtable === 'bannersformembers' || $adtable === 'networksolos')) {
 
     $rotator = new Rotator($adtable, $settings);
     $click = $rotator->giveClick($id);
