@@ -34,9 +34,9 @@ CREATE TABLE `adminsettings` (
 `freemonthlybonusbannerspaid` integer unsigned not null default '0',
 `freemonthlybonusnetworksolos` integer unsigned not null default '0',
 
-##########members area 
+##########members area
 
-`freeadclickstogettextad` integer unsigned not null default '100', 
+`freeadclickstogettextad` integer unsigned not null default '100',
 `freeadclickstogetbannerspaid` integer unsigned not null default '100',
 `freeadclickstogetnetworksolo` integer unsigned not null default '100',
 
@@ -106,6 +106,30 @@ UNIQUE KEY `banners_filename_unique` (`filename`),
 KEY `banners_username_foreign` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+create table `bannersformembers` (
+`id` integer unsigned not null primary key auto_increment,
+`username` varchar(255) not null default 'admin',
+`name` varchar(255) not null,
+`alt` varchar(255) not null,
+`url` varchar(300) not null,
+`shorturl` varchar(255) not null,
+`imageurl` varchar(300) not null,
+`added` tinyint(1) not null default '0',
+`approved` tinyint(1) not null default '0',
+`hits` integer unsigned not null default '0',
+`clicks` integer unsigned not null default '0',
+`adddate` datetime not null,
+`bannerpageslot` integer unsigned not null default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+create table `bannersformembersclicks` (
+`id` integer unsigned not null primary key auto_increment,
+`bannerid` integer unsigned not null default '0',
+`username` varchar(255) not null default 'admin',
+`action` varchar(12) not null default 'signup',
+`clickdate` datetime default null
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 create table `bannerspaid` (
 `id` integer unsigned not null primary key auto_increment,
 `username` varchar(255) not null default 'admin',
@@ -131,30 +155,30 @@ KEY `IDX_COUNTRIES_NAME` (`country_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `downloadaccess` (
-  `id` int(10) UNSIGNED NOT NULL primary key auto_increment,
-  `downloadid` int(10) UNSIGNED NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `dategiven` datetime NOT NULL,
-  KEY downloadaccess_downloadid_foreign (id)
+`id` int(10) UNSIGNED NOT NULL primary key auto_increment,
+`downloadid` int(10) UNSIGNED NOT NULL,
+`username` varchar(255) NOT NULL,
+`dategiven` datetime NOT NULL,
+KEY downloadaccess_downloadid_foreign (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `downloads` (
-  `id` int(10) UNSIGNED NOT NULL primary key auto_increment,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `type` varchar(255) NOT NULL DEFAULT 'link',
-  `description` longtext NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `file` varchar(255) NOT NULL DEFAULT '',
-  `filesize` int(11) NOT NULL DEFAULT '0',
-  `filetype` varchar(255) NOT NULL DEFAULT '',
-  `dateadded` datetime DEFAULT NULL
+`id` int(10) UNSIGNED NOT NULL primary key auto_increment,
+`name` varchar(255) NOT NULL DEFAULT '',
+`type` varchar(255) NOT NULL DEFAULT 'link',
+`description` longtext NOT NULL,
+`url` varchar(255) NOT NULL,
+`file` varchar(255) NOT NULL DEFAULT '',
+`filesize` int(11) NOT NULL DEFAULT '0',
+`filetype` varchar(255) NOT NULL DEFAULT '',
+`dateadded` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `faqs` (
-  `id` int(10) UNSIGNED NOT NULL primary key auto_increment,
-  `question` text COLLATE utf8_unicode_ci NOT NULL,
-  `answer` text COLLATE utf8_unicode_ci NOT NULL,
-  `positionnumber` int(11) NOT NULL DEFAULT '0'
+`id` int(10) UNSIGNED NOT NULL primary key auto_increment,
+`question` text COLLATE utf8_unicode_ci NOT NULL,
+`answer` text COLLATE utf8_unicode_ci NOT NULL,
+`positionnumber` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE mail (

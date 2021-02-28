@@ -14,8 +14,11 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
     $click = $rotator->giveClick($id);
     if ($click) {
         # If it was a member who clicked, add a click to their counters towards a free ad and check if they get a free ad.
+        
+        # TODO: Need timer for 10 seconds after click!
+
         if (isset($_SESSION['username'])) {
-            $rotator->countMemberClick($_SESSION['username']);
+            $rotator->countMemberClick($_SESSION['username'], $id);
         }
         header('Location: ' . $click);
         exit;

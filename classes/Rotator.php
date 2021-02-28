@@ -51,7 +51,7 @@ class Rotator
         } else {
 
             Database::disconnect();
-            
+
             return null;
         }
     }
@@ -68,7 +68,7 @@ class Rotator
         Database::disconnect();
     }
 
-    public function countMemberClick(string $username): void
+    public function countMemberClick(string $username, int $id): void
     {
         
         $pdo = Database::connect();
@@ -82,6 +82,15 @@ class Rotator
         if (!empty($data['accounttype'])) {
 
             $accounttype = $data['accounttype'];
+
+            // The affiliate banners should keep track of member clicks to signup.
+            if ($this->adtable === 'bannersformembers') {
+
+                $sql = "insert into bannersformembersclicks (bannerid, username, clickdate) values (?,?,NOW())";
+                $q = $pdo->prepare($sql);
+                $q->execute([$id, $username]);
+            }
+
             $accounttypelc = strtolower($accounttype);
             $adclickstogettextad = $accounttypelc . "adclickstogettextad";
             $adclickstogetbannerspaid = $accounttypelc . "adclickstogetbannerspaid";
