@@ -23,8 +23,11 @@ CREATE TABLE `adminsettings` (
 `networksoloprice` decimal(9, 2) not null default '5.00',
 
 `freebannerclickstosignup` integer unsigned not null default 8,
-`freetopbanners` integer unsigned not null default 3,####################
-`freebottombanners` integer unsigned not null default 0,####################
+`freebannerslots` varchar(32) not null default '1,2,3',
+`freerefersfreebannerslots` varchar(32) not null default '4,5,6,7,8,11',
+`freerefersprobannerslots` varchar(32) not null default '7,8,11',
+`freerefersgoldbannerslots` varchar(32) not null default '11',
+
 `freerefersproearn` decimal(9,2) not null default 4.00,
 `freerefersgoldearn` decimal(9,2) not null default 6.00,
 `freesignupbonustextads` integer unsigned not null default '0',
@@ -33,18 +36,18 @@ CREATE TABLE `adminsettings` (
 `freemonthlybonustextads` integer unsigned not null default '0',
 `freemonthlybonusbannerspaid` integer unsigned not null default '0',
 `freemonthlybonusnetworksolos` integer unsigned not null default '0',
-
-##########members area
-
-`freeadclickstogettextad` integer unsigned not null default '100',
+`freeadclickstogettextad` integer unsigned not null default '100', ##########members area
 `freeadclickstogetbannerspaid` integer unsigned not null default '100',
 `freeadclickstogetnetworksolo` integer unsigned not null default '100',
 
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
 `probannerclickstosignup` integer unsigned not null default 5,
-`protopbanners` integer unsigned not null default 3,####################
-`probottombanners` integer unsigned not null default 0,####################
+`probannerslots` varchar(32) not null default '1,2,3,4,5,6',
+`prorefersfreebannerslots` varchar(32) not null default '4,5,6,7,8,11',
+`prorefersprobannerslots` varchar(32) not null default '7,8,11',
+`prorefersgoldbannerslots` varchar(32) not null default '11',
+
 `prorefersproearn` decimal(9,2) not null default 6.00,
 `prorefersgoldearn` decimal(9,2) not null default 8.00,
 `prosignupbonustextads` integer unsigned not null default '1',
@@ -53,7 +56,6 @@ CREATE TABLE `adminsettings` (
 `promonthlybonustextads` integer unsigned not null default '1',
 `promonthlybonusbannerspaid` integer unsigned not null default '1',
 `promonthlybonusnetworksolos` integer unsigned not null default '0',
-
 `proadclickstogettextad` integer unsigned not null default '100',
 `proadclickstogetbannerspaid` integer unsigned not null default '100',
 `proadclickstogetnetworksolo` integer unsigned not null default '100',
@@ -61,8 +63,11 @@ CREATE TABLE `adminsettings` (
 `goldprice` decimal(9, 2) not null default '9.99',
 `goldpayinterval` varchar(12) not null default 'monthly',
 `goldbannerclickstosignup` integer unsigned not null default 3,
-`goldtopbanners` integer unsigned not null default 3,####################
-`goldbottombanners` integer unsigned not null default 0,####################
+`goldbannerslots` varchar(32) not null default '1,2,3,4,5,6,7,8',
+`goldrefersfreebannerslots` varchar(32) not null default '4,5,6,7,8,11',
+`goldrefersprobannerslots` varchar(32) not null default '7,8,11',
+`goldrefersgoldbannerslots` varchar(32) not null default '11',
+
 `goldrefersproearn` decimal(9,2) not null default 8.00,
 `goldrefersgoldearn` decimal(9,2) not null default 10.00,
 `goldsignupbonustextads` integer unsigned not null default '2',
@@ -71,7 +76,6 @@ CREATE TABLE `adminsettings` (
 `goldmonthlybonustextads` integer unsigned not null default '2',
 `goldmonthlybonusbannerspaid` integer unsigned not null default '2',
 `goldmonthlybonusnetworksolos` integer unsigned not null default '1',
-
 `goldadclickstogettextad` integer unsigned not null default '100',
 `goldadclickstogetbannerspaid` integer unsigned not null default '100',
 `goldadclickstogetnetworksolo` integer unsigned not null default '100'
