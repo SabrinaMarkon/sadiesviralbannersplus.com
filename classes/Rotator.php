@@ -29,7 +29,7 @@ class Rotator
         $this->settings = $settings;
     }
 
-    public function giveClick(int $id)
+    public function giveClick(int $id): ?string
     {
 
         $pdo = Database::connect();
@@ -51,11 +51,12 @@ class Rotator
         } else {
 
             Database::disconnect();
-            return;
+            
+            return null;
         }
     }
 
-    public function giveHit(int $id)
+    public function giveHit(int $id): void
     {
 
         $pdo = Database::connect();
@@ -136,12 +137,12 @@ class Rotator
         Database::disconnect();
     }
 
-    public function getAds()
+    public function getAds(int $limit): ?array
     {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from " . $this->adtable . " where added=1 and approved=1 order by rand() limit 6";
+        $sql = "select * from " . $this->adtable . " where added=1 and approved=1 order by rand() limit " . $limit;
         $q = $pdo->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -153,5 +154,7 @@ class Rotator
         }
 
         Database::disconnect();
+
+        return null;
     }
 }

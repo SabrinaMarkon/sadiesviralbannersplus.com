@@ -14,7 +14,7 @@ foreach ($settings as $key => $value) {
 $adtable = 'textads';
 
 $rotator = new Rotator($adtable, $settings);
-$allrotators = $rotator->getAds();
+$allrotators = $rotator->getAds(6);
 
 if ($allrotators) {
 
