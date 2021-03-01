@@ -75,21 +75,18 @@ foreach ($settings as $key => $value) {
                 <br /><br />
                 <h1>Basic Settings for Free Members</h1>
 
-                <label for="freebannerclickstosignup" class="ja-toppadding">Clicks on member banners needed before a new Free member's sign up is complete (0 to disable):</label>
-                <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
-
                 <label for="freerefersproearn" class="ja-toppadding">Commission when Free members sponsor a Pro member:</label>
                 <input type="text" name="freerefersproearn" value="<?php echo $freerefersproearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Pro member" maxlength="8" required>
-                
+
                 <label for="freerefersgoldearn" class="ja-toppadding">Commission when Free members sponsor a Gold member:</label>
                 <input type="text" name="freerefersgoldearn" value="<?php echo $freerefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Free members sponsor a Gold member" maxlength="8" required>
-                
+
                 <label for="freeadclickstogettextad" class="ja-toppadding">Clicks on Text Ads for a Free member to get a Free Text Ad (0 to disable):</label>
                 <input type="number" min="0" step="1" name="freeadclickstogettextad" value="<?php echo $freeadclickstogettextad ?>" class="form-control smallselect" required>
-                
+
                 <label for="freeadclickstogetbannerspaid" class="ja-toppadding">Clicks on Banners for a Free member to get a Free Banner (0 to disable):</label>
                 <input type="number" min="0" step="1" name="freeadclickstogetbannerspaid" value="<?php echo $freeadclickstogetbannerspaid ?>" class="form-control smallselect" required>
-                
+
                 <label for="freeadclickstogetnetworksolo" class="ja-toppadding">Clicks on Network Solo links for a Free member to get a Free Network Solo (0 to disable):</label>
                 <input type="number" min="0" step="1" name="freeadclickstogetnetworksolo" value="<?php echo $freeadclickstogetnetworksolo ?>" class="form-control smallselect" required>
 
@@ -114,21 +111,18 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
-                <label for="probannerclickstosignup" class="ja-toppadding">Clicks on member banners needed before a new Pro member's sign up is complete (0 to disable):</label>
-                <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
-
                 <label for="prorefersproearn" class="ja-toppadding">Commission when Pro members sponsor a Pro member:</label>
                 <input type="text" name="prorefersproearn" value="<?php echo $prorefersproearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Pro member" maxlength="8" required>
-                
+
                 <label for="prorefersgoldearn" class="ja-toppadding">Commission when Pro members sponsor a Gold member:</label>
                 <input type="text" name="prorefersgoldearn" value="<?php echo $prorefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Pro members sponsor a Gold member" maxlength="8" required>
 
                 <label for="proadclickstogettextad" class="ja-toppadding">Clicks on Text Ads for a Pro member to get a Free Text Ad (0 to disable):</label>
                 <input type="number" min="0" step="1" name="proadclickstogettextad" value="<?php echo $proadclickstogettextad ?>" class="form-control smallselect" required>
-                
+
                 <label for="proadclickstogetbannerspaid" class="ja-toppadding">Clicks on Banners for a Pro member to get a Free Banner (0 to disable):</label>
                 <input type="number" min="0" step="1" name="proadclickstogetbannerspaid" value="<?php echo $proadclickstogetbannerspaid ?>" class="form-control smallselect" required>
-                
+
                 <label for="proadclickstogetnetworksolo" class="ja-toppadding">Clicks on Network Solo links for a Pro member to get a Free Network Solo (0 to disable):</label>
                 <input type="number" min="0" step="1" name="proadclickstogetnetworksolo" value="<?php echo $proadclickstogetnetworksolo ?>" class="form-control smallselect" required>
 
@@ -153,23 +147,344 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
-                <label for="goldbannerclickstosignup" class="ja-toppadding">Clicks on member banners needed before a new Gold member's sign up is complete (0 to disable):</label>
-                <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
-
                 <label for="goldrefersproearn" class="ja-toppadding">Commission when Gold members sponsor a Pro member:</label>
                 <input type="text" name="goldrefersproearn" value="<?php echo $goldrefersproearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Pro member" maxlength="8" required>
-                
+
                 <label for="goldrefersgoldearn" class="ja-toppadding">Commission when Gold members sponsor a Gold member:</label>
                 <input type="text" name="goldrefersgoldearn" value="<?php echo $goldrefersgoldearn ?>" class="form-control input-lg" placeholder="Commission when Gold members sponsor a Gold member" maxlength="8" required>
 
                 <label for="goldadclickstogettextad" class="ja-toppadding">Clicks on Text Ads for a Gold member to get a Free Text Ad (0 to disable):</label>
                 <input type="number" min="0" step="1" name="goldadclickstogettextad" value="<?php echo $goldadclickstogettextad ?>" class="form-control smallselect" required>
-                
+
                 <label for="goldadclickstogetbannerspaid" class="ja-toppadding">Clicks on Banners for a Gold member to get a Free Banner (0 to disable):</label>
                 <input type="number" min="0" step="1" name="goldadclickstogetbannerspaid" value="<?php echo $goldadclickstogetbannerspaid ?>" class="form-control smallselect" required>
-                
+
                 <label for="goldadclickstogetnetworksolo" class="ja-toppadding">Clicks on Network Solo links for a Gold member to get a Free Network Solo (0 to disable):</label>
                 <input type="number" min="0" step="1" name="goldadclickstogetnetworksolo" value="<?php echo $goldadclickstogetnetworksolo ?>" class="form-control smallselect" required>
+
+                <br /><br />
+                <h1>Free Member Banner Page Settings</h1>
+
+                <label for="freebannerclickstosignup" class="mt-4">Member banners a new Free member has to click to signup:</label>
+                <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
+
+                <label class="mt-2">Banner slots included with Free membership:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freebannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $freebannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="freebannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Free member gets on their Free referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freerefersfreebannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $freerefersfreebannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="freerefersfreebannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Free member gets on their Pro referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freerefersprobannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $freerefersprobannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="freerefersprobannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Free member gets on their Gold referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freerefersgoldbannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $freerefersgoldbannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="freerefersgoldbannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+
+
+                <br /><br />
+                <h1>Pro Member Banner Page Settings</h1>
+
+                <label for="probannerclickstosignup" class="mt-4">Member banners a new Pro member has to click to signup:</label>
+                <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
+
+                <label class="mt-2">Banner slots included with Pro membership:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="probannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $probannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="probannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Pro member gets on their Free referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="prorefersfreebannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $prorefersfreebannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="prorefersfreebannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Pro member gets on their Pro referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="prorefersprobannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $prorefersprobannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="prorefersprobannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Pro member gets on their Gold referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="prorefersgoldbannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $prorefersgoldbannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="prorefersgoldbannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+
+
+                <br /><br />
+                <h1>Gold Member Banner Page Settings</h1>
+
+                <label for="goldbannerclickstosignup" class="mt-4">Member banners a new Gold member has to click to signup:</label>
+                <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
+
+                <label class="mt-2">Banner slots included with Gold membership:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="goldbannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $goldbannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="goldbannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Gold member gets on their Free referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="goldrefersfreebannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $goldrefersfreebannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="goldrefersfreebannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Gold member gets on their Pro referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="goldrefersprobannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $goldrefersprobannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="goldrefersprobannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+                <label class="mt-2">Banner slots a Gold member gets on their Gold referral's page:</label>
+                <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                <?php
+                for ($i = 1; $i <= 12; $i += 3) {
+                ?>
+                    <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                        <?php
+                        for ($j = $i; $j <= $i + 2; $j++) {
+                        ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="goldrefersgoldbannerslots[<?php echo $j ?>]" value="<?php echo $j ?>" <?php
+                                                                                                                                                    if (in_array($j, explode(',', $goldrefersgoldbannerslots))) {
+                                                                                                                                                        echo " checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
+                                <label class="form-check-label" for="goldrefersgoldbannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+
 
                 <br /><br />
                 <h1>Sign Up Bonuses</h1>
@@ -194,6 +509,7 @@ foreach ($settings as $key => $value) {
                 <input type="number" min="0" step="1" name="goldsignupbonusbannerspaid" value="<?php echo $goldsignupbonusbannerspaid ?>" class="form-control smallselect" required>
                 <label for="goldsignupbonusnetworksolos" class="ja-toppadding">Free Network Solos a Gold member as for a sign up bonus :</label>
                 <input type="number" min="0" step="1" name="goldsignupbonusnetworksolos" value="<?php echo $goldsignupbonusnetworksolos ?>" class="form-control smallselect" required>
+
 
                 <br /><br />
                 <h1>Monthly Bonuses</h1>
