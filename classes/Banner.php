@@ -58,6 +58,14 @@ class Banner extends Ad
             $q->execute([$username]);
             Database::disconnect();
             return null;
+        } elseif ($source === 'memberbanner') {
+          
+            $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values (?,?,?,?,?,?,1,0,NOW())";
+            $q = $pdo->prepare($sql);
+            $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl]);
+            Database::disconnect();
+
+            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
         } else {
 
             $sql = "update ". $this->adtable . " set name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
