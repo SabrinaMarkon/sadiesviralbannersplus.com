@@ -47,7 +47,7 @@ abstract class Ad
     }
 
     /* Get all the ads for one member. */
-    public function getAllUsersAds(string $username): ?array
+    public function getAllUsersAds(string $username): ?array //TODO: See if we can return an empty array instead of null so don't need the ?
     {
 
         $pdo = DATABASE::connect();
@@ -69,7 +69,7 @@ abstract class Ad
     }
 
     /* Get all the approved ads for one member. */
-    public function getAllApprovedUsersAds(string $username): ?array
+    public function getAllApprovedUsersAds(string $username): array
     {
 
         $pdo = DATABASE::connect();
@@ -87,7 +87,7 @@ abstract class Ad
             return $ads;
         }
 
-        return null;
+        return [];
     }
 
     /* Call this when we need to get the member a blank ad to create a new ad in the form. */

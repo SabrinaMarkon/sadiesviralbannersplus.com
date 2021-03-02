@@ -84,12 +84,12 @@ class CoinPaymentsCheckout extends PaymentGateway
         return $paybutton;
     }
 
-    public function getIPN(Sponsor $commission, Money $money): void
+    public function getIPN(Commission $commission, Money $money): void
     {
         $this->_ipn($commission, $money);
     }
 
-    protected function _ipn(Sponsor $commission, Money $money): void
+    protected function _ipn(Commission $commission, Money $money): void
     {
 
         if (empty($this->api)) {

@@ -112,12 +112,12 @@ class PaypalCheckout extends PaymentGateway
         die('IPN Error: ' . $error_msg);
     }
 
-    public function getIPN(Sponsor $commission, Money $money): void
+    public function getIPN(Commission $commission, Money $money): void
     {
         $this->_ipn($commission, $money);
     }
 
-    protected function _ipn(Sponsor $commission, Money $money): void
+    protected function _ipn(Commission $commission, Money $money): void
     {
 
         // STEP 1: Read POST data:
