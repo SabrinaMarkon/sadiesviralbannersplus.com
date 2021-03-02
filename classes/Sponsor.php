@@ -16,6 +16,8 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 class Sponsor
 {
 
+    // TODO: put the commission part into a COMMISSION CLASS.
+    
     public function getReferidAndAccounttypes(string $username): array
     {
         // get a user's referid and accounttype.
@@ -77,6 +79,9 @@ class Sponsor
             $prefix = lcfirst($referidaccounttype);
             $levelreferred = lcfirst($accounttype);
             $commissionvarname = $prefix . "refers" . $levelreferred . "earn";
+
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "update members set owed=owed+? where username=?";
             $q = $pdo->prepare($sql);
             $q->execute(array($$commissionvarname, $referid));
