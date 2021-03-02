@@ -13,8 +13,47 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-class Commission
+class Sponsor
 {
+    
+    public function getReferidAndAccounttypes(string $username): array
+	{
+
+         // get sponsor's account level to compute correct commissions or figure out banner page slots.
+		$pdo = Database::connect();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "select accounttype, referid from members where username=? limit 1";
+		$q = $pdo->prepare($sql);
+		$q->execute(array($username));
+		$q->setFetchMode(PDO::FETCH_ASSOC);
+		$data = $q->fetch();
+
+        $affiliatearray = [];
+
+        if (!empty($data)) {
+
+            $accounttype = $data['accounttype']; // accounttype of the member.
+			$referid = $data['referid']; // referid of the member.
+            array_push($affiliatearray, $accounttype, $referid);
+
+            // Get referrer's accounttype now:
+			$sql = "select accounttype from members where username=?";
+			$q = $pdo->prepare($sql);
+			$q->execute(array($referid));
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			$data = $q->fetch();
+			if (!empty($data['accounttype']))
+            {
+				$referidaccounttype = $data['accounttype']; // accounttype of the member's referid.
+				array_push($affiliatearray, $referidaccounttype);
+			}
+		}
+
+		Database::disconnect();
+		
+        return $affiliatearray;
+	}
+
     public function addNewReferralCommission(string $referid, string $accounttype): void
     {
         // get sponsor's account level to compute correct commissions.
@@ -34,6 +73,7 @@ class Commission
             $q = $pdo->prepare($sql);
             $q->execute(array($$commissionvarname, $referid));
         }
+        
         Database::disconnect();
     }
 }

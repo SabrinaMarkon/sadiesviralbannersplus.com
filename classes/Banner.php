@@ -32,7 +32,7 @@ class Banner extends Ad
         $url = $post['url'];
         $imageurl = $post['imageurl'];
 
-        # TODO: generate shorturl - FIREBASE LINKS ****
+        # TODO: generate shorturl 
         $shorturl = '';
 
         if (empty($username)) {

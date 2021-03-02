@@ -27,7 +27,7 @@ if (in_array($paidwith, $paymentcompanies)) {
 
     $sendsiteemail = new Email();
     $user = new User($sendsiteemail);
-    $commission = new Commission();
+    $commission = new Sponsor();
     $money = new Money();
     // TODO: $ad = new Ad() here - have to get rid of $adtable in constructor though.
 

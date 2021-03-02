@@ -52,7 +52,12 @@ abstract class Ad
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from " . $this->adtable . " where username=? and added=1 order by id desc";
+        if ($this->adtable === 'bannersformembers') {
+            $sql = "select * from " . $this->adtable . " where username=? and approved=1 order by id desc";
+        }
+        else {
+            $sql = "select * from " . $this->adtable . " where username=? and added=1 order by id desc";   
+        }
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
