@@ -45,7 +45,7 @@ class Banner extends Ad
         # is it a user or the admin posting the ad?
         if ($source === 'admin') {
 
-            $sql = "insert into bannerspaid (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values (?,?,?,?,?,?,1,1,NOW())";
+            $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values (?,?,?,?,?,?,1,1,NOW())";
             $q = $pdo->prepare($sql);
             $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl]);
             Database::disconnect();
@@ -53,14 +53,14 @@ class Banner extends Ad
             return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
         } elseif ($source === 'ipn') {
 
-            $sql = "insert into bannerspaid (username) values (?)";
+            $sql = "insert into ". $this->adtable . " (username) values (?)";
             $q = $pdo->prepare($sql);
             $q->execute([$username]);
             Database::disconnect();
             return null;
         } else {
 
-            $sql = "update bannerspaid set name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
+            $sql = "update ". $this->adtable . " set name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=?,hits=0,clicks=0,adddate=NOW() where id=?";
             $q = $pdo->prepare($sql);
             $q->execute([$name, $alt, $url, $imageurl, $shorturl, $adminautoapprove, $id]);
             Database::disconnect();
@@ -97,7 +97,7 @@ class Banner extends Ad
             $autoapprove = $adminautoapprove;
         }
 
-        $sql = "update bannerspaid set username=?,name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
+        $sql = "update ". $this->adtable . " set username=?,name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
         $q = $pdo->prepare($sql);
         $q->execute([$username, $name, $alt, $url, $imageurl, $shorturl, $autoapprove, $id]);
 

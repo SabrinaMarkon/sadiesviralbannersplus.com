@@ -52,12 +52,7 @@ abstract class Ad
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        if ($this->adtable === 'bannersformembers') {
-            $sql = "select * from " . $this->adtable . " where username=? and approved=1 order by id desc";
-        }
-        else {
-            $sql = "select * from " . $this->adtable . " where username=? and added=1 order by id desc";   
-        }
+        $sql = "select * from " . $this->adtable . " where username=? and added=1 order by id desc";   
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -72,6 +67,28 @@ abstract class Ad
 
         return null;
     }
+
+        /* Get all the approved ads for one member. */
+        public function getAllApprovedUsersAds(string $username): ?array
+        {
+    
+            $pdo = DATABASE::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "select * from " . $this->adtable . " where username=? and approved=1 order by id desc";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($username));
+            $q->setFetchMode(PDO::FETCH_ASSOC);
+            $ads = $q->fetchAll();
+    
+            Database::disconnect();
+    
+            if ($ads) {
+    
+                return $ads;
+            }
+    
+            return null;
+        }
 
     /* Call this when we need to get the member a blank ad to create a new ad in the form. */
     public function getBlankAd(string $username): ?array

@@ -1,7 +1,7 @@
 <?php
 
 /**
-Handles user interactions with the application.
+Get sponsor information for a user.
 PHP 7.4+
 @author Sabrina Markon
 @copyright 2021 Sabrina Markon, PHPSiteScripts.com
@@ -15,55 +15,63 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 class Sponsor
 {
-    
-    public function getReferidAndAccounttypes(string $username): array
-	{
 
-         // get sponsor's account level to compute correct commissions or figure out banner page slots.
-		$pdo = Database::connect();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "select accounttype, referid from members where username=? limit 1";
-		$q = $pdo->prepare($sql);
-		$q->execute(array($username));
-		$q->setFetchMode(PDO::FETCH_ASSOC);
-		$data = $q->fetch();
+    public function getReferidAndAccounttypes(string $username): array
+    {
+        // get a user's referid and accounttype.
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "select accounttype, referid from members where username=? limit 1";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        $data = $q->fetch();
+
+        if (!empty($data)) {
+            return $data;
+        }
+
+        Database::disconnect();
+
+        return [];
+    }
+
+
+    // Get an array with the user's referid, the user's accounttype, and the user's referid's accounttype.
+    public function getUsersAccounttypeReferidAndReferidAccounttype(string $username): array
+    {
+
+        // get user's referid and user's accounttype.
+        $data = $this->getReferidAndAccounttypes($username);
 
         $affiliatearray = [];
 
         if (!empty($data)) {
 
-            $accounttype = $data['accounttype']; // accounttype of the member.
-			$referid = $data['referid']; // referid of the member.
+            $accounttype = $data['accounttype']; // accounttype of the user.
+            $referid = $data['referid']; // referid of the user.
             array_push($affiliatearray, $accounttype, $referid);
 
-            // Get referrer's accounttype now:
-			$sql = "select accounttype from members where username=?";
-			$q = $pdo->prepare($sql);
-			$q->execute(array($referid));
-			$q->setFetchMode(PDO::FETCH_ASSOC);
-			$data = $q->fetch();
-			if (!empty($data['accounttype']))
-            {
-				$referidaccounttype = $data['accounttype']; // accounttype of the member's referid.
-				array_push($affiliatearray, $referidaccounttype);
-			}
-		}
+            // Now add the user's referid's own accounttype.
+            $data = $this->getReferidAndAccounttypes($referid);
 
-		Database::disconnect();
-		
+            if (!empty($data['accounttype'])) {
+                $referidaccounttype = $data['accounttype']; // accounttype of the user's referid.
+                array_push($affiliatearray, $referidaccounttype);
+            }
+        }
+
+        Database::disconnect();
+
         return $affiliatearray;
-	}
+    }
+
 
     public function addNewReferralCommission(string $referid, string $accounttype): void
     {
         // get sponsor's account level to compute correct commissions.
-        $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select accounttype from members where username=?";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($referid));
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-        $data = $q->fetch();
+        $data = $this->getReferidAndAccounttypes($referid);
+
         if (!empty($data['accounttype'])) {
             $referidaccounttype = $data['accounttype'];
             $prefix = lcfirst($referidaccounttype);
@@ -73,7 +81,7 @@ class Sponsor
             $q = $pdo->prepare($sql);
             $q->execute(array($$commissionvarname, $referid));
         }
-        
+
         Database::disconnect();
     }
 }
