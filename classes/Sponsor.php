@@ -16,6 +16,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 class Sponsor
 {
 
+    // Get the referid and accounttype for a user.
     public function getReferidAndAccounttypes(string $username): array
     {
         // get a user's referid and accounttype.
@@ -64,5 +65,24 @@ class Sponsor
         Database::disconnect();
 
         return $affiliatearray;
+    }
+
+    public function getRandomUsername(string $accounttype = "Free"): string {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "select username from members where accounttype=? order by rand() limit 1";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($accounttype));
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        $data = $q->fetch();
+
+        if (!empty($data['username'])) {
+            return $data['username'];
+        }
+
+        Database::disconnect();
+
+        return ''; 
     }
 }

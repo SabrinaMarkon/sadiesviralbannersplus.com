@@ -37,4 +37,30 @@ class MemberBanner extends Banner
 
         return [];
     }
+
+    public function getRandomBannerOfCertainMembershipLevel(Sponsor $sponsor, string $accounttype, int $slot): array
+    {
+        $username = $sponsor->getRandomUsername($accounttype);
+        
+        if (!empty($username)) {
+
+            $pdo = DATABASE::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "select * from " . $this->adtable . " where username=? and bannerpageslot=? and approved=1 limit 1";
+            $q = $pdo->prepare($sql);
+            $q->execute([$username, $slot]);
+            $memberbanner = $q->fetch();
+    
+            Database::disconnect();
+    
+            if ($memberbanner) {
+    
+                return $memberbanner;
+            }
+        }
+
+
+
+        return [];
+    }
 }
