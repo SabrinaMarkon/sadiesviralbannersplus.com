@@ -76,4 +76,20 @@ class MemberBanner extends Banner
         return $vararray;
     }
 
+    public function showBanner(array $banner, int $width, int $height): string {
+
+        $id = $banner['id'];
+        $alt = $banner['alt'];
+        $imageurl = $banner['imageurl'];
+
+        $showbanner = '
+        <div>
+            <a href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
+                <img alt="' . $alt . '" src="' . $imageurl . '>" width="' . $width . '" height="' . $height . '" />
+            </a>
+        </div>';
+
+        return $showbanner;
+    }
+
 }

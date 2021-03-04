@@ -62,9 +62,11 @@ $sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar);
             }
         }
 
+        // TODO: admin should create their own default banners for every slot so they are never empty.
+
         // SHOW:
-
-
+        $show = $banner->showBanner($showbanner, 728, 90);
+        echo $show;
 
     }
     ?>
@@ -89,9 +91,8 @@ $sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar);
     if (!empty($showbanner)) {
 
         // SHOW:
-
-
-
+        $show = $banner->showBanner($showbanner, 468, 60);
+        echo $show;
 
     }
     ?>
@@ -114,9 +115,8 @@ $sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar);
     if (!empty($showbanner)) {
 
         // SHOW:
-
-
-
+        $show = $banner->showBanner($showbanner, 468, 60);
+        echo $show;
 
     }
     ?>
@@ -129,7 +129,8 @@ $sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar);
         $showbanner = $banner->getMemberBanner($sponsorusername, 11);
 
         // SHOW:
-
+        $show = $banner->showBanner($showbanner, 468, 60);
+        echo $show;
 
     }
     ?>
@@ -152,30 +153,15 @@ $sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar);
     if (!empty($showbanner)) {
 
         // SHOW:
-
+        $show = $banner->showBanner($showbanner, 468, 60);
+        echo $show;
 
     } else {
 
         // SHOW PAID BANNER ROTATOR:
-    ?>
-        <section class="bannerspaid-area">
-            <div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="centered">
-                            <section class="cards">
-
-                                <?php include 'rotatorbannerspaid.php'; ?>
-
-                            </section>
-                        </div>
-                    </div>
-                </div>
-        </section>
-    <?php
+        include 'rotatorbannerspaid.php';
     }
     ?>
-
 
 
 </div>
