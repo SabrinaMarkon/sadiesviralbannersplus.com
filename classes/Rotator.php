@@ -93,8 +93,11 @@ class Rotator
 
             $accounttypelc = strtolower($accounttype);
             $adclickstogettextad = $accounttypelc . "adclickstogettextad";
+            $adclickstogettextad = $this->settings[$$adclickstogettextad];
             $adclickstogetbannerspaid = $accounttypelc . "adclickstogetbannerspaid";
+            $adclickstogetbannerspaid = $this->settings[$$adclickstogetbannerspaid];
             $adclickstogetnetworksolo = $accounttypelc . "adclickstogetnetworksolo";
+            $adclickstogetnetworksolo = $this->settings[$$adclickstogetnetworksolo];
 
             if ($$adclickstogettextad > 0 && $this->adtable === 'textads') {
                 $sql = "update members set textadclicks=textadclicks+1 where username=?";
