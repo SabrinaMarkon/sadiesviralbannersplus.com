@@ -41,7 +41,7 @@ class MemberBanner extends Banner
     public function getRandomBannerOfCertainMembershipLevel(Sponsor $sponsor, string $accounttype, int $slot): array
     {
         $username = $sponsor->getRandomUsername($accounttype);
-        
+
         if (!empty($username)) {
 
             $pdo = DATABASE::connect();
@@ -50,17 +50,30 @@ class MemberBanner extends Banner
             $q = $pdo->prepare($sql);
             $q->execute([$username, $slot]);
             $memberbanner = $q->fetch();
-    
+
             Database::disconnect();
-    
+
             if ($memberbanner) {
-    
+
                 return $memberbanner;
             }
         }
 
-
-
         return [];
     }
+
+    // Get an array of the csv string for a banner slot admin setting.
+    public function getVarArray(string $varname): array
+    {
+
+        $varvalue = $$varname;
+        $vararray = [];
+
+        if (!empty($varvalue)) {
+            $vararray = explode(',', $varvalue);
+        }
+
+        return $vararray;
+    }
+
 }

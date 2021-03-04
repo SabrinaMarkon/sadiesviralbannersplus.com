@@ -5,19 +5,6 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-function getVarArray(string $varname): array
-{
-
-    $varvalue = $$varname;
-    $vararray = [];
-
-    if (!empty($varvalue)) {
-        $vararray = explode(',', $varvalue);
-    }
-
-    return $vararray;
-}
-
 // Get this page's referring member $_SESSION['referid']'s banners:
 $banner = new MemberBanner('bannersformembers');
 $referidbanners = $banner->getAllApprovedUsersAds($_SESSION['referid']);
@@ -44,19 +31,6 @@ if (count($referidssponsorarray) > 0) {
     $referidbannerslotsvar = $referidprefix . 'bannerslots';
     $sponsorrefersbannerslotsvar = $sponsorprefix . 'refers' . $referidprefix . 'bannerslots';
 
-    // $freebannerslots
-    // $freerefersfreebannerslots
-    // $freerefersprobannerslots
-    // $freerefersgoldbannerslots
-    // $probannerslots
-    // $prorefersfreebannerslots
-    // $prorefersprobannerslots
-    // $prorefersgoldbannerslots
-    // $goldbannerslots
-    // $goldrefersfreebannerslots
-    // $goldrefersprobannerslots
-    // $goldrefersgoldbannerslots
-
     // Get user's sponsor's banners:
     $sponsorbanners = $banner->getAllApprovedUsersAds($sponsorusername);
 } else {
@@ -66,8 +40,8 @@ if (count($referidssponsorarray) > 0) {
     $sponsorrefersbannerslotsvar = '';
 }
 
-$referidbannerslots = getVarArray($referidbannerslotsvar);
-$sponsorrefersbannerslots = getVarArray($sponsorrefersbannerslotsvar);
+$referidbannerslots = $banner->getVarArray($referidbannerslotsvar);
+$sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar);
 
 ?>
 <div class="container">
@@ -174,7 +148,7 @@ $sponsorrefersbannerslots = getVarArray($sponsorrefersbannerslotsvar);
         array_push($allowedaccounttypearray, "Gold");
     }
     $randomaccounttype = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-    $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 9);
+    $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 12);
     if (!empty($showbanner)) {
 
         // SHOW:
