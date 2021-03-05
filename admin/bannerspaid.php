@@ -23,7 +23,7 @@ $ads = $allads->getAllAds();
 
 <div class="container">
 
-	<h1 class="ja-bottompadding">Sell Extra Paid-Ony Banners</h1>
+	<h1 class="ja-bottompadding">Sell Extra Paid-Only Banners</h1>
 
 	<form action="/admin/bannerspaid" method="post" class="form" role="form">
 
