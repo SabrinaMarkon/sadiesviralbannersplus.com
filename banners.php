@@ -40,128 +40,175 @@ if (count($referidssponsorarray) > 0) {
     $sponsorrefersbannerslotsvar = '';
 }
 
-$referidbannerslots = $banner->getVarArray($referidbannerslotsvar);
-$sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar);
+if ($referidbannerslotsvar) {
+    $referidbannerslots = $banner->getVarArray($referidbannerslotsvar, $settings);
+} else {
+    $referidbannerslots = [];
+}
+if ($sponsorrefersbannerslotsvar) {
+    $sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar, $settings);
+} else {
+    $sponsorrefersbannerslots = [];
+}
+
+$freebannerslotsarray = $banner->getVarArray('freebannerslots', $settings);
+$probannerslotsarray = $banner->getVarArray('probannerslots', $settings);
+$goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
 
 ?>
 <div class="container">
 
-    <!-- The Eight 728px x 90px BANNERS -->
+    <div class="memberbanners">
 
-    <?php
-    for ($i = 1; $i <= 8; $i++) {
-        // $referidbannerslots are the position slots that the user referid is allowed to show for their membership level:
-        if (in_array($i, $referidbannerslots)) {
-            // See if the user, referid, has a banner for this position. Positions over 8 are for the smaller banners below.
-            $showbanner = $banner->getMemberBanner($_SESSION['referid'], $i);
-        } else {
-            // $sponsorrefersbannerslots are the position slots that the user referid's sponsor is allowed to show on their referral's (referid's) page.
-            if (in_array($i, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
-                // See if the user's sponsor (referid's referid), has a banner saved for this position.
-                $showbanner = $banner->getMemberBanner($sponsorusername, $i);
+        <!-- The Eight 728px x 90px BANNERS -->
+
+        <?php
+        for ($i = 1; $i <= 8; $i++) {
+            // $referidbannerslots are the position slots that the user referid is allowed to show for their membership level:
+            if (in_array($i, $referidbannerslots)) {
+                // See if the user, referid, has a banner for this position. Positions over 8 are for the smaller banners below.
+                $showbanner = $banner->getMemberBanner($_SESSION['referid'], $i);
+            } else {
+                // $sponsorrefersbannerslots are the position slots that the user referid's sponsor is allowed to show on their referral's (referid's) page.
+                if (in_array($i, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
+                    // See if the user's sponsor (referid's referid), has a banner saved for this position.
+                    $showbanner = $banner->getMemberBanner($sponsorusername, $i);
+                }
+            }
+
+            // TODO: admin should create their own default banners for every slot so they are never empty (in the bannersformembers table too for all 12 slots (same UI as members area!)
+
+            // SHOW:
+            if (!empty($showbanner)) {
+
+                // SHOW:
+                $show = $banner->showBanner($showbanner, 728, 90);
+                echo $show;
+            } else {
+
+                // SHOW PAID BANNER ROTATOR:
+                include 'rotatorbannerspaid.php';
             }
         }
-
-        // TODO: admin should create their own default banners for every slot so they are never empty.
-
-        // SHOW:
-        $show = $banner->showBanner($showbanner, 728, 90);
-        echo $show;
-
-    }
-    ?>
+        ?>
 
 
-    <!-- The Four 468px x 60px BANNERS -->
+        <!-- The Four 468px x 60px BANNERS -->
 
-    <!-- #9 - 468px x 60px - Rotator for all members of certain level(s) - default to gold members only. -->
-    <?php
-    $allowedaccounttypearray = [];
-    if (in_array(9, $freebannerslots)) {
-        array_push($allowedaccounttypearray, "Free");
-    }
-    if (in_array(9, $probannerslots)) {
-        array_push($allowedaccounttypearray, "Pro");
-    }
-    if (in_array(9, $goldbannerslots)) {
-        array_push($allowedaccounttypearray, "Gold");
-    }
-    $randomaccounttype = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-    $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 9);
-    if (!empty($showbanner)) {
+        <!-- #9 - 468px x 60px - Rotator for all members of certain level(s) - default to gold members only. -->
+        <?php
+        $allowedaccounttypearray = [];
+        if (in_array(9, $freebannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Free");
+        }
+        if (in_array(9, $probannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Pro");
+        }
+        if (in_array(9, $goldbannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Gold");
+        }
+        if (count($allowedaccounttypearray) > 0) {
+            $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
+            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
+            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 9);
+        }
+        if (!empty($showbanner)) {
 
-        // SHOW:
-        $show = $banner->showBanner($showbanner, 468, 60);
-        echo $show;
+            // SHOW:
+            $show = $banner->showBanner($showbanner, 468, 60);
+            echo $show;
+        } else {
 
-    }
-    ?>
-
-
-    <!-- #10 - 468px x 60px - Rotator for all members of certain level(s) - default to pro members only. -->
-    <?php
-    $allowedaccounttypearray = [];
-    if (in_array(10, $freebannerslots)) {
-        array_push($allowedaccounttypearray, "Free");
-    }
-    if (in_array(10, $probannerslots)) {
-        array_push($allowedaccounttypearray, "Pro");
-    }
-    if (in_array(10, $goldbannerslots)) {
-        array_push($allowedaccounttypearray, "Gold");
-    }
-    $randomaccounttype = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-    $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 9);
-    if (!empty($showbanner)) {
-
-        // SHOW:
-        $show = $banner->showBanner($showbanner, 468, 60);
-        echo $show;
-
-    }
-    ?>
+            // SHOW PAID BANNER ROTATOR:
+            include 'rotatorbannerspaid.php';
+        }
+        ?>
 
 
-    <!-- #11 - 468px x 60px - The referid has a sponsor themselves and this is one of that sponsor's banners, if they have one. -->
-    <?php
-    if (in_array(11, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
+        <!-- #10 - 468px x 60px - Rotator for all members of certain level(s) - default to pro members only. -->
+        <?php
+        $allowedaccounttypearray = [];
+        if (in_array(10, $freebannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Free");
+        }
+        if (in_array(10, $probannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Pro");
+        }
+        if (in_array(10, $goldbannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Gold");
+        }
+        if (count($allowedaccounttypearray) > 0) {
+            $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
+            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex]; 
+            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 10);   
+        }
+        if (!empty($showbanner)) {
 
-        $showbanner = $banner->getMemberBanner($sponsorusername, 11);
+            // SHOW:
+            $show = $banner->showBanner($showbanner, 468, 60);
+            echo $show;
+        } else {
 
-        // SHOW:
-        $show = $banner->showBanner($showbanner, 468, 60);
-        echo $show;
+            // SHOW PAID BANNER ROTATOR:
+            include 'rotatorbannerspaid.php';
+        }
+        ?>
 
-    }
-    ?>
 
-    <!-- #12 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
+        <!-- #11 - 468px x 60px - The referid has a sponsor themselves and this is one of that sponsor's banners, if they have one. -->
+        <?php
+        if (in_array(11, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
 
-    <?php
-    $allowedaccounttypearray = [];
-    if (in_array(12, $freebannerslots)) {
-        array_push($allowedaccounttypearray, "Free");
-    }
-    if (in_array(12, $probannerslots)) {
-        array_push($allowedaccounttypearray, "Pro");
-    }
-    if (in_array(12, $goldbannerslots)) {
-        array_push($allowedaccounttypearray, "Gold");
-    }
-    $randomaccounttype = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-    $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 12);
-    if (!empty($showbanner)) {
+            $showbanner = $banner->getMemberBanner($sponsorusername, 11);
 
-        // SHOW:
-        $show = $banner->showBanner($showbanner, 468, 60);
-        echo $show;
+            // SHOW:
+            if (!empty($showbanner)) {
 
-    } else {
+                // SHOW:
+                $show = $banner->showBanner($showbanner, 468, 60);
+                echo $show;
+            } else {
 
-        // SHOW PAID BANNER ROTATOR:
-        include 'rotatorbannerspaid.php';
-    }
-    ?>
+                // SHOW PAID BANNER ROTATOR:
+                include 'rotatorbannerspaid.php';
+            }
+        } else {
 
+            // SHOW PAID BANNER ROTATOR:
+            include 'rotatorbannerspaid.php';
+        }
+        ?>
+
+        <!-- #12 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
+
+        <?php
+        $allowedaccounttypearray = [];
+        if (in_array(12, $freebannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Free");
+        }
+        if (in_array(12, $probannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Pro");
+        }
+        if (in_array(12, $goldbannerslotsarray)) {
+            array_push($allowedaccounttypearray, "Gold");
+        }
+        if (count($allowedaccounttypearray) > 0) {
+            $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
+            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
+            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 11);
+        }
+        if (!empty($showbanner)) {
+
+            // SHOW:
+            $show = $banner->showBanner($showbanner, 468, 60);
+            echo $show;
+        } else {
+
+            // SHOW PAID BANNER ROTATOR:
+            include 'rotatorbannerspaid.php';
+        }
+        ?>
+
+    </div>
 
 </div>

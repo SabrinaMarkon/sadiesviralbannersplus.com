@@ -18,7 +18,7 @@ abstract class Ad
 {
 
     // TODO: Extract database stuff to the Database class instead of in all the classes not DRY at all.
-    protected $pdo;
+    protected $pdo, $q, $sql;
 
     public function __construct(string $adtable)
     {
@@ -37,7 +37,7 @@ abstract class Ad
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "select * from " . $this->adtable . " order by approved asc, id desc";
         $q = $pdo->prepare($sql);
-        // $q->execute();
+        $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $ads = $q->fetchAll();
 

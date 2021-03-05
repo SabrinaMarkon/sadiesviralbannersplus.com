@@ -177,6 +177,16 @@ figcaption .sadietalknormal {
   height: 26px;
 }
 
+.memberbanners {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.memberbanners > div {
+  margin: 1rem auto; 
+}
+
 #coinpaymentsbuttonform > button,
 #paypalbuttonform > button {
   margin: 1em auto;

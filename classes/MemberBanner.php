@@ -16,7 +16,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 class MemberBanner extends Banner
 {
-    private $pdo, $q, $sql, $memberbanner;
+    private $memberbanner;
 
     public function getMemberBanner(string $username, int $slot): array
     {
@@ -57,16 +57,19 @@ class MemberBanner extends Banner
 
                 return $memberbanner;
             }
+
+            return [];
         }
 
         return [];
     }
 
     // Get an array of the csv string for a banner slot admin setting.
-    public function getVarArray(string $varname): array
+    public function getVarArray(string $varname, array $settings): array
     {
 
-        $varvalue = $$varname;
+        $varvalue = $settings[$varname];
+
         $vararray = [];
 
         if (!empty($varvalue)) {
