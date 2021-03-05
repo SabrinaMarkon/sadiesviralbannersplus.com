@@ -96,7 +96,7 @@ $ads = $allads->getAllAds();
 			<thead>
 				<tr>
 					<th class="text-center small">Ad&nbsp;#</th>
-					<th class="text-center small" style="min-width: 100px;">Image</th>
+					<th class="text-center small" style="min-width: 200px;">Image</th>
 					<th class="text-center small" style="min-width: 100px;">Username</th>
 					<th class="text-center small" style="min-width: 100px;">Name</th>
 					<th class="text-center small" style="min-width: 100px;">Alt</th>
@@ -106,7 +106,7 @@ $ads = $allads->getAllAds();
 					<th class="text-center small">Approved</th>
 					<th class="text-center small">Impressions</th>
 					<th class="text-center small">Clicks</th>
-					<th class="text-center small">Date</th>
+					<th class="text-center small" style="min-width: 150px;">Date</th>
 					<th class="text-center small">Save</th>
 					<th class="text-center small">Delete</th>
 				</tr>
@@ -134,7 +134,17 @@ $ads = $allads->getAllAds();
 								<td class="small"><?php echo $ad['id']; ?>
 								</td>
 								<td class="small">
-									<img src="<?php echo $ad['imageurl']; ?>" alt="<?php echo $ad['alt'] ?>" class="mini-banner-image">
+									<?php
+									if ($ad['imageurl']) {
+										?>
+											<img src="<?php echo $ad['imageurl']; ?>" alt="<?php echo $ad['alt'] ?>" class="mini-banner-image">
+										<?php
+									} else {
+										?>
+											<img src="https://via.placeholder.com/200x26/0067f4/ffffff?text=NOT+ADDED" alt="Not Added" class="mini-banner-image">
+										<?php
+									}
+									?>
 								</td>
 								<td class="small">
 									<input type="text" name="username" value="<?php echo $ad['username']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Username" required>

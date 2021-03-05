@@ -145,7 +145,7 @@ $ads = $allads->getAllAds();
                     <th class="text-center small">Approved</th>
                     <th class="text-center small">Sent</th>
                     <th class="text-center small">Clicks</th>
-                    <th class="text-center small">Date</th>
+                    <th class="text-center small" style="min-width: 150px;">Date</th>
                     <th class="text-center small">Save</th>
                     <th class="text-center small">Delete</th>
                 </tr>
