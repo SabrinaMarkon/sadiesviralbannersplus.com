@@ -66,7 +66,7 @@ $ads = $allads->getAllAds();
 
 <div class="container">
 
-    <h1 class="ja-bottompadding">Sell Network Solos</h1>
+    <h1 class="mb-2 pt-4">Sell Network Solos</h1>
 
     <form action="/admin/networksolos" method="post" class="form" role="form">
 
@@ -90,7 +90,7 @@ $ads = $allads->getAllAds();
         <input type="text" name="username" class="form-control input-lg" placeholder="Username" maxlength="32" required>
 
         <label for="howmanytogive" class="ja-toppadding">How many?:</label>
-        <input type="number" min="1" step="1" name="howmanytogive" class="form-control smallselect" required>
+        <input type="number" min="1" step="1" value="1" name="howmanytogive" class="form-control smallselect" required>
 
         <div class="ja-bottompadding"></div>
 

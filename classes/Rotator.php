@@ -119,7 +119,7 @@ class Rotator
                 $textadclicks = $res['textadclicks'];
                 if ($textadclicks >= $$adclickstogettextad && $$adclickstogettextad > 0) {
                     $ad = new Banner($this->adtable);
-                    $ad->createBlankAd($username);
+                    $ad->createBlankAd($username, '');
                     // Reset click counter:
                     $sql = "update members set textadclicks=textadclicks-? where username=?";
                     $q = $pdo->prepare($sql);
@@ -128,7 +128,7 @@ class Rotator
                 $banneradclicks = $res['banneradclicks'];
                 if ($banneradclicks >= $$adclickstogetbannerspaid && $$adclickstogetbannerspaid > 0) {
                     $ad = new TextAd($this->adtable);
-                    $ad->createBlankAd($username);
+                    $ad->createBlankAd($username, '');
                     // Reset click counter:
                     $sql = "update members set banneradclicks=banneradclicks-? where username=?";
                     $q = $pdo->prepare($sql);
@@ -137,7 +137,7 @@ class Rotator
                 $networksoloclicks = $res['networksoloclicks'];
                 if ($networksoloclicks >= $$adclickstogetnetworksolo && $$adclickstogetnetworksolo > 0) {
                     $ad = new NetworkSolo($this->adtable);
-                    $ad->createBlankAd($username);
+                    $ad->createBlankAd($username, '');
                     // Reset click counter:
                     $sql = "update members set networksoloclicks=networksoloclicks-? where username=?";
                     $q = $pdo->prepare($sql);

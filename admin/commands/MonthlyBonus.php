@@ -42,21 +42,21 @@ class MonthlyBonus
 
                         echo $username . " gets " . $settings["goldmonthlybonustextads"] . " text ads<br/>";
                         for($i = 0; $i < $settings["goldmonthlybonustextads"]; $i++) {
-                            $textad->createBlankAd($username);
+                            $textad->createBlankAd($username, '');
                         }
                     }
                     if ($settings["goldmonthlybonusbannerspaid"] > 0) {
 
                         echo $username . " gets " . $settings["goldmonthlybonusbannerspaid"] . " banners<br/>";
                         for($i = 0; $i < $settings["goldmonthlybonusbannerspaid"]; $i++) {
-                            $banner->createBlankAd($username);
+                            $banner->createBlankAd($username, '');
                         }
                     }
                     if ($settings["goldmonthlybonusnetworksolos"] > 0) {
 
                         echo $username . " gets " . $settings["goldmonthlybonusnetworksolos"] . " network solos<br/>";
                         for($i = 0; $i < $settings["goldmonthlybonusnetworksolos"]; $i++) {
-                            $networksolo->createBlankAd($username);
+                            $networksolo->createBlankAd($username, '');
                         }
                     }
                 }
@@ -65,21 +65,21 @@ class MonthlyBonus
 
                         echo $username . " gets " . $settings["promonthlybonustextads"] . " text ads<br/>";
                         for($i = 0; $i < $settings["promonthlybonustextads"]; $i++) {
-                            $textad->createBlankAd($username);
+                            $textad->createBlankAd($username, '');
                         }
                     }
                     if ($settings["promonthlybonusbannerspaid"] > 0) {
 
                         echo $username . " gets " . $settings["promonthlybonusbannerspaid"] . " banners<br/>";
                         for($i = 0; $i < $settings["promonthlybonusbannerspaid"]; $i++) {
-                            $banner->createBlankAd($username);
+                            $banner->createBlankAd($username, '');
                         }
                     }
                     if ($settings["promonthlybonusnetworksolos"] > 0) {
 
                         echo $username . " gets " . $settings["promonthlybonusnetworksolos"] . " network solos<br/>";
                         for($i = 0; $i < $settings["promonthlybonusnetworksolos"]; $i++) {
-                            $networksolo->createBlankAd($username);
+                            $networksolo->createBlankAd($username, '');
                         }
                     }
                 }
@@ -88,21 +88,21 @@ class MonthlyBonus
 
                         echo $username . " gets " . $settings["freemonthlybonustextads"] . " text ads<br/>";
                         for($i = 0; $i < $settings["freemonthlybonustextads"]; $i++) {
-                            $textad->createBlankAd($username);
+                            $textad->createBlankAd($username, '');
                         }
                     }
                     if ($settings["freemonthlybonusbannerspaid"] > 0) {
 
                         echo $username . " gets " . $settings["freemonthlybonusbannerspaid"] . " banners<br/>";
                         for($i = 0; $i < $settings["freemonthlybonusbannerspaid"]; $i++) {
-                            $banner->createBlankAd($username);
+                            $banner->createBlankAd($username, '');
                         }
                     }
                     if ($settings["freemonthlybonusnetworksolos"] > 0) {
 
                         echo $username . " gets " . $settings["freemonthlybonusnetworksolos"] . " network solos<br/>";
                         for($i = 0; $i < $settings["freemonthlybonusnetworksolos"]; $i++) {
-                            $networksolo->createBlankAd($username);
+                            $networksolo->createBlankAd($username, '');
                         }
                     }
                 }

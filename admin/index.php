@@ -452,10 +452,16 @@ if (isset($_POST['login'])) {
                     $ad = new NetworkSolo($adtable);
             }
             if ($ad) {
-                for ($i = 0; $i <= $_POST['howmanytogive']; $i++) {
-                    // will show only the last message (so don't have a list printed out per $i):
-                    $showad = $ad->createBlankAd($_POST['username']);
-                }
+                if (isset($_POST['givememberblankad'])) {
+
+                    $givememberblankad = $_POST['givememberblankad'];
+                    for ($i = 1; $i <= $givememberblankad; $i++) {
+
+                        $showad = $ad->createBlankAd($_POST['username'], $givememberblankad);
+                    }
+                } else {
+                    $showad = $ad->createBlankAd($_POST['username'], '');
+                }                
             }
         }
     }

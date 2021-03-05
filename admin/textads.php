@@ -23,7 +23,7 @@ $ads = $allads->getAllAds();
 
 <div class="container">
 
-	<h1 class="ja-bottompadding">Sell Text Ads</h1>
+	<h1 class="mb-2 pt-4">Sell Text Ads</h1>
 
 	<form action="/admin/textads" method="post" class="form" role="form">
 
@@ -40,9 +40,9 @@ $ads = $allads->getAllAds();
 
 	</form>
 
-	<div class="ja-bottompadding ja-toppadding"></div>
+	<div class="ja-bottompadding mb-4"></div>
 
-	<h1 class="ja-bottompadding">Give Member Blank Text Ads</h1>
+	<h1 class="mb-2">Give Member Blank Text Ads</h1>
 
 	<form action="/admin/textads" method="post" class="form" role="form">
 
@@ -50,18 +50,18 @@ $ads = $allads->getAllAds();
 		<input type="text" name="username" class="form-control input-lg" placeholder="Username" maxlength="32" required>
 
 		<label for="howmanytogive" class="ja-toppadding">How many?:</label>
-		<input type="number" min="1" step="1" name="howmanytogive" class="form-control smallselect" required>
+		<input type="number" min="1" step="1" value="1" name="howmanytogive" class="form-control smallselect" required>
 
 		<div class="ja-bottompadding"></div>
 
 		<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
-		<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="givememberblankad">GIVE BLANK ADS</button>
+		<button class="btn btn-lg btn-primary ja-bottompadding" type="submit" name="givememberblankad">GIVE BLANK ADS</button>
 
 	</form>
 
-	<div class="ja-bottompadding ja-toppadding"></div>
+	<div class="ja-bottompadding mb-4"></div>
 
-	<h1 class="ja-bottompadding">Create Text Ad</h1>
+	<h1 class="mb-2">Create Text Ad</h1>
 
 	<form action="/admin/textads" method="post" accept-charset="utf-8" class="form" role="form">
 
@@ -86,11 +86,11 @@ $ads = $allads->getAllAds();
 		<div class="ja-bottompadding"></div>
 
 		<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
-		<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE AD</button>
+		<button class="btn btn-lg btn-primary ja-bottompadding" type="submit" name="createad">CREATE AD</button>
 
 	</form>
 
-	<div class="ja-bottompadding ja-toppadding"></div>
+	<div class="ja-bottompadding mb-4"></div>
 
 	<h1 class="ja-bottompadding ja-toppadding mb-4">All Member Text Ads</h1>
 
