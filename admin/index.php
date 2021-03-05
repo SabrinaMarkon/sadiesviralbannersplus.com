@@ -415,7 +415,7 @@ if (isset($_POST['login'])) {
             $adtable = $_POST['adtable'];
             switch ($adtable) {
                 case "textads":
-                    $ad = new TextAds($adtable);
+                    $ad = new TextAd($adtable);
                     break;
                 case "bannerspaid":
                     $ad = new Banner($adtable);
@@ -426,6 +426,36 @@ if (isset($_POST['login'])) {
             }
             if ($ad) {
                 $showad = $ad->saveAdSettings($_POST);
+            }
+        }
+    }
+
+    if (isset($_POST['givememberblankad'])) {
+
+        $errors = $formvalidation->validateAll($_POST);
+        if (!empty($errors)) {
+
+            $showad = $errors;
+        } else {
+
+            # give a user one or more blank ads from admin.
+            $ad = "";
+            $adtable = $_POST['adtable'];
+            switch ($adtable) {
+                case "textads":
+                    $ad = new TextAd($adtable);
+                    break;
+                case "bannerspaid":
+                    $ad = new Banner($adtable);
+                    break;
+                case "networksolos":
+                    $ad = new NetworkSolo($adtable);
+            }
+            if ($ad) {
+                for ($i = 0; $i <= $_POST['howmanytogive']; $i++) {
+                    // will show only the last message (so don't have a list printed out per $i):
+                    $showad = $ad->createBlankAd($_POST['username']);
+                }
             }
         }
     }
@@ -443,7 +473,7 @@ if (isset($_POST['login'])) {
             $adtable = $_POST['adtable'];
             switch ($adtable) {
                 case "textads":
-                    $ad = new TextAds($adtable);
+                    $ad = new TextAd($adtable);
                     break;
                 case "bannerspaid":
                     $ad = new Banner($adtable);
@@ -471,7 +501,7 @@ if (isset($_POST['login'])) {
             $adtable = $_POST['adtable'];
             switch ($adtable) {
                 case "textads":
-                    $ad = new TextAds($adtable);
+                    $ad = new TextAd($adtable);
                     break;
                 case "bannerspaid":
                     $ad = new Banner($adtable);

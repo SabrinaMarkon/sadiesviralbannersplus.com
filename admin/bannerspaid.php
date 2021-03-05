@@ -42,6 +42,25 @@ $ads = $allads->getAllAds();
 
 	<div class="ja-bottompadding ja-toppadding"></div>
 
+	<h1 class="ja-bottompadding">Give Member Blank Paid Banners (paid rotation only)</h1>
+
+	<form action="/admin/bannerspaid" method="post" class="form" role="form">
+
+		<label for="username" class="ja-toppadding">Username:</label>
+		<input type="text" name="username" class="form-control input-lg" placeholder="Username" maxlength="32" required>
+
+		<label for="howmanytogive" class="ja-toppadding">How many?:</label>
+		<input type="number" min="1" step="1" name="howmanytogive" class="form-control smallselect" required>
+
+		<div class="ja-bottompadding"></div>
+
+		<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+		<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="givememberblankad">GIVE BLANK ADS</button>
+
+	</form>
+
+	<div class="ja-bottompadding ja-toppadding"></div>
+
 	<h1 class="ja-bottompadding">Create Banner</h1>
 
 	<form action="/admin/bannerspaid" method="post" accept-charset="utf-8" class="form" role="form">
