@@ -182,6 +182,8 @@ figcaption .sadietalknormal {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  margin: 1rem auto;
+  padding: 1rem;
 }
 .memberbanners > div {
   margin: 1rem auto; 
