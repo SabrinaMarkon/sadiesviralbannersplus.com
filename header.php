@@ -188,10 +188,12 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                 </section>
             <?php
             } else {
+                if ($urlfile !== 'banners') {
             ?>
                 <div class="my-3 text-center"><?php include 'rotatorbannerspaid.php'; ?></div>
                 <div class="ja-toppadding2" id="home"></div>
             <?php
+                }
             }
             ?>
 
