@@ -304,6 +304,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Profile Pag
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion Page', '', 'promotion', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Text Ads Page', '', 'ads', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Paid Banner Ads Page', '', 'bannerspaid', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Free Member Banner Ads Page', '', 'bannersformembers', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Network Solos Page', '', 'networksolos', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Maker Page', '', 'imagemaker', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Downloads Page', '', 'downloads', 'yes');
