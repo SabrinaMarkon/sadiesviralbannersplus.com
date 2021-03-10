@@ -85,4 +85,23 @@ class Sponsor
 
         return ''; 
     }
+
+    public function getReferralCount(string $username, string $accounttype): int {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "select count(id) from members where referid=? and accounttype=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username, $accounttype));
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        $data = $q->fetch();
+
+        if (!empty($data['count'])) {
+            return $data['count'];
+        }
+
+        Database::disconnect();
+
+        return 0;
+    }
 }
