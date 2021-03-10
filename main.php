@@ -17,22 +17,22 @@ foreach($levels as $level) {
     $$features = "";
 
     if ($$signupbonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonustextads . ' MAIN PAGE text ad(s)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonustextads . ' FRONT PAGE text ads!</li>';
     }
     if ($$signupbonusbannerspaid > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusbannerspaid . ' banners in my special PAID-ONLY rotator!</li>';
     }
     if ($$signupbonusnetworksolos > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusnetworksolos . ' HUMONGOUS NETWORK SOLOS!</li>';
     }
     if ($$monthlybonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonustextads . ' MAIN PAGE text ad(s)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonustextads . ' FRONT PAGE text ads!</li>';
     }
     if ($$monthlybonusbannerspaid > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banner(s) in our NORMALLY PAID-ONLY rotator!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banner in my special PAID-ONLY rotator!</li>';
     }
     if ($$monthlybonusnetworksolos > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusnetworksolos . ' mass NETWORK SOLO(S)!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusnetworksolos . ' HUMONGOUS NETWORK SOLOS!</li>';
     }
 }
 ?>
