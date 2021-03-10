@@ -101,7 +101,6 @@ figcaption .sadietalknormal {
   color: #121212;
   font-size: 1.2em;
 }
-
 .memberstats {
   display: flex;
   justify-content: space-between;
@@ -130,6 +129,12 @@ figcaption .sadietalknormal {
 .memberstats .statcard .statnumbers h1 {
   color: #0067f4;
   font-size: xx-large;
+}
+.memberstats .statcard .statnumbers a {
+  color: #0067F4;
+}
+.memberstats .statcard .statnumbers a:hover {
+  color: #ff4343;
 }
 
 .alert {

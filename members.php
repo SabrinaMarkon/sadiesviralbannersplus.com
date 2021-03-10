@@ -22,9 +22,11 @@ $goldreferrals = $sponsor->getReferralCount($username, 'Gold');
             <figcaption>
                 <div class="sadietalkbig"><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span><span class="hiya">Hiya Peeps!</span> <span class="im">I'm</span> <span class="sadie">Sadie! </span><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span></div><br />
                 <div class="sadietalknormal">
-                    <div style="text-align: center; font-weight: bold;">Welcome to my awesome app where I will help your ads go viral!</div>
+                    <div style="font-weight: bold; text-align: center;">Welcome to my awesome app where I will help your ads go viral!</div>
                 </div>
             </figcaption>
+            <div style="font-weight: bold; text-align: center; font-size: 1.4rem;">Get Your Banners on Your Referrals' Banner URLs and Get PAID! <br /><a href="<?php echo $domain . "/" . $username; ?>" target="_blank"><?php echo $domain . "/" . $username; ?></a><br /><br />
+            Show off Your Best Programs on your Own Special Banner URL! <br /><a href="<?php echo $domain . "/banners/" . $username; ?>" target="_blank"><?php echo $domain . "/banners/" . $username; ?></a><br /><br /></div>
             <div class="memberstats">
                 <div class="statcard">
                     <img src="images/rocket-red-sm.png" alt="Your Free Referrals">
