@@ -259,11 +259,6 @@ CREATE TABLE `promotional` (
 `promotionaladbody` longtext NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-CREATE TABLE `memberresources` (
-`id` int(10) unsigned not null primary key auto_increment,
-###################################################################################################
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 create table `textads` (
 `id` integer unsigned not null primary key auto_increment,
 `username` varchar(255) not null default 'admin',
