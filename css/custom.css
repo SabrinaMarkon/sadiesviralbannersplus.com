@@ -101,19 +101,26 @@ figcaption .sadietalknormal {
   color: #121212;
   font-size: 1.2em;
 }
+.affiliateurl a {
+  color: #0067F4 !important;
+}
+.affiliateurl a:hover {
+  color: #ff4343 !important;
+}
 .memberstats {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .memberstats .statcard {
   display: flex;
   justify-content: space-around;
-  min-width: 240px;
+  width: 240px;
   background: #fff;
   border-radius: 20px;
   box-shadow: 2px 2px 2px #121212;
   padding: 1em;
-  margin: 5px;
+  margin: 1rem;
 }
 .memberstats .statcard img {
   padding-top: 5px;
@@ -130,12 +137,7 @@ figcaption .sadietalknormal {
   color: #0067f4;
   font-size: xx-large;
 }
-.memberstats .statcard .statnumbers a {
-  color: #0067F4;
-}
-.memberstats .statcard .statnumbers a:hover {
-  color: #ff4343;
-}
+
 
 .alert {
   margin: auto;

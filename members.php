@@ -22,11 +22,12 @@ $goldreferrals = $sponsor->getReferralCount($username, 'Gold');
             <figcaption>
                 <div class="sadietalkbig"><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span><span class="hiya">Hiya Peeps!</span> <span class="im">I'm</span> <span class="sadie">Sadie! </span><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span></div><br />
                 <div class="sadietalknormal">
-                    <div style="font-weight: bold; text-align: center;">Welcome to my awesome app where I will help your ads go viral!</div>
+                    <div style="font-weight: bold; text-align: center;">Welcome to my <strong>awesome app</strong> where I will help your ads go positively <strong>viral!</strong></div>
                 </div>
             </figcaption>
-            <div style="font-weight: bold; text-align: center; font-size: 1.4rem;">Get Your Banners on Your Referrals' Banner URLs and Get PAID! <br /><a href="<?php echo $domain . "/" . $username; ?>" target="_blank"><?php echo $domain . "/" . $username; ?></a><br /><br />
-            Show off Your Best Programs on your Own Special Banner URL! <br /><a href="<?php echo $domain . "/banners/" . $username; ?>" target="_blank"><?php echo $domain . "/banners/" . $username; ?></a><br /><br /></div>
+            <div class="affiliateurl" style="font-weight: bold; text-align: center; font-size: 1.4rem;">Get Your Banners on Your Referrals' Banner Pages and Get PAID! <br /><a href="<?php echo $domain . "/" . $username; ?>" target="_blank"><?php echo $domain . "/" . $username; ?></a><br /><br />
+                Show off Your Best Programs on your Own Special Banner URL! <br /><a href="<?php echo $domain . "/banners/" . $username; ?>" target="_blank"><?php echo $domain . "/banners/" . $username; ?></a><br /><br />
+            </div>
             <div class="memberstats">
                 <div class="statcard">
                     <img src="images/rocket-red-sm.png" alt="Your Free Referrals">
@@ -50,6 +51,27 @@ $goldreferrals = $sponsor->getReferralCount($username, 'Gold');
                         <p>You have</p>
                         <h1><?php echo $goldreferrals ?></h1>
                         <p>Gold Referrals</p>
+                    </div>
+                </div>
+                <div class="statcard">
+                    <div class="statnumbers">
+                        <p>We Owe You</p>
+                        <h1>$<?php echo $owed ?></h1>
+                        <p>in Commissions!</p>
+                    </div>
+                </div>
+                <div class="statcard">
+                    <div class="statnumbers">
+                        <p>We've Paid You</p>
+                        <h1>$<?php echo $paid ?></h1>
+                        <p>in Commissions!</p>
+                    </div>
+                </div>
+                <div class="statcard">
+                    <div class="statnumbers">
+                        <p>To Date You've Earned</p>
+                        <h1>$<?php echo sprintf("%01.2f", $owed + $paid); ?></h1>
+                        <p>in Commissions!</p>
                     </div>
                 </div>
             </div>

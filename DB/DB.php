@@ -217,7 +217,8 @@ lastlogin datetime not null,
 textadclicks integer unsigned not null default '0',
 banneradclicks integer unsigned not null default '0',
 networksoloclicks integer unsigned not null default '0',
-owed decimal(9,2) not null default 0.00
+owed decimal(9,2) not null default 0.00,
+paid decimal(9,2) not null default 0.00
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 create table `networksolos` (
