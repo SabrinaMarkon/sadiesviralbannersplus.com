@@ -26,6 +26,10 @@ class LoginForm
 		{
 		$showloginerror = "<div class=\"alert alert-danger\"><strong>Incorrect Login</strong></div>";
 		}
+		if ($loginerror == 2)
+		{
+		$showloginerror = "<div class=\"alert alert-danger\"><strong>Please Verify Your Email Address to Login<br /><a href=\"/resend\">Resend Verification Email</a></strong></div>";
+		}
 
 $content = <<<HEREDOC
 	<div class="container">
