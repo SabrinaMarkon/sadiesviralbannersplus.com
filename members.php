@@ -22,7 +22,7 @@ $goldreferrals = $sponsor->getReferralCount($username, 'Gold');
             <figcaption>
                 <div class="sadietalkbig"><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span><span class="hiya">Hiya Peeps!</span> <span class="im">I'm</span> <span class="sadie">Sadie! </span><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span></div><br />
                 <div class="sadietalknormal">
-                    <div style="font-weight: bold; text-align: center;">Welcome to my <strong>awesome app</strong> where I will help your ads go positively <strong>viral!</strong></div>
+                    <div style="font-weight: bold; text-align: center;">Welcome to my <strong>AWESOME APP</strong> where I will help your ads go totally <strong>VIRAL!</strong></div>
                 </div>
             </figcaption>
             <div class="affiliateurl" style="font-weight: bold; text-align: center; font-size: 1.4rem;">Get Your Banners on Your Referrals' Banner Pages and Get PAID! <br /><a href="<?php echo $domain . "/" . $username; ?>" target="_blank"><?php echo $domain . "/" . $username; ?></a><br /><br />

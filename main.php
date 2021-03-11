@@ -22,7 +22,7 @@ foreach($levels as $level) {
     $$features = "";
 
     if ($$signupbonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonustextads . ' <strong>FRONT PAGE</strong> text ads!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonustextads . ' <strong>SITE WIDE</strong> text ads!</li>';
     }
     if ($$signupbonusbannerspaid > 0) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonusbannerspaid . ' banners in my special <strong>PAID-ONLY</strong> rotator!</li>';
@@ -31,7 +31,7 @@ foreach($levels as $level) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonusnetworksolos . ' <strong>HUMONGOUS NETWORK SOLOS!</strong></li>';
     }
     if ($$monthlybonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonustextads . ' <strong>FRONT PAGE</strong> text ads!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonustextads . ' <strong>SITE WIDE</strong> text ads!</li>';
     }
     if ($$monthlybonusbannerspaid > 0) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banner in my special <strong>PAID-ONLY</strong> rotator!</li>';

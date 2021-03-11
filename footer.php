@@ -5,6 +5,22 @@
 
 </main>
 
+<!-- Text ad rotator -->
+<section id="textads" class="textads-area">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="centered">
+                    <section class="cards">
+
+                        <?php include_once 'rotatortextads.php'; ?>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+</section>
+
 <!-- Footer -->
 <section class="footer-area footer-dark">
   <div class="container">
