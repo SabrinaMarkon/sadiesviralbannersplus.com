@@ -40,6 +40,8 @@ class FormValidation
         'name' => 'name',
         'subject' => 'subject',
         'country' => 'country',
+        'owed' => 'commission owed to the member',
+        'paid' => 'commission paid out to the member',
         'adminname' => 'admin name',
         'description' => 'ad description',
         'message' => 'message',
@@ -404,16 +406,17 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an integer greater than 0. </strong></div>";
                 }
-            } elseif ($varname === 'amount' || $varname === 'textadprice' || $varname === 'bannnerprice' || $varname === 'networksoloprice' || $varname === 'proprice' || $varname === 'goldprice' || $varname === 'freerefersproearn' || $varname === 'freerefersgoldearn' || $varname === 'prorefersproearn' || $varname === 'prorefersgoldearn' || $varname === 'goldrefersproearn' || $varname === 'goldrefersgoldearn') {
+            } elseif ($varname === 'amount' || $varname === 'owed' || $varname === 'paid' || $varname === 'textadprice' || $varname === 'bannnerprice' || $varname === 'networksoloprice' || $varname === 'proprice' || $varname === 'goldprice' || $varname === 'freerefersproearn' || $varname === 'freerefersgoldearn' || $varname === 'prorefersproearn' || $varname === 'prorefersgoldearn' || $varname === 'goldrefersproearn' || $varname === 'goldrefersgoldearn') {
 
                 # amount owed to a recipient in the transactions money table.
+                # the commissions owed and paid in the members table.
                 # prices for different kinds of advertising.
                 # prices for pro or gold membership.
                 # referral earnings.
 
-                $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_FLOAT);
+                $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
-                if (!filter_var($varvalue, FILTER_VALIDATE_FLOAT)) {
+                if (!filter_var($varvalue, FILTER_VALIDATE_FLOAT) && $varvalue != 0.00) {
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be a dollar figure (optionally with a decimal i.e. 5.42). </strong></div>";
                 }

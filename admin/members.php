@@ -88,6 +88,8 @@ $members = $allmembers->getAllMembers();
                             <th class="text-center small">Signup&nbsp;IP</th>
                             <th class="text-center small">Last&nbsp;Login</th>
                             <th class="text-center small">Sponsor</th>
+                            <th class="text-center small">Commission Owed</th>
+                            <th class="text-center small">Commission Paid</th>
                             <th class="text-center small">Edit</th>
                             <th class="text-center small">Login</th>
                             <th class="text-center small">Delete</th>
@@ -165,6 +167,12 @@ $members = $allmembers->getAllMembers();
                                     </td>
                                     <td>
                                         <input type="text" name="referid" value="<?php echo $member['referid']; ?>" class="form-control input-sm widetableinput" placeholder="Sponsor" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="owed" value="<?php echo $member['owed']; ?>" class="form-control input-sm widetableinput" placeholder="0.00" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="paid" value="<?php echo $member['paid']; ?>" class="form-control input-sm widetableinput" placeholder="0.00" required>
                                     </td>
                                     <td>
                                         <input type="hidden" name="_method" value="PATCH">

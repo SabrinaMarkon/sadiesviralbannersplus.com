@@ -101,6 +101,8 @@ class Member
         $paypal = $_POST['paypal'];
         $signupip = $_POST['signupip'];
         $referid = $_POST['referid'];
+        $owed = $_POST['owed'];
+        $paid = $_POST['paid'];
 
         if (empty($referid)) {
 
@@ -109,9 +111,9 @@ class Member
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "update `members` set username=?, password=?, firstname=?, lastname=?, country=?, email=?, paypal=?, signupip=?, referid=? where id=?";
+        $sql = "update `members` set username=?, password=?, firstname=?, lastname=?, country=?, email=?, paypal=?, signupip=?, referid=?, owed=?, paid=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute(array($username, $password, $firstname, $lastname, $country, $email, $paypal, $signupip, $referid, $id));
+        $q->execute(array($username, $password, $firstname, $lastname, $country, $email, $paypal, $signupip, $referid, $owed, $paid, $id));
 
         Database::disconnect();
 
