@@ -2765,16 +2765,19 @@ p {
   background-color: #ffd633;
   /* padding-top: 120px; */
   padding-top: 3em;
-  padding-bottom: 130px; }
+  padding-bottom: 60px; }
 
 .flexcards-equalheight {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .flexcards-equalheight .flexcard {
   display: flex; 
   padding: 0.5em;
 	width: 100%;
+  max-width: 450px;
+  margin: 1em 1em 0;
 }
 .flexcards-equalheight .flexcard .flexcard-content {
   display: flex;

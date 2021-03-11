@@ -13,26 +13,43 @@ foreach($levels as $level) {
     $monthlybonustextads = $level . "monthlybonustextads";
     $monthlybonusbannerspaid = $level . "monthlybonusbannerspaid";
     $monthlybonusnetworksolos = $level . "monthlybonusnetworksolos";
+    $bannerslots = $level . "bannerslots";
+    $refersfreebannerslots = $level . "refersfreebannerslots";
+    $refersprobannerslots = $level . "refersprobannerslots";
+    $refersgoldbannerslots = $level . "refersgoldbannerslots";
+
     $features = $level . "features";
     $$features = "";
 
     if ($$signupbonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonustextads . ' FRONT PAGE text ads!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonustextads . ' <strong>FRONT PAGE</strong> text ads!</li>';
     }
     if ($$signupbonusbannerspaid > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusbannerspaid . ' banners in my special PAID-ONLY rotator!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonusbannerspaid . ' banners in my special <strong>PAID-ONLY</strong> rotator!</li>';
     }
     if ($$signupbonusnetworksolos > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> sign up bonus of ' . $$signupbonusnetworksolos . ' HUMONGOUS NETWORK SOLOS!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonusnetworksolos . ' <strong>HUMONGOUS NETWORK SOLOS!</strong></li>';
     }
     if ($$monthlybonustextads > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonustextads . ' FRONT PAGE text ads!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonustextads . ' <strong>FRONT PAGE</strong> text ads!</li>';
     }
     if ($$monthlybonusbannerspaid > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banner in my special PAID-ONLY rotator!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banner in my special <strong>PAID-ONLY</strong> rotator!</li>';
     }
     if ($$monthlybonusnetworksolos > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>free</strong> monthly bonus of ' . $$monthlybonusnetworksolos . ' HUMONGOUS NETWORK SOLOS!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonusnetworksolos . ' <strong>HUMONGOUS NETWORK SOLOS!</strong></li>';
+    }
+    if (!empty($$bannerslots)) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Your favorite <strong>OVERSIZED</strong> 736 x 90 BANNERS in the <strong>VIRAL</strong> banner slots # ' . $$bannerslots . ' of your very own <strong>VIRAL BANNER AD PAGE!</strong></li>';
+    }
+    if (!empty($$refersfreebannerslots)) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersfreebannerslots . ' on <strong>EVERY</strong> single one of your <strong>FREE REFERRALS\'</strong> viral banner pages!</li>';
+    }
+    if (!empty($$refersprobannerslots)) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersprobannerslots . ' on <strong>EVERY</strong> single one of your <strong>PRO REFERRALS\'</strong> viral banner pages!</li>';
+    }
+    if (!empty($$refersgoldbannerslots)) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersgoldbannerslots . ' on <strong>EVERY</strong> single one of your <strong>GOLD REFERRALS\'</strong> viral banner pages!</li>';
     }
 }
 ?>
@@ -80,13 +97,13 @@ if (!empty($showcontent->showPage('Home Page'))) {
 
 <!-- Different Membership Levels -->
 <section id="memberships" class="pricing-area">
-    <div class="container">
+    <div class="mx-5">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">
                 <div id="getstarted" class="section-title text-center">
                     <h3 class="title">Membership Plans <i class="fas fa-star fa-xs"></i></h3>
-                    <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results. Happiness guaranteed!</strong></p>
-                    <p class="text"><strong>Choose your membership!</strong></p><br>
+                    <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p>
+                    <p class="text"><h3>Choose your membership!</h3></p><br>
                 </div> <!-- section title -->
             </div>
         </div> <!-- row -->
