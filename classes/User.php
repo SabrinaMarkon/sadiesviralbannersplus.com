@@ -166,15 +166,36 @@ class User
 			$q = $pdo->prepare($sql);
 			$q->execute(array($verificationcode));
 			Database::disconnect();
-			return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your email address was verified!</strong></div>";
+			return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Your email address was verified!<br /><a href=\"/login\">Click to Login</a></strong></div>";
 		} else {
 			return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>Your verification code was invalid. Please check the link in the welcome email.</strong></div>";
 		}
 	}
 
-	/**
-	 * @param settings[] $settings An array of admin settings.
-	 */
+	public function resendForm(string $usernameoremail, array $settings): string
+	{
+
+		$pdo = Database::connect();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "select * from members where username=? or email=? limit 1";
+		$q = $pdo->prepare($sql);
+		$q->execute(array($usernameoremail, $usernameoremail));
+		$valid = $q->rowCount();
+		if ($valid > 0) {
+			$q->setFetchMode(PDO::FETCH_ASSOC);
+			$memberdetails = $q->fetch();
+			$username = $memberdetails['username'];
+			$password = $memberdetails['password'];
+			$email = $memberdetails['email'];
+			$resent = $this->resendVerify($username, $password, $email, $settings);
+			
+			return $resent;
+		} else {
+
+			return "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The username or email address you entered was not found.</strong></div>";
+		}
+	}
+
 	public function resendVerify(string $username, string $password, string $email, array $settings): string
 	{
 

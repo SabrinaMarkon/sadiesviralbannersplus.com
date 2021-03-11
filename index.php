@@ -80,6 +80,22 @@ if (isset($_POST['forgotlogin'])) {
 	}
 }
 
+if (isset($_POST['userresendverification'])) {
+
+	// $errors = $formvalidation->validateAll($_POST);
+	$errors = '';
+	if (!empty($errors)) {
+
+		$show = $errors;
+	} else {
+
+		# member clicked button to resend their verification email.
+		$sendsiteemail = new Email();
+		$resend = new User($sendsiteemail);
+		$show = $resend->resendForm($_POST['usernameoremail'], $settings);
+	}
+}
+
 if (isset($_POST['contactus'])) {
 
 	$errors = $formvalidation->validateAll($_POST);

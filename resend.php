@@ -5,23 +5,23 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-if (isset($showforgot))
+if (isset($show))
 {
-echo $showforgot;
+echo $show;
 }
 ?>
 <div class="container">
 
-		<h1 class="ja-bottompadding">Email Password</h1>
+		<h1 class="ja-bottompadding">Resend Verification Email</h1>
 
-		<form action="/forgot" method="post" accept-charset="utf-8" class="form" role="form">
+		<form action="/resend" method="post" accept-charset="utf-8" class="form" role="form">
 
 			<label class="sr-only" for="usernameoremail">Your Username or Email Address</label>
 			<input type="text" name="usernameoremail" value="" class="form-control input-lg" placeholder="Your Username or Email Address" required>
 
 			<div class="ja-bottompadding"></div>
 
-			<button class="btn btn-lg btn-primary" type="submit" name="forgotlogin">Email Password</button>
+			<button class="btn btn-lg btn-primary" type="submit" name="userresendverification">Resend</button>
 
 		</form>
 
