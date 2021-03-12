@@ -21,6 +21,19 @@ $members = $allmembers->getAllMembers();
 
             <form action="/admin/members" method="post" accept-charset="utf-8" class="form" role="form">
 
+                <label sr-only for="username" class="mt-1">Username:</label>
+                <input type="text" name="username" value="" class="form-control input-lg" placeholder="Username" required>
+
+                <label sr-only for="password" class="mt-1">Password:</label>
+                <input type="password" name="password" id="password" value="" class="form-control input-lg" placeholder="Password" required>
+
+                <label sr-only for="accounttype" class="mt-1">Membership Type:</label>
+                <select name="accounttype" class="form-control widetableselect">
+                    <option value="Free">Free</option>
+                    <option value="Pro">Pro</option>
+                    <option value="Gold">Gold</option>
+                </select>
+
                 <div class="row">
                     <div class="col-xs-6 col-md-6">
                         <label sr-only for="firstname">First Name:</label>
@@ -32,22 +45,16 @@ $members = $allmembers->getAllMembers();
                     </div>
                 </div>
 
-                <label sr-only for="email" class="ja-toppadding">Email:</label>
+                <label sr-only for="email" class="mt-1">Email:</label>
                 <input type="email" name="email" value="" class="form-control input-lg" placeholder="Your Email" required>
 
-                <label sr-only for="username" class="ja-toppadding">Username:</label>
-                <input type="text" name="username" value="" class="form-control input-lg" placeholder="Username" required>
-
-                <label sr-only for="password" class="ja-toppadding">Password:</label>
-                <input type="password" name="password" id="password" value="" class="form-control input-lg" placeholder="Password" required>
-
-                <label sr-only for="confirm_password" class="ja-toppadding">Confirm Password:</label>
+                <label sr-only for="confirm_password" class="mt-1">Confirm Password:</label>
                 <input type="password" name="confirm_password" id="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password" required>
 
-                <label for="paypal" class="ja-toppadding">Paypal Email:</label>
+                <label for="paypal" class="mt-1">Paypal Email:</label>
                 <input type="email" name="paypal" value="" class="form-control input-lg" placeholder="Paypal Email">
 
-                <label sr-only for="country" class="ja-toppadding">Country:</label>
+                <label sr-only for="country" class="mt-1">Country:</label>
                 <select name="country" class="form-control input-lg">
                     <option value="Canada">Canada</option>
                     <option value="United States">United States</option>
@@ -58,8 +65,18 @@ $members = $allmembers->getAllMembers();
                     ?>
                 </select>
 
-                <label sr-only for="referid" class="ja-toppadding">Sponsor:</label>
-                <input type="text" name="referid" value="admin" class="form-control input-lg" placeholder="Sponsor" required>
+                <label sr-only for="referid" class="mt-1">Sponsor:</label>
+                <select name="referid" class="form-control input-lg">
+                    <option value="admin">admin</option>
+                    <?php
+                    foreach ($members as $member) {
+                        $referid = $member['username'];
+                    ?>
+                        <option value="<?php echo $referid ?>"><?php echo $referid ?></options>
+                        <?php
+                    }
+                        ?>
+                </select>
 
                 <div class="ja-bottompadding"></div>
 
@@ -134,8 +151,8 @@ $members = $allmembers->getAllMembers();
                                                                         echo " selected";
                                                                     } ?>>Free</option>
                                             <option value="Pro" <?php if ($member['accounttype'] === "Pro") {
-                                                                        echo " selected";
-                                                                    } ?>>Pro</option>
+                                                                    echo " selected";
+                                                                } ?>>Pro</option>
                                             <option value="Gold" <?php if ($member['accounttype'] === "Gold") {
                                                                         echo " selected";
                                                                     } ?>>Gold</option>
@@ -180,7 +197,21 @@ $members = $allmembers->getAllMembers();
                                         <?php echo $datelastlogin ?>
                                     </td>
                                     <td>
-                                        <input type="text" name="referid" value="<?php echo $member['referid']; ?>" class="form-control input-sm widetableinput" placeholder="Sponsor" required>
+                                        <select name="referid" class="form-control input-sm widetableselect">
+                                            <option value="admin" <?php if ($member['referid'] === 'admin') {
+                                                                        echo "selected";
+                                                                    } ?>>admin</option>
+                                            <?php
+                                            foreach ($members as $sponsor) {
+                                                $referid = $sponsor['username'];
+                                            ?>
+                                                <option value="<?php echo $referid ?>" <?php if ($member['referid'] === $referid) {
+                                                                                            echo "selected";
+                                                                                        } ?>><?php echo $referid ?></options>
+                                                <?php
+                                            }
+                                                ?>
+                                        </select>
                                     </td>
                                     <td>
                                         <input type="text" name="owed" value="<?php echo $member['owed']; ?>" class="form-control input-sm widetableinput" placeholder="0.00" required>

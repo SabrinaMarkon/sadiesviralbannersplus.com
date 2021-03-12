@@ -42,6 +42,7 @@ class Member
 
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $accounttype = $_POST['accounttype'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $country = $_POST['country'];
@@ -72,9 +73,9 @@ class Member
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "insert into members (username,password,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) values (?,?,?,?,?,?,?,?,NOW(),?,?)";
+        $sql = "insert into members (username,password,accounttype,firstname,lastname,email,paypal,country,referid,signupdate,signupip,verificationcode) values (?,?,?,?,?,?,?,?,NOW(),?,?)";
         $q = $pdo->prepare($sql);
-        $q->execute(array($username, $password, $firstname, $lastname, $email, $paypal, $country, $referid, $signupip, $verificationcode));
+        $q->execute(array($username, $password, $accounttype, $firstname, $lastname, $email, $paypal, $country, $referid, $signupip, $verificationcode));
 
         Database::disconnect();
 
@@ -84,7 +85,7 @@ class Member
         $message .= "Your Referral URL: " . $settings['domain'] . "/r/" . $username . "\n\n";
 
         $sendsiteemail = new Email();
-        $send = $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
+        $sendsiteemail->sendEmail($email, $settings['adminemail'], $subject, $message, $settings['sitename'], $settings['adminemail'], '');
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Member " . $username . " was Added!</strong></div>";
     }
