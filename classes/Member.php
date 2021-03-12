@@ -94,6 +94,7 @@ class Member
 
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $accounttype = $_POST['accounttype'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $country = $_POST['country'];
@@ -111,38 +112,12 @@ class Member
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "update `members` set username=?, password=?, firstname=?, lastname=?, country=?, email=?, paypal=?, signupip=?, referid=?, owed=?, paid=? where id=?";
+        $sql = "update `members` set username=?, password=?, accounttype=?, firstname=?, lastname=?, country=?, email=?, paypal=?, signupip=?, referid=?, owed=?, paid=? where id=?";
         $q = $pdo->prepare($sql);
-        $q->execute(array($username, $password, $firstname, $lastname, $country, $email, $paypal, $signupip, $referid, $owed, $paid, $id));
+        $q->execute(array($username, $password, $accounttype, $firstname, $lastname, $country, $email, $paypal, $signupip, $referid, $owed, $paid, $id));
 
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Member " . $username . " was Saved!</strong></div>";
-    }
-
-    public function deleteMember(int $id): string
-    {
-
-        $username = $_POST['username'];
-        $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        # delete ads.
-        $sql = "delete from ads where username=?";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($username));
-
-        # delete transactions.
-        $sql = "delete from transactions where username=?";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($username));
-
-        # delete account.
-        $sql = "delete from members where id=?";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($id));
-
-        Database::disconnect();
-        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>Member " . $username . " was Deleted</strong></div>";
     }
 }

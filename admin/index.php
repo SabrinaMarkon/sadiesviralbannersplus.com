@@ -327,8 +327,8 @@ if (isset($_POST['login'])) {
         } else {
 
             # admin deleted a member and their ads and positions.
-            $delete = new Member();
-            $show = $delete->deleteMember($id);
+            $delete = new User();
+            $show = $delete->deleteUser();
         }
     }
 

@@ -314,30 +314,68 @@ class User
 		return;
 	}
 
-	public function deleteUser(string $username): string
+	public function deleteUser(): string
 	{
 
-		$pdo = Database::connect();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $username = $_POST['username'];
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		# delete ads.
-		$sql = "delete from ads where username=?";
-		$q = $pdo->prepare($sql);
-		$q->execute(array($username));
+        # delete text ads.
+        $sql = "delete from textads where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
 
-		# delete transactions.
-		$sql = "delete from transactions where username=?";
-		$q = $pdo->prepare($sql);
-		$q->execute(array($username));
+        # delete network solos.
+        $sql = "delete from networksolos where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
 
-		# delete account.
-		$sql = "delete from members where id=?";
-		$q = $pdo->prepare($sql);
-		$q->execute(array($id));
+        # delete paid banners.
+        $sql = "delete from bannerspaid where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
 
-		$sql = "delete from members where username=?";
-		$q = $pdo->prepare($sql);
-		$q->execute(array($username));
+        # delete from banner maker saved banners.
+        $sql = "delete from banners where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+
+        # delete from member banners.
+        $sql = "select * from bannersformembers where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        $usersbanners = $q->fetchAll();
+        # delete from member banner clicks.
+        if (!empty($usersbanners)) {
+            foreach ($usersbanners as $usersbanner) {
+                $bannerid = $usersbanner['id'];
+                $sql = "delete from bannersformembersclicks where bannerid=?";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($bannerid));
+            }
+        }
+
+        # delete download access.
+        $sql = "delete from downloadaccess where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+
+        # delete mails.
+        $sql = "delete from mail where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+
+        # delete transactions.
+        $sql = "delete from transactions where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+
+        # delete account.
+        $sql = "delete from members where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
 
 		Database::disconnect();
 

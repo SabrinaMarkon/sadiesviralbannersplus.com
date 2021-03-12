@@ -222,7 +222,7 @@ if (isset($_POST['deletead'])) {
 	$adtable = $_POST['adtable'];
 	switch ($adtable) {
 		case "textads":
-			$ad = new TextAds($adtable);
+			$ad = new TextAd($adtable);
 			break;
 		case "bannerspaid":
 			$ad = new Banner($adtable);

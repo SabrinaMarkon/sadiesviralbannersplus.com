@@ -27,6 +27,7 @@ class FormValidation
         'username' => 'username',
         'password' => 'password',
         'confirm_password' => 'password confirmation',
+        'accounttype' => 'membership type',
         'adminpass' => 'admin password',
         'confirm_adminpass' => 'admin password confirmation',
         'adminuser' => 'admin username',
@@ -233,6 +234,16 @@ class FormValidation
                 } elseif ($numchars > 50) {
 
                     $errors .= "<div><strong>The size of " . $pretty_varname . " must be 50 or less characters.</strong></div>";
+                }
+            } elseif ($varname === 'accounttype') {
+                
+                # membership level.
+
+                $varvalue = filter_var($varvalue, FILTER_SANITIZE_STRING);
+
+                if ($varvalue !== 'Free' && $varvalue !== 'Pro' && $varvalue !== 'Gold') {
+                    
+                    $errors .= "<div><strong>The " . $pretty_varname . " must be either Free, Pro, or Gold.</strong></div>";
                 }
             } elseif ($varname === 'title' || $varname === 'slug') {
 

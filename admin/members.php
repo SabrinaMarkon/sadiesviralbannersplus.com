@@ -78,6 +78,7 @@ $members = $allmembers->getAllMembers();
                             <th class="text-center small">#</th>
                             <th class="text-center small">Username</th>
                             <th class="text-center small">Password</th>
+                            <th class="text-center small">Membership</th>
                             <th class="text-center small">First&nbsp;Name</th>
                             <th class="text-center small">Last&nbsp;Name</th>
                             <th class="text-center small">Email&nbsp;Address</th>
@@ -126,6 +127,19 @@ $members = $allmembers->getAllMembers();
                                     </td>
                                     <td>
                                         <input type="text" name="password" value="<?php echo $member['password']; ?>" class="form-control input-sm widetableinput" placeholder="Password" required>
+                                    </td>
+                                    <td>
+                                        <select name="accounttype" class="form-control widetableselect">
+                                            <option value="Free" <?php if ($member['accounttype'] === "Free") {
+                                                                        echo " selected";
+                                                                    } ?>>Free</option>
+                                            <option value="Pro" <?php if ($member['accounttype'] === "Pro") {
+                                                                        echo " selected";
+                                                                    } ?>>Pro</option>
+                                            <option value="Gold" <?php if ($member['accounttype'] === "Gold") {
+                                                                        echo " selected";
+                                                                    } ?>>Gold</option>
+                                        </select>
                                     </td>
                                     <td>
                                         <input type="text" name="firstname" value="<?php echo $member['firstname']; ?>" class="form-control input-sm widetableinput" placeholder="First Name" required>
