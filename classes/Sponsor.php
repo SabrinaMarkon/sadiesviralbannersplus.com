@@ -90,7 +90,7 @@ class Sponsor
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select count(id) from members where referid=? and accounttype=?";
+        $sql = "select count(id) as count from members where referid=? and accounttype=?";
         $q = $pdo->prepare($sql);
         $q->execute(array($username, $accounttype));
         $q->setFetchMode(PDO::FETCH_ASSOC);
