@@ -56,6 +56,10 @@ function formFieldsToJSON() {
     document.getElementById("paypal") != null
       ? document.getElementById("paypal").value
       : "";
+  let bitcoin =
+    document.getElementById("bitcoin") != null
+      ? document.getElementById("bitcoin").value
+      : "";
   let country =
     document.getElementById("country") != null
       ? document.getElementById("country").value
@@ -96,6 +100,7 @@ function formFieldsToJSON() {
     lastname,
     email,
     paypal,
+    bitcoin,
     country,
     signupip,
     referid,

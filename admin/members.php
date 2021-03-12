@@ -54,6 +54,9 @@ $members = $allmembers->getAllMembers();
                 <label for="paypal" class="mt-1">Paypal Email:</label>
                 <input type="email" name="paypal" value="" class="form-control input-lg" placeholder="Paypal Email">
 
+                <label for="bitcoin" class="mt-1">Bitcoin Wallet ID:</label>
+                <input type="text" name="bitcoin" value="" class="form-control input-lg" placeholder="Bitcoin Wallet ID">
+
                 <label sr-only for="country" class="mt-1">Country:</label>
                 <select name="country" class="form-control input-lg">
                     <option value="Canada">Canada</option>
@@ -101,6 +104,7 @@ $members = $allmembers->getAllMembers();
                             <th class="text-center small">Email&nbsp;Address</th>
                             <th class="text-center small">Verified</th>
                             <th class="text-center small">Paypal</th>
+                            <th class="text-center small">Bitcoin</th>
                             <th class="text-center small">Country</th>
                             <th class="text-center small">Signup&nbsp;Date</th>
                             <th class="text-center small">Signup&nbsp;IP</th>
@@ -172,6 +176,9 @@ $members = $allmembers->getAllMembers();
                                     </td>
                                     <td>
                                         <input type="email" name="paypal" value="<?php echo $member['paypal']; ?>" class="form-control input-sm widetableinput" placeholder="Paypal">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="bitcoin" value="<?php echo $member['bitcoin']; ?>" class="form-control input-sm widetableinput" placeholder="Bitcoin Wallet ID">
                                     </td>
                                     <td>
                                         <select name="country" class="form-control widetableselect">

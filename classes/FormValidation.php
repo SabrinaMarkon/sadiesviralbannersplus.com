@@ -48,6 +48,7 @@ class FormValidation
         'message' => 'message',
         'email' => 'email',
         'paypal' => 'paypal',
+        'bitcoin' => 'bitcoin wallet id',
         'adminpaypal' => 'admin paypal',
         'admincoinpayments' => 'admin coinpayments.net api',
         'adminemail' => 'admin email',
@@ -304,10 +305,11 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
                 }
-            } elseif ($varname === 'paypal' || $varname === 'adminpaypal' || $varname === 'admincoinpayments' || $varname === 'downloadsfolder') {
+            } elseif ($varname === 'paypal' || $varname === 'adminpaypal' || $varname === 'admincoinpayments' || $varname === 'downloadsfolder' || $varname === 'bitcoin') {
 
                 # user's or admin's paypal email or coinpayments key.
                 # the path to the downloads folder.
+                # the user's bitcoin wallet id.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_EMAIL);
                 $numchars = strlen($varvalue);
@@ -322,7 +324,7 @@ class FormValidation
                     } elseif ($numchars > 300) {
 
                         $errors .= "<div><strong>The size of " . $pretty_varname . " must be 300 or less characters.</strong></div>";
-                    } elseif (!filter_var($varvalue, FILTER_VALIDATE_EMAIL) && $varname !== 'admincoinpayments' && $varname !== 'downloadsfolder') {
+                    } elseif (!filter_var($varvalue, FILTER_VALIDATE_EMAIL) && $varname !== 'admincoinpayments' && $varname !== 'downloadsfolder' && $varname !== 'bitcoin') {
 
                         $errors .= "<div><strong>The value of " . $pretty_varname . " must be a valid email address.</strong></div>";
                     }

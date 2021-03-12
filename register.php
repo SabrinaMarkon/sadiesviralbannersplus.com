@@ -96,6 +96,9 @@ For FREE memberships we submit this form normally though (the post is picked up 
 			<label for="paypal" class="ja-toppadding">Paypal Email:</label>
 			<input type="email" id="paypal" name="paypal" value="" class="form-control input-lg" placeholder="Paypal Email">
 
+			<label for="bitcoin" class="ja-toppadding">Bitcoin Wallet ID:</label>
+			<input type="text" id="bitcoin" name="bitcoin" value="" class="form-control input-lg" placeholder="Bitcoin Wallet ID">
+
 			<label for="country" class="ja-toppadding">Country:</label>
 			<select id="country" name="country" class="form-control input-lg">
 				<option value="Canada">Canada</option>
