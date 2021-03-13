@@ -8,7 +8,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {
-	$$key = $value;
+    $$key = $value;
 }
 
 $adtable = 'textads';
@@ -29,14 +29,16 @@ if ($allrotators) {
 
         $rotator->giveHit($rid);
         # get clicks when people click too.
-        ?>
+?>
         <article class="card">
-            
-            <div class="text-center"><img class="card-image" alt="<?php echo $rtitle; ?>" src="<?php echo $rimageurl; ?>" /></div>
-            <p><div><a id="textad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank"><?php echo $rtitle; ?></a></div><div><?php echo $rdescription; ?></div></p>
-
+            <a id="textad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank">
+                <div class="text-center"><img class="card-image" alt="<?php echo $rtitle; ?>" src="<?php echo $rimageurl; ?>" /></div>
+                <p>
+                    <div class="card-title"><?php echo $rtitle; ?></div>
+                    <div class="card-description"><?php echo $rdescription; ?></div>
+                </p>
+            </a>
         </article>
-        <?php
+<?php
     }
 }
-

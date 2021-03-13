@@ -176,7 +176,6 @@ figcaption .sadietalknormal {
   justify-content: space-evenly;
   padding: 1rem;
 }
-
 .card {
   flex: 0 1 14%;
   background: #fff;
@@ -186,29 +185,31 @@ figcaption .sadietalknormal {
   padding: 1rem;
   margin: 8px;
   min-width: 130px;
-  height: 255px;
+  height: 355px;
   border: 5px solid #ffd633;
   border-radius: 0.5rem;
   box-shadow: 1px 1px 1px #fff;
 }
-
 .card a {
   color: #0067f4;
   font-weight: bold;
   padding-bottom: 0.2rem;
 }
-
 .card a:hover {
   color: #ff4343;
 }
-
-.card > p {
-  padding-top: 0.2rem;
+.card p {
+  margin-top: 1em;
 }
-
+.card .card-title {
+  font-size: larger;
+}
+.card .card-description {
+  color: #393939;
+}
 .card-image {
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
   border: 2px solid #ffd633;
   margin-top: 0.2rem;
 }
