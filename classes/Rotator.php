@@ -93,19 +93,19 @@ class Rotator
 
             $accounttypelc = strtolower($accounttype);
             $adclickstogettextad = $accounttypelc . "adclickstogettextad";
-            $adclickstogettextad = $this->settings[$$adclickstogettextad];
+            $adclickstogettextad = $this->settings[$adclickstogettextad];
             $adclickstogetbannerspaid = $accounttypelc . "adclickstogetbannerspaid";
-            $adclickstogetbannerspaid = $this->settings[$$adclickstogetbannerspaid];
+            $adclickstogetbannerspaid = $this->settings[$adclickstogetbannerspaid];
             $adclickstogetnetworksolo = $accounttypelc . "adclickstogetnetworksolo";
-            $adclickstogetnetworksolo = $this->settings[$$adclickstogetnetworksolo];
+            $adclickstogetnetworksolo = $this->settings[$adclickstogetnetworksolo];
 
-            if ($$adclickstogettextad > 0 && $this->adtable === 'textads') {
+            if ($adclickstogettextad > 0 && $this->adtable === 'textads') {
                 $sql = "update members set textadclicks=textadclicks+1 where username=?";
             }
-            if ($$adclickstogetbannerspaid > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'bannersformembers')) {
+            if ($adclickstogetbannerspaid > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'bannersformembers')) {
                 $sql = "update members set banneradclicks=banneradclicks+1 where username=?";
             }
-            if ($$adclickstogetnetworksolo > 0 && $this->adtable === 'networksolos') {
+            if ($adclickstogetnetworksolo > 0 && $this->adtable === 'networksolos') {
                 $sql = "update members set networksoloclicks=networksoloclicks+1 where username=?";
             }
 
@@ -117,31 +117,31 @@ class Rotator
             $res = $q->fetch();
             if ($res) {
                 $textadclicks = $res['textadclicks'];
-                if ($textadclicks >= $$adclickstogettextad && $$adclickstogettextad > 0) {
+                if ($textadclicks >= $adclickstogettextad && $adclickstogettextad > 0) {
                     $ad = new Banner($this->adtable);
                     $ad->createBlankAd($username, '');
                     // Reset click counter:
                     $sql = "update members set textadclicks=textadclicks-? where username=?";
                     $q = $pdo->prepare($sql);
-                    $q->execute([$$adclickstogettextad, $username]);
+                    $q->execute([$adclickstogettextad, $username]);
                 }
                 $banneradclicks = $res['banneradclicks'];
-                if ($banneradclicks >= $$adclickstogetbannerspaid && $$adclickstogetbannerspaid > 0) {
+                if ($banneradclicks >= $adclickstogetbannerspaid && $adclickstogetbannerspaid > 0) {
                     $ad = new TextAd($this->adtable);
                     $ad->createBlankAd($username, '');
                     // Reset click counter:
                     $sql = "update members set banneradclicks=banneradclicks-? where username=?";
                     $q = $pdo->prepare($sql);
-                    $q->execute([$$adclickstogetbannerspaid, $username]);
+                    $q->execute([$adclickstogetbannerspaid, $username]);
                 }
                 $networksoloclicks = $res['networksoloclicks'];
-                if ($networksoloclicks >= $$adclickstogetnetworksolo && $$adclickstogetnetworksolo > 0) {
+                if ($networksoloclicks >= $adclickstogetnetworksolo && $adclickstogetnetworksolo > 0) {
                     $ad = new NetworkSolo($this->adtable);
                     $ad->createBlankAd($username, '');
                     // Reset click counter:
                     $sql = "update members set networksoloclicks=networksoloclicks-? where username=?";
                     $q = $pdo->prepare($sql);
-                    $q->execute([$$adclickstogetnetworksolo, $username]);
+                    $q->execute([$adclickstogetnetworksolo, $username]);
                 }
             }
         }
