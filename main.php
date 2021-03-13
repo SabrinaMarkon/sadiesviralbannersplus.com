@@ -17,6 +17,9 @@ foreach($levels as $level) {
     $refersfreebannerslots = $level . "refersfreebannerslots";
     $refersprobannerslots = $level . "refersprobannerslots";
     $refersgoldbannerslots = $level . "refersgoldbannerslots";
+    $adclickstogettextad = $level . "adclickstogettextad";
+    $adclickstogetbannerspaid = $level . "adclickstogetbannerspaid";
+    $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
 
     $features = $level . "features";
     $$features = "";
@@ -50,6 +53,15 @@ foreach($levels as $level) {
     }
     if (!empty($$refersgoldbannerslots)) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersgoldbannerslots . ' on <strong>EVERY</strong> single one of your <strong>GOLD REFERRALS\'</strong> viral banner pages!</li>';
+    }
+    if ($$adclickstogettextad > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Click ' . $$adclickstogettextad . ' text ads to get a <strong>FREE BONUS</strong> text ad in our awesome <strong>SITE WIDE</strong> text ad rotation!</li>';
+    }
+    if ($$adclickstogetbannerspaid > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Click ' . $$adclickstogetbannerspaid . ' banners to get a <strong>FREE BONUS</strong> banner in our exclusive <strong>PAID-ONLY</strong> rotator!</li>';
+    }
+    if ($$adclickstogetnetworksolo > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Click ' . $$adclickstogetnetworksolo . ' links in network solo ads to get your own <strong>FREE MASSIVE (800,000+!) SUPER SOLO!</strong></li>'; 
     }
 }
 ?>
