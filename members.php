@@ -14,6 +14,11 @@ $freereferrals = $sponsor->getReferralCount($username, 'Free');
 $proreferrals = $sponsor->getReferralCount($username, 'Pro');
 $goldreferrals = $sponsor->getReferralCount($username, 'Gold');
 
+$level = lcfirst($accounttype);
+$adclickstogettextad = $level . "adclickstogettextad";
+$adclickstogetbannerspaid = $level . "adclickstogetbannerspaid";
+$adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
+
 ?>
 <div class="container pb-4">
     <figure>
@@ -74,6 +79,46 @@ $goldreferrals = $sponsor->getReferralCount($username, 'Gold');
                         <p>in Commissions!</p>
                     </div>
                 </div>
+
+                <?php
+                if ($$adclickstogettextad > 0) {
+                ?>
+                    <div class="statcard">
+                        <div class="statnumbers">
+                            <p>You have clicked</p>
+                            <h1><?php echo $textadclicks; ?>/<?php echo $$adclickstogettextad; ?></h1>
+                            <p>Text Ads</p>
+                            <p>towards a FREE Text Ad!</p>
+                        </div>
+                    </div>
+                <?php
+                }
+                if ($$adclickstogettextad > 0) {
+                ?>
+                    <div class="statcard">
+                        <div class="statnumbers">
+                            <p>You have clicked</p>
+                            <h1><?php echo $banneradclicks; ?>/<?php echo $$adclickstogetbannerspaid; ?></h1>
+                            <p>Banners</p>
+                            <p>towards a FREE Banner!</p>
+                        </div>
+                    </div>
+                <?php
+                }
+                if ($$adclickstogettextad > 0) {
+                ?>
+                    <div class="statcard">
+                        <div class="statnumbers">
+                            <p>You have clicked</p>
+                            <h1><?php echo $networksoloclicks; ?>/<?php echo $$adclickstogetnetworksolo; ?></h1>
+                            <p>Network Solo Links</p>
+                            <p>towards a FREE Network Solo!</p>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+
             </div>
         </div>
     </figure>

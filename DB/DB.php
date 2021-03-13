@@ -36,7 +36,7 @@ CREATE TABLE `adminsettings` (
 `freemonthlybonustextads` integer unsigned not null default '0',
 `freemonthlybonusbannerspaid` integer unsigned not null default '0',
 `freemonthlybonusnetworksolos` integer unsigned not null default '0',
-`freeadclickstogettextad` integer unsigned not null default '100', ##########members area
+`freeadclickstogettextad` integer unsigned not null default '100',
 `freeadclickstogetbannerspaid` integer unsigned not null default '100',
 `freeadclickstogetnetworksolo` integer unsigned not null default '100',
 
