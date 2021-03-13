@@ -61,21 +61,21 @@ $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
                 <div class="statcard">
                     <div class="statnumbers">
                         <p>We Owe You</p>
-                        <h1>$<?php echo $owed ?></h1>
+                        <h1 class="coral">$<?php echo $owed ?></h1>
                         <p>in Commissions!</p>
                     </div>
                 </div>
                 <div class="statcard">
                     <div class="statnumbers">
                         <p>We've Paid You</p>
-                        <h1>$<?php echo $paid ?></h1>
+                        <h1 class="coral">$<?php echo $paid ?></h1>
                         <p>in Commissions!</p>
                     </div>
                 </div>
                 <div class="statcard">
                     <div class="statnumbers">
                         <p>To Date You've Earned</p>
-                        <h1>$<?php echo sprintf("%01.2f", $owed + $paid); ?></h1>
+                        <h1 class="coral">$<?php echo sprintf("%01.2f", $owed + $paid); ?></h1>
                         <p>in Commissions!</p>
                     </div>
                 </div>

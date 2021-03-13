@@ -108,6 +108,8 @@ class Rotator
             if ($adclickstogetnetworksolo > 0 && $this->adtable === 'networksolos') {
                 $sql = "update members set networksoloclicks=networksoloclicks+1 where username=?";
             }
+            $q = $pdo->prepare($sql);
+            $q->execute([$username]);
 
             // Does the member get a free ad?
             $sql = "select textadclicks, banneradclicks, networksoloclicks from members where username=?";

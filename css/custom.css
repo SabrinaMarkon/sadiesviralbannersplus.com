@@ -138,7 +138,9 @@ figcaption .sadietalknormal {
   color: #0067f4;
   font-size: xx-large;
 }
-
+.memberstats .statcard .statnumbers .coral {
+  color: #ff4343;
+}
 
 .alert {
   margin: auto;
