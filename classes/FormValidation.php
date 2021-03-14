@@ -54,6 +54,7 @@ class FormValidation
         'adminemail' => 'admin email',
         'url' => 'URL',
         'imageurl' => 'image URL',
+        'bannerpageslot' => 'viral banner slot',
         'domain' => 'domain',
         'metatitle' => 'meta title',
         'metadescription' => 'meta description',
@@ -418,6 +419,15 @@ class FormValidation
                 if (!filter_var($varvalue, FILTER_VALIDATE_INT) || $varvalue <= 0) {
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an integer greater than 0. </strong></div>";
+                }
+            } elseif ($varname === 'bannerpageslot') {
+
+                # the viral banner slot integer.
+                $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_INT);
+
+                if (!filter_var($varvalue, FILTER_VALIDATE_INT) || $varvalue <= 0 || $varvalue > 12) {
+
+                    $errors .= "<div><strong>The value of " . $pretty_varname . " must be an integer between 1 and 12. </strong></div>";
                 }
             } elseif ($varname === 'amount' || $varname === 'owed' || $varname === 'paid' || $varname === 'textadprice' || $varname === 'bannnerprice' || $varname === 'networksoloprice' || $varname === 'proprice' || $varname === 'goldprice' || $varname === 'freerefersproearn' || $varname === 'freerefersgoldearn' || $varname === 'prorefersproearn' || $varname === 'prorefersgoldearn' || $varname === 'goldrefersproearn' || $varname === 'goldrefersgoldearn') {
 
