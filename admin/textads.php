@@ -16,6 +16,9 @@ foreach ($settings as $key => $value) {
 	$$key = $value;
 }
 
+$allmembers = new Member();
+$members = $allmembers->getAllMembers();
+
 $adtable = 'textads';
 $allads = new TextAd($adtable);
 $ads = $allads->getAllAds();
@@ -47,7 +50,16 @@ $ads = $allads->getAllAds();
 	<form action="/admin/textads" method="post" class="form" role="form">
 
 		<label for="username" class="ja-toppadding">Username:</label>
-		<input type="text" name="username" class="form-control input-lg" placeholder="Username" maxlength="32" required>
+        <select name="username" class="form-control input-lg">
+            <?php
+            foreach ($members as $member) {
+                $username = $member['username'];
+                ?>
+                <option value="<?php echo $username ?>"><?php echo $username ?></options>
+                <?php
+                }
+                ?>
+        </select>
 
 		<label for="howmanytogive" class="ja-toppadding">How many?:</label>
 		<input type="number" min="1" step="1" value="1" name="howmanytogive" class="form-control smallselect" required>
@@ -65,8 +77,18 @@ $ads = $allads->getAllAds();
 
 	<form action="/admin/textads" method="post" accept-charset="utf-8" class="form" role="form">
 
-		<label for="name">For Username (blank for admin):</label>
-		<input type="text" name="username" class="form-control input-lg" placeholder="For Username" required>
+		<label for="username">For Username:</label>
+        <select name="username" class="form-control input-lg">
+            <option value="admin">admin</option>
+            <?php
+            foreach ($members as $member) {
+                $username = $member['username'];
+                ?>
+                <option value="<?php echo $username ?>"><?php echo $username ?></options>
+                <?php
+                }
+                ?>
+        </select>
 
 		<label for="name">Name of Ad:</label>
 		<input type="text" name="name" class="form-control input-lg" placeholder="Name of Ad" required>
@@ -151,7 +173,17 @@ $ads = $allads->getAllAds();
 									?>
 								</td>
 								<td class="small">
-									<input type="text" name="username" value="<?php echo $ad['username']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Username" required>
+									<select name="username" class="form-control input-sm widetableinput">
+										<option value="admin"<?php if ($ad['username'] === 'admin') { echo " selected"; } ?>>admin</option>
+										<?php
+										foreach ($members as $member) {
+											$username = $member['username'];
+											?>
+											<option value="<?php echo $username ?>"<?php if ($ad['username'] === $username) { echo " selected"; } ?>><?php echo $username ?></options>
+											<?php
+											}
+											?>
+									</select>
 								</td>
 								<td class="small">
 									<input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>

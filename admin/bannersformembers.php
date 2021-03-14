@@ -16,6 +16,9 @@ foreach ($settings as $key => $value) {
     $$key = $value;
 }
 
+$allmembers = new Member();
+$members = $allmembers->getAllMembers();
+
 $adtable = 'bannersformembers';
 $banner = new MemberBanner($adtable);
 $ads = $banner->getAllAds();
@@ -398,8 +401,18 @@ $ads = $banner->getAllAds();
 
 	<form action="/admin/bannersformembers" method="post" accept-charset="utf-8" class="form" role="form">
 
-		<label for="name">For Username (blank for admin):</label>
-		<input type="text" name="username" class="form-control input-lg" placeholder="For Username" required>
+		<label for="username">For Username:</label>
+        <select name="username" class="form-control input-lg">
+            <option value="admin">admin</option>
+            <?php
+            foreach ($members as $member) {
+                $username = $member['username'];
+                ?>
+                <option value="<?php echo $username ?>"><?php echo $username ?></options>
+                <?php
+                }
+                ?>
+        </select>
 
         <label for="bannerpageslot">Viral Banner Slot:</label>
         <select name="bannerpageslot" class="form-control widetableselect">
@@ -439,7 +452,7 @@ $ads = $banner->getAllAds();
 
     <div class="memberbanners">
         <?php
-        for ($i = 0; $i < 8; $i++) {
+        for ($i = 1; $i <= 8; $i++) {
 
             // Set up default admin 728 x 90 banners.
             $adminshowbanner = $banner->getMemberBanner('admin', $i);
@@ -453,13 +466,13 @@ $ads = $banner->getAllAds();
                 // Show blank banner for this position with fields for the admin to add one.
                 echo '
                 <div>
-                    <a href="/#createad" target="_blank">
-                    <img src="https://via.placeholder.com/728x90/0067f4/ffffff?text=CLICK+TO+ADD+DEFAULT+ADMIN+BANNER+FOR+THIS+VIRAL+BANNER+SLOT" alt="Click to add a default admin banner for this viral banner slot" class="mini-banner-image">
+                    <a href="#createad">
+                    <img src="https://via.placeholder.com/728x90/0067f4/ffffff?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
                     </a>
                 </div>';
             }
         }
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 9; $i <= 12; $i++) {
 
             // Set up default admin 468 x 60 banners.
             $adminshowbanner = $banner->getMemberBanner('admin', $i);
@@ -473,8 +486,8 @@ $ads = $banner->getAllAds();
                 // Show blank banner for this position with fields for the admin to add one.
                 echo '
                 <div>
-                    <a href="/#createad" target="_blank">
-                    <img src="https://via.placeholder.com/468x60/0067f4/ffffff?text=CLICK+TO+ADD+DEFAULT+ADMIN+BANNER+FOR+THIS+VIRAL+BANNER+SLOT" alt="Click to add a default admin banner for this viral banner slot" class="mini-banner-image">
+                    <a href="#createad">
+                    <img src="https://via.placeholder.com/468x60/0067f4/ffffff?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
                     </a>
                 </div>';
             }
@@ -545,7 +558,17 @@ $ads = $banner->getAllAds();
                                     ?>
                                 </td>
                                 <td class="small">
-                                    <input type="text" name="username" value="<?php echo $ad['username']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Username" required>
+                                    <select name="username" class="form-control input-sm widetableinput">
+										<option value="admin"<?php if ($ad['username'] === 'admin') { echo " selected"; } ?>>admin</option>
+										<?php
+										foreach ($members as $member) {
+											$username = $member['username'];
+											?>
+											<option value="<?php echo $username ?>"<?php if ($ad['username'] === $username) { echo " selected"; } ?>><?php echo $username ?></options>
+											<?php
+											}
+											?>
+									</select>
                                 </td>
                                 <td class="small">
                                     <select name="bannerpageslot" class="form-control widetableselect">
