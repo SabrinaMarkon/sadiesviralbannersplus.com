@@ -64,6 +64,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
 
         <?php
         for ($i = 1; $i <= 8; $i++) {
+
             // $referidbannerslots are the position slots that the user referid is allowed to show for their membership level:
             if (in_array($i, $referidbannerslots)) {
                 // See if the user, referid, has a banner for this position. Positions over 8 are for the smaller banners below.
@@ -86,8 +87,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                 echo $show;
             } else {
 
-                // SHOW PAID BANNER ROTATOR:
-                include 'rotatorbannerspaid.php';
+                // There is no banner for either the referid OR their sponsor. Does the admin have a default banner for this slot?
+                $adminshowbanner = $banner->getMemberBanner('admin', $i);
+
+                if (!empty($adminshowbanner)) {
+
+                    // SHOW:
+                    $show = $banner->showBanner($adminshowbanner, 728, 90);
+                    echo $show;
+                } else {
+
+                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                    include 'rotatorbannerspaid.php';
+                }
             }
         }
         ?>
@@ -119,8 +131,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             echo $show;
         } else {
 
-            // SHOW PAID BANNER ROTATOR:
-            include 'rotatorbannerspaid.php';
+            // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+            $adminshowbanner = $banner->getMemberBanner('admin', 9);
+
+            if (!empty($adminshowbanner)) {
+
+                // SHOW:
+                $show = $banner->showBanner($adminshowbanner, 468, 60);
+                echo $show;
+            } else {
+
+                // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                include 'rotatorbannerspaid.php';
+            }
         }
         ?>
 
@@ -139,8 +162,8 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
         }
         if (count($allowedaccounttypearray) > 0) {
             $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex]; 
-            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 10);   
+            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
+            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 10);
         }
         if (!empty($showbanner)) {
 
@@ -149,8 +172,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             echo $show;
         } else {
 
-            // SHOW PAID BANNER ROTATOR:
-            include 'rotatorbannerspaid.php';
+            // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+            $adminshowbanner = $banner->getMemberBanner('admin', 10);
+
+            if (!empty($adminshowbanner)) {
+
+                // SHOW:
+                $show = $banner->showBanner($adminshowbanner, 468, 60);
+                echo $show;
+            } else {
+
+                // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                include 'rotatorbannerspaid.php';
+            }
         }
         ?>
 
@@ -169,8 +203,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                 echo $show;
             } else {
 
-                // SHOW PAID BANNER ROTATOR:
-                include 'rotatorbannerspaid.php';
+                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+                $adminshowbanner = $banner->getMemberBanner('admin', 11);
+
+                if (!empty($adminshowbanner)) {
+
+                    // SHOW:
+                    $show = $banner->showBanner($adminshowbanner, 468, 60);
+                    echo $show;
+                } else {
+
+                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                    include 'rotatorbannerspaid.php';
+                }
             }
         } else {
 
@@ -195,7 +240,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
         if (count($allowedaccounttypearray) > 0) {
             $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
             $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
-            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 11);
+            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 12);
         }
         if (!empty($showbanner)) {
 
@@ -204,8 +249,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             echo $show;
         } else {
 
-            // SHOW PAID BANNER ROTATOR:
-            include 'rotatorbannerspaid.php';
+            // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+            $adminshowbanner = $banner->getMemberBanner('admin', 12);
+
+            if (!empty($adminshowbanner)) {
+
+                // SHOW:
+                $show = $banner->showBanner($adminshowbanner, 468, 60);
+                echo $show;
+            } else {
+
+                // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                include 'rotatorbannerspaid.php';
+            }
         }
         ?>
 

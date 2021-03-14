@@ -461,7 +461,7 @@ if (isset($_POST['login'])) {
                     }
                 } else {
                     $showad = $ad->createBlankAd($_POST['username'], '');
-                }                
+                }
             }
         }
     }
@@ -483,6 +483,9 @@ if (isset($_POST['login'])) {
                     break;
                 case "bannerspaid":
                     $ad = new Banner($adtable);
+                    break;
+                case "bannersformembers":
+                    $ad = new MemberBanner($adtable);
                     break;
                 case "networksolos":
                     $ad = new NetworkSolo($adtable);
@@ -512,8 +515,12 @@ if (isset($_POST['login'])) {
                 case "bannerspaid":
                     $ad = new Banner($adtable);
                     break;
+                case "bannersformembers":
+                    $ad = new MemberBanner($adtable);
+                    break;
                 case "networksolos":
                     $ad = new NetworkSolo($adtable);
+                    break;
             }
             if ($ad) {
                 $showad = $ad->saveAd($id, $adminautoapprove, 1, $_POST);

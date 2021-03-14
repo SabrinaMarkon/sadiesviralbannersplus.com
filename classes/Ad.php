@@ -17,7 +17,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 abstract class Ad
 {
 
-    // TODO: Extract database stuff to the Database class instead of in all the classes not DRY at all.
+    // TODO: Extract database stuff to the Database class instead of in all the classes ->>>> not DRY at all!!!
     protected $pdo, $q, $sql;
 
     public function __construct(string $adtable)
@@ -52,7 +52,7 @@ abstract class Ad
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from " . $this->adtable . " where username=? and added=1 order by id desc";
+        $sql = "select * from " . $this->adtable . " where username=? and added=1 order by approved, id desc";
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -117,7 +117,7 @@ abstract class Ad
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+
         $sql = "insert into " . $this->adtable . " (username,adddate) values (?,NOW())";
         $q = $pdo->prepare($sql);
         $q->execute([$username]);
@@ -128,7 +128,7 @@ abstract class Ad
         Database::disconnect();
 
         if ($givememberblankad) {
-            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>" . $givememberblankad . " blank ads were given to username " . $username . "</strong></div>";   
+            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>" . $givememberblankad . " blank ads were given to username " . $username . "</strong></div>";
         }
 
         return $adid;
@@ -143,6 +143,15 @@ abstract class Ad
         $sql = "delete from " . $this->adtable . " where id=?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
+
+        /* We don't do this below because the bannersformembersclicks table is ONLY to count how many clicks
+           a new member has made to meet the requirement to click x bannersformembers before having membership confirmed.
+        */
+        // if ($this->adtable === 'bannersformembers') {
+        //     $sql = "delete from bannersformembersclicks where bannerid=?";
+        //     $q = $pdo->prepare($sql);
+        //     $q->execute(array($id));
+        // }
 
         Database::disconnect();
 

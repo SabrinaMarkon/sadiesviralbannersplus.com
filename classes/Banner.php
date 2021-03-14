@@ -59,10 +59,12 @@ class Banner extends Ad
             Database::disconnect();
             return null;
         } elseif ($source === 'memberbanner') {
+
+            $bannerpageslot = $post['bannerpageslot'];
           
-            $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values (?,?,?,?,?,?,1,0,NOW())";
+            $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,bannerpageslot,added,approved,adddate) values (?,?,?,?,?,?,?,1,0,NOW())";
             $q = $pdo->prepare($sql);
-            $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl]);
+            $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl, $bannerpageslot]);
             Database::disconnect();
 
             return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
@@ -105,9 +107,18 @@ class Banner extends Ad
             $autoapprove = $adminautoapprove;
         }
 
-        $sql = "update ". $this->adtable . " set username=?,name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
-        $q = $pdo->prepare($sql);
-        $q->execute([$username, $name, $alt, $url, $imageurl, $shorturl, $autoapprove, $id]);
+        if ($this->adtable === 'bannersformembers') {
+
+            $bannerpageslot = $post['bannerpageslot'];
+            $sql = "update ". $this->adtable . " set username=?,name=?,alt=?,url=?,imageurl=?,shorturl=?,bannerpageslot=?,added=1,approved=? where id=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$username, $name, $alt, $url, $imageurl, $shorturl, $bannerpageslot, $autoapprove, $id]);
+        } else {
+            
+            $sql = "update ". $this->adtable . " set username=?,name=?,alt=?,url=?,imageurl=?,shorturl=?,added=1,approved=? where id=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$username, $name, $alt, $url, $imageurl, $shorturl, $autoapprove, $id]);   
+        }
 
         Database::disconnect();
 

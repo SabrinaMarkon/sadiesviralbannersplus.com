@@ -170,7 +170,7 @@ if (isset($_POST['createad'])) {
 		$adtable = $_POST['adtable'];
 		switch ($adtable) {
 			case "textads":
-				$ad = new TextAds($adtable);
+				$ad = new TextAd($adtable);
 				break;
 			case "bannerspaid":
 				$ad = new Banner($adtable);
@@ -200,7 +200,7 @@ if (isset($_POST['savead'])) {
 		$adtable = $_POST['adtable'];
 		switch ($adtable) {
 			case "textads":
-				$ad = new TextAds($adtable);
+				$ad = new TextAd($adtable);
 				break;
 			case "bannerspaid":
 				$ad = new Banner($adtable);
