@@ -156,7 +156,11 @@ class Rotator
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from " . $this->adtable . " where added=1 and approved=1 order by rand() limit " . $limit;
+        if ($this->adtable === 'networksolos') {
+            $sql = "select * from " . $this->adtable . " where added=1 and approved=1 and sent!='Not Yet' order by rand() limit " . $limit;
+        } else {
+            $sql = "select * from " . $this->adtable . " where added=1 and approved=1 order by rand() limit " . $limit;
+        }
         $q = $pdo->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
