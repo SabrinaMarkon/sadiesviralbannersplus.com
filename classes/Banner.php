@@ -45,9 +45,18 @@ class Banner extends Ad
         # is it a user or the admin posting the ad?
         if ($source === 'admin') {
 
-            $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values (?,?,?,?,?,?,1,1,NOW())";
-            $q = $pdo->prepare($sql);
-            $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl]);
+            if ($this->adtable === 'bannersformembers') {
+
+                $bannerpageslot = $post['bannerpageslot'];
+
+                $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,bannerpageslot,added,approved,adddate) values (?,?,?,?,?,?,?,1,1,NOW())";
+                $q = $pdo->prepare($sql);
+                $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl, $bannerpageslot]);
+            } else {
+                $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,added,approved,adddate) values (?,?,?,?,?,?,1,1,NOW())";
+                $q = $pdo->prepare($sql);
+                $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl]);
+            }
             Database::disconnect();
 
             return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
@@ -110,6 +119,7 @@ class Banner extends Ad
         if ($this->adtable === 'bannersformembers') {
 
             $bannerpageslot = $post['bannerpageslot'];
+
             $sql = "update ". $this->adtable . " set username=?,name=?,alt=?,url=?,imageurl=?,shorturl=?,bannerpageslot=?,added=1,approved=? where id=?";
             $q = $pdo->prepare($sql);
             $q->execute([$username, $name, $alt, $url, $imageurl, $shorturl, $bannerpageslot, $autoapprove, $id]);
