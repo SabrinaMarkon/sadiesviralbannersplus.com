@@ -73,55 +73,6 @@ class Setting
         $newgoldmonthlybonustextads = $_POST['goldmonthlybonustextads'];
         $newgoldmonthlybonusbannerspaid = $_POST['goldmonthlybonusbannerspaid'];
         $newgoldmonthlybonusnetworksolos = $_POST['goldmonthlybonusnetworksolos'];
-         // checkbox arrays - store as csvs in database.
-        $newfreebannerslots = '';
-        if (isset($_POST['freebannerslots'])) {
-            $newfreebannerslots = implode(',', $_POST['freebannerslots']);
-        }
-        $newfreerefersfreebannerslots = '';
-        if (isset($_POST['freerefersfreebannerslots'])) {
-            $newfreerefersfreebannerslots = implode(',', $_POST['freerefersfreebannerslots']);
-        }
-        $newfreerefersprobannerslots = '';
-        if (isset($_POST['freerefersprobannerslots'])) {
-            $newfreerefersprobannerslots = implode(',', $_POST['freerefersprobannerslots']);
-        }
-        $newfreerefersgoldbannerslots = '';
-        if (isset($_POST['freerefersgoldbannerslots'])) {
-            $newfreerefersgoldbannerslots = implode(',', $_POST['freerefersgoldbannerslots']);
-        }
-        $newprobannerslots = '';
-        if (isset($_POST['probannerslots'])) {
-            $newprobannerslots = implode(',', $_POST['probannerslots']);
-        }
-        $newprorefersfreebannerslots = '';
-        if (isset($_POST['prorefersfreebannerslots'])) {
-            $newprorefersfreebannerslots = implode(',', $_POST['prorefersfreebannerslots']);
-        }
-        $newprorefersprobannerslots = '';
-        if (isset($_POST['prorefersprobannerslots'])) {
-            $newprorefersprobannerslots = implode(',', $_POST['prorefersprobannerslots']);
-        }
-        $newprorefersgoldbannerslots = '';
-        if (isset($_POST['prorefersgoldbannerslots'])) {
-            $newprorefersgoldbannerslots = implode(',', $_POST['prorefersgoldbannerslots']);
-        }
-        $newgoldbannerslots = '';
-        if (isset($_POST['goldbannerslots'])) {
-            $newgoldbannerslots = implode(',', $_POST['goldbannerslots']);
-        }
-        $newgoldrefersfreebannerslots = '';
-        if (isset($_POST['goldrefersfreebannerslots'])) {
-            $newgoldrefersfreebannerslots = implode(',', $_POST['goldrefersfreebannerslots']);
-        }
-        $newgoldrefersprobannerslots = '';
-        if (isset($_POST['goldrefersprobannerslots'])) {
-            $newgoldrefersprobannerslots = implode(',', $_POST['goldrefersprobannerslots']);
-        }
-        $newgoldrefersgoldbannerslots = '';
-        if (isset($_POST['goldrefersgoldbannerslots'])) {
-            $newgoldrefersgoldbannerslots = implode(',', $_POST['goldrefersgoldbannerslots']);
-        }
 
         # if either username or password changed, update session.
         if (($adminuser !== $newadminuser) or ($adminpass !== $newadminpass)) {
@@ -136,11 +87,11 @@ class Setting
         // Form validation of admin areas called from admin/index.php.
 
         $sql = "update adminsettings set adminuser=?, adminpass=?, adminname=?, adminemail=?, adminpaypal=?, admincoinpayments=?, sitename=?, 
-        domain=?, metadescription=?, metatitle=?, downloadsfolder=?, adminautoapprove=?, proprice=?, propayinterval=?, goldprice=?, goldpayinterval=?, freebannerclickstosignup=?, freerefersproearn=?, freerefersgoldearn=?, freeadclickstogettextad=?, freeadclickstogetbannerspaid=?, freeadclickstogetnetworksolo=?, probannerclickstosignup=?, prorefersproearn=?, prorefersgoldearn=?, proadclickstogettextad=?, proadclickstogetbannerspaid=?, proadclickstogetnetworksolo=?, goldbannerclickstosignup=?, goldrefersproearn=?, goldrefersgoldearn=?, goldadclickstogettextad=?, goldadclickstogetbannerspaid=?, goldadclickstogetnetworksolo=?, freesignupbonustextads=?, freesignupbonusbannerspaid=?, freesignupbonusnetworksolos=?, freemonthlybonustextads=?, freemonthlybonusbannerspaid=?, freemonthlybonusnetworksolos=?, prosignupbonustextads=?, prosignupbonusbannerspaid=?, prosignupbonusnetworksolos=?, promonthlybonustextads=?, promonthlybonusbannerspaid=?, promonthlybonusnetworksolos=?, goldsignupbonustextads=?, goldsignupbonusbannerspaid=?, goldsignupbonusnetworksolos=?, goldmonthlybonustextads=?, goldmonthlybonusbannerspaid=?, goldmonthlybonusnetworksolos=?, freebannerslots=?, freerefersfreebannerslots=?, freerefersprobannerslots=?, freerefersgoldbannerslots=?, probannerslots=?, prorefersfreebannerslots=?, prorefersprobannerslots=?, prorefersgoldbannerslots=?, goldbannerslots=?, goldrefersfreebannerslots=?, goldrefersprobannerslots=?, goldrefersgoldbannerslots=?";
+        domain=?, metadescription=?, metatitle=?, downloadsfolder=?, adminautoapprove=?, proprice=?, propayinterval=?, goldprice=?, goldpayinterval=?, freebannerclickstosignup=?, freerefersproearn=?, freerefersgoldearn=?, freeadclickstogettextad=?, freeadclickstogetbannerspaid=?, freeadclickstogetnetworksolo=?, probannerclickstosignup=?, prorefersproearn=?, prorefersgoldearn=?, proadclickstogettextad=?, proadclickstogetbannerspaid=?, proadclickstogetnetworksolo=?, goldbannerclickstosignup=?, goldrefersproearn=?, goldrefersgoldearn=?, goldadclickstogettextad=?, goldadclickstogetbannerspaid=?, goldadclickstogetnetworksolo=?, freesignupbonustextads=?, freesignupbonusbannerspaid=?, freesignupbonusnetworksolos=?, freemonthlybonustextads=?, freemonthlybonusbannerspaid=?, freemonthlybonusnetworksolos=?, prosignupbonustextads=?, prosignupbonusbannerspaid=?, prosignupbonusnetworksolos=?, promonthlybonustextads=?, promonthlybonusbannerspaid=?, promonthlybonusnetworksolos=?, goldsignupbonustextads=?, goldsignupbonusbannerspaid=?, goldsignupbonusnetworksolos=?, goldmonthlybonustextads=?, goldmonthlybonusbannerspaid=?, goldmonthlybonusnetworksolos=?";
         $q = $pdo->prepare($sql);
         $q->execute(array(
             $newadminuser, $newadminpass, $newadminname, $newadminemail, $newadminpaypal, $newadmincoinpayments, $newsitename,
-            $newdomain, $newmetadescription, $newmetatitle, $newdownloadsfolder, $newadminautoapprove, $newproprice, $newpropayinterval, $newgoldprice, $newgoldpayinterval, $newfreebannerclickstosignup, $newfreerefersproearn, $newfreerefersgoldearn, $newfreeadclickstogettextad, $newfreeadclickstogetbannerspaid, $newfreeadclickstogetnetworksolo, $newprobannerclickstosignup, $newprorefersproearn, $newprorefersgoldearn, $newproadclickstogettextad, $newproadclickstogetbannerspaid, $newproadclickstogetnetworksolo, $newgoldbannerclickstosignup, $newgoldrefersproearn, $newgoldrefersgoldearn, $newgoldadclickstogettextad, $newgoldadclickstogetbannerspaid, $newgoldadclickstogetnetworksolo, $newfreesignupbonustextads, $newfreesignupbonusbannerspaid, $newfreesignupbonusnetworksolos, $newfreemonthlybonustextads, $newfreemonthlybonusbannerspaid, $newfreemonthlybonusnetworksolos, $newprosignupbonustextads, $newprosignupbonusbannerspaid, $newprosignupbonusnetworksolos, $newpromonthlybonustextads, $newpromonthlybonusbannerspaid, $newpromonthlybonusnetworksolos, $newgoldsignupbonustextads, $newgoldsignupbonusbannerspaid, $newgoldsignupbonusnetworksolos, $newgoldmonthlybonustextads, $newgoldmonthlybonusbannerspaid, $newgoldmonthlybonusnetworksolos, $newfreebannerslots, $newfreerefersfreebannerslots, $newfreerefersprobannerslots, $newfreerefersgoldbannerslots, $newprobannerslots, $newprorefersfreebannerslots, $newprorefersprobannerslots, $newprorefersgoldbannerslots, $newgoldbannerslots, $newgoldrefersfreebannerslots, $newgoldrefersprobannerslots, $newgoldrefersgoldbannerslots
+            $newdomain, $newmetadescription, $newmetatitle, $newdownloadsfolder, $newadminautoapprove, $newproprice, $newpropayinterval, $newgoldprice, $newgoldpayinterval, $newfreebannerclickstosignup, $newfreerefersproearn, $newfreerefersgoldearn, $newfreeadclickstogettextad, $newfreeadclickstogetbannerspaid, $newfreeadclickstogetnetworksolo, $newprobannerclickstosignup, $newprorefersproearn, $newprorefersgoldearn, $newproadclickstogettextad, $newproadclickstogetbannerspaid, $newproadclickstogetnetworksolo, $newgoldbannerclickstosignup, $newgoldrefersproearn, $newgoldrefersgoldearn, $newgoldadclickstogettextad, $newgoldadclickstogetbannerspaid, $newgoldadclickstogetnetworksolo, $newfreesignupbonustextads, $newfreesignupbonusbannerspaid, $newfreesignupbonusnetworksolos, $newfreemonthlybonustextads, $newfreemonthlybonusbannerspaid, $newfreemonthlybonusnetworksolos, $newprosignupbonustextads, $newprosignupbonusbannerspaid, $newprosignupbonusnetworksolos, $newpromonthlybonustextads, $newpromonthlybonusbannerspaid, $newpromonthlybonusnetworksolos, $newgoldsignupbonustextads, $newgoldsignupbonusbannerspaid, $newgoldsignupbonusnetworksolos, $newgoldmonthlybonustextads, $newgoldmonthlybonusbannerspaid, $newgoldmonthlybonusnetworksolos
         ));
 
         Database::disconnect();

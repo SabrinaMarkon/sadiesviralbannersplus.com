@@ -161,26 +161,86 @@ abstract class Ad
     /* Save ad settings */
     public function saveAdSettings(array $post): string
     {
+
+        $pdo = DATABASE::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         if ($this->adtable === "textads") {
             $adprice = $post['textadprice'];
             $adhits = $post['textadhits'];
             $sql = "update adminsettings set textadprice=?, textadhits=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$adprice, $adhits]);
         }
         if ($this->adtable === "bannerspaid") {
             $adprice = $post['bannerprice'];
             $adhits = $post['bannerhits'];
             $sql = "update adminsettings set bannerprice=?, bannerhits=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$adprice, $adhits]);
+        }
+        if ($this->adtable === "bannersformembers") {
+            
+            // checkbox arrays - store as csvs in database.
+            $newfreebannerslots = '';
+            if (isset($post['freebannerslots'])) {
+                $newfreebannerslots = implode(',', $post['freebannerslots']);
+            }
+            $newfreerefersfreebannerslots = '';
+            if (isset($post['freerefersfreebannerslots'])) {
+                $newfreerefersfreebannerslots = implode(',', $post['freerefersfreebannerslots']);
+            }
+            $newfreerefersprobannerslots = '';
+            if (isset($post['freerefersprobannerslots'])) {
+                $newfreerefersprobannerslots = implode(',', $post['freerefersprobannerslots']);
+            }
+            $newfreerefersgoldbannerslots = '';
+            if (isset($post['freerefersgoldbannerslots'])) {
+                $newfreerefersgoldbannerslots = implode(',', $post['freerefersgoldbannerslots']);
+            }
+            $newprobannerslots = '';
+            if (isset($post['probannerslots'])) {
+                $newprobannerslots = implode(',', $post['probannerslots']);
+            }
+            $newprorefersfreebannerslots = '';
+            if (isset($post['prorefersfreebannerslots'])) {
+                $newprorefersfreebannerslots = implode(',', $post['prorefersfreebannerslots']);
+            }
+            $newprorefersprobannerslots = '';
+            if (isset($post['prorefersprobannerslots'])) {
+                $newprorefersprobannerslots = implode(',', $post['prorefersprobannerslots']);
+            }
+            $newprorefersgoldbannerslots = '';
+            if (isset($post['prorefersgoldbannerslots'])) {
+                $newprorefersgoldbannerslots = implode(',', $post['prorefersgoldbannerslots']);
+            }
+            $newgoldbannerslots = '';
+            if (isset($post['goldbannerslots'])) {
+                $newgoldbannerslots = implode(',', $post['goldbannerslots']);
+            }
+            $newgoldrefersfreebannerslots = '';
+            if (isset($post['goldrefersfreebannerslots'])) {
+                $newgoldrefersfreebannerslots = implode(',', $post['goldrefersfreebannerslots']);
+            }
+            $newgoldrefersprobannerslots = '';
+            if (isset($post['goldrefersprobannerslots'])) {
+                $newgoldrefersprobannerslots = implode(',', $post['goldrefersprobannerslots']);
+            }
+            $newgoldrefersgoldbannerslots = '';
+            if (isset($post['goldrefersgoldbannerslots'])) {
+                $newgoldrefersgoldbannerslots = implode(',', $post['goldrefersgoldbannerslots']);
+            }
+
+            $sql = "update adminsettings set freebannerslots=?, freerefersfreebannerslots=?, freerefersprobannerslots=?, freerefersgoldbannerslots=?, probannerslots=?, prorefersfreebannerslots=?, prorefersprobannerslots=?, prorefersgoldbannerslots=?, goldbannerslots=?, goldrefersfreebannerslots=?, goldrefersprobannerslots=?, goldrefersgoldbannerslots=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$newfreebannerslots, $newfreerefersfreebannerslots, $newfreerefersprobannerslots, $newfreerefersgoldbannerslots, $newprobannerslots, $newprorefersfreebannerslots, $newprorefersprobannerslots, $newprorefersgoldbannerslots, $newgoldbannerslots, $newgoldrefersfreebannerslots, $newgoldrefersprobannerslots, $newgoldrefersgoldbannerslots]);
         }
         if ($this->adtable === "networksolos") {
             $adprice = $post['networksoloprice'];
             $sql = "update adminsettings set networksoloprice=?";
+            $q = $pdo->prepare($sql);
+            $q->execute([$adprice]);
         }
-
-        $pdo = DATABASE::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $q = $pdo->prepare($sql);
-        $q->execute([$adprice, $adhits]);
 
         Database::disconnect();
 

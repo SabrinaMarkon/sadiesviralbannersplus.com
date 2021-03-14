@@ -32,7 +32,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 	
 	<div class="ja-bottompadding mb-5">Your Viral URL: <a href="<?php echo $domain ?>/banners/<?php echo $username ?>" target="_blank"><?php echo $domain ?>/banners/<?php echo $username ?></a></div>
 
-	<div class="ja-bottompadding mb-5">Your 736 x 90 Banners</div>
+	<div class="ja-bottompadding mb-5">Your 728 x 90 Banners</div>
 	<?php
 	for ($i = 1; $i <= 8; $i++) {
 		if (in_array($i, $bannerslots)) {
