@@ -2789,6 +2789,9 @@ p {
 .flexcards-equalheight .flexcard .flexcard-content .flexcard-list {
 	flex: 1 0 auto;
 }
+.flexcards-equalheight .flexcard .flexcard-content strong {
+  color: #ffd633;
+}
 
 /*===== PRICING STYLE NINE =====*/
 .pricing-style {

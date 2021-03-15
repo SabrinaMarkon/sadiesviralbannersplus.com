@@ -131,19 +131,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             echo $show;
         } else {
 
-            // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-            $adminshowbanner = $banner->getMemberBanner('admin', 9);
+                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+                $adminshowbanner = $banner->getMemberBanner('admin', 9);
 
-            if (!empty($adminshowbanner)) {
+                if (!empty($adminshowbanner)) {
 
-                // SHOW:
-                $show = $banner->showBanner($adminshowbanner, 468, 60);
-                echo $show;
-            } else {
+                    // SHOW:
+                    $show = $banner->showBanner($adminshowbanner, 468, 60);
+                    echo $show;
+                } else {
 
-                // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                include 'rotatorbannerspaid.php';
-            }
+                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                    include 'rotatorbannerspaid.php';
+                }
         }
         ?>
 
@@ -172,19 +172,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             echo $show;
         } else {
 
-            // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-            $adminshowbanner = $banner->getMemberBanner('admin', 10);
+                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+                $adminshowbanner = $banner->getMemberBanner('admin', 10);
 
-            if (!empty($adminshowbanner)) {
+                if (!empty($adminshowbanner)) {
 
-                // SHOW:
-                $show = $banner->showBanner($adminshowbanner, 468, 60);
-                echo $show;
-            } else {
+                    // SHOW:
+                    $show = $banner->showBanner($adminshowbanner, 468, 60);
+                    echo $show;
+                } else {
 
-                // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                include 'rotatorbannerspaid.php';
-            }
+                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                    include 'rotatorbannerspaid.php';
+                }
         }
         ?>
 
@@ -249,19 +249,19 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             echo $show;
         } else {
 
-            // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-            $adminshowbanner = $banner->getMemberBanner('admin', 12);
+                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+                $adminshowbanner = $banner->getMemberBanner('admin', 12);
 
-            if (!empty($adminshowbanner)) {
+                if (!empty($adminshowbanner)) {
 
-                // SHOW:
-                $show = $banner->showBanner($adminshowbanner, 468, 60);
-                echo $show;
-            } else {
+                    // SHOW:
+                    $show = $banner->showBanner($adminshowbanner, 468, 60);
+                    echo $show;
+                } else {
 
-                // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                include 'rotatorbannerspaid.php';
-            }
+                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                    include 'rotatorbannerspaid.php';
+                }
         }
         ?>
 

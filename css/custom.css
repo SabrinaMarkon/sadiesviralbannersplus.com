@@ -219,12 +219,16 @@ figcaption .sadietalknormal {
 }
 
 .memberbanners {
+  max-width: 760px;
+  background: #0067f4;
+  border: 5px solid #ff4343;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  margin: 1rem auto;
+  margin: 3rem auto;
   padding: 1rem;
+  box-shadow: 2px 2px 2px #121212;
 }
 .memberbanners > div {
   margin: 1rem auto; 
