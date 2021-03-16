@@ -327,7 +327,8 @@ if (isset($_POST['login'])) {
         } else {
 
             # admin deleted a member and their ads and positions.
-            $delete = new User();
+            $sendsiteemail = new Email();
+            $delete = new User($sendsiteemail);
             $show = $delete->deleteUser();
         }
     }
@@ -495,6 +496,9 @@ if (isset($_POST['login'])) {
                     break;
             }
             if ($ad) {
+                if (empty($id)) {
+                    $id = 0;
+                }
                 $showad = $ad->createAd($id, $adminautoapprove, 'admin', $_POST);
             }
         }

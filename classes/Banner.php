@@ -67,7 +67,7 @@ class Banner extends Ad
             $q->execute([$username]);
             Database::disconnect();
             return null;
-        } elseif ($source === 'memberbanner') {
+        } elseif ($source === 'viralbanner') {
 
             $bannerpageslot = $post['bannerpageslot'];
           
