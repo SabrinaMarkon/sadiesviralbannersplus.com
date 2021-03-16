@@ -3282,11 +3282,12 @@ p.form-message.success, p.form-message.error {
 } 
 .footer-area .footer-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 50px;
 }
 .footer-area .footer-links .footer-link {
   color: #fff;
+  margin: 1rem;
 }
 .footer-area .footer-links .footer-link:hover {
   text-decoration: underline;
