@@ -14,6 +14,26 @@ function autoloader($class)
 }
 spl_autoload_register("autoloader");
 
+function makeAdObject(string $adtable): ?object {
+    switch ($adtable) {
+        case "textads":
+            $ad = new TextAd($adtable);
+            break;
+        case "bannerspaid":
+            $ad = new Banner($adtable);
+            break;
+        case "viralbanners":
+            $ad = new ViralBanner($adtable);
+            break;
+        case "networksolos":
+            $ad = new NetworkSolo($adtable);
+            break;
+        default:
+            $ad = null;
+    }
+    return $ad;
+}
+
 # get main site settings.
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
@@ -414,20 +434,7 @@ if (isset($_POST['login'])) {
             # admin clicked the button to save main settings.
             $ad = "";
             $adtable = $_POST['adtable'];
-            switch ($adtable) {
-                case "textads":
-                    $ad = new TextAd($adtable);
-                    break;
-                case "bannerspaid":
-                    $ad = new Banner($adtable);
-                    break;
-                case "viralbanners":
-                    $ad = new ViralBanner($adtable);
-                    break;
-                case "networksolos":
-                    $ad = new NetworkSolo($adtable);
-                    break;
-            }
+            $ad = makeAdObject($adtable);
             if ($ad) {
                 $showad = $ad->saveAdSettings($_POST);
             }
@@ -445,16 +452,7 @@ if (isset($_POST['login'])) {
             # give a user one or more blank ads from admin.
             $ad = "";
             $adtable = $_POST['adtable'];
-            switch ($adtable) {
-                case "textads":
-                    $ad = new TextAd($adtable);
-                    break;
-                case "bannerspaid":
-                    $ad = new Banner($adtable);
-                    break;
-                case "networksolos":
-                    $ad = new NetworkSolo($adtable);
-            }
+            $ad = makeAdObject($adtable);
             if ($ad) {
                 if (isset($_POST['givememberblankad'])) {
 
@@ -481,20 +479,7 @@ if (isset($_POST['login'])) {
             # user submitted a new ad.
             $ad = "";
             $adtable = $_POST['adtable'];
-            switch ($adtable) {
-                case "textads":
-                    $ad = new TextAd($adtable);
-                    break;
-                case "bannerspaid":
-                    $ad = new Banner($adtable);
-                    break;
-                case "viralbanners":
-                    $ad = new ViralBanner($adtable);
-                    break;
-                case "networksolos":
-                    $ad = new NetworkSolo($adtable);
-                    break;
-            }
+            $ad = makeAdObject($adtable);
             if ($ad) {
                 if (empty($id)) {
                     $id = 0;
@@ -515,20 +500,7 @@ if (isset($_POST['login'])) {
             # user saved changes made to their ad.
             $ad = "";
             $adtable = $_POST['adtable'];
-            switch ($adtable) {
-                case "textads":
-                    $ad = new TextAd($adtable);
-                    break;
-                case "bannerspaid":
-                    $ad = new Banner($adtable);
-                    break;
-                case "viralbanners":
-                    $ad = new ViralBanner($adtable);
-                    break;
-                case "networksolos":
-                    $ad = new NetworkSolo($adtable);
-                    break;
-            }
+            $ad = makeAdObject($adtable);
             if ($ad) {
                 $showad = $ad->saveAd($id, $adminautoapprove, 1, $_POST);
             }
@@ -537,20 +509,7 @@ if (isset($_POST['login'])) {
 
     if (isset($_POST['deletead'])) {
         $adtable = $_POST['adtable'];
-        switch ($adtable) {
-            case "textads":
-                $ad = new TextAd($adtable);
-                break;
-            case "bannerspaid":
-                $ad = new Banner($adtable);
-                break;
-            case "viralbanners":
-                $ad = new ViralBanner($adtable);
-                break;
-            case "networksolos":
-                $ad = new NetworkSolo($adtable);
-                break;
-        }
+        $ad = makeAdObject($adtable);
         if ($ad) {
             $showad = $ad->deleteAd($id, $_POST['name']);
         }
