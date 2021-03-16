@@ -583,8 +583,8 @@ $ads = $banner->getAllAds();
                                         <?php
                                         for ($i = 1; $i <= 12; $i++) {
                                             ?>
-                                            <option value="<?php echo $i ?>"<?php if ($ad['bannerpageslot'] === $i) { echo " selected"; } ?>>
-                                                <?php echo $i ?>
+                                            <option value="<?php echo $i ?>"<?php if ($ad['bannerpageslot'] == $i) { echo " selected"; } ?>>
+                                                <?php echo $i; ?>
                                             </option>
                                             <?php
                                         }

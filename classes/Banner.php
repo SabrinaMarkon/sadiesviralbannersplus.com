@@ -59,7 +59,7 @@ class Banner extends Ad
             }
             Database::disconnect();
 
-            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!</strong></div>";
+            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Ad " . $name . " was Created!-------$bannerpageslot--------</strong></div>";
         } elseif ($source === 'ipn') {
 
             $sql = "insert into ". $this->adtable . " (username) values (?)";
