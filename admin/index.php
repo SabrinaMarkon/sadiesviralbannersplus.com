@@ -537,8 +537,23 @@ if (isset($_POST['login'])) {
 
     if (isset($_POST['deletead'])) {
         $adtable = $_POST['adtable'];
-        $delete = new Ad($adtable);
-        $showad = $delete->deleteAd($id, $_POST['name']);
+        switch ($adtable) {
+            case "textads":
+                $ad = new TextAd($adtable);
+                break;
+            case "bannerspaid":
+                $ad = new Banner($adtable);
+                break;
+            case "bannersformembers":
+                $ad = new MemberBanner($adtable);
+                break;
+            case "networksolos":
+                $ad = new NetworkSolo($adtable);
+                break;
+        }
+        if ($ad) {
+            $showad = $ad->deleteAd($id, $_POST['name']);
+        }
     }
 
     if ((empty($_REQUEST['page'])) or
