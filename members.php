@@ -22,7 +22,7 @@ $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
 ?>
 <div class="container pb-4">
     <figure>
-        <img src="images/sadie-transparent-shadow-peace.png" alt="Welcome to Sadie's!">
+        <img src="images/sadie-transparent-shadow-peace.png" alt="Welcome to Sadie's!" class="px-5">
         <div style="display:flex; flex-direction:column;">
             <figcaption>
                 <div class="sadietalkbig"><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span><span class="hiya">Hiya Peeps!</span> <span class="im">I'm</span> <span class="sadie">Sadie! </span><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span></div><br />

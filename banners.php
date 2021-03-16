@@ -106,162 +106,51 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
 
 
         <!-- The Four 468px x 60px BANNERS -->
-
+        <!-- DEFAULTS: -->
         <!-- #9 - 468px x 60px - Rotator for all members of certain level(s) - default to gold members only. -->
-        <?php
-        $allowedaccounttypearray = [];
-        if (in_array(9, $freebannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Free");
-        }
-        if (in_array(9, $probannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Pro");
-        }
-        if (in_array(9, $goldbannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Gold");
-        }
-        if (count($allowedaccounttypearray) > 0) {
-            $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
-            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 9);
-        }
-        if (!empty($showbanner)) {
-
-            // SHOW:
-            $show = $banner->showBanner($showbanner, 468, 60);
-            echo $show;
-        } else {
-
-                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-                $adminshowbanner = $banner->getMemberBanner('admin', 9);
-
-                if (!empty($adminshowbanner)) {
-
-                    // SHOW:
-                    $show = $banner->showBanner($adminshowbanner, 468, 60);
-                    echo $show;
-                } else {
-
-                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                    include 'rotatorbannerspaid.php';
-                }
-        }
-        ?>
-
-
         <!-- #10 - 468px x 60px - Rotator for all members of certain level(s) - default to pro members only. -->
-        <?php
-        $allowedaccounttypearray = [];
-        if (in_array(10, $freebannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Free");
-        }
-        if (in_array(10, $probannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Pro");
-        }
-        if (in_array(10, $goldbannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Gold");
-        }
-        if (count($allowedaccounttypearray) > 0) {
-            $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
-            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 10);
-        }
-        if (!empty($showbanner)) {
-
-            // SHOW:
-            $show = $banner->showBanner($showbanner, 468, 60);
-            echo $show;
-        } else {
-
-                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-                $adminshowbanner = $banner->getMemberBanner('admin', 10);
-
-                if (!empty($adminshowbanner)) {
-
-                    // SHOW:
-                    $show = $banner->showBanner($adminshowbanner, 468, 60);
-                    echo $show;
-                } else {
-
-                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                    include 'rotatorbannerspaid.php';
-                }
-        }
-        ?>
-
-
         <!-- #11 - 468px x 60px - The referid has a sponsor themselves and this is one of that sponsor's banners, if they have one. -->
+        <!-- #12 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
+
         <?php
-        if (in_array(11, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
+        for ($i = 9; $i === 12; $i++) {
 
-            $showbanner = $banner->getMemberBanner($sponsorusername, 11);
-
-            // SHOW:
+            $allowedaccounttypearray = [];
+            if (in_array($i, $freebannerslotsarray)) {
+                array_push($allowedaccounttypearray, "Free");
+            }
+            if (in_array($i, $probannerslotsarray)) {
+                array_push($allowedaccounttypearray, "Pro");
+            }
+            if (in_array($i, $goldbannerslotsarray)) {
+                array_push($allowedaccounttypearray, "Gold");
+            }
+            if (count($allowedaccounttypearray) > 0) {
+                $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
+                $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
+                $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, $i);
+            }
             if (!empty($showbanner)) {
-
+    
                 // SHOW:
                 $show = $banner->showBanner($showbanner, 468, 60);
                 echo $show;
             } else {
-
-                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-                $adminshowbanner = $banner->getMemberBanner('admin', 11);
-
-                if (!empty($adminshowbanner)) {
-
-                    // SHOW:
-                    $show = $banner->showBanner($adminshowbanner, 468, 60);
-                    echo $show;
-                } else {
-
-                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                    include 'rotatorbannerspaid.php';
-                }
+    
+                    // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+                    $adminshowbanner = $banner->getMemberBanner('admin', $i);
+    
+                    if (!empty($adminshowbanner)) {
+    
+                        // SHOW:
+                        $show = $banner->showBanner($adminshowbanner, 468, 60);
+                        echo $show;
+                    } else {
+    
+                        // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                        include 'rotatorbannerspaid.php';
+                    }
             }
-        } else {
-
-            // SHOW PAID BANNER ROTATOR:
-            include 'rotatorbannerspaid.php';
-        }
-        ?>
-
-        <!-- #12 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
-
-        <?php
-        $allowedaccounttypearray = [];
-        if (in_array(12, $freebannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Free");
-        }
-        if (in_array(12, $probannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Pro");
-        }
-        if (in_array(12, $goldbannerslotsarray)) {
-            array_push($allowedaccounttypearray, "Gold");
-        }
-        if (count($allowedaccounttypearray) > 0) {
-            $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-            $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
-            $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, 12);
-        }
-        if (!empty($showbanner)) {
-
-            // SHOW:
-            $show = $banner->showBanner($showbanner, 468, 60);
-            echo $show;
-        } else {
-
-                // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-                $adminshowbanner = $banner->getMemberBanner('admin', 12);
-
-                if (!empty($adminshowbanner)) {
-
-                    // SHOW:
-                    $show = $banner->showBanner($adminshowbanner, 468, 60);
-                    echo $show;
-                } else {
-
-                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                    include 'rotatorbannerspaid.php';
-                }
         }
         ?>
 

@@ -26,13 +26,21 @@ $ads = $banner->getAllAds();
 
 <div class="container">
 
-    <h1 class="mb-2 pt-4">Viral Banners</h1>
-    <p>Depending on their membership level, members can add their banners to both their own and their referrals' Viral Banner Pages.</p>
+    <h2 class="pt-4">Viral Banners</h2>
 
     <div class="ja-toppadding mb-4"></div>
 
-    <h2 class="mb-2 pt-4">Viral Banner Settings</h2>
+    <p>Depending on their membership level, members can add their banners to both their own and their referrals' Viral Banner Pages.</p>
+
+    <div class="ja-toppadding mb-2"></div>
+
+    <h2 class="pt-4">Viral Banner Settings</h2>
+
+    <div class="ja-toppadding mb-4"></div>
+
     <p>Every member has a Viral Banner Page that has 12 slots for banners. You can check which slots members or their sponsors can add their banners to here.</p>
+
+    <div class="ja-toppadding mb-4"></div>
 
     <form action="/admin/bannersformembers" method="post" class="form" role="form">
 
@@ -393,7 +401,7 @@ $ads = $banner->getAllAds();
 
     <h2 class="ja-bottompadding ja-toppadding mb-4">Default Admin Viral Banners</h2>
 
-    <p>Admin banners show on members' Viral Banner Pages when neither a member nor their sponsor have saved a banner for any of their slots. You can see the slots you have added admin banners to below the form to add them.</p>
+    <p>Admin banners show on members' Viral Banner Pages when neither a member nor their sponsor have saved a banner for any of their slots. The form below lets you add a default admin viral banner for each slot. Underneath the form, you can also see which slots you already have saved default banners for.</p>
 
     <div class="ja-toppadding mb-4"></div>
 
@@ -467,7 +475,7 @@ $ads = $banner->getAllAds();
                 echo '
                 <div>
                     <a href="#createad">
-                    <img src="https://via.placeholder.com/728x90/0067f4/ffffff?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
+                    <img src="https://via.placeholder.com/728x90/ffffff/121212?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
                     </a>
                 </div>';
             }
@@ -487,7 +495,7 @@ $ads = $banner->getAllAds();
                 echo '
                 <div>
                     <a href="#createad">
-                    <img src="https://via.placeholder.com/468x60/0067f4/ffffff?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
+                    <img src="https://via.placeholder.com/468x60/ffffff/121212?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
                     </a>
                 </div>';
             }
@@ -508,7 +516,7 @@ $ads = $banner->getAllAds();
                     <th class="text-center small">Ad&nbsp;#</th>
                     <th class="text-center small" style="min-width: 200px;">Image</th>
                     <th class="text-center small" style="min-width: 100px;">Username</th>
-                    <th class="text-center small">Banner Slot</th>
+                    <th class="text-center small" style="min-width: 100px;">Banner&nbsp;Slot</th>
                     <th class="text-center small" style="min-width: 100px;">Name</th>
                     <th class="text-center small" style="min-width: 100px;">Alt</th>
                     <th class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
