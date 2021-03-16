@@ -11,10 +11,10 @@ if (isset($showad)) {
 }
 
 $showcontent = new PageContent();
-echo $showcontent->showPage('Members Area Free Member Banner Ads Page');
+echo $showcontent->showPage('Members Area Viral Banners Page');
 
-$adtable = 'bannersformembers';
-$banner = new MemberBanner('bannersformembers');
+$adtable = 'viralbanners';
+$banner = new ViralBanner('viralbanners');
 
 $prefix = lcfirst($accounttype);
 $bannerslotsvar = $prefix . 'bannerslots';

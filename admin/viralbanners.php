@@ -19,8 +19,8 @@ foreach ($settings as $key => $value) {
 $allmembers = new Member();
 $members = $allmembers->getAllMembers();
 
-$adtable = 'bannersformembers';
-$banner = new MemberBanner($adtable);
+$adtable = 'viralbanners';
+$banner = new ViralBanner($adtable);
 $ads = $banner->getAllAds();
 ?>
 
@@ -42,7 +42,7 @@ $ads = $banner->getAllAds();
 
     <div class="ja-toppadding mb-4"></div>
 
-    <form action="/admin/bannersformembers" method="post" class="form" role="form">
+    <form action="/admin/viralbanners" method="post" class="form" role="form">
 
         <h3>Free Member Banner Page Settings</h3>
 
@@ -407,7 +407,7 @@ $ads = $banner->getAllAds();
 
     <h3 class="ja-bottompadding">Create Viral Banner</h3>
 
-	<form action="/admin/bannersformembers" method="post" accept-charset="utf-8" class="form" role="form">
+	<form action="/admin/viralbanners" method="post" accept-charset="utf-8" class="form" role="form">
 
 		<label for="username">For Username:</label>
         <select name="username" class="form-control input-lg">
@@ -458,12 +458,12 @@ $ads = $banner->getAllAds();
 
     <h3 class="ja-bottompadding">Admin Viral Banner List</h3>
 
-    <div class="memberbanners">
+    <div class="viralbanners">
         <?php
         for ($i = 1; $i <= 8; $i++) {
 
             // Set up default admin 728 x 90 banners.
-            $adminshowbanner = $banner->getMemberBanner('admin', $i);
+            $adminshowbanner = $banner->getViralBanner('admin', $i);
             if (!empty($adminshowbanner)) {
 
                 $adminbanner = $banner->showBanner($adminshowbanner, 728, 90);
@@ -483,7 +483,7 @@ $ads = $banner->getAllAds();
         for ($i = 9; $i <= 12; $i++) {
 
             // Set up default admin 468 x 60 banners.
-            $adminshowbanner = $banner->getMemberBanner('admin', $i);
+            $adminshowbanner = $banner->getViralBanner('admin', $i);
             if (!empty($adminshowbanner)) {
 
                 $adminbanner = $banner->showBanner($adminshowbanner, 468, 60);
@@ -509,7 +509,7 @@ $ads = $banner->getAllAds();
 
     <p>You can see, change, or even delete both your admin and members' Viral Banners in the list below.</p>
 
-    <div class="table-responsive">
+    <div class="table-responsive mt-4">
         <table id="admintable" class="table table-hover text-center table-sm">
             <thead>
                 <tr>
@@ -549,7 +549,7 @@ $ads = $banner->getAllAds();
                         }
                 ?>
                         <tr>
-                            <form action="/admin/bannersformembers/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
+                            <form action="/admin/viralbanners/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
                                 <td class="small"><?php echo $ad['id']; ?>
                                 </td>
                                 <td class="small">
@@ -634,7 +634,7 @@ $ads = $banner->getAllAds();
                                 </td>
                             </form>
                             <td>
-                                <form action="/admin/bannersformembers/<?php echo $ad['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+                                <form action="/admin/viralbanners/<?php echo $ad['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
                                     <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="name" value="<?php echo $ad['name']; ?>">

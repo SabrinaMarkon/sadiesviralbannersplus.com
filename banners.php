@@ -6,7 +6,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 }
 
 // Get this page's referring member $_SESSION['referid']'s banners:
-$banner = new MemberBanner('bannersformembers');
+$banner = new ViralBanner('viralbanners');
 $referidbanners = $banner->getAllApprovedUsersAds($_SESSION['referid']);
 
 // Get this page's referring member's own sponsor and sponsor's accounttype.
@@ -58,7 +58,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
 ?>
 <div class="container">
 
-    <div class="memberbanners">
+    <div class="viralbanners">
 
         <!-- The Eight 728px x 90px BANNERS -->
 
@@ -68,16 +68,16 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             // $referidbannerslots are the position slots that the user referid is allowed to show for their membership level:
             if (in_array($i, $referidbannerslots)) {
                 // See if the user, referid, has a banner for this position. Positions over 8 are for the smaller banners below.
-                $showbanner = $banner->getMemberBanner($_SESSION['referid'], $i);
+                $showbanner = $banner->getViralBanner($_SESSION['referid'], $i);
             } else {
                 // $sponsorrefersbannerslots are the position slots that the user referid's sponsor is allowed to show on their referral's (referid's) page.
                 if (in_array($i, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
                     // See if the user's sponsor (referid's referid), has a banner saved for this position.
-                    $showbanner = $banner->getMemberBanner($sponsorusername, $i);
+                    $showbanner = $banner->getViralBanner($sponsorusername, $i);
                 }
             }
 
-            // TODO: admin should create their own default banners for every slot so they are never empty (in the bannersformembers table too for all 12 slots (same UI as members area!)
+            // TODO: admin should create their own default banners for every slot so they are never empty (in the viralbanners table too for all 12 slots (same UI as members area!)
 
             // SHOW:
             if (!empty($showbanner)) {
@@ -88,7 +88,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             } else {
 
                 // There is no banner for either the referid OR their sponsor. Does the admin have a default banner for this slot?
-                $adminshowbanner = $banner->getMemberBanner('admin', $i);
+                $adminshowbanner = $banner->getViralBanner('admin', $i);
 
                 if (!empty($adminshowbanner)) {
 
@@ -138,7 +138,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             } else {
     
                     // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-                    $adminshowbanner = $banner->getMemberBanner('admin', $i);
+                    $adminshowbanner = $banner->getViralBanner('admin', $i);
     
                     if (!empty($adminshowbanner)) {
     

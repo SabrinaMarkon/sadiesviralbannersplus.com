@@ -346,7 +346,7 @@ class User
         $q->execute(array($username));
 
         # delete from member banners.
-        $sql = "select * from bannersformembers where username=?";
+        $sql = "select * from viralbanners where username=?";
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -355,7 +355,7 @@ class User
         if (!empty($usersbanners)) {
             foreach ($usersbanners as $usersbanner) {
                 $bannerid = $usersbanner['id'];
-                $sql = "delete from bannersformembersclicks where bannerid=?";
+                $sql = "delete from viralbannersclicks where bannerid=?";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($bannerid));
             }

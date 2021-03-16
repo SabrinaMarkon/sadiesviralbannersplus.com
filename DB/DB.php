@@ -110,30 +110,6 @@ UNIQUE KEY `banners_filename_unique` (`filename`),
 KEY `banners_username_foreign` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-create table `bannersformembers` (
-`id` integer unsigned not null primary key auto_increment,
-`username` varchar(255) not null default 'admin',
-`name` varchar(255) not null,
-`alt` varchar(255) not null,
-`url` varchar(300) not null,
-`shorturl` varchar(255) not null,
-`imageurl` varchar(300) not null,
-`added` tinyint(1) not null default '0',
-`approved` tinyint(1) not null default '0',
-`hits` integer unsigned not null default '0',
-`clicks` integer unsigned not null default '0',
-`adddate` datetime not null,
-`bannerpageslot` integer unsigned not null default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-create table `bannersformembersclicks` (
-`id` integer unsigned not null primary key auto_increment,
-`bannerid` integer unsigned not null default '0',
-`username` varchar(255) not null default 'admin',
-`action` varchar(12) not null default 'signup',
-`clickdate` datetime default null
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 create table `bannerspaid` (
 `id` integer unsigned not null primary key auto_increment,
 `username` varchar(255) not null default 'admin',
@@ -290,6 +266,30 @@ transaction varchar(255) null,
 foreign key (adid) references ads(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+create table `viralbanners` (
+`id` integer unsigned not null primary key auto_increment,
+`username` varchar(255) not null default 'admin',
+`name` varchar(255) not null,
+`alt` varchar(255) not null,
+`url` varchar(300) not null,
+`shorturl` varchar(255) not null,
+`imageurl` varchar(300) not null,
+`added` tinyint(1) not null default '0',
+`approved` tinyint(1) not null default '0',
+`hits` integer unsigned not null default '0',
+`clicks` integer unsigned not null default '0',
+`adddate` datetime not null,
+`bannerpageslot` integer unsigned not null default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+create table `viralbannersclicks` (
+`id` integer unsigned not null primary key auto_increment,
+`bannerid` integer unsigned not null default '0',
+`username` varchar(255) not null default 'admin',
+`action` varchar(12) not null default 'signup',
+`clickdate` datetime default null
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 insert into adminsettings (adminuser, adminpass, adminname, adminemail, sitename, domain, metatitle, metadescription) values ('Admin', 'admin', 'YOUR NAME', 'YOUR ADMIN EMAIL', 'YOUR SITE NAME','http://YOURDOMAIN.COM', 'YOUR SITE META TITLE', 'YOUR SITE META DESCRIPTION');
 
 INSERT INTO `adminnotes` (`id`, `name`, `htmlcode`) values (1, 'Admin Notes', '');
@@ -301,7 +301,7 @@ INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Profile Pag
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Promotion Page', '', 'promotion', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Text Ads Page', '', 'ads', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Paid Banner Ads Page', '', 'bannerspaid', 'yes');
-INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Free Member Banner Ads Page', '', 'bannersformembers', 'yes');
+INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Viral Banners Page', '', 'viralbanners', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Network Solos Page', '', 'networksolos', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Banner Maker Page', '', 'imagemaker', 'yes');
 INSERT INTO pages (name, htmlcode, slug, core) values ('Members Area Downloads Page', '', 'downloads', 'yes');

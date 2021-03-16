@@ -218,7 +218,7 @@ figcaption .sadietalknormal {
   height: 26px;
 }
 
-.memberbanners {
+.viralbanners {
   max-width: 760px;
   background: #0067f4;
   border: 5px solid #ff4343;
@@ -230,7 +230,7 @@ figcaption .sadietalknormal {
   padding: 1rem;
   box-shadow: 2px 2px 2px #121212;
 }
-.memberbanners > div {
+.viralbanners > div {
   margin: 1rem auto; 
 }
 

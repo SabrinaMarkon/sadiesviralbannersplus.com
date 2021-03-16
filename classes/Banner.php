@@ -45,7 +45,7 @@ class Banner extends Ad
         # is it a user or the admin posting the ad?
         if ($source === 'admin') {
 
-            if ($this->adtable === 'bannersformembers') {
+            if ($this->adtable === 'viralbanners') {
 
                 $bannerpageslot = $post['bannerpageslot'];
 
@@ -116,7 +116,7 @@ class Banner extends Ad
             $autoapprove = $adminautoapprove;
         }
 
-        if ($this->adtable === 'bannersformembers') {
+        if ($this->adtable === 'viralbanners') {
 
             $bannerpageslot = $post['bannerpageslot'];
 

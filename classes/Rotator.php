@@ -84,9 +84,9 @@ class Rotator
             $accounttype = $data['accounttype'];
 
             // The affiliate banners should keep track of member clicks to signup.
-            if ($this->adtable === 'bannersformembers') {
+            if ($this->adtable === 'viralbanners') {
 
-                $sql = "insert into bannersformembersclicks (bannerid, username, clickdate) values (?,?,NOW())";
+                $sql = "insert into viralbannersclicks (bannerid, username, clickdate) values (?,?,NOW())";
                 $q = $pdo->prepare($sql);
                 $q->execute([$id, $username]);
             }
@@ -102,7 +102,7 @@ class Rotator
             if ($adclickstogettextad > 0 && $this->adtable === 'textads') {
                 $sql = "update members set textadclicks=textadclicks+1 where username=?";
             }
-            if ($adclickstogetbannerspaid > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'bannersformembers')) {
+            if ($adclickstogetbannerspaid > 0 && ($this->adtable === 'bannerspaid' || $this->adtable === 'viralbanners')) {
                 $sql = "update members set banneradclicks=banneradclicks+1 where username=?";
             }
             if ($adclickstogetnetworksolo > 0 && $this->adtable === 'networksolos') {

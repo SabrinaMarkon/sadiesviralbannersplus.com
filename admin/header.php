@@ -76,7 +76,7 @@
                     <li class="nav-item"><a href="/admin/main">Main</a></li>
                     <li class="nav-item"><a href="/admin/settings">Settings</a></li>
                     <li class="nav-item"><a href="/admin/members">Members</a></li>
-                    <li class="nav-item"><a href="/admin/bannersformembers">Viral&nbsp;Banners</a></li>
+                    <li class="nav-item"><a href="/admin/viralbanners">Viral&nbsp;Banners</a></li>
                     <li class="nav-item"><a href="/admin/money">Money</a></li>
                     <li class="nav-item"><a href="/admin/mail">Mail</a></li>
                     <li class="nav-item"><a href="/admin/pages">Pages</a></li>

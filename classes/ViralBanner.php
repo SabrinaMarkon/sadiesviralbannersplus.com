@@ -14,11 +14,11 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
-class MemberBanner extends Banner
+class ViralBanner extends Banner
 {
-    private $memberbanner;
+    private $viralbanner;
 
-    public function getMemberBanner(string $username, int $slot): array
+    public function getViralBanner(string $username, int $slot): array
     {
 
         $pdo = DATABASE::connect();
@@ -26,13 +26,13 @@ class MemberBanner extends Banner
         $sql = "select * from " . $this->adtable . " where username=? and bannerpageslot=? and approved=1 limit 1";
         $q = $pdo->prepare($sql);
         $q->execute([$username, $slot]);
-        $memberbanner = $q->fetch();
+        $viralbanner = $q->fetch();
 
         Database::disconnect();
 
-        if ($memberbanner) {
+        if ($viralbanner) {
 
-            return $memberbanner;
+            return $viralbanner;
         }
 
         return [];
@@ -49,13 +49,13 @@ class MemberBanner extends Banner
             $sql = "select * from " . $this->adtable . " where username=? and bannerpageslot=? and approved=1 limit 1";
             $q = $pdo->prepare($sql);
             $q->execute([$username, $slot]);
-            $memberbanner = $q->fetch();
+            $viralbanner = $q->fetch();
 
             Database::disconnect();
 
-            if ($memberbanner) {
+            if ($viralbanner) {
 
-                return $memberbanner;
+                return $viralbanner;
             }
 
             return [];

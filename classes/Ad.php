@@ -144,11 +144,11 @@ abstract class Ad
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
 
-        /* We don't do this below because the bannersformembersclicks table is ONLY to count how many clicks
-           a new member has made to meet the requirement to click x bannersformembers before having membership confirmed.
+        /* We don't do this below because the viralbannersclicks table is ONLY to count how many clicks
+           a new member has made to meet the requirement to click x viralbanners before having membership confirmed.
         */
-        // if ($this->adtable === 'bannersformembers') {
-        //     $sql = "delete from bannersformembersclicks where bannerid=?";
+        // if ($this->adtable === 'viralbanners') {
+        //     $sql = "delete from viralbannersclicks where bannerid=?";
         //     $q = $pdo->prepare($sql);
         //     $q->execute(array($id));
         // }
@@ -179,7 +179,7 @@ abstract class Ad
             $q = $pdo->prepare($sql);
             $q->execute([$adprice, $adhits]);
         }
-        if ($this->adtable === "bannersformembers") {
+        if ($this->adtable === "viralbanners") {
             
             // checkbox arrays - store as csvs in database.
             $newfreebannerslots = '';

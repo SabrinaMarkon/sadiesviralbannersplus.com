@@ -421,8 +421,8 @@ if (isset($_POST['login'])) {
                 case "bannerspaid":
                     $ad = new Banner($adtable);
                     break;
-                case "bannersformembers":
-                    $ad = new MemberBanner($adtable);
+                case "viralbanners":
+                    $ad = new ViralBanner($adtable);
                     break;
                 case "networksolos":
                     $ad = new NetworkSolo($adtable);
@@ -488,8 +488,8 @@ if (isset($_POST['login'])) {
                 case "bannerspaid":
                     $ad = new Banner($adtable);
                     break;
-                case "bannersformembers":
-                    $ad = new MemberBanner($adtable);
+                case "viralbanners":
+                    $ad = new ViralBanner($adtable);
                     break;
                 case "networksolos":
                     $ad = new NetworkSolo($adtable);
@@ -522,8 +522,8 @@ if (isset($_POST['login'])) {
                 case "bannerspaid":
                     $ad = new Banner($adtable);
                     break;
-                case "bannersformembers":
-                    $ad = new MemberBanner($adtable);
+                case "viralbanners":
+                    $ad = new ViralBanner($adtable);
                     break;
                 case "networksolos":
                     $ad = new NetworkSolo($adtable);
@@ -544,8 +544,8 @@ if (isset($_POST['login'])) {
             case "bannerspaid":
                 $ad = new Banner($adtable);
                 break;
-            case "bannersformembers":
-                $ad = new MemberBanner($adtable);
+            case "viralbanners":
+                $ad = new ViralBanner($adtable);
                 break;
             case "networksolos":
                 $ad = new NetworkSolo($adtable);
