@@ -132,6 +132,7 @@ $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
             }
             # Upgrade to Gold pay buttons.
             $goldbuttons = $upgrade->showUpgradeButton('Gold', $username, $referid);
+            echo $goldbuttons;
         }
         ?>
     </figure>

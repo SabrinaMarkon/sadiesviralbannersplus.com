@@ -24,9 +24,9 @@ class UpgradeButton
 
 	public function showUpgradeButton(string $level, string $username, string $referid): string {
 
-		$price = $level . "price";
-		$payinterval = $level . "payinterval";
-		$itemname = ucfirst($level) . " Upgrade";
+		$price = lcfirst($level) . "price";
+		$payinterval = lcfirst($level) . "payinterval";
+		$itemname = $level . " Upgrade";
 		$paymentdata = array(
 			"itemname" => $itemname,
 			"price" => $this->settings[$price],
