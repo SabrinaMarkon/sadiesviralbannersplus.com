@@ -121,5 +121,18 @@ $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
 
             </div>
         </div>
+        <?php
+        if ($accounttype === 'Free' || $accounttype === 'Pro') {
+                
+            $upgrade = new UpgradeButton(new User(new Email()), $settings);
+            if ($accounttype === 'Free') {
+                # Upgrade to Pro pay buttons.
+                $probuttons = $upgrade->showUpgradeButton('Pro', $username, $referid);
+                echo $probuttons;
+            }
+            # Upgrade to Gold pay buttons.
+            $goldbuttons = $upgrade->showUpgradeButton('Gold', $username, $referid);
+        }
+        ?>
     </figure>
 </div>
