@@ -1,35 +1,37 @@
 <?php
+
 /**
 Admin login form.
 PHP 7.4+
 @author Sabrina Markon
 @copyright 2018 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
-**/
+ **/
 // if (count(get_included_files()) === 1) { exit('Direct Access is not Permitted'); }
 # Prevent direct access to this file. Show browser's default 404 error instead.
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
-    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-    exit;
+	header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+	exit;
 }
 
 class AdminLoginForm
 {
-    public $loginerror;
-    public $showloginerror;
-    public $content;
+	public $loginerror;
+	public $showloginerror;
+	public $content;
 
-    public function showLoginForm(string $loginerror) {
+	public function showLoginForm(string $loginerror)
+	{
 
-        $showloginerror = "";
-        if ($loginerror == 1) {
-            $showloginerror = "<div class=\"alert alert-danger\"><strong>Incorrect Login</strong></div>";
+		$showloginerror = "";
+		if ($loginerror == 1) {
+			$showloginerror = "<div class=\"alert alert-danger\"><strong>Incorrect Login</strong></div>";
 		}
 
-$content = <<<HEREDOC
+		$content = <<<HEREDOC
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6 center">
 				
 			<h1 class="ja-bottompadding">Admin Login</h1>
 
@@ -56,6 +58,6 @@ $content = <<<HEREDOC
 	</div>
 HEREDOC;
 
-        return $content;
-    }
+		return $content;
+	}
 }
