@@ -207,7 +207,7 @@ class PaypalCheckout extends PaymentGateway
                 $isexistinguser = $q->rowCount();
 
                 // User purchased pro or gold paid membership. Commission and transaction done in User class.
-                if ($item_name === $this->settings['sitename'] . ' - Pro Membership') {
+                if ($item_name === $this->settings['sitename'] . ' - Pro Membership' || $item_name === $this->settings['sitename'] . ' - Pro Upgrade') {
                     if ($isexistinguser < 1) {
                         $this->user->newSignup($this->settings, $formfields, 'Pro', $commission);
                     } else {
@@ -217,7 +217,7 @@ class PaypalCheckout extends PaymentGateway
                     $commission->addNewReferralCommission($referid, 'Pro');
                 }
 
-                if ($item_name === $this->settings['sitename'] . ' - Gold Membership') {
+                if ($item_name === $this->settings['sitename'] . ' - Gold Membership' || $item_name === $this->settings['sitename'] . ' - Gold Upgrade') {
                     if (empty($isexistinguser)) {
                         $this->user->newSignup($this->settings, $formfields, 'Gold', $commission);
                     } else {

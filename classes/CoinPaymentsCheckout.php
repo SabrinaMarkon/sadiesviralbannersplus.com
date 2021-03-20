@@ -181,7 +181,7 @@ class CoinPaymentsCheckout extends PaymentGateway
                 }
 
                 // User purchased pro or gold paid membership. Commission and transaction done in User class.
-                if ($item_name === $this->settings['sitename'] . ' - Pro Membership') {
+                if ($item_name === $this->settings['sitename'] . ' - Pro Membership' || $item_name === $this->settings['sitename'] . ' - Pro Upgrade') {
 
                     // Check if buyer is an existing user (need to know if it is a new signup or an existing member upgrading)
                     $sql = "select * from members where username=?";
@@ -204,7 +204,7 @@ class CoinPaymentsCheckout extends PaymentGateway
                     $commission->addNewReferralCommission($referid, 'Pro');
                 }
 
-                if ($item_name === $this->settings['sitename'] . ' - Gold Membership') {
+                if ($item_name === $this->settings['sitename'] . ' - Gold Membership' || $item_name === $this->settings['sitename'] . ' - Gold Upgrade') {
 
                     // Check if buyer is an existing user (need to know if it is a new signup or an existing member upgrading)
                     $sql = "select * from members where username=?";
