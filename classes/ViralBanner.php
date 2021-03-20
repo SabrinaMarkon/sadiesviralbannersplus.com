@@ -23,7 +23,7 @@ class ViralBanner extends Banner
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from " . $this->adtable . " where username=? and bannerpageslot=? and approved=1 limit 1";
+        $sql = "select * from " . $this->adtable . " where username=? and bannerpageslot=? and approved=1 order by rand() limit 1";
         $q = $pdo->prepare($sql);
         $q->execute([$username, $slot]);
         $viralbanner = $q->fetch();
