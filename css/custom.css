@@ -108,19 +108,19 @@ figcaption .sadietalknormal {
   color: #ff4343 !important;
 }
 .memberstats {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
 }
 .memberstats .statcard {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-around;
-  width: 240px;
+  max-width: 300px;
   background: #fff;
   border-radius: 20px;
   box-shadow: 2px 2px 2px #121212;
   padding: 1em;
-  margin: 1rem;
 }
 .memberstats .statcard img {
   padding-top: 5px;
@@ -234,9 +234,27 @@ figcaption .sadietalknormal {
   margin: 1rem auto; 
 }
 
+.paybuttons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 45%;
+  justify-content: space-around;
+  margin: auto;
+}
 #coinpaymentsbuttonform > button,
 #paypalbuttonform > button {
-  margin: 1em auto;
+  border-color: #0067f4;
+  background-color: #0067f4;
+  color: #fff;
+  box-shadow: -1px -1px 1px #fff;
+  margin: 1rem;
+  padding: 0.6rem;
+  width: 500px;
+}
+#coinpaymentsbuttonform > button:hover,
+#paypalbuttonform > button:hover {
+  border-color: #fff;
+  background-color: #ff4343;
 }
 
 h4.ja-white {
@@ -324,6 +342,9 @@ h4.ja-white {
     max-width: 100px;
     height: auto;
   }
+  .memberstats {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (min-width: 300px) {
@@ -347,6 +368,9 @@ h4.ja-white {
   #sadie {
     max-width: 160px;
     height: auto;
+  }
+  .memberstats {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -394,6 +418,9 @@ h4.ja-white {
   }
   .ja-headerimage h1 {
     font-size: 5.5rem;
+  }
+  .memberstats {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
