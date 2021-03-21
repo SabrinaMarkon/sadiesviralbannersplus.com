@@ -29,26 +29,128 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 <div class="container">
 	<h1 class="ja-bottompadding">Add Your Viral Banners!</h1>
-	
+
 	<div class="ja-bottompadding mb-5">Your Viral URL: <a href="<?php echo $domain ?>/banners/<?php echo $username ?>" target="_blank"><?php echo $domain ?>/banners/<?php echo $username ?></a></div>
 
-	<div class="ja-bottompadding mb-5">Your 728 x 90 Banners</div>
 	<?php
-	for ($i = 1; $i <= 8; $i++) {
+	for ($i = 1; $i <= 12; $i++) {
+
+		if ($i === 1) {
+			?>
+			<div class="ja-bottompadding mb-5">Your 728 x 90 Viral Banners</div>
+			<?php
+		}
+		if ($i === 9) {
+			?>
+			<div class="ja-bottompadding mb-5">Your 468 x 60 Viral Banners</div>
+			<?php
+		}
+
+		if ($i <= 8) {
+			$width = 728;
+			$height = 90;
+		} else {
+			$width = 468;
+			$height = 60;
+		}
+
 		if (in_array($i, $bannerslots)) {
 
-			// These are the member's banners that show on their own url. Mention this.
+			// Is this banner one that appears on this user's OWN url?
+            $usershowbanner = $banner->getViralBanner($username, $i);
+            if (!empty($usershowbanner)) {
 
-		} else {
+                $userbanner = $banner->showBanner($usershowbanner, $width, $height);
+                echo $userbanner;
 
-			// These are the member's banners that show on their referrals' urls. Say which level referrals each shows on depending on variables above.
+            } else {
+
+                // Show blank banner for this position with fields for the admin to add one.
+                echo '
+                <div>
+                    <a href="#createad">
+                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
+                    </a>
+                </div>';
+            }
+
+		} elseif (in_array($i, $refersfreebannerslots)) {
+
+			// Does this banner appear on this user's FREE referral's urls?
+            $usershowbanner = $banner->getViralBanner($username, $i);
+            if (!empty($usershowbanner)) {
+
+                $userbanner = $banner->showBanner($usershowbanner, $width, $height);
+                echo $userbanner;
+
+            } else {
+
+                // Show blank banner for this position with fields for the admin to add one.
+                echo '
+                <div>
+                    <a href="#createad">
+                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
+                    </a>
+                </div>';
+            }
+
+		} elseif (in_array($i, $refersprobannerslots)) {
+
+			// Does this banner appear on this user's PRO referral's urls?
+            $usershowbanner = $banner->getViralBanner($username, $i);
+            if (!empty($usershowbanner)) {
+
+                $userbanner = $banner->showBanner($usershowbanner, $width, $height);
+                echo $userbanner;
+
+            } else {
+
+                // Show blank banner for this position with fields for the admin to add one.
+                echo '
+                <div>
+                    <a href="#createad">
+                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
+                    </a>
+                </div>';
+            }
+
+		} elseif (in_array($i, $refersgoldbannerslots)) {
 			
+			// Does this banner appear on this user's PRO referral's urls?
+            $usershowbanner = $banner->getViralBanner($username, $i);
+            if (!empty($usershowbanner)) {
+
+                $userbanner = $banner->showBanner($usershowbanner, $width, $height);
+                echo $userbanner;
+
+            } else {
+
+                // Show blank banner for this position with fields for the admin to add one.
+                echo '
+                <div>
+                    <a href="#createad">
+                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
+                    </a>
+                </div>';
+            }
+
+		}
+		else {
+			// this banner is unavailable to this user's membership level.
+			// Is it available if the member upgrades to PRO?
+
+
+			// Is it available if the member upgrades to GOLD?
+
+
+			// This banner is not available to any membership levels so is a paid only banner rotator.
 		}
 	}
+
 	?>
 
 	<div class="ja-bottompadding mb-5">Your 468 x 60 Banners</div>
-	
+
 	<?php
 
 	// Random rotation.

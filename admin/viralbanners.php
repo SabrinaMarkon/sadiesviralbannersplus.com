@@ -405,7 +405,7 @@ $ads = $banner->getAllAds();
 
     <div class="ja-toppadding mb-4"></div>
 
-    <h3 class="ja-bottompadding">Create Viral Banner</h3>
+    <h3 class="ja-bottompadding" id="createad">Create Viral Banner</h3>
 
 	<form action="/admin/viralbanners" method="post" accept-charset="utf-8" class="form" role="form">
 
