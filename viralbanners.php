@@ -65,13 +65,8 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
             } else {
 
-                // Show blank banner for this position with fields for the admin to add one.
-                echo '
-                <div>
-                    <a href="#createad">
-                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
-                    </a>
-                </div>';
+                // Show blank banner for this position with fields for the user to add their own.
+                echo $banner->showBannerPlaceholder($i, $width, $height);
             }
 
 		} elseif (in_array($i, $refersfreebannerslots)) {
@@ -85,13 +80,8 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
             } else {
 
-                // Show blank banner for this position with fields for the admin to add one.
-                echo '
-                <div>
-                    <a href="#createad">
-                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
-                    </a>
-                </div>';
+                // Show blank banner for this position with fields for the user to add their own.
+                echo $banner->showBannerPlaceholder($i, $width, $height);
             }
 
 		} elseif (in_array($i, $refersprobannerslots)) {
@@ -105,13 +95,8 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
             } else {
 
-                // Show blank banner for this position with fields for the admin to add one.
-                echo '
-                <div>
-                    <a href="#createad">
-                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
-                    </a>
-                </div>';
+                // Show blank banner for this position with fields for the user to add their own.
+                echo $banner->showBannerPlaceholder($i, $width, $height);
             }
 
 		} elseif (in_array($i, $refersgoldbannerslots)) {
@@ -125,13 +110,8 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
             } else {
 
-                // Show blank banner for this position with fields for the admin to add one.
-                echo '
-                <div>
-                    <a href="#createad">
-                    <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# <?php echo $i ?>">
-                    </a>
-                </div>';
+                // Show blank banner for this position with fields for the user to add their own.
+                echo $banner->showBannerPlaceholder($i, $width, $height):
             }
 
 		}
