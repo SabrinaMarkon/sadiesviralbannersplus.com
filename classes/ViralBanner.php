@@ -88,7 +88,7 @@ class ViralBanner extends Banner
         $showbanner = '
         <div>
             <a href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
-                <img alt="' . $alt . '" src="' . $imageurl . '>" width="' . $width . '" height="' . $height . '" />
+                <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
             </a>
         </div>';
 
