@@ -69,7 +69,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+                echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		} elseif (in_array($i, $refersfreebannerslots)) {
@@ -84,7 +84,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+                echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		} elseif (in_array($i, $refersprobannerslots)) {
@@ -99,7 +99,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+                echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		} elseif (in_array($i, $refersgoldbannerslots)) {
@@ -114,7 +114,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+                echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		}
@@ -148,23 +148,63 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 				!in_array($i, $goldrefersgoldbannerslotsarr)
 			) {
 				// This can only be a paid banner rotator. Show link to buy one.
-				echo $banner->showBannerPlaceholder($width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);			
+				echo $banner->showBannerPlaceholder($i, $width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);			
 			}
 			else {
 				if ($accounttype === "Free") {
 					// Upgrade button for both pro and gold.
-					echo $banner->showBannerPlaceholder($width, $height, 'Upgrade to Pro or Gold to add your banner to Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Upgrade to Pro or Gold to add your banner to Slot ' . $i);
 				}
 				elseif ($accounttype === "Pro") {
 					// Upgrade button for gold.
-					echo $banner->showBannerPlaceholder($width, $height, 'Upgrade to Gold to add your banner to Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Upgrade to Gold to add your banner to Slot ' . $i);
 				}
 				else {
 					// This can only be a paid banner rotator. Show link to buy one.
-					echo $banner->showBannerPlaceholder($width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);	
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);	
 				}
 			}
 		}
+
+		?>
+		<div class="modal fade" id="viralbannerModal<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="viralbannerModal<?php echo $i ?>" aria-hidden="true">
+			<div class="modal-dialog ja-modal-width">
+				<div class="modal-content ja-modal">
+					<div class="modal-body">
+
+					<h2>Add Your Viral Banner to Slot #<?php echo $i ?></h2>
+					
+					<form action="/viralbanners/<?php echo $i ?>" method="post" accept-charset="utf-8" class="form" role="form">
+
+						<label for="name">Name of Viral Banner (only you see):</label>
+						<input type="text" name="name" class="form-control input-lg" placeholder="Name" required>
+
+						<label for="title">Alt Text:</label>
+						<input type="text" name="alt" class="form-control input-lg" placeholder="Alt Text" required>
+
+						<label for="url">Click-Thru URL:</label>
+						<input type="url" name="url" class="form-control input-lg" placeholder="Click-Thru URL" required>
+
+						<label for="imageurl">Image URL: (<?php echo $width ?> x <?php echo $height ?> pixels only)</label>
+						<input type="url" name="imageurl" class="form-control input-lg" placeholder="Image URL" required>
+
+						<div class="ja-bottompadding"></div>
+
+						<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+						<input type="hidden" name="id" value="<?php echo $i ?>">
+						<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE AD</button>
+
+						</form>
+
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-lg btn-primary" type="button" data-dismiss="modal" aria-hidden="true">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+
 	}
 
 	?>

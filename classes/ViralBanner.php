@@ -95,14 +95,14 @@ class ViralBanner extends Banner
         return $showbanner;
     }
 
-    public function showBannerPlaceholder(int $width, int $height, string $msg): string {
+    public function showBannerPlaceholder(int $i, int $width, int $height, string $msg): string {
         
         $msguppercase = strtoupper($msg);
         $msguppercase = str_replace(" ", "+", $msguppercase);
 
         return '
         <div>
-            <a href="#">
+            <a href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
             <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=' . $msguppercase . '" alt="' . $msg . '">
             </a>
         </div>';
