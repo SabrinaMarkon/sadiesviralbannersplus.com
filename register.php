@@ -145,6 +145,7 @@ For FREE memberships we submit this form normally though (the post is picked up 
 							<?php
 							$terms = new PageContent();
 							$showterms = $terms->showPage('Terms Page');
+							$showterms = str_ireplace('~SITENAME~', $sitename, $showterms);
 							echo $showterms;
 							?>
 
