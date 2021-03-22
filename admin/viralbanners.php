@@ -444,7 +444,7 @@ $ads = $banner->getAllAds();
 		<label for="url">Click-Thru URL:</label>
 		<input type="url" name="url" id="url" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
-		<label for="imageurl">Image URL: (468 x 60 pixels only)</label>
+		<label for="imageurl">Image URL: (slots 1-8 are 728 x 90 only, and slots 9-12 are 468 x 60 only)</label>
 		<input type="url" name="imageurl" id="imageurl" class="form-control input-lg" placeholder="Image URL" required>
 
 		<div class="ja-bottompadding"></div>
