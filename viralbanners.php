@@ -40,12 +40,12 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 		if ($i === 1) {
 			?>
-			<div class="ja-bottompadding my-3">Your 728 x 90 Viral Banners</div>
+			<h2 class="ja-bottompadding my-3">Your 728 x 90 Viral Banners</h2>
 			<?php
 		}
 		if ($i === 9) {
 			?>
-			<div class="ja-bottompadding my-3">Your 468 x 60 Viral Banners</div>
+			<h2 class="ja-bottompadding my-3">Your 468 x 60 Viral Banners</h2>
 			<?php
 		}
 

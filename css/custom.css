@@ -233,6 +233,11 @@ figcaption .sadietalknormal {
 .viralbanners > div {
   margin: 1rem auto; 
 }
+.viralbanners h2 {
+  color: #fff;
+  font-size: 1.4rem;
+  text-align: center;
+}
 
 .paybuttons {
   display: flex;
