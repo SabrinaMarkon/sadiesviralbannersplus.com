@@ -95,15 +95,17 @@ class ViralBanner extends Banner
         return $showbanner;
     }
 
-    public function showBannerPlaceholder(int $i, int $width, int $height): string {
+    public function showBannerPlaceholder(int $width, int $height, string $msg): string {
+        
+        $msguppercase = strtoupper($msg);
+        $msguppercase = str_replace(" ", "+", $msguppercase);
 
         return '
         <div>
             <a href="#">
-            <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=CLICK+TO+ADD+YOUR+VIRAL+BANNER+FOR+SLOT+' . $i . '" alt="Your Banner for Viral Banner Slot# ' . $i . '">
+            <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=' . $msguppercase . '" alt="' . $msg . '">
             </a>
         </div>';
 
     }
-
 }

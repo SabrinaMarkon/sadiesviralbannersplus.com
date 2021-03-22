@@ -28,21 +28,24 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 ?>
 
 <div class="container">
-	<h1 class="ja-bottompadding">Add Your Viral Banners!</h1>
+	
+	<h1 class="ja-bottompadding mb-4">Add Your Viral Banners!</h1>
 
-	<div class="ja-bottompadding mb-5">Your Viral URL: <a href="<?php echo $domain ?>/banners/<?php echo $username ?>" target="_blank"><?php echo $domain ?>/banners/<?php echo $username ?></a></div>
+	<div class="ja-bottompadding">Your Viral URL: <a href="<?php echo $domain ?>/banners/<?php echo $username ?>" target="_blank"><?php echo $domain ?>/banners/<?php echo $username ?></a></div>
+
+	<div class="viralbanners">
 
 	<?php
 	for ($i = 1; $i <= 12; $i++) {
 
 		if ($i === 1) {
 			?>
-			<div class="ja-bottompadding mb-5">Your 728 x 90 Viral Banners</div>
+			<div class="ja-bottompadding my-3">Your 728 x 90 Viral Banners</div>
 			<?php
 		}
 		if ($i === 9) {
 			?>
-			<div class="ja-bottompadding mb-5">Your 468 x 60 Viral Banners</div>
+			<div class="ja-bottompadding my-3">Your 468 x 60 Viral Banners</div>
 			<?php
 		}
 
@@ -66,7 +69,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($i, $width, $height);
+                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		} elseif (in_array($i, $refersfreebannerslots)) {
@@ -81,7 +84,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($i, $width, $height);
+                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		} elseif (in_array($i, $refersprobannerslots)) {
@@ -96,7 +99,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($i, $width, $height);
+                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		} elseif (in_array($i, $refersgoldbannerslots)) {
@@ -111,39 +114,61 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
             } else {
 
                 // Show blank banner for this position with fields for the user to add their own.
-                echo $banner->showBannerPlaceholder($i, $width, $height):
+                echo $banner->showBannerPlaceholder($width, $height, 'Click to add your Viral Banner for Slot ' . $i);
             }
 
 		}
 		else {
 			// this banner is unavailable to this user's membership level.
-			// Is it available if the member upgrades to PRO?
-
-
-			// Is it available if the member upgrades to GOLD?
-
-
-			// This banner is not available to any membership levels so is a paid only banner rotator.
+			// Is this a paid only banner?
+			$freebannerslotsarr = $banner->getVarArray('freebannerslots', $settings);
+			$freerefersfreebannerslotsarr = $banner->getVarArray('freerefersfreebannerslots', $settings);
+			$freerefersprobannerslotsarr = $banner->getVarArray('freerefersprobannerslots', $settings);
+			$freerefersgoldbannerslotsarr = $banner->getVarArray('freerefersgoldbannerslots', $settings);
+			$probannerslotsarr = $banner->getVarArray('probannerslots', $settings);
+			$prorefersfreebannerslotsarr = $banner->getVarArray('prorefersfreebannerslots', $settings);
+			$prorefersprobannerslotsarr = $banner->getVarArray('prorefersprobannerslots', $settings);
+			$prorefersgoldbannerslotsarr = $banner->getVarArray('prorefersgoldbannerslots', $settings);
+			$goldbannerslotsarr = $banner->getVarArray('goldbannerslots', $settings);
+			$goldrefersfreebannerslotsarr = $banner->getVarArray('goldrefersfreebannerslots', $settings);
+			$goldrefersprobannerslotsarr = $banner->getVarArray('goldrefersprobannerslots', $settings);
+			$goldrefersgoldbannerslotsarr = $banner->getVarArray('goldrefersgoldbannerslots', $settings);
+			if (
+				!in_array($i, $freebannerslotsarr) &&
+				!in_array($i, $freerefersfreebannerslotsarr) &&
+				!in_array($i, $freerefersprobannerslotsarr) &&
+				!in_array($i, $freerefersgoldbannerslotsarr) &&
+				!in_array($i, $probannerslotsarr) &&
+				!in_array($i, $prorefersfreebannerslotsarr) &&
+				!in_array($i, $prorefersprobannerslotsarr) &&
+				!in_array($i, $prorefersgoldbannerslotsarr) &&
+				!in_array($i, $goldbannerslotsarr) &&
+				!in_array($i, $goldrefersfreebannerslotsarr) &&
+				!in_array($i, $goldrefersprobannerslotsarr) &&
+				!in_array($i, $goldrefersgoldbannerslotsarr)
+			) {
+				// This can only be a paid banner rotator. Show link to buy one.
+				echo $banner->showBannerPlaceholder($width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);			
+			}
+			else {
+				if ($accounttype === "Free") {
+					// Upgrade button for both pro and gold.
+					echo $banner->showBannerPlaceholder($width, $height, 'Upgrade to Pro or Gold to add your banner to Slot ' . $i);
+				}
+				elseif ($accounttype === "Pro") {
+					// Upgrade button for gold.
+					echo $banner->showBannerPlaceholder($width, $height, 'Upgrade to Gold to add your banner to Slot ' . $i);
+				}
+				else {
+					// This can only be a paid banner rotator. Show link to buy one.
+					echo $banner->showBannerPlaceholder($width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);	
+				}
+			}
 		}
 	}
 
 	?>
-
-	<div class="ja-bottompadding mb-5">Your 468 x 60 Banners</div>
-
-	<?php
-
-	// Random rotation.
-
-
-	// Random rotation.
-
-
-	// Banner that shows on referrals' urls.
-
-	// Random or paid rotation.
-	?>
-
+	</div>
 
 	<div class="ja-bottompadding ja-toppadding"></div>
 
