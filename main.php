@@ -7,6 +7,9 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 $levels = ["gold", "pro", "free"];
 foreach($levels as $level) {
+    $bannerclickstosignup = $level . "bannerclickstosignup";
+    $refersproearn = $level . "refersproearn";
+    $refersgoldearn = $level . "refersgoldearn";
     $signupbonustextads = $level . "signupbonustextads";
     $signupbonusbannerspaid = $level . "signupbonusbannerspaid";
     $signupbonusnetworksolos = $level . "signupbonusnetworksolos";
@@ -24,6 +27,15 @@ foreach($levels as $level) {
     $features = $level . "features";
     $$features = "";
 
+    if ($$bannerclickstosignup > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Before joining, new <strong>' . strtoupper($level) . '</strong> members must click and visit <strong>' . $$bannerclickstosignup . '</strong> of their sponsor\'s Viral Banners!</li>';
+    }
+    if ($$refersproearn > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i><strong>GET PAID</strong> $' . $$refersproearn . ' for referring <strong>PRO</strong> members!</li>';
+    }
+    if ($$refersgoldearn > 0) {
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i><strong>GET PAID</strong> $' . $$refersgoldearn . ' for referring <strong>GOLD</strong> members!</li>';
+    }
     if ($$signupbonustextads > 0) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> sign up bonus of ' . $$signupbonustextads . ' <strong>SITE WIDE</strong> text ads!</li>';
     }
@@ -107,6 +119,23 @@ if (!empty($showcontent->showPage('Home Page'))) {
 }
 ?>
 
+<!-- Viral banner ads -->
+<!-- <section id="viralbanners" class="viralbanners-area">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="centered">
+                    <section class="cards">
+
+                        <?php #include_once 'banners.php'; ?>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
 <!-- Different Membership Levels -->
 <section id="memberships" class="pricing-area">
     <div class="mx-5">
@@ -131,8 +160,6 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     </div>
                     <div class="flexcard-list pricing-list">
                         <ul>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $freerefersproearn ?> for referring Pro members!</li>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $freerefersgoldearn ?> for referring Gold members!</li>
                             <?php echo $freefeatures; ?>
                         </ul>
                     </div>
@@ -157,8 +184,6 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     </div>
                     <div class="flexcard-list pricing-list">
                         <ul>
-                        <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $prorefersproearn ?> for referring Pro members!</li>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $prorefersgoldearn ?> for referring Gold members!</li>
                             <?php echo $profeatures; ?>
                         </ul>
                     </div>
@@ -183,8 +208,6 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     </div>
                     <div class="flexcard-list pricing-list">
                         <ul>
-                        <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $goldrefersproearn ?> for referring Pro members!</li>
-                            <li><i class="membership-checkbox fas fa-check-circle"></i><strong>Get paid</strong> $<?php echo $goldrefersgoldearn ?> for referring Gold members!</li>
                             <?php echo $goldfeatures; ?>
                         </ul>
                     </div>
@@ -211,6 +234,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <!-- Contact -->
