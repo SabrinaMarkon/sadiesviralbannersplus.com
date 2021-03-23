@@ -102,7 +102,7 @@ $ads = $allads->getAllAds();
 		<label for="description">Ad Text:</label>
 		<input type="text" name="description" class="form-control input-lg" placeholder="Ad Text" required>
 
-		<label for="imageurl">Image URL: (100 x 100 pixels only)</label>
+		<label for="imageurl">Image URL: (125 x 125 pixels only)</label>
 		<input type="url" name="imageurl" class="form-control input-lg" placeholder="Image URL" required>
 
 		<div class="ja-bottompadding"></div>
