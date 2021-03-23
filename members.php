@@ -30,7 +30,16 @@ $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
                     <div style="font-weight: bold; text-align: center;">Welcome to my <strong>AWESOME APP</strong> where I will help your ads go totally <strong>VIRAL!</strong></div>
                 </div>
             </figcaption>
-            <div class="affiliateurl" style="font-weight: bold; text-align: center; font-size: 1.4rem;">Get Your Banners on Your Referrals' Banner Pages and Get PAID! <br /><a href="<?php echo $domain . "/" . $username; ?>" target="_blank"><?php echo $domain . "/" . $username; ?></a><br /><br />
+            <div class="affiliateurl" style="font-weight: bold; text-align: center; font-size: 1.4rem;">
+                You are a <strong><?php echo strtoupper($accounttype); ?></strong> member!<br /><br />
+                <?php
+                if ($accounttype === "Free") {
+                    ?>
+                        <a class="page-scroll" href="members/#upgrade">UPGRADE</a> your membership to fully take advantage of my special marketing system!<br /><br />
+                    <?php
+                }
+                ?>
+                Get Your Banners on Your Referrals' Banner Pages and Get PAID! <br /><a href="<?php echo $domain . "/" . $username; ?>" target="_blank"><?php echo $domain . "/" . $username; ?></a><br /><br />
                 Show off Your Best Programs on your Own Special VIRAL Banner URL! <br /><a href="<?php echo $domain . "/banners/" . $username; ?>" target="_blank"><?php echo $domain . "/banners/" . $username; ?></a><br /><br />
             </div>
 
@@ -125,7 +134,7 @@ $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
 
     </figure>
 
-    <div class="paybuttons">
+    <section id="upgrade" class="paybuttons">
         <?php
         if ($accounttype === 'Free' || $accounttype === 'Pro') {
 
@@ -140,6 +149,6 @@ $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
             echo $goldbuttons;
         }
         ?>
-    </div>
+    </section>
 
 </div>
