@@ -23,9 +23,26 @@ echo $showcontent->showPage('Members Area Profile Page');
 		<?php
 		echo $showgravatar;
 		?>
-		<h3 class="ja-bottompadding"><?php echo $username ?></h3>
+		<h3 class="ja-bottompadding mt-2"><?php echo $username ?></h3>
+		<div class="mb-3"><strong>You are a <?php echo strtoupper($accounttype); ?> member!</strong></div>
 	</div>
 
+	<div class="paybuttons mb-3">
+        <?php
+        if ($accounttype === 'Free' || $accounttype === 'Pro') {
+
+            $upgrade = new UpgradeButton(new User(new Email()), $settings);
+            if ($accounttype === 'Free') {
+                # Upgrade to Pro pay buttons.
+                $probuttons = $upgrade->showUpgradeButton('Pro', $username, $referid);
+                echo $probuttons;
+            }
+            # Upgrade to Gold pay buttons.
+            $goldbuttons = $upgrade->showUpgradeButton('Gold', $username, $referid);
+            echo $goldbuttons;
+        }
+        ?>
+    </div>
 
 	<form action="/profile" method="post" accept-charset="utf-8" class="form" role="form">
 

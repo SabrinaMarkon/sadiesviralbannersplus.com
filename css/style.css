@@ -2876,12 +2876,15 @@ p {
       }
 
 /*===========================
-       15.TEXTADS/BANNERSPAID css #f7f4f4 -light gray
+       15.TEXTADS/BANNERSPAID/VIRALBANNERS on main page.
 ===========================*/
 #homecontent, #contact {
   padding: 3em;
 }
 #textads.textads-area {
+  background: #0067f4;
+}
+#viralbanners.viralbanners-area{
   background: #0067f4;
 }
 #bannerspaid.bannerspaid-area {
