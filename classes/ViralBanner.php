@@ -85,6 +85,9 @@ class ViralBanner extends Banner
         $alt = $banner['alt'];
         $imageurl = $banner['imageurl'];
 
+        // Count hit (impression):
+        $this->countBannerHit($id);
+
         $showbanner = '
         <div>
             <a href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
@@ -93,6 +96,17 @@ class ViralBanner extends Banner
         </div>';
 
         return $showbanner;
+    }
+
+    public function countBannerHit(int $id): void {
+
+        $pdo = DATABASE::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "update " . $this->adtable . " set hits=hits+1 where id=?";
+        $q = $pdo->prepare($sql);
+        $q->execute([$id]);
+
+        Database::disconnect();
     }
 
     public function showBannerPlaceholder(int $i, int $width, int $height, string $msg): string {

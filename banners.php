@@ -69,16 +69,17 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             if (in_array($i, $referidbannerslots)) {
                 // See if the user, referid, has a banner for this position. Positions over 8 are for the smaller banners below.
                 $showbanner = $banner->getViralBanner($_SESSION['referid'], $i);
-            } else {
-                // $sponsorrefersbannerslots are the position slots that the user referid's sponsor is allowed to show on their referral's (referid's) page.
-                if (in_array($i, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
-                    // See if the user's sponsor (referid's referid), has a banner saved for this position.
-                    $showbanner = $banner->getViralBanner($sponsorusername, $i);
-                }
+            } 
+            // $sponsorrefersbannerslots are the position slots that the user referid's sponsor is allowed to show on their referral's (referid's) page.
+            elseif (in_array($i, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
+            
+                // See if the user's sponsor (referid's referid), has a banner saved for this position.
+                $showbanner = $banner->getViralBanner($sponsorusername, $i);
             }
-
-            // TODO: admin should create their own default banners for every slot so they are never empty (in the viralbanners table too for all 12 slots (same UI as members area!)
-
+            else {
+                $showbanner = '';
+            }
+            
             // SHOW:
             if (!empty($showbanner)) {
 
@@ -113,7 +114,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
         <!-- #12 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
 
         <?php
-        for ($i = 9; $i === 12; $i++) {
+        for ($i = 9; $i <= 12; $i++) {
 
             $allowedaccounttypearray = [];
             if (in_array($i, $freebannerslotsarray)) {
