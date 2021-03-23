@@ -30,9 +30,9 @@ foreach ($promotionals as $promotional) {
         ?>
         <div class="table-responsive border border-dark mb-5">
             
-            <table class="table table-condensed table-bordered table-striped text-center" style="margin-bottom: 0;">
+            <table id="admintable" class="table table-condensed table-bordered table-striped text-center" style="margin-bottom: 0;">
                 <tbody>
-                    <tr class="table-active">
+                    <tr class="admintablebluebg">
                         <td>
                             <h4 class="ja-white">BANNER: <?php echo $promotional['name']; ?></h4>
                         </td>
@@ -73,9 +73,9 @@ foreach ($promotionals as $promotional) {
         ?>
         <div class="table-responsive border border-dark mb-5">
 
-            <table class="table table-condensed table-bordered table-striped text-center" style="margin-bottom: 0;">
+            <table id="admintable" class="table table-condensed table-bordered table-striped text-center" style="margin-bottom: 0;">
                 <tbody>
-                    <tr class="table-active">
+                    <tr class="admintablebluebg">
                         <td>
                             <h4 class="ja-white">EMAIL: <?php echo $promotional['name']; ?></h4>
                         </td>

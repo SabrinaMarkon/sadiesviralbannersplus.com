@@ -482,6 +482,9 @@ h4.ja-white {
 #admintable tbody tr td.reorder {
   cursor: move;
 }
+#admintable .admintablebluebg {
+  background: #0067f4;
+}
 
 .faqpanel, .downloadpanel {
   border-radius: 10px;
