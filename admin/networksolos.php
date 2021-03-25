@@ -158,13 +158,13 @@ $ads = $allads->getAllAds();
             <thead>
                 <tr>
                     <th class="text-center small">Ad&nbsp;#</th>
+                    <th class="text-center small">Approved</th>
                     <th class="text-center small" style="min-width: 100px;">Username</th>
                     <th class="text-center small" style="min-width: 100px;">Name</th>
                     <th class="text-center small" style="min-width: 100px;">Subject</th>
                     <th class="text-center small" style="min-width: 200px;">URL</th>
                     <th class="text-center small">Short&nbsp;URL</th>
                     <th class="text-center small" style="min-width: 200px;">Message</th>
-                    <th class="text-center small">Approved</th>
                     <th class="text-center small">Sent</th>
                     <th class="text-center small">Clicks</th>
                     <th class="text-center small" style="min-width: 150px;">Date</th>
@@ -194,6 +194,16 @@ $ads = $allads->getAllAds();
                             <form action="/admin/networksolos/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
                                 <td class="small"><?php echo $ad['id']; ?>
                                 </td>
+                                <td class="small<?php if ($ad['approved'] !== "1") { echo ' ja-coralbg'; } ?>">
+                                    <select name="approved" class="form-control widetableselect">
+                                        <option value="0" <?php if ($ad['approved'] !== "1") {
+                                                                echo "selected";
+                                                            } ?>>No</option>
+                                        <option value="1" <?php if ($ad['approved'] === "1") {
+                                                                echo "selected";
+                                                            } ?>>Yes</option>
+                                    </select>
+                                </td>
 								<td class="small">
 									<select name="username" class="form-control input-sm widetableinput">
 										<option value="admin"<?php if ($ad['username'] === 'admin') { echo " selected"; } ?>>admin</option>
@@ -221,18 +231,6 @@ $ads = $allads->getAllAds();
                                 </td>
                                 <td>
                                     <textarea class="form-control input-sm widetableinput" name="message" id="message" style="width: 400px; height: 150px;" placeholder="Message"><?php echo $ad['message'] ?></textarea>
-                                </td>
-                                <td class="small">
-                                    <select name="approved" class="form-control widetableselect<?php if ($ad['approved'] !== "1") {
-                                                                                                    echo ' ja-yellowbg';
-                                                                                                } ?>">
-                                        <option value="0" <?php if ($ad['approved'] !== "1") {
-                                                                echo "selected";
-                                                            } ?>>No</option>
-                                        <option value="1" <?php if ($ad['approved'] === "1") {
-                                                                echo "selected";
-                                                            } ?>>Yes</option>
-                                    </select>
                                 </td>
                                 <td class="small">
                                     <input type="sent" name="sent" value="<?php echo $ad['sent']; ?>" class="form-control input-sm widetableinput" size="12" placeholder="Sent">

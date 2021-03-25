@@ -121,6 +121,7 @@ $ads = $allads->getAllAds();
 			<thead>
 				<tr>
 					<th class="text-center small">Ad&nbsp;#</th>
+					<th class="text-center small">Approved</th>
 					<th class="text-center small" style="min-width: 125px;">Image</th>
 					<th class="text-center small" style="min-width: 100px;">Username</th>
 					<th class="text-center small" style="min-width: 100px;">Name</th>
@@ -129,7 +130,6 @@ $ads = $allads->getAllAds();
 					<th class="text-center small">Short&nbsp;URL</th>
 					<th class="text-center small" style="min-width: 200px;">Ad&nbsp;Text</th>
 					<th class="text-center small" style="min-width: 200px;">Image&nbsp;URL</th>
-					<th class="text-center small">Approved</th>
 					<th class="text-center small">Impressions</th>
 					<th class="text-center small">Clicks</th>
 					<th class="text-center small" style="min-width: 150px;">Date</th>
@@ -158,6 +158,16 @@ $ads = $allads->getAllAds();
 						<tr>
 							<form action="/admin/textads/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
 								<td class="small"><?php echo $ad['id']; ?>
+								</td>
+								<td class="small<?php if ($ad['approved'] !== "1") { echo ' ja-coralbg'; } ?>">
+                                    <select name="approved" class="form-control widetableselect">
+										<option value="0" <?php if ($ad['approved'] !== "1") {
+																echo "selected";
+															} ?>>No</option>
+										<option value="1" <?php if ($ad['approved'] === "1") {
+																echo "selected";
+															} ?>>Yes</option>
+									</select>
 								</td>
 								<td class="small">
 									<?php
@@ -202,18 +212,6 @@ $ads = $allads->getAllAds();
 								</td>
 								<td>
 									<input type="url" name="imageurl" value="<?php echo $ad['imageurl']; ?>" class="form-control input-sm widetableinput" size="60" placeholder="http://" required>
-								</td>
-								<td class="small">
-									<select name="approved" class="form-control widetableselect<?php if ($ad['approved'] !== "1") {
-																									echo ' ja-yellowbg';
-																								} ?>">
-										<option value="0" <?php if ($ad['approved'] !== "1") {
-																echo "selected";
-															} ?>>No</option>
-										<option value="1" <?php if ($ad['approved'] === "1") {
-																echo "selected";
-															} ?>>Yes</option>
-									</select>
 								</td>
 								<td class="small">
 									<?php echo $ad['hits']; ?>
