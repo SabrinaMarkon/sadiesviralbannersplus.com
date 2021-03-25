@@ -196,7 +196,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 							?>
 								<h2>Add Your Viral Banner to Slot #<?php echo $i ?></h2>
 								
-								<form action="/viralbanners/<?php echo $i ?>" method="post" accept-charset="utf-8" class="form" role="form">
+								<form action="/viralbanners" method="post" accept-charset="utf-8" class="form" role="form">
 
 									<label for="name">Name of Viral Banner (only you see):</label>
 									<input type="text" name="name" class="form-control input-lg" placeholder="Name" required>
@@ -214,6 +214,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 									<input type="hidden" name="bannerpageslot" value="<?php echo $i?>">
+									<input type="hidden" name="username" value="<?php echo $username ?>">
 									<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE!</button>
 
 								</form>
@@ -242,7 +243,6 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 									<input type="hidden" name="bannerpageslot" value="<?php echo $i?>">
-									<input type="hidden" name="id" value="<?php echo $usershowbanner['id']; ?>>
 									<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="savead">SAVE!</button>
 
 								</form>

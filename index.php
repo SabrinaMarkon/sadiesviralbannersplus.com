@@ -183,7 +183,12 @@ if (isset($_POST['createad'])) {
 				break;
 		}
 		if ($ad) {
-			$showad = $ad->createAd($id, $adminautoapprove, 'member', $_POST);
+			if ($ad) {
+                if (empty($id)) {
+                    $id = 0;
+                }
+                $showad = $ad->createAd($id, $adminautoapprove, 'member', $_POST);
+            }
 		}
 	}
 }
