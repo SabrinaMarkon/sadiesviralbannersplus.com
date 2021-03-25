@@ -181,6 +181,10 @@ abstract class Ad
         }
         if ($this->adtable === "viralbanners") {
             
+            $newfreebannerclickstosignup = $post['freebannerclickstosignup'];
+            $newprobannerclickstosignup = $post['probannerclickstosignup'];
+            $newgoldbannerclickstosignup = $post['goldbannerclickstosignup'];
+
             // checkbox arrays - store as csvs in database.
             $newfreebannerslots = '';
             if (isset($post['freebannerslots'])) {
@@ -231,9 +235,9 @@ abstract class Ad
                 $newgoldrefersgoldbannerslots = implode(',', $post['goldrefersgoldbannerslots']);
             }
 
-            $sql = "update adminsettings set freebannerslots=?, freerefersfreebannerslots=?, freerefersprobannerslots=?, freerefersgoldbannerslots=?, probannerslots=?, prorefersfreebannerslots=?, prorefersprobannerslots=?, prorefersgoldbannerslots=?, goldbannerslots=?, goldrefersfreebannerslots=?, goldrefersprobannerslots=?, goldrefersgoldbannerslots=?";
+            $sql = "update adminsettings set freebannerclickstosignup=?, freebannerslots=?, freerefersfreebannerslots=?, freerefersprobannerslots=?, freerefersgoldbannerslots=?, probannerclickstosignup=?, probannerslots=?, prorefersfreebannerslots=?, prorefersprobannerslots=?, prorefersgoldbannerslots=?, goldbannerclickstosignup=?, goldbannerslots=?, goldrefersfreebannerslots=?, goldrefersprobannerslots=?, goldrefersgoldbannerslots=?";
             $q = $pdo->prepare($sql);
-            $q->execute([$newfreebannerslots, $newfreerefersfreebannerslots, $newfreerefersprobannerslots, $newfreerefersgoldbannerslots, $newprobannerslots, $newprorefersfreebannerslots, $newprorefersprobannerslots, $newprorefersgoldbannerslots, $newgoldbannerslots, $newgoldrefersfreebannerslots, $newgoldrefersprobannerslots, $newgoldrefersgoldbannerslots]);
+            $q->execute([$newfreebannerclickstosignup, $newfreebannerslots, $newfreerefersfreebannerslots, $newfreerefersprobannerslots, $newfreerefersgoldbannerslots, $newprobannerclickstosignup, $newprobannerslots, $newprorefersfreebannerslots, $newprorefersprobannerslots, $newprorefersgoldbannerslots, $newgoldbannerclickstosignup, $newgoldbannerslots, $newgoldrefersfreebannerslots, $newgoldrefersprobannerslots, $newgoldrefersgoldbannerslots]);
         }
         if ($this->adtable === "networksolos") {
             $adprice = $post['networksoloprice'];
