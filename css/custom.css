@@ -327,6 +327,9 @@ h4.ja-white {
 .ja-yellowbg {
   background: #f7c916;
 }
+.ja-coralbg {
+  background: #ff4343;
+}
 
 .content-wrapper {
   padding: 0 50px 30px;
