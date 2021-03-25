@@ -88,14 +88,13 @@ class ViralBanner extends Banner
         // Count hit (impression):
         $this->countBannerHit($id);
 
-        $showbanner = '
+        // TODO: Click should show MODAL to edit banner in members area!!! NOT go to the site url.
+        return '
         <div>
             <a href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
                 <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
             </a>
         </div>';
-
-        return $showbanner;
     }
 
     public function countBannerHit(int $id): void {
@@ -117,9 +116,8 @@ class ViralBanner extends Banner
         return '
         <div>
             <a href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
-            <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=' . $msguppercase . '" alt="' . $msg . '">
+                <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=' . $msguppercase . '" alt="' . $msg . '">
             </a>
         </div>';
-
     }
 }
