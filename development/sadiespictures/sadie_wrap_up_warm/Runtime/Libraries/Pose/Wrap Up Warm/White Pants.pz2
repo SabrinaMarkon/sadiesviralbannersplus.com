@@ -1,0 +1,31 @@
+{
+version
+	{
+	number 4.01
+	}
+figure
+	{
+	material Pants
+		{
+		KdColor 1 1 1 1
+		KaColor 0 0 0 1
+		KsColor 0 0 0 1
+		TextureColor 1 1 1 1
+		NsExponent 30
+		tMin 0
+		tMax 0
+		tExpo 0
+		bumpStrength 1
+		ksIgnoreTexture 0
+		reflectThruLights 1
+		reflectThruKd 0
+		textureMap ":Runtime:textures:treasurechest:sadie_wuw:swwpants.jpg"
+				0 0
+		bumpMap NO_MAP
+		reflectionMap NO_MAP
+		transparencyMap NO_MAP
+		ReflectionColor 1 1 1 1
+		reflectionStrength 1
+		}
+	}
+}

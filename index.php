@@ -175,6 +175,9 @@ if (isset($_POST['createad'])) {
 			case "bannerspaid":
 				$ad = new Banner($adtable);
 				break;
+			case "viralbanners":
+				$ad = new ViralBanner($adtable);
+				break;
 			case "networksolos":
 				$ad = new NetworkSolo($adtable);
 				break;
@@ -248,7 +251,7 @@ if (isset($_GET['page']) && ($_GET['page'] === "logout")) {
 
 # if an ad is clicked (we don't want a header.php)
 if (isset($_GET['page']) && ($_GET['page'] === 'click')) {
-	
+
 	include "click.php";
 	exit;
 }

@@ -18,6 +18,7 @@ if (coinpaymentsButtonForm != null && coinpaymentsButton != null) {
 }
 
 function formFieldsToJSON() {
+
   const buttonId = this.id;
 
   if (errormsg != null) {

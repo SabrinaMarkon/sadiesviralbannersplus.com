@@ -1,0 +1,130 @@
+{
+
+version
+	{
+	number 6
+	}
+
+thighLength 0
+
+controlProp GoalCenterOfMass:1
+	{
+	channels
+		{
+		rotateY yRotate
+			{
+			keys
+				{
+				k  0  0
+				}
+			}
+		rotateX xRotate
+			{
+			keys
+				{
+				k  0  0
+				}
+			}
+		rotateZ zRotate
+			{
+			keys
+				{
+				k  0  0
+				}
+			}
+		translateX xTran
+			{
+			keys
+				{
+				k  0  0
+				}
+			trackingScaleMult 1
+			}
+		translateY yTran
+			{
+			keys
+				{
+				k  0  0
+				}
+			trackingScaleMult 1.000000
+			}
+		translateZ zTran
+			{
+			keys
+				{
+				k  0  0
+				}
+			trackingScaleMult 1.000000
+			}
+		}
+	}
+
+controlProp CenterOfMass:1
+	{
+	channels
+		{
+		rotateY yRotate
+			{
+			keys
+				{
+				k  0  0
+				}
+			}
+		rotateX xRotate
+			{
+			keys
+				{
+				k  0  0
+				}
+			}
+		rotateZ zRotate
+			{
+			keys
+				{
+				k  0  0
+				}
+			}
+		translateX xTran
+			{
+			keys
+				{
+				k  0  0
+				}
+			trackingScaleMult 1
+			}
+		translateY yTran
+			{
+			keys
+				{
+				k  0  0
+				}
+			trackingScaleMult 1.000000
+			}
+		translateZ zTran
+			{
+			keys
+				{
+				k  0  0
+				}
+			trackingScaleMult 1.000000
+			}
+		}
+	}
+
+figure 
+	{
+	}
+}
+{
+
+version
+	{
+	number 6
+	}
+
+thighLength 0
+
+figure 
+	{
+	}
+}

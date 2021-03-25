@@ -1,0 +1,31 @@
+{
+version
+	{
+	number 4.01
+	}
+figure
+	{
+	material Ribbon
+		{
+		KdColor 1 1 1 1
+		KaColor 0 0 0 1
+		KsColor 0.560784 0.560784 0.560784 1
+		TextureColor 1 1 1 1
+		NsExponent 5
+		tMin 0
+		tMax 0
+		tExpo 0
+		bumpStrength 0
+		ksIgnoreTexture 1
+		reflectThruLights 0
+		reflectThruKd 0
+		textureMap ":Runtime:textures:treasurechest:sadieRR:Red Gingham Hairband.jpg"
+				0 0
+		bumpMap NO_MAP
+		reflectionMap NO_MAP
+		transparencyMap NO_MAP
+		ReflectionColor 1 1 1 1
+		reflectionStrength 0
+		}
+	}
+}

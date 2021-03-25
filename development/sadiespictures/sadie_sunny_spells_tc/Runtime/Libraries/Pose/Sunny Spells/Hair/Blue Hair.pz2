@@ -1,0 +1,53 @@
+{
+version
+	{
+	number 4.01
+	}
+figure
+	{
+	material InnerHair
+		{
+		KdColor 1 1 1 1
+		KaColor 0 0 0 1
+		KsColor 0.435294 0.435294 0.435294 1
+		TextureColor 1 1 1 1
+		NsExponent 50
+		tMin 0
+		tMax 0
+		tExpo 0.6
+		bumpStrength 1
+		ksIgnoreTexture 1
+		reflectThruLights 1
+		reflectThruKd 0
+		textureMap ":Runtime:textures:treasurechest:sadie_sunnyspells:ssblhair.jpg"
+				0 0
+		bumpMap NO_MAP
+		reflectionMap NO_MAP
+		transparencyMap NO_MAP
+		ReflectionColor 0.058824 0.058824 0.058824 1
+		reflectionStrength 1
+		}
+	material OuterHair
+		{
+		KdColor 1 1 1 1
+		KaColor 0 0 0 1
+		KsColor 0.435294 0.435294 0.435294 1
+		TextureColor 1 1 1 1
+		NsExponent 5
+		tMin 0
+		tMax 0
+		tExpo 0
+		bumpStrength 1
+		ksIgnoreTexture 1
+		reflectThruLights 0
+		reflectThruKd 0
+		textureMap ":Runtime:textures:treasurechest:sadie_sunnyspells:ssblhair.jpg"
+				0 0
+		bumpMap NO_MAP
+		reflectionMap NO_MAP
+		transparencyMap NO_MAP
+		ReflectionColor 0.058824 0.058824 0.058824 1
+		reflectionStrength 0
+		}
+	}
+}
