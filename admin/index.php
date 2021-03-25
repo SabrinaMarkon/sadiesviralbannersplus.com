@@ -432,7 +432,6 @@ if (isset($_POST['login'])) {
         } else {
 
             # admin clicked the button to save main settings.
-            $ad = "";
             $adtable = $_POST['adtable'];
             $ad = makeAdObject($adtable);
             if ($ad) {
@@ -450,7 +449,6 @@ if (isset($_POST['login'])) {
         } else {
 
             # give a user one or more blank ads from admin.
-            $ad = "";
             $adtable = $_POST['adtable'];
             $ad = makeAdObject($adtable);
             if ($ad) {
@@ -477,7 +475,6 @@ if (isset($_POST['login'])) {
         } else {
 
             # user submitted a new ad.
-            $ad = "";
             $adtable = $_POST['adtable'];
             $ad = makeAdObject($adtable);
             if ($ad) {
@@ -498,7 +495,6 @@ if (isset($_POST['login'])) {
         } else {
 
             # user saved changes made to their ad.
-            $ad = "";
             $adtable = $_POST['adtable'];
             $ad = makeAdObject($adtable);
             if ($ad) {
@@ -508,6 +504,7 @@ if (isset($_POST['login'])) {
     }
 
     if (isset($_POST['deletead'])) {
+
         $adtable = $_POST['adtable'];
         $ad = makeAdObject($adtable);
         if ($ad) {

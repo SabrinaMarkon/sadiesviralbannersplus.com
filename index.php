@@ -14,6 +14,26 @@ function autoloader($class)
 }
 spl_autoload_register("autoloader");
 
+function makeAdObject(string $adtable): ?object {
+    switch ($adtable) {
+        case "textads":
+            $ad = new TextAd($adtable);
+            break;
+        case "bannerspaid":
+            $ad = new Banner($adtable);
+            break;
+        case "viralbanners":
+            $ad = new ViralBanner($adtable);
+            break;
+        case "networksolos":
+            $ad = new NetworkSolo($adtable);
+            break;
+        default:
+            $ad = null;
+    }
+    return $ad;
+}
+
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {
@@ -166,29 +186,20 @@ if (isset($_POST['createad'])) {
 	} else {
 
 		# user submitted a new ad.
-		$ad = "";
 		$adtable = $_POST['adtable'];
-		switch ($adtable) {
-			case "textads":
-				$ad = new TextAd($adtable);
-				break;
-			case "bannerspaid":
-				$ad = new Banner($adtable);
-				break;
-			case "viralbanners":
-				$ad = new ViralBanner($adtable);
-				break;
-			case "networksolos":
-				$ad = new NetworkSolo($adtable);
-				break;
+		$ad = makeAdObject($adtable);
+		if ($adtable === 'viralbanners') {
+			$source = 'viralbanner';
+		} else {
+			$source = 'member';
 		}
 		if ($ad) {
 			if ($ad) {
-                if (empty($id)) {
-                    $id = 0;
-                }
-                $showad = $ad->createAd($id, $adminautoapprove, 'member', $_POST);
-            }
+				if (empty($id)) {
+					$id = 0;
+				}
+				$showad = $ad->createAd($id, $adminautoapprove, $source, $_POST);
+			}
 		}
 	}
 }
@@ -204,18 +215,9 @@ if (isset($_POST['savead'])) {
 	} else {
 
 		# user saved changes made to their ad.
-		$ad = "";
 		$adtable = $_POST['adtable'];
-		switch ($adtable) {
-			case "textads":
-				$ad = new TextAd($adtable);
-				break;
-			case "bannerspaid":
-				$ad = new Banner($adtable);
-				break;
-			case "networksolos":
-				$ad = new NetworkSolo($adtable);
-		}
+		$ad = makeAdObject($adtable);
+
 		if ($ad) {
 			$showad = $ad->saveAd($id, $adminautoapprove, 0, $_POST);
 		}
