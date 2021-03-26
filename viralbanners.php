@@ -173,8 +173,8 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 			?>
 			<div class="modal fade" id="viralbannerModal<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="viralbannerModal<?php echo $i ?>" aria-hidden="true">
-				<div class="modal-dialog ja-modal-width">
-					<div class="modal-content ja-modal">
+				<div class="modal-dialog">
+					<div class="modal-content">
 						<div class="modal-body">
 
 						<?php
@@ -243,6 +243,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 							case "upgradeproandgold":
 							?>
 								<section id="upgrade" class="paybuttons">
+									<h2>Upgrade Your Membership</h2>
 									<?php
 										$upgrade = new UpgradeButton(new User(new Email()), $settings);
 										# Upgrade to Pro pay buttons.
@@ -257,6 +258,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 							case "upgradegold":
 							?>
 								<section id="upgrade" class="paybuttons">
+									<h2>Upgrade Your Membership</h2>
 									<?php
 										$upgrade = new UpgradeButton(new User(new Email()), $settings);
 										# Upgrade to Gold pay buttons.
@@ -269,11 +271,13 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 							
 							case "paidonly":
 								$modal = 1;
+								echo '<div class="ja-toppadding2"></div>';
 								include_once "bannerspaid.php";
 								break;
 
 							default:
 								$modal = 1;
+								echo '<div class="ja-toppadding2"></div>';
 								include_once "bannerspaid.php";
 								break;
 								

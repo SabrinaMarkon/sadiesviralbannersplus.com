@@ -238,6 +238,17 @@ figcaption .sadietalknormal {
   font-size: 1.4rem;
   text-align: center;
 }
+.viralbanners .modal-content {
+  background: #ffd633;
+  width: 600px;
+  box-shadow: 2px 2px 2px #121212;
+}
+.viralbanners .modal-content h2 {
+  color: #121212;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  margin: 2rem;
+}
 
 .paybuttons {
   display: flex;
