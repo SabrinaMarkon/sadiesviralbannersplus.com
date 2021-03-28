@@ -240,7 +240,7 @@ figcaption .sadietalknormal {
 }
 .viralbanners .modal-content {
   background: #ffd633;
-  width: 600px;
+  width: 600px; /*TODO: Fix width so it is responsive! (maybe font size) */
   box-shadow: 2px 2px 2px #121212;
 }
 .viralbanners .modal-content h2 {
