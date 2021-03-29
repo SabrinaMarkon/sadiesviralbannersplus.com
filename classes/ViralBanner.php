@@ -79,7 +79,7 @@ class ViralBanner extends Banner
         return $vararray;
     }
 
-    public function showBanner(array $banner, int $width, int $height): string {
+    public function showBanner(array $banner, int $width, int $height, int $i): string {
 
         $id = $banner['id'];
         $alt = $banner['alt'];
@@ -88,13 +88,23 @@ class ViralBanner extends Banner
         // Count hit (impression):
         $this->countBannerHit($id);
 
-        // TODO: Click should show MODAL to edit banner in members area!!! NOT go to the site url.
+        // If banner will be clicked in Viral Banners members area, the click should open the modal to EDIT the Viral Banner instead of its URL.
+
+        if ($i) {
+            return '
+            <div>
+                <a href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
+                    <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
+                </a>
+            </div>'; 
+        }
+
         return '
         <div>
             <a href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
                 <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
             </a>
-        </div>';
+        </div>';  
     }
 
     public function countBannerHit(int $id): void {
