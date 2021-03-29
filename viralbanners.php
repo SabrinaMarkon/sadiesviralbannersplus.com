@@ -216,7 +216,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 									<input type="text" name="name" class="form-control input-lg" placeholder="Name" value="<?php echo $usershowbanner['name']; ?>" required>
 
 									<label for="title">Alt Text:</label>
-									<input type="text" name="alt" class="form-control input-lg" placeholder="Alt Text" value="<?php echo $usershowbanner['alt']; ?> required>
+									<input type="text" name="alt" class="form-control input-lg" placeholder="Alt Text" value="<?php echo $usershowbanner['alt']; ?>" required>
 
 									<label for="url">Click-Thru URL:</label>
 									<input type="url" name="url" class="form-control input-lg" placeholder="Click-Thru URL" value="<?php echo $usershowbanner['url']; ?>"" required>
@@ -228,14 +228,15 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 									<input type="hidden" name="bannerpageslot" value="<?php echo $i ?>">
-									<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="savead">SAVE!</button>
+									<input type="hidden" name="username" value="<?php echo $username ?>">
+									<button id="savebutton" class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="savead">SAVE!</button>
 								</form>
 
 								<form action="/viralbanners/<?php echo $usershowbanner['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
 									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 									<input type="hidden" name="_method" value="DELETE">
 									<input type="hidden" name="name" value="<?php echo $usershowbanner['name']; ?>">
-									<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="deletead">DELETE</button>
+									<button class="btn btn-lg btn-danger ja-bottompadding ja-toppadding" type="submit" name="deletead">DELETE</button>
 								</form>
 							<?php
 							break;
