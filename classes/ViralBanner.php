@@ -125,9 +125,7 @@ class ViralBanner extends Banner
 
         return '
         <div>
-            <a href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
-                <img src="https://via.placeholder.com/' . $width . 'x' . $height . '/ffffff/121212?text=' . $msguppercase . '" alt="' . $msg . '">
-            </a>
+            <a style="width: ' . $width . 'px; height: ' . $height . 'px; background: #fff; margin: 1rem;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">' . $msg . '</a>
         </div>';
     }
 }

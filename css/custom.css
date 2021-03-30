@@ -219,7 +219,7 @@ figcaption .sadietalknormal {
 }
 
 .viralbanners {
-  max-width: 760px;
+  max-width: 800px;
   background: #0067f4;
   border: 5px solid #ff4343;
   display: flex;
@@ -230,8 +230,14 @@ figcaption .sadietalknormal {
   padding: 1rem;
   box-shadow: 2px 2px 2px #121212;
 }
-.viralbanners > div {
-  margin: 1rem auto; 
+.viralbanners div {
+  font-weight: bold;
+  text-align: center;
+}
+.viralbanners a {
+  color: #ff4343;
+  margin: 1rem auto;
+  box-shadow: 2px 2px 2px #121212;
 }
 .viralbanners h2 {
   color: #fff;
