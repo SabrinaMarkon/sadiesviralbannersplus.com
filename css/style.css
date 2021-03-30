@@ -2257,11 +2257,16 @@ p {
     .navbar-area .navbar .navbar-nav .nav-item {
       margin: 0 16px;
       position: relative; }
+      .navbar-area .navbar .navbar-nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
       .navbar-area .navbar .navbar-nav .nav-item a {
         font-size: 16px;
         line-height: 24px;
         font-weight: 700;
-        padding: 26px 0;
+        /* padding: 26px 0; */
+        padding: 5px 0;
         color: #fff;
         text-transform: uppercase;
         position: relative;
@@ -2291,7 +2296,8 @@ p {
           background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, white 100%);
           left: 50%;
           margin: 0 2px;
-          bottom: 14px;
+          /* bottom: 14px; */
+          bottom: 3px;
           -webkit-transition: all 0.3s ease-out 0s;
           -moz-transition: all 0.3s ease-out 0s;
           -ms-transition: all 0.3s ease-out 0s;
@@ -3279,9 +3285,11 @@ p.form-message.success, p.form-message.error {
 ===========================*/
 /*===== FOOTER FIVE =====*/
 .footer-area {
+  width: 100%;
   background-color: #121212;
   padding-top: 90px;
-  padding-bottom: 120px; 
+  padding-bottom: 120px;
+  margin: 0;
 } 
 .footer-area .footer-links {
   display: flex;
