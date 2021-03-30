@@ -31,7 +31,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 	<h1 class="ja-bottompadding mb-4">Add Your Viral Banners!</h1>
 
-	<div class="affiliateurl mb-4" style="font-weight: bold; text-align: center; font-size: 1.4rem;">
+	<div class="affiliateurl mb-4 pt-3" style="font-weight: bold; text-align: center; font-size: 1.4rem;">
 		Show off Your Best Programs on your Own Personal VIRAL Banner App! <br /><a href="<?php echo $domain . "/banners/" . $username; ?>" target="_blank"><?php echo $domain . "/banners/" . $username; ?></a>
 	</div>
 

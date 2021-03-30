@@ -121,136 +121,136 @@ $ads = $allads->getAllAds();
     <button class="btn btn-lg btn-primary mt-3 mb-5" type="submit" name="approveallads">APPROVE ALL</button>
     </form>
 
-	<div class="table-responsive">
-		<table id="admintable" class="table table-hover text-center table-sm">
-			<thead>
-				<tr>
-					<th class="text-center small">Ad&nbsp;#</th>
-					<th class="text-center small">Approved</th>
-					<th class="text-center small" style="min-width: 125px;">Image</th>
-					<th class="text-center small" style="min-width: 100px;">Username</th>
-					<th class="text-center small" style="min-width: 100px;">Name</th>
-					<th class="text-center small" style="min-width: 100px;">Title</th>
-					<th class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
-					<th class="text-center small">Short&nbsp;URL</th>
-					<th class="text-center small" style="min-width: 200px;">Ad&nbsp;Text</th>
-					<th class="text-center small" style="min-width: 200px;">Image&nbsp;URL</th>
-					<th class="text-center small">Impressions</th>
-					<th class="text-center small">Clicks</th>
-					<th class="text-center small" style="min-width: 150px;">Date</th>
-					<th class="text-center small">Save</th>
-					<th class="text-center small">Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<?php
-				if (!$ads) {
-				} else {
-
-					foreach ($ads as $ad) {
-
-						$adddate = $ad['adddate'];
-
-						if (trim($adddate) == '' || substr($adddate, 0, 10) == '0000-00-00') {
-
-							$dateadadded = 'Not Yet';
-						} else {
-
-							$dateadadded = date('Y-m-d');
-						}
-				?>
-						<tr>
-							<form action="/admin/textads/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
-								<td class="small"><?php echo $ad['id']; ?>
-								</td>
-								<td class="small<?php if ($ad['approved'] !== "1") { echo ' ja-coralbg'; } ?>">
-                                    <select name="approved" class="form-control widetableselect">
-										<option value="0" <?php if ($ad['approved'] !== "1") {
-																echo "selected";
-															} ?>>No</option>
-										<option value="1" <?php if ($ad['approved'] === "1") {
-																echo "selected";
-															} ?>>Yes</option>
-									</select>
-								</td>
-								<td class="small">
-									<?php
-									if ($ad['imageurl']) {
-										?>
-											<img src="<?php echo $ad['imageurl']; ?>" alt="<?php echo $ad['title'] ?>" class="card-image">
-										<?php
-									} else {
-										?>
-											<img src="https://via.placeholder.com/125/0067f4/ffffff?text=NOT+ADDED" alt="Not Added" class="card-image">
-										<?php
-									}
-									?>
-								</td>
-								<td class="small">
-									<select name="username" class="form-control input-sm widetableinput">
-										<option value="admin"<?php if ($ad['username'] === 'admin') { echo " selected"; } ?>>admin</option>
-										<?php
-										foreach ($members as $member) {
-											$username = $member['username'];
-											?>
-											<option value="<?php echo $username ?>"<?php if ($ad['username'] === $username) { echo " selected"; } ?>><?php echo $username ?></options>
-											<?php
-											}
-											?>
-									</select>
-								</td>
-								<td class="small">
-									<input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
-								</td>
-								<td class="small">
-									<input type="text" name="title" value="<?php echo $ad['title']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Title" required>
-								</td>
-								<td>
-									<input type="url" name="url" value="<?php echo $ad['url']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="http://" required>
-								</td>
-								<td>
-									<a href="<?php echo $ad['shorturl'] ?>" target="_blank"><?php echo $ad['shorturl'] ?></a>
-								</td>
-								<td>
-									<input type="text" name="description" value="<?php echo $ad['description']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Ad Text" required>
-								</td>
-								<td>
-									<input type="url" name="imageurl" value="<?php echo $ad['imageurl']; ?>" class="form-control input-sm widetableinput" size="60" placeholder="http://" required>
-								</td>
-								<td class="small">
-									<?php echo $ad['hits']; ?>
-								</td>
-								<td class="small">
-									<?php echo $ad['clicks']; ?>
-								</td>
-								<td class="small">
-									<?php echo $dateadadded ?>
-								</td>
-								<td>
-									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
-									<input type="hidden" name="_method" value="PATCH">
-									<button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
-								</td>
-							</form>
-							<td>
-								<form action="/admin/textads/<?php echo $ad['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
-									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
-									<input type="hidden" name="_method" value="DELETE">
-									<input type="hidden" name="name" value="<?php echo $ad['name']; ?>">
-									<button class="btn btn-sm btn-primary" type="submit" name="deletead">DELETE</button>
-								</form>
-							</td>
-						</tr>
-				<?php
-					}
-				}
-				?>
-
-			</tbody>
-		</table>
-	</div>
-
-	<div class="ja-bottompadding"></div>
-
 </div>
+
+<div class="mt-4">
+	<table id="admintable" class="table table-hover text-center table-sm">
+		<thead>
+			<tr>
+				<th class="text-center small">Ad&nbsp;#</th>
+				<th class="text-center small">Approved</th>
+				<th class="text-center small" style="min-width: 125px;">Image</th>
+				<th class="text-center small" style="min-width: 100px;">Username</th>
+				<th class="text-center small" style="min-width: 100px;">Name</th>
+				<th class="text-center small" style="min-width: 100px;">Title</th>
+				<th class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
+				<th class="text-center small">Short&nbsp;URL</th>
+				<th class="text-center small" style="min-width: 200px;">Ad&nbsp;Text</th>
+				<th class="text-center small" style="min-width: 200px;">Image&nbsp;URL</th>
+				<th class="text-center small">Impressions</th>
+				<th class="text-center small">Clicks</th>
+				<th class="text-center small" style="min-width: 150px;">Date</th>
+				<th class="text-center small">Save</th>
+				<th class="text-center small">Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<?php
+			if (!$ads) {
+			} else {
+
+				foreach ($ads as $ad) {
+
+					$adddate = $ad['adddate'];
+
+					if (trim($adddate) == '' || substr($adddate, 0, 10) == '0000-00-00') {
+
+						$dateadadded = 'Not Yet';
+					} else {
+
+						$dateadadded = date('Y-m-d');
+					}
+			?>
+					<tr>
+						<form action="/admin/textads/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
+							<td class="small"><?php echo $ad['id']; ?>
+							</td>
+							<td class="small<?php if ($ad['approved'] !== "1") { echo ' ja-coralbg'; } ?>">
+								<select name="approved" class="form-control widetableselect">
+									<option value="0" <?php if ($ad['approved'] !== "1") {
+															echo "selected";
+														} ?>>No</option>
+									<option value="1" <?php if ($ad['approved'] === "1") {
+															echo "selected";
+														} ?>>Yes</option>
+								</select>
+							</td>
+							<td class="small">
+								<?php
+								if ($ad['imageurl']) {
+									?>
+										<img src="<?php echo $ad['imageurl']; ?>" alt="<?php echo $ad['title'] ?>" class="card-image">
+									<?php
+								} else {
+									?>
+										<img src="https://via.placeholder.com/125/0067f4/ffffff?text=NOT+ADDED" alt="Not Added" class="card-image">
+									<?php
+								}
+								?>
+							</td>
+							<td class="small">
+								<select name="username" class="form-control input-sm widetableinput">
+									<option value="admin"<?php if ($ad['username'] === 'admin') { echo " selected"; } ?>>admin</option>
+									<?php
+									foreach ($members as $member) {
+										$username = $member['username'];
+										?>
+										<option value="<?php echo $username ?>"<?php if ($ad['username'] === $username) { echo " selected"; } ?>><?php echo $username ?></options>
+										<?php
+										}
+										?>
+								</select>
+							</td>
+							<td class="small">
+								<input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
+							</td>
+							<td class="small">
+								<input type="text" name="title" value="<?php echo $ad['title']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Title" required>
+							</td>
+							<td>
+								<input type="url" name="url" value="<?php echo $ad['url']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="http://" required>
+							</td>
+							<td>
+								<a href="<?php echo $ad['shorturl'] ?>" target="_blank"><?php echo $ad['shorturl'] ?></a>
+							</td>
+							<td>
+								<input type="text" name="description" value="<?php echo $ad['description']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Ad Text" required>
+							</td>
+							<td>
+								<input type="url" name="imageurl" value="<?php echo $ad['imageurl']; ?>" class="form-control input-sm widetableinput" size="60" placeholder="http://" required>
+							</td>
+							<td class="small">
+								<?php echo $ad['hits']; ?>
+							</td>
+							<td class="small">
+								<?php echo $ad['clicks']; ?>
+							</td>
+							<td class="small">
+								<?php echo $dateadadded ?>
+							</td>
+							<td>
+								<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+								<input type="hidden" name="_method" value="PATCH">
+								<button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
+							</td>
+						</form>
+						<td>
+							<form action="/admin/textads/<?php echo $ad['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+								<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="hidden" name="name" value="<?php echo $ad['name']; ?>">
+								<button class="btn btn-sm btn-primary" type="submit" name="deletead">DELETE</button>
+							</form>
+						</td>
+					</tr>
+			<?php
+				}
+			}
+			?>
+
+		</tbody>
+	</table>
+</div>
+
+<div class="ja-bottompadding"></div>

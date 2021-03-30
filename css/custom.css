@@ -495,6 +495,10 @@ h4.ja-white {
   border: 1px solid #121212;
   border-collapse: collapse;
   background:  #fff;
+  display: block;
+}
+#admintable thead {
+  display: block;
 }
 #admintable thead tr:first-child {
   color: #fff;
@@ -503,12 +507,13 @@ h4.ja-white {
 #admintable thead tr:first-child h4 {
   color: #fff;
 }
-#admintable th {
+#admintable thead th {
   border: 1px solid #121212;
   font-weight: bold;
 }
 #admintable tbody tr td {
   vertical-align : middle;
+  border: 1px solid #121212;
 }
 #admintable tbody td .fas.fa-sort {
   color: #0067f4;
