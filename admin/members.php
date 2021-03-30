@@ -95,7 +95,7 @@ $members = $allmembers->getAllMembers();
     </div>
 </div>
 
-<div class="mt-4">
+<div class="admintable-wrap mt-4">
     <table id="admintable" class="table table-condensed table-bordered table-striped table-hover text-center table-sm">
         <thead>
             <tr>
@@ -258,5 +258,3 @@ $members = $allmembers->getAllMembers();
         </tbody>
     </table>
 </div>
-
-<div class="ja-bottompadding"></div>

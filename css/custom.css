@@ -491,14 +491,14 @@ h4.ja-white {
   font-size: 10pt;
   min-width: 100px;
 }
+.admintable-wrap {
+  max-height: 500px;
+  overflow: auto;
+}
 #admintable {
-  border: 1px solid #121212;
+  /* border: 1px solid #121212; */
   border-collapse: collapse;
   background:  #fff;
-  display: block;
-}
-#admintable thead {
-  display: block;
 }
 #admintable thead tr:first-child {
   color: #fff;
@@ -507,7 +507,10 @@ h4.ja-white {
 #admintable thead tr:first-child h4 {
   color: #fff;
 }
-#admintable thead th {
+#admintable thead tr th {
+  position: sticky;
+  top: 0;
+  background: #0067f4;
   border: 1px solid #121212;
   font-weight: bold;
 }

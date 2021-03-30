@@ -123,7 +123,7 @@ $ads = $allads->getAllAds();
 
 </div>
 
-<div class="mt-4">
+<div class="admintable-wrap mt-4">
 	<table id="admintable" class="table table-hover text-center table-sm">
 		<thead>
 			<tr>
@@ -252,5 +252,3 @@ $ads = $allads->getAllAds();
 		</tbody>
 	</table>
 </div>
-
-<div class="ja-bottompadding"></div>

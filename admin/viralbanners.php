@@ -516,25 +516,25 @@ $ads = $banner->getAllAds();
 
 </div>
 
-<div class="mt-4">
+<div class="admintable-wrap mt-4">
     <table id="admintable" class="table table-hover text-center table-sm">
         <thead>
             <tr>
-                <th class="text-center small">Ad&nbsp;#</th>
-                <th class="text-center small">Approved</th>
-                <th class="text-center small" style="min-width: 200px;">Image</th>
-                <th class="text-center small" style="min-width: 100px;">Username</th>
-                <th class="text-center small" style="min-width: 100px;">Banner&nbsp;Slot</th>
-                <th class="text-center small" style="min-width: 100px;">Name</th>
-                <th class="text-center small" style="min-width: 100px;">Alt</th>
-                <th class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
-                <th class="text-center small">Short&nbsp;URL</th>
-                <th class="text-center small" style="min-width: 200px;">Image&nbsp;URL</th>
-                <th class="text-center small">Impressions</th>
-                <th class="text-center small">Clicks</th>
-                <th class="text-center small" style="min-width: 150px;">Date</th>
-                <th class="text-center small">Save</th>
-                <th class="text-center small">Delete</th>
+                <th scope="col" class="text-center small">Ad&nbsp;#</th>
+                <th scope="col" class="text-center small">Approved</th>
+                <th scope="col" class="text-center small" style="min-width: 200px;">Image</th>
+                <th scope="col" class="text-center small" style="min-width: 100px;">Username</th>
+                <th scope="col" class="text-center small" style="min-width: 100px;">Banner&nbsp;Slot</th>
+                <th scope="col" class="text-center small" style="min-width: 100px;">Name</th>
+                <th scope="col" class="text-center small" style="min-width: 100px;">Alt</th>
+                <th scope="col" class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
+                <th scope="col" class="text-center small">Short&nbsp;URL</th>
+                <th scope="col" class="text-center small" style="min-width: 200px;">Image&nbsp;URL</th>
+                <th scope="col" class="text-center small">Impressions</th>
+                <th scope="col" class="text-center small">Clicks</th>
+                <th scope="col" class="text-center small" style="min-width: 150px;">Date</th>
+                <th scope="col" class="text-center small">Save</th>
+                <th scope="col" class="text-center small">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -656,4 +656,3 @@ $ads = $banner->getAllAds();
     </table>
 </div>
 
-<div class="ja-bottompadding"></div>
