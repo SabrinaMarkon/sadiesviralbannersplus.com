@@ -512,6 +512,14 @@ if (isset($_POST['login'])) {
         }
     }
 
+    if (isset($_POST['approveallads'])) {
+        $adtable = $_POST['adtable'];
+        $ad = makeAdObject($adtable);
+        if ($ad) {
+            $showad = $ad->approveAllAds();
+        } 
+    }
+
     if ((empty($_REQUEST['page'])) or
         ((!empty($_REQUEST['page']) and ($_REQUEST['page'] === 'index' or $_REQUEST['page'] === 'logout' or $_REQUEST['page'] === 'forgot' or $_REQUEST['page'] === 'control'))) or
         ((!empty($_GET['page'])) and ((!file_exists($_GET['page'] . ".php"))))

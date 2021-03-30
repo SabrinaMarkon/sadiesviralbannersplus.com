@@ -158,6 +158,20 @@ abstract class Ad
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Ad " . $name . " was Deleted</strong></div>";
     }
 
+    /* Call this to approve all member ads of a certain type. */
+    public function approveAllAds(): string {
+
+        $pdo = DATABASE::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "update " . $this->adtable . " set approved=1";
+        $q = $pdo->prepare($sql);
+        $q->execute();
+
+        Database::disconnect();
+
+        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>All Ads were Approved!</strong></div>"; 
+    }
+
     /* Save ad settings */
     public function saveAdSettings(array $post): string
     {

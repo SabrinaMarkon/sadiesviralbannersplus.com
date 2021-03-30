@@ -113,6 +113,11 @@ $ads = $allads->getAllAds();
 
 	<h1 class="ja-bottompadding ja-toppadding mb-4">All Member Paid Banners</h1>
 
+	<form action="/admin/bannerspaid" method="post" accept-charset="utf-8" class="form" role="form">
+    <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+    <button class="btn btn-lg btn-primary mt-3 mb-5" type="submit" name="approveallads">APPROVE ALL</button>
+    </form>
+
 	<div class="table-responsive">
 		<table id="admintable" class="table table-hover text-center table-sm">
 			<thead>

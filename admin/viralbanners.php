@@ -509,6 +509,11 @@ $ads = $banner->getAllAds();
 
     <p>You can see, change, or even delete both your admin and members' Viral Banners in the list below.</p>
 
+    <form action="/admin/viralbanners" method="post" accept-charset="utf-8" class="form" role="form">
+    <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+    <button class="btn btn-lg btn-primary mt-4 mb-3" type="submit" name="approveallads">APPROVE ALL</button>
+    </form>
+
     <div class="table-responsive mt-4">
         <table id="admintable" class="table table-hover text-center table-sm">
             <thead>
