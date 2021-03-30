@@ -93,7 +93,7 @@ class ViralBanner extends Banner
         if ($i) {
             return '
             <div>
-                <a href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
+                <a class="placeholder-img" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
                     <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
                 </a>
             </div>'; 
@@ -101,7 +101,7 @@ class ViralBanner extends Banner
 
         return '
         <div>
-            <a href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
+            <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
                 <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
             </a>
         </div>';  
@@ -125,7 +125,7 @@ class ViralBanner extends Banner
 
         return '
         <div>
-            <a style="width: ' . $width . 'px; height: ' . $height . 'px; background: #fff; margin: 1rem;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">' . $msg . '</a>
+            <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">' . $msg . '</a>
         </div>';
     }
 }

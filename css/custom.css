@@ -230,14 +230,29 @@ figcaption .sadietalknormal {
   padding: 1rem;
   box-shadow: 2px 2px 2px #121212;
 }
-.viralbanners div {
-  font-weight: bold;
-  text-align: center;
-}
-.viralbanners a {
+.viralbanners .placeholder {
+  background: #fff;
   color: #ff4343;
+  font-weight: bold;
   margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-shadow: 2px 2px 2px #121212;
+}
+.viralbanners .placeholder-img {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.viralbanners img {
+  background: #fff;
+  box-shadow: 2px 2px 2px #121212;
+}
+.viralbanners a:hover, .viralbanners img:hover {
+  box-shadow: none;
 }
 .viralbanners h2 {
   color: #fff;
@@ -254,6 +269,9 @@ figcaption .sadietalknormal {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   margin: 2rem;
+}
+.viralbanners .modal-footer {
+  border-top: 2px solid #ff4343;
 }
 
 .paybuttons {
