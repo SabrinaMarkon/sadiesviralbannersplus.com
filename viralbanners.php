@@ -212,6 +212,11 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 								<h2>Update Your Slot #<?php echo $i ?> Viral Banner</h2>
 
 								<form action="/viralbanners/<?php echo $usershowbanner['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
+
+								<!-- TODO: Show instructions on how to see banner stats by clicking!  -->
+									<p class="mb-3">Hits/Impressions: <strong><?php echo $usershowbanner['hits']; ?></strong></p>
+									<p class="mb-3">Clicks: <strong><?php echo $usershowbanner['clicks']; ?></strong></p>
+
 									<label for="name">Name of Viral Banner (only you see):</label>
 									<input type="text" name="name" class="form-control input-lg" placeholder="Name" value="<?php echo $usershowbanner['name']; ?>" required>
 

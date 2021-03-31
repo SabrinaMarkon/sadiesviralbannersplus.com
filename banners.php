@@ -84,7 +84,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             if (!empty($showbanner)) {
 
                 // SHOW:
-                $show = $banner->showBanner($showbanner, 728, 90, true);
+                $show = $banner->showBanner($showbanner, 728, 90, 0);
                 echo $show;
             } else {
 
@@ -94,7 +94,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                 if (!empty($adminshowbanner)) {
 
                     // SHOW:
-                    $show = $banner->showBanner($adminshowbanner, 728, 90, true);
+                    $show = $banner->showBanner($adminshowbanner, 728, 90, 0);
                     echo $show;
                 } else {
 
@@ -134,7 +134,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             if (!empty($showbanner)) {
     
                 // SHOW:
-                $show = $banner->showBanner($showbanner, 468, 60, true);
+                $show = $banner->showBanner($showbanner, 468, 60, 0);
                 echo $show;
             } else {
     
@@ -144,7 +144,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                     if (!empty($adminshowbanner)) {
     
                         // SHOW:
-                        $show = $banner->showBanner($adminshowbanner, 468, 60, true);
+                        $show = $banner->showBanner($adminshowbanner, 468, 60, 0);
                         echo $show;
                     } else {
     

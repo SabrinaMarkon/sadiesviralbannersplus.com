@@ -84,6 +84,8 @@ class ViralBanner extends Banner
         $id = $banner['id'];
         $alt = $banner['alt'];
         $imageurl = $banner['imageurl'];
+        $clicks = $banner['clicks'];
+        $hits = $banner['hits'];
 
         // Count hit (impression):
         $this->countBannerHit($id);
