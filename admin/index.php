@@ -452,15 +452,10 @@ if (isset($_POST['login'])) {
             $adtable = $_POST['adtable'];
             $ad = makeAdObject($adtable);
             if ($ad) {
-                if (isset($_POST['givememberblankad'])) {
+                if (isset($_POST['howmanytogive'])) {
 
-                    $givememberblankad = $_POST['givememberblankad'];
-                    for ($i = 1; $i <= $givememberblankad; $i++) {
-
-                        $showad = $ad->createBlankAd($_POST['username'], $givememberblankad);
-                    }
-                } else {
-                    $showad = $ad->createBlankAd($_POST['username'], '');
+                    $howmanytogive = $_POST['howmanytogive'];
+                    $showad = $ad->createBlankAd($_POST['username'], $howmanytogive);
                 }
             }
         }

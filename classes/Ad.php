@@ -112,23 +112,25 @@ abstract class Ad
     }
 
     /* When a user has paid for an ad and we receive the IPN notification, we create a blank ad for that user. */
-    public function createBlankAd(string $username, string $givememberblankad)
+    public function createBlankAd(string $username, string $howmanytogive)
     {
 
         $pdo = DATABASE::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "insert into " . $this->adtable . " (username,adddate) values (?,NOW())";
-        $q = $pdo->prepare($sql);
-        $q->execute([$username]);
+        for ($i = 0; $i < $howmanytogive; $i++) {
+            $sql = "insert into " . $this->adtable . " (username,adddate) values (?,NOW())";
+            $q = $pdo->prepare($sql);
+            $q->execute([$username]);
+        }
 
         # get the adid of the newly inserted blank ad.
         $adid = $pdo->lastInsertId();
 
         Database::disconnect();
 
-        if ($givememberblankad) {
-            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>" . $givememberblankad . " blank ads were given to username " . $username . "</strong></div>";
+        if ($howmanytogive) {
+            return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>" . $howmanytogive . " blank ads were given to username " . $username . "</strong></div>";
         }
 
         return $adid;
