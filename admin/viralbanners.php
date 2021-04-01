@@ -488,12 +488,8 @@ $ads = $banner->getAllAds();
             } else {
 
                 // Show blank banner for this position with fields for the admin to add one.
-                echo '
-                <div>
-                    <a href="#createad">
-                    <img src="https://via.placeholder.com/728x90/ffffff/121212?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
-                    </a>
-                </div>';
+                echo '<div class="large-banner-image placeholder">NOT ADDED</div>';
+                
             }
         }
         for ($i = 9; $i <= 12; $i++) {
@@ -593,7 +589,7 @@ $ads = $banner->getAllAds();
                                 <?php
                                 } else {
                                 ?>
-                                    <img src="https://via.placeholder.com/200x26/0067f4/ffffff?text=NOT+ADDED" alt="Not Added" class="mini-banner-image">
+                                    <div class="mini-banner-image placeholder">NOT ADDED</div>
                                 <?php
                                 }
                                 ?>

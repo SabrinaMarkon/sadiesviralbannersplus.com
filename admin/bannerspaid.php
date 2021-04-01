@@ -190,7 +190,7 @@ $ads = $allads->getAllAds();
 									<?php
 								} else {
 									?>
-										<img src="https://via.placeholder.com/200x26/0067f4/ffffff?text=NOT+ADDED" alt="Not Added" class="mini-banner-image">
+										<div class="mini-banner-image placeholder">NOT ADDED</div>
 									<?php
 								}
 								?>

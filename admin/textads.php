@@ -194,7 +194,7 @@ $ads = $allads->getAllAds();
 									<?php
 								} else {
 									?>
-										<img src="https://via.placeholder.com/125/0067f4/ffffff?text=NOT+ADDED" alt="Not Added" class="card-image">
+										<div class="placeholder">NOT ADDED</div>
 									<?php
 								}
 								?>

@@ -217,6 +217,14 @@ figcaption .sadietalknormal {
   width: 200px;
   height: 26px;
 }
+.medium-banner-image {
+  width: 468px;
+  height: 60px;
+}
+.large-banner-image {
+  width: 728px;
+  height: 90px;
+}
 
 .viralbanners {
   max-width: 800px;
