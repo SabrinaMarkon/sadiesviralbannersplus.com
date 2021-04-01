@@ -186,16 +186,16 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 								<form action="/viralbanners" method="post" accept-charset="utf-8" class="form" role="form">
 									<label for="name">Name of Viral Banner (only you see):</label>
-									<input type="text" name="name" class="form-control input-lg" placeholder="Name" required>
+									<input type="text" name="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name" required>
 
 									<label for="title">Alt Text:</label>
-									<input type="text" name="alt" class="form-control input-lg" placeholder="Alt Text" required>
+									<input type="text" name="alt" value="<?php echo isset($_POST["alt"]) ? $_POST["alt"]: ''; ?>" class="form-control input-lg" placeholder="Alt Text" required>
 
 									<label for="url">Click-Thru URL:</label>
-									<input type="url" name="url" class="form-control input-lg" placeholder="Click-Thru URL" required>
+									<input type="url" name="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
 									<label for="imageurl">Image URL: (<?php echo $width ?> x <?php echo $height ?> pixels only)</label>
-									<input type="url" name="imageurl" class="form-control input-lg" placeholder="Image URL" required>
+									<input type="url" name="imageurl" value="<?php echo isset($_POST["imageurl"]) ? $_POST["imageurl"]: ''; ?>" class="form-control input-lg" placeholder="Image URL" required>
 
 									<div class="ja-bottompadding"></div>
 

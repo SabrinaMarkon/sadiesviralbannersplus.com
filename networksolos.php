@@ -112,21 +112,22 @@ $activeads = $ads->getAllUsersAds($username);
 		<form action="/networksolos/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
 
 			<label for="name">Name of Ad (only you see):</label>
-			<input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name" required>
+			<input type="text" name="name" id="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name" required>
 
 			<label for="title">Subject:</label>
-			<input type="text" name="subject" id="subject" class="form-control input-lg" placeholder="Subject" required>
+			<input type="text" name="subject" id="subject" value="<?php echo isset($_POST["subject"]) ? $_POST["subject"]: ''; ?>" class="form-control input-lg" placeholder="Subject" required>
 
 			<label for="url">URL:</label>
-			<input type="url" name="url" id="url" class="form-control input-lg" placeholder="URL" required>
+			<input type="url" name="url" id="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="URL" required>
 
 			<label for="description">Message:</label>
-			<textarea name="message" value="" class="form-control input-lg" rows="50" placeholder="Message" required></textarea>
+			<textarea name="message" class="form-control input-lg" rows="50" placeholder="Message"><?php echo isset($_POST["message"]) ? $_POST["message"]: ''; ?></textarea>
 
 			<div class="ja-bottompadding"></div>
 
 			<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 			<input type="hidden" name="id" value="<?php echo $adid ?>">
+			<input type="hidden" name="username" value="<?php echo $username ?>">
 			<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE AD</button>
 
 		</form>
@@ -217,6 +218,7 @@ $activeads = $ads->getAllUsersAds($username);
 								<td>
 									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 									<input type="hidden" name="_method" value="PATCH">
+									<input type="hidden" name="username" value="<?php echo $username ?>">
 									<button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
 								</td>
 							</form>

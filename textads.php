@@ -72,24 +72,25 @@ $activeads = $ads->getAllUsersAds($username);
 		<form action="/textads/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
 
 			<label for="name">Name of Ad (only you see):</label>
-			<input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name" required>
+			<input type="text" name="name" id="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name" required>
 
 			<label for="title">Ad Title:</label>
-			<input type="text" name="title" id="title" class="form-control input-lg" placeholder="Ad Title" required>
+			<input type="text" name="title" id="title" value="<?php echo isset($_POST["title"]) ? $_POST["title"]: ''; ?>" class="form-control input-lg" placeholder="Ad Title" required>
 
 			<label for="url">Click-Thru URL:</label>
-			<input type="url" name="url" id="url" class="form-control input-lg" placeholder="Click-Thru URL" required>
+			<input type="url" name="url" id="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
 			<label for="description">Ad Text:</label>
-			<input type="text" name="description" id="description" class="form-control input-lg" placeholder="Ad Text" required>
+			<input type="text" name="description" id="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"]: ''; ?>" class="form-control input-lg" placeholder="Ad Text" required>
 
 			<label for="imageurl">Image URL: (125 x 125 pixels only)</label>
-			<input type="url" name="imageurl" id="imageurl" class="form-control input-lg" placeholder="Image URL" required>
+			<input type="url" name="imageurl" id="imageurl" value="<?php echo isset($_POST["imageurl"]) ? $_POST["imageurl"]: ''; ?>" class="form-control input-lg" placeholder="Image URL" required>
 
 			<div class="ja-bottompadding"></div>
 
 			<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 			<input type="hidden" name="id" value="<?php echo $adid ?>">
+			<input type="hidden" name="username" value="<?php echo $username ?>">
 			<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE AD</button>
 
 		</form>
@@ -188,6 +189,7 @@ $activeads = $ads->getAllUsersAds($username);
 								<td>
 									<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 									<input type="hidden" name="_method" value="PATCH">
+									<input type="hidden" name="username" value="<?php echo $username ?>">
 									<button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
 								</td>
 							</form>

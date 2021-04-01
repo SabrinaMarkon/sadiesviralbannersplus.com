@@ -72,21 +72,22 @@ $activeads = $ads->getAllUsersAds($username);
 		<form action="/bannerspaid/<?php echo $adid ?>" method="post" accept-charset="utf-8" class="form" role="form">
 
 			<label for="name">Name of Ad (only you see):</label>
-			<input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name" required>
+			<input type="text" name="name" id="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name" required>
 
             <label for="title">Alt Text:</label>
-			<input type="text" name="alt" id="alt" class="form-control input-lg" placeholder="Alt Text" required>
+			<input type="text" name="alt" id="alt" value="<?php echo isset($_POST["alt"]) ? $_POST["alt"]: ''; ?>" class="form-control input-lg" placeholder="Alt Text" required>
 
 			<label for="url">Click-Thru URL:</label>
-			<input type="url" name="url" id="url" class="form-control input-lg" placeholder="Click-Thru URL" required>
+			<input type="url" name="url" id="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
 			<label for="imageurl">Image URL: (468 x 60 pixels only)</label>
-			<input type="url" name="imageurl" id="imageurl" class="form-control input-lg" placeholder="Image URL" required>
+			<input type="url" name="imageurl" id="imageurl" value="<?php echo isset($_POST["imageurl"]) ? $_POST["imageurl"]: ''; ?>" class="form-control input-lg" placeholder="Image URL" required>
 
 			<div class="ja-bottompadding"></div>
 
 			<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 			<input type="hidden" name="id" value="<?php echo $adid ?>">
+			<input type="hidden" name="username" value="<?php echo $username ?>">
 			<button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="createad">CREATE AD</button>
 
 		</form>
@@ -183,6 +184,7 @@ $activeads = $ads->getAllUsersAds($username);
 									<td>
 										<input type="hidden" name="adtable" value="<?php echo $adtable ?>">
 										<input type="hidden" name="_method" value="PATCH">
+										<input type="hidden" name="username" value="<?php echo $username ?>">
 										<button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
 									</td>
 								</form>
