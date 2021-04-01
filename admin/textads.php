@@ -104,13 +104,13 @@ $ads = $allads->getAllAds();
 		<input type="text" name="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name of Ad" required>
 
 		<label for="title">Ad Title:</label>
-		<input type="text" name="title" value="<?php echo isset($_POST["title"]) ? $_POST["title"]: ''; ?>" class="form-control input-lg" placeholder="Ad Title" required>
+		<input type="text" name="title" value="<?php echo isset($_POST["title"]) ? $_POST["title"]: ''; ?>" class="form-control input-lg" placeholder="Ad Title" maxlength="12" required>
 
 		<label for="url">Click-Thru URL:</label>
 		<input type="url" name="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
 		<label for="description">Ad Text:</label>
-		<input type="text" name="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"]: ''; ?>" class="form-control input-lg" placeholder="Ad Text" required>
+		<input type="text" name="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"]: ''; ?>" class="form-control input-lg" placeholder="Ad Text" maxlength="20" required>
 
 		<label for="imageurl">Image URL: (125 x 125 pixels only)</label>
 		<input type="url" name="imageurl" value="<?php echo isset($_POST["imageurl"]) ? $_POST["imageurl"]: ''; ?>" class="form-control input-lg" placeholder="Image URL" required>
@@ -216,7 +216,7 @@ $ads = $allads->getAllAds();
 								<input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
 							</td>
 							<td class="small">
-								<input type="text" name="title" value="<?php echo $ad['title']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Title" required>
+								<input type="text" name="title" value="<?php echo $ad['title']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Title" maxlength="12" required>
 							</td>
 							<td>
 								<input type="url" name="url" value="<?php echo $ad['url']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="http://" required>
@@ -225,7 +225,7 @@ $ads = $allads->getAllAds();
 								<a href="<?php echo $ad['shorturl'] ?>" target="_blank"><?php echo $ad['shorturl'] ?></a>
 							</td>
 							<td>
-								<input type="text" name="description" value="<?php echo $ad['description']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Ad Text" required>
+								<input type="text" name="description" value="<?php echo $ad['description']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Ad Text" maxlength="20" required>
 							</td>
 							<td>
 								<input type="url" name="imageurl" value="<?php echo $ad['imageurl']; ?>" class="form-control input-sm widetableinput" size="60" placeholder="http://" required>
