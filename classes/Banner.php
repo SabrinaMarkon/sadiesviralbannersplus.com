@@ -71,9 +71,9 @@ class Banner extends Ad
 
             $bannerpageslot = $post['bannerpageslot'];
           
-            $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,bannerpageslot,added,approved,adddate) values (?,?,?,?,?,?,?,1,0,NOW())";
+            $sql = "insert into ". $this->adtable . " (username,name,alt,url,shorturl,imageurl,bannerpageslot,added,approved,adddate) values (?,?,?,?,?,?,?,1,?,NOW())";
             $q = $pdo->prepare($sql);
-            $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl, $bannerpageslot]);
+            $q->execute([$username, $name, $alt, $url, $shorturl, $imageurl, $bannerpageslot, $adminautoapprove]);
             Database::disconnect();
 
             return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>New Viral Banner " . $name . " was Created!</strong></div>";
