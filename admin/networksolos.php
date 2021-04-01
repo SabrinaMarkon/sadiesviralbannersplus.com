@@ -150,7 +150,7 @@ $ads = $allads->getAllAds();
         <input type="url" name="url" id="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="URL" required>
 
         <label for="description">Message:</label>
-        <textarea name="message" class="form-control input-lg" rows="50" placeholder="Message" required><?php echo isset($_POST["message"]) ? $_POST["message"]: ''; ?></textarea>
+        <textarea name="message" class="form-control input-lg" rows="50" placeholder="Message"><?php echo isset($_POST["message"]) ? $_POST["message"]: ''; ?></textarea>
 
         <div class="ja-bottompadding"></div>
 
