@@ -46,11 +46,11 @@ $activeads = $ads->getAllUsersAds($username);
 ?>
 
 <div class="container">
-	<h1 class="ja-bottompadding">Create Text Ad</h1>
+	<h1 class="mb-4">Create Text Ad</h1>
 	<?php
 	if (empty($oneblankad)) {
 
-		echo "<div class=\"ja-toppadding mb-5\">You have no paid text ads available. Please purchase one below!</div>";
+		echo "<div class=\"my-4\">You have no additional blank text ads available. Please purchase one below!</div>";
 		if (!empty($paymentbuttons)) {
 			echo $paymentbuttons;
 			echo "<div class=\"mb-5\"></div>";
@@ -75,13 +75,13 @@ $activeads = $ads->getAllUsersAds($username);
 			<input type="text" name="name" id="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name" required>
 
 			<label for="title">Ad Title:</label>
-			<input type="text" name="title" id="title" value="<?php echo isset($_POST["title"]) ? $_POST["title"]: ''; ?>" class="form-control input-lg" placeholder="Ad Title" required>
+			<input type="text" name="title" id="title" value="<?php echo isset($_POST["title"]) ? $_POST["title"]: ''; ?>" class="form-control input-lg" placeholder="Ad Title" maxlength="12" required>
 
 			<label for="url">Click-Thru URL:</label>
 			<input type="url" name="url" id="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
 			<label for="description">Ad Text:</label>
-			<input type="text" name="description" id="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"]: ''; ?>" class="form-control input-lg" placeholder="Ad Text" required>
+			<input type="text" name="description" id="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"]: ''; ?>" class="form-control input-lg" placeholder="Ad Text" maxlength="20" required>
 
 			<label for="imageurl">Image URL: (125 x 125 pixels only)</label>
 			<input type="url" name="imageurl" id="imageurl" value="<?php echo isset($_POST["imageurl"]) ? $_POST["imageurl"]: ''; ?>" class="form-control input-lg" placeholder="Image URL" required>
@@ -115,12 +115,12 @@ $activeads = $ads->getAllUsersAds($username);
 		# show those ads and allow edit, save, delete.
 
 	?>
-		<div class="table-responsive">
-			<table id="usertextadstable" class="table table-hover text-center table-sm">
+		<div class="admintable-wrap mt-4">
+			<table id="admintable" class="table table-hover text-center table-sm">
 				<thead>
 					<tr>
 						<th class="text-center small">Ad&nbsp;#</th>
-						<th class="text-center small" style="min-width: 100px;">Image</th>
+						<th class="text-center small" style="min-width: 125px;">Image</th>
 						<th class="text-center small" style="min-width: 100px;">Name</th>
 						<th class="text-center small" style="min-width: 100px;">Title</th>
 						<th class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
@@ -148,13 +148,13 @@ $activeads = $ads->getAllUsersAds($username);
 								<td class="small"><?php echo $activead['id']; ?>
 								</td>
 								<td class="small">
-									<img src="<?php echo $activead['imageurl']; ?>" alt="<?php echo $activead['title'] ?>" class="card-image">
+									<img src="<?php echo $activead['imageurl']; ?>" alt="<?php echo $activead['title'] ?>" class="textad-image">
 								</td>
 								<td class="small">
 									<input type="text" name="name" value="<?php echo $activead['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
 								</td>
 								<td class="small">
-									<input type="text" name="title" value="<?php echo $activead['title']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Title" required>
+									<input type="text" name="title" value="<?php echo $activead['title']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Title" maxlength="12" required>
 								</td>
 								<td>
 									<input type="url" name="url" value="<?php echo $activead['url']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="http://" required>
@@ -163,14 +163,14 @@ $activeads = $ads->getAllUsersAds($username);
 									<a href="<?php echo $activead['shorturl'] ?>" target="_blank"><?php echo $activead['shorturl'] ?></a>
 								</td>
 								<td>
-									<input type="text" name="description" value="<?php echo $activead['description']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Ad Text" required>
+									<input type="text" name="description" value="<?php echo $activead['description']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Ad Text" maxlength="20" required>
 								</td>
 								<td>
 									<input type="url" name="imageurl" value="<?php echo $activead['imageurl']; ?>" class="form-control input-sm widetableinput" size="60" placeholder="http://" required>
 								</td>
 								<td class="small">
 									<?php
-									if ($activead['approved'] === 1) {
+									if ($activead['approved'] == 1) {
 										echo "Yes";
 									} else {
 										echo "No";

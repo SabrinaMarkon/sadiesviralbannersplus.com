@@ -225,6 +225,10 @@ figcaption .sadietalknormal {
   width: 728px;
   height: 90px;
 }
+.textad-image {
+  width: 125px;
+  height: 125px;
+}
 
 .viralbanners {
   max-width: 800px;

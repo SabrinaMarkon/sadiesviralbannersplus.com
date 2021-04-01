@@ -46,11 +46,11 @@ $activeads = $ads->getAllUsersAds($username);
 ?>
 
 <div class="container">
-	<h1 class="ja-bottompadding">Create Banner Ad for Paid Rotation</h1>
+	<h1 class="mb-4">Create Banner Ad for Paid Rotation</h1>
 	<?php
 	if (empty($oneblankad)) {
 
-		echo "<div class=\"ja-toppadding mb-5\">You have no banner ads available for the paid rotation. Please purchase one below!</div>";
+		echo "<div class=\"my-4\">You have no additional blank banner ads available for the paid rotation. Please purchase one below!</div>";
 		if (!empty($paymentbuttons)) {
 			echo $paymentbuttons;
 			echo "<div class=\"mb-5\"></div>";
@@ -114,12 +114,12 @@ $activeads = $ads->getAllUsersAds($username);
 			# show those ads and allow edit, save, delete.
 
 		?>
-			<div class="table-responsive">
-				<table id="userbannerspaidtable" class="table table-hover text-center table-sm">
+			<div class="admintable-wrap mt-4">
+				<table id="admintable" class="table table-hover text-center table-sm">
 					<thead>
 						<tr>
 							<th class="text-center small">Ad&nbsp;#</th>
-							<th class="text-center small" style="min-width: 100px;">Image</th>
+							<th class="text-center small" style="width: 200px;">Image</th>
 							<th class="text-center small" style="min-width: 100px;">Name</th>
 							<th class="text-center small" style="min-width: 100px;">Alt</th>
 							<th class="text-center small" style="min-width: 200px;">Click-Thru&nbsp;URL</th>
@@ -145,7 +145,7 @@ $activeads = $ads->getAllUsersAds($username);
 								<form action="/bannerspaid/<?php echo $activead['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
 									<td class="small"><?php echo $activead['id']; ?>
 									</td>
-									<td class="small">
+									<td class="small mini-banner-image">
 										<img src="<?php echo $activead['imageurl']; ?>" alt="<?php echo $activead['alt'] ?>" >
 									</td>
 									<td class="small">
@@ -165,7 +165,7 @@ $activeads = $ads->getAllUsersAds($username);
 									</td>
 									<td class="small">
 										<?php
-										if ($activead['approved'] === 1) {
+										if ($activead['approved'] == 1) {
 											echo "Yes";
 										} else {
 											echo "No";

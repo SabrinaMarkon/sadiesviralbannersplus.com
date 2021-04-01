@@ -42,7 +42,7 @@ $ads = $allads->getAllAds();
         selector: 'textarea', // change this value according to your HTML
         body_id: 'elm1=htmlcode',
         body_class: 'elm1=ja-content',
-        height: 600,
+        // height: 600,
         theme: 'modern',
         plugins: [
             'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -150,7 +150,7 @@ $ads = $allads->getAllAds();
         <input type="url" name="url" id="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="URL" required>
 
         <label for="description">Message:</label>
-        <textarea name="message" class="form-control input-lg" rows="50" placeholder="Message"><?php echo isset($_POST["message"]) ? $_POST["message"]: ''; ?></textarea>
+        <textarea name="message" class="form-control input-lg" rows="50" placeholder="Message" style="height: 600px;"><?php echo isset($_POST["message"]) ? $_POST["message"]: ''; ?></textarea>
 
         <div class="ja-bottompadding"></div>
 
@@ -181,7 +181,7 @@ $ads = $allads->getAllAds();
                 <th class="text-center small" style="min-width: 100px;">Subject</th>
                 <th class="text-center small" style="min-width: 200px;">URL</th>
                 <th class="text-center small">Short&nbsp;URL</th>
-                <th class="text-center small" style="min-width: 200px;">Message</th>
+                <th class="text-center small" style="min-width: 400px;">Message</th>
                 <th class="text-center small">Sent</th>
                 <th class="text-center small">Clicks</th>
                 <th class="text-center small" style="min-width: 150px;">Date</th>
@@ -209,9 +209,9 @@ $ads = $allads->getAllAds();
             ?>
                     <tr>
                         <form action="/admin/networksolos/<?php echo $ad['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
-                            <td class="small"><?php echo $ad['id']; ?>
+                            <td class="small align-baseline"><?php echo $ad['id']; ?>
                             </td>
-                            <td class="small<?php if ($ad['approved'] !== "1") { echo ' ja-coralbg'; } ?>">
+                            <td class="small align-baseline<?php if ($ad['approved'] !== "1") { echo ' ja-coralbg'; } ?>">
                                 <select name="approved" class="form-control widetableselect">
                                     <option value="0" <?php if ($ad['approved'] !== "1") {
                                                             echo "selected";
@@ -221,7 +221,7 @@ $ads = $allads->getAllAds();
                                                         } ?>>Yes</option>
                                 </select>
                             </td>
-                            <td class="small">
+                            <td class="small align-baseline">
                                 <select name="username" class="form-control input-sm widetableinput">
                                     <option value="admin"<?php if ($ad['username'] === 'admin') { echo " selected"; } ?>>admin</option>
                                     <?php
@@ -234,37 +234,37 @@ $ads = $allads->getAllAds();
                                         ?>
                                 </select>
                             </td>
-                            <td class="small">
+                            <td class="small align-baseline">
                                 <input type="text" name="name" value="<?php echo $ad['name']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Name" required>
                             </td>
-                            <td class="small">
+                            <td class="small align-baseline">
                                 <input type="text" name="subject" value="<?php echo $ad['subject']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="Subject" required>
                             </td>
-                            <td>
+                            <td class="align-baseline">
                                 <input type="url" name="url" value="<?php echo $ad['url']; ?>" class="form-control input-sm widetableinput" size="40" placeholder="http://" required>
                             </td>
-                            <td>
+                            <td class="align-baseline">
                                 <a href="<?php echo $ad['shorturl'] ?>" target="_blank"><?php echo $ad['shorturl'] ?></a>
                             </td>
-                            <td>
+                            <td class="align-baseline">
                                 <textarea class="form-control input-sm widetableinput" name="message" id="message" style="width: 400px; height: 150px;" placeholder="Message"><?php echo $ad['message'] ?></textarea>
                             </td>
-                            <td class="small">
+                            <td class="small align-baseline">
                                 <input type="sent" name="sent" value="<?php echo $ad['sent']; ?>" class="form-control input-sm widetableinput" size="12" placeholder="Sent">
                             </td>
-                            <td class="small">
+                            <td class="small align-baseline">
                                 <?php echo $ad['clicks']; ?>
                             </td>
-                            <td class="small">
+                            <td class="small align-baseline">
                                 <?php echo $dateadadded ?>
                             </td>
-                            <td>
+                            <td class="align-baseline">
                                 <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
                                 <input type="hidden" name="_method" value="PATCH">
                                 <button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
                             </td>
                         </form>
-                        <td>
+                        <td class="align-baseline">
                             <form action="/admin/networksolos/<?php echo $ad['id']; ?>" method="POST" accept-charset="utf-8" class="form" role="form">
                                 <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
                                 <input type="hidden" name="_method" value="DELETE">

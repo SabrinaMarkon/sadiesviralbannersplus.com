@@ -136,7 +136,7 @@ $ads = $allads->getAllAds();
 			<tr>
 				<th class="text-center small">Ad&nbsp;#</th>
 				<th class="text-center small">Approved</th>
-				<th class="text-center small" style="min-width: 200px;">Image</th>
+				<th class="text-center small" style="width: 200px;">Image</th>
 				<th class="text-center small" style="min-width: 100px;">Username</th>
 				<th class="text-center small" style="min-width: 100px;">Name</th>
 				<th class="text-center small" style="min-width: 100px;">Alt</th>

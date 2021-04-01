@@ -190,7 +190,7 @@ $ads = $allads->getAllAds();
 								<?php
 								if ($ad['imageurl']) {
 									?>
-										<img src="<?php echo $ad['imageurl']; ?>" alt="<?php echo $ad['title'] ?>" class="card-image">
+										<img src="<?php echo $ad['imageurl']; ?>" alt="<?php echo $ad['title'] ?>" class="textad-image">
 									<?php
 								} else {
 									?>
