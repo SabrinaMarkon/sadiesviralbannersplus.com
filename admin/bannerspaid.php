@@ -10,6 +10,10 @@ if (isset($showad)) {
 	echo $showad;
 }
 
+// if (isset($_GET['showad'])) {
+// 	echo $showad;
+// }
+
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {
@@ -83,24 +87,30 @@ $ads = $allads->getAllAds();
             <?php
             foreach ($members as $member) {
                 $username = $member['username'];
+				$selected = "";
+				if (isset($_POST['username'])) {
+					if ($_POST['username'] === $username) {
+						$selected = " selected";
+					}
+				}
                 ?>
-                <option value="<?php echo $username ?>"><?php echo $username ?></options>
+                <option value="<?php echo $username ?>"<?php echo $selected; ?>><?php echo $username ?></options>
                 <?php
                 }
                 ?>
         </select>
 
 		<label for="name">Name of Ad:</label>
-		<input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name" required>
+		<input type="text" name="name" id="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name" required>
 
 		<label for="title">Alt Text:</label>
-		<input type="text" name="alt" id="alt" class="form-control input-lg" placeholder="Alt Text" required>
+		<input type="text" name="alt" id="alt" value="<?php echo isset($_POST["alt"]) ? $_POST["alt"]: ''; ?>" class="form-control input-lg" placeholder="Alt Text" required>
 
 		<label for="url">Click-Thru URL:</label>
-		<input type="url" name="url" id="url" class="form-control input-lg" placeholder="Click-Thru URL" required>
+		<input type="url" name="url" id="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
 		<label for="imageurl">Image URL: (468 x 60 pixels only)</label>
-		<input type="url" name="imageurl" id="imageurl" class="form-control input-lg" placeholder="Image URL" required>
+		<input type="url" name="imageurl" id="imageurl" value="<?php echo isset($_POST["imageurl"]) ? $_POST["imageurl"]: ''; ?>" class="form-control input-lg" placeholder="Image URL" required>
 
 		<div class="ja-bottompadding"></div>
 

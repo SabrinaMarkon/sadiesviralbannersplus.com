@@ -10,6 +10,10 @@ if (isset($showad)) {
 	echo $showad;
 }
 
+// if (isset($_GET['showad'])) {
+// 	echo $showad;
+// }
+
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {
@@ -83,27 +87,33 @@ $ads = $allads->getAllAds();
             <?php
             foreach ($members as $member) {
                 $username = $member['username'];
+				$selected = "";
+				if (isset($_POST['username'])) {
+					if ($_POST['username'] === $username) {
+						$selected = " selected";
+					}
+				}
                 ?>
-                <option value="<?php echo $username ?>"><?php echo $username ?></options>
+                <option value="<?php echo $username ?>"<?php echo $selected; ?>><?php echo $username ?></options>
                 <?php
                 }
                 ?>
         </select>
 
 		<label for="name">Name of Ad:</label>
-		<input type="text" name="name" class="form-control input-lg" placeholder="Name of Ad" required>
+		<input type="text" name="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"]: ''; ?>" class="form-control input-lg" placeholder="Name of Ad" required>
 
 		<label for="title">Ad Title:</label>
-		<input type="text" name="title" class="form-control input-lg" placeholder="Ad Title" required>
+		<input type="text" name="title" value="<?php echo isset($_POST["title"]) ? $_POST["title"]: ''; ?>" class="form-control input-lg" placeholder="Ad Title" required>
 
 		<label for="url">Click-Thru URL:</label>
-		<input type="url" name="url" class="form-control input-lg" placeholder="Click-Thru URL" required>
+		<input type="url" name="url" value="<?php echo isset($_POST["url"]) ? $_POST["url"]: ''; ?>" class="form-control input-lg" placeholder="Click-Thru URL" required>
 
 		<label for="description">Ad Text:</label>
-		<input type="text" name="description" class="form-control input-lg" placeholder="Ad Text" required>
+		<input type="text" name="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"]: ''; ?>" class="form-control input-lg" placeholder="Ad Text" required>
 
 		<label for="imageurl">Image URL: (125 x 125 pixels only)</label>
-		<input type="url" name="imageurl" class="form-control input-lg" placeholder="Image URL" required>
+		<input type="url" name="imageurl" value="<?php echo isset($_POST["imageurl"]) ? $_POST["imageurl"]: ''; ?>" class="form-control input-lg" placeholder="Image URL" required>
 
 		<div class="ja-bottompadding"></div>
 
