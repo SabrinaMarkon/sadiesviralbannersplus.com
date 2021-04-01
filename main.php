@@ -49,13 +49,13 @@ foreach($levels as $level) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonustextads . ' <strong>SITE WIDE</strong> text ads!</li>';
     }
     if ($$monthlybonusbannerspaid > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banner in my special <strong>PAID-ONLY</strong> rotator!</li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonusbannerspaid . ' banners in my special <strong>PAID-ONLY</strong> rotator!</li>';
     }
     if ($$monthlybonusnetworksolos > 0) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>A <strong>FREE</strong> monthly bonus of ' . $$monthlybonusnetworksolos . ' <strong>HUMONGOUS NETWORK SOLOS!</strong></li>';
     }
     if (!empty($$bannerslots)) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Your favorite <strong>OVERSIZED</strong> 736 x 90 BANNERS in the <strong>VIRAL</strong> banner slots # ' . $$bannerslots . ' of your very own <strong>VIRAL BANNER AD PAGE!</strong></li>';
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Your favorite <strong>OVERSIZED</strong> 728 x 90 BANNERS in the <strong>VIRAL</strong> banner slots # ' . $$bannerslots . ' of your very own <strong>VIRAL BANNER AD PAGE!</strong></li>';
     }
     if (!empty($$refersfreebannerslots)) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersfreebannerslots . ' on <strong>EVERY</strong> single one of your <strong>FREE REFERRALS\'</strong> viral banner pages!</li>';
