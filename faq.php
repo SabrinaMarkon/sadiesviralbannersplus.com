@@ -23,12 +23,12 @@ echo $showcontent->showPage('FAQ Page');
 
             <div class="faq mb-4">
                 <h5 class="faq-heading" role="tab" id="heading<?php echo $faq['positionnumber']; ?>">
-                    <a data-toggle="collapse" data-parent="#faqpanel" href="#collapse<?php echo $faq['positionnumber']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $faq['positionnumber']; ?>" class="collapsed d-block">
-                        <i class="fa fa-chevron-down"></i> <?php echo $faq['question']; ?>
+                    <a data-toggle="collapse" data-parent="#faqpanel" href="#collapse<?php echo $faq['positionnumber']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $faq['positionnumber']; ?>" class="d-block<?php if ($faq['positionnumber'] != 1) { echo "  collapsed"; } ?>">
+                        <i class="fa fa-chevron-down"></i> <span class="heart2 light-coral">&#10084;</span>&nbsp;&nbsp;<?php echo $faq['question']; ?>
                     </a>
                 </h5>
 
-                <div id="collapse<?php echo $faq['positionnumber']; ?>" class="collapse" role="tabpanel" aria-labelledby="heading<?php echo $faq['positionnumber']; ?>">
+                <div id="collapse<?php echo $faq['positionnumber']; ?>" class="collapse<?php if ($faq['positionnumber'] == 1) { echo "  show"; } ?>" role="tabpanel" aria-labelledby="heading<?php echo $faq['positionnumber']; ?>">
                     <div class="faq-body p-3">
                         <p><?php echo $faq['answer']; ?></p>
                     </div>
