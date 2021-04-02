@@ -64,7 +64,7 @@ if (!empty($level)) {
 			</div>
 			<div class="sadietalknormal">
 				<div style="font-weight: bold;" class="center mb-4">As a new <span class="sadietalk-pink text-uppercase"><?php echo $level; ?></span> member, first visit <span class="sadietalk-pink"><?php echo $$bannerclickstosignup ?></span> of the member Viral Banners below, allowing the timed countdown to complete, then complete and submit the registration form!</div>
-				<div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink">OWN</span> Viral Banners to the system! <span class="heart">&#10084;</span></div>
+				<div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink">OWN</span> Viral Banners! <span class="heart">&#10084;</span></div>
 			</div>
 		</figcaption>
 	</div>
