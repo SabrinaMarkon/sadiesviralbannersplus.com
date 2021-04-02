@@ -43,15 +43,38 @@ if (!empty($level)) {
 		$paymentbuttons .= $coinpayments->getPayButton();
 	}
 
+	$bannerclickstosignup = $level . 'bannerclickstosignup';
+
 } else {
-	$level = "";
+	$level = "free";
+	$bannerclickstosignup = 'freebannerclickstosignup';
 }
 
+// User must click banners depending on membership level before signup is accepted.
 ?>
 
 <div class="container">
 
-	<h1 class="ja-bottompadding">Sign Up</h1>
+<figure>
+	<img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-5">
+	<div style="display:flex; flex-direction:column;">
+		<figcaption>
+			<div class="sadietalkbig sadietalkbig-2em mb-4">
+				<span class="sadietalk-pink">First Click</span>&nbsp;<span class="sadietalk-blue"><?php echo $$bannerclickstosignup ?></span>&nbsp;<span class="sadietalk-pink"> Member Viral Banners to Register!</span><br />
+			</div>
+			<div class="sadietalknormal">
+				<div style="font-weight: bold;" class="center mb-4">As a new <span class="sadietalk-pink text-uppercase"><?php echo $level; ?></span> member, first visit <span class="sadietalk-pink"><?php echo $$bannerclickstosignup ?></span> of the member Viral Banners below, allowing the timed countdown to complete, then complete and submit the registration form!</div>
+				<div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink">OWN</span> Viral Banners to the system! <span class="heart">&#10084;</span></div>
+			</div>
+		</figcaption>
+	</div>
+</figure>
+
+	<?php
+	include "banners.php";
+	?>
+
+	<h1 class="ja-bottompadding">Sign Up Form</h1>
 
 <!-- 
 This form does NOT submit for PAID MEMBERSHIPS. Rather, we just want the field values with JS. 

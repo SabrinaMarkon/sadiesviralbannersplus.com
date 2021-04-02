@@ -62,6 +62,9 @@ figcaption .sadietalkbig {
   vertical-align: middle;
   /* text-shadow: 1px 1px 0 #0031b3; */
 }
+figcaption .sadietalkbig.sadietalkbig-2em {
+  font-size: 2em;
+}
 figcaption .sadietalkbig .hiya {
   color: #0067f4;
   font-style: italic;
@@ -101,6 +104,17 @@ figcaption .sadietalknormal {
   color: #121212;
   font-size: 1.2em;
 }
+figcaption .sadietalk-pink {
+  color: #ff4343;
+}
+figcaption .sadietalk-blue {
+  color: #0067f4;
+}
+figcaption .sadietalknormal .heart {
+  color: #ff4343;
+  vertical-align: baseline;
+}
+
 .affiliateurl a {
   color: #0067F4 !important;
 }
