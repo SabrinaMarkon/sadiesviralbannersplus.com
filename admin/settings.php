@@ -72,6 +72,19 @@ foreach ($settings as $key => $value) {
                     </select>
                 </div>
 
+                <div>
+                    <label for="clicktimer" class="ja-toppadding">Countdown Timer for Ad Clicks:</label>
+                    <select name="clicktimer" class="form-control smallselect">
+                        <?php
+                        for ($i = 0; $i <= 60; $i++) {
+                            ?>
+                            <option value="<?php echo $i ?>"<?php if($i == $clicktimer) { echo " selected"; } ?>><?php echo $i ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select> seconds
+                </div>
+
                 <br /><br />
                 <h1>Basic Settings for Free Members</h1>
 

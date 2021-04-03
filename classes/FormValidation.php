@@ -59,6 +59,7 @@ class FormValidation
         'metatitle' => 'meta title',
         'metadescription' => 'meta description',
         'adminautoapprove' => 'for auto approve ads',
+        'clicktimer' => ' ad click countdown timer',
         'signupip' => 'signup IP',
         'id' => 'id',
         'amount' => 'amount',
@@ -409,10 +410,11 @@ class FormValidation
 
                     $errors .= "<div><strong>The value of " . $pretty_varname . " must be an IP address. </strong></div>";
                 }
-            } elseif ($varname === 'id' || $varname === 'textadhits' || $varname === 'bannerhits') {
+            } elseif ($varname === 'id' || $varname === 'textadhits' || $varname === 'bannerhits' || $varname === 'clicktimer') {
 
                 # any posted id value for a database record.
                 # number of hits for sold banners or textads.
+                # number of seconds for the ad click countdown timer.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_NUMBER_INT);
 
