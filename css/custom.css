@@ -104,10 +104,10 @@ figcaption .sadietalknormal {
   color: #121212;
   font-size: 1.2em;
 }
-figcaption .sadietalk-pink {
+.sadietalk-pink {
   color: #ff4343;
 }
-figcaption .sadietalk-blue {
+.sadietalk-blue {
   color: #0067f4;
 }
 figcaption .sadietalknormal .heart {
@@ -298,6 +298,37 @@ figcaption .sadietalknormal .heart {
 }
 .viralbanners .modal-footer {
   border-top: 2px solid #ff4343;
+}
+
+/* Timer bar for click links. */
+.clickframe {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.clickframe-timerbar {
+  position: sticky; 
+  top: 0;
+  padding: 1em;
+}
+.clickframe-timerbar .sadietalknormal {
+  background: #fff6f6;
+  color: #121212;
+  font-size: 1.2em;
+  border: 2px solid #0031b3;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 1px 1px 0 #0031b3;
+  text-align: center;
+  padding: 0.2em;
+}
+.clickframe-iframe {
+  flex-grow: 1; 
+  border: none; 
+  /* margin: 1em; */
+  margin: 0;
+  padding: 0;
 }
 
 .paybuttons {

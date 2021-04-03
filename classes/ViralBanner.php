@@ -170,7 +170,7 @@ class ViralBanner extends Banner
         $timer = '
         <script src="js/viralbannertimer.js"></script>
         <script>
-            countdown(' . $settings['clicktimer'] . ', ' . $clickurl . ');
+            countdown(' . $settings['clicktimer'] . ', "' . $clickurl . '");
         </script>';
         
         return '
@@ -182,21 +182,19 @@ class ViralBanner extends Banner
             <meta name="description" content="' . $settings['metadescription'] . '" />
             <meta name="author" content="Sabrina Markon" />
             <base href="/" />
-            <title>' . $settings['metatitle'] . '></title>
+            <title>' . $settings['metatitle'] . '</title>
             <link rel="shortcut icon" href="images/favicon.png" type="image/png">
             <link rel="stylesheet" href="css/style.css">
             <link href="css/custom.css" rel="stylesheet" />
             </head>
             <body>
 
-                <div style="display: flex; flex-direction: column; height: 100vh;">
-                    <header class="header" style="position: sticky; top: 0; height: 75px;;">
-                        ' . $timer . '
-                    </header>
-                    <main>
-                        <iframe src="' . $clickurl . '" style="height: 100vh; width: 100%;"></iframe>.
-                    </main>
+                <div class="clickframe">
+                    <header class="clickframe-timerbar" id="timerbar"></header>
+                    <iframe class="clickframe-iframe" src="' . $clickurl . '"></iframe>
                 </div>
+
+                ' . $timer . '
 
             </body>
             </html>';

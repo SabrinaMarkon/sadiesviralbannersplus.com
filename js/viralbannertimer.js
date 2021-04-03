@@ -3,39 +3,15 @@ function countdown(counter, redirecturl) {
 
     function countDown() {
         if (counter > 0) {
-            document.getElementById("plzwait").innerHTML = '<b>'+counter+'<\/b> seconds';
+            document.getElementById("timerbar").innerHTML = '<div class="sadietalknormal"><strong><span class="sadietalk-pink">' + counter + '</span>&nbsp;<span class="sadietalk-blue"> seconds</span></strong></div>';
             counter--;
         } else {
             clearInterval(timer);
-            window.location = redirecturl;
+            // window.location = redirecturl;
+            document.getElementById("timerbar").innerHTML = '<div class="sadietalknormal"><strong><span class="sadietalk-pink">22</span>&nbsp;<span class="sadietalk-blue"> seconds</span></strong></div>';
         }
     }
 
     let timer = setInterval(countDown, 1000);
 
-    // $(document).ready(function (){
-    //     var count = 0;
-    //     function myCount() {
-    //       if (count == 0) {
-    //         count += 1;  
-    //       } else if (count > 10) {
-    //         count = 0;
-    //       }
-    //       $('.count').text(count);
-    //     }
-    //     setInterval(myCount,200);
-    //   });
-
-
-	// if ((0 <= 100) || (0 > 0)) {
-	// 	counter--;
-	// 	if(counter > 0) {
-	// 		document.getElementById("plzwait").innerHTML = '<b>'+counter+'<\/b> seconds';
-	// 		setTimeout('countdown()',1000);
-	// 	}
-	// 	if(counter < 1)
-	// 	{
-	// 	window.location = redirecturl;
-	// 	}
-	// }
 }
