@@ -20,12 +20,11 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
         if ($adtable === 'viralbanners') {
             // TODO:
 
-            // 2) In iframe, show countdown.
-            // 3) At end of countdown, show success and SAVE viral banner ID to cookie or database! OR CODE!!!
+            // 3) At end of countdown, show success and SAVE viral banner ID to session cookie and database.
 
             // TODO:  make sure sponsor banners show up!!!
             $viralbanner = new ViralBanner($adtable);
-            echo $viralbanner->showClickIFrame($clickurl, $settings);
+            echo $viralbanner->showClickIFrame($id, $clickurl, $settings);
 
         } else {
             @header('Location: ' . $clickurl);

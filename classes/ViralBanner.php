@@ -131,7 +131,7 @@ class ViralBanner extends Banner
         </div>';
     }
     
-     public function showClickIFrame(string $clickurl, array $settings): string {
+     public function showClickIFrame(int $id, string $clickurl, array $settings): string {
 
         // Change click URL to https.
         $clickurl = str_replace('http:', 'https:', $clickurl);
@@ -170,7 +170,7 @@ class ViralBanner extends Banner
         $timer = '
         <script src="js/viralbannertimer.js"></script>
         <script>
-            countdown(' . $settings['clicktimer'] . ', "' . $clickurl . '");
+            countdown(' . $settings['clicktimer'] . ', ' . $id . ');
         </script>';
         
         return '
