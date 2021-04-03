@@ -130,8 +130,8 @@ class ViralBanner extends Banner
             <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">' . $msg . '</a>
         </div>';
     }
-
-    public function showClickIFrame(string $clickurl, array $settings): string {
+    
+     public function showClickIFrame(string $clickurl, array $settings): string {
 
         // Change click URL to https.
         $clickurl = str_replace('http:', 'https:', $clickurl);
@@ -167,6 +167,12 @@ class ViralBanner extends Banner
             });
         </script>';
 
+        $timer = '
+        <script src="js/viralbannertimer.js"></script>
+        <script>
+            countdown(' . $settings['clicktimer'] . ', ' . $clickurl . ');
+        </script>';
+        
         return '
         <!doctype html>
         <html lang="en">
@@ -184,8 +190,8 @@ class ViralBanner extends Banner
             <body>
 
                 <div style="display: flex; flex-direction: column; height: 100vh;">
-                    <header class="header" style="position: sticky; top: 0; height: 75px; background: pink;">
-                        TIMER
+                    <header class="header" style="position: sticky; top: 0; height: 75px;;">
+                        ' . $timer . '
                     </header>
                     <main>
                         <iframe src="' . $clickurl . '" style="height: 100vh; width: 100%;"></iframe>.

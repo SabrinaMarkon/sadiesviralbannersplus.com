@@ -18,13 +18,11 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
             $rotator->countMemberClick($_SESSION['username'], $id);
         }
         if ($adtable === 'viralbanners') {
-            // Need to have a timer countdown and the URL!
+            // TODO:
 
-            // 1) Show iframe + url.
             // 2) In iframe, show countdown.
             // 3) At end of countdown, show success and SAVE viral banner ID to cookie or database! OR CODE!!!
 
-            // Need body, etc. for background color. 
             // TODO:  make sure sponsor banners show up!!!
             $viralbanner = new ViralBanner($adtable);
             echo $viralbanner->showClickIFrame($clickurl, $settings);
