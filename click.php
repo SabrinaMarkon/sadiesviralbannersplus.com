@@ -11,8 +11,8 @@ $id = $_GET['id'] ?? '';
 if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adtable === 'viralbanners' || $adtable === 'networksolos')) {
 
     $rotator = new Rotator($adtable, $settings);
-    $click = $rotator->giveClick($id);
-    if ($click) {
+    $clickurl = $rotator->giveClick($id);
+    if ($clickurl) {
         # If it was a member who clicked, add a click to their counters towards a free ad and check if they get a free ad.
         if (isset($_SESSION['username'])) {
             $rotator->countMemberClick($_SESSION['username'], $id);
@@ -26,18 +26,11 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
 
             // Need body, etc. for background color. 
             // TODO:  make sure sponsor banners show up!!!
-            ?>
-            <div style="display: flex; flex-direction: column; height: 100vh;">
-                <header class="header" style="position: sticky; top: 0; height: 50px; background: pink;">
-                    TIMER
-                </header>
-                <main>
-                    <iframe src="<?php echo $click ?>" style="height: 100vh; width: 100%;"></iframe>.
-                </main>
-            </div>
-            <?php
+            $viralbanner = new ViralBanner($adtable);
+            echo $viralbanner->showClickIFrame($clickurl, $settings);
+
         } else {
-            @header('Location: ' . $click);
+            @header('Location: ' . $clickurl);
         }
     } else {
         echo "<div class=\"alert alert-danger\" style=\"width:75%;\"><strong>The URL for this ad was invalid.</strong></div>";

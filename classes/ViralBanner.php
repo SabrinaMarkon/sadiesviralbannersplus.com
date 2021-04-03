@@ -130,4 +130,58 @@ class ViralBanner extends Banner
             <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">' . $msg . '</a>
         </div>';
     }
+
+    public function showClickIFrame(string $clickurl, array $settings): string {
+
+        return '
+        <!doctype html>
+        <html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="' . $settings['metadescription'] . '" />
+            <meta name="author" content="Sabrina Markon" />
+            <base href="/" />
+            <title>' . $settings['metatitle'] . '></title>
+            <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+            <link rel="stylesheet" href="css/style.css">
+            <link href="css/custom.css" rel="stylesheet" />
+            </head>
+            <body>
+                <!-- Preloader -->
+                <div class="preloader">
+                    <div class="loader">
+                        <div class="ytp-spinner">
+                            <div class="ytp-spinner-container">
+                                <div class="ytp-spinner-rotator">
+                                    <div class="ytp-spinner-left">
+                                        <div class="ytp-spinner-circle"></div>
+                                    </div>
+                                    <div class="ytp-spinner-right">
+                                        <div class="ytp-spinner-circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; height: 100vh;">
+                    <header class="header" style="position: sticky; top: 0; height: 75px; background: pink;">
+                        TIMER
+                    </header>
+                    <main>
+                        <iframe src="' . $clickurl . '" style="height: 100vh; width: 100%;"></iframe>.
+                    </main>
+                </div>
+                <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+                <script>
+                // Preloader:
+                $(window).on("load", function (event) {
+                    $(".preloader").delay(500).fadeOut(500);
+                    });
+                </script>
+            </body>
+            </html>';
+    }
+    
 }
