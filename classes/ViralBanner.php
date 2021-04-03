@@ -133,6 +133,40 @@ class ViralBanner extends Banner
 
     public function showClickIFrame(string $clickurl, array $settings): string {
 
+        // Change click URL to https.
+        $clickurl = str_replace('http:', 'https:', $clickurl);
+
+        // $preloader goes right after <body> if we use it. 
+        // It seems SLOWER than NOT using it because it waits for entire page to load (including ifram url) before showing page all at once.
+        // Hence, it is not included by default.
+        $preloader = '
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="loader">
+                <div class="ytp-spinner">
+                    <div class="ytp-spinner-container">
+                        <div class="ytp-spinner-rotator">
+                            <div class="ytp-spinner-left">
+                                <div class="ytp-spinner-circle"></div>
+                            </div>
+                            <div class="ytp-spinner-right">
+                                <div class="ytp-spinner-circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+        // $preloaderjs goes before </body> if we use it.
+        $preloaderjs = '
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script>
+        // Preloader:
+        $(window).on("load", function (event) {
+            $(".preloader").delay(500).fadeOut(500);
+            });
+        </script>';
+
         return '
         <!doctype html>
         <html lang="en">
@@ -148,23 +182,7 @@ class ViralBanner extends Banner
             <link href="css/custom.css" rel="stylesheet" />
             </head>
             <body>
-                <!-- Preloader -->
-                <div class="preloader">
-                    <div class="loader">
-                        <div class="ytp-spinner">
-                            <div class="ytp-spinner-container">
-                                <div class="ytp-spinner-rotator">
-                                    <div class="ytp-spinner-left">
-                                        <div class="ytp-spinner-circle"></div>
-                                    </div>
-                                    <div class="ytp-spinner-right">
-                                        <div class="ytp-spinner-circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div style="display: flex; flex-direction: column; height: 100vh;">
                     <header class="header" style="position: sticky; top: 0; height: 75px; background: pink;">
                         TIMER
@@ -173,13 +191,7 @@ class ViralBanner extends Banner
                         <iframe src="' . $clickurl . '" style="height: 100vh; width: 100%;"></iframe>.
                     </main>
                 </div>
-                <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-                <script>
-                // Preloader:
-                $(window).on("load", function (event) {
-                    $(".preloader").delay(500).fadeOut(500);
-                    });
-                </script>
+
             </body>
             </html>';
     }
