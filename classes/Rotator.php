@@ -82,15 +82,6 @@ class Rotator
         if (!empty($data['accounttype'])) {
 
             $accounttype = $data['accounttype'];
-
-            // The affiliate banners should keep track of member clicks to signup.
-            if ($this->adtable === 'viralbanners') {
-
-                $sql = "insert into viralbannersclicks (bannerid, username, clickdate) values (?,?,NOW())";
-                $q = $pdo->prepare($sql);
-                $q->execute([$id, $username]);
-            }
-
             $accounttypelc = strtolower($accounttype);
             $adclickstogettextad = $accounttypelc . "adclickstogettextad";
             $adclickstogettextad = $this->settings[$adclickstogettextad];

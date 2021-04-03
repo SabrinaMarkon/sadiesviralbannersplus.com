@@ -146,15 +146,6 @@ abstract class Ad
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
 
-        /* We don't do this below because the viralbannersclicks table is ONLY to count how many clicks
-           a new member has made to meet the requirement to click x viralbanners before having membership confirmed.
-        */
-        // if ($this->adtable === 'viralbanners') {
-        //     $sql = "delete from viralbannersclicks where bannerid=?";
-        //     $q = $pdo->prepare($sql);
-        //     $q->execute(array($id));
-        // }
-
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Ad " . $name . " was Deleted</strong></div>";

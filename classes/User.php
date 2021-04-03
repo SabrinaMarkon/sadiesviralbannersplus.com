@@ -351,17 +351,8 @@ class User
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $usersbanners = $q->fetchAll();
-        # delete from member banner clicks.
-        if (!empty($usersbanners)) {
-            foreach ($usersbanners as $usersbanner) {
-                $bannerid = $usersbanner['id'];
-                $sql = "delete from viralbannersclicks where bannerid=?";
-                $q = $pdo->prepare($sql);
-                $q->execute(array($bannerid));
-            }
-        }
 
-        # delete download access.
+		# delete download access.
         $sql = "delete from downloadaccess where username=?";
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
