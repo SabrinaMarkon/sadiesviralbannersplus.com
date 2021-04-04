@@ -285,9 +285,9 @@ create table `viralbanners` (
 
 create table `viralbannersclicks` (
 `id` integer unsigned not null primary key auto_increment,
-`bannerid` integer unsigned not null default '0',
 `username` varchar(255) not null default 'admin',
-`action` varchar(12) not null default 'signup',
+`bannerid` integer unsigned not null default '0',
+`bannerslot` integer unsigned not null default '0',
 `clickdate` datetime default null
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
