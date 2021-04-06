@@ -10,16 +10,18 @@ function countdown(counter, id) {
         } else {
             clearInterval(timer);
             let viralBannerClicksArray = [];
+            
             if(localStorage.viralBannerClicks) {
                 viralBannerClicksArray = JSON.parse(localStorage.viralBannerClicks);
             }
-            viralBannerClicksArray.push(id);
-            localStorage.setItem("viralBannerClicks", JSON.stringify(viralBannerClicksArray));
 
-            // 1) Check if the visitor already has a key in their local storage.
-            // 2) NO - Make array with this bannerslot ID as the only item, JSON.stringify the array, then add to Local Storage.
-            // 3) YES - JSON.parse what they have in localstorage for the key already into an array. Push this bannerslot id onto the array. JSON.stringify the array and
-            // add it to local storage key again.
+            // If this Viral Banner is already in the localStorage array, we don't need to add it again.
+            if (!viralBannerClicksArray.includes(id)) {
+                viralBannerClicksArray.push(id);
+            }
+
+            // Write the array back into localStorage as a JSON string.
+            localStorage.setItem("viralBannerClicks", JSON.stringify(viralBannerClicksArray));
 
             // 4) In banners.php, Get the key from localstorage and JSON.parse into an array. For each value in array, mark it clicked for the banner slot shown.
 
