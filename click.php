@@ -7,6 +7,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 $adtable = $_GET['adtable'] ?? '';
 $id = $_GET['id'] ?? '';
+$bannerslot = $_GET['bannerslot'] ?? '';
 
 if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adtable === 'viralbanners' || $adtable === 'networksolos')) {
 
@@ -17,13 +18,16 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
         if (isset($_SESSION['username'])) {
             $rotator->countMemberClick($_SESSION['username'], $id);
         }
-        if ($adtable === 'viralbanners') {
 
+        if ($adtable === 'viralbanners' && $bannerslot > 0) {
+
+            // If it was a viral banner click by a site visitor.
             // TODO:  make sure sponsor banners show up!!!
             $viralbanner = new ViralBanner($adtable);
-            echo $viralbanner->showClickIFrame($id, $clickurl, $settings);
-
-        } else {
+            echo $viralbanner->showClickIFrame($bannerslot, $clickurl, $settings);
+        }
+        else {
+            // It was a viral banner click in the admin area OR one of the other ad types.
             @header('Location: ' . $clickurl);
         }
     } else {

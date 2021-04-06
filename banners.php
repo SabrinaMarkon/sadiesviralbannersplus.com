@@ -69,23 +69,26 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             if (in_array($i, $referidbannerslots)) {
                 // See if the user, referid, has a banner for this position. Positions over 8 are for the smaller banners below.
                 $showbanner = $banner->getViralBanner($_SESSION['referid'], $i);
+                //echo "TESTING: showbanner is user's own slot $i";
             } 
             // $sponsorrefersbannerslots are the position slots that the user referid's sponsor is allowed to show on their referral's (referid's) page.
             elseif (in_array($i, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
             
                 // See if the user's sponsor (referid's referid), has a banner saved for this position.
                 $showbanner = $banner->getViralBanner($sponsorusername, $i);
+                //echo "TESTING: showbanner is user's sponsor slot $i";
             }
             else {
                 $showbanner = '';
+                //echo "TESTING: showbanner has nothing for user or user's sponsor slot $i";
             }
             
             // SHOW:
             if (!empty($showbanner)) {
 
                 // SHOW:
-                $show .= $banner->showBanner($showbanner, 728, 90, $i, 'viralbannerpage');
-                echo $show;
+                //echo "TESTING: showbanner EXISTS (and might be empty) so display it slot $i";
+                echo $banner->showBanner($showbanner, 728, 90, $i, 'viralbannerpage');
             } else {
 
                 // There is no banner for either the referid OR their sponsor. Does the admin have a default banner for this slot?
@@ -94,11 +97,12 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                 if (!empty($adminshowbanner)) {
 
                     // SHOW:
-                    $show = $banner->showBanner($adminshowbanner, 728, 90, $i, 'viralbannerpage');
-                    echo $show;
+                    //echo "TESTING: admin slot because user or sponsor doesn't have a banner for this slot $i";
+                    echo $banner->showBanner($adminshowbanner, 728, 90, $i, 'viralbannerpage');
                 } else {
 
                     // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                    //echo "TESTING: paid banner rotator because nothing else for this slot $i";
                     include 'rotatorbannerspaid.php';
                 }
             }
@@ -134,8 +138,8 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             if (!empty($showbanner)) {
     
                 // SHOW:
-                $show = $banner->showBanner($showbanner, 468, 60, $i, 'viralbannerpage');
-                echo $show;
+                echo $banner->showBanner($showbanner, 468, 60, $i, 'viralbannerpage');
+                echo "seven";
             } else {
     
                     // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
@@ -144,8 +148,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                     if (!empty($adminshowbanner)) {
     
                         // SHOW:
-                        $show = $banner->showBanner($adminshowbanner, 468, 60, $i, 'viralbannerpage');
-                        echo $show;
+                        echo $banner->showBanner($adminshowbanner, 468, 60, $i, 'viralbannerpage');
                     } else {
     
                         // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
