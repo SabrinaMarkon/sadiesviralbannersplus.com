@@ -52,8 +52,8 @@ function whichOnesWereClickedAlready() {
             viralBannerClicksArray.forEach(item => {
     
                 let varname = 'viralbanner' + item;
-                document.getElementById(varname).style('display', 'none');
-                document.getElementById(varname).style('visibility', 'visible');
+                document.getElementById(varname).style.display = 'block';
+                document.getElementById(varname).style.visibility = 'visible';
             });
         }
     }
