@@ -338,6 +338,17 @@ figcaption .sadietalknormal .heart {
   padding: 0;
 }
 
+/* Sadie slot number and Viral Banner and click message box. */
+.viralbanner-withclickbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.viralbanner-placeholder {
+  display: none;
+  visibility: hidden;
+}
+
 .paybuttons {
   display: flex;
   flex-wrap: wrap;

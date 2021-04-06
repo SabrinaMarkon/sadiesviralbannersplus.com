@@ -84,7 +84,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             if (!empty($showbanner)) {
 
                 // SHOW:
-                $show = $banner->showBanner($showbanner, 728, 90, 0);
+                $show .= $banner->showBanner($showbanner, 728, 90, $i, 'viralbannerpage');
                 echo $show;
             } else {
 
@@ -94,7 +94,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                 if (!empty($adminshowbanner)) {
 
                     // SHOW:
-                    $show = $banner->showBanner($adminshowbanner, 728, 90, 0);
+                    $show = $banner->showBanner($adminshowbanner, 728, 90, $i, 'viralbannerpage');
                     echo $show;
                 } else {
 
@@ -134,7 +134,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             if (!empty($showbanner)) {
     
                 // SHOW:
-                $show = $banner->showBanner($showbanner, 468, 60, 0);
+                $show = $banner->showBanner($showbanner, 468, 60, $i, 'viralbannerpage');
                 echo $show;
             } else {
     
@@ -144,7 +144,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                     if (!empty($adminshowbanner)) {
     
                         // SHOW:
-                        $show = $banner->showBanner($adminshowbanner, 468, 60, 0);
+                        $show = $banner->showBanner($adminshowbanner, 468, 60, $i, 'viralbannerpage');
                         echo $show;
                     } else {
     
@@ -158,3 +158,8 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
     </div>
 
 </div>
+
+<script src="js/viralbannertimer.js"></script>
+<script>
+    whichOnesWereClickedAlready();
+</script>

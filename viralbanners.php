@@ -73,7 +73,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 					// User already has a banner saved for this slot.
 					$showinmodal = 'edit';
-					echo $banner->showBanner($usershowbanner, $width, $height, $i);
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
 				} else {
 
 					// Show blank banner for this position with fields for the user to add their own.
@@ -88,7 +88,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 					// User already has a banner saved for this slot.
 					$showinmodal = 'edit';
-					echo $banner->showBanner($usershowbanner, $width, $height, $i);
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
 				} else {
 
 					// Show blank banner for this position with fields for the user to add their own.
@@ -103,7 +103,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 					// User already has a banner saved for this slot.
 					$showinmodal = 'edit';
-					echo $banner->showBanner($usershowbanner, $width, $height, $i);
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
 				} else {
 
 					// Show blank banner for this position with fields for the user to add their own.
@@ -118,7 +118,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 
 					// User already has a banner saved for this slot.
 					$showinmodal = 'edit';
-					echo $banner->showBanner($usershowbanner, $width, $height, $i);
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
 				} else {
 
 					// Show blank banner for this position with fields for the user to add their own.

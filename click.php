@@ -18,9 +18,6 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
             $rotator->countMemberClick($_SESSION['username'], $id);
         }
         if ($adtable === 'viralbanners') {
-            // TODO:
-
-            // 3) At end of countdown, show success and SAVE viral banner ID to session cookie and database.
 
             // TODO:  make sure sponsor banners show up!!!
             $viralbanner = new ViralBanner($adtable);

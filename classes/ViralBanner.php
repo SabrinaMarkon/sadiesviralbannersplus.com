@@ -16,7 +16,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 class ViralBanner extends Banner
 {
-    private $viralbanner;
+    private $viralbanner, $alreadyclicked;
 
     public function getViralBanner(string $username, int $slot): array
     {
@@ -79,7 +79,7 @@ class ViralBanner extends Banner
         return $vararray;
     }
 
-    public function showBanner(array $banner, int $width, int $height, int $i): string {
+    public function showBanner(array $banner, int $width, int $height, int $i, string $source): string {
 
         $id = $banner['id'];
         $alt = $banner['alt'];
@@ -90,9 +90,8 @@ class ViralBanner extends Banner
         // Count hit (impression):
         $this->countBannerHit($id);
 
-        // If banner will be clicked in Viral Banners members area, the click should open the modal to EDIT the Viral Banner instead of its URL.
-
-        if ($i) {
+        if ($source === 'memberarea') {
+            // The Viral Banner was clicked in the members area, so the click should open the modal to EDIT the Viral Banner instead of its URL.
             return '
             <div>
                 <a class="placeholder-img" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
@@ -100,13 +99,27 @@ class ViralBanner extends Banner
                 </a>
             </div>'; 
         }
-
-        return '
-        <div>
-            <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
-                <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
-            </a>
-        </div>';  
+        elseif ($source === 'adminarea') {
+            // The Viral Banner was clicked in the admin area.
+            return '
+            <div id="viralbanner' . $id . '">
+                <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
+                    <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
+                </a>
+            </div>';  
+        }
+        else {
+            // The Viral Banner was clicked on the Viral Banners URL. ($source = 'viralbannerpage')
+            return '
+            <div class="viralbanner-withclickbox">
+                <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '" target="_blank">
+                    <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
+                </a>
+                <div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: ' . $height . 'px; height: ' . $height . 'px;">
+                    Clicked!
+                </div>
+            </div>';  
+        }
     }
 
     public function countBannerHit(int $id): void {

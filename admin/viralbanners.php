@@ -482,7 +482,7 @@ $ads = $banner->getAllAds();
             $adminshowbanner = $banner->getViralBanner('admin', $i);
             if (!empty($adminshowbanner)) {
 
-                $adminbanner = $banner->showBanner($adminshowbanner, 728, 90, 1);
+                $adminbanner = $banner->showBanner($adminshowbanner, 728, 90, $i, 'adminarea');
                 echo $adminbanner;
 
             } else {
@@ -498,7 +498,7 @@ $ads = $banner->getAllAds();
             $adminshowbanner = $banner->getViralBanner('admin', $i);
             if (!empty($adminshowbanner)) {
 
-                $adminbanner = $banner->showBanner($adminshowbanner, 468, 60, 1);
+                $adminbanner = $banner->showBanner($adminshowbanner, 468, 60, $i, 'adminarea');
                 echo $adminbanner;
 
             } else {
