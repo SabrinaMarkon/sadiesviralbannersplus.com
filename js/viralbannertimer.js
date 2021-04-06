@@ -1,5 +1,5 @@
 // Countdown timer for Viral Banner ad views.
-function countdown(counter, id) {
+function countdown(counter, bannerslot) {
 
     let whichsadie = Math.floor(Math.random() * 3) + 1;
 
@@ -16,8 +16,8 @@ function countdown(counter, id) {
             }
 
             // If this Viral Banner is already in the localStorage array, we don't need to add it again.
-            if (!viralBannerClicksArray.includes(id)) {
-                viralBannerClicksArray.push(id);
+            if (!viralBannerClicksArray.includes(bannerslot)) {
+                viralBannerClicksArray.push(bannerslot);
             }
 
             // Write the array back into localStorage as a JSON string.
@@ -41,13 +41,20 @@ function countdown(counter, id) {
 function whichOnesWereClickedAlready() {
 
     // Get the key from localStorage and JSON.parse into an array. For each value in array, mark it clicked for that value banner slot number so user can see they already clicked.
-    let viralBannerClicksArray = JSON.parse(localStorage.getItem("viralBannerClicks"));
-    if (viralBannerClicksArray.length > 0) {
+    let viralBannerClicksArray = [];
+            
+    if(localStorage.viralBannerClicks) {
+        
+        viralBannerClicksArray = JSON.parse(localStorage.getItem("viralBannerClicks"));
 
-        viralBannerClicksArray.forEach(item => {
+        if (viralBannerClicksArray.length > 0) {
 
-            document.getElementById('viralbanner' + item).style('display', 'none');
-            document.getElementById('viralbanner' + item).style('visibility', 'visible');
-        });
+            viralBannerClicksArray.forEach(item => {
+    
+                let varname = 'viralbanner' + item;
+                document.getElementById(varname).style('display', 'none');
+                document.getElementById(varname).style('visibility', 'visible');
+            });
+        }
     }
 }
