@@ -483,7 +483,11 @@ if (isset($_POST['login'])) {
 
     if (isset($_POST['savead'])) {
 
-        $errors = $formvalidation->validateAll($_POST);
+        if ($_POST['added'] == 1) {
+            // Fields CAN be blank if the ad HASN'T been added to the system yet.
+            $errors = $formvalidation->validateAll($_POST);
+        }
+        
         if (!empty($errors)) {
 
             $showad = $errors;

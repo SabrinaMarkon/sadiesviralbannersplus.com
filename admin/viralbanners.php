@@ -646,6 +646,7 @@ $ads = $banner->getAllAds();
                             </td>
                             <td>
                                 <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+                                <input type="hidden" name="added" value="<?php echo $ad['added']; ?>">
                                 <input type="hidden" name="_method" value="PATCH">
                                 <button class="btn btn-sm btn-primary" type="submit" name="savead">SAVE</button>
                             </td>
