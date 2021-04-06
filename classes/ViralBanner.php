@@ -79,7 +79,7 @@ class ViralBanner extends Banner
         return $vararray;
     }
 
-    public function showBanner(array $banner, int $width, int $height, int $i, string $source): string {
+    public function showBanner(array $banner, int $width, int $height, int $bannerslot, string $source): string {
 
         $id = $banner['id'];
         $alt = $banner['alt'];
@@ -94,7 +94,7 @@ class ViralBanner extends Banner
             // The Viral Banner was clicked in the members area, so the click should open the modal to EDIT the Viral Banner instead of its URL.
             return '
             <div>
-                <a class="placeholder-img" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">
+                <a class="placeholder-img" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">
                     <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
                 </a>
             </div>'; 
@@ -112,10 +112,10 @@ class ViralBanner extends Banner
             // The Viral Banner was clicked on the Viral Banners URL. ($source = 'viralbannerpage')
             return '
             <div class="viralbanner-withclickbox">
-                <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '">
+                <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '/' . $bannerslot . '">
                     <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
                 </a>
-                <div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: ' . $height . 'px; height: ' . $height . 'px;">
+                <div id="viralbanner' . $bannerslot . '" class="viralbanner-placeholder" style="width: ' . $height . 'px; height: ' . $height . 'px;">
                     Clicked!
                 </div>
             </div>';  
@@ -133,18 +133,18 @@ class ViralBanner extends Banner
         Database::disconnect();
     }
 
-    public function showBannerPlaceholder(int $i, int $width, int $height, string $msg): string {
+    public function showBannerPlaceholder(int $bannerslot, int $width, int $height, string $msg): string {
         
         $msguppercase = strtoupper($msg);
         $msguppercase = str_replace(" ", "+", $msguppercase);
 
         return '
         <div>
-            <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $i . '">' . $msg . '</a>
+            <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">' . $msg . '</a>
         </div>';
     }
     
-     public function showClickIFrame(int $bannerslot, int $id, string $clickurl, array $settings): string {
+     public function showClickIFrame(int $bannerslot, string $clickurl, array $settings): string {
 
         // Change click URL to https.
         $clickurl = str_replace('http:', 'https:', $clickurl);
@@ -183,7 +183,7 @@ class ViralBanner extends Banner
         $timer = '
         <script src="js/viralbannertimer.js"></script>
         <script>
-            countdown(' . $settings['clicktimer'] . $bannerslot . ');
+            countdown(' . $settings['clicktimer'] . ', ' . $bannerslot . ');
         </script>';
         
         return '
