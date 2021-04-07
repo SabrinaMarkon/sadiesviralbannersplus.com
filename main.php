@@ -120,7 +120,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
 ?>
 
 <!-- Different Membership Levels -->
-<section id="memberships" class="pricing-area">
+<section id="howitworks" class="pricing-area">
     <div class="mx-5">
 
         <figure class="mx-5 align-items-end">
@@ -131,7 +131,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         <br />
                     </div>
                     <div class="sadietalknormal">
-                        <div style="font-weight: bold;" class="center mb-4">As a new member of my Viral Banner app, first visit my members' Viral Banners below! For each one, allow the timed countdown to complete, then choose the <a class="page-scroll" href="/#choosemembership">MEMBERSHIP</a> you want to register for once you have enough Viral Banner clicks!</div>
+                        <div style="font-weight: bold;" class="center mb-4">As a new member of my Viral Banner app, first visit my members' Viral Banners below! For each one, allow the timed countdown to complete, then choose the <a class="page-scroll" href="/#memberships">MEMBERSHIP</a> you want to register for once you have enough Viral Banner clicks!</div>
 
                         <div style="font-weight: bold;" class="center mb-4">The number of Viral Banners you gotta visit to register depends on which membership level you want!</div>
 
@@ -152,6 +152,8 @@ if (!empty($showcontent->showPage('Home Page'))) {
             <img src="images/sadie-sitting-SMfaceleft.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
         </figure>
 
+        <span id="banners"></span>
+
         <?php
         include "banners.php";
         ?>
@@ -169,7 +171,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
             </div>
         </div> <!-- row -->
 
-        <div id="choosemembership" class="flexcards-equalheight row justify-content-center">
+        <div id="memberships" class="flexcards-equalheight row justify-content-center">
             <div class="flexcard col-lg-4 col-md-7 col-sm-9">
                 <div class="flexcard-content pricing-style mt-30">
                     <div class="pricing-icon text-center">

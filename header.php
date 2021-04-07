@@ -123,8 +123,9 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                                         <ul class="navbar-nav m-auto">
                                             <li class="nav-item"><a class="page-scroll" href="/#home">Home</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/#howitworks">How It Works</a></li>
+                                            <li class="nav-item"><a class="page-scroll" href="/#banners">Banners</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/#memberships">Memberships</a></li>
-                                            <li class="nav-item"><a class="page-scroll" href="/banners">Banners</a></li>
                                             <li class="nav-item"><a class="page-scroll" href="/#contact">Contact</a></li>
                                         </ul>
                                     </div>
@@ -132,7 +133,7 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
                                     <div class="navbar-btn d-none d-sm-inline-block">
                                         <ul>
                                             <li><a class="solid" href="/login">Login</a></li>
-                                            <li><a class="solid page-scroll" href="/#getstarted">Register</a></li>
+                                            <!-- <li><a class="solid page-scroll" href="/#getstarted">Register</a></li> -->
                                         </ul>
                                     </div>
                                 <?php
