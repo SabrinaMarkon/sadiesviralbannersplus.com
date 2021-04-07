@@ -23,12 +23,12 @@ function countdown(counter, bannerslot) {
             // Write the array back into localStorage as a JSON string.
             localStorage.setItem("viralBannerClicks", JSON.stringify(viralBannerClicksArray));
 
-            // 4) In banners.php, Get the key from localstorage and JSON.parse into an array. For each value in array, mark it clicked for the banner slot shown.
-
             // 5) In registration, get key from localsorage and JSON.parse into an array. Check size of array. If large enough, user has clicked enough banners and 
             // signup button should be added to form! 
             // 6) After signup, create username record in viralbannerclicks table with their local storage array (JSON.parse again).
             // 7) Remove key from localStorage (in case someone else uses the same computer and wants to sign up!)
+
+            // TODO: Vary the words SADIE says!
 
             document.getElementById("timerbar").innerHTML = '<img src="images/sadie-expression-' + whichsadie + '.png"><span class="sadietalknormal"><strong><span class="sadietalk-blue">DONE!</span></strong>&nbsp;Your visit was <strong>counted!</strong> I hope you browse more! But you can <strong><span><a href="javascript:window.history.back();">RETURN</a></strong> now if you like!</span></span>'; // ANNOUNCE HOW MANY MORE BANNERS THEY NEED TO CLICK! If done, say so!
         }
@@ -56,5 +56,37 @@ function whichOnesWereClickedAlready() {
                 document.getElementById(varname).style.visibility = 'visible';
             });
         }
+    }
+}
+
+function howManyWereClicked() {
+
+        // Get the key from localStorage and JSON.parse into an array, then check how many items are in the array to see if the user has met the requirements to sign up.
+        if(localStorage.viralBannerClicks) {
+            
+            viralBannerClicksArray = JSON.parse(localStorage.getItem("viralBannerClicks"));
+            return viralBannerClicksArray.length;
+      
+        }
+        return 0;
+}
+
+function showSignupButtonOrPaymentButtons(paidlevel, bannerclickstosignup) {
+
+    const howManyClicked = howManyWereClicked();
+
+    if(howManyClicked === bannerclickstosignup) {
+
+        // Enough Viral Banners were clicked, so show the sign up (or payment) buttons!
+        if (paidlevel == 1) {
+            
+        } else {
+
+        }
+    } else {
+
+        // The user hasn't clicked enough Viral Banners to sign up, so make sure the sign up button is missing and tell the user
+        // how many more they need to click before it shows.
+
     }
 }

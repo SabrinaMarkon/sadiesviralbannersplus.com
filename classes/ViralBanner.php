@@ -112,11 +112,13 @@ class ViralBanner extends Banner
             // The Viral Banner was clicked on the Viral Banners URL. ($source = 'viralbannerpage')
             return '
             <div class="viralbanner-withclickbox">
-                <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '/' . $bannerslot . '">
-                    <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
-                </a>
-                <div id="viralbanner' . $bannerslot . '" class="viralbanner-placeholder" style="width: ' . $height . 'px; height: ' . $height . 'px;">
+                <div id="viralbanner' . $bannerslot . '" class="viralbanner-placeholder" style="width: ' . $width . 'px;">
                     Clicked!
+                </div>
+                <div>
+                    <a class="placeholder-img" href="/click/' . $this->adtable . '/' . $id . '/' . $bannerslot . '">
+                        <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
+                    </a>
                 </div>
             </div>';  
         }

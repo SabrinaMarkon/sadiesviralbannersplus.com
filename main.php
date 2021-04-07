@@ -6,7 +6,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 }
 
 $levels = ["gold", "pro", "free"];
-foreach($levels as $level) {
+foreach ($levels as $level) {
     $bannerclickstosignup = $level . "bannerclickstosignup";
     $refersproearn = $level . "refersproearn";
     $refersgoldearn = $level . "refersgoldearn";
@@ -73,7 +73,7 @@ foreach($levels as $level) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Click ' . $$adclickstogetbannerspaid . ' banners to get a <strong>FREE BONUS</strong> banner in our exclusive <strong>PAID-ONLY</strong> rotator!</li>';
     }
     if ($$adclickstogetnetworksolo > 0) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Click ' . $$adclickstogetnetworksolo . ' links in network solo ads to get your own <strong>FREE MASSIVE (800,000+!) SUPER SOLO!</strong></li>'; 
+        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Click ' . $$adclickstogetnetworksolo . ' links in network solo ads to get your own <strong>FREE MASSIVE (800,000+!) SUPER SOLO!</strong></li>';
     }
 }
 ?>
@@ -119,36 +119,57 @@ if (!empty($showcontent->showPage('Home Page'))) {
 }
 ?>
 
-<!-- Viral banner ads -->
-<!-- <section id="viralbanners" class="viralbanners-area">
-    <div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="centered">
-                    <section class="cards">
-
-                        <?php #include_once 'banners.php'; ?>
-
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
 <!-- Different Membership Levels -->
 <section id="memberships" class="pricing-area">
     <div class="mx-5">
+
+        <figure class="mx-5 align-items-end">
+            <div style="display:flex; flex-direction:column;">
+                <figcaption class="ml-5">
+                    <div class="sadietalkbig sadietalkbig-24em mb-4">
+                        <span class="sadietalk-pink"><span class="heart4">&#10084;</span>&nbsp;Checkout My Members' Awesome Viral Banners!!!</span>&nbsp;<span class="heart4">&#10084;</span>
+                        <br />
+                    </div>
+                    <div class="sadietalknormal">
+                        <div style="font-weight: bold;" class="center mb-4">As a new member of my Viral Banner app, first visit my members' Viral Banners below! For each one, allow the timed countdown to complete, then choose the <a class="page-scroll" href="/#choosemembership">MEMBERSHIP</a> you want to register for once you have enough Viral Banner clicks!</div>
+
+                        <div style="font-weight: bold;" class="center mb-4">The number of Viral Banners you gotta visit to register depends on which membership level you want!</div>
+
+                        <div style="font-weight: bold;" class="mb-4 ml-5">
+                            <ul>
+                                <li>Click <span class="sadietalk-pink"><?php echo $freebannerclickstosignup; ?></span> Viral Banners to join <span class="sadietalk-blue">FREE</span></li>
+                                <li>Click <span class="sadietalk-pink"><?php echo $probannerclickstosignup; ?></span> Viral Banners to join <span class="sadietalk-blue">PRO</span></li>
+                                <li>Click <span class="sadietalk-pink"><?php echo $goldbannerclickstosignup; ?></span> Viral Banners to join <span class="sadietalk-blue">GOLD</span></li>
+                            </ul>
+                        </div>
+
+                        <div style="font-weight: bold;" class="center mb-4"><strong><span class="sadietalk-pink">You've <span class="sadietalk-blue">ALREADY</span>&nbsp;<span class="sadietalk-pink">clicked</span>&nbsp;<span id="alreadyclicked" class="sadietalk-blue"></span>&nbsp;<span class="sadietalk-pink">Viral Banners!</span></strong></div>
+
+                        <div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink"><strong>OWN</strong></span> Viral Banners! <span class="heart">&#10084;</span></div>
+                    </div>
+                </figcaption>
+            </div>
+            <img src="images/sadie-sitting-SMfaceleft.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
+        </figure>
+
+        <?php
+        include "banners.php";
+        ?>
+
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">
                 <div id="getstarted" class="section-title text-center">
                     <h3 class="title">Membership Plans <i class="fas fa-star fa-xs"></i></h3>
-                    <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p>
-                    <p class="text"><h3>Choose your membership!</h3></p><br>
+                    <!-- <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p> -->
+                    <!-- <p class="text">
+                    <h3>Choose your membership!</h3>
+                    </p> -->
+                    <br>
                 </div> <!-- section title -->
             </div>
         </div> <!-- row -->
-        <div class="flexcards-equalheight row justify-content-center">
+
+        <div id="choosemembership" class="flexcards-equalheight row justify-content-center">
             <div class="flexcard col-lg-4 col-md-7 col-sm-9">
                 <div class="flexcard-content pricing-style mt-30">
                     <div class="pricing-icon text-center">
@@ -291,3 +312,9 @@ if (!empty($showcontent->showPage('Home Page'))) {
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
+
+<script src="js/viralbannertimer.js"></script>
+<script>
+    const howManyClicked = howManyWereClicked();
+    document.getElementById('alreadyclicked').innerHTML = howManyClicked;
+</script>

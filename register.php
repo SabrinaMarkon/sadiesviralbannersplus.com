@@ -82,6 +82,9 @@ We submit the PAYMENT forms after getting these field values to store in the db.
 For FREE memberships we submit this form normally though (the post is picked up by index.php).
 -->
 	<?php
+	// TODO: Get the payment buttons or free submit button from the JS script OR an error depending on if the user has clicked enough banners!
+	// ie. howManyWereClicked(paidlevel, bannerclickstosignup) (paidlevel = 'paid' or 'free' to decide whether or not to show payment buttons or just a submit button)
+	// THEN record in the viralbannerclicks.
 		if (!empty($paymentbuttons)) {
 			?>
 			<form id="userform" accept-charset="utf-8" class="form" role="form">
@@ -183,3 +186,9 @@ For FREE memberships we submit this form normally though (the post is picked up 
 			<div class="ja-bottompadding"></div>
 
 </div>
+
+<script src="js/viralbannertimer.js"></script>
+<script>
+    const howManyClicked = howManyWereClicked();
+    document.getElementById('alreadyclicked').innerHTML = howManyClicked;
+</script>
