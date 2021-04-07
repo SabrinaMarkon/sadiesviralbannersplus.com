@@ -55,47 +55,66 @@ if (!empty($level)) {
 
 <div class="container">
 
-<figure>
-	<img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4">
-	<div style="display:flex; flex-direction:column;">
-		<figcaption>
-			<div class="sadietalkbig sadietalkbig-2em mb-4">
-				<span class="sadietalk-pink">First Click</span>&nbsp;<span class="sadietalk-blue"><?php echo $$bannerclickstosignup ?></span>&nbsp;<span class="sadietalk-pink"> Member Viral Banners to Register!</span><br />
-			</div>
-			<div class="sadietalknormal">
-				<div style="font-weight: bold;" class="center mb-4">As a new <span class="sadietalk-pink text-uppercase"><?php echo $level; ?></span> member of my Viral Banner app, first visit <span class="sadietalk-pink"><?php echo $$bannerclickstosignup ?></span> of my members' Viral Banners below! For each one, allow the timed countdown to complete, then complete and submit the registration form once you're done!</div>
-				<div style="font-weight: bold;" class="center mb-4"><strong><span class="sadietalk-pink">You've <span class="sadietalk-blue">ALREADY</span>&nbsp;<span class="sadietalk-pink">clicked</span>&nbsp;<span id="alreadyclicked" class="sadietalk-blue"></span>&nbsp;<span class="sadietalk-pink">Viral Banners!</span></strong></div>
-				<div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink">OWN</span> Viral Banners! <span class="heart">&#10084;</span></div>
-			</div>
-		</figcaption>
-	</div>
-</figure>
+	<figure>
+		<img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4">
+		<div style="display:flex; flex-direction:column;">
+			<figcaption>
+				<div class="sadietalkbig sadietalkbig-2em mb-4">
+					<span class="sadietalk-pink">First Click</span>&nbsp;<span class="sadietalk-blue"><?php echo $$bannerclickstosignup ?></span>&nbsp;<span class="sadietalk-pink"> Member Viral Banners to Register!</span><br />
+				</div>
+				<div class="sadietalknormal">
+					<div style="font-weight: bold;" class="center mb-4">As a new <span class="sadietalk-pink text-uppercase"><?php echo $level; ?></span> member of my Viral Banner app, first visit <span class="sadietalk-pink"><?php echo $$bannerclickstosignup ?></span> of my members' Viral Banners below! For each one, allow the timed countdown to complete, then complete and submit the registration form once you're done!</div>
+					<div style="font-weight: bold;" class="center mb-4"><strong><span class="sadietalk-pink">You've <span class="sadietalk-blue">ALREADY</span>&nbsp;<span class="sadietalk-pink">clicked</span>&nbsp;<span id="alreadyclicked" class="sadietalk-blue"></span>&nbsp;<span class="sadietalk-pink">Viral Banners!</span></strong></div>
+					<div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink">OWN</span> Viral Banners! <span class="heart">&#10084;</span></div>
+				</div>
+			</figcaption>
+		</div>
+	</figure>
+
+	<div class="row justify-content-center mb-4">
+		<div class="col-lg-6 col-md-10">
+			<div class="section-title text-center">
+				<h3 class="title">First&nbsp;...&nbsp;Click&nbsp;Banners!&nbsp;<i class="fas fa-star fa-xs"></i></h3>
+				<!-- <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p> -->
+				<br>
+			</div> <!-- section title -->
+		</div>
+	</div> <!-- row -->
 
 	<?php
 	include "banners.php";
 	?>
 
-	<h1 class="ja-bottompadding">Sign Up Form</h1>
+	<div class="row justify-content-center">
+		<div class="col-lg-6 col-md-10">
+			<div id="getstarted" class="section-title text-center">
+				<h3 class="title">Then&nbsp;...&nbsp;Sign&nbsp;Up!&nbsp;<i class="fas fa-star fa-xs"></i></h3>
+				<!-- <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p> -->
+				<br>
+			</div> <!-- section title -->
+		</div>
+	</div> <!-- row -->
 
-<!-- 
-This form does NOT submit for PAID MEMBERSHIPS. Rather, we just want the field values with JS. 
-We submit the PAYMENT forms after getting these field values to store in the db. 
-For FREE memberships we submit this form normally though (the post is picked up by index.php).
--->
-	<?php
-	// TODO: Get the payment buttons or free submit button from the JS script OR an error depending on if the user has clicked enough banners!
-	// ie. howManyWereClicked(paidlevel, bannerclickstosignup) (paidlevel = 'paid' or 'free' to decide whether or not to show payment buttons or just a submit button)
-	// THEN record in the viralbannerclicks.
-		if (!empty($paymentbuttons)) {
-			?>
-			<form id="userform" accept-charset="utf-8" class="form" role="form">
-			<?php
-		} else {
+	<!-- 
+	This form does NOT submit for PAID MEMBERSHIPS. Rather, we just want the field values with JS. 
+	We submit the PAYMENT forms after getting these field values to store in the db. 
+	For FREE memberships we submit this form normally though (the post is picked up by index.php).
+	-->
+
+	<!-- TODO: Check that banners are clicked  -->
+	<fieldset disabled="disabled">
+
+		<?php
+			if (!empty($paymentbuttons)) {
 				?>
-				<form action="/register" method="post" accept-charset="utf-8" class="form" role="form">
+				<form id="userform" accept-charset="utf-8" class="form" role="form">
 				<?php
-		}
-	?>
+			} else {
+					?>
+					<form action="/register" method="post" accept-charset="utf-8" class="form" role="form">
+					<?php
+			}
+		?>
 
 			<div class="row">
 				<div class="col-xs-6 col-md-6">
@@ -149,12 +168,16 @@ For FREE memberships we submit this form normally though (the post is picked up 
 			<div id="errormsg"></diV>
 
 			<?php
+			
+			// TODO: Check that banners are clicked
+
 			if (!empty($paymentbuttons)) {
 				echo "</form>"; // End user fields form
 				echo $paymentbuttons; // Payment button forms
+				echo "<div class=\"mb-3\"></div>";
 			} else {
 			?>
-					<button class="btn btn-lg btn-primary" type="submit" name="register">
+					<button class="btn btn-lg btn-primary mb-3" type="submit" name="register">
 						Create Free Account!
 					</button>
 				</form> <!-- End Free signup form -->
@@ -163,6 +186,7 @@ For FREE memberships we submit this form normally though (the post is picked up 
 			?>
 
 			</form>
+	</fieldset>
 
 			<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModal" aria-hidden="true">
 				<div class="modal-dialog ja-modal-width">
@@ -185,6 +209,7 @@ For FREE memberships we submit this form normally though (the post is picked up 
 			</div>
 
 			<div class="ja-bottompadding"></div>
+		
 
 </div>
 

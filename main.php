@@ -123,7 +123,17 @@ if (!empty($showcontent->showPage('Home Page'))) {
 <section id="howitworks" class="pricing-area">
     <div class="mx-5">
 
-        <figure class="mx-5 align-items-end">
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-6 col-md-10">
+                <div class="section-title text-center">
+                    <h3 class="title">How It Works <i class="fas fa-star fa-xs"></i></h3>
+                    <!-- <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p> -->
+                    <br>
+                </div> <!-- section title -->
+            </div>
+        </div> <!-- row -->
+
+        <figure class="mx-5 mt-3 align-items-end">
             <div style="display:flex; flex-direction:column;">
                 <figcaption class="ml-5">
                     <div class="sadietalkbig sadietalkbig-24em mb-4">
@@ -146,11 +156,23 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         <div style="font-weight: bold;" class="center mb-4"><strong><span class="sadietalk-pink">You've <span class="sadietalk-blue">ALREADY</span>&nbsp;<span class="sadietalk-pink">clicked</span>&nbsp;<span id="alreadyclicked" class="sadietalk-blue"></span>&nbsp;<span class="sadietalk-pink">Viral Banners!</span></strong></div>
 
                         <div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink"><strong>OWN</strong></span> Viral Banners! <span class="heart">&#10084;</span></div>
+
+
                     </div>
                 </figcaption>
             </div>
             <img src="images/sadie-sitting-SMfaceleft.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
         </figure>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-10">
+                <div class="section-title text-center">
+                    <h3 class="title">My Members' Viral Banners! <i class="fas fa-star fa-xs"></i></h3>
+                    <!-- <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p> -->
+                    <br>
+                </div> <!-- section title -->
+            </div>
+        </div> <!-- row -->
 
         <span id="banners"></span>
 
@@ -163,9 +185,6 @@ if (!empty($showcontent->showPage('Home Page'))) {
                 <div id="getstarted" class="section-title text-center">
                     <h3 class="title">Membership Plans <i class="fas fa-star fa-xs"></i></h3>
                     <!-- <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p> -->
-                    <!-- <p class="text">
-                    <h3>Choose your membership!</h3>
-                    </p> -->
                     <br>
                 </div> <!-- section title -->
             </div>

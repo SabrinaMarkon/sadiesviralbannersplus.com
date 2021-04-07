@@ -261,7 +261,7 @@ figcaption .sadietalknormal .heart {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  margin: 3rem auto;
+  margin: 0 auto 3rem;
   padding: 1rem;
   box-shadow: 2px 2px 2px #121212;
 }
