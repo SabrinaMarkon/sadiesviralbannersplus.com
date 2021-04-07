@@ -64,6 +64,7 @@ if (!empty($level)) {
 			</div>
 			<div class="sadietalknormal">
 				<div style="font-weight: bold;" class="center mb-4">As a new <span class="sadietalk-pink text-uppercase"><?php echo $level; ?></span> member of my Viral Banner app, first visit <span class="sadietalk-pink"><?php echo $$bannerclickstosignup ?></span> of my members' Viral Banners below! For each one, allow the timed countdown to complete, then complete and submit the registration form once you're done!</div>
+				<div style="font-weight: bold;" class="center mb-4"><strong><span class="sadietalk-pink">You've <span class="sadietalk-blue">ALREADY</span>&nbsp;<span class="sadietalk-pink">clicked</span>&nbsp;<span id="alreadyclicked" class="sadietalk-blue"></span>&nbsp;<span class="sadietalk-pink">Viral Banners!</span></strong></div>
 				<div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink">OWN</span> Viral Banners! <span class="heart">&#10084;</span></div>
 			</div>
 		</figcaption>
