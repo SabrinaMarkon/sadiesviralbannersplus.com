@@ -161,7 +161,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
                     </div>
                 </figcaption>
             </div>
-            <img src="images/sadie-sitting-SMfaceleft.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
+            <img src="images/sadie-sitting-faceleft.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
         </figure>
 
         <div class="row justify-content-center">
