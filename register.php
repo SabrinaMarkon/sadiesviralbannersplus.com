@@ -17,8 +17,9 @@ if (isset($showregister)) {
 $showcontent = new PageContent();
 echo $showcontent->showPage('Registration Page');
 
+$paymentbuttons = "";
 // Set up payment buttons if membership level is paid.
-if (!empty($level)) {
+if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold')) {
 
 	$price = $level . "price";
 	$payinterval = $level . "payinterval";
@@ -32,7 +33,6 @@ if (!empty($level)) {
 	);
 	$sendsiteemail = new Email();
 	$user = new User($sendsiteemail);
-	$paymentbuttons = "";
 	if (!empty($adminpaypal)) {
 		$paypal = new PaypalCheckout($paymentdata, $user, [], $settings);
 		$paymentbuttons .= $paypal->getPayButton();
@@ -102,7 +102,7 @@ if (!empty($level)) {
 	-->
 
 	<!-- TODO: Check that banners are clicked  -->
-	<fieldset disabled="disabled">
+	<fieldset id="registrationfieldset" disabled="disabled">
 
 		<?php
 			if (!empty($paymentbuttons)) {
@@ -111,7 +111,7 @@ if (!empty($level)) {
 				<?php
 			} else {
 					?>
-					<form action="/register" method="post" accept-charset="utf-8" class="form" role="form">
+					<form id="freeuserform" action="/register" method="post" accept-charset="utf-8" class="form" role="form">
 					<?php
 			}
 		?>
@@ -167,25 +167,8 @@ if (!empty($level)) {
 
 			<div id="errormsg"></diV>
 
-			<?php
-			
-			// TODO: Check that banners are clicked
+			<span id="signupformbuttonormessage"></span>
 
-			if (!empty($paymentbuttons)) {
-				echo "</form>"; // End user fields form
-				echo $paymentbuttons; // Payment button forms
-				echo "<div class=\"mb-3\"></div>";
-			} else {
-			?>
-					<button class="btn btn-lg btn-primary mb-3" type="submit" name="register">
-						Create Free Account!
-					</button>
-				</form> <!-- End Free signup form -->
-			<?php
-			}
-			?>
-
-			</form>
 	</fieldset>
 
 			<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModal" aria-hidden="true">
@@ -215,6 +198,37 @@ if (!empty($level)) {
 
 <script src="js/viralbannertimer.js"></script>
 <script>
-    const howManyClicked = howManyWereClicked();
+    // How many Viral Banners has the user clicked?
+	const howManyClicked = howManyWereClicked();
     document.getElementById('alreadyclicked').innerHTML = howManyClicked;
+	
+	// Show submit/payment buttons or message to click more banners?
+	const paidlevel = "<?php echo $level ?>";
+	const bannerclickstosignup = "<?php echo $$bannerclickstosignup ?>";
+	const canRegister = showSignupButtonOrPaymentButtons(paidlevel, bannerclickstosignup);
+	if (canRegister === 'showpaymentbuttons') {
+
+		// Enable the form fields.
+		document.getElementById('registrationfieldset').disabled = false;
+		// Show the pay buttons for paid memberships.
+		const paymentbuttons = `<?php echo $paymentbuttons ?>`;
+		if (paymentbuttons) {
+			document.getElementById('signupformbuttonormessage').innerHTML = '</form>' + paymentbuttons + '<div class="mb-3"></div>';
+		}
+
+	} else if (canRegister === 'showfreessubmitbutton') {
+
+		// Enable the form fields.
+		document.getElementById('registrationfieldset').disabled = false;
+		// Show the submit button for free membership.
+		document.getElementById('signupformbuttonormessage').innerHTML = '<button class="btn btn-lg btn-primary mb-3" type="submit" name="register">Create Free Account!</button></form>';
+
+	} else {
+
+		// DISABLE the form fields.
+		document.getElementById('registrationfieldset').disabled = true;
+		// Show the error message that they have to click more Viral Banners to signup.
+		document.getElementById('signupformbuttonormessage').innerHTML = 'You Still Need to Click SOMENUMBER More Viral Banners Before You Can Signup!';
+
+	}
 </script>

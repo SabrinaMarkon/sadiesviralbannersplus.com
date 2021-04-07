@@ -78,15 +78,16 @@ function showSignupButtonOrPaymentButtons(paidlevel, bannerclickstosignup) {
     if(howManyClicked === bannerclickstosignup) {
 
         // Enough Viral Banners were clicked, so show the sign up (or payment) buttons!
-        if (paidlevel == 1) {
-            
+        if (paidlevel === 'paid') {
+            return 'showpaymentbuttons';
         } else {
-
+            return 'showfreessubmitbutton';
         }
     } else {
 
         // The user hasn't clicked enough Viral Banners to sign up, so make sure the sign up button is missing and tell the user
         // how many more they need to click before it shows.
+        return 'showneedmoreclicksmessage';
 
     }
 }
