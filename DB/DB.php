@@ -283,14 +283,6 @@ create table `viralbanners` (
 `bannerpageslot` integer unsigned not null default '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-create table `viralbannersclicks` (
-`id` integer unsigned not null primary key auto_increment,
-`username` varchar(255) not null default 'admin',
-`bannerid` integer unsigned not null default '0',
-`bannerslot` integer unsigned not null default '0',
-`clickdate` datetime default null
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 insert into adminsettings (adminuser, adminpass, adminname, adminemail, sitename, domain, metatitle, metadescription) values ('Admin', 'admin', 'YOUR NAME', 'YOUR ADMIN EMAIL', 'YOUR SITE NAME','http://YOURDOMAIN.COM', 'YOUR SITE META TITLE', 'YOUR SITE META DESCRIPTION');
 
 INSERT INTO `adminnotes` (`id`, `name`, `htmlcode`) values (1, 'Admin Notes', '');

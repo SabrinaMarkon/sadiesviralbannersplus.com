@@ -23,8 +23,7 @@ function countdown(counter, bannerslot) {
             // Write the array back into localStorage as a JSON string.
             localStorage.setItem("viralBannerClicks", JSON.stringify(viralBannerClicksArray));
 
-            // 5) In registration, get key from localsorage and JSON.parse into an array. Check size of array. If large enough, user has clicked enough banners and 
-            // signup button should be added to form! 
+
             // 6) After signup, create username record in viralbannerclicks table with their local storage array (JSON.parse again).
             // 7) Remove key from localStorage (in case someone else uses the same computer and wants to sign up!)
 
@@ -57,6 +56,8 @@ function whichOnesWereClickedAlready() {
             });
         }
     }
+
+    return viralBannerClicksArray; // Return so we can get the array from a successful signup to store in the database.
 }
 
 function howManyWereClicked() {
@@ -90,4 +91,9 @@ function showSignupButtonOrPaymentButtons(paidlevel, bannerclickstosignup) {
         return 'showneedmoreclicksmessage';
 
     }
+}
+
+function clearLocalStorage() {
+
+    localStorage.removeItem("viralBannerClicks");
 }
