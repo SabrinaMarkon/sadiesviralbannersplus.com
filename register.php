@@ -228,7 +228,8 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 		// DISABLE the form fields.
 		document.getElementById('registrationfieldset').disabled = true;
 		// Show the error message that they have to click more Viral Banners to signup.
-		document.getElementById('signupformbuttonormessage').innerHTML = 'You Still Need to Click SOMENUMBER More Viral Banners Before You Can Signup!';
+		document.getElementById('signupformbuttonormessage').innerHTML = `<figure class="mt-3">
+            <div style="display:flex; flex-direction:column;"><figcaption><span class="sadietalknormal"><strong><span class="sadietalk-blue">You Still Need to Click <span class="sadietalk-pink">${bannerclickstosignup-howManyClicked}</span> More Viral Banners Before You Can Signup!</span></strong></figcaption></div></figure>`;
 
 	}
 </script>

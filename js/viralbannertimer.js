@@ -30,7 +30,7 @@ function countdown(counter, bannerslot) {
 
             // TODO: Vary the words SADIE says!
 
-            document.getElementById("timerbar").innerHTML = '<img src="images/sadie-expression-' + whichsadie + '.png"><span class="sadietalknormal"><strong><span class="sadietalk-blue">DONE!</span></strong>&nbsp;Your visit was <strong>counted!</strong> I hope you browse more! But you can <strong><span><a href="javascript:window.history.back();">RETURN</a></strong> now if you like!</span></span>'; // ANNOUNCE HOW MANY MORE BANNERS THEY NEED TO CLICK! If done, say so!
+            document.getElementById("timerbar").innerHTML = '<img src="images/sadie-expression-' + whichsadie + '.png"><span class="sadietalknormal"><strong><span class="sadietalk-blue">DONE!</span></strong>&nbsp;Your visit was <strong>counted!</strong> I hope you browse more! But you can <strong><span><a href="javascript:window.history.back();">RETURN</a></strong> now if you like!</span></span>'; // TODO: ANNOUNCE HOW MANY MORE BANNERS THEY NEED TO CLICK! If done, say so!
         }
     }
 
