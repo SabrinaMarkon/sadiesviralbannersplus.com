@@ -177,7 +177,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
         <span id="banners"></span>
 
         <?php
-        include "banners.php";
+        include "viralbannersinclude.php";
         ?>
 
         <div class="row justify-content-center">

@@ -82,7 +82,7 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 	</div> <!-- row -->
 
 	<?php
-	include "banners.php";
+	include "viralbannersinclude.php";
 	?>
 
 	<div class="row justify-content-center">
