@@ -56,7 +56,7 @@ $probannerslotsarray = $banner->getVarArray('probannerslots', $settings);
 $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
 
 ?>
-<div class="container">
+<div class="viralbannerscontainer">
 
     <div class="viralbanners">
 

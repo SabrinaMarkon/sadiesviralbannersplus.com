@@ -252,6 +252,12 @@ figcaption .sadietalknormal .heart {
   height: 125px;
 }
 
+/* .viralbannerscontainer {
+  width: 100%;
+  background: #0067f4;
+  margin: 0;
+  padding: 0;
+} */
 .viralbanners {
   /* max-width: 800px; */
   max-width: 840px;
@@ -309,6 +315,24 @@ figcaption .sadietalknormal .heart {
   border-top: 2px solid #ff4343;
 }
 
+/* Sadie slot number and Viral Banner and click message box. */
+.viralbanner-withclickbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.viralbanner-placeholder {
+  background: #fff;
+  color: #ff4343;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px #121212;
+  display: none;
+  visibility: hidden;
+  margin-bottom: -1rem;
+  margin-top: 1rem;
+  padding: 0.4rem;
+}
+
 /* Timer bar for click links. */
 .clickframe {
   display: flex;
@@ -345,24 +369,6 @@ figcaption .sadietalknormal .heart {
   /* margin: 1em; */
   margin: 0;
   padding: 0;
-}
-
-/* Sadie slot number and Viral Banner and click message box. */
-.viralbanner-withclickbox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.viralbanner-placeholder {
-  background: #fff;
-  color: #ff4343;
-  font-weight: bold;
-  box-shadow: 2px 2px 2px #121212;
-  display: none;
-  visibility: hidden;
-  margin-bottom: -1rem;
-  margin-top: 1rem;
-  padding: 0.4rem;
 }
 
 .paybuttons {
