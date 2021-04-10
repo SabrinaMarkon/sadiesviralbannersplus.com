@@ -13,9 +13,18 @@ if (isset($showad)) {
 $showcontent = new PageContent();
 // echo $showcontent->showPage('Members Area Banner Maker Page');
 ?>
-<div class="container">
+<div class="bannermaker">
 
+    <!-- Backdrop -->
+    <div class="bannermaker__overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="bannermaker__sidebar">
+        ...
+    </div>
     
 
     <div class="ja-bottompadding"></div>
 </div>
+
+<script src="js/bannermaker.js"></script>

@@ -36,7 +36,7 @@
     <link href="css/custom.css" rel="stylesheet" />
 
     <!-- Image/banner maker app -->
-    <link href="css/imagemaker.css" rel="stylesheet">
+    <link href="css/bannermaker.css" rel="stylesheet">
 </head>
 
 <?php
