@@ -110,7 +110,7 @@ foreach ($levels as $level) {
         <figure class="mx-5 align-items-end">
             <div style="display:flex; flex-direction:column;">
                 <figcaption class="ml-5 py-5">
-                    <div class="sadietalkbig"><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span><span class="hiya">I'm So Happy to Meet You!</span><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span>
+                    <div class="sadietalkbig"><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span>&nbsp;<span class="hiya">I'm So Happy to Meet You!</span><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span>
                     <br />
                     <strong><span class="im">I'm</span></strong><br /><span class="sadie">Sadie! </span></div>
                     

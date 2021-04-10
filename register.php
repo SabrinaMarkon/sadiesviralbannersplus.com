@@ -206,6 +206,7 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 	const paidlevel = "<?php echo $level ?>";
 	const bannerclickstosignup = "<?php echo $$bannerclickstosignup ?>";
 	const canRegister = showSignupButtonOrPaymentButtons(paidlevel, bannerclickstosignup);
+
 	if (canRegister === 'showpaymentbuttons') {
 
 		// Enable the form fields.
@@ -213,7 +214,10 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 		// Show the pay buttons for paid memberships.
 		const paymentbuttons = `<?php echo $paymentbuttons ?>`;
 		if (paymentbuttons) {
-			document.getElementById('signupformbuttonormessage').innerHTML = '</form>' + paymentbuttons + '<div class="mb-3"></div>';
+			// document.getElementById('signupformbuttonormessage').innerHTML = '</form>' + paymentbuttons + '<div class="mb-3"></div>';
+
+			document.getElementById('signupformbuttonormessage').innerHTML = `<figure class="mt-3">
+            <div style="display:flex; flex-direction:column;"><figcaption><span class="sadietalknormal"><strong><span class="sadietalk-pink">Horray!!!</span>&nbsp;<span class="sadietalk-blue">You've Clicked&nbsp;<span class="sadietalk-pink">${bannerclickstosignup}</span>&nbsp;Viral Banners! Please register now and&nbsp;<span class="sadietalk-pink">JOIN US!</span>&nbsp;</span></strong></span></figcaption></form>${paymentbuttons}</div><img src="images/sadie-cartwheel-small.png" alt="You Can Register!"></figure>`;
 		}
 
 	} else if (canRegister === 'showfreessubmitbutton') {
@@ -221,7 +225,8 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 		// Enable the form fields.
 		document.getElementById('registrationfieldset').disabled = false;
 		// Show the submit button for free membership.
-		document.getElementById('signupformbuttonormessage').innerHTML = '<button class="btn btn-lg btn-primary mb-3" type="submit" name="register">Create Free Account!</button></form>';
+		document.getElementById('signupformbuttonormessage').innerHTML = `<figure class="mt-3">
+            <div style="display:flex; flex-direction:column;"><figcaption><span class="sadietalknormal"><strong><span class="sadietalk-pink">Horray!!!</span>&nbsp;<span class="sadietalk-blue">You've Clicked&nbsp;<span class="sadietalk-pink">${bannerclickstosignup}</span>&nbsp;Viral Banners! Please register now and&nbsp;<span class="sadietalk-pink">JOIN US!</span>&nbsp;</span></strong></span></figcaption><button class="btn btn-lg btn-primary mb-3" type="submit" name="register">Create Free Account!</button></form></div><img src="images/sadie-cartwheel-small.png" alt="You Can Register!"></figure>`;
 
 	} else {
 
@@ -229,7 +234,7 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 		document.getElementById('registrationfieldset').disabled = true;
 		// Show the error message that they have to click more Viral Banners to signup.
 		document.getElementById('signupformbuttonormessage').innerHTML = `<figure class="mt-3">
-            <div style="display:flex; flex-direction:column;"><figcaption><span class="sadietalknormal"><strong><span class="sadietalk-blue">You Still Need to Click <span class="sadietalk-pink">${bannerclickstosignup-howManyClicked}</span> More Viral Banners Before You Can Signup!</span></strong></figcaption></div></figure>`;
+            <div style="display:flex; flex-direction:column;"><figcaption><span class="sadietalknormal"><strong><span class="sadietalk-blue">You Still Need to Click <span class="sadietalk-pink">${bannerclickstosignup-howManyClicked}</span> More Viral Banners Before You Can Signup!</span></strong></figcaption></div><img src="images/sadie-shrug-small.png" alt="You Need to Click More VIral Banners to Join!"></figure>`;
 
 	}
 </script>
