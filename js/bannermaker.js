@@ -5,6 +5,13 @@
 // TODO: Make mobile friendly.
 $(function() {
 
+    // $.unblockUI();
+
+    $('#sidebarCollapse').on('click', function() {
+        $('#bannermaker__sidebar').toggleClass('active');
+        console.log('wtf');
+    });
+
     // *** Uncomment if license watermarks will be used in this website:
     // ADD WATERMARK IF USER IS UNLICENSED:
     // var username = $('#username').val();
@@ -608,9 +615,10 @@ $(function() {
         colors += '<option value="' + hex + '" style="background-color: ' + hex + '; color: ' + textcolor + '">' + color + ': ' + hex + '</option>';
     });
 
-    document.getElementById('pickbgcolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
-    document.getElementById('pickbordercolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
-    document.getElementById('picktextcolor').innerHTML = '<option disabled selected="selected">Select</option>' + colors;
+    // TODO: UNCOMMENT BELOW WHEN HTML IS THERE:
+    // document.getElementById('pickbgcolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
+    // document.getElementById('pickbordercolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
+    // document.getElementById('picktextcolor').innerHTML = '<option disabled selected="selected">Select</option>' + colors;
 
 
 });
