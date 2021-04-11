@@ -20,7 +20,7 @@ $showcontent = new PageContent();
         <div class="bannermaker__sidebar-header">
             <h3>Banner Maker Sidebar</h3>
         </div>
-        
+
         <div id="lefteditpane" class="col-sm-4">
             <div style="height: 10px;"></div>
             <div class="controlbuttons text-center">
@@ -42,10 +42,10 @@ $showcontent = new PageContent();
                     <div id="collapse1" class="panel-collapse collapse">
                         <div class="panel-body">
                             Banner Width: <input type="number" id="bannerwidth" value="1000" class="editorinput"><span id="bannerwidtherror">
-            <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 1000</span></span>
+                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 1000</span></span>
                             <div style="height: 10px;"></div>
                             Banner Height: <input type="number" id="bannerheight" value="300" class="editorinput"><span id="bannerheighterror">
-            <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 1000</span></span>
+                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 1000</span></span>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ $showcontent = new PageContent();
                             Border Color: <select id="pickbordercolor" class="editorinput"></select>
                             <div style="height: 10px;"></div>
                             Border Width: <input type="number" id="pickborderwidth" value="14" class="editorinput"><span id="borderwidtherror">
-            <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 0 and 20</span></span>
+                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 0 and 20</span></span>
                             <input type="hidden" id="pickborderstyle" value="solid">
                             <div style="height: 10px;"></div>
                             Border Style: <select id="pickborderstyle" class="editorinput">
@@ -151,7 +151,7 @@ $showcontent = new PageContent();
                             </select>
                             <div style="height: 10px;"></div>
                             Font Size: <input type="number" id="picktextsize" value="40" class="editorinput"><span id="textsizeerror">
-            <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 300</span></span>
+                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 300</span></span>
                             <div style="height: 10px;"></div>
                             <div class="col-sm-12">
                                 <div class="checkbox">
@@ -182,7 +182,7 @@ $showcontent = new PageContent();
                             Select Category:<select id="pickimagefolder" class="editorinput">
                                 <option value="none">None</option>
                                 <?php echo $foldertree ?>
-                                </select>
+                            </select>
                             <div style="height: 10px;"></div>
                             Select Image:
                             <div style="height: 5px;"></div>
@@ -223,6 +223,104 @@ $showcontent = new PageContent();
         </nav>
     </div>
 
+    <div id="maineditpane" class="col-sm-8">
+
+        <?php
+        if (count($savedimages) > 0) {
+        ?>
+            <div id="savedimagesdiv">
+                <div class="panel-group" id="accordion2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapsesaved">
+                                    Your Saved Banners</a>
+                            </h4>
+                        </div>
+                        <div id="collapsesaved" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul id="savedimageslist" class="editorinput list-unstyled">
+                                    <?php
+                                    foreach ($savedimages as $savedimage) {
+                                    ?>
+                                        <li id="banner-<?php echo $savedimage->id; ?>">
+                                            <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage->filename; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage->filename; ?></a></div>
+                                            <div style="height: 10px;"></div>
+                                            <div>
+                                                @if($savedimage->width > 300)
+                                                <?php
+                                                if ($savedimage->width > 300) {
+                                                ?>
+                                                    <img src="/mybanners/<?php echo $savedimage->filename; ?>/?<?php echo $today; ?>" width="300">
+                                                <?php
+                                                } elseif ($savedimage->height > 300) {
+                                                ?>
+                                                    <img src="/mybanners/<?php echo $savedimage->filename; ?>/?<?php echo $today; ?>" height="300">
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <img src="/mybanners/<?php echo $savedimage->filename; ?>/?<?php echo $today; ?>">
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
+                                            <div style="height: 10px;"></div>
+                                            <div class="row">
+                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-1 text-center">
+                                                    <form method="GET" action="/bannermaker/<?php echo $savedimage->id; ?>" accept-charset="UTF-8" class="form-horizontal">
+                                                        <input name="id" type="hidden" value="<?php echo $savedimage->id; ?>">
+                                                        <button id="edit-<?php echo $savedimage->id; ?>" class="btn btn-yellow" type="button">EDIT</button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-2 text-center">
+                                                    <a href="/mybanners/<?php echo $savedimage->filename; ?>" download="mybanner.png" class="btn btn-yellow">DOWNLOAD</a>
+                                                </div>
+                                                <div class="col-sm-1 text-center">
+                                                <form method="POST" action="/bannermaker/<?php echo $savedimage->id; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
+                                                        <input name="id" type="hidden" value="<?php echo $savedimage->id; ?>">
+                                                        <button id="delete-<?php echo $savedimage->id; ?>" class="btn btn-yellow" type="button">DELETE</button>
+                                                        </form>
+                                                </div>
+                                                <div class="col-sm-4"></div>
+                                            </div>
+                                            <hr>
+                                        </li>
+                                    <?php
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+
+        <div id="canvascontainer">
+
+        </div>
+        <div id="trashcandiv">
+            <img src="/images/trashcan.png" class="img-responsive" id="trashcan">
+        </div>
+        <div id="savediv">
+
+        </div>
+        <div id="savebuttondiv">
+            <!-- TODO: MAKE SURE userid is username in all files now!!  -->
+            <input type="hidden" id="username" value="<?php echo $username; ?>">
+            <form method="post" enctype="multipart/form-data" action="/bannermaker/getbanner" id="saveform">
+                <input type="hidden" name="editingexistingimageid" id="editingexistingimageid" value="">
+                <input type="hidden" name="img_val" id="img_val" value="">
+                <input type="hidden" name="img_obj" id="img_obj" value="">
+                <input type="hidden" name="htmlcode" id="htmlcode" value="">
+                <button id="savebutton" class="btn btn-yellow">SAVE BANNER</button>
+            </form>
+        </div>
+        <div style="height: 20px;"></div>
+    </div>
 
     <div class="ja-bottompadding"></div>
 </div>
