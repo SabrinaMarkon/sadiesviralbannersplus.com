@@ -89,27 +89,21 @@ CREATE TABLE `adminnotes` (
 `htmlcode` longtext NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-CREATE TABLE `banners` (
-`id` int(10) unsigned not null primary key auto_increment,
-`username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-`name` varchar(255) not null default '',
-`filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-`htmlcode` longtext COLLATE utf8_unicode_ci NOT NULL,
-`width` int(11) NOT NULL DEFAULT '1000',
-`height` int(11) NOT NULL DEFAULT '300',
-`bgcolor` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'transparent',
-`bgimage` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
-`bordercolor` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'transparent',
-`borderwidth` int(11) NOT NULL DEFAULT '0',
-`borderstyle` varchar(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'solid',
-`added` tinyint(1) not null default '0',
-`approved` tinyint(1) not null default '0',
-`hits` integer unsigned not null default '0',
-`clicks` integer unsigned not null default '0',
-`adddate` datetime not null,
-UNIQUE KEY `banners_filename_unique` (`filename`),
-KEY `banners_username_foreign` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `bannermaker` (
+  `id` int(10) UNSIGNED NOT NULL primary key auto_increment,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL unique,
+  `htmlcode` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `width` int(11) NOT NULL DEFAULT '1000',
+  `height` int(11) NOT NULL DEFAULT '300',
+  `bgcolor` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'transparent',
+  `bgimage` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
+  `bordercolor` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'transparent',
+  `borderwidth` int(11) NOT NULL DEFAULT '0',
+  `borderstyle` varchar(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'solid',
+  `adddate` datetime not null,
+   foreign key (`username`) references `members`(`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 create table `bannerspaid` (
 `id` integer unsigned not null primary key auto_increment,
