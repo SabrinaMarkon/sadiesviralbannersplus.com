@@ -1,36 +1,17 @@
 .bannermaker {
-    /* Container takes full size */
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-
-    z-index: 9999;
+    display: flex;
+    align-items: stretch; /* Stretch makes the flex items the same height. */
 }
 
-.bannermaker__overlay {
-    /* Take full size */
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-
-    /* User still can see the content of main page */
-    background-color: rgba(0, 0, 0, 0.5);
-
-    z-index: -1;
+#bannermaker__sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh; /* So sidebar is at least equal to screen height. */
+}
+#bannermaker__sidebar.active {
+    margin-left: -250px; /* Hides the sidebar to the left! */
 }
 
-.bannermaker__sidebar {
-    /* Take full height */
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 200px;
-
-    /* Background */
-    background-color: #fff;
+#bannermaker__content {
+    background: #fff;
 }
