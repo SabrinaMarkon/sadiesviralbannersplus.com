@@ -1,17 +1,48 @@
 .bannermaker {
+    margin: -8px 0;
     display: flex;
     align-items: stretch; /* Stretch makes the flex items the same height. */
 }
 
+/* SIDEBAR */
 #bannermaker__sidebar {
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh; /* So sidebar is at least equal to screen height. */
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
 }
 #bannermaker__sidebar.active {
     margin-left: -250px; /* Hides the sidebar to the left! */
 }
 
+#bannermaker__sidebar .bannermaker__sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
 #bannermaker__content {
     background: #fff;
+}
+
+/* Move dropdown triangles to the right part of the sidebar instead of directly next to the text. */
+a[data-toggle="collapse"] {
+    position: relative;
+}
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(-50%);
+}
+
+@media (max-width: 768px) {
+    #bannermaker__sidebar {
+        margin-left: -250px; /* Hide by default on small screens. */
+    }
+    #bannermaker__sidebar.active {
+        margin-left: 0; /* Show again when toggle is clicked. */
+    }
 }
