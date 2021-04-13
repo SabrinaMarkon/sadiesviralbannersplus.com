@@ -44,6 +44,7 @@ class BannerMaker {
      * @return $subdirs are the subdirectories of the topdir root directory.
      */
     public function getSubdirectories(string $topdir): array {
+
         $subdirs = File::directories($topdir); // TODO: Fix this (not Laravel here)
         return $subdirs;
     }
@@ -54,6 +55,7 @@ class BannerMaker {
      * @return $foldertree is the list of all directories in root with their subdirectories for the select box.
      */
     public function folderTree(string $directory): string {
+        
         $foldertree = '';
         $dirs = $this->getSubdirectories($directory);
         foreach ($dirs as $dir) {
@@ -71,5 +73,33 @@ class BannerMaker {
         return $foldertree;
     }
 
-    
+    /**
+     * Get the list of files for the image library chooser depending on which category (folder) was chosen.
+     * @param $folder is the chosen image folder.
+     * @return $filetree is the list of all files in the chosen directory.
+     */
+    public function fileTree(string $folder = null): string {
+        $folder = "images/thumbnails/" . $folder;
+        $filetree = '';
+        $resize = '';
+        $files = File::files($folder); // TODO: Fix this (not Laravel here)
+        foreach ($files as $file)
+        {
+            // make sure the file is an image.
+            $extension = File::extension($file); // TODO: Fix this (not Laravel here)
+            if ($extension === 'gif' || $extension === 'png' || $extension === 'jpg' || $extension === 'jpeg' || $extension === 'wps' || $extension === 'webp' || $extension === 'svg') {
+                $file_fullpath_array = explode("/", $file);
+                $filename = end($file_fullpath_array);
+                $filedata = getimagesize($file);
+                $width = $filedata[0];
+                $height = $filedata[1];
+                if ($width > 200) {
+                    $resize = ' previewshrink';
+                }
+                $filetree .= '<img  id="' . $filename . '" class="imagepreviewdiv ui-widget-content' . $resize . '" src="' . (string)$file . '"><br>';
+            }
+        }
+        return $filetree;
+    }
+
 }
