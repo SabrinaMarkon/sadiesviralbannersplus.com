@@ -6,12 +6,17 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 }
 
 require "control.php";
-if (isset($showad)) {
-    echo $showad;
+if (isset($show)) {
+    echo $show;
 }
 
 $showcontent = new PageContent();
-// echo $showcontent->showPage('Members Area Banner Maker Page');
+echo $showcontent->showPage('Members Area Banner Maker Page');
+
+$bannermaker = new BannerMaker();
+$directory = "images/thumbnails";
+$foldertree = $bannermaker->folderTree($directory);
+$savedimages = $bannermaker->getAllBannersForUsername($username);
 ?>
 <div class="bannermaker">
 
@@ -309,7 +314,6 @@ $showcontent = new PageContent();
 
         </div>
         <div id="savebuttondiv">
-            <!-- TODO: MAKE SURE userid is username in all files now!!  -->
             <input type="hidden" id="username" value="<?php echo $username; ?>">
             <form method="post" enctype="multipart/form-data" action="/bannermaker/getbanner" id="saveform">
                 <input type="hidden" name="editingexistingimageid" id="editingexistingimageid" value="">

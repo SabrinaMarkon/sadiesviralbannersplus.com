@@ -19,7 +19,7 @@ class BannerMaker {
      * @param string $username is the username of the member we want to get saved banners for.
      * @return array $savedimages is the array of banners returned by the database query.
      */
-    public function getAllUsernamesBannerMakerBanners(string $username): array {
+    public function getAllBannersForUsername(string $username): array {
     
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -45,7 +45,7 @@ class BannerMaker {
      */
     public function getSubdirectories(string $topdir): array {
 
-        $subdirs = File::directories($topdir); // TODO: Fix this (not Laravel here)
+        $subdirs = array_diff(scandir($topdir), array('..', '.'));
         return $subdirs;
     }
 
@@ -62,13 +62,6 @@ class BannerMaker {
             $show_dir_array = explode('thumbnails/', $dir);
             $show_dir = $show_dir_array[1];
             $foldertree .= '<option value="' . $show_dir . '">' . $show_dir . '</option>';
-//            // get any subdirs of dir:
-//            $dirs2 = $this->getSubdirectories($dir);
-//            foreach ($dirs2 as $dir2) {
-//                $show_dir_array2 = explode('thumbnails/', $dir2);
-//                $show_dir2 = $show_dir_array2[1];
-//                $foldertree .=  '<option value="' . $show_dir2 . '">' . $show_dir2 . '</option>';
-//            }
         }
         return $foldertree;
     }
@@ -79,14 +72,15 @@ class BannerMaker {
      * @return string $filetree is the HTML image list of all files in the chosen directory.
      */
     public function fileTree(string $folder = null): string {
+
         $folder = "images/thumbnails/" . $folder;
         $filetree = '';
         $resize = '';
-        $files = File::files($folder); // TODO: Fix this (not Laravel here)
+        $files = array_diff(scandir($folder), array('..', '.'));
         foreach ($files as $file)
         {
             // make sure the file is an image.
-            $extension = File::extension($file); // TODO: Fix this (not Laravel here)
+            $extension = explode('.', $file);
             if ($extension === 'gif' || $extension === 'png' || $extension === 'jpg' || $extension === 'jpeg' || $extension === 'wps' || $extension === 'webp' || $extension === 'svg') {
                 $file_fullpath_array = explode("/", $file);
                 $filename = end($file_fullpath_array);
@@ -106,85 +100,105 @@ class BannerMaker {
      * Save a Banner Maker banner.
      * @return string $show is the message shown to the user after saving the banner.
      */
-    public function getbanner(): string {
+    public function saveBanner(array $post, string $username): string {
+        
         // First get the base-64 string from data
-        $img_val = $request->get('img_val'); // TODO: Fix
+        $img_val = $post['img_val'];
         $filteredData = substr($img_val, strpos($img_val, ",")+1);
         //Decode the string
         $unencodedData = base64_decode($filteredData);
         // get the background and border setting values from img_obj
-        $img_obj = $request->get('img_obj'); // TODO: Fix
+        $img_obj = $post['img_obj'];
         //var_dump(json_decode($img_obj));
         $img_obj = json_decode($img_obj);
 
-        // Check if this is an existing banner or a new banner:
-        $editingexistingimageid = $request->get('editingexistingimageid'); // TODO: Fix
-        if ($editingexistingimageid !== '') {
-            // existing banner we need to update:
-            // we need to get the existing filename:
-            $banner = Banner::find($editingexistingimageid); // TODO: Fix
-            $dlfile = $banner->filename;
-            // we need to delete the old copy of the file from the server:
-            $dlfilepath = 'mybanners/' . $dlfile;
-            File::delete($dlfilepath); // TODO: Fix
-            // we need to create that filename again on the server with the new data:
-            file_put_contents('mybanners/' . $dlfile, $unencodedData);
-        } else {
-            // new banner to create.
-            //Save the image with a random filename.
-            $dlfilelong = md5(rand(0,9999999));
-            $dlfileshort = substr($dlfilelong, 0, 12);
-            $today = date("YmdHis");
-            $dlfile = $today . $dlfileshort . ".png";
-            $dlfilepath = 'mybanners/' . $dlfile;
-            // write the file to the server.
-            file_put_contents('mybanners/' . $dlfile, $unencodedData);
-            $banner = new Banner();
-            $banner->userid = Session::get('user')->userid; // TODO: Fix by changing to string message.
-        }
+        // Get fields for database:
 
         // remove resize handles from htmlcode:
-        $banner->htmlcode = trim($request->get('htmlcode'));
-        $banner->filename = $dlfile;
+        $htmlcode = trim($post['htmlcode']);
         // save the fields in the object img_obj:
-        $banner->width = $img_obj->width;
-        $banner->height = $img_obj->height;
-        $banner->bgcolor = $img_obj->bgcolor;
-        $banner->bgimage = $img_obj->bgimage;
-        $banner->bordercolor = $img_obj->bordercolor;
-        $banner->borderwidth = $img_obj->borderwidth;
-        $banner->borderstyle = $img_obj->borderstyle;
-        // save image into the banners database table.
-        $banner->save();
-        Session::flash('message', 'Successfully saved your banner!'); // TODO: Fix by changing to string message.
-        return Redirect::to('banners');  // TODO: Fix by changing to string message.
+        $width = $img_obj->width;
+        $height = $img_obj->height;
+        $bgcolor = $img_obj->bgcolor;
+        $bgimage = $img_obj->bgimage;
+        $bordercolor = $img_obj->bordercolor;
+        $borderwidth = $img_obj->borderwidth;
+        $borderstyle = $img_obj->borderstyle;
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Check if this is an existing banner or a new banner:
+        $editingexistingimageid = $post['editingexistingimageid'];
+
+        if ($editingexistingimageid !== '') {
+            // This is an existing banner that we need to update.
+
+            // Get the banner filename to delete.
+            $banner = $this->showBanner($editingexistingimageid);
+            $filename = $banner->filename;
+            $filepath = 'mybanners/' . $filename;
+            @unlink($filepath);
+
+            // RECREATE that filename on the server with the new data:
+            file_put_contents('mybanners/' . $filename, $unencodedData);
+
+            // Save image into the banners database table.
+            $sql = "update bannermaker set filename=?, htmlccode=?, width=?, height=?, bgcolor=?, bgimage=?, bordercolor=?, borderwidth=?, borderstyle=? where id=?";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($filename, $htmlcode, $width, $height, $bgcolor, $bgimage, $bordercolor, $borderwidth, $borderstyle, $editingexistingimageid));
+
+        } else {
+            // This is a new banner to create.
+
+            //Save the image with a random filename.
+            $filenamelong = md5(rand(0,9999999));
+            $filenameshort = substr($filenamelong, 0, 12);
+            $today = date("YmdHis");
+            $filename = $today . $filenameshort . ".png";
+            $filepath = 'mybanners/' . $filename;
+
+            // write the file to the server.
+            file_put_contents('mybanners/' . $filename, $unencodedData);
+
+            // Save image into the banners database table.
+            $sql = "insert into bannermaker (username, filename, htmlcode, width, height, bgcolor, bgimage, bordercolor, borderwidth, borderstyle, adddate) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($username, $filename, $htmlcode, $width, $height, $bgcolor, $bgimage, $bordercolor, $borderwidth, $borderstyle));
+
+        }
+
+        Database::disconnect();
+
+        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Banner was Saved!</strong></div>";
     }
 
     /**
      * Check to see if the user has purchased the license or not. If not, their banners should be watermarked.
-     * @param string $userid is the username we want to look up licenses for.
-     * @return bool $watermark is whether the userid has a license for unwatermarked images.
+     * @param string $username is the username we want to look up licenses for.
+     * @return bool $watermark is whether the username has a license for unwatermarked images.
      */
-    public function licenseCheck(string $userid = null): bool {
-        // TODO: need LICENSE class (but not needed for THIS site)
-        $license = License::where('userid', '=', $userid)->where('licenseenddate', '>=', new DateTime('now'))->orderBy('id', 'desc')->first();
-        $watermark = true; // default is to have a watermark.
-        if ($license) {
-            // the user has a license so no watermark on images.
-            $watermark = false;
-        } else {
-            // is the user an admin?
-            $admin = Member::where('userid', '=', $request->get('userid'))->where('admin', '=', 1)->first();
-            if ($admin) {
-                // admin doesn't have a watermark:
-                $watermark = false;
-            } else {
-                // the user doesn't have an active license and is not an admin, so images they create need the watermark.
-                $watermark = true;
-            }
-        }
-        return $watermark;
-    }
+    // public function licenseCheck(string $username = null): bool {
+    //
+    //     // TODO: need LICENSE class
+    //     $license = License::where('username', '=', $username)->where('licenseenddate', '>=', new DateTime('now'))->orderBy('id', 'desc')->first();
+    //     $watermark = true; // default is to have a watermark.
+    //     if ($license) {
+    //         // the user has a license so no watermark on images.
+    //         $watermark = false;
+    //     } else {
+    //         // is the user an admin?
+    //         $admin = Member::where('username', '=', $request->get('username'))->where('admin', '=', 1)->first();
+    //         if ($admin) {
+    //             // admin doesn't have a watermark:
+    //             $watermark = false;
+    //         } else {
+    //             // the user doesn't have an active license and is not an admin, so images they create need the watermark.
+    //             $watermark = true;
+    //         }
+    //     }
+    //     return $watermark;
+    // }
 
     /**
      * Display the specified image.
@@ -193,8 +207,14 @@ class BannerMaker {
      */
     public function showBanner(int $id): object
     {
-        // get the page content for this id.
-        $banner = Banner::find($id);
+        // get the banner content for this id.
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "select * from bannermaker where id=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($id));
+        $banner = $q->fetch();
+
         return $banner;
     }
 
@@ -203,15 +223,23 @@ class BannerMaker {
      * @param int $id
      * @return string $banner is the message showing the results of the deletion.
      */
-    public function deleteBannerImageFile(int $id): string
+    public function deleteBanner(int $id): string
     {
-        $banner = Banner::find($id);
-        // delete the file:
+        // Get the banner filename to delete.
+        $banner = $this->showBanner($id);
         $filename = $banner->filename;
         $filepath = 'mybanners/' . $filename;
-        File::delete($filepath);
-        // delete the record:
-        $banner->delete();
-        return $banner;
+        @unlink($filepath);
+
+        // delete the banner database record.
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "delete from bannermaker where id=?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($id));
+
+        Database::disconnect();
+
+        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Banner was Deleted</strong></div>";
     }
 }
