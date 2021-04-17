@@ -72,7 +72,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <div style="height: 10px;"></div>
                             Select Image:
                             <div style="height: 5px;"></div>
-                            <div id="pickbgimage" class="editorinput">
+                            <div id="pickbgimage" class="editorinput ui-selectable">
                             </div>
                             <div style="height: 10px;"></div>
                         </div>
@@ -191,7 +191,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <div style="height: 10px;"></div>
                             Select Image:
                             <div style="height: 5px;"></div>
-                            <div id="pickimage" class="editorinput">
+                            <div id="pickimage" class="editorinput ui-selectable">
                             </div>
                             <div style="height: 10px;"></div>
                             <button id="imageadd" class="btn btn-yellow">ADD IMAGE</button>

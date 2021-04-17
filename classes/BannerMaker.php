@@ -69,28 +69,30 @@ class BannerMaker {
      * @param string $folder is the chosen image folder.
      * @return string $filetree is the HTML image list of all files in the chosen directory.
      */
-    public function fileTree(string $folder = null): string {
+    public function fileTree(string $folder): string {
 
-        $folder = "images/thumbnails/" . $folder;
+        $folder = "../images/thumbnails/" . $folder;
         $filetree = '';
         $resize = '';
         $files = array_diff(scandir($folder), array('..', '.'));
         foreach ($files as $file)
         {
             // make sure the file is an image.
-            $extension = explode('.', $file);
+            $filepartsarray = explode('.', $file);
+            $extension = end($filepartsarray);
+            $fileidvalue = reset($filepartsarray);
             if ($extension === 'gif' || $extension === 'png' || $extension === 'jpg' || $extension === 'jpeg' || $extension === 'wps' || $extension === 'webp' || $extension === 'svg') {
-                $file_fullpath_array = explode("/", $file);
-                $filename = end($file_fullpath_array);
-                $filedata = getimagesize($file);
+                $filepath = $folder . '/' . $file;
+                $filedata = getimagesize($filepath);
                 $width = $filedata[0];
                 $height = $filedata[1];
                 if ($width > 200) {
                     $resize = ' previewshrink';
                 }
-                $filetree .= '<img  id="' . $filename . '" class="imagepreviewdiv ui-widget-content' . $resize . '" src="' . (string)$file . '"><br>';
+                $filetree .= '<img  id="' . $file . '" class="imagepreviewdiv ui-widget-content' . $resize . '" src="' . (string)$filepath . '"><br>';
             }
         }
+
         return $filetree;
     }
 

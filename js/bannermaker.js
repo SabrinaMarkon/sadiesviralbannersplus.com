@@ -9,7 +9,6 @@ $(function() {
 
     $('#sidebarCollapse').on('click', function() {
         $('#bannermaker__sidebar').toggleClass('active');
-        console.log('wtf');
     });
 
     // *** Uncomment if license watermarks will be used in this website:
@@ -18,7 +17,7 @@ $(function() {
     // $.ajax({
     //     url: 'banners/licensecheck/' + username,
     //     type: 'post',
-    //     data: { 'username' : username, '_token' : $('input[name=_token]').val(), '_method' : 'POST' },
+    //     data: { 'username' : username, '_method' : 'POST' },
     //     success: function(data) {
     //         // data = yes if a watermark is needed.
     //         if (data === 'no') {
@@ -107,9 +106,9 @@ $(function() {
         } else {
             $('#pickbgimage').empty();
             $.ajax({
-                url: 'banners/filetree/' + folder,
+                url: 'apis/bannermakerfolderimages.php',
                 type: "post",
-                data: { 'folder' : folder, '_token': $('input[name=_token]').val(), '_method': 'POST' },
+                data: folder,
                 success: function(data){
                     // update the display to show the chosen images in pickbgimage div:
                     $('#pickbgimage').append(data);
@@ -263,11 +262,11 @@ $(function() {
         } else {
             $('#pickimage').empty();
             $.ajax({
-                url: 'banners/filetree/' + folder,
+                url: 'apis/bannermakerfolderimages.php',
                 type: "post",
-                data: { 'folder' : folder, '_token': $('input[name=_token]').val(), '_method': 'POST' },
+                data: folder,
                 success: function(data){
-                    // update the display to show the chosen images in pickimage div:
+                    // update the display to show the chosen images in pickbgimage div:
                     $('#pickimage').append(data);
                 }
             });
@@ -431,7 +430,7 @@ $(function() {
             $.ajax({
                 url: 'banners/' + id,
                 type: "get",
-                data: { 'id' : id, '_token': $('input[name=_token]').val(), '_method': 'GET' },
+                data: { 'id' : id },
                 success: function(data){
                    // alert(data);
                     // update the display to show the chosen database object (in data variable):
@@ -497,7 +496,7 @@ $(function() {
             $.ajax({
                 url: 'banners/' + id,
                 type: "delete",
-                data: { 'id' : id, '_token': $('input[name=_token]').val(), '_method': 'DELETE' },
+                data: { 'id' : id },
                 success: function(data){
                     // update the display:
                     $('#banner-' + id).remove();
