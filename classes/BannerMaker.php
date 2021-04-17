@@ -23,7 +23,7 @@ class BannerMaker {
     
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from bannermaker where username=? order by approved asc, id desc";
+        $sql = "select * from bannermaker where username=? order by id desc";
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -59,9 +59,7 @@ class BannerMaker {
         $foldertree = '';
         $dirs = $this->getSubdirectories($directory);
         foreach ($dirs as $dir) {
-            $show_dir_array = explode('thumbnails/', $dir);
-            $show_dir = $show_dir_array[1];
-            $foldertree .= '<option value="' . $show_dir . '">' . $show_dir . '</option>';
+            $foldertree .= '<option value="' . $dir . '">' . $dir . '</option>';
         }
         return $foldertree;
     }
