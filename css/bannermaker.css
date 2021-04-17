@@ -46,3 +46,36 @@ a[data-toggle="collapse"] {
         margin-left: 0; /* Show again when toggle is clicked. */
     }
 }
+
+/* Resizing and dragging of images and text on the canvas */
+.ui-resizable-handle {
+    width: 9px !important;
+    height: 9px !important;
+    background-color: rgba(0,0,0,.75);
+    position: absolute;
+}
+.ui-resizable-nw
+{
+    left: -5px;
+    top: -5px;
+}
+.ui-resizable-ne
+{
+    top: -5px;
+    right: -5px;
+}
+.ui-resizable-sw
+{
+    bottom: -5px;
+    left: -5px;
+}
+.ui-resizable-se
+{
+    bottom: -5px;
+    right: -5px;
+}
+.ui-icon {
+    width: 9px !important;
+    height: 9px !important;
+}
+
