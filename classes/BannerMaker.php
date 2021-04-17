@@ -29,11 +29,6 @@ class BannerMaker {
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $savedimages = $q->fetchAll();
 
-        $today = date("YmdHis");
-        // Get the image library tree.
-        $directory = "images/thumbnails";
-        $foldertree = $this->folderTree($directory);
-
         Database::disconnect();
 
         return $savedimages;

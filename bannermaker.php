@@ -13,6 +13,7 @@ if (isset($show)) {
 $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Banner Maker Page');
 
+$today = date("YmdHis");
 $bannermaker = new BannerMaker();
 $directory = "images/thumbnails";
 $foldertree = $bannermaker->folderTree($directory);
@@ -248,23 +249,22 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                     <?php
                                     foreach ($savedimages as $savedimage) {
                                     ?>
-                                        <li id="banner-<?php echo $savedimage->id; ?>">
-                                            <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage->filename; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage->filename; ?></a></div>
+                                        <li id="banner-<?php echo $savedimage['id']; ?>">
+                                            <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
                                             <div style="height: 10px;"></div>
                                             <div>
-                                                @if($savedimage->width > 300)
                                                 <?php
-                                                if ($savedimage->width > 300) {
+                                                if ($savedimage['width'] > 300) {
                                                 ?>
-                                                    <img src="/mybanners/<?php echo $savedimage->filename; ?>/?<?php echo $today; ?>" width="300">
+                                                    <img src="mybanners/<?php echo $savedimage['filename']; ?>" width="300">
                                                 <?php
-                                                } elseif ($savedimage->height > 300) {
+                                                } elseif ($savedimage['height'] > 300) {
                                                 ?>
-                                                    <img src="/mybanners/<?php echo $savedimage->filename; ?>/?<?php echo $today; ?>" height="300">
+                                                    <img src="mybanners/<?php echo $savedimage['filename']; ?>" height="300">
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <img src="/mybanners/<?php echo $savedimage->filename; ?>/?<?php echo $today; ?>">
+                                                    <img src="mybanners/<?php echo $savedimage['filename']; ?>">
                                                 <?php
                                                 }
                                                 ?>
@@ -273,18 +273,18 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                             <div class="row">
                                                 <div class="col-sm-4"></div>
                                                 <div class="col-sm-1 text-center">
-                                                    <form method="GET" action="/bannermaker/<?php echo $savedimage->id; ?>" accept-charset="UTF-8" class="form-horizontal">
-                                                        <input name="id" type="hidden" value="<?php echo $savedimage->id; ?>">
-                                                        <button id="edit-<?php echo $savedimage->id; ?>" class="btn btn-yellow" type="button">EDIT</button>
+                                                    <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
+                                                        <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
+                                                        <button id="edit-<?php echo $savedimage['id']; ?>" class="btn btn-yellow" type="button">EDIT</button>
                                                     </form>
                                                 </div>
                                                 <div class="col-sm-2 text-center">
-                                                    <a href="/mybanners/<?php echo $savedimage->filename; ?>" download="mybanner.png" class="btn btn-yellow">DOWNLOAD</a>
+                                                    <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="mybanner.png" class="btn btn-yellow">DOWNLOAD</a>
                                                 </div>
                                                 <div class="col-sm-1 text-center">
-                                                <form method="POST" action="/bannermaker/<?php echo $savedimage->id; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
-                                                        <input name="id" type="hidden" value="<?php echo $savedimage->id; ?>">
-                                                        <button id="delete-<?php echo $savedimage->id; ?>" class="btn btn-yellow" type="button">DELETE</button>
+                                                <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
+                                                        <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
+                                                        <button id="delete-<?php echo $savedimage['id']; ?>" class="btn btn-yellow" type="button">DELETE</button>
                                                         </form>
                                                 </div>
                                                 <div class="col-sm-4"></div>
