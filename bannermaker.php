@@ -92,7 +92,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             Border Width: <input type="number" id="pickborderwidth" value="14" class="editorinput"><span id="borderwidtherror">
                                 <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 0 and 20</span></span>
                             <input type="hidden" id="pickborderstyle" value="solid">
-                            <div style="height: 10px;"></div>
+                            <!-- <div style="height: 10px;"></div>
                             Border Style: <select id="pickborderstyle" class="editorinput">
                                 <option value="none" selected="selected">None</option>
                                 <option value="solid">solid</option>
@@ -103,7 +103,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 <option value="ridge">ridge</option>
                                 <option value="inset">inset</option>
                                 <option value="outset">outset</option>
-                            </select>
+                            </select> -->
                             <div style="height: 10px;"></div>
                             <button id="borderadd" class="btn btn-yellow">ADD BORDER</button>&nbsp;<button id="borderdelete" class="btn btn-yellow">CLEAR</button>
                         </div>
@@ -315,12 +315,12 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
         </div>
         <div id="savebuttondiv">
             <input type="hidden" id="username" value="<?php echo $username; ?>">
-            <form method="post" enctype="multipart/form-data" action="/bannermaker/getbanner" id="saveform">
+            <form method="post" enctype="multipart/form-data" action="/bannermaker" id="saveform">
                 <input type="hidden" name="editingexistingimageid" id="editingexistingimageid" value="">
                 <input type="hidden" name="img_val" id="img_val" value="">
                 <input type="hidden" name="img_obj" id="img_obj" value="">
                 <input type="hidden" name="htmlcode" id="htmlcode" value="">
-                <button id="savebutton" class="btn btn-yellow">SAVE BANNER</button>
+                <button id="savebutton" name="savebannermaker" class="btn btn-yellow">SAVE BANNER</button>
             </form>
         </div>
         <div style="height: 20px;"></div>
