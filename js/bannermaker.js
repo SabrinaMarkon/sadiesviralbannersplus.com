@@ -614,10 +614,8 @@ $(function() {
         colors += '<option value="' + hex + '" style="background-color: ' + hex + '; color: ' + textcolor + '">' + color + ': ' + hex + '</option>';
     });
 
-    // TODO: UNCOMMENT BELOW WHEN HTML IS THERE:
-    // document.getElementById('pickbgcolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
-    // document.getElementById('pickbordercolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
-    // document.getElementById('picktextcolor').innerHTML = '<option disabled selected="selected">Select</option>' + colors;
-
+    document.getElementById('pickbgcolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
+    document.getElementById('pickbordercolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
+    document.getElementById('picktextcolor').innerHTML = '<option disabled selected="selected">Select</option>' + colors;
 
 });
