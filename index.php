@@ -246,6 +246,15 @@ if (isset($_POST['deletead'])) {
 	}
 }
 
+if (isset($_POST['savebannermaker'])) {
+
+		# save a banner made in the banner maker app.
+		$ad = new BannerMaker();
+		if ($ad) {
+			$show = $ad->saveBanner($_SESSION['username'], $_POST);
+		}
+}
+
 if (isset($_GET['page']) && ($_GET['page'] === "logout")) {
 
 	$sendsiteemail = new Email();

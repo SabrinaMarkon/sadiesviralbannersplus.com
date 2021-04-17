@@ -100,7 +100,7 @@ class BannerMaker {
      * Save a Banner Maker banner.
      * @return string $show is the message shown to the user after saving the banner.
      */
-    public function saveBanner(array $post, string $username): string {
+    public function saveBanner(string $username, array $post): string {
         
         // First get the base-64 string from data
         $img_val = $post['img_val'];
