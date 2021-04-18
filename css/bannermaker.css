@@ -51,28 +51,29 @@ a[data-toggle="collapse"] {
 #maineditpane {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: auto;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #121212;
 }
 
 #canvascontainer {
     background: transparent url('/images/canvasbg.gif');
     cursor: move;
+    margin: 3rem auto;
 }
 
 #trashcandiv {
-    margin: 1rem 0;
     max-width: 75px;
-    align-self: left;
 }
-
+/* 
 #savediv {
     position: relative;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 15px;
     text-align: center;
-}
+} */
 
 .canvaslayer {
     position: absolute !important;

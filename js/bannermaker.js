@@ -11,6 +11,8 @@ $(function() {
         $('#bannermaker__sidebar').toggleClass('active');
     });
 
+    $('#savebuttondiv').hide(); // Default hide the save banner button when page is loaded.
+
     // *** Uncomment if license watermarks will be used in this website:
     // ADD WATERMARK IF USER IS UNLICENSED:
     // var username = $('#username').val();
@@ -381,7 +383,7 @@ $(function() {
             allowTaint: true,
             onrendered: function(canvas) {
                 theCanvas = canvas;
-                $('#savediv').append('<h3>Your Image:</h3>')
+                $('#savediv').append('<h3>Your Banner:</h3><br />');
                 $('#savediv').append(canvas);
                 //Show the download button.
                 $('#savebuttondiv').show();
@@ -420,7 +422,6 @@ $(function() {
     // SAVE IMAGE:
     $("#savebutton").on('click', function() {
         document.getElementById("saveform").submit();
-        $("#savebuttondiv").css({ 'display' : 'none', 'visibility' : 'hidden' });
     });
 
     // EDIT OR DELETE IMAGE:
