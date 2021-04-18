@@ -131,7 +131,7 @@ class BannerMaker {
 
             // Get the banner filename to delete.
             $banner = $this->showBanner($editingexistingimageid);
-            $filename = $banner->filename;
+            $filename = $banner['filename'];
             $filepath = 'mybanners/' . $filename;
             @unlink($filepath);
 
@@ -200,7 +200,7 @@ class BannerMaker {
      * @param int $id is the id in the database of the image.
      * @return object $banner is the saved Banner Maker banner in the database that matches the id parameter.
      */
-    public function showBanner(int $id): object
+    public function showBanner(int $id): array
     {
         // get the banner content for this id.
         $pdo = Database::connect();
@@ -222,9 +222,9 @@ class BannerMaker {
     {
         // Get the banner filename to delete.
         $banner = $this->showBanner($id);
-        $filename = $banner->filename;
-        $filepath = 'mybanners/' . $filename;
-        @unlink($filepath);
+        $filename = $banner['filename'];
+        $filepath = '../mybanners/' . $filename;
+        unlink($filepath);
 
         // delete the banner database record.
         $pdo = Database::connect();

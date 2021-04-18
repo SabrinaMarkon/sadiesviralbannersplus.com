@@ -420,6 +420,7 @@ $(function() {
     // SAVE IMAGE:
     $("#savebutton").on('click', function() {
         document.getElementById("saveform").submit();
+        $("#savebuttondiv").css({ 'display' : 'none', 'visibility' : 'hidden' });
     });
 
     // EDIT OR DELETE IMAGE:
@@ -428,11 +429,11 @@ $(function() {
         // EDIT SAVED IMAGE:
         $('#edit-' + id).click(function() {
             $.ajax({
-                url: 'banners/' + id,
-                type: "get",
-                data: { 'id' : id },
+                url: 'apis/bannermakeractions.php',
+                type: "post",
+                data: { 'action': 'edit', 'id' : id },
                 success: function(data){
-                   // alert(data);
+                   console.log(data);
                     // update the display to show the chosen database object (in data variable):
                     $("#canvascontainer").css( { 'width' : data.width });
                     $("#canvascontainer").css( { 'height' : data.height });
@@ -494,9 +495,9 @@ $(function() {
         // DELETE SAVED IMAGE:
         $('#delete-' + id).click(function(e) {
             $.ajax({
-                url: 'banners/' + id,
-                type: "delete",
-                data: { 'id' : id },
+                url: 'apis/bannermakeractions.php',
+                type: "post",
+                data: { 'action': 'delete', 'id' : id },
                 success: function(data){
                     // update the display:
                     $('#banner-' + id).remove();

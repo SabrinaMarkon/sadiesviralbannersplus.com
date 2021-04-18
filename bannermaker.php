@@ -284,7 +284,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                                 <div class="col-sm-1 text-center">
                                                 <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
                                                         <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                        <button id="delete-<?php echo $savedimage['id']; ?>" class="btn btn-yellow" type="button">DELETE</button>
+                                                        <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="btn btn-yellow" type="button">DELETE</button>
                                                         </form>
                                                 </div>
                                                 <div class="col-sm-4"></div>
