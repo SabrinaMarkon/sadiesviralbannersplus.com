@@ -27,23 +27,23 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             Make a Banner!
         </div>
 
-        <div id="lefteditpane">
+        <div style="height: 10px;"></div>
+        <div class="controlbuttons text-center">
+            <button id="new" class="btn btn-yellow undoallorstartnew">NEW</button>
+            <button id="preview" class="btn btn-yellow undoallorstartnew">PREVIEW</button>
+            <button id="undo" class="btn btn-yellow">UNDO</button>
+            <button id="clear" class="btn btn-yellow">CLEAR ALL</button>
+
             <div style="height: 10px;"></div>
-            <div class="controlbuttons text-center">
-                <button id="new" class="btn btn-yellow undoallorstartnew">NEW</button>
-                <button id="preview" class="btn btn-yellow undoallorstartnew">PREVIEW</button>
-                <div style="height: 5px;"></div>
-                <button id="undo" class="btn btn-yellow">UNDO</button>
-                <button id="clear" class="btn btn-yellow">CLEAR ALL</button>
+            <div class="bannermaker__sidebar-header">
+            Stuff To Add!
             </div>
+
             <div style="height: 10px;"></div>
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse1">
-                                Dimensions</a>
-                        </h4>
+                        <a data-toggle="collapse" href="#collapse1" class="btn btn-yellow">DIMENSIONS</a>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -57,10 +57,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse2">
-                                Background</a>
-                        </h4>
+                        <a data-toggle="collapse" href="#collapse2" class="btn btn-yellow">BACKGROUND</a>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -81,10 +78,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse3">
-                                Border</a>
-                        </h4>
+                        <a data-toggle="collapse" href="#collapse3" class="btn btn-yellow">BORDER</a>
                     </div>
                     <div id="collapse3" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -112,10 +106,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse4">
-                                Add Text</a>
-                        </h4>
+                        <a data-toggle="collapse" href="#collapse4" class="btn btn-yellow">ADD TEXT</a>
                     </div>
                     <div id="collapse4" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -178,10 +169,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse5">
-                                Images</a>
-                        </h4>
+                        <a data-toggle="collapse" href="#collapse5" class="btn btn-yellow">IMAGES</a>
                     </div>
                     <div id="collapse5" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -275,16 +263,16 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                                 <div class="col-sm-1 text-center">
                                                     <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
                                                         <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                        <button id="edit-<?php echo $savedimage['id']; ?>" class="btn btn-yellow" type="button">EDIT</button>
+                                                        <button id="edit-<?php echo $savedimage['id']; ?>" class="main-btn" type="button">EDIT</button>
                                                     </form>
                                                 </div>
                                                 <div class="col-sm-2 text-center">
-                                                    <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="mybanner.png" class="btn btn-yellow">DOWNLOAD</a>
+                                                    <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="main-btn">DOWNLOAD</a>
                                                 </div>
                                                 <div class="col-sm-1 text-center">
                                                 <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
                                                         <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                        <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="btn btn-yellow" type="button">DELETE</button>
+                                                        <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="main-btn" type="button">DELETE</button>
                                                         </form>
                                                 </div>
                                                 <div class="col-sm-4"></div>

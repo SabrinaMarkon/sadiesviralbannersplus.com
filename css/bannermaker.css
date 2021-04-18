@@ -16,6 +16,22 @@
 #bannermaker__sidebar.active {
     margin-left: -250px; /* Hides the sidebar to the left! */
 }
+#bannermaker__sidebar .btn-yellow {
+    width: 90%;
+    margin: 5px;
+    background: #ffd633;
+    color: #0067f4;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #121212;
+}
+#bannermaker__sidebar .btn-yellow {
+    width: 90%;
+    margin: 5px;
+    background: #ffd633;
+    color: #0067f4;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #121212;
+}
 
 #bannermaker__sidebar .bannermaker__sidebar-header {
     color: #0067f4;
@@ -56,7 +72,7 @@ a[data-toggle="collapse"] {
 #maineditpane {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     padding: 1rem;
 }
