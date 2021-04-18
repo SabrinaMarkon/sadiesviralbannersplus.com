@@ -9,7 +9,7 @@
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh; /* So sidebar is at least equal to screen height. */
-    background: #7386D5;
+    background: #0067f4;
     color: #fff;
     transition: all 0.3s;
 }
@@ -18,12 +18,17 @@
 }
 
 #bannermaker__sidebar .bannermaker__sidebar-header {
+    color: #0067f4;
+    background: #ffd633;
     padding: 20px;
-    background: #6d7fcc;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #121212;
 }
 
 #bannermaker__content {
-    background: #fff;
+    background: #121212;
 }
 
 /* Move dropdown triangles to the right part of the sidebar instead of directly next to the text. */
@@ -54,10 +59,10 @@ a[data-toggle="collapse"] {
     align-items: flex-start;
     width: 100%;
     padding: 1rem;
-    border: 1px solid #121212;
 }
 
 #canvascontainer {
+    position: relative;
     background: transparent url('/images/canvasbg.gif');
     cursor: move;
     margin: 3rem auto;
@@ -88,6 +93,29 @@ a[data-toggle="collapse"] {
 
 .picture {
     border: 0;
+}
+
+#bgimagepreview, #imagepreview {
+    margin: auto;
+    display: none;
+    text-align: center;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+#savebuttondiv {
+    display: none;
+    text-align: center;
+    padding: 0;
+}
+
+.checkbox-last {
+    padding-bottom: 20px;
+}
+
+.has-error {
+    color: #ff4343;
+    margin-left: 5px;
 }
 
 /* Resizing and dragging of images and text on the canvas */

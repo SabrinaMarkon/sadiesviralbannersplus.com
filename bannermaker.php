@@ -24,10 +24,10 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
     <!-- Sidebar -->
     <nav id="bannermaker__sidebar">
         <div class="bannermaker__sidebar-header">
-            <h3>Banner Maker Sidebar</h3>
+            Make a Banner!
         </div>
 
-        <div id="lefteditpane" class="col-sm-4">
+        <div id="lefteditpane">
             <div style="height: 10px;"></div>
             <div class="controlbuttons text-center">
                 <button id="new" class="btn btn-yellow undoallorstartnew">NEW</button>
@@ -217,7 +217,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
 
     <!-- Right Content -->
     <div id="bannermaker__content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
 
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
