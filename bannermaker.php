@@ -222,14 +222,14 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
 
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
+                    <span>X</span>
                 </button>
 
             </div>
         </nav>
     </div>
 
-    <div id="maineditpane" class="col-sm-8">
+    <div id="maineditpane">
 
         <?php
         if (count($savedimages) > 0) {

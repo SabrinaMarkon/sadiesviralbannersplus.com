@@ -47,6 +47,48 @@ a[data-toggle="collapse"] {
     }
 }
 
+/* banner editor */
+#maineditpane {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+#canvascontainer {
+    background: transparent url('/images/canvasbg.gif');
+    cursor: move;
+}
+
+#trashcandiv {
+    margin: 1rem 0;
+    max-width: 75px;
+    align-self: left;
+}
+
+#savediv {
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.canvaslayer {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    background: none;
+    display: inline;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.picture {
+    border: 0;
+}
+
 /* Resizing and dragging of images and text on the canvas */
 .ui-resizable-handle {
     width: 9px !important;
