@@ -34,17 +34,19 @@
 }
 
 #bannermaker__sidebar .bannermaker__sidebar-header {
-    color: #0067f4;
-    background: #ffd633;
+    color: #fff;
+    background: #ff4343;
     padding: 20px;
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
-    box-shadow: 2px 2px 0 #121212;
+    box-shadow: 0 2px 0 #121212;
 }
 
 #bannermaker__content {
-    background: #121212;
+    width: 100%;
+    background: #ffd633;
+    margin: 10px auto;
 }
 
 /* Move dropdown triangles to the right part of the sidebar instead of directly next to the text. */
@@ -85,7 +87,16 @@ a[data-toggle="collapse"] {
 }
 
 #trashcandiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #121212;
+    font-weight: bold;
+    font-size: 1rem;
+}
+#trashcan {
     max-width: 75px;
+    margin-right: 5px;
 }
 /* 
 #savediv {

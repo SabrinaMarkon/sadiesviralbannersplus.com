@@ -203,115 +203,115 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
         </div>
     </nav>
 
-    <!-- Right Content -->
+    <!-- Right Content to SLIDING NAV -->
     <div id="bannermaker__content">
+
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span>X</span>
                 </button>
-
             </div>
         </nav>
-    </div>
 
-    <div id="maineditpane">
+        <div id="maineditpane">
 
-        <?php
-        if (count($savedimages) > 0) {
-        ?>
-            <div id="savedimagesdiv">
-                <div class="panel-group" id="accordion2">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapsesaved">
-                                    Your Saved Banners</a>
-                            </h4>
-                        </div>
-                        <div id="collapsesaved" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <ul id="savedimageslist" class="editorinput list-unstyled">
-                                    <?php
-                                    foreach ($savedimages as $savedimage) {
-                                    ?>
-                                        <li id="banner-<?php echo $savedimage['id']; ?>">
-                                            <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
-                                            <div style="height: 10px;"></div>
-                                            <div>
-                                                <?php
-                                                if ($savedimage['width'] > 300) {
-                                                ?>
-                                                    <img src="mybanners/<?php echo $savedimage['filename']; ?>" width="300">
-                                                <?php
-                                                } elseif ($savedimage['height'] > 300) {
-                                                ?>
-                                                    <img src="mybanners/<?php echo $savedimage['filename']; ?>" height="300">
-                                                <?php
-                                                } else {
-                                                ?>
-                                                    <img src="mybanners/<?php echo $savedimage['filename']; ?>">
-                                                <?php
-                                                }
-                                                ?>
-                                            </div>
-                                            <div style="height: 10px;"></div>
-                                            <div class="row">
-                                                <div class="col-sm-4"></div>
-                                                <div class="col-sm-1 text-center">
-                                                    <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
-                                                        <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                        <button id="edit-<?php echo $savedimage['id']; ?>" class="main-btn" type="button">EDIT</button>
-                                                    </form>
+            <?php
+            if (count($savedimages) > 0) {
+            ?>
+                <div id="savedimagesdiv">
+                    <div class="panel-group" id="accordion2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapsesaved">
+                                        Your Saved Banners</a>
+                                </h4>
+                            </div>
+                            <div id="collapsesaved" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul id="savedimageslist" class="editorinput list-unstyled">
+                                        <?php
+                                        foreach ($savedimages as $savedimage) {
+                                        ?>
+                                            <li id="banner-<?php echo $savedimage['id']; ?>">
+                                                <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
+                                                <div style="height: 10px;"></div>
+                                                <div>
+                                                    <?php
+                                                    if ($savedimage['width'] > 300) {
+                                                    ?>
+                                                        <img src="mybanners/<?php echo $savedimage['filename']; ?>" width="300">
+                                                    <?php
+                                                    } elseif ($savedimage['height'] > 300) {
+                                                    ?>
+                                                        <img src="mybanners/<?php echo $savedimage['filename']; ?>" height="300">
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <img src="mybanners/<?php echo $savedimage['filename']; ?>">
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </div>
-                                                <div class="col-sm-2 text-center">
-                                                    <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="main-btn">DOWNLOAD</a>
-                                                </div>
-                                                <div class="col-sm-1 text-center">
-                                                <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
-                                                        <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                        <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="main-btn" type="button">DELETE</button>
+                                                <div style="height: 10px;"></div>
+                                                <div class="row">
+                                                    <div class="col-sm-4"></div>
+                                                    <div class="col-sm-1 text-center">
+                                                        <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
+                                                            <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
+                                                            <button id="edit-<?php echo $savedimage['id']; ?>" class="main-btn" type="button">EDIT</button>
                                                         </form>
+                                                    </div>
+                                                    <div class="col-sm-2 text-center">
+                                                        <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="main-btn">DOWNLOAD</a>
+                                                    </div>
+                                                    <div class="col-sm-1 text-center">
+                                                    <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
+                                                            <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
+                                                            <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="main-btn" type="button">DELETE</button>
+                                                            </form>
+                                                    </div>
+                                                    <div class="col-sm-4"></div>
                                                 </div>
-                                                <div class="col-sm-4"></div>
-                                            </div>
-                                            <hr>
-                                        </li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
+                                                <hr>
+                                            </li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            <?php
+            }
+            ?>
+
+            <div id="canvascontainer">
+
             </div>
-        <?php
-        }
-        ?>
+            <div id="trashcandiv">
+                <img src="/images/trashcan.png" class="img-responsive" id="trashcan">
+                <span>You can drag stuff to the trash and drop it in!</span>
+            </div>
+            <div id="savediv">
 
-        <div id="canvascontainer">
-
+            </div>
+            <div id="savebuttondiv">
+                <input type="hidden" id="username" value="<?php echo $username; ?>">
+                <form method="post" enctype="multipart/form-data" action="/bannermaker" id="saveform">
+                    <input type="hidden" name="editingexistingimageid" id="editingexistingimageid" value="">
+                    <input type="hidden" name="img_val" id="img_val" value="">
+                    <input type="hidden" name="img_obj" id="img_obj" value="">
+                    <input type="hidden" name="htmlcode" id="htmlcode" value="">
+                    <button id="savebutton" name="savebannermaker" class="btn btn-yellow">SAVE BANNER</button>
+                </form>
+            </div>
+            <div style="height: 20px;"></div>
         </div>
-        <div id="trashcandiv">
-            <img src="/images/trashcan.png" class="img-responsive" id="trashcan">
-        </div>
-        <div id="savediv">
-
-        </div>
-        <div id="savebuttondiv">
-            <input type="hidden" id="username" value="<?php echo $username; ?>">
-            <form method="post" enctype="multipart/form-data" action="/bannermaker" id="saveform">
-                <input type="hidden" name="editingexistingimageid" id="editingexistingimageid" value="">
-                <input type="hidden" name="img_val" id="img_val" value="">
-                <input type="hidden" name="img_obj" id="img_obj" value="">
-                <input type="hidden" name="htmlcode" id="htmlcode" value="">
-                <button id="savebutton" name="savebannermaker" class="btn btn-yellow">SAVE BANNER</button>
-            </form>
-        </div>
-        <div style="height: 20px;"></div>
     </div>
 
     <div class="ja-bottompadding"></div>
