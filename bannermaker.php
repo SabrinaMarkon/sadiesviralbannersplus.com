@@ -46,7 +46,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <a data-toggle="collapse" href="#collapse1" class="btn btn-yellow">DIMENSIONS</a>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse">
-                        <div class="panel-body">
+                        <div class="panel-body my-2">
                             Banner Width: <input type="number" id="bannerwidth" value="1000" class="editorinput"><span id="bannerwidtherror">
                                 <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 1000</span></span>
                             <div style="height: 10px;"></div>
@@ -60,7 +60,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <a data-toggle="collapse" href="#collapse2" class="btn btn-yellow">BACKGROUND</a>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse">
-                        <div class="panel-body">
+                        <div class="panel-body my-2">
                             Background Color: <select id="pickbgcolor" class="editorinput"></select>
                             <div style="height: 10px;"></div>
                             Select Category:<select id="pickbgimagefolder" class="editorinput">
@@ -72,7 +72,6 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <div style="height: 5px;"></div>
                             <div id="pickbgimage" class="editorinput ui-selectable">
                             </div>
-                            <div style="height: 10px;"></div>
                         </div>
                     </div>
                 </div>
@@ -81,7 +80,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <a data-toggle="collapse" href="#collapse3" class="btn btn-yellow">BORDER</a>
                     </div>
                     <div id="collapse3" class="panel-collapse collapse">
-                        <div class="panel-body">
+                        <div class="panel-body my-2">
                             Border Color: <select id="pickbordercolor" class="editorinput"></select>
                             <div style="height: 10px;"></div>
                             Border Width: <input type="number" id="pickborderwidth" value="14" class="editorinput"><span id="borderwidtherror">
@@ -109,8 +108,8 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <a data-toggle="collapse" href="#collapse4" class="btn btn-yellow">ADD TEXT</a>
                     </div>
                     <div id="collapse4" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            Text to Add: <input type="text" id="texttoadd" size="25" class="editorinput">
+                        <div class="panel-body my-2">
+                            Text to Add: <input type="text" id="texttoadd" class="editorinput">
                             <div style="height: 10px;"></div>
                             Font Color: <select id="picktextcolor" class="editorinput"></select>
                             <div style="height: 10px;"></div>
@@ -172,7 +171,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <a data-toggle="collapse" href="#collapse5" class="btn btn-yellow">IMAGES</a>
                     </div>
                     <div id="collapse5" class="panel-collapse collapse">
-                        <div class="panel-body">
+                        <div class="panel-body my-2">
                             Select Category:<select id="pickimagefolder" class="editorinput">
                                 <option value="none">None</option>
                                 <?php echo $foldertree ?>
@@ -230,7 +229,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 </h4>
                             </div>
                             <div id="collapsesaved" class="panel-collapse collapse">
-                                <div class="panel-body">
+                                <div class="panel-body my-2">
                                     <ul id="savedimageslist" class="editorinput list-unstyled">
                                         <?php
                                         foreach ($savedimages as $savedimage) {
