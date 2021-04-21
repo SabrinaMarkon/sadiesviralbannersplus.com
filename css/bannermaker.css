@@ -4,6 +4,38 @@
     align-items: stretch; /* Stretch makes the flex items the same height. */
 }
 
+.btn-yellow {
+    width: 90%;
+    margin: 5px;
+    background: #ffd633;
+    color: #0067f4;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #121212;
+}
+.btn-pink {
+    width: 90%;
+    margin: 5px;
+    background: #ff4343;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #121212;
+}
+.btn-pink.half {
+    display: inline-block;
+    width: 40%;
+}
+
+.checkboxes {
+    text-align: left;
+    margin-left: 1rem;
+}
+.checkbox input,
+.inline-field label {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
 /* SIDEBAR */
 #bannermaker__sidebar {
     min-width: 250px;
@@ -24,15 +56,6 @@
     font-weight: bold;
     box-shadow: 2px 2px 0 #121212;
 }
-#bannermaker__sidebar .btn-yellow {
-    width: 90%;
-    margin: 5px;
-    background: #ffd633;
-    color: #0067f4;
-    font-weight: bold;
-    box-shadow: 2px 2px 0 #121212;
-}
-
 #bannermaker__sidebar .bannermaker__sidebar-header {
     color: #fff;
     background: #ff4343;
@@ -136,10 +159,6 @@ a[data-toggle="collapse"] {
     padding: 0;
 }
 
-.checkbox-last {
-    padding-bottom: 20px;
-}
-
 .has-error {
     color: #ff4343;
     margin-left: 5px;
@@ -216,10 +235,16 @@ a[data-toggle="collapse"] {
 /* saved banners panel is scrollable */
 #savedimagesdiv {
     width: 90%;
+    box-shadow: 2px 2px #121212;
 }
 #savedimageslist {
     width: 100%;
     height: 300px;
     overflow: auto;
+    background: #fff;
+}
+#savedimageslist li {
+    text-align: center;
+    padding: 1rem;
 }
 

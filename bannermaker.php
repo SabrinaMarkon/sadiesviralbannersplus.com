@@ -22,7 +22,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
 <div class="bannermaker">
 
     <!-- Sidebar -->
-    <nav id="bannermaker__sidebar">
+    <nav id="bannermaker__sidebar" class="pb-3">
         <div class="bannermaker__sidebar-header">
             Make a Banner!
         </div>
@@ -99,7 +99,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 <option value="outset">outset</option>
                             </select> -->
                             <div style="height: 10px;"></div>
-                            <button id="borderadd" class="btn btn-yellow">ADD BORDER</button>&nbsp;<button id="borderdelete" class="btn btn-yellow">CLEAR</button>
+                            <button id="borderadd" class="btn btn-pink half">APPLY!</button>&nbsp;<button id="borderdelete" class="btn btn-pink half">REMOVE</button>
                         </div>
                     </div>
                 </div>
@@ -149,19 +149,21 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             Font Size: <input type="number" id="picktextsize" value="40" class="editorinput"><span id="textsizeerror">
                                 <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 300</span></span>
                             <div style="height: 10px;"></div>
-                            <div class="col-sm-12">
+                            <div class="checkboxes">
                                 <div class="checkbox">
-                                    <label><input id="bold" type="checkbox" class="editorinput"><strong>Bold</strong></label>
+                                    <input id="bold" type="checkbox">
+                                    <label for="bold"><strong>Bold</strong></label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input id="italic" type="checkbox" class="editorinput"><em>Italic</em></label>
+                                    <input id="italic" type="checkbox">
+                                    <label for="italic"><em>Italic</em></label>
                                 </div>
-                                <div class="checkbox checkbox-last">
-                                    <label><input id="underline" type="checkbox" class="editorinput"><u>Underline</u></label>
+                                <div class="checkbox">
+                                    <input id="underline" type="checkbox">
+                                    <label for="underline"><u>Underline</u></label>
                                 </div>
                             </div>
-                            <div style="height: 10px;"></div>
-                            <button id="textadd" class="btn btn-yellow">ADD TEXT</button>
+                            <button id="textadd" class="btn btn-pink half">APPLY!</button>&nbsp;<button id="textdelete" class="btn btn-pink half">REMOVE</button>
                         </div>
                     </div>
 
@@ -182,7 +184,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <div id="pickimage" class="editorinput ui-selectable">
                             </div>
                             <div style="height: 10px;"></div>
-                            <button id="imageadd" class="btn btn-yellow">ADD IMAGE</button>
+                            <button id="imageadd" class="btn btn-pink half">APPLY!</button>&nbsp;<button id="imagedelete" class="btn btn-pink half">REMOVE</button>
                             <div style="height: 15px;"></div>
                             Show Resize Handles: <select id="imagehandles" class="editorinput">
                                 <option value="yes">YES</option>
@@ -260,16 +262,16 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                                     <div class="col-sm-1 text-center">
                                                         <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
                                                             <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                            <button id="edit-<?php echo $savedimage['id']; ?>" class="main-btn" type="button">EDIT</button>
+                                                            <button id="edit-<?php echo $savedimage['id']; ?>" class="btn btn-pink" type="button">EDIT</button>
                                                         </form>
                                                     </div>
                                                     <div class="col-sm-2 text-center">
-                                                        <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="main-btn">DOWNLOAD</a>
+                                                        <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="btn btn-pink">DOWNLOAD</a>
                                                     </div>
                                                     <div class="col-sm-1 text-center">
                                                     <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
                                                             <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                            <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="main-btn" type="button">DELETE</button>
+                                                            <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="btn btn-pink" type="button">DELETE</button>
                                                             </form>
                                                     </div>
                                                     <div class="col-sm-4"></div>
