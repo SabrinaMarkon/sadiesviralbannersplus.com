@@ -12,11 +12,23 @@
     font-weight: bold;
     box-shadow: 2px 2px 0 #121212;
 }
+.btn-yellow:hover {
+    background: #fff;
+    color: #0067f4;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #121212;
+}
 .btn-pink {
     width: 90%;
     margin: 5px;
     background: #ff4343;
     color: #fff;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #121212;
+}
+.btn-pink:hover {
+    background: #ffd633;
+    color: #0067f4;
     font-weight: bold;
     box-shadow: 2px 2px 0 #121212;
 }
@@ -48,14 +60,14 @@
 #bannermaker__sidebar.active {
     margin-left: -250px; /* Hides the sidebar to the left! */
 }
-#bannermaker__sidebar .btn-yellow {
+/* #bannermaker__sidebar .btn-yellow {
     width: 90%;
     margin: 5px;
     background: #ffd633;
     color: #0067f4;
     font-weight: bold;
     box-shadow: 2px 2px 0 #121212;
-}
+} */
 #bannermaker__sidebar .bannermaker__sidebar-header {
     color: #fff;
     background: #ff4343;

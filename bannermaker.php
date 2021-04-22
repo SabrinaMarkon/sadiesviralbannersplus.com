@@ -63,7 +63,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <div class="panel-body my-2">
                             Background Color: <select id="pickbgcolor" class="editorinput"></select>
                             <div style="height: 10px;"></div>
-                            Select Category:<select id="pickbgimagefolder" class="editorinput">
+                            Select Image Category:<select id="pickbgimagefolder" class="editorinput">
                                 <option value="none">None</option>
                                 <?php echo $foldertree ?>
                             </select>
@@ -163,7 +163,8 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                     <label for="underline"><u>Underline</u></label>
                                 </div>
                             </div>
-                            <button id="textadd" class="btn btn-pink half">APPLY!</button>&nbsp;<button id="textdelete" class="btn btn-pink half">REMOVE</button>
+                            <button id="textadd" class="btn btn-pink half">APPLY!</button>
+                            <!-- &nbsp;<button id="textdelete" class="btn btn-pink half">REMOVE</button> -->
                         </div>
                     </div>
 
@@ -174,7 +175,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                     </div>
                     <div id="collapse5" class="panel-collapse collapse">
                         <div class="panel-body my-2">
-                            Select Category:<select id="pickimagefolder" class="editorinput">
+                            Select Image Category:<select id="pickimagefolder" class="editorinput">
                                 <option value="none">None</option>
                                 <?php echo $foldertree ?>
                             </select>
@@ -184,7 +185,8 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <div id="pickimage" class="editorinput ui-selectable">
                             </div>
                             <div style="height: 10px;"></div>
-                            <button id="imageadd" class="btn btn-pink half">APPLY!</button>&nbsp;<button id="imagedelete" class="btn btn-pink half">REMOVE</button>
+                            <button id="imageadd" class="btn btn-pink half">APPLY!</button>
+                            <!-- &nbsp;<button id="imagedelete" class="btn btn-pink half">REMOVE</button> -->
                             <div style="height: 15px;"></div>
                             Show Resize Handles: <select id="imagehandles" class="editorinput">
                                 <option value="yes">YES</option>
@@ -257,24 +259,22 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                                     ?>
                                                 </div>
                                                 <div style="height: 10px;"></div>
-                                                <div class="row">
-                                                    <div class="col-sm-4"></div>
-                                                    <div class="col-sm-1 text-center">
+                                                <div class="center">
+                                                    <span>
                                                         <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
                                                             <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                            <button id="edit-<?php echo $savedimage['id']; ?>" class="btn btn-pink" type="button">EDIT</button>
+                                                            <button id="edit-<?php echo $savedimage['id']; ?>" class="btn btn-pink d-inline-block" type="button">EDIT</button>
                                                         </form>
-                                                    </div>
-                                                    <div class="col-sm-2 text-center">
+                                                    </span>
+                                                    <span>
                                                         <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="btn btn-pink">DOWNLOAD</a>
-                                                    </div>
-                                                    <div class="col-sm-1 text-center">
-                                                    <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal"><input name="_method" type="hidden" value="DELETE">
+                                                    </span>
+                                                    <span>
+                                                        <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8">
                                                             <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                            <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="btn btn-pink" type="button">DELETE</button>
-                                                            </form>
-                                                    </div>
-                                                    <div class="col-sm-4"></div>
+                                                            <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="btn btn-pink d-inline-block" type="button">DELETE</button>
+                                                        </form>
+                                                    </span>
                                                 </div>
                                                 <hr>
                                             </li>
