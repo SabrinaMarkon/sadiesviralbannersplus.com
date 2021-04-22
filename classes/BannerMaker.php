@@ -23,7 +23,7 @@ class BannerMaker {
     
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "select * from bannermaker where username=? order by id desc";
+        $sql = "select * from bannermaker where username=? order by width asc, height asc, id desc";
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $q->setFetchMode(PDO::FETCH_ASSOC);
