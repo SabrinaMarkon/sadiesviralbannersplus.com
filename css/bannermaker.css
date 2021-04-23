@@ -18,7 +18,7 @@
     font-weight: bold;
     box-shadow: 2px 2px 0 #121212;
 }
-.btn-pink {
+.btn-pink, .btn-leftdrawer {
     width: 90%;
     margin: 5px;
     background: #ff4343;
@@ -35,6 +35,14 @@
 .btn-pink.half {
     display: inline-block;
     width: 40%;
+}
+.btn-leftdrawer {
+    width: 55px;
+    height: 55px;
+}
+.btn-leftdrawer:hover {
+    background: #0067f4;
+    color: #fff;
 }
 
 .checkboxes {

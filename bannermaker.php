@@ -210,12 +210,9 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
     <div id="bannermaker__content">
 
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span>X</span>
-                </button>
-            </div>
+            <button type="button" id="sidebarCollapse" class="btn btn-leftdrawer">
+                <i class="fas fa-align-left fa-lg"></i>
+            </button>
         </nav>
 
         <div id="maineditpane">
