@@ -139,7 +139,7 @@ class BannerMaker {
             file_put_contents('mybanners/' . $filename, $unencodedData);
 
             // Save image into the banners database table.
-            $sql = "update bannermaker set filename=?, htmlccode=?, width=?, height=?, bgcolor=?, bgimage=?, bordercolor=?, borderwidth=?, borderstyle=? where id=?";
+            $sql = "update bannermaker set filename=?, htmlcode=?, width=?, height=?, bgcolor=?, bgimage=?, bordercolor=?, borderwidth=?, borderstyle=? where id=?";
             $q = $pdo->prepare($sql);
             $q->execute(array($filename, $htmlcode, $width, $height, $bgcolor, $bgimage, $bordercolor, $borderwidth, $borderstyle, $editingexistingimageid));
 

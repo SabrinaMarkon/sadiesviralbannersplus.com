@@ -6,9 +6,6 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 }
 
 require "control.php";
-if (isset($show)) {
-    echo $show;
-}
 
 $showcontent = new PageContent();
 echo $showcontent->showPage('Members Area Banner Maker Page');
@@ -213,6 +210,11 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             <button type="button" id="sidebarCollapse" class="btn btn-leftdrawer">
                 <i class="fas fa-align-left fa-lg"></i>
             </button>
+            <?php
+            if (isset($show)) {
+                echo $show;
+            }
+            ?>
         </nav>
 
         <div id="maineditpane">
@@ -305,7 +307,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                     <input type="hidden" name="img_val" id="img_val" value="">
                     <input type="hidden" name="img_obj" id="img_obj" value="">
                     <input type="hidden" name="htmlcode" id="htmlcode" value="">
-                    <button id="savebutton" name="savebannermaker" class="btn btn-yellow">SAVE BANNER</button>
+                    <button id="savebutton" name="savebannermaker" class="btn btn-pink">SAVE BANNER</button>
                 </form>
             </div>
             <div style="height: 20px;"></div>
