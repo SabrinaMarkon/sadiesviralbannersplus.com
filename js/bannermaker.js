@@ -62,7 +62,7 @@ $(function() {
             $('#bannerwidtherror').css({'visibility' : 'hidden', 'display' : 'none'});
             var canvascontainer = document.getElementById("canvascontainer");
             $(canvascontainer).css('width', value);
-            $('#watermark').css({ 'right' : '0', 'bottom' : '0' });
+            // $('#watermark').css({ 'right' : '0', 'bottom' : '0' });
         } else {
             $('#bannerwidtherror').css({'visibility' : '', 'display' : 'block'});
         }
@@ -76,7 +76,7 @@ $(function() {
             var canvascontainer = document.getElementById("canvascontainer");
             $(canvascontainer).css('height', value);
             // change below: We want to REMOVE the watermark div then readd in the right position!!!!!!!!!!!!
-            $('#watermark').css({ 'right' : '0', 'bottom' : '0' });
+            // $('#watermark').css({ 'right' : '0', 'bottom' : '0' });
         } else {
             $('#bannerheighterror').css({'visibility' : 'visible', 'display' : 'block'});
         }
@@ -326,13 +326,13 @@ $(function() {
     // UNDO ONE BY ONE:
     $('#undo').on('click', function() {
         if ($('#canvascontainer').find('.canvaslayer').length) {
-            if (canvascontainer.lastChild.id !== 'watermark') {
+            // if (canvascontainer.lastChild.id !== 'watermark') {
                 canvascontainer.removeChild(canvascontainer.lastChild);
                 $('#savediv').empty();
                 $('#img_val').empty();
                 $('#img_obj').empty();
                 $('#savebuttondiv').hide();
-            }
+            // }
         }
     });
 
@@ -433,8 +433,8 @@ $(function() {
                 url: 'apis/bannermakeractions.php',
                 type: "post",
                 data: { 'action': 'edit', 'id' : id },
+                dataType: 'json',
                 success: function(data){
-                   console.log(data);
                     // update the display to show the chosen database object (in data variable):
                     $("#canvascontainer").css( { 'width' : data.width });
                     $("#canvascontainer").css( { 'height' : data.height });

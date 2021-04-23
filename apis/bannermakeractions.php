@@ -9,7 +9,6 @@ PHP 7.4+
 @copyright 2021 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
  **/
-
 if (!empty($_POST)) {
     
     $action = $_POST['action'];
@@ -23,8 +22,7 @@ if (!empty($_POST)) {
         echo $bannermaker->deleteBanner($id);
     }
     elseif ($action === 'edit') {
-        // echo $bannermaker->deleteBanner($id);
-        echo "EDIT !!!";
-    } 
-
+        $banner = $bannermaker->showBanner($id);
+        echo json_encode($banner);
+    }
 }
