@@ -18,7 +18,7 @@
     font-weight: bold;
     box-shadow: 2px 2px 0 #121212;
 }
-.btn-pink, .btn-leftdrawer {
+.btn-pink, .btn-leftdrawer, .btn-savebanner {
     width: 90%;
     margin: 5px;
     background: #ff4343;
@@ -39,8 +39,9 @@
 .btn-leftdrawer {
     width: 55px;
     height: 55px;
+    margin-left: 14px;
 }
-.btn-leftdrawer:hover {
+.btn-leftdrawer:hover, .btn-savebanner:hover {
     background: #0067f4;
     color: #fff;
 }
@@ -180,8 +181,18 @@ a[data-toggle="collapse"] {
 }
 
 .has-error {
+    width: 90%;
     color: #ff4343;
-    margin-left: 5px;
+    background: #ffd633;
+    border: 2px solid #fff;
+    box-shadow: 1px 1px 0 #121212;
+    font-weight: bold;
+    margin: 3px;
+}
+.alert {
+    margin: auto;
+    font-weight: 200;
+    text-align: center;
 }
 
 /* image editor buttons */

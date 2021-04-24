@@ -45,10 +45,10 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                     <div id="collapse1" class="panel-collapse collapse">
                         <div class="panel-body my-2">
                             Banner Width: <input type="number" id="bannerwidth" value="1000" class="editorinput"><span id="bannerwidtherror">
-                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 1000</span></span>
+                                <span class="has-error">Please enter an integer between 1 and 1000</span></span>
                             <div style="height: 10px;"></div>
                             Banner Height: <input type="number" id="bannerheight" value="300" class="editorinput"><span id="bannerheighterror">
-                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 1000</span></span>
+                                <span class="has-error">Please enter an integer between 1 and 1000</span></span>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             Border Color: <select id="pickbordercolor" class="editorinput"></select>
                             <div style="height: 10px;"></div>
                             Border Width: <input type="number" id="pickborderwidth" value="14" class="editorinput"><span id="borderwidtherror">
-                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 0 and 20</span></span>
+                                <span class="has-error">Please enter an integer between 0 and 20</span></span>
                             <input type="hidden" id="pickborderstyle" value="solid">
                             <!-- <div style="height: 10px;"></div>
                             Border Style: <select id="pickborderstyle" class="editorinput">
@@ -144,7 +144,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             </select>
                             <div style="height: 10px;"></div>
                             Font Size: <input type="number" id="picktextsize" value="40" class="editorinput"><span id="textsizeerror">
-                                <span class="glyphicon glyphicon-exclamation-sign has-error" aria-hidden="true"></span><span class="has-error">Please enter an integer between 1 and 300</span></span>
+                                <span class="has-error">Please enter an integer between 1 and 300</span></span>
                             <div style="height: 10px;"></div>
                             <div class="checkboxes">
                                 <div class="checkbox">
@@ -206,7 +206,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
     <!-- Right Content to SLIDING NAV -->
     <div id="bannermaker__content">
 
-        <nav class="navbar navbar-expand-lg">
+        <nav class="d-flex flex-row align-items-start">
             <button type="button" id="sidebarCollapse" class="btn btn-leftdrawer">
                 <i class="fas fa-align-left fa-lg"></i>
             </button>
@@ -307,7 +307,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                     <input type="hidden" name="img_val" id="img_val" value="">
                     <input type="hidden" name="img_obj" id="img_obj" value="">
                     <input type="hidden" name="htmlcode" id="htmlcode" value="">
-                    <button id="savebutton" name="savebannermaker" class="btn btn-pink">SAVE BANNER</button>
+                    <button id="savebutton" name="savebannermaker" class="btn btn-savebanner">SAVE BANNER</button>
                 </form>
             </div>
             <div style="height: 20px;"></div>
