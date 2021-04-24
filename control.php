@@ -10,10 +10,11 @@ if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
 	$logincheck = new User($sendsiteemail);
 	$newlogin = $logincheck->userLogin($_SESSION['username'], $_SESSION['password']);
 	if (empty($newlogin)) {
-		$showcontent = new LoginForm();
-		echo $showcontent->showLoginForm(1);
-		$Layout = new Layout();
-		$Layout->showFooter();
+		// $showcontent = new LoginForm();
+		// echo $showcontent->showLoginForm(1);
+		// $Layout = new Layout();
+		// $Layout->showFooter();
+		header('Location: /login?err=1');
 		exit;
 	} else {
 		# returned member details.
@@ -22,18 +23,21 @@ if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
 			$_SESSION[$key] = $value;
 		}
 		if (empty($verified)) {
-			$showcontent = new LoginForm();
-			echo $showcontent->showLoginForm(2);
-			$Layout = new Layout();
-			$Layout->showFooter();
+			// $showcontent = new LoginForm();
+			// echo $showcontent->showLoginForm(2);
+			// $Layout = new Layout();
+			// $Layout->showFooter();
+			header('Location: /login?err=2');
 			exit;
 		}
 		$showgravatar = $logincheck->getGravatar($username, $email);
 	}
 } else {
-	$showcontent = new LoginForm();
-	echo $showcontent->showLoginForm(1);
-	$Layout = new Layout();
-	$Layout->showFooter();
+	// $showcontent = new LoginForm();
+	// echo $showcontent->showLoginForm(1);
+	// $Layout = new Layout();
+	// $Layout->showFooter();
+	// header('Location: /login?err=1');
+	echo "WUT";
 	exit;
 }

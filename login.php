@@ -5,6 +5,10 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit;
 }
 
+$err = 0;
+if (isset($_GET['err'])) {
+    $err = $_GET['err'];
+}
 $showcontent = new LoginForm();
-echo $showcontent->showLoginForm(0);
+echo $showcontent->showLoginForm($err);
 ?>
