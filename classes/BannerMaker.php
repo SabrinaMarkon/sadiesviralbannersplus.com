@@ -165,7 +165,7 @@ class BannerMaker {
 
         Database::disconnect();
 
-        return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Banner was Saved!</strong></div>";
+        return "<div id=\"bannersavedmsg\" class=\"mx-3 pt-3 message-pink\">Your Banner was Saved!</div>";
     }
 
     /**

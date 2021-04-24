@@ -194,6 +194,11 @@ a[data-toggle="collapse"] {
     font-weight: 200;
     text-align: center;
 }
+.message-pink {
+    color: #ff4343;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
 
 /* image editor buttons */
 .editorinput {
