@@ -383,7 +383,7 @@ $(function() {
             allowTaint: true,
             onrendered: function(canvas) {
                 theCanvas = canvas;
-                $('#savediv').append('<h3 class="my-4">Your Banner:</h3>');
+                $('#savediv').append('<h3 class="my-4 pt-2">Your Banner:</h3>');
                 $('#savediv').append(canvas);
                 //Show the download button.
                 $('#savebuttondiv').show();

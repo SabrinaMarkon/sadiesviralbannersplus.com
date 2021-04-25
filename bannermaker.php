@@ -207,35 +207,30 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
     <div id="bannermaker__content">
 
         <nav class="d-flex flex-row align-items-start">
+
+            <!-- Button to open left menu -->
             <button type="button" id="sidebarCollapse" class="btn btn-leftdrawer">
                 <i class="fas fa-align-left fa-lg"></i>
-            </button>
-            <?php
-            if (isset($show)) {
-                echo $show;
-            }
-            ?>
-        </nav>
-
-        <div id="maineditpane">
-
+            </button> <!-- End button to open left menu -->
+            
+            <!-- Saved banner list -->
             <?php
             if (count($savedimages) > 0) {
             ?>
-                <div class="container">
-                    <div id="faqpanel" class="faqpanel" role="tablist" aria-multiselectable="true">
-                        <div class="faq mb-4">
+                <div id="savedimagesdiv" class="container">
+                    <div id="bannermaker__panel" class="bannermaker__panel" role="tablist" aria-multiselectable="true">
+                        <div class="mb-4">
 
                             <!-- Header of parent accordion -->
-                            <h4 class="faq-heading" role="tab">
-                                <a data-toggle="collapse" data-parent="#faqpanel" href="#collapsesaved" aria-expanded="true" aria-controls="collapsesaved" class="d-block collapsed">
+                            <h4 class="bannermaker__panel-heading" role="tab">
+                                <a data-toggle="collapse" data-parent="#bannermaker__panel" href="#collapsesaved" aria-expanded="true" aria-controls="collapsesaved" class="d-block collapsed">
                                     <i class="fa fa-chevron-down"></i> <span class="heart2 light-coral">&#10084;</span>&nbsp;&nbsp;Your Saved Banners
                                 </a>
                             </h4> <!-- End header of parent accordion -->
 
                             <!-- Body of parent accordion -->
                             <div id="collapsesaved" class="panel-collapse collapse">
-                                <div class="faq-body p-3">
+                                <div class="bannermaker__panel-body p-3">
 
                                     <ul id="savedimageslist" class="editorinput list-unstyled">
                                         <?php
@@ -244,20 +239,12 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                             <li id="banner-<?php echo $savedimage['id']; ?>">
 
                                                 <div class="container">
-                                                    <div id="faqpanel-<?php echo $savedimage['id']; ?>" class="faqpanel" role="tablist" aria-multiselectable="true">
-                                                        <div class="faq mb-4">
+                                                    <div class="bannermaker__panel" role="tablist" aria-multiselectable="false">
+                                                        <div class="mb-4">
 
-                                                            <!-- Header of child accordion -->
-                                                            <h4 class="faq-heading" role="tab">
-                                                                <a data-toggle="collapse" data-parent="#faqpanel-<?php echo $savedimage['id']; ?>" href="#collapsesaved-<?php echo $savedimage['id']; ?>" aria-expanded="true" aria-controls="collapsesaved-<?php echo $savedimage['id']; ?>" class="d-block collapsed">
-                                                                    <i class="fa fa-chevron-down"></i> <span class="heart2 light-coral">&#10084;</span>&nbsp;&nbsp;<?php echo $savedimage['filename']; ?>
-                                                                </a>
-                                                            </h4> <!-- End header of child accordion -->
-
-                                                            <!-- Body of child accordion -->
-                                                            <div id="collapsesaved-<?php echo $savedimage['id']; ?>" class="panel-collapse collapse">
-                                                                <div class="faq-body p-3">
-
+                                                            <!-- Child panel -->
+                                                            <div id="collapsesaved-<?php echo $savedimage['id']; ?>">
+                                                                <div class="bannermaker__panel-body p-3">
                                                                     <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
                                                                     <div style="height: 10px;"></div>
                                                                     <div>
@@ -295,10 +282,8 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                                                             </form>
                                                                         </span>
                                                                     </div>
-
-
                                                                 </div>
-                                                            </div> <!-- End body of child accordion -->
+                                                            </div> <!-- End child panel -->
                                                         </div>
                                                     </div>
 
@@ -317,6 +302,18 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             <?php
             }
             ?>
+            <!-- End saved banner list -->
+
+            <!-- Messages to member -->
+            <?php
+            if (isset($show)) {
+                echo $show;
+            }
+            ?> <!-- End messages to member -->
+
+        </nav>
+
+        <div id="maineditpane">
 
             <div id="canvascontainer">
 

@@ -1,54 +1,57 @@
 .bannermaker {
-    margin: -8px 0;
-    display: flex;
-    align-items: stretch; /* Stretch makes the flex items the same height. */
+  margin: -8px 0;
+  display: flex;
+  align-items: stretch; /* Stretch makes the flex items the same height. */
 }
 
 .btn-yellow {
-    width: 90%;
-    margin: 5px;
-    background: #ffd633;
-    color: #0067f4;
-    font-weight: bold;
-    box-shadow: 2px 2px 0 #121212;
+  width: 90%;
+  margin: 5px;
+  background: #ffd633;
+  color: #0067f4;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 #121212;
 }
 .btn-yellow:hover {
-    background: #fff;
-    color: #0067f4;
-    font-weight: bold;
-    box-shadow: 2px 2px 0 #121212;
+  background: #fff;
+  color: #0067f4;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 #121212;
 }
-.btn-pink, .btn-leftdrawer, .btn-savebanner {
-    width: 90%;
-    margin: 5px;
-    background: #ff4343;
-    color: #fff;
-    font-weight: bold;
-    box-shadow: 2px 2px 0 #121212;
+.btn-pink,
+.btn-leftdrawer,
+.btn-savebanner {
+  width: 90%;
+  margin: 5px;
+  background: #ff4343;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 #121212;
 }
 .btn-pink:hover {
-    background: #ffd633;
-    color: #0067f4;
-    font-weight: bold;
-    box-shadow: 2px 2px 0 #121212;
+  background: #ffd633;
+  color: #0067f4;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 #121212;
 }
 .btn-pink.half {
-    display: inline-block;
-    width: 40%;
+  display: inline-block;
+  width: 40%;
 }
 .btn-leftdrawer {
-    width: 55px;
-    height: 55px;
-    margin-left: 14px;
+  width: 55px;
+  height: 55px;
+  margin-left: 14px;
 }
-.btn-leftdrawer:hover, .btn-savebanner:hover {
-    background: #0067f4;
-    color: #fff;
+.btn-leftdrawer:hover,
+.btn-savebanner:hover {
+  background: #0067f4;
+  color: #fff;
 }
 
 .checkboxes {
-    text-align: left;
-    margin-left: 1rem;
+  text-align: left;
+  margin-left: 1rem;
 }
 .checkbox input,
 .inline-field label {
@@ -59,88 +62,79 @@
 
 /* SIDEBAR */
 #bannermaker__sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh; /* So sidebar is at least equal to screen height. */
-    background: #0067f4;
-    color: #fff;
-    transition: all 0.3s;
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh; /* So sidebar is at least equal to screen height. */
+  background: #0067f4;
+  color: #fff;
+  transition: all 0.3s;
 }
 #bannermaker__sidebar.active {
-    margin-left: -250px; /* Hides the sidebar to the left! */
+  margin-left: -250px; /* Hides the sidebar to the left! */
 }
-/* #bannermaker__sidebar .btn-yellow {
-    width: 90%;
-    margin: 5px;
-    background: #ffd633;
-    color: #0067f4;
-    font-weight: bold;
-    box-shadow: 2px 2px 0 #121212;
-} */
 #bannermaker__sidebar .bannermaker__sidebar-header {
-    color: #fff;
-    background: #ff4343;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0 2px 0 #121212;
+  color: #fff;
+  background: #ff4343;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 0 #121212;
 }
-
 #bannermaker__content {
-    width: 100%;
-    background: #ffd633;
-    margin: 10px auto;
+  width: 100%;
+  background: #ffd633;
+  margin: 10px auto;
 }
 
 /* Move dropdown triangles to the right part of the sidebar instead of directly next to the text. */
 a[data-toggle="collapse"] {
-    position: relative;
+  position: relative;
 }
 .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translate(-50%);
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(-50%);
 }
 
 @media (max-width: 768px) {
-    #bannermaker__sidebar {
-        margin-left: -250px; /* Hide by default on small screens. */
-    }
-    #bannermaker__sidebar.active {
-        margin-left: 0; /* Show again when toggle is clicked. */
-    }
+  #bannermaker__sidebar {
+    margin-left: -250px; /* Hide by default on small screens. */
+  }
+  #bannermaker__sidebar.active {
+    margin-left: 0; /* Show again when toggle is clicked. */
+  }
 }
 
 /* banner editor */
 #maineditpane {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
 }
 
 #canvascontainer {
-    position: relative;
-    background: transparent url('/images/canvasbg.gif');
-    cursor: move;
-    margin: 3rem auto;
+  position: relative;
+  background: transparent url("/images/canvasbg.gif");
+  cursor: move;
+  margin: 3rem auto;
 }
 
 #trashcandiv {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: #121212;
-    font-weight: bold;
-    font-size: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #121212;
+  font-weight: bold;
+  font-size: 1rem;
 }
 #trashcan {
-    max-width: 75px;
-    margin-right: 5px;
+  max-width: 75px;
+  margin-right: 5px;
 }
 /* 
 #savediv {
@@ -152,135 +146,161 @@ a[data-toggle="collapse"] {
 } */
 
 .canvaslayer {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    background: none;
-    display: inline;
-    border: 0;
-    padding: 0;
-    margin: 0;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  background: none;
+  display: inline;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .picture {
-    border: 0;
+  border: 0;
 }
 
-#bgimagepreview, #imagepreview {
-    margin: auto;
-    display: none;
-    text-align: center;
-    max-width: 200px;
-    max-height: 200px;
+#bgimagepreview,
+#imagepreview {
+  margin: auto;
+  display: none;
+  text-align: center;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 #savebuttondiv {
-    display: none;
-    text-align: center;
-    padding: 0;
+  display: none;
+  text-align: center;
+  padding: 0;
 }
 
 .has-error {
-    width: 90%;
-    color: #ff4343;
-    background: #ffd633;
-    border: 2px solid #fff;
-    box-shadow: 1px 1px 0 #121212;
-    font-weight: bold;
-    margin: 3px;
+  width: 90%;
+  color: #ff4343;
+  background: #ffd633;
+  border: 2px solid #fff;
+  box-shadow: 1px 1px 0 #121212;
+  font-weight: bold;
+  margin: 3px;
 }
 .alert {
-    margin: auto;
-    font-weight: 200;
-    text-align: center;
+  margin: auto;
+  font-weight: 200;
+  text-align: center;
 }
 .message-pink {
-    color: #ff4343;
-    font-size: 1.4rem;
-    font-weight: bold;
+  color: #ff4343;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 /* image editor buttons */
 .editorinput {
-    width: 90%;
-    margin: 0 auto;
-    padding: 5px;
-    border: 1px solid lightgrey;
-    border-radius: 3px;
-    font-size: 16px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
 }
 
 /* image library  */
-#pickimage, #pickbgimage {
-    overflow-y:scroll;
-    overflow-x:auto;
-    height:400px;
-    background: transparent url('/images/canvasbg.gif');
+#pickimage,
+#pickbgimage {
+  overflow-y: scroll;
+  overflow-x: auto;
+  height: 400px;
+  background: transparent url("/images/canvasbg.gif");
 }
-#pickimage .ui-selecting, #pickbgimage .ui-selecting {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px #FFC125;
+#pickimage .ui-selecting,
+#pickbgimage .ui-selecting {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px #ffc125;
 }
-#pickimage .ui-selected, #pickbgimage .ui-selected {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px #FF7256;
+#pickimage .ui-selected,
+#pickbgimage .ui-selected {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px #ff7256;
 }
 .imagepreviewdiv {
-    margin: 6px;
+  margin: 6px;
 }
 .imagepreviewdiv:hover {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px #FFC125;
+  border-color: transparent;
+  box-shadow: 0 0 0 3px #ffc125;
 }
 .imagepreviewdiv.previewshrink {
-    width: 200px;
+  width: 200px;
 }
 
 /* Resizing and dragging of images and text on the canvas */
 .ui-resizable-handle {
-    width: 9px !important;
-    height: 9px !important;
-    background-color: rgba(0,0,0,.75);
-    position: absolute;
+  width: 9px !important;
+  height: 9px !important;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
 }
-.ui-resizable-nw
-{
-    left: -5px;
-    top: -5px;
+.ui-resizable-nw {
+  left: -5px;
+  top: -5px;
 }
-.ui-resizable-ne
-{
-    top: -5px;
-    right: -5px;
+.ui-resizable-ne {
+  top: -5px;
+  right: -5px;
 }
-.ui-resizable-sw
-{
-    bottom: -5px;
-    left: -5px;
+.ui-resizable-sw {
+  bottom: -5px;
+  left: -5px;
 }
-.ui-resizable-se
-{
-    bottom: -5px;
-    right: -5px;
+.ui-resizable-se {
+  bottom: -5px;
+  right: -5px;
 }
 .ui-icon {
-    width: 9px !important;
-    height: 9px !important;
+  width: 9px !important;
+  height: 9px !important;
 }
 
+/* saved banners */
+.bannermaker__panel {
+  border-radius: 10px;
+  border-collapse: collapse;
+  margin: 0 1.2rem 1.2rem;
+}
+.bannermaker__panel .bannermaker__panel-heading {
+  background: #0067f4;
+  border-radius: 10px 10px 0 0;
+  padding: 1em;
+  margin-top: 5px;
+  box-shadow: 1px 1px 1px #121212;
+}
+.bannermaker__panel .bannermaker__panel-heading a {
+  color: #fff;
+  font-size: 1.2rem;
+}
+.bannermaker__panel .bannermaker__panel-heading a:hover {
+  color: #ffd633;
+}
+.bannermaker__panel .bannermaker__panel-body {
+  background: #fff;
+  color: #121212;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 1px 1px 1px #121212;
+}
+.bannermaker__panel-heading .fa {
+  font-size: 1.6rem;
+  float: right;
+  transition: 0.3s transform ease-in-out;
+}
+.bannermaker__panel-heading .collapsed .fa {
+  transform: rotate(90deg);
+}
 /* saved banners panel is scrollable */
-#savedimagesdiv {
-    width: 90%;
-    box-shadow: 2px 2px #121212;
-}
 #savedimageslist {
-    width: 100%;
-    height: 300px;
-    overflow: auto;
-    background: #fff;
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  background: #ffd633;
 }
-#savedimageslist li {
-    text-align: center;
-    padding: 1rem;
-}
-
