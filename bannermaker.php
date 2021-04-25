@@ -33,7 +33,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
 
             <div style="height: 10px;"></div>
             <div class="bannermaker__sidebar-header">
-            Stuff To Add!
+                Stuff To Add!
             </div>
 
             <div style="height: 10px;"></div>
@@ -222,67 +222,95 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             <?php
             if (count($savedimages) > 0) {
             ?>
-                <div id="savedimagesdiv">
-                    <div class="panel-group" id="accordion2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapsesaved">
-                                        Your Saved Banners</a>
-                                </h4>
-                            </div>
+                <div class="container">
+                    <div id="faqpanel" class="faqpanel" role="tablist" aria-multiselectable="true">
+                        <div class="faq mb-4">
+
+                            <!-- Header of parent accordion -->
+                            <h4 class="faq-heading" role="tab">
+                                <a data-toggle="collapse" data-parent="#faqpanel" href="#collapsesaved" aria-expanded="true" aria-controls="collapsesaved" class="d-block collapsed">
+                                    <i class="fa fa-chevron-down"></i> <span class="heart2 light-coral">&#10084;</span>&nbsp;&nbsp;Your Saved Banners
+                                </a>
+                            </h4> <!-- End header of parent accordion -->
+
+                            <!-- Body of parent accordion -->
                             <div id="collapsesaved" class="panel-collapse collapse">
-                                <div class="panel-body my-2">
+                                <div class="faq-body p-3">
+
                                     <ul id="savedimageslist" class="editorinput list-unstyled">
                                         <?php
                                         foreach ($savedimages as $savedimage) {
                                         ?>
                                             <li id="banner-<?php echo $savedimage['id']; ?>">
-                                                <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
-                                                <div style="height: 10px;"></div>
-                                                <div>
-                                                    <?php
-                                                    if ($savedimage['width'] > 300) {
-                                                    ?>
-                                                        <img src="mybanners/<?php echo $savedimage['filename']; ?>" width="300">
-                                                    <?php
-                                                    } elseif ($savedimage['height'] > 300) {
-                                                    ?>
-                                                        <img src="mybanners/<?php echo $savedimage['filename']; ?>" height="300">
-                                                    <?php
-                                                    } else {
-                                                    ?>
-                                                        <img src="mybanners/<?php echo $savedimage['filename']; ?>">
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div style="height: 10px;"></div>
-                                                <div class="center">
-                                                    <span>
-                                                        <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
-                                                            <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                            <button id="edit-<?php echo $savedimage['id']; ?>" class="btn btn-pink d-inline-block" type="button">EDIT</button>
-                                                        </form>
-                                                    </span>
-                                                    <span>
-                                                        <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="btn btn-pink">DOWNLOAD</a>
-                                                    </span>
-                                                    <span>
-                                                        <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8">
-                                                            <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
-                                                            <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="btn btn-pink d-inline-block" type="button">DELETE</button>
-                                                        </form>
-                                                    </span>
-                                                </div>
-                                                <hr>
+
+                                                <div class="container">
+                                                    <div id="faqpanel-<?php echo $savedimage['id']; ?>" class="faqpanel" role="tablist" aria-multiselectable="true">
+                                                        <div class="faq mb-4">
+
+                                                            <!-- Header of child accordion -->
+                                                            <h4 class="faq-heading" role="tab">
+                                                                <a data-toggle="collapse" data-parent="#faqpanel-<?php echo $savedimage['id']; ?>" href="#collapsesaved-<?php echo $savedimage['id']; ?>" aria-expanded="true" aria-controls="collapsesaved-<?php echo $savedimage['id']; ?>" class="d-block collapsed">
+                                                                    <i class="fa fa-chevron-down"></i> <span class="heart2 light-coral">&#10084;</span>&nbsp;&nbsp;<?php echo $savedimage['filename']; ?>
+                                                                </a>
+                                                            </h4> <!-- End header of child accordion -->
+
+                                                            <!-- Body of child accordion -->
+                                                            <div id="collapsesaved-<?php echo $savedimage['id']; ?>" class="panel-collapse collapse">
+                                                                <div class="faq-body p-3">
+
+                                                                    <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
+                                                                    <div style="height: 10px;"></div>
+                                                                    <div>
+                                                                        <?php
+                                                                        if ($savedimage['width'] > 300) {
+                                                                        ?>
+                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>" width="300">
+                                                                        <?php
+                                                                        } elseif ($savedimage['height'] > 300) {
+                                                                        ?>
+                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>" height="300">
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>">
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                    <div style="height: 10px;"></div>
+                                                                    <div class="center">
+                                                                        <span>
+                                                                            <form method="GET" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8" class="form-horizontal">
+                                                                                <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
+                                                                                <button id="edit-<?php echo $savedimage['id']; ?>" class="btn btn-pink d-inline-block" type="button">EDIT</button>
+                                                                            </form>
+                                                                        </span>
+                                                                        <span>
+                                                                            <a href="/mybanners/<?php echo $savedimage['filename']; ?>" download="banner-<?php echo $savedimage['id']; ?>.png" class="btn btn-pink">DOWNLOAD</a>
+                                                                        </span>
+                                                                        <span>
+                                                                            <form method="POST" action="/bannermaker/<?php echo $savedimage['id']; ?>" accept-charset="UTF-8">
+                                                                                <input name="id" type="hidden" value="<?php echo $savedimage['id']; ?>">
+                                                                                <button id="delete-<?php echo $savedimage['id']; ?>" name="deletebannermaker" class="btn btn-pink d-inline-block" type="button">DELETE</button>
+                                                                            </form>
+                                                                        </span>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div> <!-- End body of child accordion -->
+                                                        </div>
+                                                    </div>
+
                                             </li>
                                         <?php
                                         }
                                         ?>
                                     </ul>
+
                                 </div>
-                            </div>
+                            </div> <!-- End body of parent accordion -->
+
                         </div>
                     </div>
                 </div>
