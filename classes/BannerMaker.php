@@ -135,8 +135,8 @@ class BannerMaker {
             $filepath = 'mybanners/' . $filename;
             @unlink($filepath);
 
-            // RECREATE that filename on the server with the new data:
-            file_put_contents('mybanners/' . $filename, $unencodedData);
+            // RECREATE the file on the server:
+            file_put_contents($filepath, $unencodedData);
 
             // Save image into the banners database table.
             $sql = "update bannermaker set filename=?, htmlcode=?, width=?, height=?, bgcolor=?, bgimage=?, bordercolor=?, borderwidth=?, borderstyle=? where id=?";
@@ -154,7 +154,7 @@ class BannerMaker {
             $filepath = 'mybanners/' . $filename;
 
             // write the file to the server.
-            file_put_contents('mybanners/' . $filename, $unencodedData);
+            file_put_contents($filepath, $unencodedData);
 
             // Save image into the banners database table.
             $sql = "insert into bannermaker (username, filename, htmlcode, width, height, bgcolor, bgimage, bordercolor, borderwidth, borderstyle, adddate) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";

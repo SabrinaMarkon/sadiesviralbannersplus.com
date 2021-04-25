@@ -5,7 +5,8 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 	exit;
 }
 
-if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
+if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
+
 	$sendsiteemail = new Email();
 	$logincheck = new User($sendsiteemail);
 	$newlogin = $logincheck->userLogin($_SESSION['username'], $_SESSION['password']);

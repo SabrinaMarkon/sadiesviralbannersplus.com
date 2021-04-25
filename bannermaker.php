@@ -212,7 +212,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             <button type="button" id="sidebarCollapse" class="btn btn-leftdrawer">
                 <i class="fas fa-align-left fa-lg"></i>
             </button> <!-- End button to open left menu -->
-            
+
             <!-- Saved banner list -->
             <?php
             if (count($savedimages) > 0) {
@@ -249,17 +249,19 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                                                     <div style="height: 10px;"></div>
                                                                     <div>
                                                                         <?php
+                                                                        // Attach a random number at the end of the path to force the image to refresh in case it was updated.
+                                                                        $rand = mt_rand();
                                                                         if ($savedimage['width'] > 300) {
                                                                         ?>
-                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>" width="300">
+                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>?<?php echo $rand ?>" width="300">
                                                                         <?php
                                                                         } elseif ($savedimage['height'] > 300) {
                                                                         ?>
-                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>" height="300">
+                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>?<?php echo $rand ?>" height="300">
                                                                         <?php
                                                                         } else {
                                                                         ?>
-                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>">
+                                                                            <img src="mybanners/<?php echo $savedimage['filename']; ?>?<?php echo $rand ?>">
                                                                         <?php
                                                                         }
                                                                         ?>
@@ -303,17 +305,17 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             }
             ?>
             <!-- End saved banner list -->
+        </nav>
+
+        <div id="maineditpane">
 
             <!-- Messages to member -->
             <?php
             if (isset($show)) {
                 echo $show;
             }
-            ?> <!-- End messages to member -->
-
-        </nav>
-
-        <div id="maineditpane">
+            ?>
+            <!-- End messages to member -->
 
             <div id="canvascontainer">
 
