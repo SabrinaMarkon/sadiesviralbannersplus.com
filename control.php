@@ -5,27 +5,42 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 	exit;
 }
 
-if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
+if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
 
 	$sendsiteemail = new Email();
 	$logincheck = new User($sendsiteemail);
 	$newlogin = $logincheck->userLogin($_SESSION['username'], $_SESSION['password']);
+
 	if (empty($newlogin)) {
-		header('Location: /login?err=1');
+
+		$showcontent = new LoginForm();
+		echo $showcontent->showLoginForm(1);
+		$Layout = new Layout();
+		$Layout->showFooter();
 		exit;
+
 	} else {
-		# returned member details.
+
 		foreach ($newlogin as $key => $value) {
 			$$key = $value;
 			$_SESSION[$key] = $value;
 		}
+
 		if (empty($verified)) {
-			header('Location: /login?err=2');
+			$showcontent = new LoginForm();
+			echo $showcontent->showLoginForm(2);
+			$Layout = new Layout();
+			$Layout->showFooter();
 			exit;
 		}
+
 		$showgravatar = $logincheck->getGravatar($username, $email);
 	}
 } else {
-	header('Location: /login?err=1');
+
+	$showcontent = new LoginForm();
+	echo $showcontent->showLoginForm(1);
+	$Layout = new Layout();
+	$Layout->showFooter();
 	exit;
 }

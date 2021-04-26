@@ -25,10 +25,10 @@ class LoginForm
 
 		$showloginerror = "";
 		if ($loginerror == 1) {
-			$showloginerror = "<div class=\"alert alert-danger\"><strong>Incorrect Login</strong></div>";
+			$showloginerror = "<div class=\"alert alert-danger mb-3\"><strong>Incorrect Login</strong></div>";
 		}
 		if ($loginerror == 2) {
-			$showloginerror = "<div class=\"alert alert-danger\"><strong>Please Verify Your Email Address to Login<br /><a href=\"/resend\">Resend Verification Email</a></strong></div>";
+			$showloginerror = "<div class=\"alert alert-danger mb-3\"><strong>Please Verify Your Email Address to Login<br /><a href=\"/resend\">Resend Verification Email</a></strong></div>";
 		}
 
 		$content = <<<HEREDOC
