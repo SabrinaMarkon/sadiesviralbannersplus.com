@@ -361,7 +361,7 @@ $(function() {
     $('#clear, #new').on('click', UndoAllOrStartNew);
 
     // PREVIEW IMAGE:
-    $("#preview").click(function() {
+    $("#preview, #preview2").click(function() {
         $('#savediv').empty();
         // is there a background image?
         var bg = '';

@@ -1,9 +1,65 @@
+body {
+  line-height: 1.7;
+}
 .bannermaker {
-  margin: -8px 0;
+  height: 100%;
   display: flex;
   align-items: stretch; /* Stretch makes the flex items the same height. */
 }
 
+/* SIDEBAR */
+#bannermaker__sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh; /* So sidebar is at least equal to screen height. */
+  bottom: 0;
+  top: 0;
+  background: #0067f4;
+  color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  transition: all 0.3s;
+}
+
+/* SIDEBAR SCROLLBARS */
+#bannermaker__sidebar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+#bannermaker__sidebar::-webkit-scrollbar-track {
+  /* background: #0067f4; */
+  background: #ffd633;
+  border-left: 2px solid #ffd633;
+}
+#bannermaker__sidebar::-webkit-scrollbar-thumb {
+  background: #ff4343;
+  border-left: 2px solid #ffd633;
+}
+/* #bannermaker__sidebar::-webkit-scrollbar-thumb:hover {
+  background: #ff4343;
+  border-left: 2px solid #ffd633;
+} */
+
+/* SIDEBAR hideable */
+#bannermaker__sidebar.active {
+  margin-left: -250px; /* Hides the sidebar to the left! */
+}
+#bannermaker__sidebar .bannermaker__sidebar-header {
+  color: #fff;
+  background: #ff4343;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 0 #121212;
+}
+#bannermaker__content {
+  width: 100%;
+  background: #ffd633;
+  margin: 10px auto;
+}
+
+/* Banner Maker button and input styles */
 .btn-yellow {
   width: 90%;
   margin: 5px;
@@ -27,6 +83,9 @@
   color: #fff;
   font-weight: bold;
   box-shadow: 2px 2px 0 #121212;
+}
+.btn-savebanner {
+    width: 100%;
 }
 .btn-pink:hover {
   background: #ffd633;
@@ -60,53 +119,6 @@
   vertical-align: middle;
 }
 
-/* SIDEBAR */
-#bannermaker__sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  height: 100vh; /* So sidebar is at least equal to screen height. */
-  background: #0067f4;
-  color: #fff;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  transition: all 0.3s;
-}
-
-/* SIDEBAR SCROLLBARS */
-#bannermaker__sidebar::-webkit-scrollbar {
-  width: 12px;
-}
-#bannermaker__sidebar::-webkit-scrollbar-track {
-  /* background: #0067f4; */
-  background: #ffd633;
-  border-left: 2px solid #ffd633;
-}
-#bannermaker__sidebar::-webkit-scrollbar-thumb {
-  background: #ff4343;
-  border-left: 2px solid #ffd633;
-}
-/* #bannermaker__sidebar::-webkit-scrollbar-thumb:hover {
-  background: #ff4343;
-  border-left: 2px solid #ffd633;
-} */
-#bannermaker__sidebar.active {
-  margin-left: -250px; /* Hides the sidebar to the left! */
-}
-#bannermaker__sidebar .bannermaker__sidebar-header {
-  color: #fff;
-  background: #ff4343;
-  padding: 20px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  box-shadow: 0 2px 0 #121212;
-}
-#bannermaker__content {
-  width: 100%;
-  background: #ffd633;
-  margin: 10px auto;
-}
-
 /* Move dropdown triangles to the right part of the sidebar instead of directly next to the text. */
 a[data-toggle="collapse"] {
   position: relative;
@@ -128,7 +140,7 @@ a[data-toggle="collapse"] {
   }
 }
 
-/* banner editor */
+/* Main Banner Maker editor area */
 #maineditpane {
   display: flex;
   flex-direction: column;
@@ -141,9 +153,8 @@ a[data-toggle="collapse"] {
   position: relative;
   background: transparent url("/images/canvasbg.gif");
   cursor: move;
-  margin: 3rem auto;
+  margin: 1rem auto;
 }
-
 #trashcandiv {
   display: flex;
   justify-content: flex-start;
@@ -151,12 +162,13 @@ a[data-toggle="collapse"] {
   color: #121212;
   font-weight: bold;
   font-size: 1rem;
+  padding-top: 2rem;
 }
 #trashcan {
   max-width: 75px;
   margin-right: 5px;
 }
-/* 
+/*
 #savediv {
     position: relative;
     margin: auto;

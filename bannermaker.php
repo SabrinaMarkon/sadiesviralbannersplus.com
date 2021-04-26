@@ -19,15 +19,15 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
 <div class="bannermaker">
 
     <!-- Sidebar -->
-    <nav id="bannermaker__sidebar" class="pb-3">
+    <nav id="bannermaker__sidebar">
         <div class="bannermaker__sidebar-header">
             Make a Banner!
         </div>
 
         <div style="height: 10px;"></div>
         <div class="controlbuttons text-center">
-            <button id="new" class="btn btn-yellow undoallorstartnew">NEW</button>
-            <button id="preview" class="btn btn-yellow undoallorstartnew">PREVIEW</button>
+            <button id="new" class="btn btn-yellow">NEW</button>
+            <button id="preview" class="btn btn-yellow">PREVIEW</button>
             <button id="undo" class="btn btn-yellow">UNDO</button>
             <button id="clear" class="btn btn-yellow">CLEAR ALL</button>
 
@@ -189,13 +189,10 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 <option value="yes">YES</option>
                                 <option value="no">NO</option>
                             </select>
-
-                            <!--
                             <div style="height: 10px;"></div>
-                            <label class="btn btn-default btn-file">
-                            Upload Image: <input type="file" style="display: none;">
-                            </label> UPLOAD FUNCTIONALITY AFTER -->
-
+                            <!-- <label class="btn btn-default btn-file">
+                            Upload Image (doesn't work yet): <input type="file" style="display: none;">
+                            </label> -->
                         </div>
                     </div>
                 </div>
@@ -320,6 +317,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             <div id="canvascontainer">
 
             </div>
+            <div id="previewbuttondiv"><button id="preview2" class="btn btn-savebanner">PREVIEW TO SAVE</button></div>
             <div id="trashcandiv">
                 <img src="/images/trashcan.png" class="img-responsive" id="trashcan">
                 <span>You can drag stuff to the trash and drop it in!</span>

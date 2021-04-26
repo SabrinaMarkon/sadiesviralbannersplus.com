@@ -697,6 +697,7 @@ table.table-condensed.table-bordered td {
 /* Main Scrollbars */
 ::-webkit-scrollbar {
   width: 12px;
+  height: 12px;
 }
 ::-webkit-scrollbar-track {
   background: #0067F4; 
