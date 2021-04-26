@@ -27,7 +27,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
         <div style="height: 10px;"></div>
         <div class="controlbuttons text-center">
             <button id="new" class="btn btn-yellow">NEW</button>
-            <button id="preview" class="btn btn-yellow">PREVIEW</button>
+            <button id="preview" class="btn btn-yellow">PREVIEW TO SAVE</button>
             <button id="undo" class="btn btn-yellow">UNDO</button>
             <button id="clear" class="btn btn-yellow">CLEAR ALL</button>
 

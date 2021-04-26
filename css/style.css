@@ -2279,8 +2279,7 @@ p {
         .navbar-area .navbar .navbar-collapse .nav-item {
           margin: 0;
           padding: 0 1.2rem;
-          border-top: 2px solid #ffd633;
-          border-bottom: 2px solid #ffd633;
+          border-bottom: 2px solid #121212;
         }
         .navbar-area .navbar .navbar-collapse .nav-item a {
           padding: 1rem;
