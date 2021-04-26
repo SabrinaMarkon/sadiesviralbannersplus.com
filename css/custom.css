@@ -693,3 +693,17 @@ table.table-condensed.table-bordered td {
   margin: 0 auto;
   margin-bottom: 0.5rem;
 }
+
+/* Main Scrollbars */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #0067F4; 
+}
+::-webkit-scrollbar-thumb {
+  background: #ff4343; 
+}
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #ffd633; 
+} */
