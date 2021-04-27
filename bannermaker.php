@@ -243,7 +243,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                                             <!-- Child panel -->
                                                             <div id="collapsesaved-<?php echo $savedimage['id']; ?>">
                                                                 <div class="bannermaker__panel-body p-3">
-                                                                    <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
+                                                                    <div><a href="<?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?>" target="_blank" style="overflow-wrap: anywhere;"><?php echo $domain; ?>/mybanners/<?php echo $savedimage['filename']; ?></a></div>
                                                                     <div style="height: 10px;"></div>
                                                                     <div>
                                                                         <?php
