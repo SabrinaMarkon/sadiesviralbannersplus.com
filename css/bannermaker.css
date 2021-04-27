@@ -157,17 +157,23 @@ a[data-toggle="collapse"] {
 }
 #trashcandiv {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  /* align-items: flex-start; */
   color: #121212;
   font-weight: bold;
-  font-size: 1rem;
-  padding-top: 2rem;
+  font-size: 0.8rem;
+  margin: 0 auto;
+  padding-top: 0.6em;
 }
-#trashcan {
+#trashcan, #sadieface {
   max-width: 75px;
-  margin-right: 5px;
+  align-self: flex-start;
+  margin: 0 1rem 0;
 }
+#sadieface {
+  max-width: 100px;
+}
+
 /*
 #savediv {
     position: relative;

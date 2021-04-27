@@ -230,6 +230,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 <div class="bannermaker__panel-body p-3">
 
                                     <ul id="savedimageslist" class="editorinput list-unstyled">
+                                        <li class="ja-toppadding"></li>
                                         <?php
                                         foreach ($savedimages as $savedimage) {
                                         ?>
@@ -318,10 +319,16 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
 
             </div>
             <div id="previewbuttondiv"><button id="preview2" class="btn btn-savebanner">PREVIEW TO SAVE</button></div>
-            <div id="trashcandiv">
-                <img src="/images/trashcan.png" class="img-responsive" id="trashcan">
-                <span>You can drag stuff to the trash and drop it in!</span>
+            <div id="trashcandiv" class="mt-2">
+                <figure>
+                    <div style="display:flex; justify-content: space-between;">
+                        <img src="/images/trashcan.png" class="img-responsive" id="trashcan" alt="Trash Can">
+                        <figcaption><span class="sadietalknormal"><strong><span class="sadietalk-blue">Drag your mistakes to the <span class="sadietalk-pink">TRASH CAN</span> and just drop 'em in <span class="sadietalk-pink"><em>easy-peasy</em>!</span></span></strong></figcaption>
+                        <img src="images/sadie-expression-2.png" id="sadieface" alt="Drag your mistakes to the TRASH CAN and just drop 'em in easy-peasy!">
+                    </div>
+                </figure>
             </div>
+
             <div id="savediv">
 
             </div>

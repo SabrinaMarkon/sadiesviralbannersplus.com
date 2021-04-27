@@ -122,6 +122,9 @@ figcaption .sadietalknormal .heart {
   color: #ff4343;
   vertical-align: baseline;
 }
+.sadie-mini {
+  max-height: 200px;
+}
 
 .affiliateurl a {
   color: #0067F4 !important;
