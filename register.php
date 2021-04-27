@@ -53,7 +53,7 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 // User must click banners depending on membership level before signup is accepted.
 ?>
 
-<div class="container">
+<div class="container mt-4">
 
 	<figure>
 		<img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4">
