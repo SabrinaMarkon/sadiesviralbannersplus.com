@@ -2811,8 +2811,7 @@ p {
 ===========================*/
 .pricing-area {
   background-color: #ffd633;
-  /* padding-top: 120px; */
-  padding-top: 3em;
+  padding-top: 2rem;
   padding-bottom: 60px; }
 
 .flexcards-equalheight {

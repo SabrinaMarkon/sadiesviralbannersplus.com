@@ -110,15 +110,17 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
         ?>
 
 
-        <!-- The Four 468px x 60px BANNERS -->
+        <!-- The SIX 468px x 60px BANNERS -->
         <!-- DEFAULTS: -->
         <!-- #9 - 468px x 60px - Rotator for all members of certain level(s) - default to gold members only. -->
         <!-- #10 - 468px x 60px - Rotator for all members of certain level(s) - default to pro members only. -->
         <!-- #11 - 468px x 60px - The referid has a sponsor themselves and this is one of that sponsor's banners, if they have one. -->
         <!-- #12 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
+        <!-- #13 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
+        <!-- #14 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
 
         <?php
-        for ($i = 9; $i <= 12; $i++) {
+        for ($i = 9; $i <= 14; $i++) {
 
             $allowedaccounttypearray = [];
             if (in_array($i, $freebannerslotsarray)) {
@@ -139,7 +141,6 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
     
                 // SHOW:
                 echo $banner->showBanner($showbanner, 468, 60, $i, 'viralbannerpage');
-                echo "seven";
             } else {
     
                     // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?

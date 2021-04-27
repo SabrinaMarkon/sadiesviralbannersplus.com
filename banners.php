@@ -78,22 +78,6 @@ foreach ($levels as $level) {
 }
 ?>
 
-<!-- Paid Banner Rotators -->
-<section id="bannerspaid" class="bannerspaid-area">
-    <div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="centered">
-                    <section class="cards">
-
-                        <?php include 'rotatorbannerspaid.php'; ?>
-
-                    </section>
-                </div>
-            </div>
-        </div>
-</section>
-
 <!-- Different Membership Levels -->
 <section id="howitworks" class="pricing-area">
     <div class="mx-5">

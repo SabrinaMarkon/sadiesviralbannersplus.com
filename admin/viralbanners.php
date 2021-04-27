@@ -42,7 +42,7 @@ $ads = $banner->getAllAds();
 
     <div class="ja-toppadding mb-4"></div>
 
-    <p>Every member has a Viral Banner Page that has 12 slots for banners. You can check which slots members or their sponsors can add their banners to here.</p>
+    <p>Every member has a Viral Banner Page that has 14 slots for banners. You can check which slots members or their sponsors can add their banners to here.<br />If a banner has no check for any membership level, it will be a paid banner rotator.</p>
 
     <div class="ja-toppadding mb-4"></div>
 
@@ -56,7 +56,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots included with Free membership:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -83,7 +83,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Free member gets on their Free referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -110,7 +110,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Free member gets on their Pro referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -137,7 +137,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Free member gets on their Gold referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -172,7 +172,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots included with Pro membership:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -199,7 +199,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Pro member gets on their Free referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -226,7 +226,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Pro member gets on their Pro referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -253,7 +253,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Pro member gets on their Gold referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -288,7 +288,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots included with Gold membership:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -315,7 +315,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Gold member gets on their Free referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -342,7 +342,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Gold member gets on their Pro referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -369,7 +369,7 @@ $ads = $banner->getAllAds();
         <label class="mt-2">Banner slots a Gold member gets on their Gold referral's page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
         <?php
-        for ($i = 1; $i <= 12; $i += 3) {
+        for ($i = 1; $i <= 14; $i += 3) {
         ?>
             <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                 <?php
@@ -435,7 +435,7 @@ $ads = $banner->getAllAds();
         <label for="bannerpageslot">Viral Banner Slot:</label>
         <select name="bannerpageslot" class="form-control widetableselect">
             <?php
-            for ($i = 1; $i <= 12; $i++) {
+            for ($i = 1; $i <= 14; $i++) {
                 $selected = "";
 				if (isset($_POST['bannerpageslot'])) {
 					if ($_POST['bannerpageslot'] === $i) {
@@ -492,7 +492,7 @@ $ads = $banner->getAllAds();
                 
             }
         }
-        for ($i = 9; $i <= 12; $i++) {
+        for ($i = 9; $i <= 14; $i++) {
 
             // Set up default admin 468 x 60 banners.
             $adminshowbanner = $banner->getViralBanner('admin', $i);
@@ -610,7 +610,7 @@ $ads = $banner->getAllAds();
                             <td class="small">
                                 <select name="bannerpageslot" class="form-control widetableselect">
                                     <?php
-                                    for ($i = 1; $i <= 12; $i++) {
+                                    for ($i = 1; $i <= 14; $i++) {
                                         ?>
                                         <option value="<?php echo $i ?>"<?php if ($ad['bannerpageslot'] == $i) { echo " selected"; } ?>>
                                             <?php echo $i; ?>

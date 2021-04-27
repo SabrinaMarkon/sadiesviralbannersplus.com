@@ -192,8 +192,8 @@ $referurl = dirname($_SERVER['REQUEST_URI']);
             } else {
                 if ($urlfile !== 'banners' && $urlfile !== 'bannermaker') {
             ?>
-                <div class="my-3 text-center"><?php include 'rotatorbannerspaid.php'; ?></div>
-                <div class="ja-toppadding2" id="home"></div>
+                <div class="mt-3 text-center"><?php include 'rotatorbannerspaid.php'; ?></div>
+                <div id="home"></div>
             <?php
                 }
             }

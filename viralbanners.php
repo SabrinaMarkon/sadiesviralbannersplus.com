@@ -41,7 +41,7 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 	<div class="viralbanners">
 
 		<?php
-		for ($i = 1; $i <= 12; $i++) {
+		for ($i = 1; $i <= 14; $i++) {
 
 			// Show either a modal to add or edit banner, upgrade buttons, or link to paid only banner rotator.
 			$showinmodal = '';
