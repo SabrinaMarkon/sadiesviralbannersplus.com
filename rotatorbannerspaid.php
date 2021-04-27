@@ -37,7 +37,7 @@ if ($allrotators) {
         } else {
             // The banner is a paid banner rotation in the regular rotator.
         ?>
-            <div><a id="bannerad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
+            <div class="mb-3"><a id="bannerad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
         <?php
         }
     }
