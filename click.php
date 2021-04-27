@@ -19,7 +19,7 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
             $rotator->countMemberClick($_SESSION['username'], $id);
         }
 
-        if ($adtable === 'viralbanners' && $bannerslot > 0) {
+        if (($adtable === 'viralbanners' || $adtable === 'bannerspaid') && $bannerslot > 0) {
 
             // If it was a viral banner click by a site visitor.
             // TODO:  make sure sponsor banners show up!!!

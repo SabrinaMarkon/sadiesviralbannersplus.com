@@ -103,7 +103,9 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
 
                     // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
                     //echo "TESTING: paid banner rotator because nothing else for this slot $i";
-                    echo '<div class="placeholder-img viralbanner-withclickbox">';
+                    echo '<div class="viralbanner-withclickbox">';
+                    echo '<div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: 728px;">
+                    Clicked!</div>';
                     include 'rotatorbannerspaid.php';
                     echo '</div>';
                 }
@@ -155,7 +157,9 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                     } else {
     
                         // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                        echo '<div class="placeholder-img viralbanner-withclickbox">';
+                        echo '<div class="viralbanner-withclickbox">';
+                        echo '<div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: 468px;">
+                        Clicked!</div>';
                         include 'rotatorbannerspaid.php';
                         echo '</div>';
                     }

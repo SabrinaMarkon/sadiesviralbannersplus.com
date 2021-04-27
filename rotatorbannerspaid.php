@@ -8,7 +8,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {
-	$$key = $value;
+    $$key = $value;
 }
 
 $adtable = 'bannerspaid';
@@ -28,8 +28,17 @@ if ($allrotators) {
 
         $rotator->giveHit($rid);
         # get clicks when people click too.
-?>
-        <div><a id="bannerad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
-<?php
+
+        if (!empty($i) && $i > 0) {
+            // The banner is a paid banner rotation in the Viral Banner box.
+        ?>
+            <div><a class="placeholder-img" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>/<?php echo $i ?>"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
+        <?php
+        } else {
+            // The banner is a paid banner rotation in the regular rotator.
+        ?>
+            <div><a id="bannerad" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>" target="_blank"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
+        <?php
+        }
     }
 }

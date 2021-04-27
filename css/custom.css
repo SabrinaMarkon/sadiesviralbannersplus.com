@@ -331,6 +331,7 @@ figcaption .sadietalknormal .heart {
   margin-bottom: -1rem;
   margin-top: 1rem;
   padding: 0.4rem;
+  border-bottom: 2px solid #ff4343;
 }
 
 /* Timer bar for click links. */

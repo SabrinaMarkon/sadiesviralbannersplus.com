@@ -22,7 +22,7 @@ RewriteRule ^(admin) - [L]
 RewriteRule ^r/([A-Za-z0-9-]+)[/]*$ /index.php?referid=$1 [L,NC]
 
 # For viral banner clicks from site visitors.
-RewriteRule ^([A-Za-z0-9-]+)/(viralbanners)/([0-9]+)/([0-9]+)[/]*$ /index.php?page=$1&adtable=$2&id=$3&bannerslot=$4 [L,NC]
+RewriteRule ^([A-Za-z0-9-]+)/(viralbanners|bannerspaid)/([0-9]+)/([0-9]+)[/]*$ /index.php?page=$1&adtable=$2&id=$3&bannerslot=$4 [L,NC]
 
 # For ad clicks and viral banner clicks from the admin area.
 RewriteRule ^([A-Za-z0-9-]+)/(textads|bannerspaid|viralbanners|networksolos)/([0-9]+)[/]*$ /index.php?page=$1&adtable=$2&id=$3 [L,NC]
