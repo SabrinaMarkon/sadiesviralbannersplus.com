@@ -230,7 +230,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 <div class="bannermaker__panel-body p-3">
 
                                     <ul id="savedimageslist" class="editorinput list-unstyled">
-                                        <li class="ja-toppadding"></li>
+                                        <div class="ja-toppadding"></div>
                                         <?php
                                         foreach ($savedimages as $savedimage) {
                                         ?>

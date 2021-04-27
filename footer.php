@@ -74,7 +74,7 @@ if (basename($_SERVER['REQUEST_URI']) === 'bannermaker') {
       <div class="row justify-content-center">
         <div class="col-lg-6">
           <div class="footer-logo text-center">
-            <a class="mt-30" href="/">
+            <a href="/">
               <span class="logo">Sadie's <i class="fas fa-star fa-xs"></i></span>
             </a>
           </div> <!-- footer logo -->
