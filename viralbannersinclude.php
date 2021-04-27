@@ -123,49 +123,51 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
         <!-- #13 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
         <!-- #14 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
 
-        <?php
-        for ($i = 9; $i <= 14; $i++) {
+        <div class="viralbanner-468div">
+            <?php
+            for ($i = 9; $i <= 14; $i++) {
 
-            $allowedaccounttypearray = [];
-            if (in_array($i, $freebannerslotsarray)) {
-                array_push($allowedaccounttypearray, "Free");
+                $allowedaccounttypearray = [];
+                if (in_array($i, $freebannerslotsarray)) {
+                    array_push($allowedaccounttypearray, "Free");
+                }
+                if (in_array($i, $probannerslotsarray)) {
+                    array_push($allowedaccounttypearray, "Pro");
+                }
+                if (in_array($i, $goldbannerslotsarray)) {
+                    array_push($allowedaccounttypearray, "Gold");
+                }
+                if (count($allowedaccounttypearray) > 0) {
+                    $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
+                    $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
+                    $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, $i);
+                }
+                if (!empty($showbanner)) {
+        
+                    // SHOW:
+                    echo $banner->showBanner($showbanner, 468, 60, $i, 'viralbannerpage');
+                } else {
+        
+                        // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
+                        $adminshowbanner = $banner->getViralBanner('admin', $i);
+        
+                        if (!empty($adminshowbanner)) {
+        
+                            // SHOW:
+                            echo $banner->showBanner($adminshowbanner, 468, 60, $i, 'viralbannerpage');
+                        } else {
+        
+                            // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+                            echo '<div class="viralbanner-withclickbox">';
+                            echo '<div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: 468px;">
+                            Clicked!</div>';
+                            include 'rotatorbannerspaid.php';
+                            echo '</div>';
+                        }
+                }
             }
-            if (in_array($i, $probannerslotsarray)) {
-                array_push($allowedaccounttypearray, "Pro");
-            }
-            if (in_array($i, $goldbannerslotsarray)) {
-                array_push($allowedaccounttypearray, "Gold");
-            }
-            if (count($allowedaccounttypearray) > 0) {
-                $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-                $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
-                $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, $i);
-            }
-            if (!empty($showbanner)) {
-    
-                // SHOW:
-                echo $banner->showBanner($showbanner, 468, 60, $i, 'viralbannerpage');
-            } else {
-    
-                    // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-                    $adminshowbanner = $banner->getViralBanner('admin', $i);
-    
-                    if (!empty($adminshowbanner)) {
-    
-                        // SHOW:
-                        echo $banner->showBanner($adminshowbanner, 468, 60, $i, 'viralbannerpage');
-                    } else {
-    
-                        // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                        echo '<div class="viralbanner-withclickbox">';
-                        echo '<div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: 468px;">
-                        Clicked!</div>';
-                        include 'rotatorbannerspaid.php';
-                        echo '</div>';
-                    }
-            }
-        }
-        ?>
+            ?>
+        </div>
 
     </div>
 
