@@ -105,6 +105,16 @@ CREATE TABLE `bannermaker` (
    foreign key (`username`) references `members`(`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `bannermakerimageuploads` (
+`id` int(10) UNSIGNED NOT NULL primary key auto_increment,
+`username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`filename` varchar(255) NOT NULL DEFAULT '',
+`filesize` int(11) NOT NULL DEFAULT '0',
+`filetype` varchar(255) NOT NULL DEFAULT '',
+`adddate` datetime not null,
+foreign key (`username`) references `members`(`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 create table `bannerspaid` (
 `id` integer unsigned not null primary key auto_increment,
 `username` varchar(255) not null default 'admin',
