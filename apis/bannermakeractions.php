@@ -3,7 +3,10 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 /**
- * Get the images for the folder the user selects from the dropdown in the Banner Maker app.
+ * Get the images for the folder the username selects from the dropdown in the Banner Maker app.
+ * OR get the usernames's own uploaded image list from the myimages folder.
+ * OR delete one of the user's banners in the Banner Maker.
+ * OR edit one of the username's banners in the Banner Maker.
 PHP 7.4+
 @author Sabrina Markon
 @copyright 2021 Sabrina Markon, PHPSiteScripts.com

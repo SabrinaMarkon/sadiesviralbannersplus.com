@@ -2,22 +2,32 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 /**
- * Get the images for the folder the user selects from the dropdown in the Banner Maker app.
+ * Get the images for the folder the user selects from the dropdown in the Banner Maker app OR their own folder uploads
 PHP 7.4+
 @author Sabrina Markon
 @copyright 2021 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
  **/
 
-// php://input here is the folder as a property value.
-$folder = file_get_contents('php://input');
+ if (!empty($_POST)) {
 
-if (!empty($folder)) {
-
+    require_once('../config/Database.php');
     require_once('../classes/BannerMaker.php');
     $bannermaker = new BannerMaker();
-    echo $bannermaker->fileTree($folder);
 
+    if (!empty($_POST['folder'])) {
+
+        $folder = $_POST['folder'];
+
+        if ($folder === 'member') {
+            // Username's own image uploads.
+            $username = $_POST['username'];
+            echo $bannermaker->UsernamesUploadedImagesFileTree($username);
+
+        } else {
+            // Normal image folder:
+            echo $bannermaker->fileTree($folder);
+        }
+
+    }
 }
-
-

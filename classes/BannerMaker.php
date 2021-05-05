@@ -68,10 +68,10 @@ class BannerMaker {
 
         $folder = "../images/thumbnails/" . $folder;
         $filetree = '';
-        $resize = '';
         $files = array_diff(scandir($folder), array('..', '.'));
         foreach ($files as $file)
         {
+            $resize = '';
             // make sure the file is an image.
             $filepartsarray = explode('.', $file);
             $extension = end($filepartsarray);
@@ -89,6 +89,42 @@ class BannerMaker {
         }
 
         return $filetree;
+    }
+
+    /**
+     * Get the list of files for the image library chooser from the username's own uploaded files.
+     * @param string $username is the username whose uploaded files we need to get.
+     * @return string $filetree is the HTML image list of all files in the chosen directory.
+     */
+    public function UsernamesUploadedImagesFileTree(string $username): string {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "select * from bannermakerimageuploads where username=? order by id desc";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        $savedimages = $q->fetchAll();
+
+        $uploadedfiletree = '';
+        foreach ($savedimages as $savedimage) {
+
+            $file = $savedimage['filename'];
+            $folder = "../myimages/thumbnails";
+            $resize = '';
+            $filepath = $folder . '/' . $file;
+            $filedata = getimagesize($filepath);
+            $width = $filedata[0];
+            $height = $filedata[1];
+            if ($width > 200) {
+                $resize = ' previewshrink';
+            }
+            $uploadedfiletree .= '<img  id="' . $file . '" class="imagepreviewdiv ui-widget-content' . $resize . '" src="' . (string)$filepath . '"><br>';
+        }
+
+        Database::disconnect();
+
+        return $uploadedfiletree;
     }
 
     /**

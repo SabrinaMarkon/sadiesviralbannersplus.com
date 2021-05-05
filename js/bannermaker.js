@@ -105,12 +105,25 @@ $(function() {
             } else {
                 $('#canvascontainer').css({ 'background' : pickbgcolor });
             }
+        } else if (folder === 'member') {
+            // Images that this specific member has uploaded to the myimages folder.
+            let username = $('#username').val();
+            $('#pickbgimage').empty();
+            $.ajax({
+                url: 'apis/bannermakerfolderimages.php',
+                type: "post",
+                data: { 'folder': folder, 'username' : username },
+                success: function(data){
+                    // update the display to show the chosen images in pickbgimage div:
+                    $('#pickbgimage').append(data);
+                }
+            });   
         } else {
             $('#pickbgimage').empty();
             $.ajax({
                 url: 'apis/bannermakerfolderimages.php',
                 type: "post",
-                data: folder,
+                data: { 'folder': folder },
                 success: function(data){
                     // update the display to show the chosen images in pickbgimage div:
                     $('#pickbgimage').append(data);
@@ -261,12 +274,25 @@ $(function() {
         var folder = this.value; // gives the id value of the SELECTED image directory in the selection box.
         if (folder === 'none') {
             $('#pickimage').empty();
+        } else if (folder === 'member') {
+            // Images that this specific member has uploaded to the myimages folder.
+            let username = $('#username').val();
+            $('#pickimage').empty();
+            $.ajax({
+                url: 'apis/bannermakerfolderimages.php',
+                type: "post",
+                data: { 'folder': folder, 'username' : username },
+                success: function(data){
+                    // update the display to show the chosen images in pickbgimage div:
+                    $('#pickimage').append(data);
+                }
+            });   
         } else {
             $('#pickimage').empty();
             $.ajax({
                 url: 'apis/bannermakerfolderimages.php',
                 type: "post",
-                data: folder,
+                data: { 'folder': folder },
                 success: function(data){
                     // update the display to show the chosen images in pickbgimage div:
                     $('#pickimage').append(data);

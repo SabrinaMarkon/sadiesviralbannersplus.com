@@ -12,6 +12,7 @@ echo $showcontent->showPage('Members Area Banner Maker Page');
 
 $today = date("YmdHis");
 $bannermaker = new BannerMaker();
+$memberuploaddir = "myimages/thumbnails";
 $directory = "images/thumbnails";
 $foldertree = $bannermaker->folderTree($directory);
 $savedimages = $bannermaker->getAllBannersForUsername($username);
@@ -62,6 +63,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <div style="height: 10px;"></div>
                             Select Image Category:<select id="pickbgimagefolder" class="editorinput">
                                 <option value="none">None</option>
+                                <option value="member">Your Uploads</option>
                                 <?php echo $foldertree ?>
                             </select>
                             <div style="height: 10px;"></div>
@@ -174,6 +176,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <div class="panel-body my-2">
                             Select Image Category:<select id="pickimagefolder" class="editorinput">
                                 <option value="none">None</option>
+                                <option value="member">Your Uploads</option>
                                 <?php echo $foldertree ?>
                             </select>
                             <div style="height: 10px;"></div>
@@ -190,9 +193,9 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 <option value="no">NO</option>
                             </select>
                             <div style="height: 10px;"></div>
-                            <!-- <label class="btn btn-default btn-file">
-                            Upload Image (doesn't work yet): <input type="file" style="display: none;">
-                            </label> -->
+                            <label class="btn btn-default btn-file">
+                            Upload Image (doesn't work yet): <input id="imageupload" type="file" style="display: none;">
+                            </label>
                         </div>
                     </div>
                 </div>
