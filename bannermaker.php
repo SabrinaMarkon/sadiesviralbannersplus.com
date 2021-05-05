@@ -194,7 +194,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
+                <div class="panel panel-default pb-3">
                     <div class="panel-heading">
                         <a data-toggle="collapse" href="#collapse6" class="btn btn-yellow">UPLOAD IMAGES</a>
                     </div>

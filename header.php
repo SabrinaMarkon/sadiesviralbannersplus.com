@@ -35,16 +35,21 @@
     <!-- Custom styles -->
     <link href="css/custom.css" rel="stylesheet" />
 
-    <!-- Image/banner maker app -->
-    <link href="css/bannermaker.css" rel="stylesheet">
-</head>
-
 <?php
 $urlfile = basename($_SERVER['REQUEST_URI']);
 $referurl = dirname($_SERVER['REQUEST_URI']);
+
+if ($urlfile === 'bannermaker') {
+    ?>
+    <!-- Image/banner maker app -->
+    <link href="css/bannermaker.css" rel="stylesheet">
+    <?php
+}
 ?>
 
-<body <?php if ($urlfile !== '/' && $urlfile !== '' && $referurl !== '/r') {
+</head>
+
+<body <?php if ($urlfile !== '/' && $urlfile !== '' && $urlfile !== 'bannermaker' && $referurl !== '/r') {
             echo 'style="padding-top: 100px;"';
         } else {
             echo 'style="padding-top: 0;"';
