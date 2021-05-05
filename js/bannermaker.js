@@ -642,8 +642,17 @@ $(function() {
         colors += '<option value="' + hex + '" style="background-color: ' + hex + '; color: ' + textcolor + '">' + color + ': ' + hex + '</option>';
     });
 
-    document.getElementById('pickbgcolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
-    document.getElementById('pickbordercolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
-    document.getElementById('picktextcolor').innerHTML = '<option disabled selected="selected">Select</option>' + colors;
+    const pickbgcolor = document.getElementById("pickbgcolor");
+    if (pickbgcolor != null) {
+        document.getElementById('pickbgcolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
+    }
+    const pickbordercolor = document.getElementById("pickbordercolor");
+    if (pickbordercolor != null) {
+        document.getElementById('pickbordercolor').innerHTML = '<option value="transparent" selected="selected">None</option>' + colors;
+    }
+    const picktextcolor = document.getElementById("picktextcolor");
+    if (picktextcolor != null) {
+        document.getElementById('picktextcolor').innerHTML = '<option disabled selected="selected">Select</option>' + colors;
+    }
 
 });
