@@ -12,7 +12,6 @@ echo $showcontent->showPage('Members Area Banner Maker Page');
 
 $today = date("YmdHis");
 $bannermaker = new BannerMaker();
-$memberuploaddir = "myimages/thumbnails";
 $directory = "images/thumbnails";
 $foldertree = $bannermaker->folderTree($directory);
 $savedimages = $bannermaker->getAllBannersForUsername($username);
@@ -36,7 +35,6 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
             <div class="bannermaker__sidebar-header">
                 Stuff To Add!
             </div>
-
             <div style="height: 10px;"></div>
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
@@ -170,7 +168,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a data-toggle="collapse" href="#collapse5" class="btn btn-yellow">IMAGES</a>
+                        <a data-toggle="collapse" href="#collapse5" class="btn btn-yellow">ADD IMAGES</a>
                     </div>
                     <div id="collapse5" class="panel-collapse collapse">
                         <div class="panel-body my-2">
@@ -193,9 +191,20 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 <option value="no">NO</option>
                             </select>
                             <div style="height: 10px;"></div>
-                            <label class="btn btn-default btn-file">
-                            Upload Image (doesn't work yet): <input id="imageupload" type="file" style="display: none;">
-                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" href="#collapse6" class="btn btn-yellow">UPLOAD IMAGES</a>
+                    </div>
+                    <div id="collapse6" class="panel-collapse collapse">
+                        <div class="panel-body my-2">
+                            Browse: <input type="file" id="uploadimage" class="editorinput"><span id="imageuploaderror">
+                            <span class="has-error">Files must be of type gif, jpg, or png.</span></span>
+                            <div style="height: 10px;"></div>
+                            <button id="imageupload" class="btn btn-pink half">UPLOAD</button>
+                            <div style="height: 10px;"></div>
                         </div>
                     </div>
                 </div>

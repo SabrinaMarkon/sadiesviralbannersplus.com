@@ -227,20 +227,20 @@ $(function() {
 
         var newid = $("#canvascontainer > div").length + 1;
 
-        // RESIZABLE TEXT (commented out because between this and the images, there are too many resize handles and font size can be specified beforehand)
-        // $('#canvascontainer').append($('<div id="' + newid + '"  class="ui-widget-content canvaslayer draggable" style="' + textstyle + '">' + text + '</div>')
-        //     .draggable({ containment : "#canvascontainer" })
-        //     .resizable({
-        //       containment: "#canvascontainer",
-        //       handles: "nw, ne, sw, se",
-        //       resize : function(event, ui) {
-        //       // handle fontsize here
-        //       //console.log(ui.size); // gives you the current size of the div
-        //       var size = ui.size;
-        //       // something like this change the values according to your requirements
-        //       $(this).css("font-size", (size.width * size.height)/1000 + "px");
-        //       }
-        //   }));
+        // RESIZABLE TEXT (Between this and the images, there can be MANY resize handles. Comment this block out if handle resizing of text is not wanted).
+        $('#canvascontainer').append($('<div id="' + newid + '"  class="ui-widget-content canvaslayer draggable" style="' + textstyle + '">' + text + '</div>')
+            .draggable({ containment : "#canvascontainer" })
+            .resizable({
+              containment: "#canvascontainer",
+              handles: "nw, ne, sw, se",
+              resize : function(event, ui) {
+              // handle fontsize here
+              //console.log(ui.size); // gives you the current size of the div
+              var size = ui.size;
+              // something like this change the values according to your requirements
+              $(this).css("font-size", (size.width * size.height)/1000 + "px");
+              }
+          }));
 
         $('#canvascontainer').append($('<div id="' + newid + '"  class="ui-widget-content canvaslayer draggable" style="' + textstyle + '">' + text + '</div>')
             .draggable({ containment : "#body" }));
