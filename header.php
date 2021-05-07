@@ -176,7 +176,7 @@ if ($urlfile === 'bannermaker') {
                                         <div class="col-lg-4" style="display: flex; align-items: center;">
                                             <div class="slider-content">
                                                 <h1 class="title">Sadie's Viral Banners +Plus</h1>
-                                                <p class="text">Jetting Your's Around The Globe Free!</p>
+                                                <p class="text">Jetting Yours Around The Globe Free!</p>
                                                 <ul class="slider-btn rounded-buttons">
                                                     <li><a class="main-btn rounded-one page-scroll" href="/#memberships">GET STARTED FREE!</a></li>
                                                 </ul>
