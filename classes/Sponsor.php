@@ -64,7 +64,25 @@ class Sponsor
 
         Database::disconnect();
 
-        return $affiliatearray;
+        return $affiliatearray; // contains [user's own accounttype, user's referid, user's referid's accounttype]
+    }
+
+    // Get an array of a user's sponsors (referids) up N levels.
+    public function getUsernamesReferidsUpToNthLevels(string $username, int $highestlevel = 1): array {
+
+        $alllevelreferids = []; // array of all referids for levels 1 thru $highestlevel.
+        $referidarray = []; // temporary array to hold current referid data.
+        $referid = $username; // the current username we need to get the referid for. We start with the username themselves.
+
+        for ($i = 1; $i <= $highestlevel; $i++) {
+
+            $referidarray = $this->getUsersAccounttypeReferidAndReferidAccounttype($referid); // contains [user's own accounttype, user's referid, user's referid's accounttype]
+            array_push($alllevelreferids, $referidarray); // Add to main array.
+            $referid = $referidarray[1]; // second item in affiliatearray array returned by getUsersAccounttypeReferidAndReferidAccounttype method is the referid for this level.
+            $referidarray = [];
+        }
+
+        return $alllevelreferids;
     }
 
     public function getRandomUsername(string $accounttype = "Free"): string {
