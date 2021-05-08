@@ -48,10 +48,12 @@ $ads = $banner->getAllAds();
 
     <form action="/admin/viralbanners" method="post" class="form" role="form">
 
-        <h3>Free Member Banner Page Settings</h3>
+        <h3>Free Member Viral Banner Page Settings</h3>
 
-        <label for="freebannerclickstosignup" class="mt-4">Member banners a new Free member has to click to signup:</label>
-        <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
+        <div>
+            <label for="freebannerclickstosignup" class="mt-4">Member banners a new Free member has to click to signup:</label>
+            <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
+        </div>
 
         <label class="mt-2">Banner slots included with Free membership:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
@@ -81,22 +83,27 @@ $ads = $banner->getAllAds();
         ?>
         </div>
         <?php
+            echo "<div class=\"blackstrong\">Free Members: Banner Slots on Free Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Free", $settings);
             }
+            echo "<div class=\"blackstrong\">Free Members: Banner Slots on Pro Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Pro", $settings);
             }
+            echo "<div class=\"blackstrong\">Free Members: Banner Slots on Gold Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Gold", $settings);
             }
         ?>
 
         <br /><br />
-        <h3>Pro Member Banner Page Settings</h3>
+        <h3>Pro Member Viral Banner Page Settings</h3>
 
-        <label for="probannerclickstosignup" class="mt-4">Member banners a new Pro member has to click to signup:</label>
-        <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
+        <div>
+            <label for="probannerclickstosignup" class="mt-4">Member banners a new Pro member has to click to signup:</label>
+            <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
+        </div>
 
         <label class="mt-2">Banner slots included with Pro membership:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
@@ -126,22 +133,27 @@ $ads = $banner->getAllAds();
         ?>
         </div>
         <?php
+            echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Free Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Free", $settings);
             }
+            echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Pro Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Pro", $settings);
             }
+            echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Gold Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Gold", $settings);
             }
         ?>
 
         <br /><br />
-        <h3>Gold Member Banner Page Settings</h3>
+        <h3>Gold Member Viral Banner Page Settings</h3>
 
-        <label for="goldbannerclickstosignup" class="mt-4">Member banners a new Gold member has to click to signup:</label>
-        <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
+        <div>
+            <label for="goldbannerclickstosignup" class="mt-4">Member banners a new Gold member has to click to signup:</label>
+            <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
+        </div>
 
         <label class="mt-2">Banner slots included with Gold membership:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">
@@ -171,12 +183,15 @@ $ads = $banner->getAllAds();
         ?>
         </div>
         <?php
+            echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Free Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Free", $settings);
             }
+            echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Pro Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Pro", $settings);
             }
+            echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Gold Referral Pages</div>";
             for ($k = 1; $k <= 6; $k++) {
                 echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Gold", $settings);
             }

@@ -477,6 +477,16 @@ h4.ja-white {
 .light-coral {
   color: #f7a1a1;
 }
+.bluestrong {
+  color: #0067F4;
+  font-weight: bold;
+  padding: 20px 0;
+}
+.blackstrong {
+  color: #121212;
+  font-weight: bold;
+  padding: 20px 0;
+}
 
 .content-wrapper {
   padding: 0 50px 30px;

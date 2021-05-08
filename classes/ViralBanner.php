@@ -247,32 +247,32 @@ class ViralBanner extends Banner
         }
 
 
-        $htmltoreturn .= `<label class="mt-2">Banner slots a ` . $referidaccounttype . ` member gets on their <strong>SECOND LEVEL</strong>  ` . $referralaccounttype . `  referral's page:</label>
-        <div class="bannerslot-checkboxes mb-3" style="display: flex;">`;
+        $htmltoreturn .= '<label class="mt-2">Banner slots a ' . $referidaccounttype . ' member gets on their <strong>' . $levelreferredtext . ' LEVEL</strong>  ' . $referralaccounttype . '  referral\'s page:</label>
+        <div class="bannerslot-checkboxes mb-3" style="display: flex;">';
 
         for ($i = 1; $i <= 14; $i += 3) {
 
-            $htmltoreturn .= `<div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">`;
+            $htmltoreturn .= '<div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">';
 
                 for ($j = $i; $j <= $i + 2; $j++) {
 
-                    $htmltoreturn .= `<div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="` . $settingname[$j] . `" 
-                        value="` . $j . `"`;
+                    $htmltoreturn .= '<div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="' . $settingname[$j] . '" 
+                        value="' . $j . '"';
 
                         if (in_array($j, explode(',', $settings[$settingname]))) {
-                            $htmltoreturn .= ` checked`;
+                            $htmltoreturn .= ' checked';
                         }
 
-                        $htmltoreturn .= `>
-                        <label class="form-check-label" for="` . $settingname[$j] . `">Slot #` . $j . `</label>
-                    </div>`;
+                        $htmltoreturn .= '>
+                        <label class="form-check-label" for="' . $settingname[$j] . '">Slot #' . $j . '</label>
+                    </div>';
                 }
             
-            $htmltoreturn .= `</div>`;
+            $htmltoreturn .= '</div>';
         }
 
-        $htmltoreturn .= `</div>`;
+        $htmltoreturn .= '</div>';
 
         return $htmltoreturn;
     }
