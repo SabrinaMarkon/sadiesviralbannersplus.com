@@ -214,5 +214,67 @@ class ViralBanner extends Banner
             </body>
             </html>';
     }
+
+    public function buildFormFieldsForAdminSettings(int $levelreferred = 1, string $referidaccounttype = "Free", $referralaccounttype = "Free", array $settings): string {
+
+        $htmltoreturn = "";
+        $levelreferredtext = "";
+        $referidacct = lcfirst($referidaccounttype);
+        $referralacct = lcfirst($referralaccounttype);
+        $settingname = $referidacct . "refers" . $referralacct . "bannerslots" . $levelreferred;
+
+        switch($levelreferred) {
+            case 1:
+                $levelreferredtext = "FIRST";
+                break;
+            case 2:
+                $levelreferredtext = "SECOND";
+                break;
+            case 3:
+                $levelreferredtext = "THIRD";
+                break;
+            case 4:
+                $levelreferredtext = "FOURTH";
+                break;
+            case 5:
+                $levelreferredtext = "FIFTH";
+                break;
+            case 6:
+                $levelreferredtext = "SIXTH";
+                break;
+            default:
+            $levelreferredtext = "FIRST";        
+        }
+
+
+        $htmltoreturn .= `<label class="mt-2">Banner slots a ` . $referidaccounttype . ` member gets on their <strong>SECOND LEVEL</strong>  ` . $referralaccounttype . `  referral's page:</label>
+        <div class="bannerslot-checkboxes mb-3" style="display: flex;">`;
+
+        for ($i = 1; $i <= 14; $i += 3) {
+
+            $htmltoreturn .= `<div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">`;
+
+                for ($j = $i; $j <= $i + 2; $j++) {
+
+                    $htmltoreturn .= `<div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="` . $settingname[$j] . `" 
+                        value="` . $j . `"`;
+
+                        if (in_array($j, explode(',', $settings[$settingname]))) {
+                            $htmltoreturn .= ` checked`;
+                        }
+
+                        $htmltoreturn .= `>
+                        <label class="form-check-label" for="` . $settingname[$j] . `">Slot #` . $j . `</label>
+                    </div>`;
+                }
+            
+            $htmltoreturn .= `</div>`;
+        }
+
+        $htmltoreturn .= `</div>`;
+
+        return $htmltoreturn;
+    }
     
 }

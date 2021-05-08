@@ -188,63 +188,144 @@ abstract class Ad
         }
         if ($this->adtable === "viralbanners") {
             
+            $sql = "update adminsettings set ";
+            $pdoarray = [];
+
             $newfreebannerclickstosignup = $post['freebannerclickstosignup'];
             $newprobannerclickstosignup = $post['probannerclickstosignup'];
             $newgoldbannerclickstosignup = $post['goldbannerclickstosignup'];
 
-            // checkbox arrays - store as csvs in database.
+            $sql .= "freebannerclickstosignup=?, probannerclickstosignup=?, goldbannerclickstosignup=?, ";
+            array_push($pdoarray, $newfreebannerclickstosignup, $newprobannerclickstosignup, $newgoldbannerclickstosignup);
+
+            // checkbox arrays - store as csvs in database:
+
+            ## FREE REFERRALS: ##
             $newfreebannerslots = '';
             if (isset($post['freebannerslots'])) {
                 $newfreebannerslots = implode(',', $post['freebannerslots']);
             }
-            $newfreerefersfreebannerslots = '';
-            if (isset($post['freerefersfreebannerslots'])) {
-                $newfreerefersfreebannerslots = implode(',', $post['freerefersfreebannerslots']);
+            $sql .= "freebannerslots=?, ";
+            array_push($pdoarray, $newfreebannerslots);
+            // free refers free referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $freerefersfreebannerslots = 'freerefersfreebannerslots' . $i;
+                $newfreerefersfreebannerslots = 'newfreerefersfreebannerslots' . $i;
+                $$newfreerefersfreebannerslots = '';
+                if (isset($post[$freerefersfreebannerslots])) {
+                    $$newfreerefersfreebannerslots = implode(',', $post[$freerefersfreebannerslots]);
+                }
+                $sql .= $freerefersfreebannerslots . "=?, ";
+                array_push($pdoarray, $$newfreerefersfreebannerslots);
             }
-            $newfreerefersprobannerslots = '';
-            if (isset($post['freerefersprobannerslots'])) {
-                $newfreerefersprobannerslots = implode(',', $post['freerefersprobannerslots']);
+            // free refers pro referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $freerefersprobannerslots = 'freerefersprobannerslots' . $i;
+                $newfreerefersprobannerslots = 'newfreerefersprobannerslots' . $i;
+                $$newfreerefersprobannerslots = '';
+                if (isset($post[$freerefersprobannerslots])) {
+                    $$newfreerefersprobannerslots = implode(',', $post[$freerefersprobannerslots]);
+                }
+                $sql .= $freerefersprobannerslots . "=?, ";
+                array_push($pdoarray, $$newfreerefersprobannerslots);
             }
-            $newfreerefersgoldbannerslots = '';
-            if (isset($post['freerefersgoldbannerslots'])) {
-                $newfreerefersgoldbannerslots = implode(',', $post['freerefersgoldbannerslots']);
+            // free refers gold referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $freerefersgoldbannerslots = 'freerefersgoldbannerslots' . $i;
+                $newfreerefersgoldbannerslots = 'newfreerefersgoldbannerslots' . $i;
+                $$newfreerefersgoldbannerslots = '';
+                if (isset($post[$freerefersgoldbannerslots])) {
+                    $$newfreerefersgoldbannerslots = implode(',', $post[$freerefersgoldbannerslots]);
+                }
+                $sql .= $freerefersgoldbannerslots . "=?, ";
+                array_push($pdoarray, $$newfreerefersgoldbannerslots);
             }
+
+            ## PRO REFERRALS: ##
             $newprobannerslots = '';
             if (isset($post['probannerslots'])) {
                 $newprobannerslots = implode(',', $post['probannerslots']);
             }
-            $newprorefersfreebannerslots = '';
-            if (isset($post['prorefersfreebannerslots'])) {
-                $newprorefersfreebannerslots = implode(',', $post['prorefersfreebannerslots']);
+            $sql .= "probannerslots=?, ";
+            array_push($pdoarray, $newprobannerslots);
+            // pro refers free referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $prorefersfreebannerslots = 'prorefersfreebannerslots' . $i;
+                $newprorefersfreebannerslots = 'newprorefersfreebannerslots' . $i;
+                $$newprorefersfreebannerslots = '';
+                if (isset($post[$prorefersfreebannerslots])) {
+                    $$newprorefersfreebannerslots = implode(',', $post[$prorefersfreebannerslots]);
+                }
+                $sql .= $prorefersfreebannerslots . "=?, ";
+                array_push($pdoarray, $$newprorefersfreebannerslots);
             }
-            $newprorefersprobannerslots = '';
-            if (isset($post['prorefersprobannerslots'])) {
-                $newprorefersprobannerslots = implode(',', $post['prorefersprobannerslots']);
+            // pro refers pro referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $prorefersprobannerslots = 'prorefersprobannerslots' . $i;
+                $newprorefersprobannerslots = 'newprorefersprobannerslots' . $i;
+                $$newprorefersprobannerslots = '';
+                if (isset($post[$prorefersprobannerslots])) {
+                    $$newprorefersprobannerslots = implode(',', $post[$prorefersprobannerslots]);
+                }
+                $sql .= $prorefersprobannerslots . "=?, ";
+                array_push($pdoarray, $$newprorefersprobannerslots);
             }
-            $newprorefersgoldbannerslots = '';
-            if (isset($post['prorefersgoldbannerslots'])) {
-                $newprorefersgoldbannerslots = implode(',', $post['prorefersgoldbannerslots']);
+            // pro refers gold referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $prorefersgoldbannerslots = 'prorefersgoldbannerslots' . $i;
+                $newprorefersgoldbannerslots = 'newprorefersgoldbannerslots' . $i;
+                $$newprorefersgoldbannerslots = '';
+                if (isset($post[$prorefersgoldbannerslots])) {
+                    $$newprorefersgoldbannerslots = implode(',', $post[$prorefersgoldbannerslots]);
+                }
+                $sql .= $prorefersgoldbannerslots . "=?, ";
+                array_push($pdoarray, $$newprorefersgoldbannerslots);
             }
+
+            ## GOLD REFERRALS: ##
             $newgoldbannerslots = '';
             if (isset($post['goldbannerslots'])) {
                 $newgoldbannerslots = implode(',', $post['goldbannerslots']);
             }
-            $newgoldrefersfreebannerslots = '';
-            if (isset($post['goldrefersfreebannerslots'])) {
-                $newgoldrefersfreebannerslots = implode(',', $post['goldrefersfreebannerslots']);
+            $sql .= "goldbannerslots=?, ";
+            array_push($pdoarray, $newgoldbannerslots);
+            // gold refers free referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $goldrefersfreebannerslots = 'goldrefersfreebannerslots' . $i;
+                $newgoldrefersfreebannerslots = 'newgoldrefersfreebannerslots' . $i;
+                $$newgoldrefersfreebannerslots = '';
+                if (isset($post[$goldrefersfreebannerslots])) {
+                    $$newgoldrefersfreebannerslots = implode(',', $post[$goldrefersfreebannerslots]);
+                }
+                $sql .= $goldrefersfreebannerslots . "=?, ";
+                array_push($pdoarray, $$newgoldrefersfreebannerslots);
             }
-            $newgoldrefersprobannerslots = '';
-            if (isset($post['goldrefersprobannerslots'])) {
-                $newgoldrefersprobannerslots = implode(',', $post['goldrefersprobannerslots']);
+            // gold refers pro referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $goldrefersprobannerslots = 'goldrefersprobannerslots' . $i;
+                $newgoldrefersprobannerslots = 'newgoldrefersprobannerslots' . $i;
+                $$newgoldrefersprobannerslots = '';
+                if (isset($post[$goldrefersprobannerslots])) {
+                    $$newgoldrefersprobannerslots = implode(',', $post[$goldrefersprobannerslots]);
+                }
+                $sql .= $goldrefersprobannerslots . "=?, ";
+                array_push($pdoarray, $$newgoldrefersprobannerslots);
             }
-            $newgoldrefersgoldbannerslots = '';
-            if (isset($post['goldrefersgoldbannerslots'])) {
-                $newgoldrefersgoldbannerslots = implode(',', $post['goldrefersgoldbannerslots']);
+            // gold refers gold referral chain:
+            for ($i = 1; $i <= 6; $i++) {
+                $goldrefersgoldbannerslots = 'goldrefersgoldbannerslots' . $i;
+                $newgoldrefersgoldbannerslots = 'newgoldrefersgoldbannerslots' . $i;
+                $$newgoldrefersgoldbannerslots = '';
+                if (isset($post[$goldrefersgoldbannerslots])) {
+                    $$newgoldrefersgoldbannerslots = implode(',', $post[$goldrefersgoldbannerslots]);
+                }
+                $sql .= $goldrefersgoldbannerslots . "=?, ";
+                array_push($pdoarray, $$newgoldrefersgoldbannerslots);
             }
-
-            $sql = "update adminsettings set freebannerclickstosignup=?, freebannerslots=?, freerefersfreebannerslots=?, freerefersprobannerslots=?, freerefersgoldbannerslots=?, probannerclickstosignup=?, probannerslots=?, prorefersfreebannerslots=?, prorefersprobannerslots=?, prorefersgoldbannerslots=?, goldbannerclickstosignup=?, goldbannerslots=?, goldrefersfreebannerslots=?, goldrefersprobannerslots=?, goldrefersgoldbannerslots=?";
+            
+            $sql = mb_substr($sql, 0, -2); // Remove last comma and space.
             $q = $pdo->prepare($sql);
-            $q->execute([$newfreebannerclickstosignup, $newfreebannerslots, $newfreerefersfreebannerslots, $newfreerefersprobannerslots, $newfreerefersgoldbannerslots, $newprobannerclickstosignup, $newprobannerslots, $newprorefersfreebannerslots, $newprorefersprobannerslots, $newprorefersgoldbannerslots, $newgoldbannerclickstosignup, $newgoldbannerslots, $newgoldrefersfreebannerslots, $newgoldrefersprobannerslots, $newgoldrefersgoldbannerslots]);
+            $q->execute($pdoarray);
         }
         if ($this->adtable === "networksolos") {
             $adprice = $post['networksoloprice'];
