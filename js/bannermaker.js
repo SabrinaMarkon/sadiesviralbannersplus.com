@@ -349,6 +349,41 @@ $(function() {
         }
     });
 
+    // VALIDATE IMAGE FILE BEFORE UPLOADING:
+    $('#imageuploaderror').html('');
+    $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
+    $(':file').on('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const filename = file.name;
+            const filesize = file.size;
+            const fileextension = file.type;
+            // const fileextension = file.name.replace(/^.*\./, '');
+            if (filename == '') {
+                $('#imageuploaderror').html('<span class="has-error">File cannot be blank.</span>');
+                $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+            } else if (fileextension != 'image/gif' && fileextension != 'image/jpeg' && fileextension != 'image/png' && fileextension != 'image/svg+xml' && fileextension != 'image/webp') {
+                $('#imageuploaderror').html('<span class="has-error">File type must be gif, jpg, png, svg, or webp.</span>');
+                $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+            } else if (filesize > 2 * 1024 * 1024) {
+                $('#imageuploaderror').html('<span class="has-error">File size can be 5 MB maximum.</span>');
+                $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+            } else {
+                $('#imageuploaderror').html('');
+                $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
+            }
+        } else {
+            $('#imageuploaderror').html('');
+            $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});       
+        }
+    });
+
+    // UPLOAD AN IMAGE:
+    $('#imageupload').on('click', function() {
+        const imagefiletoupload = $('#imagefiletoupload').val();
+        console.log(imagefiletoupload);
+    });
+
     // UNDO ONE BY ONE:
     $('#undo').on('click', function() {
         if ($('#canvascontainer').find('.canvaslayer').length) {

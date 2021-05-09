@@ -200,8 +200,8 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                     </div>
                     <div id="collapse6" class="panel-collapse collapse">
                         <div class="panel-body my-2">
-                            Browse: <input type="file" id="uploadimage" class="editorinput"><span id="imageuploaderror">
-                            <span class="has-error">Files must be of type gif, jpg, or png.</span></span>
+                            Browse: <input type="file" id="uploadimage" class="editorinput">
+                            <span id="imageuploaderror"></span>
                             <div style="height: 10px;"></div>
                             <button id="imageupload" class="btn btn-pink half">UPLOAD</button>
                             <div style="height: 10px;"></div>
