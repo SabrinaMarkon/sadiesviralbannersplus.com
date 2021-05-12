@@ -202,7 +202,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                         <div class="panel-body my-2">
                             <form id="imageuploadform" method="post" enctype="multipart/form-data">
                                 <input type="file" name="uploadimage" id="uploadimage" multiple class="editorinput" hidden>
-                                <label for="uploadimage" class="btn btn-pink">CHOOSE FILES</label>
+                                <label for="uploadimage" class="btn btn-pink initial">CHOOSE FILES</label>
                                 <span id="file-chosen">No files chosen</span>
                                 <span id="imageuploaderror"></span>
                                 <div style="height: 15px;"></div>

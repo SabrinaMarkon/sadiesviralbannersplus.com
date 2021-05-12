@@ -105,6 +105,10 @@ body {
   display: inline-block;
   width: 40%;
 }
+.btn-pink.initial {
+  display: inline-block;
+  width: initial;
+}
 .btn-leftdrawer {
   width: 55px;
   height: 55px;
