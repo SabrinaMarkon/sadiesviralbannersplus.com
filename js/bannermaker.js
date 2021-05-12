@@ -349,10 +349,18 @@ $(function() {
         }
     });
 
+    // CUSTOM FILE UPLOAD BUTTON EVENT LISTENER TO SHOW FILE NAME OR NO FILE CHOSEN:
+    document.getElementById('uploadimage').addEventListener('change', function(){
+        document.getElementById('file-chosen').innerHTML = '';
+        for (let i = 0; i < this.files.length; i++) {
+            document.getElementById('file-chosen').innerHTML += this.files[i].name + '<br />';
+        }
+    });
+
     // VALIDATE IMAGE FILE BEFORE UPLOADING:
     $('#imageuploaderror').html('');
     $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
-    $(':file').on('change', function() {
+    $('input:file').on('change', function() {
         const file = this.files[0];
         if (file) {
             const filename = file.name;
@@ -379,9 +387,35 @@ $(function() {
     });
 
     // UPLOAD AN IMAGE:
-    $('#imageupload').on('click', function() {
-        const imagefiletoupload = $('#imagefiletoupload').val();
-        console.log(imagefiletoupload);
+    $('#imageuploadform').submit(async function(e) {
+        
+        e.preventDefault();
+
+        $('#imageuploaderror').html('');
+        $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});  
+        
+        let formData = new FormData();
+        let files = $('#uploadimage')[0].files;
+        // console.log(files);
+        if (files.length > 0) {
+
+            formData.append('imagefile', files[0]);
+
+            let response = await $.ajax({
+                url: 'apis/bannermakeractions.php',
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    alert(response);
+                }
+            });
+
+        } else {
+            $('#imageuploaderror').html('<span class="has-error">File cannot be blank.</span>');
+            $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+        }
     });
 
     // UNDO ONE BY ONE:
