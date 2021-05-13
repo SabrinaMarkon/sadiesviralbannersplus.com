@@ -406,23 +406,44 @@ $(function() {
         
         let formData = new FormData();
         let files = $('#uploadimage')[0].files;
-        // console.log(files);
         if (files.length > 0) {
 
-            formData.append('imagefile', files[0]);
+            // Add each file to the formData object (which is just a set of key/value pairs)
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);   
+            }
 
-            console.log(formData);
+            // When logging a formData object with just console.log(formData) it always returns empty, as you can't log formData. 
+            // If you just have to log it before sending it, you can use entries() to get the entries in the formData object.
+            for (var key of formData.entries()) {
+                console.log(key[0] + ', ' + key[1].name);
+            }
 
-            $.ajax({
-                url: 'apis/bannermakeractions.php',
-                type: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    alert(response);
+            async function uploadImages() {
+                let result = '';
+                try {
+                    result = await $.ajax({
+                        url: 'apis/bannermakeractions.php',
+                        type: 'post',
+                        data: formData,
+                        // dataType: 'json',
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            console.log("success");
+                        },
+                        error: function(xhr, status, error){
+                            alert("An error occured: " + status + " " + error);
+                            // An error occured: parsererror SyntaxError: Unexpected token E in JSON at position 2
+                        }
+                    });
+                    return result;
+                } catch(error) {
+                    console.error(`Error: ${error}`);
                 }
-            });
+            }
+            const uploadResults = await uploadImages();
+            console.log(uploadResults);
 
         } else {
             $('#imageuploaderror').html('<span class="has-error">File cannot be blank.</span>');

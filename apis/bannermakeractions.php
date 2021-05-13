@@ -12,25 +12,37 @@ PHP 7.4+
 @copyright 2021 Sabrina Markon, PHPSiteScripts.com
 @license LICENSE.md
  **/
-if (!empty($_POST)) {
+if (!empty($_POST) && empty($_FILES)) {
     
-    $action = $_POST['action'];
-    $id = $_POST['id'];
+    $action = '';
+    $id = '';
+    if (!empty($_POST['action']) && !empty($_POST['id'])) {
 
-    require_once('../config/Database.php');
-    require_once('../classes/BannerMaker.php');
-    $bannermaker = new BannerMaker();
+        $action = $_POST['action'];
+        $id = $_POST['id'];
 
-    if ($action === 'delete') {
-        echo $bannermaker->deleteBanner($id);
+        require_once('../config/Database.php');
+        require_once('../classes/BannerMaker.php');
+        $bannermaker = new BannerMaker();
+    
+        if ($action === 'delete' && !empty($id)) {
+            echo $bannermaker->deleteBanner($id);
+        }
+        elseif ($action === 'edit' && !empty($id)) {
+            $banner = $bannermaker->showBanner($id);
+            echo json_encode($banner);
+        }
+        else {
+            echo "Missing data";
+        }
+    } else {
+        echo "Nothing posted";
     }
-    elseif ($action === 'edit') {
-        $banner = $bannermaker->showBanner($id);
-        echo json_encode($banner);
+
+} elseif (!empty($_FILES)) {
+    // echo "Error";
+    foreach ($_FILES as $file) {
+        echo $file['name'];
     }
-    else {
-        print_r($_POST);
-    }
-} else {
-    echo "duh";
+
 }
