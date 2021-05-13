@@ -28,4 +28,9 @@ if (!empty($_POST)) {
         $banner = $bannermaker->showBanner($id);
         echo json_encode($banner);
     }
+    else {
+        print_r($_POST);
+    }
+} else {
+    echo "duh";
 }

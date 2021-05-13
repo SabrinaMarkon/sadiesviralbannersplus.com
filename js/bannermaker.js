@@ -353,7 +353,7 @@ $(function() {
     document.getElementById('uploadimage').addEventListener('change', function(){
         document.getElementById('file-chosen').innerHTML = '';
         for (let i = 0; i < this.files.length; i++) {
-            document.getElementById('file-chosen').innerHTML += this.files[i].name + '<br />';
+            document.getElementById('file-chosen').innerHTML += `${this.files[i].name}<br />`;
         }
     });
 
@@ -361,28 +361,38 @@ $(function() {
     $('#imageuploaderror').html('');
     $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
     $('input:file').on('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const filename = file.name;
-            const filesize = file.size;
-            const fileextension = file.type;
-            // const fileextension = file.name.replace(/^.*\./, '');
-            if (filename == '') {
-                $('#imageuploaderror').html('<span class="has-error">File cannot be blank.</span>');
-                $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
-            } else if (fileextension != 'image/gif' && fileextension != 'image/jpeg' && fileextension != 'image/png' && fileextension != 'image/svg+xml' && fileextension != 'image/webp') {
-                $('#imageuploaderror').html('<span class="has-error">File type must be gif, jpg, png, svg, or webp.</span>');
-                $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
-            } else if (filesize > 2 * 1024 * 1024) {
-                $('#imageuploaderror').html('<span class="has-error">File size can be 5 MB maximum.</span>');
-                $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+        const files = this.files;
+        let i = files.length - 1;
+        while (i >= 0) {
+            const file = files[i];
+            if (file) {
+                const filename = file.name;
+                const filesize = file.size;
+                const fileextension = file.type;
+                // const fileextension = file.name.replace(/^.*\./, '');
+                if (filename == '') {
+                    $('#imageuploaderror').html('<span class="has-error">File cannot be blank.</span>');
+                    $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+                    $i = 0; // error so exit while loop and show error.
+                } else if (fileextension != 'image/gif' && fileextension != 'image/jpeg' && fileextension != 'image/png' && fileextension != 'image/svg+xml' && fileextension != 'image/webp') {
+                    $('#imageuploaderror').html('<span class="has-error">File type must be gif, jpg, png, svg, or webp.</span>');
+                    $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+                    $i = 0; // error so exit while loop and show error.
+                } else if (filesize > 2 * 1024 * 1024) {
+                    $('#imageuploaderror').html('<span class="has-error">File size can be 5 MB maximum.</span>');
+                    $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+                    $i = 0; // error so exit while loop and show error.
+                } else {
+                    // No errors so hide error div and decrement i.
+                    $('#imageuploaderror').html('');
+                    $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
+                }
             } else {
+                // There is no file[i] for some reason, so make sure error div is hidden and decrement i.
                 $('#imageuploaderror').html('');
-                $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
+                $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});       
             }
-        } else {
-            $('#imageuploaderror').html('');
-            $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});       
+            i--;
         }
     });
 
@@ -401,7 +411,9 @@ $(function() {
 
             formData.append('imagefile', files[0]);
 
-            let response = await $.ajax({
+            console.log(formData);
+
+            $.ajax({
                 url: 'apis/bannermakeractions.php',
                 type: 'post',
                 data: formData,

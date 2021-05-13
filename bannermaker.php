@@ -203,9 +203,10 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <form id="imageuploadform" method="post" enctype="multipart/form-data">
                                 <input type="file" name="uploadimage" id="uploadimage" multiple class="editorinput" hidden>
                                 <label for="uploadimage" class="btn btn-pink initial">CHOOSE FILES</label>
+                                <div style="height: 10px;"></div>
                                 <span id="file-chosen">No files chosen</span>
                                 <span id="imageuploaderror"></span>
-                                <div style="height: 15px;"></div>
+                                <div style="height: 10px;"></div>
                                 <div class='progress' id="progress_div">
                                     <div class='bar' id='bar1'></div>
                                     <div class='percent' id='percent1'>0%</div>

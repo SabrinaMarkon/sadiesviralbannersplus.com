@@ -131,6 +131,18 @@ body {
   vertical-align: middle;
 }
 
+#file-chosen {
+  /* word-wrap: break-word; */
+  background: #fff;
+  color: #121212;
+  width: 90%;
+  padding: 5px;
+  overflow-x: auto;
+  border-radius: 5px;
+  box-shadow: -2px -2px #121212;
+  text-align: left;
+}
+
 /* Move dropdown triangles to the right part of the sidebar instead of directly next to the text. */
 a[data-toggle="collapse"] {
   position: relative;
