@@ -378,8 +378,8 @@ $(function() {
                     $('#imageuploaderror').html('<span class="has-error">File type must be gif, jpg, png, svg, or webp.</span>');
                     $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
                     $i = 0; // error so exit while loop and show error.
-                } else if (filesize > 2 * 1024 * 1024) {
-                    $('#imageuploaderror').html('<span class="has-error">File size can be 5 MB maximum.</span>');
+                } else if (filesize > 5 * 1024 * 1024) {
+                    $('#imageuploaderror').html('<span class="has-error">File size can be maximum 5 MB.</span>');
                     $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
                     $i = 0; // error so exit while loop and show error.
                 } else {
@@ -425,6 +425,7 @@ $(function() {
 
             async function uploadImages() {
                 let result = '';
+                let messageClass = '';
                 try {
                     result = await $.ajax({
                         url: 'apis/bannermakeractions.php',
@@ -433,17 +434,25 @@ $(function() {
                         contentType: false, // It’s imperative that you set the contentType option to false, forcing jQuery not to add a Content-Type header for you, otherwise, the boundary string will be missing from it. 
                         processData: false, // Also, you must leave the processData flag set to false, otherwise, jQuery will try to convert your FormData into a string, which will fail.
                         success: function(response) {
-                            // console.log("success");
-                            // TODO: show success message in UI.
+                            if (response == 'Upload successful!') {
+                                messageClass = 'has-success';
+                            } else {
+                                messageClass = 'has-error';
+                            }
+                            $('#imageuploaderror').html(`<span class="${messageClass}">${response}</span>`);
+                            $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
                         },
                         error: function(xhr, status, error){
-                            // alert("An error occured: " + xhr + " " + status + " " + error);
-                            // TODO: Show error message (to user or in console?)
+                            // console.log("An error occured: " + xhr + " " + status + " " + error);
+                            $('#imageuploaderror').html(`<span class="has-error">Error: ${error}</span>`);
+                            $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
                         }
                     });
                     return result;
                 } catch(error) {
-                    console.error(`Error: ${error}`);
+                    // console.error(`Error: ${error}`);
+                    $('#imageuploaderror').html(`<span class="has-error">Error: ${error}</span>`);
+                    $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
                 }
             }
             const uploadResults = await uploadImages();

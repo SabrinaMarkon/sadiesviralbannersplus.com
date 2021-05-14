@@ -136,7 +136,7 @@ body {
   background: #fff;
   color: #121212;
   width: 90%;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   overflow-x: auto;
   border-radius: 5px;
   box-shadow: -2px -2px #121212;
@@ -237,14 +237,20 @@ a[data-toggle="collapse"] {
   padding: 0;
 }
 
-.has-error {
+.has-error, .has-success {
   width: 90%;
-  color: #ff4343;
-  background: #ffd633;
   border: 2px solid #fff;
   box-shadow: 1px 1px 0 #121212;
   font-weight: bold;
   margin: 3px;
+}
+.has-error {
+  color: #ff4343;
+  background: #ffd633;
+}
+.has-success {
+  color: #0067f4;
+  background: #fff;
 }
 .alert {
   margin: auto;

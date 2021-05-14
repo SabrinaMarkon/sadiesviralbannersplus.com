@@ -129,6 +129,8 @@ class BannerMaker {
 
     /**
      * Save a Banner Maker banner.
+     * @param string $username is the current logged in user.
+     * @param array $post are the banner details.
      * @return string $show is the message shown to the user after saving the banner.
      */
     public function saveBanner(string $username, array $post): string {
@@ -251,7 +253,7 @@ class BannerMaker {
 
     /**
      * Remove the specified resource from storage.
-     * @param int $id
+     * @param int $id is the database id of the banner.
      * @return string $banner is the message showing the results of the deletion.
      */
     public function deleteBanner(int $id): string
@@ -272,5 +274,66 @@ class BannerMaker {
         Database::disconnect();
 
         return "<div class=\"alert alert-success\" style=\"width:75%;\"><strong>The Banner was Deleted</strong></div>";
+    }
+
+    /**
+     * User uploads images from Banner Maker app.
+     * @param string $username is the current logged in user.
+     * @param array $imageuploads is the $_FILE data of images uploaded by the user.
+     * @return string $banner is the message showing the results of the deletion.
+     */
+    public function uploadImages(string $username, array $imageuploads): string
+    {
+
+        $numberofimages = count($imageuploads);
+
+        if ($numberofimages < 1) {
+            return "You didn't select any images.";
+        }
+
+        for ($i = 0; $i < $numberofimages; $i++) {
+    
+            // Data for each uploaded image file:
+            $image_name = $_FILES['imageuploads']['name'][$i];
+            $image_extension = explode(".", $image_name)[1];
+            $image_type = $_FILES['imageuploads']['type'][$i]; // mime type (ie. image/jpeg).
+            $image_tmp_name = $_FILES['imageuploads']['tmp_name'][$i]; // server temp filename (ie. /tmp/phpuI8wMW).
+            $image_error = $_FILES['imageuploads']['error'][$i]; // 0 if no error.
+            $image_size = $_FILES['imageuploads']['size'][$i];
+    
+            // SERVER-SIDE VALIDATION (JS does client side before this point as well)
+            if ($image_name === '' || $image_tmp_name === '') {
+                return "File cannot be blank.";
+            }
+            if ($image_extension !== 'gif' && $image_extension !== 'jpeg' && $image_extension !== 'jpg' && $image_extension !== 'jfif' && $image_extension !== 'png' && $image_extension !== 'svg' && $image_extension !== 'webp') {
+                return "File type must be gif, jpg, png, svg, or webp.";
+            }
+            if ($image_size > 5 * 1024 * 1024) {
+                return "File size can be maximum 5 MB.";
+            }
+    
+            // UPLOAD FILE NOW:
+    
+            //Save the image with a random filename.
+            $filenamelong = md5(rand(0,9999999));
+            $filenameshort = substr($filenamelong, 0, 12);
+            $today = date("YmdHis");
+            $filename = $today . $filenameshort . "." . $image_extension;
+            $filepath = '../myimages/' . $filename;
+    
+            // write the file to the server.
+            $uploaded = move_uploaded_file($image_tmp_name, $filepath);
+    
+            // Save image into the bannermakerimageuploads database table.
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "insert into bannermakerimageuploads (username, filename, filesize, filetype, adddate) values (?, ?, ?, ?, NOW())";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($username, $filename, $image_size, $image_type));
+    
+            Database::disconnect();
+        }
+
+        return "Upload successful!";
     }
 }
