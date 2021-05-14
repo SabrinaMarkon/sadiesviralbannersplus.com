@@ -410,8 +410,12 @@ $(function() {
 
             // Add each file to the formData object (which is just a set of key/value pairs)
             for (let i = 0; i < files.length; i++) {
-                formData.append('files', files[i]);   
+                formData.append('imageuploads[]', files[i]);   
             }
+
+            // Append username to formData so we can save to the uploads to the database for this member.
+            let username = $('#uploadusername').val();
+            formData.append('username', username);
 
             // When logging a formData object with just console.log(formData) it always returns empty, as you can't log formData. 
             // If you just have to log it before sending it, you can use entries() to get the entries in the formData object.
@@ -426,15 +430,15 @@ $(function() {
                         url: 'apis/bannermakeractions.php',
                         type: 'post',
                         data: formData,
-                        // dataType: 'json',
-                        contentType: false,
-                        processData: false,
+                        contentType: false, // It’s imperative that you set the contentType option to false, forcing jQuery not to add a Content-Type header for you, otherwise, the boundary string will be missing from it. 
+                        processData: false, // Also, you must leave the processData flag set to false, otherwise, jQuery will try to convert your FormData into a string, which will fail.
                         success: function(response) {
-                            console.log("success");
+                            // console.log("success");
+                            // TODO: show success message in UI.
                         },
                         error: function(xhr, status, error){
-                            alert("An error occured: " + status + " " + error);
-                            // An error occured: parsererror SyntaxError: Unexpected token E in JSON at position 2
+                            // alert("An error occured: " + xhr + " " + status + " " + error);
+                            // TODO: Show error message (to user or in console?)
                         }
                     });
                     return result;
@@ -443,7 +447,7 @@ $(function() {
                 }
             }
             const uploadResults = await uploadImages();
-            console.log(uploadResults);
+            console.log(uploadResults); // TODO: Or should success message appear to user UI here?
 
         } else {
             $('#imageuploaderror').html('<span class="has-error">File cannot be blank.</span>');
