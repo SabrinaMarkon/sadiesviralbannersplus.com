@@ -564,9 +564,17 @@ $(function() {
                     var pickbgimage_filename = String(pickbgimage_path.split('/').slice(-1)); // get the filename of the background-image property.
                     var pickbgimage_folder_and_filename = String(pickbgimage_path.split('/').slice(-2). join('/')); // get the folder and filename of the background-image property.
                     //alert(pickbgimage_filename + ' ' + pickbgimage_folder_and_filename);
+                    var pickbgimage_folder = String(pickbgimage_folder_and_filename.split('/').shift());
                     if (pickbgimage_filename !== 'none' && pickbgimage_filename !== undefined && pickbgimage_filename !== '' && pickbgimage_filename !== 'canvasbg.gif') {
-                        // apply the full sized image from editorimages image library, rather than the thumbnail.
-                        var pickbgimage_path = 'images/editorimages/' + pickbgimage_folder_and_filename;
+                        let pickbgimage_path = '';
+                        if (pickbgimage_folder === 'myimages') {
+                            // User uploaded image, so path should be myimages/filename.jpg/png/etc.
+                            pickbgimage_path = pickbgimage_folder_and_filename;
+                        } else {
+                            // Chosen background from editorimages so:
+                            // apply the full sized image from editorimages image library, rather than the thumbnail.
+                            pickbgimage_path = 'images/editorimages/' + pickbgimage_folder_and_filename;
+                        } 
                         img_obj.bgimage = pickbgimage_path;
                     }
                 }
