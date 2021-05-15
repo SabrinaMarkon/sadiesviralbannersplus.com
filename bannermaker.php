@@ -213,7 +213,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                                 </div>
                                 <div style="height: 10px;"></div>
                                 <input type="hidden" id="uploadusername" name="uploadusername" value="<?php echo $username; ?>">
-                                <button type="submit" class="btn btn-pink half">UPLOAD</button>
+                                <button type="submit" id="uploadbutton" class="btn btn-pink half center">UPLOAD</button>
                             </form>
                             <div id='output_image'></div>
                             <div style="height: 10px;"></div>

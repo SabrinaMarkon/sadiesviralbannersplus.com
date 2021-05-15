@@ -109,6 +109,9 @@ body {
   display: inline-block;
   width: initial;
 }
+.center {
+  margin: 10px auto;
+}
 .btn-leftdrawer {
   width: 55px;
   height: 55px;

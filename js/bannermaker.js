@@ -360,6 +360,7 @@ $(function() {
     // VALIDATE IMAGE FILE BEFORE UPLOADING:
     $('#imageuploaderror').html('');
     $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
+    $('#uploadbutton').css({'visibility' : 'hidden', 'display' : 'none'});
     $('input:file').on('change', function() {
         const files = this.files;
         let i = files.length - 1;
@@ -373,25 +374,31 @@ $(function() {
                 if (filename == '') {
                     $('#imageuploaderror').html('<span class="has-error">File cannot be blank.</span>');
                     $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+                    $('#uploadbutton').css({'visibility' : 'hidden', 'display' : 'none'});
                     $i = 0; // error so exit while loop and show error.
                 } else if (fileextension != 'image/gif' && fileextension != 'image/jpeg' && fileextension != 'image/png' && fileextension != 'image/svg+xml' && fileextension != 'image/webp') {
                     $('#imageuploaderror').html('<span class="has-error">File type must be gif, jpg, png, svg, or webp.</span>');
                     $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+                    $('#uploadbutton').css({'visibility' : 'hidden', 'display' : 'none'});
                     $i = 0; // error so exit while loop and show error.
                 } else if (filesize > 5 * 1024 * 1024) {
                     $('#imageuploaderror').html('<span class="has-error">File size can be maximum 5 MB.</span>');
                     $('#imageuploaderror').css({'visibility' : 'visible', 'display' : 'block'});
+                    $('#uploadbutton').css({'visibility' : 'hidden', 'display' : 'none'});
                     $i = 0; // error so exit while loop and show error.
                 } else {
                     // No errors so hide error div and decrement i.
                     $('#imageuploaderror').html('');
                     $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
+                    $('#uploadbutton').css({'visibility' : 'visible', 'display' : 'block'});
                 }
             } else {
                 // There is no file[i] for some reason, so make sure error div is hidden and decrement i.
                 $('#imageuploaderror').html('');
-                $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});       
+                $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});      
+                $('#uploadbutton').css({'visibility' : 'hidden', 'display' : 'none'}); 
             }
+            // Decrement i.
             i--;
         }
     });
