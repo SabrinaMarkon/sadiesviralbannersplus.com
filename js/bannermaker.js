@@ -535,53 +535,59 @@ $(function() {
             bg = $('#canvascontainer').css('background-color');
         }
         $(".ui-resizable-handle").hide();
+        window.scrollTo(0,0);
         html2canvas($("#canvascontainer"), {
+            // height: $("#bannerheight").val(),
+            // windowHeight: $("#bannerheight").val(),
+            scrollX: -window.scrollX,
+            scrollY: -window.scrollY,
+            windowWidth: document.documentElement.offsetWidth,
+            windowHeight: document.documentElement.offsetHeight,
             background: bg,
             logging: true,
-            allowTaint: true,
-            onrendered: function(canvas) {
-                theCanvas = canvas;
-                $('#savediv').append('<h3 class="my-3">Your Banner:</h3>');
-                $('#savediv').append(canvas);
-                //Show the download button.
-                $('#savebuttondiv').show();
-                // Set hidden field's value to image data (base-64 string)
-                $('#img_val').val(canvas.toDataURL("image/png"));
-                // Put other settings for the image in an object and assign to img_obj hidden field.
-                var img_obj = new Object();
-                img_obj.width = $("#bannerwidth").val();
-                img_obj.height = $("#bannerheight").val();
-                img_obj.bgcolor = $("#pickbgcolor").val();
-                img_obj.bordercolor = $("#pickbordercolor").val();
-                img_obj.borderwidth = $("#pickborderwidth").val();
-                img_obj.borderstyle = $("#pickborderstyle").val();
-                // get img_obj.bgimage if there is one:
-                var pickbgimage_url = $('#canvascontainer').css('background-image');
-                img_obj.bgimage = 'none'; // by default
-                if (pickbgimage_url !== 'none') {
-                    // chance img_ob.bgimage to file path instead of 'none'.
-                    var pickbgimage_path = pickbgimage_url.substring(5, pickbgimage_url.length - 2); // remove the url('') part of the background-image property.
-                    var pickbgimage_filename = String(pickbgimage_path.split('/').slice(-1)); // get the filename of the background-image property.
-                    var pickbgimage_folder_and_filename = String(pickbgimage_path.split('/').slice(-2). join('/')); // get the folder and filename of the background-image property.
-                    //alert(pickbgimage_filename + ' ' + pickbgimage_folder_and_filename);
-                    var pickbgimage_folder = String(pickbgimage_folder_and_filename.split('/').shift());
-                    if (pickbgimage_filename !== 'none' && pickbgimage_filename !== undefined && pickbgimage_filename !== '' && pickbgimage_filename !== 'canvasbg.gif') {
-                        let pickbgimage_path = '';
-                        if (pickbgimage_folder === 'myimages') {
-                            // User uploaded image, so path should be myimages/filename.jpg/png/etc.
-                            pickbgimage_path = pickbgimage_folder_and_filename;
-                        } else {
-                            // Chosen background from editorimages so:
-                            // apply the full sized image from editorimages image library, rather than the thumbnail.
-                            pickbgimage_path = 'images/editorimages/' + pickbgimage_folder_and_filename;
-                        } 
-                        img_obj.bgimage = pickbgimage_path;
-                    }
+            allowTaint: true
+        }).then(function(canvas) {
+            theCanvas = canvas;
+            $('#savediv').append('<h3 class="my-3">Your Banner:</h3>');
+            $('#savediv').append(canvas);
+            //Show the download button.
+            $('#savebuttondiv').show();
+            // Set hidden field's value to image data (base-64 string)
+            $('#img_val').val(canvas.toDataURL("image/png"));
+            // Put other settings for the image in an object and assign to img_obj hidden field.
+            var img_obj = new Object();
+            img_obj.width = $("#bannerwidth").val();
+            img_obj.height = $("#bannerheight").val();
+            img_obj.bgcolor = $("#pickbgcolor").val();
+            img_obj.bordercolor = $("#pickbordercolor").val();
+            img_obj.borderwidth = $("#pickborderwidth").val();
+            img_obj.borderstyle = $("#pickborderstyle").val();
+            // get img_obj.bgimage if there is one:
+            var pickbgimage_url = $('#canvascontainer').css('background-image');
+            img_obj.bgimage = 'none'; // by default
+            if (pickbgimage_url !== 'none') {
+                // chance img_ob.bgimage to file path instead of 'none'.
+                var pickbgimage_path = pickbgimage_url.substring(5, pickbgimage_url.length - 2); // remove the url('') part of the background-image property.
+                var pickbgimage_filename = String(pickbgimage_path.split('/').slice(-1)); // get the filename of the background-image property.
+                var pickbgimage_folder_and_filename = String(pickbgimage_path.split('/').slice(-2). join('/')); // get the folder and filename of the background-image property.
+                //alert(pickbgimage_filename + ' ' + pickbgimage_folder_and_filename);
+                var pickbgimage_folder = String(pickbgimage_folder_and_filename.split('/').shift());
+                if (pickbgimage_filename !== 'none' && pickbgimage_filename !== undefined && pickbgimage_filename !== '' && pickbgimage_filename !== 'canvasbg.gif') {
+                    let pickbgimage_path = '';
+                    if (pickbgimage_folder === 'myimages') {
+                        // User uploaded image, so path should be myimages/filename.jpg/png/etc.
+                        pickbgimage_path = pickbgimage_folder_and_filename;
+                    } else {
+                        // Chosen background from editorimages so:
+                        // apply the full sized image from editorimages image library, rather than the thumbnail.
+                        pickbgimage_path = 'images/editorimages/' + pickbgimage_folder_and_filename;
+                    } 
+                    img_obj.bgimage = pickbgimage_path;
                 }
-                $('#img_obj').val(JSON.stringify(img_obj));
-                // htmlcode field to save into the database.
-                document.getElementById('htmlcode').value = document.getElementById('canvascontainer').innerHTML;
             }
+            $('#img_obj').val(JSON.stringify(img_obj));
+            // htmlcode field to save into the database.
+            document.getElementById('htmlcode').value = document.getElementById('canvascontainer').innerHTML;
         });
     });
 
