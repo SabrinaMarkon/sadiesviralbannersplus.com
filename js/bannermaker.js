@@ -136,12 +136,17 @@ $(function() {
     $("#pickbgimage").selectable({
         selected: function(event, ui) {
             $(ui.selected).addClass("ui-selected").siblings().removeClass("ui-selected");
-            var pickbgimage_filename = $(ui.selected).attr('id');
+            const pickbgimage_filename = $(ui.selected).attr('id');
             //alert(pickbgimage_filename);
             if (pickbgimage_filename !== 'none' && pickbgimage_filename !== undefined && pickbgimage_filename !== '') {
-                var pickbgimage_folder = $('#pickbgimagefolder').val();
+                const pickbgimage_folder = $('#pickbgimagefolder').val();
                 // apply the full sized image from editorimages image library, rather than the thumbnail.
-                var pickbgimage_path = 'images/editorimages/' + pickbgimage_folder + '/' + pickbgimage_filename;
+                let pickbgimage_path = '';
+                if (pickbgimage_folder === 'member') {
+                    pickbgimage_path = 'myimages/' + pickbgimage_filename;
+                } else {
+                    pickbgimage_path = 'images/editorimages/' + pickbgimage_folder + '/' + pickbgimage_filename;  
+                }
                 $('#canvascontainer').css({ 'background' : 'url("' + pickbgimage_path + '")', 'background-size' : '100% 100%' });
             } else {
                 $('#canvascontainer').css({ 'background' : '' });
@@ -322,13 +327,18 @@ $(function() {
         //alert(pickimage_filename);
 
         if (pickimage_filename !== 'none' && pickimage_filename !== undefined && pickimage_filename !== '') {
-            var canvascontainer = document.getElementById("canvascontainer");
-            var imgstyle = "background: none; display:inline-block; width: 100%; height: 100%;";
-            var newid = $("#canvascontainer > div").length + 1;
-            var pickimage_folder = $('#pickimagefolder').val();
+            const canvascontainer = document.getElementById("canvascontainer");
+            const imgstyle = "background: none; display:inline-block; width: 100%; height: 100%;";
+            const newid = $("#canvascontainer > div").length + 1;
+            const pickimage_folder = $('#pickimagefolder').val();
             // apply the full sized image from editorimages image library, rather than the thumbnail.
-            var pickimage_path = 'images/editorimages/' + pickimage_folder + '/' + pickimage_filename;
-            var elem = $('<div id="' + newid + '" class="ui-widget-content canvaslayer picture draggable"><img src="' + pickimage_path + '" style="' + imgstyle + '"></div>');
+            let pickimage_path = '';
+            if (pickimage_folder === 'member') {
+                pickimage_path = 'myimages/' + pickimage_filename;
+            } else {
+                pickimage_path = 'images/editorimages/' + pickimage_folder + '/' + pickimage_filename;
+            }
+            let elem = $('<div id="' + newid + '" class="ui-widget-content canvaslayer picture draggable"><img src="' + pickimage_path + '" style="' + imgstyle + '"></div>');
             $('#canvascontainer').append(elem);
             elem.resizable({
                 handles: "nw, ne, sw, se",

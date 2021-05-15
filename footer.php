@@ -20,7 +20,7 @@ if (basename($_SERVER['REQUEST_URI']) === 'bannermaker') {
   
   <!-- jQuery UI CSS, Libraries to help with Drag & Drop in FAQ admin and banner maker -->
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-
+  
   <!------ START SCRIPTS ONLY FOR BANNER MAKER ------->
   <script src="js/draganddrop/kinetic-v3.9.3.js"></script>
   <!-- <script type="text/javascript" src="../js/draganddrop/version1.js"></script> TODO: gives error - needed for banner maker or not? --> 

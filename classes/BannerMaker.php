@@ -110,7 +110,7 @@ class BannerMaker {
         foreach ($savedimages as $savedimage) {
 
             $file = $savedimage['filename'];
-            $folder = "../myimages/thumbnails";
+            $folder = "../myimages";
             $resize = '';
             $filepath = $folder . '/' . $file;
             $filedata = getimagesize($filepath);
