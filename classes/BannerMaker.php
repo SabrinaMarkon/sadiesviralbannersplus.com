@@ -295,7 +295,8 @@ class BannerMaker {
     
             // Data for each uploaded image file:
             $image_name = $_FILES['imageuploads']['name'][$i];
-            $image_extension = explode(".", $image_name)[1];
+            $image_name_last_period = strrpos($image_name, '.'); // index of last period in filename.
+            $image_extension = substr($image_name, $image_name_last_period + 1);
             $image_type = $_FILES['imageuploads']['type'][$i]; // mime type (ie. image/jpeg).
             $image_tmp_name = $_FILES['imageuploads']['tmp_name'][$i]; // server temp filename (ie. /tmp/phpuI8wMW).
             $image_error = $_FILES['imageuploads']['error'][$i]; // 0 if no error.
@@ -305,7 +306,8 @@ class BannerMaker {
             if ($image_name === '' || $image_tmp_name === '') {
                 return "File cannot be blank.";
             }
-            if ($image_extension !== 'gif' && $image_extension !== 'jpeg' && $image_extension !== 'jpg' && $image_extension !== 'jfif' && $image_extension !== 'png' && $image_extension !== 'svg' && $image_extension !== 'webp') {
+            $allowedextensions = ['gif', 'jpg', 'jpeg', 'jfif', 'png', 'svg', 'webp'];
+            if (!in_array($image_extension, $allowedextensions)) {
                 return "File type must be gif, jpg, png, svg, or webp.";
             }
             if ($image_size > 5 * 1024 * 1024) {
