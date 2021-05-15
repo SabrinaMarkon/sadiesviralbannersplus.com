@@ -598,9 +598,16 @@ $(function() {
 
     // EDIT OR DELETE IMAGE:
     $("#savedimageslist li").each(function(e) {
-        var id = $(this).attr('id').split('-')[1];
+
+        let id = $(this).attr('id').split('-')[1];
+
         // EDIT SAVED IMAGE:
         $('#edit-' + id).click(function() {
+            // Hide previous preview image and save banner button.
+            $('#savediv').empty();
+            $('#img_val').empty();
+            $('#img_obj').empty();
+            $('#savebuttondiv').hide();
             $.ajax({
                 url: 'apis/bannermakeractions.php',
                 type: "post",
@@ -667,6 +674,11 @@ $(function() {
 
         // DELETE SAVED IMAGE:
         $('#delete-' + id).click(function(e) {
+            // Hide previous preview image and save banner button.
+            $('#savediv').empty();
+            $('#img_val').empty();
+            $('#img_obj').empty();
+            $('#savebuttondiv').hide();
             $.ajax({
                 url: 'apis/bannermakeractions.php',
                 type: "post",
