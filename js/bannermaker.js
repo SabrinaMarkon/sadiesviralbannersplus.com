@@ -373,6 +373,7 @@ $(function() {
     $('#imageuploaderror').css({'visibility' : 'hidden', 'display' : 'none'});
     $('#uploadbutton').css({'visibility' : 'hidden', 'display' : 'none'});
     $('input:file').on('change', function() {
+        $('.progress-bar').width('0%');
         const files = this.files;
         let i = files.length - 1;
         while (i >= 0) {
@@ -446,11 +447,27 @@ $(function() {
                 let messageClass = '';
                 try {
                     result = await $.ajax({
+                        xhr: function() {
+                            var xhr = new window.XMLHttpRequest();
+                            xhr.upload.addEventListener('progress', function(event) {
+                                if (event.lengthComputable) {
+                                    var percentComplete = Math.trunc((event.loaded / event.total) * 100);
+                                    $('.progress-bar').width(percentComplete + '%');
+                                    $('.progress-bar').html(percentComplete+'%');
+                                }
+                            }, false);
+                            return xhr;
+                        },
                         url: 'apis/bannermakeractions.php',
                         type: 'post',
                         data: formData,
+                        cache: false,
                         contentType: false, // It’s imperative that you set the contentType option to false, forcing jQuery not to add a Content-Type header for you, otherwise, the boundary string will be missing from it. 
                         processData: false, // Also, you must leave the processData flag set to false, otherwise, jQuery will try to convert your FormData into a string, which will fail.
+                        beforeSend: function(){
+                            $('.progress-bar').width('0%');
+                            $('#imageuploaderror').html('<img src="/images/loading.gif"/>');
+                        },
                         success: function(response) {
                             if (response == 'Upload successful!') {
                                 messageClass = 'has-success';

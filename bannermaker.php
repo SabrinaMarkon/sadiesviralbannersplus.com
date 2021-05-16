@@ -203,13 +203,12 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                             <form id="imageuploadform" method="post" enctype="multipart/form-data">
                                 <input type="file" name="uploadimage" id="uploadimage" multiple class="editorinput" hidden>
                                 <label for="uploadimage" class="btn btn-pink initial">CHOOSE FILES</label>
-                                <div style="height: 10px;"></div>
+                                <div style="height: 15px;"></div>
                                 <span id="file-chosen">No files chosen</span>
                                 <span id="imageuploaderror"></span>
                                 <div style="height: 10px;"></div>
-                                <div class='progress' id="progress_div">
-                                    <div class='bar' id='bar1'></div>
-                                    <div class='percent' id='percent1'>0%</div>
+                                <div class="progress">
+                                    <div class="progress-bar"></div>
                                 </div>
                                 <div style="height: 10px;"></div>
                                 <input type="hidden" id="uploadusername" name="uploadusername" value="<?php echo $username; ?>">
@@ -348,7 +347,7 @@ $savedimages = $bannermaker->getAllBannersForUsername($username);
                     <div style="display:flex; justify-content: space-between;">
                         <img src="/images/trashcan.png" class="img-responsive" id="trashcan" alt="Trash Can">
                         <figcaption><span class="sadietalknormal"><strong><span class="sadietalk-blue">Drag your mistakes to the <span class="sadietalk-pink">TRASH CAN</span> and just drop 'em in <span class="sadietalk-pink"><em>easy-peasy</em>!</span></span></strong></figcaption>
-                        <img src="images/sadie-expression-2.png" id="sadieface" alt="Drag your mistakes to the TRASH CAN and just drop 'em in easy-peasy!">
+                        <img src="/images/sadie-expression-2.png" id="sadieface" alt="Drag your mistakes to the TRASH CAN and just drop 'em in easy-peasy!">
                     </div>
                 </figure>
             </div>

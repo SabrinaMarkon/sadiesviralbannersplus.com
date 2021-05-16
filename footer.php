@@ -13,6 +13,7 @@ if (basename($_SERVER['REQUEST_URI']) === 'bannermaker') {
   
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  
   <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
   <script src="js/bootstrap/js/bootstrap.bundle.min.js"></script>
   
@@ -22,6 +23,9 @@ if (basename($_SERVER['REQUEST_URI']) === 'bannermaker') {
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   
   <!------ START SCRIPTS ONLY FOR BANNER MAKER ------->
+
+  <!-- For upload progress bar: -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
   <script src="js/draganddrop/kinetic-v3.9.3.js"></script>
   <!-- <script type="text/javascript" src="../js/draganddrop/version1.js"></script> TODO: gives error - needed for banner maker or not? --> 
   <script src="js/html2canvas/html2canvas.js"></script>
