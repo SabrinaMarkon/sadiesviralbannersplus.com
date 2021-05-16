@@ -178,6 +178,7 @@ a[data-toggle="collapse"] {
 
 #canvascontainer {
   position: relative;
+  box-sizing: border-box;
   background: transparent url("/images/canvasbg.gif");
   cursor: move;
   margin: 1rem auto;

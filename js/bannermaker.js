@@ -328,7 +328,8 @@ $(function() {
 
         if (pickimage_filename !== 'none' && pickimage_filename !== undefined && pickimage_filename !== '') {
             const canvascontainer = document.getElementById("canvascontainer");
-            const imgstyle = "background: none; display:inline-block; width: 100%; height: 100%;";
+            // const imgstyle = "background: none; display:inline-block; width: 100%; height: 100%;";
+            const imgstyle = `background: none; display: inline-block; max-width: ${$("#bannerwidth").val()-20}px; max-height: ${$("#bannerheight").val()-20}px;`;
             const newid = $("#canvascontainer > div").length + 1;
             const pickimage_folder = $('#pickimagefolder').val();
             // apply the full sized image from editorimages image library, rather than the thumbnail.
