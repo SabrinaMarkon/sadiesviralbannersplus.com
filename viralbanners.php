@@ -19,12 +19,48 @@ $banner = new ViralBanner('viralbanners');
 $prefix = lcfirst($accounttype);
 $bannerslotsvar = $prefix . 'bannerslots';
 $bannerslots = $banner->getVarArray($bannerslotsvar, $settings);
-$refersfreebannerslotsvar = $prefix . 'refersfreebannerslots';
-$refersfreebannerslots = $banner->getVarArray($refersfreebannerslotsvar, $settings);
-$refersprobannerslotsvar = $prefix . 'refersprobannerslots';
-$refersprobannerslots = $banner->getVarArray($refersprobannerslotsvar, $settings);
-$refersgoldbannerslotsvar = $prefix . 'refersgoldbannerslots';
-$refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settings);
+
+$refersfreebannerslotsvar1 = $prefix . 'refersfreebannerslots1';
+$refersfreebannerslots1 = $banner->getVarArray($refersfreebannerslotsvar1, $settings);
+$refersprobannerslotsvar1 = $prefix . 'refersprobannerslots1';
+$refersprobannerslots1 = $banner->getVarArray($refersprobannerslotsvar1, $settings);
+$refersgoldbannerslotsvar1 = $prefix . 'refersgoldbannerslots1';
+$refersgoldbannerslots1 = $banner->getVarArray($refersgoldbannerslotsvar1, $settings);
+
+$refersfreebannerslotsvar2 = $prefix . 'refersfreebannerslots2';
+$refersfreebannerslots2 = $banner->getVarArray($refersfreebannerslotsvar2, $settings);
+$refersprobannerslotsvar2 = $prefix . 'refersprobannerslots2';
+$refersprobannerslots2 = $banner->getVarArray($refersprobannerslotsvar2, $settings);
+$refersgoldbannerslotsvar2 = $prefix . 'refersgoldbannerslots2';
+$refersgoldbannerslots2 = $banner->getVarArray($refersgoldbannerslotsvar2, $settings);
+
+$refersfreebannerslotsvar3 = $prefix . 'refersfreebannerslots3';
+$refersfreebannerslots3 = $banner->getVarArray($refersfreebannerslotsvar3, $settings);
+$refersprobannerslotsvar3 = $prefix . 'refersprobannerslots3';
+$refersprobannerslots3 = $banner->getVarArray($refersprobannerslotsvar3, $settings);
+$refersgoldbannerslotsvar3 = $prefix . 'refersgoldbannerslots3';
+$refersgoldbannerslots3 = $banner->getVarArray($refersgoldbannerslotsvar3, $settings);
+
+$refersfreebannerslotsvar4 = $prefix . 'refersfreebannerslots4';
+$refersfreebannerslots4 = $banner->getVarArray($refersfreebannerslotsvar4, $settings);
+$refersprobannerslotsvar4 = $prefix . 'refersprobannerslots4';
+$refersprobannerslots4 = $banner->getVarArray($refersprobannerslotsvar4, $settings);
+$refersgoldbannerslotsvar4 = $prefix . 'refersgoldbannerslots4';
+$refersgoldbannerslots4 = $banner->getVarArray($refersgoldbannerslotsvar4, $settings);
+
+$refersfreebannerslotsvar5 = $prefix . 'refersfreebannerslots5';
+$refersfreebannerslots5 = $banner->getVarArray($refersfreebannerslotsvar5, $settings);
+$refersprobannerslotsvar5 = $prefix . 'refersprobannerslots5';
+$refersprobannerslots5 = $banner->getVarArray($refersprobannerslotsvar5, $settings);
+$refersgoldbannerslotsvar5 = $prefix . 'refersgoldbannerslots5';
+$refersgoldbannerslots5 = $banner->getVarArray($refersgoldbannerslotsvar5, $settings);
+
+$refersfreebannerslotsvar6 = $prefix . 'refersfreebannerslots6';
+$refersfreebannerslots6 = $banner->getVarArray($refersfreebannerslotsvar6, $settings);
+$refersprobannerslotsvar6 = $prefix . 'refersprobannerslots6';
+$refersprobannerslots6 = $banner->getVarArray($refersprobannerslotsvar6, $settings);
+$refersgoldbannerslotsvar6 = $prefix . 'refersgoldbannerslots6';
+$refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $settings);
 ?>
 
 <div class="container">
@@ -80,9 +116,9 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 					$showinmodal = 'add';
 					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
 				}
-			} elseif (in_array($i, $refersfreebannerslots)) {
+			} elseif (in_array($i, $refersfreebannerslots1)) {
 
-				// Does this banner appear on this user's FREE referral's urls?
+				// Does this banner appear on this user's FIRST LEVEL FREE referral's urls?
 				$usershowbanner = $banner->getViralBanner($username, $i);
 				if (!empty($usershowbanner)) {
 
@@ -95,9 +131,9 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 					$showinmodal = 'add';
 					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
 				}
-			} elseif (in_array($i, $refersprobannerslots)) {
+			} elseif (in_array($i, $refersprobannerslots1)) {
 
-				// Does this banner appear on this user's PRO referral's urls?
+				// Does this banner appear on this user's FIRST LEVEL PRO referral's urls?
 				$usershowbanner = $banner->getViralBanner($username, $i);
 				if (!empty($usershowbanner)) {
 
@@ -110,9 +146,234 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 					$showinmodal = 'add';
 					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
 				}
-			} elseif (in_array($i, $refersgoldbannerslots)) {
+			} elseif (in_array($i, $refersgoldbannerslots1)) {
 
-				// Does this banner appear on this user's PRO referral's urls?
+				// Does this banner appear on this user's FIRST LEVEL GOLD referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			}  elseif (in_array($i, $refersfreebannerslots2)) {
+
+				// Does this banner appear on this user's SECOND LEVEL FREE referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersprobannerslots2)) {
+
+				// Does this banner appear on this user's SECOND LEVEL PRO referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersgoldbannerslots2)) {
+
+				// Does this banner appear on this user's SECOND LEVEL GOLD referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			}  elseif (in_array($i, $refersfreebannerslots3)) {
+
+				// Does this banner appear on this user's THIRD LEVEL FREE referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersprobannerslots3)) {
+
+				// Does this banner appear on this user's THIRD LEVEL PRO referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersgoldbannerslots3)) {
+
+				// Does this banner appear on this user's THIRD LEVEL GOLD referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			}  elseif (in_array($i, $refersfreebannerslots4)) {
+
+				// Does this banner appear on this user's FOURTH LEVEL FREE referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersprobannerslots4)) {
+
+				// Does this banner appear on this user's FOURTH LEVEL PRO referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersgoldbannerslots4)) {
+
+				// Does this banner appear on this user's FOURTH LEVEL GOLD referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			}  elseif (in_array($i, $refersfreebannerslots5)) {
+
+				// Does this banner appear on this user's FIFTH LEVEL FREE referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersprobannerslots5)) {
+
+				// Does this banner appear on this user's FIFTH LEVEL PRO referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersgoldbannerslots5)) {
+
+				// Does this banner appear on this user's FIFTH LEVEL GOLD referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			}  elseif (in_array($i, $refersfreebannerslots6)) {
+
+				// Does this banner appear on this user's SIXTH LEVEL FREE referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersprobannerslots6)) {
+
+				// Does this banner appear on this user's SIXTH LEVEL PRO referral's urls?
+				$usershowbanner = $banner->getViralBanner($username, $i);
+				if (!empty($usershowbanner)) {
+
+					// User already has a banner saved for this slot.
+					$showinmodal = 'edit';
+					echo $banner->showBanner($usershowbanner, $width, $height, $i, 'memberarea');
+				} else {
+
+					// Show blank banner for this position with fields for the user to add their own.
+					$showinmodal = 'add';
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+				}
+			} elseif (in_array($i, $refersgoldbannerslots6)) {
+
+				// Does this banner appear on this user's SIXTH LEVEL GOLD referral's urls?
 				$usershowbanner = $banner->getViralBanner($username, $i);
 				if (!empty($usershowbanner)) {
 
@@ -129,30 +390,121 @@ $refersgoldbannerslots = $banner->getVarArray($refersgoldbannerslotsvar, $settin
 				// this banner is unavailable to this user's membership level.
 				// Is this a paid only banner?
 				$freebannerslotsarr = $banner->getVarArray('freebannerslots', $settings);
-				$freerefersfreebannerslotsarr = $banner->getVarArray('freerefersfreebannerslots', $settings);
-				$freerefersprobannerslotsarr = $banner->getVarArray('freerefersprobannerslots', $settings);
-				$freerefersgoldbannerslotsarr = $banner->getVarArray('freerefersgoldbannerslots', $settings);
+				$freerefersfreebannerslotsarr1 = $banner->getVarArray('freerefersfreebannerslots1', $settings);
+				$freerefersprobannerslotsarr1 = $banner->getVarArray('freerefersprobannerslots1', $settings);
+				$freerefersgoldbannerslotsarr1 = $banner->getVarArray('freerefersgoldbannerslots1', $settings);
+				$freerefersfreebannerslotsarr2 = $banner->getVarArray('freerefersfreebannerslots2', $settings);
+				$freerefersprobannerslotsarr2 = $banner->getVarArray('freerefersprobannerslots2', $settings);
+				$freerefersgoldbannerslotsarr2 = $banner->getVarArray('freerefersgoldbannerslots2', $settings);
+				$freerefersfreebannerslotsarr3 = $banner->getVarArray('freerefersfreebannerslots3', $settings);
+				$freerefersprobannerslotsarr3 = $banner->getVarArray('freerefersprobannerslots3', $settings);
+				$freerefersgoldbannerslotsarr3 = $banner->getVarArray('freerefersgoldbannerslots3', $settings);
+				$freerefersfreebannerslotsarr4 = $banner->getVarArray('freerefersfreebannerslots4', $settings);
+				$freerefersprobannerslotsarr4 = $banner->getVarArray('freerefersprobannerslots4', $settings);
+				$freerefersgoldbannerslotsarr4 = $banner->getVarArray('freerefersgoldbannerslots4', $settings);
+				$freerefersfreebannerslotsarr5 = $banner->getVarArray('freerefersfreebannerslots5', $settings);
+				$freerefersprobannerslotsarr5 = $banner->getVarArray('freerefersprobannerslots5', $settings);
+				$freerefersgoldbannerslotsarr5 = $banner->getVarArray('freerefersgoldbannerslots5', $settings);
+				$freerefersfreebannerslotsarr6 = $banner->getVarArray('freerefersfreebannerslots6', $settings);
+				$freerefersprobannerslotsarr6 = $banner->getVarArray('freerefersprobannerslots6', $settings);
+				$freerefersgoldbannerslotsarr6 = $banner->getVarArray('freerefersgoldbannerslots6', $settings);
 				$probannerslotsarr = $banner->getVarArray('probannerslots', $settings);
-				$prorefersfreebannerslotsarr = $banner->getVarArray('prorefersfreebannerslots', $settings);
-				$prorefersprobannerslotsarr = $banner->getVarArray('prorefersprobannerslots', $settings);
-				$prorefersgoldbannerslotsarr = $banner->getVarArray('prorefersgoldbannerslots', $settings);
+				$prorefersfreebannerslotsarr1 = $banner->getVarArray('prorefersfreebannerslots1', $settings);
+				$prorefersprobannerslotsarr1 = $banner->getVarArray('prorefersprobannerslots1', $settings);
+				$prorefersgoldbannerslotsarr1 = $banner->getVarArray('prorefersgoldbannerslots1', $settings);
+				$prorefersfreebannerslotsarr2 = $banner->getVarArray('prorefersfreebannerslots2', $settings);
+				$prorefersprobannerslotsarr2 = $banner->getVarArray('prorefersprobannerslots2', $settings);
+				$prorefersgoldbannerslotsarr2 = $banner->getVarArray('prorefersgoldbannerslots2', $settings);
+				$prorefersfreebannerslotsarr3 = $banner->getVarArray('prorefersfreebannerslots3', $settings);
+				$prorefersprobannerslotsarr3 = $banner->getVarArray('prorefersprobannerslots3', $settings);
+				$prorefersgoldbannerslotsarr3 = $banner->getVarArray('prorefersgoldbannerslots3', $settings);
+				$prorefersfreebannerslotsarr4 = $banner->getVarArray('prorefersfreebannerslots4', $settings);
+				$prorefersprobannerslotsarr4 = $banner->getVarArray('prorefersprobannerslots4', $settings);
+				$prorefersgoldbannerslotsarr4 = $banner->getVarArray('prorefersgoldbannerslots4', $settings);
+				$prorefersfreebannerslotsarr5 = $banner->getVarArray('prorefersfreebannerslots5', $settings);
+				$prorefersprobannerslotsarr5 = $banner->getVarArray('prorefersprobannerslots5', $settings);
+				$prorefersgoldbannerslotsarr5 = $banner->getVarArray('prorefersgoldbannerslots5', $settings);
+				$prorefersfreebannerslotsarr6 = $banner->getVarArray('prorefersfreebannerslots6', $settings);
+				$prorefersprobannerslotsarr6 = $banner->getVarArray('prorefersprobannerslots6', $settings);
+				$prorefersgoldbannerslotsarr6 = $banner->getVarArray('prorefersgoldbannerslots6', $settings);
 				$goldbannerslotsarr = $banner->getVarArray('goldbannerslots', $settings);
-				$goldrefersfreebannerslotsarr = $banner->getVarArray('goldrefersfreebannerslots', $settings);
-				$goldrefersprobannerslotsarr = $banner->getVarArray('goldrefersprobannerslots', $settings);
-				$goldrefersgoldbannerslotsarr = $banner->getVarArray('goldrefersgoldbannerslots', $settings);
+				$goldrefersfreebannerslotsarr1 = $banner->getVarArray('goldrefersfreebannerslots1', $settings);
+				$goldrefersprobannerslotsarr1 = $banner->getVarArray('goldrefersprobannerslots1', $settings);
+				$goldrefersgoldbannerslotsarr1 = $banner->getVarArray('goldrefersgoldbannerslots1', $settings);
+				$goldrefersfreebannerslotsarr2 = $banner->getVarArray('goldrefersfreebannerslots2', $settings);
+				$goldrefersprobannerslotsarr2 = $banner->getVarArray('goldrefersprobannerslots2', $settings);
+				$goldrefersgoldbannerslotsarr2 = $banner->getVarArray('goldrefersgoldbannerslots2', $settings);
+				$goldrefersfreebannerslotsarr3 = $banner->getVarArray('goldrefersfreebannerslots3', $settings);
+				$goldrefersprobannerslotsarr3 = $banner->getVarArray('goldrefersprobannerslots3', $settings);
+				$goldrefersgoldbannerslotsarr3 = $banner->getVarArray('goldrefersgoldbannerslots3', $settings);
+				$goldrefersfreebannerslotsarr4 = $banner->getVarArray('goldrefersfreebannerslots4', $settings);
+				$goldrefersprobannerslotsarr4 = $banner->getVarArray('goldrefersprobannerslots4', $settings);
+				$goldrefersgoldbannerslotsarr4 = $banner->getVarArray('goldrefersgoldbannerslots4', $settings);
+				$goldrefersfreebannerslotsarr5 = $banner->getVarArray('goldrefersfreebannerslots5', $settings);
+				$goldrefersprobannerslotsarr5 = $banner->getVarArray('goldrefersprobannerslots5', $settings);
+				$goldrefersgoldbannerslotsarr5 = $banner->getVarArray('goldrefersgoldbannerslots5', $settings);
+				$goldrefersfreebannerslotsarr6 = $banner->getVarArray('goldrefersfreebannerslots6', $settings);
+				$goldrefersprobannerslotsarr6 = $banner->getVarArray('goldrefersprobannerslots6', $settings);
+				$goldrefersgoldbannerslotsarr6 = $banner->getVarArray('goldrefersgoldbannerslots6', $settings);
+
 				if (
 					!in_array($i, $freebannerslotsarr) &&
-					!in_array($i, $freerefersfreebannerslotsarr) &&
-					!in_array($i, $freerefersprobannerslotsarr) &&
-					!in_array($i, $freerefersgoldbannerslotsarr) &&
+					!in_array($i, $freerefersfreebannerslotsarr1) &&
+					!in_array($i, $freerefersprobannerslotsarr1) &&
+					!in_array($i, $freerefersgoldbannerslotsarr1) &&
+					!in_array($i, $freerefersfreebannerslotsarr2) &&
+					!in_array($i, $freerefersprobannerslotsarr2) &&
+					!in_array($i, $freerefersgoldbannerslotsarr2) &&
+					!in_array($i, $freerefersfreebannerslotsarr3) &&
+					!in_array($i, $freerefersprobannerslotsarr3) &&
+					!in_array($i, $freerefersgoldbannerslotsarr3) &&
+					!in_array($i, $freerefersfreebannerslotsarr4) &&
+					!in_array($i, $freerefersprobannerslotsarr4) &&
+					!in_array($i, $freerefersgoldbannerslotsarr4) &&
+					!in_array($i, $freerefersfreebannerslotsarr5) &&
+					!in_array($i, $freerefersprobannerslotsarr5) &&
+					!in_array($i, $freerefersgoldbannerslotsarr5) &&
+					!in_array($i, $freerefersfreebannerslotsarr6) &&
+					!in_array($i, $freerefersprobannerslotsarr6) &&
+					!in_array($i, $freerefersgoldbannerslotsarr6) &&
 					!in_array($i, $probannerslotsarr) &&
-					!in_array($i, $prorefersfreebannerslotsarr) &&
-					!in_array($i, $prorefersprobannerslotsarr) &&
-					!in_array($i, $prorefersgoldbannerslotsarr) &&
+					!in_array($i, $prorefersfreebannerslotsarr1) &&
+					!in_array($i, $prorefersprobannerslotsarr1) &&
+					!in_array($i, $prorefersgoldbannerslotsarr1) &&
+					!in_array($i, $prorefersfreebannerslotsarr2) &&
+					!in_array($i, $prorefersprobannerslotsarr2) &&
+					!in_array($i, $prorefersgoldbannerslotsarr2) &&
+					!in_array($i, $prorefersfreebannerslotsarr3) &&
+					!in_array($i, $prorefersprobannerslotsarr3) &&
+					!in_array($i, $prorefersgoldbannerslotsarr3) &&
+					!in_array($i, $prorefersfreebannerslotsarr4) &&
+					!in_array($i, $prorefersprobannerslotsarr4) &&
+					!in_array($i, $prorefersgoldbannerslotsarr4) &&
+					!in_array($i, $prorefersfreebannerslotsarr5) &&
+					!in_array($i, $prorefersprobannerslotsarr5) &&
+					!in_array($i, $prorefersgoldbannerslotsarr5) &&
+					!in_array($i, $prorefersfreebannerslotsarr6) &&
+					!in_array($i, $prorefersprobannerslotsarr6) &&
+					!in_array($i, $prorefersgoldbannerslotsarr6) &&
 					!in_array($i, $goldbannerslotsarr) &&
-					!in_array($i, $goldrefersfreebannerslotsarr) &&
-					!in_array($i, $goldrefersprobannerslotsarr) &&
-					!in_array($i, $goldrefersgoldbannerslotsarr)
+					!in_array($i, $goldrefersfreebannerslotsarr1) &&
+					!in_array($i, $goldrefersprobannerslotsarr1) &&
+					!in_array($i, $goldrefersgoldbannerslotsarr1) &&
+					!in_array($i, $goldrefersfreebannerslotsarr2) &&
+					!in_array($i, $goldrefersprobannerslotsarr2) &&
+					!in_array($i, $goldrefersgoldbannerslotsarr2) &&
+					!in_array($i, $goldrefersfreebannerslotsarr3) &&
+					!in_array($i, $goldrefersprobannerslotsarr3) &&
+					!in_array($i, $goldrefersgoldbannerslotsarr3) &&
+					!in_array($i, $goldrefersfreebannerslotsarr4) &&
+					!in_array($i, $goldrefersprobannerslotsarr4) &&
+					!in_array($i, $goldrefersgoldbannerslotsarr4) &&
+					!in_array($i, $goldrefersfreebannerslotsarr5) &&
+					!in_array($i, $goldrefersprobannerslotsarr5) &&
+					!in_array($i, $goldrefersgoldbannerslotsarr5) &&
+					!in_array($i, $goldrefersfreebannerslotsarr6) &&
+					!in_array($i, $goldrefersprobannerslotsarr6) &&
+					!in_array($i, $goldrefersgoldbannerslotsarr6)
 				) {
 					// This can only be a paid banner rotator. Show link to buy one.
 					$showinmodal = 'paidonly';
