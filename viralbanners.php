@@ -114,7 +114,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersfreebannerslots1)) {
 
@@ -129,7 +129,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersprobannerslots1)) {
 
@@ -144,7 +144,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersgoldbannerslots1)) {
 
@@ -159,7 +159,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			}  elseif (in_array($i, $refersfreebannerslots2)) {
 
@@ -174,7 +174,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersprobannerslots2)) {
 
@@ -189,7 +189,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersgoldbannerslots2)) {
 
@@ -204,7 +204,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			}  elseif (in_array($i, $refersfreebannerslots3)) {
 
@@ -219,7 +219,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersprobannerslots3)) {
 
@@ -234,7 +234,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersgoldbannerslots3)) {
 
@@ -249,7 +249,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			}  elseif (in_array($i, $refersfreebannerslots4)) {
 
@@ -264,7 +264,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersprobannerslots4)) {
 
@@ -279,7 +279,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersgoldbannerslots4)) {
 
@@ -294,7 +294,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			}  elseif (in_array($i, $refersfreebannerslots5)) {
 
@@ -309,7 +309,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersprobannerslots5)) {
 
@@ -324,7 +324,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersgoldbannerslots5)) {
 
@@ -339,7 +339,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			}  elseif (in_array($i, $refersfreebannerslots6)) {
 
@@ -354,7 +354,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersprobannerslots6)) {
 
@@ -369,7 +369,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} elseif (in_array($i, $refersgoldbannerslots6)) {
 
@@ -384,7 +384,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 					// Show blank banner for this position with fields for the user to add their own.
 					$showinmodal = 'add';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click to add your Viral Banner for Slot ' . $i, 'memberarea');
 				}
 			} else {
 				// this banner is unavailable to this user's membership level.
@@ -508,20 +508,20 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 				) {
 					// This can only be a paid banner rotator. Show link to buy one.
 					$showinmodal = 'paidonly';
-					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);
+					echo $banner->showBannerPlaceholder($i, $width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i, 'memberarea');
 				} else {
 					if ($accounttype === "Free") {
 						// Upgrade button for both pro and gold.
 						$showinmodal = 'upgradeproandgold';
-						echo $banner->showBannerPlaceholder($i, $width, $height, 'Upgrade to Pro or Gold to add your banner to Slot ' . $i);
+						echo $banner->showBannerPlaceholder($i, $width, $height, 'Upgrade to Pro or Gold to add your banner to Slot ' . $i, 'memberarea');
 					} elseif ($accounttype === "Pro") {
 						// Upgrade button for gold.
 						$showinmodal = 'upgradegold';
-						echo $banner->showBannerPlaceholder($i, $width, $height, 'Upgrade to Gold to add your banner to Slot ' . $i);
+						echo $banner->showBannerPlaceholder($i, $width, $height, 'Upgrade to Gold to add your banner to Slot ' . $i, 'memberarea');
 					} else {
 						// This can only be a paid banner rotator. Show link to buy one.
 						$showinmodal = 'paidonly';
-						echo $banner->showBannerPlaceholder($i, $width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i);
+						echo $banner->showBannerPlaceholder($i, $width, $height, 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i, 'memberarea');
 					}
 				}
 			}
@@ -537,7 +537,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 							case "add":
 							?>
-								<h2>Add Your Viral Banner to Slot #<?php echo $i ?></h2>
+								<h2>Add Your Viral Banner to Slot <?php echo $i ?></h2>
 
 								<form action="/viralbanners" method="post" accept-charset="utf-8" class="form" role="form">
 									<label for="name">Name of Viral Banner (only you see):</label>
@@ -564,7 +564,7 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 
 							case "edit":
 							?>
-								<h2>Update Your Slot #<?php echo $i ?> Viral Banner</h2>
+								<h2>Update Your Slot <?php echo $i ?> Viral Banner</h2>
 
 								<form action="/viralbanners/<?php echo $usershowbanner['id']; ?>" method="post" accept-charset="utf-8" class="form" role="form">
 

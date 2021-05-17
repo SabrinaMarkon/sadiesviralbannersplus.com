@@ -135,15 +135,22 @@ class ViralBanner extends Banner
         Database::disconnect();
     }
 
-    public function showBannerPlaceholder(int $bannerslot, int $width, int $height, string $msg): string {
+    public function showBannerPlaceholder(int $bannerslot, int $width, int $height, string $msg, string $source = 'memberarea'): string {
         
         $msguppercase = strtoupper($msg);
         $msguppercase = str_replace(" ", "+", $msguppercase);
 
-        return '
-        <div>
-            <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">' . $msg . '</a>
-        </div>';
+        if ($source === 'adminarea') {
+            return '
+            <div>
+                <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="/admin/viralbanners#createad">' . $msg . '</a>
+            </div>';
+        } else {
+            return '
+            <div>
+                <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">' . $msg . '</a>
+            </div>';
+        }
     }
     
      public function showClickIFrame(int $bannerslot, string $clickurl, array $settings): string {
@@ -265,7 +272,7 @@ class ViralBanner extends Banner
                         }
 
                         $htmltoreturn .= '>
-                        <label class="form-check-label" for="' . $settingname . '[' . $j . ']' . '">Slot #' . $j. '</label>
+                        <label class="form-check-label" for="' . $settingname . '[' . $j . ']' . '">Slot ' . $j. '</label>
                     </div>';
                 }
             

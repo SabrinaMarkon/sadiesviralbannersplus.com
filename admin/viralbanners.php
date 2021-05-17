@@ -72,7 +72,7 @@ $ads = $banner->getAllAds();
                             echo " checked";
                         }
                         ?>>
-                        <label class="form-check-label" for="freebannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                        <label class="form-check-label" for="freebannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
                     </div>
                 <?php
                 }
@@ -122,7 +122,7 @@ $ads = $banner->getAllAds();
                             echo " checked";
                         }
                         ?>>
-                        <label class="form-check-label" for="probannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                        <label class="form-check-label" for="probannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
                     </div>
                 <?php
                 }
@@ -172,7 +172,7 @@ $ads = $banner->getAllAds();
                             echo " checked";
                         }
                         ?>>
-                        <label class="form-check-label" for="goldbannerslots[<?php echo $j ?>]">Slot #<?php echo $j ?></label>
+                        <label class="form-check-label" for="goldbannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
                     </div>
                 <?php
                 }
@@ -308,12 +308,7 @@ $ads = $banner->getAllAds();
             } else {
 
                 // Show blank banner for this position with fields for the admin to add one.
-                echo '
-                <div>
-                    <a href="#createad">
-                    <img src="https://via.placeholder.com/468x60/ffffff/121212?text=DEFAULT+ADMIN+BANNER+FOR+VIRAL+BANNER+SLOT+' . $i . '" alt="Default Admin Banner for Viral Banner Slot# <?php echo $i ?>">
-                    </a>
-                </div>';
+                echo $banner->showBannerPlaceholder($i, 468, 60, 'Default Admin Banner for Viral Banner Slot ' . $i, 'adminarea');
             }
         }
         ?>
