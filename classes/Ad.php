@@ -211,34 +211,34 @@ abstract class Ad
             for ($i = 1; $i <= 6; $i++) {
                 $freerefersfreebannerslots = 'freerefersfreebannerslots' . $i;
                 $newfreerefersfreebannerslots = 'newfreerefersfreebannerslots' . $i;
-                $$newfreerefersfreebannerslots = '';
+                $newfreerefersfreebannerslots = '';
                 if (isset($post[$freerefersfreebannerslots])) {
-                    $$newfreerefersfreebannerslots = implode(',', $post[$freerefersfreebannerslots]);
+                    $newfreerefersfreebannerslots = implode(',', $post[$freerefersfreebannerslots]);
                 }
                 $sql .= $freerefersfreebannerslots . "=?, ";
-                array_push($pdoarray, $$newfreerefersfreebannerslots);
+                array_push($pdoarray, $newfreerefersfreebannerslots);
             }
             // free refers pro referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $freerefersprobannerslots = 'freerefersprobannerslots' . $i;
                 $newfreerefersprobannerslots = 'newfreerefersprobannerslots' . $i;
-                $$newfreerefersprobannerslots = '';
+                $newfreerefersprobannerslots = '';
                 if (isset($post[$freerefersprobannerslots])) {
-                    $$newfreerefersprobannerslots = implode(',', $post[$freerefersprobannerslots]);
+                    $newfreerefersprobannerslots = implode(',', $post[$freerefersprobannerslots]);
                 }
                 $sql .= $freerefersprobannerslots . "=?, ";
-                array_push($pdoarray, $$newfreerefersprobannerslots);
+                array_push($pdoarray, $newfreerefersprobannerslots);
             }
             // free refers gold referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $freerefersgoldbannerslots = 'freerefersgoldbannerslots' . $i;
                 $newfreerefersgoldbannerslots = 'newfreerefersgoldbannerslots' . $i;
-                $$newfreerefersgoldbannerslots = '';
+                $newfreerefersgoldbannerslots = '';
                 if (isset($post[$freerefersgoldbannerslots])) {
-                    $$newfreerefersgoldbannerslots = implode(',', $post[$freerefersgoldbannerslots]);
+                    $newfreerefersgoldbannerslots = implode(',', $post[$freerefersgoldbannerslots]);
                 }
                 $sql .= $freerefersgoldbannerslots . "=?, ";
-                array_push($pdoarray, $$newfreerefersgoldbannerslots);
+                array_push($pdoarray, $newfreerefersgoldbannerslots);
             }
 
             ## PRO REFERRALS: ##
@@ -252,34 +252,34 @@ abstract class Ad
             for ($i = 1; $i <= 6; $i++) {
                 $prorefersfreebannerslots = 'prorefersfreebannerslots' . $i;
                 $newprorefersfreebannerslots = 'newprorefersfreebannerslots' . $i;
-                $$newprorefersfreebannerslots = '';
+                $newprorefersfreebannerslots = '';
                 if (isset($post[$prorefersfreebannerslots])) {
-                    $$newprorefersfreebannerslots = implode(',', $post[$prorefersfreebannerslots]);
+                    $newprorefersfreebannerslots = implode(',', $post[$prorefersfreebannerslots]);
                 }
                 $sql .= $prorefersfreebannerslots . "=?, ";
-                array_push($pdoarray, $$newprorefersfreebannerslots);
+                array_push($pdoarray, $newprorefersfreebannerslots);
             }
             // pro refers pro referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $prorefersprobannerslots = 'prorefersprobannerslots' . $i;
                 $newprorefersprobannerslots = 'newprorefersprobannerslots' . $i;
-                $$newprorefersprobannerslots = '';
+                $newprorefersprobannerslots = '';
                 if (isset($post[$prorefersprobannerslots])) {
-                    $$newprorefersprobannerslots = implode(',', $post[$prorefersprobannerslots]);
+                    $newprorefersprobannerslots = implode(',', $post[$prorefersprobannerslots]);
                 }
                 $sql .= $prorefersprobannerslots . "=?, ";
-                array_push($pdoarray, $$newprorefersprobannerslots);
+                array_push($pdoarray, $newprorefersprobannerslots);
             }
             // pro refers gold referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $prorefersgoldbannerslots = 'prorefersgoldbannerslots' . $i;
                 $newprorefersgoldbannerslots = 'newprorefersgoldbannerslots' . $i;
-                $$newprorefersgoldbannerslots = '';
+                $newprorefersgoldbannerslots = '';
                 if (isset($post[$prorefersgoldbannerslots])) {
-                    $$newprorefersgoldbannerslots = implode(',', $post[$prorefersgoldbannerslots]);
+                    $newprorefersgoldbannerslots = implode(',', $post[$prorefersgoldbannerslots]);
                 }
                 $sql .= $prorefersgoldbannerslots . "=?, ";
-                array_push($pdoarray, $$newprorefersgoldbannerslots);
+                array_push($pdoarray, $newprorefersgoldbannerslots);
             }
 
             ## GOLD REFERRALS: ##
@@ -293,34 +293,34 @@ abstract class Ad
             for ($i = 1; $i <= 6; $i++) {
                 $goldrefersfreebannerslots = 'goldrefersfreebannerslots' . $i;
                 $newgoldrefersfreebannerslots = 'newgoldrefersfreebannerslots' . $i;
-                $$newgoldrefersfreebannerslots = '';
+                $newgoldrefersfreebannerslots = '';
                 if (isset($post[$goldrefersfreebannerslots])) {
-                    $$newgoldrefersfreebannerslots = implode(',', $post[$goldrefersfreebannerslots]);
+                    $newgoldrefersfreebannerslots = implode(',', $post[$goldrefersfreebannerslots]);
                 }
                 $sql .= $goldrefersfreebannerslots . "=?, ";
-                array_push($pdoarray, $$newgoldrefersfreebannerslots);
+                array_push($pdoarray, $newgoldrefersfreebannerslots);
             }
             // gold refers pro referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $goldrefersprobannerslots = 'goldrefersprobannerslots' . $i;
                 $newgoldrefersprobannerslots = 'newgoldrefersprobannerslots' . $i;
-                $$newgoldrefersprobannerslots = '';
+                $newgoldrefersprobannerslots = '';
                 if (isset($post[$goldrefersprobannerslots])) {
-                    $$newgoldrefersprobannerslots = implode(',', $post[$goldrefersprobannerslots]);
+                    $newgoldrefersprobannerslots = implode(',', $post[$goldrefersprobannerslots]);
                 }
                 $sql .= $goldrefersprobannerslots . "=?, ";
-                array_push($pdoarray, $$newgoldrefersprobannerslots);
+                array_push($pdoarray, $newgoldrefersprobannerslots);
             }
             // gold refers gold referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $goldrefersgoldbannerslots = 'goldrefersgoldbannerslots' . $i;
                 $newgoldrefersgoldbannerslots = 'newgoldrefersgoldbannerslots' . $i;
-                $$newgoldrefersgoldbannerslots = '';
+                $newgoldrefersgoldbannerslots = '';
                 if (isset($post[$goldrefersgoldbannerslots])) {
-                    $$newgoldrefersgoldbannerslots = implode(',', $post[$goldrefersgoldbannerslots]);
+                    $newgoldrefersgoldbannerslots = implode(',', $post[$goldrefersgoldbannerslots]);
                 }
                 $sql .= $goldrefersgoldbannerslots . "=?, ";
-                array_push($pdoarray, $$newgoldrefersgoldbannerslots);
+                array_push($pdoarray, $newgoldrefersgoldbannerslots);
             }
             
             $sql = mb_substr($sql, 0, -2); // Remove last comma and space.

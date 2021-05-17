@@ -633,13 +633,13 @@ $refersgoldbannerslots6 = $banner->getVarArray($refersgoldbannerslotsvar6, $sett
 							case "paidonly":
 								$modal = 1;
 								echo '<div class="ja-toppadding2"></div>';
-								include_once "bannerspaid.php";
+								include "bannerspaid.php";
 								break;
 
 							default:
 								$modal = 1;
 								echo '<div class="ja-toppadding2"></div>';
-								include_once "bannerspaid.php";
+								include "bannerspaid.php";
 								break;
 								
 						} // switch

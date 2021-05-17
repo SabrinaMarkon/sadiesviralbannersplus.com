@@ -257,7 +257,7 @@ class ViralBanner extends Banner
                 for ($j = $i; $j <= $i + 2; $j++) {
 
                     $htmltoreturn .= '<div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="' . $settingname[$j] . '" 
+                        <input class="form-check-input" type="checkbox" name="' . $settingname . '[' . $j . ']' . '" 
                         value="' . $j . '"';
 
                         if (in_array($j, explode(',', $settings[$settingname]))) {
@@ -265,7 +265,7 @@ class ViralBanner extends Banner
                         }
 
                         $htmltoreturn .= '>
-                        <label class="form-check-label" for="' . $settingname[$j] . '">Slot #' . $j . '</label>
+                        <label class="form-check-label" for="' . $settingname . '[' . $j . ']' . '">Slot #' . $j. '</label>
                     </div>';
                 }
             
