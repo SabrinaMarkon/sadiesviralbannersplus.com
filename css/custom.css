@@ -659,13 +659,13 @@ h4.ja-white {
   border-collapse: collapse;
   margin: 1.2em;
 }
-.faqpanel .faq-heading, .downloadpanel .download-heading {
+.faqpanel .faq-heading, .downloadpanel .download-heading, .viralbannerpanel .viralbanner-heading {
   background: #0067f4;
   border-radius: 10px 10px 0 0;
   padding: 1em;
   box-shadow: 1px 1px 1px #121212;
 }
-.faqpanel .faq-heading a, .downloadpanel .download-heading a {
+.faqpanel .faq-heading a, .downloadpanel .download-heading a, .viralbannerpanel .viralbanner-heading a {
   color: #fff;
   font-size: 1.2rem;
 }
@@ -673,10 +673,10 @@ h4.ja-white {
   text-decoration: underline;
   text-align: center;
 }
-.faqpanel .faq-heading a:hover, .downloadpanel .download-heading a:hover {
+.faqpanel .faq-heading a:hover, .downloadpanel .download-heading a:hover, .viralbannerpanel .viralbanner-heading a:hover {
   color: #ffd633;
 }
-.faqpanel .faq-body, .downloadpanel .download-body {
+.faqpanel .faq-body, .downloadpanel .download-body, .viralbannerpanel .viralbanner-body {
   background:  #fff;
   color: #121212;
   padding: 1em;
@@ -684,12 +684,12 @@ h4.ja-white {
   font-weight: 600;
   box-shadow: 1px 1px 1px #121212;
 }
-.faq-heading .fa {
+.faq-heading .fa, .viralbanner-heading .fa {
   font-size: 1.6rem;
   float: right;
   transition: .3s transform ease-in-out;
 }
-.faq-heading .collapsed .fa {
+.faq-heading .collapsed .fa, .viralbanner-heading .collapsed .fa {
   transform: rotate(90deg);
 }
 

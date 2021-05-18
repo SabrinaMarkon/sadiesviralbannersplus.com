@@ -30,184 +30,199 @@ $ads = $banner->getAllAds();
 
 <div class="container">
 
-    <h2 class="pt-4">Viral Banners</h2>
+    <h2 class="py-4">Viral Banners</h2>
 
-    <div class="ja-toppadding mb-4"></div>
+    <p class="pb-4">Depending on their membership level, members can add their banners to both their own and their referrals' Viral Banner Pages.</p>
 
-    <p>Depending on their membership level, members can add their banners to both their own and their referrals' Viral Banner Pages.</p>
+    <h2 class="pb-4">Viral Banner Settings</h2>
 
-    <div class="ja-toppadding mb-2"></div>
-
-    <h2 class="pt-4">Viral Banner Settings</h2>
-
-    <div class="ja-toppadding mb-4"></div>
-
-    <p>Every member has a Viral Banner Page that has 14 slots for banners. You can check which slots members or their sponsors can add their banners to here.<br />If a banner has no check for any membership level, it will be a paid banner rotator.</p>
-
-    <div class="ja-toppadding mb-4"></div>
+    <p class="pb-4">Every member has a Viral Banner Page that has 14 slots for banners. You can check which slots members or their sponsors can add their banners to here.<br />If a banner has no check for any membership level, it will be a paid banner rotator.</p>
 
     <form action="/admin/viralbanners" method="post" class="form" role="form">
+        <div id="viralbannerpanel" class="viralbannerpanel mt-3" role="tablist" aria-multiselectable="true">
 
-        <h3>Free Member Viral Banner Page Settings</h3>
-
-        <div>
-            <label for="freebannerclickstosignup" class="mt-4">Member banners a new Free member has to click to signup:</label>
-            <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
-        </div>
-
-        <label class="mt-2">Banner slots included with Free membership:</label>
-        <div class="bannerslot-checkboxes mb-3" style="display: flex;">
-        <?php
-        for ($i = 1; $i <= 14; $i += 3) {
-        ?>
-            <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
-                <?php
-                for ($j = $i; $j <= $i + 2; $j++) {
-                ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="freebannerslots[<?php echo $j ?>]" 
-                        value="<?php echo $j ?>" 
-                        <?php
-                        if (in_array($j, explode(',', $freebannerslots))) {
-                            echo " checked";
-                        }
-                        ?>>
-                        <label class="form-check-label" for="freebannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
+                <div class="mb-4">
+                    <h5 class="viralbanner-heading" role="tab" id="headingfree">
+                        <a data-toggle="collapse" data-parent="#viralbannerpanel" href="#collapsefree" aria-expanded="true" aria-controls="collapsefree" class="d-block collapsed">
+                            <i class="fa fa-chevron-down"></i> Free Member Viral Banner Page Settings
+                        </a>
+                    </h5>
+                    <div id="collapsefree" class="collapse" role="tabpanel" aria-labelledby="headingfree">
+                        <div class="viralbanner-body px-5">
+                            <div>
+                                <label for="freebannerclickstosignup" class="mt-4">Member banners a new Free member has to click to signup:</label>
+                                <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
+                            </div>
+                            <label class="mt-2">Banner slots included with Free membership:</label>
+                            <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                            <?php
+                            for ($i = 1; $i <= 14; $i += 3) {
+                            ?>
+                                <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                                    <?php
+                                    for ($j = $i; $j <= $i + 2; $j++) {
+                                    ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="freebannerslots[<?php echo $j ?>]" 
+                                            value="<?php echo $j ?>" 
+                                            <?php
+                                            if (in_array($j, explode(',', $freebannerslots))) {
+                                                echo " checked";
+                                            }
+                                            ?>>
+                                            <label class="form-check-label" for="freebannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            </div>
+                            <?php
+                                echo "<div class=\"blackstrong\">Free Members: Banner Slots on Free Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Free", $settings);
+                                }
+                                echo "<div class=\"blackstrong\">Free Members: Banner Slots on Pro Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Pro", $settings);
+                                }
+                                echo "<div class=\"blackstrong\">Free Members: Banner Slots on Gold Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Gold", $settings);
+                                }
+                            ?>
+                        </div>
                     </div>
-                <?php
-                }
-                ?>
-            </div>
-        <?php
-        }
-        ?>
-        </div>
-        <?php
-            echo "<div class=\"blackstrong\">Free Members: Banner Slots on Free Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Free", $settings);
-            }
-            echo "<div class=\"blackstrong\">Free Members: Banner Slots on Pro Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Pro", $settings);
-            }
-            echo "<div class=\"blackstrong\">Free Members: Banner Slots on Gold Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Free", "Gold", $settings);
-            }
-        ?>
+                </div>
 
-        <br /><br />
-        <h3>Pro Member Viral Banner Page Settings</h3>
+                <div class="mb-4">
+                    <h5 class="viralbanner-heading" role="tab" id="headingpro">
+                        <a data-toggle="collapse" data-parent="#viralbannerpanel" href="#collapsepro" aria-expanded="true" aria-controls="collapsepro" class="d-block collapsed">
+                            <i class="fa fa-chevron-down"></i> Pro Member Viral Banner Page Settings
+                        </a>
+                    </h5>
+                    <div id="collapsepro" class="collapse" role="tabpanel" aria-labelledby="headingpro">
+                        <div class="viralbanner-body px-5">
+                            <div>
+                                <label for="probannerclickstosignup" class="mt-4">Member banners a new Pro member has to click to signup:</label>
+                                <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
+                            </div>
 
-        <div>
-            <label for="probannerclickstosignup" class="mt-4">Member banners a new Pro member has to click to signup:</label>
-            <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
-        </div>
-
-        <label class="mt-2">Banner slots included with Pro membership:</label>
-        <div class="bannerslot-checkboxes mb-3" style="display: flex;">
-        <?php
-        for ($i = 1; $i <= 14; $i += 3) {
-        ?>
-            <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
-                <?php
-                for ($j = $i; $j <= $i + 2; $j++) {
-                ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="probannerslots[<?php echo $j ?>]" 
-                        value="<?php echo $j ?>" 
-                        <?php
-                        if (in_array($j, explode(',', $probannerslots))) {
-                            echo " checked";
-                        }
-                        ?>>
-                        <label class="form-check-label" for="probannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
+                            <label class="mt-2">Banner slots included with Pro membership:</label>
+                            <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                            <?php
+                            for ($i = 1; $i <= 14; $i += 3) {
+                            ?>
+                                <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                                    <?php
+                                    for ($j = $i; $j <= $i + 2; $j++) {
+                                    ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="probannerslots[<?php echo $j ?>]" 
+                                            value="<?php echo $j ?>" 
+                                            <?php
+                                            if (in_array($j, explode(',', $probannerslots))) {
+                                                echo " checked";
+                                            }
+                                            ?>>
+                                            <label class="form-check-label" for="probannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            </div>
+                            <?php
+                                echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Free Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Free", $settings);
+                                }
+                                echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Pro Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Pro", $settings);
+                                }
+                                echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Gold Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Gold", $settings);
+                                }
+                            ?>
+                        </div>
                     </div>
-                <?php
-                }
-                ?>
-            </div>
-        <?php
-        }
-        ?>
-        </div>
-        <?php
-            echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Free Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Free", $settings);
-            }
-            echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Pro Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Pro", $settings);
-            }
-            echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Gold Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Pro", "Gold", $settings);
-            }
-        ?>
+                </div>
 
-        <br /><br />
-        <h3>Gold Member Viral Banner Page Settings</h3>
-
-        <div>
-            <label for="goldbannerclickstosignup" class="mt-4">Member banners a new Gold member has to click to signup:</label>
-            <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
-        </div>
-
-        <label class="mt-2">Banner slots included with Gold membership:</label>
-        <div class="bannerslot-checkboxes mb-3" style="display: flex;">
-        <?php
-        for ($i = 1; $i <= 14; $i += 3) {
-        ?>
-            <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
-                <?php
-                for ($j = $i; $j <= $i + 2; $j++) {
-                ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="goldbannerslots[<?php echo $j ?>]" 
-                        value="<?php echo $j ?>" 
-                        <?php
-                        if (in_array($j, explode(',', $goldbannerslots))) {
-                            echo " checked";
-                        }
-                        ?>>
-                        <label class="form-check-label" for="goldbannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
+                <div class="mb-4">
+                    <h5 class="viralbanner-heading" role="tab" id="headinggold">
+                        <a data-toggle="collapse" data-parent="#viralbannerpanel" href="#collapsegold" aria-expanded="true" aria-controls="collapsegold" class="d-block collapsed">
+                            <i class="fa fa-chevron-down"></i> Gold Member Viral Banner Page Settings
+                        </a>
+                    </h5>
+                    <div id="collapsegold" class="collapse" role="tabpanel" aria-labelledby="headinggold">
+                        <div class="viralbanner-body px-5">
+                            <div>
+                                <label for="goldbannerclickstosignup" class="mt-4">Member banners a new Gold member has to click to signup:</label>
+                                <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
+                            </div>
+                            <label class="mt-2">Banner slots included with Gold membership:</label>
+                            <div class="bannerslot-checkboxes mb-3" style="display: flex;">
+                            <?php
+                            for ($i = 1; $i <= 14; $i += 3) {
+                            ?>
+                                <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
+                                    <?php
+                                    for ($j = $i; $j <= $i + 2; $j++) {
+                                    ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="goldbannerslots[<?php echo $j ?>]" 
+                                            value="<?php echo $j ?>" 
+                                            <?php
+                                            if (in_array($j, explode(',', $goldbannerslots))) {
+                                                echo " checked";
+                                            }
+                                            ?>>
+                                            <label class="form-check-label" for="goldbannerslots[<?php echo $j ?>]">Slot <?php echo $j ?></label>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            </div>
+                            <?php
+                                echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Free Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Free", $settings);
+                                }
+                                echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Pro Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Pro", $settings);
+                                }
+                                echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Gold Referral Pages</div>";
+                                for ($k = 1; $k <= 6; $k++) {
+                                    echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Gold", $settings);
+                                }
+                            ?>
+                        </div>
                     </div>
-                <?php
-                }
-                ?>
-            </div>
-        <?php
-        }
-        ?>
+                </div>
+
+            <div class="mb-2"></div>
+
+            <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
+            <button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="saveadsettings">SAVE SETTINGS</button>
+
         </div>
-        <?php
-            echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Free Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Free", $settings);
-            }
-            echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Pro Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Pro", $settings);
-            }
-            echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Gold Referral Pages</div>";
-            for ($k = 1; $k <= 6; $k++) {
-                echo $banner->buildFormFieldsForAdminSettings($k, "Gold", "Gold", $settings);
-            }
-        ?>
-
-
-        <div class="ja-bottompadding"></div>
-
-        <input type="hidden" name="adtable" value="<?php echo $adtable ?>">
-        <button class="btn btn-lg btn-primary ja-bottompadding ja-toppadding" type="submit" name="saveadsettings">SAVE SETTINGS</button>
-
     </form>
 
-    
 
-    <h2 class="ja-bottompadding ja-toppadding mb-4">Default Admin Viral Banners</h2>
+    <h2 class="my-4">Default Admin Viral Banners</h2>
 
     <p>Admin banners show on members' Viral Banner Pages when neither a member nor their sponsor have saved a banner for any of their slots. The form below lets you add a default admin viral banner for each slot. Underneath the form, you can also see which slots you already have saved default banners for.</p>
 
