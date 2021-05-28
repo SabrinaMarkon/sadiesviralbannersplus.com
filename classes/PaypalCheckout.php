@@ -21,6 +21,9 @@ class PaypalCheckout extends PaymentGateway
         $postdata,
         $paybutton,
         $usernamefieldforads,
+        $paypalbuttonformid,
+        $paypalpendingIdid,
+        $paypalbuttonid,
         $payperiod,
         $payintervalcode,
         $formfields,
@@ -74,12 +77,31 @@ class PaypalCheckout extends PaymentGateway
 
         if ($this->itemname === "Pro Membership" || $this->itemname === "Gold Membership") {
             $usernamefieldforads = "";
+            $paypalbuttonformid = "paypalbuttonform";
+            $paypalpendingIdid = "paypalpendingId";
+            $paypalbuttonid = "paypalbutton";
+
+        } elseif ($this->itemname === "Pro Upgrade") {            
+            $usernamefieldforads = '<input type="hidden" id="paypalusernamefieldforadspro" value="' . $this->username . '">';
+            $paypalbuttonformid = "paypalbuttonformpro";
+            $paypalpendingIdid = "paypalpendingIdpro";
+            $paypalbuttonid = "paypalbuttonpro";
+
+        } elseif ($this->itemname === "Gold Upgrade") {
+            $usernamefieldforads = '<input type="hidden" id="paypalusernamefieldforadsgold" value="' . $this->username . '">';
+            $paypalbuttonformid = "paypalbuttonformgold";
+            $paypalpendingIdid = "paypalpendingIdgold";
+            $paypalbuttonid = "paypalbuttongold";
+
         } else {
             $usernamefieldforads = '<input type="hidden" id="paypalusernamefieldforads" value="' . $this->username . '">';
+            $paypalbuttonformid = "paypalbuttonform";
+            $paypalpendingIdid = "paypalpendingId";
+            $paypalbuttonid = "paypalbutton";
         }
 
         $paybutton = '
-            <form method="POST" id="paypalbuttonform" action="https://www.paypal.com/cgi-bin/webscr" accept-charset="UTF-8" class="form-horizontal form-page-small">'
+            <form method="POST" id="' . $paypalbuttonformid . '" action="https://www.paypal.com/cgi-bin/webscr" accept-charset="UTF-8" class="form-horizontal form-page-small">'
             . $payintervalcode .
             $usernamefieldforads .
             '<input name="business" type="hidden" value="' . $this->settings['adminpaypal'] . '">
@@ -93,9 +115,9 @@ class PaypalCheckout extends PaymentGateway
             <input name="lc" type="hidden" value="US">
             <input name="bn" type="hidden" value="PP-BuyNowBF">
             <input name="on0" type="hidden" value="Purchase ID">
-            <input name="os0" id="paypalpendingId" type="hidden" value="">
+            <input name="os0" id="' . $paypalpendingIdid . '" type="hidden" value="">
             <input name="notify_url" type="hidden" value="' . $this->settings['domain'] . '/ipn/paypal">
-            <button class="btn btn-lg btn-primary" type="button" name="paypalbutton" id="paypalbutton">
+            <button class="btn btn-lg btn-primary mt-2" type="button" name="paypalbutton" id="' . $paypalbuttonid . '">
             Buy ' . $this->itemname . ' for $' . $this->price . ' with Paypal!</button>
             </form>';
         return $paybutton;

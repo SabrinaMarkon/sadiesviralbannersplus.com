@@ -2,10 +2,24 @@
 const userForm = document.getElementById("userform");
 const paypalButtonForm = document.getElementById("paypalbuttonform");
 const paypalButton = document.getElementById("paypalbutton");
+const paypalButtonFormPro = document.getElementById("paypalbuttonformpro");
+const paypalButtonPro = document.getElementById("paypalbuttonpro");
+const paypalButtonFormGold = document.getElementById("paypalbuttonformgold");
+const paypalButtonGold = document.getElementById("paypalbuttongold");
+
 const coinpaymentsButtonForm = document.getElementById(
   "coinpaymentsbuttonform"
 );
 const coinpaymentsButton = document.getElementById("coinpaymentsbutton");
+const coinpaymentsButtonFormPro = document.getElementById(
+  "coinpaymentsbuttonformpro"
+);
+const coinpaymentsButtonPro = document.getElementById("coinpaymentsbuttonpro");
+const coinpaymentsButtonFormGold = document.getElementById(
+  "coinpaymentsbuttonformgold"
+);
+const coinpaymentsButtonGold = document.getElementById("coinpaymentsbuttongold");
+
 let errormsg = document.getElementById("errormsg");
 
 // Listen for submission of payment button forms.
@@ -13,10 +27,21 @@ let errormsg = document.getElementById("errormsg");
 if (paypalButtonForm != null && paypalButton != null) {
   paypalButton.addEventListener("click", formFieldsToJSON);
 }
+if (paypalButtonFormPro != null && paypalButtonPro != null) {
+  paypalButtonPro.addEventListener("click", formFieldsToJSON);
+}
+if (paypalButtonFormGold != null && paypalButtonGold != null) {
+  paypalButtonGold.addEventListener("click", formFieldsToJSON);
+}
 if (coinpaymentsButtonForm != null && coinpaymentsButton != null) {
   coinpaymentsButton.addEventListener("click", formFieldsToJSON);
 }
-
+if (coinpaymentsButtonFormPro != null && coinpaymentsButtonPro != null) {
+  coinpaymentsButtonPro.addEventListener("click", formFieldsToJSON);
+}
+if (coinpaymentsButtonFormGold != null && coinpaymentsButtonGold != null) {
+  coinpaymentsButtonGold.addEventListener("click", formFieldsToJSON);
+}
 function formFieldsToJSON() {
 
   const buttonId = this.id;
@@ -82,10 +107,34 @@ function formFieldsToJSON() {
         ? document.getElementById("paypalusernamefieldforads").value
         : "";
   }
+  if (buttonId === "paypalbuttonpro") {
+    usernamefieldforads =
+      document.getElementById("paypalusernamefieldforadspro") != null
+        ? document.getElementById("paypalusernamefieldforadspro").value
+        : "";
+  }
+  if (buttonId === "paypalbuttongold") {
+    usernamefieldforads =
+      document.getElementById("paypalusernamefieldforadsgold") != null
+        ? document.getElementById("paypalusernamefieldforadsgold").value
+        : "";
+  }
   if (buttonId === "coinpaymentsbutton") {
     usernamefieldforads =
       document.getElementById("coinpaymentsusernamefieldforads") != null
         ? document.getElementById("coinpaymentsusernamefieldforads").value
+        : "";
+  }
+  if (buttonId === "coinpaymentsbuttonpro") {
+    usernamefieldforads =
+      document.getElementById("coinpaymentsusernamefieldforadspro") != null
+        ? document.getElementById("coinpaymentsusernamefieldforadspro").value
+        : "";
+  }
+  if (buttonId === "coinpaymentsbuttongold") {
+    usernamefieldforads =
+      document.getElementById("coinpaymentsusernamefieldforadsgold") != null
+        ? document.getElementById("coinpaymentsusernamefieldforadsgold").value
         : "";
   }
 
@@ -113,6 +162,7 @@ function formFieldsToJSON() {
 }
 
 async function handlePayForm(formattedFormFields, buttonId) {
+
   // First, save the purchase data into the database to retrieve after successful payment.
   const response = await fetch("apis/payformtodatabase.php", {
     method: "POST",
@@ -123,18 +173,39 @@ async function handlePayForm(formattedFormFields, buttonId) {
 
   if (idOrError["pendingId"] != "") {
     // Submit the pay button (even the id fails so the user can still purchase, but will need help from admin to give them their order if no purchase ID).
-    // TODO: there are csp errors on the paypal site in the console.
 
     if (buttonId === "paypalbutton") {
       // Add the purchase id to the paypal button's custom form field.
       document.getElementById("paypalpendingId").value = idOrError["pendingId"];
       paypalButtonForm.submit();
     }
+    if (buttonId === "paypalbuttonpro") {
+      // Add the purchase id to the paypal button's custom form field.
+      document.getElementById("paypalpendingIdpro").value = idOrError["pendingId"];
+      paypalButtonFormPro.submit();
+    }
+    if (buttonId === "paypalbuttongold") {
+      // Add the purchase id to the paypal button's custom form field.
+      document.getElementById("paypalpendingIdgold").value = idOrError["pendingId"];
+      paypalButtonFormGold.submit();
+    }
     if (buttonId === "coinpaymentsbutton") {
       // Add the purchase id to the coinpayments button's custom form field.
       document.getElementById("coinpaymentspendingId").value =
         idOrError["pendingId"];
       coinpaymentsButtonForm.submit();
+    }
+    if (buttonId === "coinpaymentsbuttonpro") {
+      // Add the purchase id to the coinpayments button's custom form field.
+      document.getElementById("coinpaymentspendingIdpro").value =
+        idOrError["pendingId"];
+      coinpaymentsButtonFormPro.submit();
+    }
+    if (buttonId === "coinpaymentsbuttongold") {
+      // Add the purchase id to the coinpayments button's custom form field.
+      document.getElementById("coinpaymentspendingIdgold").value =
+        idOrError["pendingId"];
+      coinpaymentsButtonFormGold.submit();
     }
   } else {
     if (errormsg != null) {

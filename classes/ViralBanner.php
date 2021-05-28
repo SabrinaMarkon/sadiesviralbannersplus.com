@@ -222,7 +222,50 @@ class ViralBanner extends Banner
             </html>';
     }
 
-    public function buildFormFieldsForAdminSettings(int $levelreferred = 1, string $referidaccounttype = "Free", $referralaccounttype = "Free", array $settings): string {
+    public function buildFormFieldsForAdminSettingsBonusSlots(string $referidaccounttype = "Free", $referralaccounttype = "Free", array $settings): string {
+        
+        $htmltoreturn = "";
+        $referidacct = lcfirst($referidaccounttype);
+        $referralacct = lcfirst($referralaccounttype);
+        $settingnameupgradenumber = $referidacct . "downlineupgradestogetbonusslotson" . $referralacct . "referralpages";
+        $settingnamebonusslots = $referidacct . "downlineupgradeswhichbonusslotson" . $referralacct . "referralpages";
+
+        $htmltoreturn .= '<div>
+        <label for="' . $settingnameupgradenumber . '" class="mt-4">How many total downline upgrades a ' . $referidaccounttype . ' member needs to get bonus slots on their ' . $referralaccounttype . '  referral\'s page:</label>
+        <input type="number" min="0" step="1" name="' . $settingnameupgradenumber . '" value="' . $$settingnameupgradenumber . '" class="form-control smallselect" required>
+        </div>';
+
+        $htmltoreturn .= '<label class="mt-2">Bonus slots a ' . $referidaccounttype . ' member gets on their ' . $referralaccounttype . '  referral\'s page:</label>
+        <div class="bannerslot-checkboxes mb-3" style="display: flex;">';
+
+        for ($i = 1; $i <= 14; $i += 3) {
+
+            $htmltoreturn .= '<div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">';
+
+                for ($j = $i; $j <= $i + 2; $j++) {
+
+                    $htmltoreturn .= '<div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="' . $settingnamebonusslots . '[' . $j . ']' . '" 
+                        value="' . $j . '"';
+
+                        if (in_array($j, explode(',', $settings[$settingnamebonusslots]))) {
+                            $htmltoreturn .= ' checked';
+                        }
+
+                        $htmltoreturn .= '>
+                        <label class="form-check-label" for="' . $settingnamebonusslots . '[' . $j . ']' . '">Slot ' . $j. '</label>
+                    </div>';
+                }
+            
+            $htmltoreturn .= '</div>';
+        }
+
+        $htmltoreturn .= '</div>';
+
+        return $htmltoreturn;
+    }
+
+    public function buildFormFieldsForAdminSettingsSlots(int $levelreferred = 1, string $referidaccounttype = "Free", $referralaccounttype = "Free", array $settings): string {
 
         $htmltoreturn = "";
         $levelreferredtext = "";

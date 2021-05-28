@@ -22,6 +22,9 @@ class CoinPaymentsCheckout extends PaymentGateway
         $postdata,
         $paybutton,
         $usernamefieldforads,
+        $coinpaymentsbuttonformid,
+        $coinpaymentspendingIdid,
+        $coinpaymentsbuttonid,
         $payperiod,
         $payintervalcode,
         $formfields,
@@ -56,13 +59,32 @@ class CoinPaymentsCheckout extends PaymentGateway
 
         if ($this->itemname === "Pro Membership" || $this->itemname === "Gold Membership") {
             $usernamefieldforads = "";
+            $coinpaymentsbuttonformid = "coinpaymentsbuttonform";
+            $coinpaymentspendingIdid = "coinpaymentspendingId";
+            $coinpaymentsbuttonid = "coinpaymentsbutton";
+
+        } elseif ($this->itemname === "Pro Upgrade") {            
+            $usernamefieldforads = '<input type="hidden" id="coinpaymentsusernamefieldforadspro" value="' . $this->username . '">';
+            $coinpaymentsbuttonformid = "coinpaymentsbuttonformpro";
+            $coinpaymentspendingIdid = "coinpaymentspendingIdpro";
+            $coinpaymentsbuttonid = "coinpaymentsbuttonpro";
+
+        } elseif ($this->itemname === "Gold Upgrade") {
+            $usernamefieldforads = '<input type="hidden" id="coinpaymentsusernamefieldforadsgold" value="' . $this->username . '">';
+            $coinpaymentsbuttonformid = "coinpaymentsbuttonformgold";
+            $coinpaymentspendingIdid = "coinpaymentspendingIdgold";
+            $coinpaymentsbuttonid = "coinpaymentsbuttongold";
+
         } else {
             $usernamefieldforads = '<input type="hidden" id="coinpaymentsusernamefieldforads" value="' . $this->username . '">';
+            $coinpaymentsbuttonformid = "coinpaymentsbuttonform";
+            $coinpaymentspendingIdid = "coinpaymentspendingId";
+            $coinpaymentsbuttonid = "coinpaymentsbutton";
         }
 
         // TODO: IMPORTANT - Coinpayments does not have automatic subscriptions!! Need to keep track of when next payment is due for users and send invoice every time.
         $paybutton = '
-            <form method="post" id="coinpaymentsbuttonform" action="https://www.coinpayments.net/index.php" accept-charset="UTF-8" class="form-horizontal form-page-small">'
+            <form method="post" id="' . $coinpaymentsbuttonformid . '" action="https://www.coinpayments.net/index.php" accept-charset="UTF-8" class="form-horizontal form-page-small">'
             . $usernamefieldforads .
             '<input type="hidden" name="cmd" value="_pay_simple">
             <input type="hidden" name="reset" value="1">
@@ -76,8 +98,8 @@ class CoinPaymentsCheckout extends PaymentGateway
             <input type="hidden" name="cancel_url" value="' . $this->settings['domain'] . '">
             <input type="hidden" name="ipn_url" value="' . $this->settings['domain'] . '/ipn/coinpayments">
             <input type="hidden" name="invoice" value="">
-            <input type="hidden" name="custom" id="coinpaymentspendingId" value="">
-            <button class="btn btn-lg btn-primary" type="button" name="coinpaymentsbutton" id="coinpaymentsbutton">
+            <input type="hidden" name="custom" id="' . $coinpaymentspendingIdid . '" value="">
+            <button class="btn btn-lg btn-primary mt-2" type="button" name="coinpaymentsbutton" id="' . $coinpaymentsbuttonid . '">
             Buy ' . $this->itemname . ' for $' . $this->price . ' with CoinPayments!</button>
             </form>';
 
