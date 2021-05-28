@@ -87,9 +87,6 @@ class ViralBanner extends Banner
         $clicks = $banner['clicks'];
         $hits = $banner['hits'];
 
-        // Count hit (impression):
-        $this->countBannerHit($id);
-
         if ($source === 'memberarea') {
             // The Viral Banner was clicked in the members area, so the click should open the modal to EDIT the Viral Banner instead of its URL.
             return '
@@ -110,6 +107,10 @@ class ViralBanner extends Banner
         }
         else {
             // The Viral Banner was clicked on the Viral Banners URL. ($source = 'viralbannerpage')
+
+            // Count hit (impression):
+            $this->countBannerHit($id);
+
             return '
             <div class="viralbanner-withclickbox">
                 <div id="viralbanner' . $bannerslot . '" class="viralbanner-placeholder" style="width: ' . $width . 'px;">
@@ -150,6 +151,10 @@ class ViralBanner extends Banner
             <div>
                 <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">' . $msg . '</a>
             </div>';
+            // return '
+            // <div>
+            //     <a href="#viralbannerModal" data-id="' . $bannerslot . '" style="width: ' . $width . 'px; height: ' . $height . 'px;" data-toggle="modal" class="openmodal placeholder">' . $msg . '</a>
+            // </div>';
         }
     }
     
