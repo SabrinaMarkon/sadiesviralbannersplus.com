@@ -16,7 +16,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 class ViralBanner extends Banner
 {
-    private $viralbanner, $alreadyclicked;
+    private $pdo, $sql, $q, $viralbanner, $username, $varvalue, $vararray;
 
     public function getViralBanner(string $username, int $slot): array
     {
@@ -79,22 +79,31 @@ class ViralBanner extends Banner
         return $vararray;
     }
 
-    public function showBanner(array $banner, int $width, int $height, int $bannerslot, string $source): string {
+    public function showBanner(array $banner): string {
 
+        $bannerslot = $banner['bannerslot'] ?? null;
         $id = $banner['id'];
         $alt = $banner['alt'];
         $imageurl = $banner['imageurl'];
-        $clicks = $banner['clicks'];
-        $hits = $banner['hits'];
+        $width = $banner['width'];
+        $height = $banner['height'];
+        $source = $banner['source'];
+        $showinmodal = $banner['showinmodal'];
 
         if ($source === 'memberarea') {
             // The Viral Banner was clicked in the members area, so the click should open the modal to EDIT the Viral Banner instead of its URL.
+            // return '
+            // <div>
+            //     <a class="placeholder-img" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">
+            //         <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
+            //     </a>
+            // </div>'; 
             return '
             <div>
-                <a class="placeholder-img" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">
+                <a href="#' . $showinmodal . '" data-banner="' . json_encode($banner) . '" data-toggle="modal" class="openmodal placeholder-img">
                     <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
                 </a>
-            </div>'; 
+            </div>';
         }
         elseif ($source === 'adminarea') {
             // The Viral Banner was clicked in the admin area.
@@ -136,10 +145,15 @@ class ViralBanner extends Banner
         Database::disconnect();
     }
 
-    public function showBannerPlaceholder(int $bannerslot, int $width, int $height, string $msg, string $source = 'memberarea'): string {
+    public function showBannerPlaceholder(array $banner): string {
         
-        $msguppercase = strtoupper($msg);
-        $msguppercase = str_replace(" ", "+", $msguppercase);
+        $width = $banner['width'];
+        $height = $banner['height'];
+        $source = $banner['source'];
+        $showinmodal = $banner['showinmodal'];
+        $msg = $banner['msg'];
+        // $msg = strtoupper($msg);
+        // $msg = str_replace(" ", "+", $msg);
 
         if ($source === 'adminarea') {
             return '
@@ -147,14 +161,16 @@ class ViralBanner extends Banner
                 <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="/admin/viralbanners#createad">' . $msg . '</a>
             </div>';
         } else {
-            return '
-            <div>
-                <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">' . $msg . '</a>
-            </div>';
             // return '
             // <div>
-            //     <a href="#viralbannerModal" data-id="' . $bannerslot . '" style="width: ' . $width . 'px; height: ' . $height . 'px;" data-toggle="modal" class="openmodal placeholder">' . $msg . '</a>
+            //     <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">' . $msg . '</a>
             // </div>';
+
+            // $showinmodal is also the id of the correct modal dialog to show!
+            return '
+            <div>
+                <a href="#' . $showinmodal . '" data-banner="' . json_encode($banner) . '" style="width: ' . $width . 'px; height: ' . $height . 'px;" data-toggle="modal" class="openmodal placeholder">' . $msg . '</a>
+            </div>';
         }
     }
     

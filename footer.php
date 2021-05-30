@@ -125,6 +125,14 @@ if (basename($_SERVER['REQUEST_URI']) === 'bannermaker') {
   <!-- Custom JavaScript -->
   <script src="js/customjs.js"></script>
   
+  <?php
+  if (basename($_SERVER['REQUEST_URI']) === 'viralbanners') {
+  ?>
+    <!-- For the modal dialogs in the members area Viral Banner set up page. -->
+    <script src="js/viralbannermodal.js"></script>
+  <?php
+  }
+  ?>
   </body>
   </html>
   <?php
