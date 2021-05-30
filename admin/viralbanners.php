@@ -314,7 +314,7 @@ $ads = $banner->getAllAds();
 
             // Set up default admin 728 x 90 banners.
             $adminshowbanner = $banner->getViralBanner('admin', $i);
-            if (!empty($adminshowbanner)) {
+            if (!empty($adminshowbanner['id'])) {
 
                 $adminbanner = $banner->showBanner($adminshowbanner, 728, 90, $i, 'adminarea');
                 echo $adminbanner;
@@ -330,7 +330,7 @@ $ads = $banner->getAllAds();
 
             // Set up default admin 468 x 60 banners.
             $adminshowbanner = $banner->getViralBanner('admin', $i);
-            if (!empty($adminshowbanner)) {
+            if (!empty($adminshowbanner['id'])) {
 
                 $adminbanner = $banner->showBanner($adminshowbanner, 468, 60, $i, 'adminarea');
                 echo $adminbanner;

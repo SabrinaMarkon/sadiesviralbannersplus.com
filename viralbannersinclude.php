@@ -84,7 +84,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
             }
             
             // SHOW:
-            if (!empty($showbanner)) {
+            if (!empty($showbanner['id'])) {
 
                 // SHOW:
                 //echo "TESTING: showbanner EXISTS (and might be empty) so display it slot $i";
@@ -97,7 +97,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                 // There is no banner for either the referid OR their sponsor. Does the admin have a default banner for this slot?
                 $adminshowbanner = $banner->getViralBanner('admin', $i);
 
-                if (!empty($adminshowbanner)) {
+                if (!empty($adminshowbanner['id'])) {
 
                     // SHOW:
                     //echo "TESTING: admin slot because user or sponsor doesn't have a banner for this slot $i";
@@ -148,7 +148,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                     $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
                     $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, $i);
                 }
-                if (!empty($showbanner)) {
+                if (!empty($showbanner['id'])) {
         
                     // SHOW:
                     $showbanner['bannerslot'] = $i;
@@ -160,7 +160,7 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                         // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
                         $adminshowbanner = $banner->getViralBanner('admin', $i);
         
-                        if (!empty($adminshowbanner)) {
+                        if (!empty($adminshowbanner['id'])) {
         
                             // SHOW:
                             $adminshowbanner['bannerslot'] = $i;

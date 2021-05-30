@@ -92,7 +92,7 @@ for ($i = 1; $i <= 6; $i++) {
 
 					// Is this banner one that appears on this user's OWN url?
 					$showbanner = $banner->getViralBanner($username, $i);
-					if (!empty($showbanner)) {
+					if (!empty($showbanner['id'])) {
 	
 						// User already has a banner saved for this slot.
 						$showbanner['showinmodal'] = 'edit';
