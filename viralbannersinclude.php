@@ -91,7 +91,9 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                 $showbanner['bannerslot'] = $i;
                 $showbanner['width'] = 728;
                 $showbanner['height'] = 90;
-                echo $banner->showBanner($showbanner, 'viralbannerpage');
+                $showbanner ['source'] = 'viralbannerpage';
+
+                echo $banner->showBanner($showbanner);
             } else {
 
                 // There is no banner for either the referid OR their sponsor. Does the admin have a default banner for this slot?
@@ -104,7 +106,9 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
                     $adminshowbanner['bannerslot'] = $i;
                     $adminshowbanner['width'] = 728;
                     $adminshowbanner['height'] = 90;
-                    echo $banner->showBanner($adminshowbanner, 'viralbannerpage');
+                    $adminshowbanner ['source'] = 'viralbannerpage';
+
+                    echo $banner->showBanner($adminshowbanner);
                 } else {
 
                     // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
@@ -152,9 +156,11 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
         
                     // SHOW:
                     $showbanner['bannerslot'] = $i;
-                    $showbanner['width'] = 728;
-                    $showbanner['height'] = 90;
-                    echo $banner->showBanner($showbanner, 'viralbannerpage');
+                    $showbanner['width'] = 468;
+                    $showbanner['height'] = 60;
+                    $showbanner ['source'] = 'viralbannerpage';
+
+                    echo $banner->showBanner($showbanner);
                 } else {
         
                         // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
@@ -164,9 +170,11 @@ $goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
         
                             // SHOW:
                             $adminshowbanner['bannerslot'] = $i;
-                            $adminshowbanner['width'] = 728;
-                            $adminshowbanner['height'] = 90;
-                            echo $banner->showBanner($adminshowbanner, 'viralbannerpage');
+                            $adminshowbanner['width'] = 468;
+                            $adminshowbanner['height'] = 60;
+                            $adminshowbanner ['source'] = 'viralbannerpage';
+
+                            echo $banner->showBanner($adminshowbanner);
                         } else {
         
                             // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):

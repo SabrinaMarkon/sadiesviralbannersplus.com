@@ -316,14 +316,18 @@ $ads = $banner->getAllAds();
             $adminshowbanner = $banner->getViralBanner('admin', $i);
             if (!empty($adminshowbanner['id'])) {
 
-                $adminbanner = $banner->showBanner($adminshowbanner, 728, 90, $i, 'adminarea');
-                echo $adminbanner;
+                $adminshowbanner['bannerslot'] = $i;
+                $adminshowbanner['width'] = 728;
+                $adminshowbanner['height'] = 90;
+                $adminshowbanner ['source'] = 'adminarea';
+
+                echo $banner->showBanner($adminshowbanner);
 
             } else {
 
                 // Show blank banner for this position with fields for the admin to add one.
                 echo '<div class="large-banner-image placeholder">NOT ADDED</div>';
-                
+
             }
         }
         for ($i = 9; $i <= 14; $i++) {
@@ -332,13 +336,24 @@ $ads = $banner->getAllAds();
             $adminshowbanner = $banner->getViralBanner('admin', $i);
             if (!empty($adminshowbanner['id'])) {
 
-                $adminbanner = $banner->showBanner($adminshowbanner, 468, 60, $i, 'adminarea');
-                echo $adminbanner;
+                $adminshowbanner['bannerslot'] = $i;
+                $adminshowbanner['width'] = 468;
+                $adminshowbanner['height'] = 60;
+                $adminshowbanner ['source'] = 'adminarea';
+
+                echo $banner->showBanner($adminshowbanner);
 
             } else {
 
                 // Show blank banner for this position with fields for the admin to add one.
-                echo $banner->showBannerPlaceholder($i, 468, 60, 'Default Admin Banner for Viral Banner Slot ' . $i, 'adminarea');
+                $adminshowbanner = [];
+                $adminshowbanner['bannerslot'] = $i;
+                $adminshowbanner['width'] = 468;
+                $adminshowbanner['height'] = 60;
+                $adminshowbanner ['source'] = 'adminarea';
+                $adminshowbanner['msg'] = 'Default Admin Banner for Viral Banner Slot ' . $i;
+
+                echo $banner->showBannerPlaceholder($adminshowbanner);
             }
         }
         ?>
