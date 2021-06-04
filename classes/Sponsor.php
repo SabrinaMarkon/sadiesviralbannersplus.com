@@ -64,25 +64,36 @@ class Sponsor
 
         Database::disconnect();
 
-        return $affiliatearray; // contains [user's own accounttype, user's referid, user's referid's accounttype]
+        return $affiliatearray; // contains [user's own accounttype, user's referid, user's referid's accounttype] OR just empty []
     }
 
     // Get an array of a user's sponsors (referids) up N levels.
     public function getUsernamesReferidsUpToNthLevels(string $username, int $highestlevel = 1): array {
 
-        $alllevelreferids = []; // array of all referids for levels 1 thru $highestlevel.
-        $referidarray = []; // temporary array to hold current referid data.
+        $alllevelreferids = []; // array of all referids for levels 1 $username thru $highestlevelusername.
+        $currentreferiddata = []; // temporary array to hold data for CURRENT referid (starting with $username at level 1) from getUsersAccounttypeReferidAndReferidAccounttype
         $referid = $username; // the current username we need to get the referid for. We start with the username themselves.
 
         for ($i = 1; $i <= $highestlevel; $i++) {
 
-            $referidarray = $this->getUsersAccounttypeReferidAndReferidAccounttype($referid); // contains [user's own accounttype, user's referid, user's referid's accounttype]
-            array_push($alllevelreferids, $referidarray); // Add to main array.
-            $referid = $referidarray[1]; // second item in affiliatearray array returned by getUsersAccounttypeReferidAndReferidAccounttype method is the referid for this level.
-            $referidarray = [];
+            // contains [user's own accounttype, user's referid, user's referid's accounttype] **OR** empty []:
+            $currentreferiddata = $this->getUsersAccounttypeReferidAndReferidAccounttype($referid);
+            
+            if (count($currentreferiddata) === 3) {
+                $accounttype = $currentreferiddata[0]; // first item is the referid's own accounttype
+                array_push($alllevelreferids, [$i, $referid, $accounttype]); // [level number, referid, referid's accounttype] as subarray. Add to main array.
+                $referid = $currentreferiddata[1]; // second item is the referid's referid, which is for the next loop.
+            } else {
+                // should be empty [] if we are here:
+                $accounttype = 'Free';
+                array_push($alllevelreferids, [$i, $referid, $accounttype]); // [level number, referid, referid's accounttype] as subarray. Add to main array.
+                $referid = 'admin';
+            }
+            
+            $currentreferiddata = [];
         }
 
-        return $alllevelreferids;
+        return $alllevelreferids; // Array of arrays of [referid, referid's accounttype].
     }
 
     public function getRandomUsername(string $accounttype = "Free"): string {
