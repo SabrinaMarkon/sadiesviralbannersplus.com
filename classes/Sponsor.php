@@ -29,11 +29,12 @@ class Sponsor
         $data = $q->fetch();
 
         if (!empty($data)) {
+
+            Database::disconnect();
             return $data;
         }
 
         Database::disconnect();
-
         return [];
     }
 
@@ -68,32 +69,51 @@ class Sponsor
     }
 
     // Get an array of a user's sponsors (referids) up N levels.
-    public function getUsernamesReferidsUpToNthLevels(string $username, int $highestlevel = 1): array {
+    public function getUsernamesReferidsUpToNthLevels(string $referid, int $highestlevel = 1): array {
 
-        $alllevelreferids = []; // array of all referids for levels 1 $username thru $highestlevelusername.
-        $currentreferiddata = []; // temporary array to hold data for CURRENT referid (starting with $username at level 1) from getUsersAccounttypeReferidAndReferidAccounttype
-        $referid = $username; // the current username we need to get the referid for. We start with the username themselves.
+        // array of all referids for levels 1 $referid thru the $highestlevel referid. Default each sponsor up to highest level as the admin.
+        // 'free' is just default. Admin referids show admin default banners added from the Viral Banner admin area so accounttype of the admin doesn't matter:
+        $alllevelreferids = [];
+        for ($i = 1; $i <= $highestlevel; $i++) {
+            $subarray = [$i, 'admin', 'free'];
+            array_push($alllevelreferids, $subarray);
+        }
+
+        // temporary array to hold data for CURRENT referid (starting with parameter $referid at level 1) from getUsersAccounttypeReferidAndReferidAccounttype:
+        $currentreferiddata = []; 
 
         for ($i = 1; $i <= $highestlevel; $i++) {
 
-            // contains [user's own accounttype, user's referid, user's referid's accounttype] **OR** empty []:
-            $currentreferiddata = $this->getUsersAccounttypeReferidAndReferidAccounttype($referid);
-            
-            if (count($currentreferiddata) === 3) {
-                $accounttype = $currentreferiddata[0]; // first item is the referid's own accounttype
-                array_push($alllevelreferids, [$i, $referid, $accounttype]); // [level number, referid, referid's accounttype] as subarray. Add to main array.
-                $referid = $currentreferiddata[1]; // second item is the referid's referid, which is for the next loop.
-            } else {
-                // should be empty [] if we are here:
-                $accounttype = 'Free';
-                array_push($alllevelreferids, [$i, $referid, $accounttype]); // [level number, referid, referid's accounttype] as subarray. Add to main array.
-                $referid = 'admin';
-            }
-            
             $currentreferiddata = [];
+
+            // We don't need to check accounttype or anything if referid is admin. It will already be the default in the $alllevelreferids array.
+            if ($referid !== 'admin') {
+                
+                // contains [referid's own accounttype, referid's referid, referid's referid's accounttype] **OR** empty []:
+                $currentreferiddata = $this->getUsersAccounttypeReferidAndReferidAccounttype($referid);
+
+                if (count($currentreferiddata) === 3) {
+                    $accounttype = lcfirst($currentreferiddata[0]); // first item is the referid's own accounttype
+                    array_push($alllevelreferids, [$i, $referid, $accounttype]); // [level number, referid, referid's accounttype] as subarray. Add to main array.
+                    $referid = $currentreferiddata[1]; // ** second item is the referid's referid, which is for the next loop. **
+
+                } else {
+                    // should be empty [] if we are here:
+                    $referid = 'admin';
+                    $currentreferiddata = [];
+                    break; // Short-circuit the for loop because there is no reason to keep going up levels if this level referid is admin (since admin has no sponsor).
+                }
+                
+                $currentreferiddata = [];
+            }
+            else {
+                $referid = 'admin';
+                $currentreferiddata = [];
+                break; // Short-circuit the for loop because there is no reason to keep going up levels if this level referid is admin (since admin has no sponsor).
+            }
         }
 
-        return $alllevelreferids; // Array of arrays of [referid, referid's accounttype].
+        return $alllevelreferids; // Array of arrays of [level $i, referid, referid's accounttype].
     }
 
     public function getRandomUsername(string $accounttype = "Free"): string {

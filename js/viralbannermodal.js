@@ -1,6 +1,7 @@
 // on click to open the modal, hydrate its dialog on the member Viral Banner set up page.
 $(".viralBannerModal").on("shown", function () {
-  // Get the Viral Banner array from the data-banner attribute of the clicked banner.
+
+  // *** Get the Viral Banner array from the data-banner attribute of the clicked banner.
   const bannerArray = JSON.parse($(this).data("banner"));
 
   const showinmodal = bannerArray.showinmodal ?? "";
