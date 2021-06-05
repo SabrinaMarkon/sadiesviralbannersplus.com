@@ -207,10 +207,37 @@ abstract class Ad
             }
             $sql .= "freebannerslots=?, ";
             array_push($pdoarray, $newfreebannerslots);
+
+            // free bonus slots rewards for upgraded downline member count:
+            $newfreedownlineupgradestogetbonusslotsonfreereferralpages = $post['freedownlineupgradestogetbonusslotsonfreereferralpages'];
+            $newfreedownlineupgradestogetbonusslotsonproreferralpages = $post['freedownlineupgradestogetbonusslotsonproreferralpages'];
+            $newfreedownlineupgradestogetbonusslotsongoldreferralpages = $post['freedownlineupgradestogetbonusslotsongoldreferralpages'];
+            $sql .= "freedownlineupgradestogetbonusslotsonfreereferralpages=?, freedownlineupgradestogetbonusslotsonproreferralpages=?, freedownlineupgradestogetbonusslotsongoldreferralpages=?, ";
+            array_push($pdoarray, $newfreedownlineupgradestogetbonusslotsonfreereferralpages, $newfreedownlineupgradestogetbonusslotsonproreferralpages, $newfreedownlineupgradestogetbonusslotsongoldreferralpages);      
+
+            $newfreedownlineupgradeswhichbonusslotsonfreereferralpages = '';
+            if (isset($post['freedownlineupgradeswhichbonusslotsonfreereferralpages'])) {
+                $newfreedownlineupgradeswhichbonusslotsonfreereferralpages = implode(',', $post['freedownlineupgradeswhichbonusslotsonfreereferralpages']);
+            }
+            $sql .= "freedownlineupgradeswhichbonusslotsonfreereferralpages=?, ";
+            array_push($pdoarray, $newfreedownlineupgradeswhichbonusslotsonfreereferralpages);
+            $newfreedownlineupgradeswhichbonusslotsonproreferralpages = '';
+            if (isset($post['freedownlineupgradeswhichbonusslotsonproreferralpages'])) {
+                $newfreedownlineupgradeswhichbonusslotsonproreferralpages = implode(',', $post['freedownlineupgradeswhichbonusslotsonproreferralpages']);
+            }
+            $sql .= "freedownlineupgradeswhichbonusslotsonproreferralpages=?, ";
+            array_push($pdoarray, $newfreedownlineupgradeswhichbonusslotsonproreferralpages);
+            $newfreedownlineupgradeswhichbonusslotsongoldreferralpages = '';
+            if (isset($post['freedownlineupgradeswhichbonusslotsongoldreferralpages'])) {
+                $newfreedownlineupgradeswhichbonusslotsongoldreferralpages = implode(',', $post['freedownlineupgradeswhichbonusslotsongoldreferralpages']);
+            }
+            $sql .= "freedownlineupgradeswhichbonusslotsongoldreferralpages=?, ";
+            array_push($pdoarray, $newfreedownlineupgradeswhichbonusslotsongoldreferralpages);
+
             // free refers free referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $freerefersfreebannerslots = 'freerefersfreebannerslots' . $i;
-                $newfreerefersfreebannerslots = 'newfreerefersfreebannerslots' . $i;
+                // $newfreerefersfreebannerslots = 'newfreerefersfreebannerslots' . $i;
                 $newfreerefersfreebannerslots = '';
                 if (isset($post[$freerefersfreebannerslots])) {
                     $newfreerefersfreebannerslots = implode(',', $post[$freerefersfreebannerslots]);
@@ -221,7 +248,7 @@ abstract class Ad
             // free refers pro referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $freerefersprobannerslots = 'freerefersprobannerslots' . $i;
-                $newfreerefersprobannerslots = 'newfreerefersprobannerslots' . $i;
+                // $newfreerefersprobannerslots = 'newfreerefersprobannerslots' . $i;
                 $newfreerefersprobannerslots = '';
                 if (isset($post[$freerefersprobannerslots])) {
                     $newfreerefersprobannerslots = implode(',', $post[$freerefersprobannerslots]);
@@ -232,7 +259,7 @@ abstract class Ad
             // free refers gold referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $freerefersgoldbannerslots = 'freerefersgoldbannerslots' . $i;
-                $newfreerefersgoldbannerslots = 'newfreerefersgoldbannerslots' . $i;
+                // $newfreerefersgoldbannerslots = 'newfreerefersgoldbannerslots' . $i;
                 $newfreerefersgoldbannerslots = '';
                 if (isset($post[$freerefersgoldbannerslots])) {
                     $newfreerefersgoldbannerslots = implode(',', $post[$freerefersgoldbannerslots]);
@@ -248,10 +275,37 @@ abstract class Ad
             }
             $sql .= "probannerslots=?, ";
             array_push($pdoarray, $newprobannerslots);
+
+            // pro bonus slots rewards for upgraded downline member count:
+            $newprodownlineupgradestogetbonusslotsonfreereferralpages = $post['prodownlineupgradestogetbonusslotsonfreereferralpages'];
+            $newprodownlineupgradestogetbonusslotsonproreferralpages = $post['prodownlineupgradestogetbonusslotsonproreferralpages'];
+            $newprodownlineupgradestogetbonusslotsongoldreferralpages = $post['prodownlineupgradestogetbonusslotsongoldreferralpages'];
+            $sql .= "prodownlineupgradestogetbonusslotsonfreereferralpages=?, prodownlineupgradestogetbonusslotsonproreferralpages=?, prodownlineupgradestogetbonusslotsongoldreferralpages=?, ";
+            array_push($pdoarray, $newprodownlineupgradestogetbonusslotsonfreereferralpages, $newprodownlineupgradestogetbonusslotsonproreferralpages, $newprodownlineupgradestogetbonusslotsongoldreferralpages);   
+
+            $newprodownlineupgradeswhichbonusslotsonfreereferralpages = '';
+            if (isset($post['prodownlineupgradeswhichbonusslotsonfreereferralpages'])) {
+                $newprodownlineupgradeswhichbonusslotsonfreereferralpages = implode(',', $post['prodownlineupgradeswhichbonusslotsonfreereferralpages']);
+            }
+            $sql .= "prodownlineupgradeswhichbonusslotsonfreereferralpages=?, ";
+            array_push($pdoarray, $newprodownlineupgradeswhichbonusslotsonfreereferralpages);
+            $newprodownlineupgradeswhichbonusslotsonproreferralpages = '';
+            if (isset($post['prodownlineupgradeswhichbonusslotsonproreferralpages'])) {
+                $newprodownlineupgradeswhichbonusslotsonproreferralpages = implode(',', $post['prodownlineupgradeswhichbonusslotsonproreferralpages']);
+            }
+            $sql .= "prodownlineupgradeswhichbonusslotsonproreferralpages=?, ";
+            array_push($pdoarray, $newprodownlineupgradeswhichbonusslotsonproreferralpages);
+            $newprodownlineupgradeswhichbonusslotsongoldreferralpages = '';
+            if (isset($post['prodownlineupgradeswhichbonusslotsongoldreferralpages'])) {
+                $newprodownlineupgradeswhichbonusslotsongoldreferralpages = implode(',', $post['prodownlineupgradeswhichbonusslotsongoldreferralpages']);
+            }
+            $sql .= "prodownlineupgradeswhichbonusslotsongoldreferralpages=?, ";
+            array_push($pdoarray, $newprodownlineupgradeswhichbonusslotsongoldreferralpages);
+
             // pro refers free referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $prorefersfreebannerslots = 'prorefersfreebannerslots' . $i;
-                $newprorefersfreebannerslots = 'newprorefersfreebannerslots' . $i;
+                // $newprorefersfreebannerslots = 'newprorefersfreebannerslots' . $i;
                 $newprorefersfreebannerslots = '';
                 if (isset($post[$prorefersfreebannerslots])) {
                     $newprorefersfreebannerslots = implode(',', $post[$prorefersfreebannerslots]);
@@ -262,7 +316,7 @@ abstract class Ad
             // pro refers pro referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $prorefersprobannerslots = 'prorefersprobannerslots' . $i;
-                $newprorefersprobannerslots = 'newprorefersprobannerslots' . $i;
+                // $newprorefersprobannerslots = 'newprorefersprobannerslots' . $i;
                 $newprorefersprobannerslots = '';
                 if (isset($post[$prorefersprobannerslots])) {
                     $newprorefersprobannerslots = implode(',', $post[$prorefersprobannerslots]);
@@ -273,7 +327,7 @@ abstract class Ad
             // pro refers gold referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $prorefersgoldbannerslots = 'prorefersgoldbannerslots' . $i;
-                $newprorefersgoldbannerslots = 'newprorefersgoldbannerslots' . $i;
+                // $newprorefersgoldbannerslots = 'newprorefersgoldbannerslots' . $i;
                 $newprorefersgoldbannerslots = '';
                 if (isset($post[$prorefersgoldbannerslots])) {
                     $newprorefersgoldbannerslots = implode(',', $post[$prorefersgoldbannerslots]);
@@ -289,10 +343,37 @@ abstract class Ad
             }
             $sql .= "goldbannerslots=?, ";
             array_push($pdoarray, $newgoldbannerslots);
+
+            // gold bonus slots rewards for upgraded downline member count:
+            $newgolddownlineupgradestogetbonusslotsonfreereferralpages = $post['golddownlineupgradestogetbonusslotsonfreereferralpages'];
+            $newgolddownlineupgradestogetbonusslotsonproreferralpages = $post['golddownlineupgradestogetbonusslotsonproreferralpages'];
+            $newgolddownlineupgradestogetbonusslotsongoldreferralpages = $post['golddownlineupgradestogetbonusslotsongoldreferralpages'];
+            $sql .= "golddownlineupgradestogetbonusslotsonfreereferralpages=?, golddownlineupgradestogetbonusslotsonproreferralpages=?, golddownlineupgradestogetbonusslotsongoldreferralpages=?, ";
+            array_push($pdoarray, $newgolddownlineupgradestogetbonusslotsonfreereferralpages, $newgolddownlineupgradestogetbonusslotsonproreferralpages, $newgolddownlineupgradestogetbonusslotsongoldreferralpages);  
+
+            $newgolddownlineupgradeswhichbonusslotsonfreereferralpages = '';
+            if (isset($post['golddownlineupgradeswhichbonusslotsonfreereferralpages'])) {
+                $newgolddownlineupgradeswhichbonusslotsonfreereferralpages = implode(',', $post['golddownlineupgradeswhichbonusslotsonfreereferralpages']);
+            }
+            $sql .= "golddownlineupgradeswhichbonusslotsonfreereferralpages=?, ";
+            array_push($pdoarray, $newgolddownlineupgradeswhichbonusslotsonfreereferralpages);
+            $newgolddownlineupgradeswhichbonusslotsonproreferralpages = '';
+            if (isset($post['golddownlineupgradeswhichbonusslotsonproreferralpages'])) {
+                $newgolddownlineupgradeswhichbonusslotsonproreferralpages = implode(',', $post['golddownlineupgradeswhichbonusslotsonproreferralpages']);
+            }
+            $sql .= "golddownlineupgradeswhichbonusslotsonproreferralpages=?, ";
+            array_push($pdoarray, $newgolddownlineupgradeswhichbonusslotsonproreferralpages);
+            $newgolddownlineupgradeswhichbonusslotsongoldreferralpages = '';
+            if (isset($post['golddownlineupgradeswhichbonusslotsongoldreferralpages'])) {
+                $newgolddownlineupgradeswhichbonusslotsongoldreferralpages = implode(',', $post['golddownlineupgradeswhichbonusslotsongoldreferralpages']);
+            }
+            $sql .= "golddownlineupgradeswhichbonusslotsongoldreferralpages=?, ";
+            array_push($pdoarray, $newgolddownlineupgradeswhichbonusslotsongoldreferralpages);
+
             // gold refers free referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $goldrefersfreebannerslots = 'goldrefersfreebannerslots' . $i;
-                $newgoldrefersfreebannerslots = 'newgoldrefersfreebannerslots' . $i;
+                // $newgoldrefersfreebannerslots = 'newgoldrefersfreebannerslots' . $i;
                 $newgoldrefersfreebannerslots = '';
                 if (isset($post[$goldrefersfreebannerslots])) {
                     $newgoldrefersfreebannerslots = implode(',', $post[$goldrefersfreebannerslots]);
@@ -303,7 +384,7 @@ abstract class Ad
             // gold refers pro referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $goldrefersprobannerslots = 'goldrefersprobannerslots' . $i;
-                $newgoldrefersprobannerslots = 'newgoldrefersprobannerslots' . $i;
+                // $newgoldrefersprobannerslots = 'newgoldrefersprobannerslots' . $i;
                 $newgoldrefersprobannerslots = '';
                 if (isset($post[$goldrefersprobannerslots])) {
                     $newgoldrefersprobannerslots = implode(',', $post[$goldrefersprobannerslots]);
@@ -314,7 +395,7 @@ abstract class Ad
             // gold refers gold referral chain:
             for ($i = 1; $i <= 6; $i++) {
                 $goldrefersgoldbannerslots = 'goldrefersgoldbannerslots' . $i;
-                $newgoldrefersgoldbannerslots = 'newgoldrefersgoldbannerslots' . $i;
+                // $newgoldrefersgoldbannerslots = 'newgoldrefersgoldbannerslots' . $i;
                 $newgoldrefersgoldbannerslots = '';
                 if (isset($post[$goldrefersgoldbannerslots])) {
                     $newgoldrefersgoldbannerslots = implode(',', $post[$goldrefersgoldbannerslots]);

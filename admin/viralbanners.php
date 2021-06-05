@@ -10,10 +10,6 @@ if (isset($showad)) {
     echo $showad;
 }
 
-// if (isset($_GET['showad'])) {
-// 	echo $showad;
-// }
-
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {
