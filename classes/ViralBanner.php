@@ -16,7 +16,7 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 
 class ViralBanner extends Banner
 {
-    private $pdo, $sql, $q, $viralbanner, $username, $varvalue, $vararray;
+    private $viralbanner, $username, $varvalue, $vararray;
 
     public function getViralBanner(string $username, int $slot): array
     {
