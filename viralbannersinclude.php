@@ -17,13 +17,16 @@ $banner = new ViralBanner('viralbanners');
 
 // Get the page referid if there is one.
 $usernamespage = isset($_SESSION['referid']) ? $_SESSION['referid'] : 'admin';
-$usernamesaccounttypeandreferid = $sponsor->getReferidAndAccounttypes($usernamespage);
-$usernamesaccounttype = $usernamesaccounttypeandreferid['accounttype'];
-$usernamesreferid = $usernamesaccounttypeandreferid['referid'];
 
-// Get the bannerslots that the referid can occupy on their own page. The rest of the slots will be from their upline, admin, or paid banner rotators:
-$usernamesbannerslots = $usernamesaccounttype . 'bannerslots';
-$usernamesbannerslotsarray = $banner->getVarArray($usernamesbannerslots, $settings); // From csv list in database.
+// We don't need the below variables if the page owner is admin:
+if ($usernamespage !== 'admin') {
+    $usernamesaccounttypeandreferid = $sponsor->getReferidAndAccounttypes($usernamespage);
+    $usernamesaccounttype = $usernamesaccounttypeandreferid['accounttype'];
+    $usernamesreferid = $usernamesaccounttypeandreferid['referid'];
+    // Get the bannerslots that the referid can occupy on their own page. The rest of the slots will be from their upline, admin, or paid banner rotators:
+    $usernamesbannerslots = $usernamesaccounttype . 'bannerslots';
+    $usernamesbannerslotsarray = $banner->getVarArray($usernamesbannerslots, $settings); // From csv list in database.
+}
 
 // What goes in each Viral Banner slot?
 ?>
@@ -31,9 +34,19 @@ $usernamesbannerslotsarray = $banner->getVarArray($usernamesbannerslots, $settin
 <div class="viralbannerscontainer">
 <div class="viralbanners">
 
-<?php
-for ($slot = 1; $slot <= 14; $slot++) {
+<!-- TODO: ADMIN NEEDS TO INDICATE IN ADMIN VB SETTINGS WHiCH SLOTS ARE PAID BANNER ROTATORS OTHERWISE ADMIN BANNERS SHOW INSTEAD BY DEFAULT!!! -->
 
+<?php
+for ($slot = 1; $slot <= 16; $slot++) {
+
+    if ($slot <= 5 || $slot === 16) { // Note: slot 16 will still be 468 x 60 if it is a paid banner rotator!
+        $width = 728;
+        $height = 90;
+    } else {
+        $width = 468;
+        $height = 60;
+    }
+    
     $showbanner = [];
 
     // 1) no need to compute up 6 levels since the page owner is the admin. Just get the default admin Viral Banner to show in this slot, 
@@ -108,7 +121,7 @@ for ($slot = 1; $slot <= 14; $slot++) {
         echo '</div>';
     }
 
-} // end for ($slot = 1; $slot <= 14; $slot++)
+} // end for ($slot = 1; $slot <= 16; $slot++)
 
 ?>
 </div>
