@@ -1,196 +1,117 @@
 <?php
+/** 
+ * The visitor to this page should see the referid's banners in the appropriate slots,
+ *  as well as the referid's sponsors up six level in the correct slots. 
+ * */
+
 # Prevent direct access to this file. Show browser's default 404 error instead.
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
     exit;
 }
 
-// Get this page's referring member $_SESSION['referid']'s banners:
-$banner = new ViralBanner('viralbanners');
-$referidbanners = $banner->getAllApprovedUsersAds($_SESSION['referid']);
+$highestlevel = 6; // How many levels of referrals/sponsors.
 
-// Get this page's referring member's own sponsor and sponsor's accounttype.
 $sponsor = new Sponsor();
-$referidssponsorarray = $sponsor->getUsersAccounttypeReferidAndReferidAccounttype($_SESSION['referid']);
+$banner = new ViralBanner('viralbanners');
 
-if (count($referidssponsorarray) > 0) {
+// Get the page referid if there is one.
+$usernamespage = isset($_SESSION['referid']) ? $_SESSION['referid'] : 'admin';
+$usernamesaccounttypeandreferid = $sponsor->getReferidAndAccounttypes($usernamespage);
+$usernamesaccounttype = $usernamesaccounttypeandreferid['accounttype'];
+$usernamesreferid = $usernamesaccounttypeandreferid['referid'];
 
-    // [useraccounttype, userreferid, referidaccounttype]
+// Get the bannerslots that the referid can occupy on their own page. The rest of the slots will be from their upline, admin, or paid banner rotators:
+$usernamesbannerslots = $usernamesaccounttype . 'bannerslots';
+$usernamesbannerslotsarray = $banner->getVarArray($usernamesbannerslots, $settings); // From csv list in database.
 
-    $useraccounttype = $referidssponsorarray[0];
-    $sponsorusername = $referidssponsorarray[1];
-    if (count($referidssponsorarray) === 3) {
-        $sponsoraccounttype = $referidssponsorarray[2]; // Which of the sponsor's (of this urls referring username) show depends on the sponsor's accounttype.
-    } else {
-        $sponsoraccounttype = "Free";
+// What goes in each Viral Banner slot?
+?>
+
+<div class="viralbannerscontainer">
+<div class="viralbanners">
+
+<?php
+for ($slot = 1; $slot <= 14; $slot++) {
+
+    $showbanner = [];
+
+    // 1) no need to compute up 6 levels since the page owner is the admin. Just get the default admin Viral Banner to show in this slot, 
+    // or a paid banner rotator if no admin banner.
+    if ($usernamespage === 'admin') {
+        $showbanner = $banner->getViralBanner('admin', $slot);
     }
 
-    // Assign the correct variables from the admin settings:
-    $referidprefix = lcfirst($useraccounttype);
-    $sponsorprefix = lcfirst($sponsoraccounttype);
-    $referidbannerslotsvar = $referidprefix . 'bannerslots';
-    $sponsorrefersbannerslotsvar = $sponsorprefix . 'refers' . $referidprefix . 'bannerslots';
+    // The page owner is not the admin, so figure out what goes in this Viral Banner slot:
+    
+    // 2) Check if this slot is one that the page owner gets to have their own banner in:
+    elseif (in_array($slot, $usernamesbannerslotsarray)) {
+        // See if the page owner, $usernamepage, has a banner for this slot ID:
+        $showbanner = $banner->getViralBanner($usernamespage, $slot);
+        //echo "TESTING: showbanner is user's own slot $slot";
+    }
 
-    // Get user's sponsor's banners:
-    $sponsorbanners = $banner->getAllApprovedUsersAds($sponsorusername);
-} else {
-    // For some reason no record was found for the user to get their sponsor or accounttype?
-    $useraccounttype = "Free";
-    $referidbannerslotsvar = 'freebannerslots';
-    $sponsorrefersbannerslotsvar = '';
-}
+    // 3) Check through every sponsor level above the page owner to see if they get their Viral Banner in this slot. 
+    // The closest upline sponsor's banner has priority over the second level upline sponsor, who has priority over the third level sponsor, etc. in the event of a conflict.
+    else {
+        // Get the array of subarrays of each level's [level of referid, referid, referid's accounttype] to know which slot variables are needed:
+        $sponsorarrays = getUsernamesReferidsUpToNthLevels($usernamesreferid, $highestlevel);
 
-if ($referidbannerslotsvar) {
-    $referidbannerslots = $banner->getVarArray($referidbannerslotsvar, $settings);
-} else {
-    $referidbannerslots = [];
-}
-if ($sponsorrefersbannerslotsvar) {
-    $sponsorrefersbannerslots = $banner->getVarArray($sponsorrefersbannerslotsvar, $settings);
-} else {
-    $sponsorrefersbannerslots = [];
-}
+        // Get each level's referid and their accountype.
+        foreach ($sponsorarrays as $sponsorarray) {
 
-$freebannerslotsarray = $banner->getVarArray('freebannerslots', $settings);
-$probannerslotsarray = $banner->getVarArray('probannerslots', $settings);
-$goldbannerslotsarray = $banner->getVarArray('goldbannerslots', $settings);
+            // $sponsorarray is [level of referid, referid, referid's accounttype] **OR** [level of referid, 'admin', 'free'] 
+            $level = $sponsorarray[0]; // sponsor upline level: ie. 1, 2, 3, 4, 5, 6...
+            $referidofthislevel = $sponsorarray[1];
+            $referidofthislevelaccounttype = $sponsorarray[2];
+
+            if ($referidofthislevel === 'admin') {
+                // Show admin banner or paid banner rotator in this slot, $slot, because this level's referid is admin.
+                $showbanner = $banner->getViralBanner('admin', $slot);
+                break;
+            } 
+            else {
+                // Find the proper slot setting variable to check from this referid's account type and sponsor $level.
+                $slotvarname = $referidofthislevelaccounttype . 'refers' . $usernamesaccounttype . 'bannerslots' . $slot;
+                $slotvarnamefromcsvstring = $banner->getVarArray($slotvarname, $settings);
+
+                if (in_array($slot, $slotvarnamefromcsvstring)) {
+                    // Get any Viral Banners referidofthislevel has for this slot and show them.
+                    $showbanner = $banner->getViralBanner($referidofthislevel, $slot);
+                    break;
+                } else {
+                    // The slot array setting doesn't include this particular slot for this referidofthislevel, so show admin default or paid banner rotator.
+                    $showbanner = $banner->getViralBanner('admin', $slot);
+                    break;
+                }
+            } // end else
+        } // end foreach ($sponsorarrays as $sponsorarray)
+    } // end else
+
+    if (!empty($showbanner['id'])) {
+        // SHOW THE VIRAL BANNER:
+        //echo "TESTING: showbanner EXISTS (and might be empty) so display it slot $i";
+        $showbanner['bannerslot'] = $slot;
+        $showbanner['width'] = $width;
+        $showbanner['height'] = $height;
+        $showbanner ['source'] = 'viralbannerpage';
+
+        echo $banner->showBanner($showbanner);
+    }
+    else {
+        // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
+        //echo "TESTING: paid banner rotator because nothing else for this slot $slot";
+        echo '<div class="viralbanner-withclickbox">';
+        echo '<div id="viralbanner' . $slot . '" class="viralbanner-placeholder" style="width: ' . $width . ';">
+        Clicked!</div>';
+        include 'rotatorbannerspaid.php';
+        echo '</div>';
+    }
+
+} // end for ($slot = 1; $slot <= 14; $slot++)
 
 ?>
-<div class="viralbannerscontainer">
-
-    <div class="viralbanners">
-
-        <!-- The Eight 728px x 90px BANNERS -->
-
-        <?php
-        for ($i = 1; $i <= 8; $i++) {
-
-            // $referidbannerslots are the position slots that the user referid is allowed to show for their membership level:
-            if (in_array($i, $referidbannerslots)) {
-                // See if the user, referid, has a banner for this position. Positions over 8 are for the smaller banners below.
-                $showbanner = $banner->getViralBanner($_SESSION['referid'], $i);
-                //echo "TESTING: showbanner is user's own slot $i";
-            } 
-            // $sponsorrefersbannerslots are the position slots that the user referid's sponsor is allowed to show on their referral's (referid's) page.
-            elseif (in_array($i, $sponsorrefersbannerslots) && !empty($sponsorusername)) {
-            
-                // See if the user's sponsor (referid's referid), has a banner saved for this position.
-                $showbanner = $banner->getViralBanner($sponsorusername, $i);
-                //echo "TESTING: showbanner is user's sponsor slot $i";
-            }
-            else {
-                $showbanner = '';
-                //echo "TESTING: showbanner has nothing for user or user's sponsor slot $i";
-            }
-            
-            // SHOW:
-            if (!empty($showbanner['id'])) {
-
-                // SHOW:
-                //echo "TESTING: showbanner EXISTS (and might be empty) so display it slot $i";
-                $showbanner['bannerslot'] = $i;
-                $showbanner['width'] = 728;
-                $showbanner['height'] = 90;
-                $showbanner ['source'] = 'viralbannerpage';
-
-                echo $banner->showBanner($showbanner);
-            } else {
-
-                // There is no banner for either the referid OR their sponsor. Does the admin have a default banner for this slot?
-                $adminshowbanner = $banner->getViralBanner('admin', $i);
-
-                if (!empty($adminshowbanner['id'])) {
-
-                    // SHOW:
-                    //echo "TESTING: admin slot because user or sponsor doesn't have a banner for this slot $i";
-                    $adminshowbanner['bannerslot'] = $i;
-                    $adminshowbanner['width'] = 728;
-                    $adminshowbanner['height'] = 90;
-                    $adminshowbanner ['source'] = 'viralbannerpage';
-
-                    echo $banner->showBanner($adminshowbanner);
-                } else {
-
-                    // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                    //echo "TESTING: paid banner rotator because nothing else for this slot $i";
-                    echo '<div class="viralbanner-withclickbox">';
-                    echo '<div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: 728px;">
-                    Clicked!</div>';
-                    include 'rotatorbannerspaid.php';
-                    echo '</div>';
-                }
-            }
-        }
-        ?>
-
-
-        <!-- The SIX 468px x 60px BANNERS -->
-        <!-- DEFAULTS: -->
-        <!-- #9 - 468px x 60px - Rotator for all members of certain level(s) - default to gold members only. -->
-        <!-- #10 - 468px x 60px - Rotator for all members of certain level(s) - default to pro members only. -->
-        <!-- #11 - 468px x 60px - The referid has a sponsor themselves and this is one of that sponsor's banners, if they have one. -->
-        <!-- #12 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
-        <!-- #13 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
-        <!-- #14 - 468px x 60px - Paid banner rotator if no membership levels get this slot. -->
-
-        <div class="viralbanner-468div">
-            <?php
-            for ($i = 9; $i <= 14; $i++) {
-
-                $allowedaccounttypearray = [];
-                if (in_array($i, $freebannerslotsarray)) {
-                    array_push($allowedaccounttypearray, "Free");
-                }
-                if (in_array($i, $probannerslotsarray)) {
-                    array_push($allowedaccounttypearray, "Pro");
-                }
-                if (in_array($i, $goldbannerslotsarray)) {
-                    array_push($allowedaccounttypearray, "Gold");
-                }
-                if (count($allowedaccounttypearray) > 0) {
-                    $allowedaccounttypeindex = mt_rand(0, count($allowedaccounttypearray) - 1); // Random membership level among those permitted by admin settings.
-                    $allowedaccounttype = $allowedaccounttypearray[$allowedaccounttypeindex];
-                    $showbanner = $banner->getRandomBannerOfCertainMembershipLevel($sponsor, $allowedaccounttype, $i);
-                }
-                if (!empty($showbanner['id'])) {
-        
-                    // SHOW:
-                    $showbanner['bannerslot'] = $i;
-                    $showbanner['width'] = 468;
-                    $showbanner['height'] = 60;
-                    $showbanner ['source'] = 'viralbannerpage';
-
-                    echo $banner->showBanner($showbanner);
-                } else {
-        
-                        // There is no available banners from members for this rotator. Does the admin have a default banner for this slot?
-                        $adminshowbanner = $banner->getViralBanner('admin', $i);
-        
-                        if (!empty($adminshowbanner['id'])) {
-        
-                            // SHOW:
-                            $adminshowbanner['bannerslot'] = $i;
-                            $adminshowbanner['width'] = 468;
-                            $adminshowbanner['height'] = 60;
-                            $adminshowbanner ['source'] = 'viralbannerpage';
-
-                            echo $banner->showBanner($adminshowbanner);
-                        } else {
-        
-                            // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
-                            echo '<div class="viralbanner-withclickbox">';
-                            echo '<div id="viralbanner' . $i . '" class="viralbanner-placeholder" style="width: 468px;">
-                            Clicked!</div>';
-                            include 'rotatorbannerspaid.php';
-                            echo '</div>';
-                        }
-                }
-            }
-            ?>
-        </div>
-
-    </div>
-
+</div>
 </div>
 
 <script src="js/viralbannertimer.js"></script>
