@@ -312,66 +312,59 @@ $ads = $banner->getAllAds();
         <?php
         for ($i = 1; $i <= 5; $i++) {
 
+            $adminshowbanner = [];
             // Set up default admin 728 x 90 banners.
             $adminshowbanner = $banner->getViralBanner('admin', $i);
-            if (!empty($adminshowbanner['id'])) {
 
-                $adminshowbanner['bannerslot'] = $i;
-                $adminshowbanner['width'] = 728;
-                $adminshowbanner['height'] = 90;
-                $adminshowbanner ['source'] = 'adminarea';
-
-                echo $banner->showBanner($adminshowbanner);
-
-            } else {
-
-                // Show blank banner for this position with fields for the admin to add one.
-                echo '<div class="large-banner-image placeholder">NOT ADDED</div>';
-
-            }
-        }
-        for ($i = 6; $i <= 15; $i++) {
-
-            // Set up default admin 468 x 60 banners.
-            $adminshowbanner = $banner->getViralBanner('admin', $i);
-            if (!empty($adminshowbanner['id'])) {
-
-                $adminshowbanner['bannerslot'] = $i;
-                $adminshowbanner['width'] = 468;
-                $adminshowbanner['height'] = 60;
-                $adminshowbanner ['source'] = 'adminarea';
-
-                echo $banner->showBanner($adminshowbanner);
-
-            } else {
-
-                // Show blank banner for this position with fields for the admin to add one.
-                $adminshowbanner = [];
-                $adminshowbanner['bannerslot'] = $i;
-                $adminshowbanner['width'] = 468;
-                $adminshowbanner['height'] = 60;
-                $adminshowbanner ['source'] = 'adminarea';
-                $adminshowbanner['msg'] = 'Default Admin Banner for Viral Banner Slot ' . $i;
-
-                echo $banner->showBannerPlaceholder($adminshowbanner);
-            }
-        }
-        // For the 16th slot, which is an oversized 728 x 90 banner:
-        $adminshowbanner = $banner->getViralBanner('admin', 16);
-        if (!empty($adminshowbanner['id'])) {
-
-            $adminshowbanner['bannerslot'] = 16;
+            $adminshowbanner['bannerslot'] = $i;
             $adminshowbanner['width'] = 728;
             $adminshowbanner['height'] = 90;
             $adminshowbanner ['source'] = 'adminarea';
 
+            if (!empty($adminshowbanner['id'])) {
+                echo $banner->showBanner($adminshowbanner);
+            } else {
+                // Show blank banner for this position with fields for the admin to add one.
+                $adminshowbanner['msg'] = 'Default Admin Banner for Viral Banner Slot ' . $i;
+                echo $banner->showBannerPlaceholder($adminshowbanner);
+            }
+        }
+
+        for ($i = 6; $i <= 15; $i++) {
+
+            $adminshowbanner = [];
+            // Set up default admin 468 x 60 banners.
+            $adminshowbanner = $banner->getViralBanner('admin', $i);
+
+            $adminshowbanner['bannerslot'] = $i;
+            $adminshowbanner['width'] = 468;
+            $adminshowbanner['height'] = 60;
+            $adminshowbanner ['source'] = 'adminarea';
+
+            if (!empty($adminshowbanner['id'])) {
+                echo $banner->showBanner($adminshowbanner);
+            } else {
+                // Show blank banner for this position with fields for the admin to add one.
+                $adminshowbanner['msg'] = 'Default Admin Banner for Viral Banner Slot ' . $i;
+                echo $banner->showBannerPlaceholder($adminshowbanner);
+            }
+        }
+
+        // For the 16th slot, which is an oversized 728 x 90 banner:
+        $adminshowbanner = [];
+        $adminshowbanner = $banner->getViralBanner('admin', 16);
+
+        $adminshowbanner['bannerslot'] = 16;
+        $adminshowbanner['width'] = 728;
+        $adminshowbanner['height'] = 90;
+        $adminshowbanner ['source'] = 'adminarea';
+
+        if (!empty($adminshowbanner['id'])) {
             echo $banner->showBanner($adminshowbanner);
-
         } else {
-
             // Show blank banner for this position with fields for the admin to add one.
-            echo '<div class="large-banner-image placeholder">NOT ADDED</div>';
-
+            $adminshowbanner['msg'] = 'Default Admin Banner for Viral Banner Slot 16';
+            echo $banner->showBannerPlaceholder($adminshowbanner);
         }
         ?>
     </div>
