@@ -88,7 +88,7 @@ class ViralBanner extends Banner
         $width = $banner['width'];
         $height = $banner['height'];
         $source = $banner['source'];
-        $showinmodal = $banner['showinmodal'];
+        $showinmodal = $banner['showinmodal'] ?? null;
 
         if ($source === 'memberarea') {
             // The Viral Banner was clicked in the members area, so the click should open the modal to EDIT the Viral Banner instead of its URL.
@@ -150,7 +150,7 @@ class ViralBanner extends Banner
         $width = $banner['width'];
         $height = $banner['height'];
         $source = $banner['source'];
-        $showinmodal = $banner['showinmodal'];
+        $showinmodal = $banner['showinmodal'] ?? null;
         $msg = $banner['msg'];
         // $msg = strtoupper($msg);
         // $msg = str_replace(" ", "+", $msg);
@@ -161,11 +161,6 @@ class ViralBanner extends Banner
                 <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="/admin/viralbanners#createad">' . $msg . '</a>
             </div>';
         } else {
-            // return '
-            // <div>
-            //     <a class="placeholder" style="width: ' . $width . 'px; height: ' . $height . 'px;" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">' . $msg . '</a>
-            // </div>';
-
             // $showinmodal is also the id of the correct modal dialog to show!
             return '
             <div>
@@ -252,11 +247,11 @@ class ViralBanner extends Banner
         $settingnamebonusslots = $referidacct . "downlineupgradeswhichbonusslotson" . $referralacct . "referralpages";
 
         $htmltoreturn .= '<div>
-        <label for="' . $settingnameupgradenumber . '" class="mt-4">How many total downline upgrades a ' . $referidaccounttype . ' member needs to get bonus slots on their ' . $referralaccounttype . '  referral\'s page:</label>
-        <input type="number" min="0" step="1" name="' . $settingnameupgradenumber . '" value="' . $$settingnameupgradenumber . '" class="form-control smallselect" required>
+        <label for="' . $settingnameupgradenumber . '" class="mt-2">How many total downline upgrades a ' . $referidaccounttype . ' member needs to get <strong>BONUS SLOTS</strong> on their ' . $referralaccounttype . '  referral\'s page:</label>
+        <input type="number" min="0" step="1" name="' . $settingnameupgradenumber . '" value="' . $settings[$settingnameupgradenumber] . '" class="form-control smallselect" required>
         </div>';
 
-        $htmltoreturn .= '<label class="mt-2">Bonus slots a ' . $referidaccounttype . ' member gets on their ' . $referralaccounttype . '  referral\'s page:</label>
+        $htmltoreturn .= '<label class="mt-2"><strong>BONUS SLOTS</strong> a ' . $referidaccounttype . ' member gets on their ' . $referralaccounttype . '  referral\'s page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">';
 
         for ($i = 1; $i <= 14; $i += 3) {

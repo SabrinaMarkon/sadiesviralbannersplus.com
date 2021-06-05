@@ -81,19 +81,19 @@ $ads = $banner->getAllAds();
                             ?>
                             </div>
                             <?php
-                                echo "<div class=\"blackstrong\">Free Members: Banner Slots on Free Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Free Members: Banner Slots on Free Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Free", "Free", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Free", "Free", $settings);
                                 }
 
-                                echo "<div class=\"blackstrong\">Free Members: Banner Slots on Pro Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Free Members: Banner Slots on Pro Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Free", "Pro", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Free", "Pro", $settings);
                                 }
 
-                                echo "<div class=\"blackstrong\">Free Members: Banner Slots on Gold Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Free Members: Banner Slots on Gold Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Free", "Gold", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Free", "Gold", $settings);
@@ -144,19 +144,19 @@ $ads = $banner->getAllAds();
                             ?>
                             </div>
                             <?php
-                                echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Free Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Pro Members: Banner Slots on Free Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Pro", "Free", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Pro", "Free", $settings);
                                 }
 
-                                echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Pro Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Pro Members: Banner Slots on Pro Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Pro", "Pro", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Pro", "Pro", $settings);
                                 }
 
-                                echo "<div class=\"blackstrong\">Pro Members: Banner Slots on Gold Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Pro Members: Banner Slots on Gold Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Pro", "Gold", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Pro", "Gold", $settings);
@@ -206,19 +206,19 @@ $ads = $banner->getAllAds();
                             ?>
                             </div>
                             <?php
-                                echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Free Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Gold Members: Banner Slots on Free Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Gold", "Free", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Gold", "Free", $settings);
                                 }
 
-                                echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Pro Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Gold Members: Banner Slots on Pro Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Gold", "Pro", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Gold", "Pro", $settings);
                                 }
 
-                                echo "<div class=\"blackstrong\">Gold Members: Banner Slots on Gold Referral Pages</div>";
+                                echo "<div class=\"blackstrong\"><u>Gold Members: Banner Slots on Gold Referral Pages</u></div>";
                                 echo $banner->buildFormFieldsForAdminSettingsBonusSlots("Gold", "Gold", $settings);
                                 for ($k = 1; $k <= 6; $k++) {
                                     echo $banner->buildFormFieldsForAdminSettingsSlots($k, "Gold", "Gold", $settings);
