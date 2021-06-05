@@ -254,11 +254,11 @@ class ViralBanner extends Banner
         $htmltoreturn .= '<label class="mt-2"><strong>BONUS SLOTS</strong> a ' . $referidaccounttype . ' member gets on their ' . $referralaccounttype . '  referral\'s page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">';
 
-        for ($i = 1; $i <= 14; $i += 3) {
+        for ($i = 1; $i <= 16; $i += 4) {
 
             $htmltoreturn .= '<div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">';
 
-                for ($j = $i; $j <= $i + 2; $j++) {
+                for ($j = $i; $j <= $i + 3; $j++) {
 
                     $htmltoreturn .= '<div class="form-check">
                         <input class="form-check-input" type="checkbox" name="' . $settingnamebonusslots . '[' . $j . ']' . '" 
@@ -316,11 +316,11 @@ class ViralBanner extends Banner
         $htmltoreturn .= '<label class="mt-2">Banner slots a ' . $referidaccounttype . ' member gets on their <strong>' . $levelreferredtext . ' LEVEL</strong>  ' . $referralaccounttype . '  referral\'s page:</label>
         <div class="bannerslot-checkboxes mb-3" style="display: flex;">';
 
-        for ($i = 1; $i <= 14; $i += 3) {
+        for ($i = 1; $i <= 16; $i += 4) {
 
             $htmltoreturn .= '<div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">';
 
-                for ($j = $i; $j <= $i + 2; $j++) {
+                for ($j = $i; $j <= $i + 3; $j++) {
 
                     $htmltoreturn .= '<div class="form-check">
                         <input class="form-check-input" type="checkbox" name="' . $settingname . '[' . $j . ']' . '" 

@@ -36,7 +36,7 @@ $ads = $banner->getAllAds();
 
     <h2 class="pb-4">Viral Banner Settings</h2>
 
-    <p class="pb-4">Every member has a Viral Banner Page that has 14 slots for banners. You can check which slots members or their sponsors can add their banners to here.<br />If a banner has no check for any membership level, it will be a paid banner rotator.</p>
+    <p class="pb-4">Every member has a Viral Banner Page that has <strong>16</strong> slots for banners. You can check which slots members or their sponsors can add their banners to here.<br />If a banner has no check for any membership level, it will be a paid banner rotator.</p>
 
     <form action="/admin/viralbanners" method="post" class="form" role="form">
         <div id="viralbannerpanel" class="viralbannerpanel mt-3" role="tablist" aria-multiselectable="true">
@@ -56,11 +56,11 @@ $ads = $banner->getAllAds();
                             <label class="mt-2">Banner slots included with Free membership:</label>
                             <div class="bannerslot-checkboxes mb-3" style="display: flex;">
                             <?php
-                            for ($i = 1; $i <= 14; $i += 3) {
+                            for ($i = 1; $i <= 16; $i += 4) {
                             ?>
                                 <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                                     <?php
-                                    for ($j = $i; $j <= $i + 2; $j++) {
+                                    for ($j = $i; $j <= $i + 3; $j++) {
                                     ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="freebannerslots[<?php echo $j ?>]" 
@@ -119,11 +119,11 @@ $ads = $banner->getAllAds();
                             <label class="mt-2">Banner slots included with Pro membership:</label>
                             <div class="bannerslot-checkboxes mb-3" style="display: flex;">
                             <?php
-                            for ($i = 1; $i <= 14; $i += 3) {
+                            for ($i = 1; $i <= 16; $i += 4) {
                             ?>
                                 <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                                     <?php
-                                    for ($j = $i; $j <= $i + 2; $j++) {
+                                    for ($j = $i; $j <= $i + 3; $j++) {
                                     ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="probannerslots[<?php echo $j ?>]" 
@@ -181,11 +181,11 @@ $ads = $banner->getAllAds();
                             <label class="mt-2">Banner slots included with Gold membership:</label>
                             <div class="bannerslot-checkboxes mb-3" style="display: flex;">
                             <?php
-                            for ($i = 1; $i <= 14; $i += 3) {
+                            for ($i = 1; $i <= 16; $i += 4) {
                             ?>
                                 <div class="bannerslot-checkboxes-column mr-4" style="display: flex; flex-direction: column;">
                                     <?php
-                                    for ($j = $i; $j <= $i + 2; $j++) {
+                                    for ($j = $i; $j <= $i + 3; $j++) {
                                     ?>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="goldbannerslots[<?php echo $j ?>]" 
@@ -269,7 +269,7 @@ $ads = $banner->getAllAds();
         <label for="bannerpageslot">Viral Banner Slot:</label>
         <select name="bannerpageslot" class="form-control widetableselect">
             <?php
-            for ($i = 1; $i <= 14; $i++) {
+            for ($i = 1; $i <= 16; $i++) {
                 $selected = "";
 				if (isset($_POST['bannerpageslot'])) {
 					if ($_POST['bannerpageslot'] === $i) {
@@ -310,7 +310,7 @@ $ads = $banner->getAllAds();
 
     <div class="viralbanners">
         <?php
-        for ($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
 
             // Set up default admin 728 x 90 banners.
             $adminshowbanner = $banner->getViralBanner('admin', $i);
@@ -330,7 +330,7 @@ $ads = $banner->getAllAds();
 
             }
         }
-        for ($i = 9; $i <= 14; $i++) {
+        for ($i = 6; $i <= 15; $i++) {
 
             // Set up default admin 468 x 60 banners.
             $adminshowbanner = $banner->getViralBanner('admin', $i);
@@ -355,6 +355,23 @@ $ads = $banner->getAllAds();
 
                 echo $banner->showBannerPlaceholder($adminshowbanner);
             }
+        }
+        // For the 16th slot, which is an oversized 728 x 90 banner:
+        $adminshowbanner = $banner->getViralBanner('admin', 16);
+        if (!empty($adminshowbanner['id'])) {
+
+            $adminshowbanner['bannerslot'] = 16;
+            $adminshowbanner['width'] = 728;
+            $adminshowbanner['height'] = 90;
+            $adminshowbanner ['source'] = 'adminarea';
+
+            echo $banner->showBanner($adminshowbanner);
+
+        } else {
+
+            // Show blank banner for this position with fields for the admin to add one.
+            echo '<div class="large-banner-image placeholder">NOT ADDED</div>';
+
         }
         ?>
     </div>
@@ -454,7 +471,7 @@ $ads = $banner->getAllAds();
                             <td class="small">
                                 <select name="bannerpageslot" class="form-control widetableselect">
                                     <?php
-                                    for ($i = 1; $i <= 14; $i++) {
+                                    for ($i = 1; $i <= 16; $i++) {
                                         ?>
                                         <option value="<?php echo $i ?>"<?php if ($ad['bannerpageslot'] == $i) { echo " selected"; } ?>>
                                             <?php echo $i; ?>
