@@ -55,17 +55,22 @@ for ($i = 1; $i <= 6; $i++) {
 			// $showinmodal added to the $banner array can be: 'edit', 'add', 'paidonly', 'upgradegold', or 'upgradeproandgold'
 
 			if ($i === 1) {
-		?>
+			?>
 				<h2 class="ja-bottompadding my-3">Your 728 x 90 Viral Banners</h2>
 			<?php
 			}
-			if ($i === 9) {
+			if ($i === 6) {
 			?>
 				<h2 class="ja-bottompadding my-3">Your 468 x 60 Viral Banners</h2>
 			<?php
 			}
+			if ($i == 16) {
+			?>
+				<h2 class="ja-bottompadding my-3">Extra 728 x 90 Viral Banner</h2>
+			<?php	
+			}
 
-			if ($i <= 8) {
+			if ($i <= 5 || $i == 16) {
 				$width = 728;
 				$height = 90;
 			} else {
@@ -74,11 +79,6 @@ for ($i = 1; $i <= 6; $i++) {
 			}
 
 			$showbanner = [];
-			$showbanner['bannerslot'] = $i;
-			$showbanner['width'] = $width;
-			$showbanner['height'] = $height;
-			$showbanner ['source'] = 'memberarea';
-
 			$foundslot = false;
 
 			foreach ($bannerslotvarnames as $bannerslotvarname) {
@@ -96,11 +96,20 @@ for ($i = 1; $i <= 6; $i++) {
 	
 						// User already has a banner saved for this slot.
 						$showbanner['showinmodal'] = 'edit';
+						$showbanner['bannerslot'] = $i;
+						$showbanner['width'] = $width;
+						$showbanner['height'] = $height;
+						$showbanner ['source'] = 'memberarea';
 						echo $banner->showBanner($showbanner);
+
 					} else {
 	
 						// Show blank banner for this position with fields for the user to add their own.
 						$showbanner['showinmodal'] = 'add';
+						$showbanner['bannerslot'] = $i;
+						$showbanner['width'] = $width;
+						$showbanner['height'] = $height;
+						$showbanner ['source'] = 'memberarea';
 						$showbanner['msg'] = 'Click to add your Viral Banner for Slot ' . $i;
 						echo $banner->showBannerPlaceholder($showbanner);
 					}
@@ -113,6 +122,12 @@ for ($i = 1; $i <= 6; $i++) {
 			if ($foundslot === false) {
 				// this banner is unavailable to this user's membership level.
 				// Is this a paid only banner?
+
+				$showbanner['bannerslot'] = $i;
+				$showbanner['width'] = $width;
+				$showbanner['height'] = $height;
+				$showbanner ['source'] = 'memberarea';
+
 				if ($accounttype === "Free") {
 					// Upgrade button for both pro and gold.
 					$showbanner['showinmodal'] = 'upgradeproandgold';
