@@ -21,7 +21,7 @@ $usernamespage = isset($_SESSION['referid']) ? $_SESSION['referid'] : 'admin';
 // We don't need the below variables if the page owner is admin:
 if ($usernamespage !== 'admin') {
     $usernamesaccounttypeandreferid = $sponsor->getReferidAndAccounttypes($usernamespage);
-    $usernamesaccounttype = $usernamesaccounttypeandreferid['accounttype'];
+    $usernamesaccounttype = lcfirst($usernamesaccounttypeandreferid['accounttype']);
     $usernamesreferid = $usernamesaccounttypeandreferid['referid'];
     // Get the bannerslots that the referid can occupy on their own page. The rest of the slots will be from their upline, admin, or paid banner rotators:
     $usernamesbannerslots = $usernamesaccounttype . 'bannerslots';

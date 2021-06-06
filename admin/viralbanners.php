@@ -9,7 +9,6 @@ require "control.php";
 if (isset($showad)) {
     echo $showad;
 }
-
 $sitesettings = new Settings();
 $settings = $sitesettings->getSettings();
 foreach ($settings as $key => $value) {

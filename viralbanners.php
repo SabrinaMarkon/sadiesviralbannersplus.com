@@ -17,7 +17,7 @@ $adtable = 'viralbanners';
 $banner = new ViralBanner('viralbanners');
 $prefix = lcfirst($accounttype);
 
-$bannerslotvarnames = ['bannerslots'];
+$bannerslotvarnames = ['freebannerslots', 'probannerslots', 'goldbannerslots'];
 
 // Get all the Viral Banner slot variables from adminsettings to search through for a username's banners.
 for ($i = 1; $i <= 6; $i++) {
@@ -49,7 +49,7 @@ for ($i = 1; $i <= 6; $i++) {
 	<div class="viralbanners">
 
 		<?php
-		for ($i = 1; $i <= 14; $i++) {
+		for ($i = 1; $i <= 16; $i++) {
 
 			// // Show either a modal to add or edit banner, upgrade buttons, or link to paid only banner rotator.
 			// $showinmodal added to the $banner array can be: 'edit', 'add', 'paidonly', 'upgradegold', or 'upgradeproandgold'
