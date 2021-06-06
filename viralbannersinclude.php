@@ -46,6 +46,11 @@ for ($slot = 1; $slot <= 16; $slot++) {
         $width = 468;
         $height = 60;
     }
+
+    // Open flexbox div for 2 columns of 468 x 60 banners
+    if ($slot === 6) {
+        echo '<div class="viralbanner-468div">';
+    }
     
     $showbanner = [];
 
@@ -118,6 +123,11 @@ for ($slot = 1; $slot <= 16; $slot++) {
         echo '<div id="viralbanner' . $slot . '" class="viralbanner-placeholder" style="width: ' . $width . ';">
         Clicked!</div>';
         include 'rotatorbannerspaid.php';
+        echo '</div>';
+    }
+
+    // Close flexbox div for 2 columns of 468 x 60 banners
+    if ($slot === 15) {
         echo '</div>';
     }
 
