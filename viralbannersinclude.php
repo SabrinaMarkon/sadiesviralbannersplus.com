@@ -73,7 +73,7 @@ for ($slot = 1; $slot <= 16; $slot++) {
     // The closest upline sponsor's banner has priority over the second level upline sponsor, who has priority over the third level sponsor, etc. in the event of a conflict.
     else {
         // Get the array of subarrays of each level's [level of referid, referid, referid's accounttype] to know which slot variables are needed:
-        $sponsorarrays = getUsernamesReferidsUpToNthLevels($usernamesreferid, $highestlevel);
+        $sponsorarrays = $sponsor->getUsernamesReferidsUpToNthLevels($usernamesreferid, $highestlevel);
 
         // Get each level's referid and their accountype.
         foreach ($sponsorarrays as $sponsorarray) {
