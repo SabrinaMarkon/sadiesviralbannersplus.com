@@ -114,7 +114,7 @@ for ($slot = 1; $slot <= 16; $slot++) {
     else {
         // SHOW PAID BANNER ROTATOR (NOTHING ELSE AVAILABLE):
         //echo "TESTING: paid banner rotator because nothing else for this slot $slot";
-        echo '<div class="viralbanner-withclickbox">';
+        echo '<div class="viralbanner-withclickbox mt-3">';
         echo '<div id="viralbanner' . $slot . '" class="viralbanner-placeholder" style="width: ' . $width . ';">
         Clicked!</div>';
         include 'rotatorbannerspaid.php';
