@@ -17,22 +17,90 @@ $adtable = 'viralbanners';
 $banner = new ViralBanner('viralbanners');
 $prefix = lcfirst($accounttype);
 
-$bannerslotvarnames = ['freebannerslots', 'probannerslots', 'goldbannerslots'];
+// ARRAY OF ALL *UNIQUE* SLOTS THE USER HAS ACCESS TO FROM ALL ADMIN VARIABLES:
+$freeslotsarray = [];
+$proslotsarray = [];
+$goldslotsarray = [];
 
-// Get all the Viral Banner slot variables from adminsettings to search through for a username's banners.
+$allslotsarray = [];
+
+// BUILD THE ARRAYS OF ADMIN SETTINGS FOR THE BANNER SLOTS TO USE //
+$freeslotvarnames = ['freebannerslots', 'freedownlineupgradeswhichbonusslotsonfreereferralpages', 'freedownlineupgradeswhichbonusslotsonproreferralpages', 'freedownlineupgradeswhichbonusslotsongoldreferralpages'];
+$proslotvarnames = ['probannerslots', 'prodownlineupgradeswhichbonusslotsonfreereferralpages', 'prodownlineupgradeswhichbonusslotsonproreferralpages', 'prodownlineupgradeswhichbonusslotsongoldreferralpages'];
+$goldslotvarnames = ['goldbannerslots', 'golddownlineupgradeswhichbonusslotsonfreereferralpages', 'golddownlineupgradeswhichbonusslotsonproreferralpages', 'golddownlineupgradeswhichbonusslotsongoldreferralpages'];
+// Get all the Viral Banner slot variables from adminsettings.
 for ($i = 1; $i <= 6; $i++) {
-
-	$refersfreebannerslots = $prefix . 'refersfreebannerslots' . $i;
-	$refersprobannerslots = $prefix . 'refersprobannerslots' . $i;
-	$refersgoldbannerslots = $prefix . 'refersgoldbannerslots' . $i;
-
-	array_push($bannerslotvarnames, 
-		$refersfreebannerslots, 
-		$refersprobannerslots, 
-		$refersgoldbannerslots
+    // FREE:
+	$freerefersfreebannerslots = 'freerefersfreebannerslots' . $i;
+	$freerefersprobannerslots = 'freerefersprobannerslots' . $i;
+	$freerefersgoldbannerslots = 'freerefersgoldbannerslots' . $i;
+	array_push($freeslotvarnames, 
+		$freerefersfreebannerslots, 
+		$freerefersprobannerslots, 
+		$freerefersgoldbannerslots
 	);
+    // PRO:
+    $prorefersfreebannerslots = 'prorefersfreebannerslots' . $i;
+	$prorefersprobannerslots = 'prorefersprobannerslots' . $i;
+	$prorefersgoldbannerslots = 'prorefersgoldbannerslots' . $i;
+	array_push($proslotvarnames, 
+		$prorefersfreebannerslots, 
+		$prorefersprobannerslots, 
+		$prorefersgoldbannerslots
+	);
+    // GOLD:
+    $goldrefersfreebannerslots = 'goldrefersfreebannerslots' . $i;
+    $goldrefersprobannerslots = 'goldrefersprobannerslots' . $i;
+    $goldrefersgoldbannerslots = 'goldrefersgoldbannerslots' . $i;
+    array_push($goldslotvarnames, 
+        $goldrefersfreebannerslots, 
+        $goldrefersprobannerslots, 
+        $goldrefersgoldbannerslots
+    );
 }
 
+// TODO: Fit the below foreach codes into the above (less computation - better performance). Also put all this into a method.
+// Get the Viral Banner slot admin variables.
+// FREE:
+foreach ($freeslotvarnames as $freeslotvarname) {
+    // Get each slot number from this admin variable and push it onto the freeslotsarray variable.
+    $slotarray = explode(',', $$freeslotvarname); // $$freeslotvarname is the csv string from the database.
+    foreach ($slotarray as $slot) {
+        if (!in_array($slot, $freeslotsarray)) {
+            array_push($freeslotsarray, $slot);
+        } 
+    }
+}
+// PRO:
+foreach ($proslotvarnames as $proslotvarname) {
+    // Get each slot number from this admin variable and push it onto the proslotsarray variable.
+    $slotarray = explode(',', $$proslotvarname); // $$proslotvarname is the csv string from the database.
+    foreach ($slotarray as $slot) {
+        if (!in_array($slot, $proslotsarray)) {
+            array_push($proslotsarray, $slot);
+        } 
+    }
+}
+// GOLD:
+foreach ($goldslotvarnames as $goldslotvarname) {
+    // Get each slot number from this admin variable and push it onto the freeslotsarray variable.
+    $slotarray = explode(',', $$goldslotvarname); // $$goldslotvarname is the csv string from the database.
+    foreach ($slotarray as $slot) {
+        if (!in_array($slot, $goldslotsarray)) {
+            array_push($goldslotsarray, $slot);
+        } 
+    }
+}
+
+if ($accounttype === "Gold") {
+    $allslotsarray = $goldslotsarray;
+}
+elseif ($accounttype === "Pro") {
+    $allslotsarray = $proslotsarray;
+}
+else {
+    $allslotsarray = $freeslotsarray;
+}
 ?>
 
 <div class="container">
@@ -79,74 +147,157 @@ for ($i = 1; $i <= 6; $i++) {
 			}
 
 			$showbanner = [];
-			$foundslot = false;
 
-			foreach ($bannerslotvarnames as $bannerslotvarname) {
+            // Is the member allowed to add a Viral Banner to this slot?
+            if (in_array($i, $allslotsarray)) {
 
-				// First convert the csv string from the database to an array of Viral Banner slot ids:
-				$bannerslotarrayfromcsvstring = $banner->getVarArray($bannerslotvarname, $settings);
+                // YES!
 
-				// strpos makes sure the admin setting varname is one meant for this member's accounttype.
-				// in_array make sure a slot is checked off in this adminsetting.
-				if (in_array($i, $bannerslotarrayfromcsvstring) && strpos($bannerslotvarname, $prefix) == 0) {
+                $showbanner = $banner->getViralBanner($username, $i);
 
-					// Is this banner one that appears on this user's OWN url?
-					$showbanner = $banner->getViralBanner($username, $i);
-					if (!empty($showbanner['id'])) {
-	
-						// User already has a banner saved for this slot.
-						$showbanner['showinmodal'] = 'edit';
-						$showbanner['bannerslot'] = $i;
-						$showbanner['width'] = $width;
-						$showbanner['height'] = $height;
-						$showbanner ['source'] = 'memberarea';
-						echo $banner->showBanner($showbanner);
+                if (!empty($showbanner['id'])) {
 
-					} else {
-	
-						// Show blank banner for this position with fields for the user to add their own.
-						$showbanner['showinmodal'] = 'add';
-						$showbanner['bannerslot'] = $i;
-						$showbanner['width'] = $width;
-						$showbanner['height'] = $height;
-						$showbanner ['source'] = 'memberarea';
-						$showbanner['msg'] = 'Click to add your Viral Banner for Slot ' . $i;
+                    // User already has a banner saved for this slot.
+                    $showbanner['showinmodal'] = 'edit';
+                    $showbanner['bannerslot'] = $i;
+                    $showbanner['width'] = $width;
+                    $showbanner['height'] = $height;
+                    $showbanner ['source'] = 'memberarea';
+                    echo $banner->showBanner($showbanner);
+
+                } else {
+
+                    // Show blank banner for this position with fields for the user to add their own.
+                    $showbanner['showinmodal'] = 'add';
+                    $showbanner['bannerslot'] = $i;
+                    $showbanner['width'] = $width;
+                    $showbanner['height'] = $height;
+                    $showbanner ['source'] = 'memberarea';
+                    $showbanner['msg'] = 'Click to add your Viral Banner for Slot ' . $i;
+                    echo $banner->showBannerPlaceholder($showbanner);
+                }  
+
+            } // if (in_array($i, $allslotsarray))
+            else {
+
+                // NO!
+
+                $showbanner['bannerslot'] = $i;
+                $showbanner['width'] = $width;
+                $showbanner['height'] = $height;
+                $showbanner ['source'] = 'memberarea';
+
+                $free = false;
+                $pro = false;
+                $gold = false;
+
+                if (in_array($i, $freeslotsarray)) {
+                    $free = true; // Free members can use this slot.
+                }
+                if (in_array($i, $proslotsarray)) {
+                    $pro = true; // Pro members can use this slot.
+                }
+                if (in_array($i, $goldslotsarray)) {
+                    $gold = true; // Gold members can use this slot.
+                }
+
+                if ($accounttype === 'Free') {
+                    
+                    // Free members can't use this slot. 
+                    // Can Pro members?
+                    // Can Gold members?
+
+                    if ($pro && $gold) {
+                        // Upgrade to pro or gold modal.
+                        $showbanner['showinmodal'] = 'upgradeproandgold';
+						$showbanner['msg'] = 'Upgrade to Pro or Gold to add your banner to Slot ' . $i;
+                    }
+                    elseif ($pro && !$gold) {
+                        // Message that slot is only for pro members. Modal offers upgrade to pro or gold however.
+                        $showbanner['showinmodal'] = 'upgradeproandgold';
+						$showbanner['msg'] = 'Upgrade to Pro to add your banner to Slot ' . $i . '\nThis slot is ONLY for Pro';
+                    }
+                    elseif (!$pro && $gold) {
+                        // Upgrade to gold only modal.
+                        $showbanner['showinmodal'] = 'upgradegold';
+						$showbanner['msg'] = 'Upgrade to Gold to add your banner to Slot ' . $i . '\nThis slot is ONLY for Gold';
+                    }
+                    else {
+                        // Paid-only banner rotator modal.
+                        $showbanner['showinmodal'] = 'paidonly';
+						$showbanner['msg'] = 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i;
+                    }
+                    
+
+                } // accounttype is Free
+                elseif ($accounttype === "Pro") {
+
+                    // Pro members can't use this slot. 
+                    // Can Free members?
+                    // Can Gold members?
+
+                    if ($free && $gold) {
+                        // Upgrade to gold modal. Free members can access too, but it is pointless to mention to pros.
+                        $showbanner['showinmodal'] = 'upgradegold';
+						$showbanner['msg'] = 'Upgrade to Gold to add your banner to Slot ' . $i;
+                    }
+                    elseif ($free && !$gold) {
+                        // Message that slot is only for free members. Modal is for upgrading to gold anyway to encourage upgrading even if they can't use this slot.
+                        $showbanner['showinmodal'] = 'upgradegold'; 
+						$showbanner['msg'] = 'Only Free members can add their banner to Slot ' . $i . '\nUpgrade to Gold to access more slots';
 						echo $banner->showBannerPlaceholder($showbanner);
-					}
-					
-					$foundslot = true;
-					break; // slot was found in this array so no need to check any other slot arrays (from adminsettings).
-				}
-			}
+                    }
+                    elseif (!$free && $gold) {
+                        // Upgrade to gold only modal.
+                        $showbanner['showinmodal'] = 'upgradegold';
+						$showbanner['msg'] = 'Upgrade to Gold to add your banner to Slot ' . $i;
+                    }
+                    else {
+                        // Paid-only banner rotator modal.
+                        $showbanner['showinmodal'] = 'paidonly';
+						$showbanner['msg'] = 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i;
+                    }
 
-			if ($foundslot === false) {
-				// this banner is unavailable to this user's membership level.
-				// Is this a paid only banner?
+                } // accounttype is Pro
+                elseif ($accounttype === "Gold") {
 
-				$showbanner['bannerslot'] = $i;
-				$showbanner['width'] = $width;
-				$showbanner['height'] = $height;
-				$showbanner ['source'] = 'memberarea';
+                    // Gold members can't use this slot. 
+                    // Can Free members?
+                    // Can Pro members?
 
-				if ($accounttype === "Free") {
-					// Upgrade button for both pro and gold.
-					$showbanner['showinmodal'] = 'upgradeproandgold';
-					$showbanner['msg'] = 'Upgrade to Pro or Gold to add your banner to Slot ' . $i;
-					echo $banner->showBannerPlaceholder($showbanner);
+                    if ($free && $pro) {
+                        // Message that slot is only for free or pro members. Modal is for paid-only banners.
+                        $showbanner['showinmodal'] = 'paidonly'; 
+						$showbanner['msg'] = 'Only Free or Pro members can add their banner to Slot ' . $i;
+                    }
+                    elseif ($free && !$pro) {
+                        // Message that slot is only for free members. Modal is for paid-only banners.
+                        $showbanner['showinmodal'] = 'paidonly'; 
+						$showbanner['msg'] = 'Only Free members can add their banner to Slot ' . $i;
+                    }
+                    elseif (!$free && $pro) {
+                        // Message that slot is only for pro members. Modal is for paid-only banners.
+                        $showbanner['showinmodal'] = 'paidonly'; 
+						$showbanner['msg'] = 'Only Pro members can add their banner to Slot ' . $i;
+                    }
+                    else {
+                        // Paid-only banner rotator modal.
+                        $showbanner['showinmodal'] = 'paidonly';
+						$showbanner['msg'] = 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i;
+                    }
 
-				} elseif ($accounttype === "Pro") {
-					// Upgrade button for gold.
-					$showbanner['showinmodal'] = 'upgradegold';
-					$showbanner['msg'] = 'Upgrade to Gold to add your banner to Slot ' . $i;
-					echo $banner->showBannerPlaceholder($showbanner);
+                } // accounttype is Gold
+                else {
+                    
+                    // Bug? No accounttype detected. Show paid-only banner modal by default.
+                    $showbanner['showinmodal'] = 'paidonly';
+                    $showbanner['msg'] = 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i;
+                }
+                  
+                // Show our computed view:
+                echo $banner->showBannerPlaceholder($showbanner);
 
-				} else {
-					// This can only be a paid banner rotator. Show link to buy one.
-					$showbanner['showinmodal'] = 'paidonly';
-					$showbanner['msg'] = 'Click for our exclusive paid-only Viral Rotator in Slot ' . $i;
-					echo $banner->showBannerPlaceholder($showbanner);
-				}
-			}
+            }
 			?>
 <?php
 		}

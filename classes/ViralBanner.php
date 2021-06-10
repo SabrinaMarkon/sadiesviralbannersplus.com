@@ -152,8 +152,7 @@ class ViralBanner extends Banner
         $source = $banner['source'];
         $showinmodal = $banner['showinmodal'] ?? null;
         $msg = $banner['msg'];
-        // $msg = strtoupper($msg);
-        // $msg = str_replace(" ", "+", $msg);
+        $msg = str_replace('\n', '<br>', $msg); // So line breaks in the message appear in the html properly.
 
         if ($source === 'adminarea') {
             return '
