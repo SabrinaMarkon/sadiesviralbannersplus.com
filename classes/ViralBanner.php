@@ -91,16 +91,10 @@ class ViralBanner extends Banner
         $showinmodal = $banner['showinmodal'] ?? null;
 
         if ($source === 'memberarea') {
-            // The Viral Banner was clicked in the members area, so the click should open the modal to EDIT the Viral Banner instead of its URL.
-            // return '
-            // <div>
-            //     <a class="placeholder-img" href="#" data-toggle="modal" data-target="#viralbannerModal' . $bannerslot . '">
-            //         <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
-            //     </a>
-            // </div>'; 
+            $showbanner = json_encode($banner);
             return '
             <div>
-                <a href="#' . $showinmodal . '" data-banner="' . json_encode($banner) . '" data-toggle="modal" class="openmodal placeholder-img">
+                <a href="#' . $showinmodal . '" data-banner="' . $showbanner . '" data-toggle="modal" class="openmodal placeholder-img ' . $showinmodal . '">
                     <img alt="' . $alt . '" src="' . $imageurl . '" width="' . $width . '" height="' . $height . '" />
                 </a>
             </div>';
@@ -161,9 +155,10 @@ class ViralBanner extends Banner
             </div>';
         } else {
             // $showinmodal is also the id of the correct modal dialog to show!
+            $showbanner = json_encode($banner);
             return '
             <div>
-                <a href="#' . $showinmodal . '" data-banner="' . json_encode($banner) . '" style="width: ' . $width . 'px; height: ' . $height . 'px;" data-toggle="modal" class="openmodal placeholder">' . $msg . '</a>
+                <a href="#' . $showinmodal . '" data-banner="' . $showbanner . '" style="width: ' . $width . 'px; height: ' . $height . 'px;" data-toggle="modal" class="openmodal placeholder">' . $msg . '</a>
             </div>';
         }
     }
