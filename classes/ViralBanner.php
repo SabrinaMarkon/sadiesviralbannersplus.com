@@ -158,7 +158,7 @@ class ViralBanner extends Banner
             $showbanner = json_encode($banner);
             return '
             <div>
-                <a href="#' . $showinmodal . '" data-banner="' . $showbanner . '" style="width: ' . $width . 'px; height: ' . $height . 'px;" data-toggle="modal" class="openmodal placeholder">' . $msg . '</a>
+                <a href="#' . $showinmodal . '" data-banner="' . $showbanner . '" style="width: ' . $width . 'px; height: ' . $height . 'px;" data-toggle="modal" class="openmodal placeholder ' . $showinmodal . '">' . $msg . '</a>
             </div>';
         }
     }

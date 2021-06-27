@@ -91,7 +91,15 @@ foreach ($levels as $level) {
             </div>
         </div> <!-- row -->
 
-        <figure class="mx-5 align-items-end">
+        <figure class="mx-5 align-items-start">
+            <img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
+
+            <span id="banners"></span>
+
+<?php
+include "viralbannersinclude.php";
+?>
+
             <div style="display:flex; flex-direction:column;">
                 <figcaption class="ml-5 py-5">
                     <div class="sadietalkbig"><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span>&nbsp;<span class="hiya">I'm So Happy to Meet You!</span><span class="heart">&#10084;</span><span class="heart2">&#10084;</span><span class="heart3">&#10084;</span>
@@ -117,24 +125,8 @@ foreach ($levels as $level) {
                     </div>
                 </figcaption>
             </div>
-            <img src="images/sadie-sitting-faceleft.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
+            
         </figure>
-
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-10">
-                <div class="section-title text-center">
-                    <h3 class="title">My Members' Viral Banners! <i class="fas fa-star fa-xs"></i></h3>
-                    <!-- <p class="text"><strong>Stop wasting time and money designing and managing banners that don't get results! Happiness guaranteed!</strong></p> -->
-                    <br>
-                </div> <!-- section title -->
-            </div>
-        </div> <!-- row -->
-
-        <span id="banners"></span>
-
-        <?php
-        include "viralbannersinclude.php";
-        ?>
 
         <figure class="mx-5 mt-3 align-items-end">
             <img src="images/sadie-transparent-shadow-peace.png" alt="Welcome to Sadie's!" class="px-3 pb-4">
