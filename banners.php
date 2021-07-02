@@ -94,8 +94,8 @@ foreach ($levels as $level) {
         <?php
         include "viralbannersinclude.php";
         ?>
-        
-        <figure class="mx-5 align-items-start">
+
+        <!-- <figure class="mx-5 align-items-start">
             <img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
 
             <span id="banners"></span>
@@ -111,7 +111,7 @@ foreach ($levels as $level) {
                         ?>
                         <div class="sadietalknormal mt-3">
                             <div style="font-weight: bold; text-align: center;"><strong>Warmest Welcomes from Me AND...</strong></div><br />
-                            <div style="font-weight: bold; text-align: center;"><strong><span class="sadietalk-blue">...Your Wonderful Sponsor (one of my BFFs!):</span>&nbsp;<span class="sadietalk-pink"><?php echo $_SESSION['referid']; ?>!</span></strong></div>
+                            <div style="font-weight: bold; text-align: center;"><strong><span class="sadietalk-blue">...Your Wonderful Sponsor (one of my BFFs!):</span>&nbsp;<span class="sadietalk-pink"><?php #echo $_SESSION['referid']; ?>!</span></strong></div>
                         </div>
                         <br />
                         <?php
@@ -126,7 +126,7 @@ foreach ($levels as $level) {
                 </figcaption>
             </div>
             
-        </figure>
+        </figure> -->
 
         <figure class="mx-5 mt-3 align-items-end">
             <img src="images/sadie-transparent-shadow-peace.png" alt="Welcome to Sadie's!" class="px-3 pb-4">
