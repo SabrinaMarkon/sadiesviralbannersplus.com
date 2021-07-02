@@ -91,14 +91,14 @@ foreach ($levels as $level) {
             </div>
         </div> <!-- row -->
 
+        <?php
+        include "viralbannersinclude.php";
+        ?>
+        
         <figure class="mx-5 align-items-start">
             <img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
 
             <span id="banners"></span>
-
-<?php
-include "viralbannersinclude.php";
-?>
 
             <div style="display:flex; flex-direction:column;">
                 <figcaption class="ml-5 py-5">
