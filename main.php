@@ -133,7 +133,7 @@ if (!empty($showcontent->showPage('Home Page'))) {
             </div>
         </div> <!-- row -->
 
-        <figure class="mx-5 mt-3 align-items-end">
+        <figure class="mx-5 mt-3 align-items-start">
             <div style="display:flex; flex-direction:column;">
                 <figcaption class="ml-5">
                     <div class="sadietalkbig sadietalkbig-24em mb-4">
@@ -156,12 +156,10 @@ if (!empty($showcontent->showPage('Home Page'))) {
                         <div style="font-weight: bold;" class="center mb-4"><strong><span class="sadietalk-pink">You've <span class="sadietalk-blue">ALREADY</span>&nbsp;<span class="sadietalk-pink">clicked</span>&nbsp;<span id="alreadyclicked" class="sadietalk-blue"></span>&nbsp;<span class="sadietalk-pink">Viral Banners!</span></strong></div>
 
                         <div style="font-weight: bold;" class="center">After you validate your email and login, you can immediately add your <span class="sadietalk-pink"><strong>OWN</strong></span> Viral Banners! <span class="heart">&#10084;</span></div>
-
-
                     </div>
                 </figcaption>
             </div>
-            <img src="images/sadie-sitting-faceleft.png" alt="Click Viral Banners to Join!" class="mr-4 pt-5 pb-4">
+            <img src="images/sadie-sitting-SM-faceleft.png" alt="Hi! I'm Sadie!" class="mr-4 pt-2 pb-4 responsive">
         </figure>
 
         <div class="row justify-content-center">
