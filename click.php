@@ -22,7 +22,6 @@ if (!empty($id) && ($adtable === 'textads' || $adtable === 'bannerspaid' || $adt
         if (($adtable === 'viralbanners' || $adtable === 'bannerspaid') && $bannerslot > 0) {
 
             // If it was a viral banner click by a site visitor.
-            // TODO:  make sure sponsor banners show up!!!
             $viralbanner = new ViralBanner($adtable);
             echo $viralbanner->showClickIFrame($bannerslot, $clickurl, $settings);
         }

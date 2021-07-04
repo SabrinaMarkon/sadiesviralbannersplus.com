@@ -32,7 +32,7 @@ if ($allrotators) {
         if (!empty($i) && $i > 0) {
             // The banner is a paid banner rotation in the Viral Banner box.
         ?>
-            <div><a class="placeholder-img" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>/<?php echo $i ?>"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
+            <div><a class="placeholder-img" href="/click/<?php echo $adtable ?>/<?php echo $rid ?>/<?php echo $slot ?>"><img alt="<?php echo $ralt; ?>" src="<?php echo $rimageurl; ?>" width="468" height="60" /></a></div>
         <?php
         } else {
             // The banner is a paid banner rotation in the regular rotator.
