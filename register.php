@@ -56,8 +56,8 @@ if (!empty($level) && ($level === 'free' || $level === 'pro' || $level === 'gold
 <div class="container">
 
 	<figure>
-		<img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4">
-		<div style="display:flex; flex-direction:column;">
+		<img src="images/sadie-sitting.png" alt="Click Viral Banners to Join!" class="mr-4 mt-4">
+		<div style="display:flex; flex-direction:column;" class="mt-4">
 			<figcaption>
 				<div class="sadietalkbig sadietalkbig-2em mb-4">
 					<span class="sadietalk-pink">First Click</span>&nbsp;<span class="sadietalk-blue"><?php echo $$bannerclickstosignup ?></span>&nbsp;<span class="sadietalk-pink"> Member Viral Banners to Register!</span><br />
