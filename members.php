@@ -20,7 +20,7 @@ $adclickstogetbannerspaid = $level . "adclickstogetbannerspaid";
 $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
 
 ?>
-<div class="container pb-4">
+<div class="container pb-4 mt-4">
     <figure>
         <img src="images/sadie-transparent-shadow-peace.png" alt="Welcome to Sadie's!" class="px-3">
         <div style="display:flex; flex-direction:column;">
