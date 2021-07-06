@@ -92,6 +92,8 @@ class ViralBanner extends Banner
 
         if ($source === 'memberarea') {
             $showbanner = json_encode($banner);
+            $showbanner = htmlspecialchars($showbanner, ENT_QUOTES, 'UTF-8');
+
             return '
             <div>
                 <a href="#' . $showinmodal . '" data-banner="' . $showbanner . '" data-toggle="modal" class="openmodal placeholder-img ' . $showinmodal . '">

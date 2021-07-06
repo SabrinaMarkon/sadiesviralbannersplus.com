@@ -4,7 +4,7 @@
 $(".edit, .add").on("click", function () {
 
   // *** Get the Viral Banner array from the data-banner attribute of the clicked banner.
-  const bannerArray = JSON.parse(($(this).attr('data-banner')));
+  const bannerArray = JSON.parse(($(this).attr('data-banner'))); 
 
   const showinmodal = bannerArray.showinmodal ?? "";
   const bannerslot = bannerArray.bannerslot ?? "";
