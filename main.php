@@ -17,9 +17,6 @@ foreach ($levels as $level) {
     $monthlybonusbannerspaid = $level . "monthlybonusbannerspaid";
     $monthlybonusnetworksolos = $level . "monthlybonusnetworksolos";
     $bannerslots = $level . "bannerslots";
-    $refersfreebannerslots = $level . "refersfreebannerslots";
-    $refersprobannerslots = $level . "refersprobannerslots";
-    $refersgoldbannerslots = $level . "refersgoldbannerslots";
     $adclickstogettextad = $level . "adclickstogettextad";
     $adclickstogetbannerspaid = $level . "adclickstogetbannerspaid";
     $adclickstogetnetworksolo = $level . "adclickstogetnetworksolo";
@@ -57,15 +54,45 @@ foreach ($levels as $level) {
     if (!empty($$bannerslots)) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Your favorite <strong>OVERSIZED</strong> 728 x 90 BANNERS in the <strong>VIRAL</strong> banner slots # ' . $$bannerslots . ' of your very own <strong>VIRAL BANNER AD PAGE!</strong></li>';
     }
-    if (!empty($$refersfreebannerslots)) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersfreebannerslots . ' on <strong>EVERY</strong> single one of your <strong>FREE REFERRALS\'</strong> viral banner pages!</li>';
+
+    for ($i = 1; $i <= 6; $i++) {
+        $levelname = "";
+        switch ($i) {
+            case 1:
+                $levelname = "FIRST";
+                break;
+            case 2:
+                $levelname = "SECOND";
+                break;
+            case 3:
+                $levelname = "THIRD";
+                break;
+            case 4:
+                $levelname = "FOURTH";
+                break;
+            case 5:
+                $levelname = "FIFTH";
+                break;
+            case 6:
+                $levelname = "SIXTH";
+                break;
+            default:
+                $levelname = "FIRST";
+        }
+        $refersfreebannerslots = $level . "refersfreebannerslots" . $i;
+        $refersprobannerslots . "refersprobannerslots" . $i;
+        $refersgoldbannerslots = $level . "refersgoldbannerslots" . $i;
+        if (!empty($$refersfreebannerslots)) {
+            $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersfreebannerslots . ' on <strong>EVERY</strong> single one of your <strong>' . $levelname . ' LEVEL FREE REFERRALS\'</strong> viral banner pages!</li>';
+        }
+        if (!empty($$refersprobannerslots)) {
+            $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersprobannerslots . ' on <strong>EVERY</strong> single one of your <strong>' . $levelname . ' LEVEL PRO REFERRALS\'</strong> viral banner pages!</li>';
+        }
+        if (!empty($$refersgoldbannerslots)) {
+            $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersgoldbannerslots . ' on <strong>EVERY</strong> single one of your <strong>' . $levelname . ' LEVEL GOLD REFERRALS\'</strong> viral banner pages!</li>';
+        }
     }
-    if (!empty($$refersprobannerslots)) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersprobannerslots . ' on <strong>EVERY</strong> single one of your <strong>PRO REFERRALS\'</strong> viral banner pages!</li>';
-    }
-    if (!empty($$refersgoldbannerslots)) {
-        $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersgoldbannerslots . ' on <strong>EVERY</strong> single one of your <strong>GOLD REFERRALS\'</strong> viral banner pages!</li>';
-    }
+
     if ($$adclickstogettextad > 0) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Click ' . $$adclickstogettextad . ' text ads to get a <strong>FREE BONUS</strong> text ad in our awesome <strong>SITE WIDE</strong> text ad rotation!</li>';
     }
