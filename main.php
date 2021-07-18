@@ -24,6 +24,9 @@ foreach ($levels as $level) {
     $features = $level . "features";
     $$features = "";
 
+    $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Editable Banner Creations (plus more to come!)</li>';
+    $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Viral Banners to <strong>EXPLODE</strong> Your Traffic!</li>';
+
     if ($$bannerclickstosignup > 0) {
         $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>Before joining, new <strong>' . strtoupper($level) . '</strong> members must click and visit <strong>' . $$bannerclickstosignup . '</strong> of their sponsor\'s Viral Banners!</li>';
     }
