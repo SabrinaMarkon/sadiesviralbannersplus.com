@@ -83,7 +83,7 @@ foreach ($levels as $level) {
                 $levelname = "FIRST";
         }
         $refersfreebannerslots = $level . "refersfreebannerslots" . $i;
-        $refersprobannerslots . "refersprobannerslots" . $i;
+        $refersprobannerslots = $level . "refersprobannerslots" . $i;
         $refersgoldbannerslots = $level . "refersgoldbannerslots" . $i;
         if (!empty($$refersfreebannerslots)) {
             $$features .= '<li><i class="membership-checkbox fas fa-check-circle"></i>More of <strong>YOUR</strong> banners in slots # ' . $$refersfreebannerslots . ' on <strong>EVERY</strong> single one of your <strong>' . $levelname . ' LEVEL FREE REFERRALS\'</strong> viral banner pages!</li>';
