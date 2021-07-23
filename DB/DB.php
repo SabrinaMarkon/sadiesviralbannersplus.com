@@ -24,6 +24,7 @@ CREATE TABLE `adminsettings` (
 `networksoloprice` decimal(9, 2) not null default '5.00',
 
 `freebannerclickstosignup` integer unsigned not null default 8,
+`freebannerclickstologin` integer unsigned not null default 3,
 `freebannerslots` varchar(32) not null default '1,2,3',
 `freedownlineupgradestogetbonusslotsonfreereferralpages` integer unsigned not null default '5',
 `freedownlineupgradeswhichbonusslotsonfreereferralpages` varchar(32) not null default '3',
@@ -64,6 +65,7 @@ CREATE TABLE `adminsettings` (
 `proprice` decimal(9, 2) not null default 5.99,
 `propayinterval` varchar(12) not null default 'monthly',
 `probannerclickstosignup` integer unsigned not null default 5,
+`probannerclickstologin` integer unsigned not null default 2,
 `probannerslots` varchar(32) not null default '1,2,3,4,5,6',
 `prodownlineupgradestogetbonusslotsonfreereferralpages` integer unsigned not null default '5',
 `prodownlineupgradeswhichbonusslotsonfreereferralpages` varchar(32) not null default '3',
@@ -104,6 +106,7 @@ CREATE TABLE `adminsettings` (
 `goldprice` decimal(9, 2) not null default '9.99',
 `goldpayinterval` varchar(12) not null default 'monthly',
 `goldbannerclickstosignup` integer unsigned not null default 3,
+`goldbannerclickstologin` integer unsigned not null default 1,
 `goldbannerslots` varchar(32) not null default '1,2,3,4,5,6,7,8',
 `golddownlineupgradestogetbonusslotsonfreereferralpages` integer unsigned not null default '5',
 `golddownlineupgradeswhichbonusslotsonfreereferralpages` varchar(32) not null default '3',
