@@ -48,6 +48,10 @@ $ads = $banner->getAllAds();
                                 <label for="freebannerclickstosignup" class="mt-4">Member banners a new Free member has to click to signup:</label>
                                 <input type="number" min="0" step="1" name="freebannerclickstosignup" value="<?php echo $freebannerclickstosignup ?>" class="form-control smallselect" required>
                             </div>
+                            <div>
+                                <label for="freebannerclickstologin" class="mt-4">Member banners a Free member has to click to login:</label>
+                                <input type="number" min="0" step="1" name="freebannerclickstologin" value="<?php echo $freebannerclickstologin ?>" class="form-control smallselect" required>
+                            </div>
                             <label class="mt-2">Banner slots included with Free membership:</label>
                             <div class="bannerslot-checkboxes mb-3" style="display: flex;">
                             <?php
@@ -110,7 +114,10 @@ $ads = $banner->getAllAds();
                                 <label for="probannerclickstosignup" class="mt-4">Member banners a new Pro member has to click to signup:</label>
                                 <input type="number" min="0" step="1" name="probannerclickstosignup" value="<?php echo $probannerclickstosignup ?>" class="form-control smallselect" required>
                             </div>
-
+                            <div>
+                                <label for="probannerclickstologin" class="mt-4">Member banners a Pro member has to click to login:</label>
+                                <input type="number" min="0" step="1" name="probannerclickstologin" value="<?php echo $probannerclickstologin ?>" class="form-control smallselect" required>
+                            </div>
                             <label class="mt-2">Banner slots included with Pro membership:</label>
                             <div class="bannerslot-checkboxes mb-3" style="display: flex;">
                             <?php
@@ -172,6 +179,10 @@ $ads = $banner->getAllAds();
                             <div>
                                 <label for="goldbannerclickstosignup" class="mt-4">Member banners a new Gold member has to click to signup:</label>
                                 <input type="number" min="0" step="1" name="goldbannerclickstosignup" value="<?php echo $goldbannerclickstosignup ?>" class="form-control smallselect" required>
+                            </div>
+                            <div>
+                                <label for="goldbannerclickstologin" class="mt-4">Member banners a Gold member has to click to login:</label>
+                                <input type="number" min="0" step="1" name="goldbannerclickstologin" value="<?php echo $goldbannerclickstologin ?>" class="form-control smallselect" required>
                             </div>
                             <label class="mt-2">Banner slots included with Gold membership:</label>
                             <div class="bannerslot-checkboxes mb-3" style="display: flex;">

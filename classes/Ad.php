@@ -194,9 +194,12 @@ abstract class Ad
             $newfreebannerclickstosignup = $post['freebannerclickstosignup'];
             $newprobannerclickstosignup = $post['probannerclickstosignup'];
             $newgoldbannerclickstosignup = $post['goldbannerclickstosignup'];
+            $newfreebannerclickstologin = $post['freebannerclickstologin'];
+            $newprobannerclickstologin = $post['probannerclickstologin'];
+            $newgoldbannerclickstologin = $post['goldbannerclickstologin'];
 
-            $sql .= "freebannerclickstosignup=?, probannerclickstosignup=?, goldbannerclickstosignup=?, ";
-            array_push($pdoarray, $newfreebannerclickstosignup, $newprobannerclickstosignup, $newgoldbannerclickstosignup);
+            $sql .= "freebannerclickstosignup=?, probannerclickstosignup=?, goldbannerclickstosignup=?, freebannerclickstologin=?, probannerclickstologin=?, goldbannerclickstologin=?, ";
+            array_push($pdoarray, $newfreebannerclickstosignup, $newprobannerclickstosignup, $newgoldbannerclickstosignup, $newfreebannerclickstologin, $newprobannerclickstologin, $newgoldbannerclickstologin);
 
             // checkbox arrays - store as csvs in database:
 
