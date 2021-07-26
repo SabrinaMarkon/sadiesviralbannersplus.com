@@ -82,6 +82,21 @@ foreach ($levels as $level) {
 <section id="howitworks" class="pricing-area">
     <div class="mx-5">
 
+        <?php
+            $showcontent = new PageContent();
+            if ($showcontent) {
+                ?>
+                <div class="row justify-content-center mb-4">
+                    <div class="col-lg-6 col-md-10">
+                        <?php
+                        echo $showcontent->showPage('Viral Banners Referral URLs Page');
+                        ?>
+                    </div>
+                </div>
+                <?php
+            }
+        ?>
+
         <div class="row justify-content-center mb-4">
             <div class="col-lg-6 col-md-10">
                 <div class="section-title text-center">
