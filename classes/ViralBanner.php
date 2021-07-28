@@ -339,5 +339,21 @@ class ViralBanner extends Banner
 
         return $htmltoreturn;
     }
+
+    /**
+     * Sets the number of clicks to Viral Banners for a username when they have logged in, or resets the counter back to 0.
+     * 
+     * @param $username is the member that we need to record Viral Banner login clicks for.
+     * @param $viralbannerloginclicks is the number of Viral Banner login clicks the member should have.
+     */
+    public function setMemberViralBannerLoginClicks(string $username, int $viralbannerloginclicks = 0): void {
+        
+        $pdo = DATABASE::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "update members set viralbannerloginclicks=? where username=?";
+        $q = $pdo->prepare($sql);
+        $q->execute([$viralbannerloginclicks, $username]);
+        Database::disconnect();
+    }
     
 }

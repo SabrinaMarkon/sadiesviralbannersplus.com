@@ -79,7 +79,11 @@ if (isset($_POST['login'])) {
 			$$key = $value;
 			$_SESSION[$key] = $value;
 		}
+		# user gravatar. TODO: Maybe use social media instead? (wondering if Gravatar is out-dated compared to Facebook profile pics)
 		$showgravatar = $logincheck->getGravatar($_SESSION['username'], $_SESSION['email']);
+		# reset the member's viral banner login counter to 0.
+		$viralbanner = new ViralBanner('viralbanner');
+		$viralbanner->setMemberViralBannerLoginClicks($_SESSION['username'], 0);
 	}
 }
 ###################################### Want to refactor below.
