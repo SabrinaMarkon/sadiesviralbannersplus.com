@@ -26,12 +26,22 @@ if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
 			$_SESSION[$key] = $value;
 		}
 
+		// Has member verified their email address?
 		if (empty($verified)) {
 			$showcontent = new LoginForm();
 			echo $showcontent->showLoginForm(2);
 			$Layout = new Layout();
 			$Layout->showFooter();
 			exit;
+		}
+
+		// Has member clicked all the viral banners they are required in order to login?
+		$showviralbanners = false;
+		$level = lcfirst($accounttype);
+		$bannerclickstologin = $level . 'bannerclickstologin';
+		if ($viralbannerloginclicks < $$bannerclickstologin) {
+			// Show viral banner page.
+			$showviralbanners = true;
 		}
 
 		$showgravatar = $logincheck->getGravatar($username, $email);
