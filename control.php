@@ -36,13 +36,17 @@ if ((isset($_SESSION['username'])) && (isset($_SESSION['password']))) {
 		}
 
 		// Has member clicked all the viral banners they are required in order to login?
-		$showviralbanners = false;
 		$level = lcfirst($accounttype);
 		$bannerclickstologin = $level . 'bannerclickstologin';
-		if ($viralbannerloginclicks < $$bannerclickstologin) {
-			// Show viral banner page.
-			$showviralbanners = true;
-		}
+		// TODO: uncomment when the rest works!
+		// if ($viralbannerloginclicks < $$bannerclickstologin) {
+		// 	// Show viral banner page.
+		// 	$showcontent = new ViralBanner('viralbanner');
+		// 	include "viralbannersinclude.php";
+		// 	$Layout = new Layout();
+		// 	$Layout->showFooter();
+		// 	exit;
+		// }
 
 		$showgravatar = $logincheck->getGravatar($username, $email);
 	}
