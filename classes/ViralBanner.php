@@ -201,10 +201,11 @@ class ViralBanner extends Banner
             });
         </script>';
 
+        $source = 'signuppage';
         $timer = '
         <script src="js/viralbannertimer.js"></script>
         <script>
-            countdown(' . $settings['clicktimer'] . ', ' . $bannerslot . ');
+            countdown(' . $settings['clicktimer'] . ', ' . $bannerslot . ', ' . $source . ');
         </script>';
         
         return '

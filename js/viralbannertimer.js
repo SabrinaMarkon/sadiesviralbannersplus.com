@@ -1,5 +1,5 @@
 // Countdown timer for Viral Banner ad views.
-function countdown(counter, bannerslot) {
+function countdown(counter, bannerslot, source) {
 
     let whichsadie = Math.floor(Math.random() * 3) + 1;
 
