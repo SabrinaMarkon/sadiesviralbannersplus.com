@@ -219,7 +219,7 @@ class FormValidation
                 }
             } elseif (
                 $varname === 'firstname' || $varname === 'lastname' || $varname === 'name' || $varname === 'subject' || $varname === 'country' ||
-                $varname === 'adminname' || $varname === 'downloadname'
+                $varname === 'adminname'
             ) {
 
                 # user's firstname, lastname.
@@ -229,7 +229,6 @@ class FormValidation
                 # admin's name.
                 # page name.
                 # promotional ad's name.
-                # download name.
 
                 $varvalue = filter_var($varvalue, FILTER_SANITIZE_STRING);
                 $numchars = strlen($varvalue);
@@ -240,6 +239,22 @@ class FormValidation
                 } elseif ($numchars > 50) {
 
                     $errors .= "<div><strong>The size of " . $pretty_varname . " must be 50 or less characters.</strong></div>";
+                }
+            } elseif (
+                $varname === 'downloadname'
+            ) {
+
+                # download name.
+
+                $varvalue = filter_var($varvalue, FILTER_SANITIZE_STRING);
+                $numchars = strlen($varvalue);
+
+                if ($numchars === 0) {
+
+                    $errors .= "<div><strong>" . $pretty_varname . " cannot be blank.</strong></div>";
+                } elseif ($numchars > 200) {
+
+                    $errors .= "<div><strong>The size of " . $pretty_varname . " must be 200 or less characters.</strong></div>";
                 }
             } elseif ($varname === 'accounttype') {
                 
