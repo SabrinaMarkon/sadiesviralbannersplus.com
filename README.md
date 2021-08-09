@@ -1,4 +1,4 @@
-# sadiesbanners.com
+# sadiesviralbannersplus.com
 Custom CMS and advertising site for Terry.
 
 Stack:
@@ -11,3 +11,6 @@ JQuery/JQuery UI
 MySQL/MariaDB
 Paypal API
 Jest
+
+Download Images URL:
+https://sadiesviralbannersplus.com/images/download_images/

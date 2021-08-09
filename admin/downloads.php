@@ -65,7 +65,7 @@ $downloads = $alldownloads->getAllDownloads();
     ?>
         <h1 class="ja-bottompadding">Give Download Access to Member</h1>
 
-        <form action="/admin/downloads" method="post" accept-charset="utf-8" class="form" role="form">
+        <form action="/admin/downloads" method="post" accept-charset="utf-8" class="form" role="form" style="height: 500px; overflow: scroll;">
 
             <table id="admintable" class="table table-condensed table-bordered table-striped table-hover text-center table-sm">
                 <tbody>
@@ -154,6 +154,10 @@ $downloads = $alldownloads->getAllDownloads();
     if (!$downloads) {
     } else {
 
+        ?>
+        <div style="height: 2000px; overflow: scroll;">
+        <?php
+
         foreach ($downloads as $download) {
 
             $dateadded = $download['dateadded'];
@@ -168,7 +172,7 @@ $downloads = $alldownloads->getAllDownloads();
 
     ?>
             <div class="table-responsive">
-                <table id="admintable" class="table table-hover table-condensed table-bordered text-center" style="margin-bottom: 2px;">
+                <table id="admintable" class="table table-hover table-condensed table-bordered text-center">
                     <thead>
                         <tr>
                             <th class="text-center small">#</th>
@@ -242,6 +246,9 @@ $downloads = $alldownloads->getAllDownloads();
             <div class="ja-bottompadding"></div>
     <?php
         }
+        ?>
+        </div>
+        <?php
     }
     ?>
 </div>
