@@ -552,6 +552,8 @@ $(function() {
         } else {
             bg = $('#canvascontainer').css('background-color');
         }
+
+
         $(".ui-resizable-handle").hide();
         window.scrollTo(0,0);
         html2canvas($("#canvascontainer"), {
@@ -565,7 +567,6 @@ $(function() {
             logging: true,
             allowTaint: true
         }).then(function(canvas) {
-            theCanvas = canvas;
             $('#savediv').append('<h3 class="my-3">Your Banner:</h3>');
             $('#savediv').append(canvas);
             //Show the download button.
