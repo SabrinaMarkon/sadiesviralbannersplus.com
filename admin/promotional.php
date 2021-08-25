@@ -176,13 +176,13 @@ $promotionals = $allpromotionals->getAllPromotionals();
                         </table>
                     </div>
                     <div class="modal" id="savedBannerPreview<?php echo $promotional['id']; ?>">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close btn btn-danger" data-dismiss="modal">&times;</button>
                                 </div>
-                                <div class="modal-body">
-                                    <a href="<?php echo $domain ?>" target="_blank"><img class="ja-promotionalimg" src="<?php echo $promotional['promotionalimage']; ?>"></a>
+                                <div class="modal-body text-center">
+                                    <a href="<?php echo $domain ?>" target="_blank"><img src="<?php echo $promotional['promotionalimage']; ?>"></a>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
