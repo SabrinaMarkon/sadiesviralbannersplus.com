@@ -92,12 +92,12 @@ $promotionals = $allpromotionals->getAllPromotionals();
                 </div>
             </form>
             <div class="modal" id="bannerPreview">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close btn btn-danger" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body text-center">
                             <a href="<?php echo $domain ?>" target="_blank"><img id="bannerimage" class="ja-promotionalimg img-responsive"></a>
                         </div>
                         <div class="modal-footer">
