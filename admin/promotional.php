@@ -67,7 +67,7 @@ $promotionals = $allpromotionals->getAllPromotionals();
                 <div id="form-group">
 
                     <label for="name" class="ja-toppadding">Name:</label>
-                    <input type="text" name="name" value="" class="form-control input-lg w-50" placeholder="Name" required>
+                    <input type="text" name="name" value="" maxlength="50" class="form-control input-lg w-50" placeholder="Name" required>
 
                     <label for="type">Type:</label>
                     <select name="type" id="type" class="form-control w-50" onchange="setupExtraFields(document.getElementById('type').value)">
@@ -146,7 +146,7 @@ $promotionals = $allpromotionals->getAllPromotionals();
                                 <tr>
                                     <td>
                                         <label for="name">Ad Name:</label>
-                                        <input type="text" name="name" value="<?php echo $promotional['name']; ?>" class="form-control input-lg" size="40" placeholder="Ad Name" required>
+                                        <input type="text" name="name" value="<?php echo $promotional['name']; ?>" maxlength="50" class="form-control input-lg" size="40" placeholder="Ad Name" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -209,7 +209,7 @@ $promotionals = $allpromotionals->getAllPromotionals();
                                 <tr>
                                     <td>
                                         <label for="name">Ad Name</label>
-                                        <input type="text" name="name" value="<?php echo $promotional['name']; ?>" class="form-control input-lg" size="40" placeholder="Ad Name" required>
+                                        <input type="text" name="name" value="<?php echo $promotional['name']; ?>" class="form-control input-lg" maxlength="50" size="40" placeholder="Ad Name" required>
                                     </td>
                                 </tr>
                                 <tr>
