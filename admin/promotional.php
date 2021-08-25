@@ -159,7 +159,7 @@ $promotionals = $allpromotionals->getAllPromotionals();
                                     <td>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary mr-2" type="button" data-toggle="modal" data-target="#savedBannerPreview">Preview</button>
+                                                <button class="btn btn-sm btn-primary mr-2" type="button" data-toggle="modal" data-target="#savedBannerPreview<?php echo $promotional['id']; ?>">Preview</button>
                                                 <input type="hidden" name="_method" value="PATCH">
                                                 <button class="btn btn-sm btn-primary mr-2" type="submit" name="savepromotional">SAVE</button>
                                                 </form>
@@ -175,7 +175,7 @@ $promotionals = $allpromotionals->getAllPromotionals();
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal" id="savedBannerPreview">
+                    <div class="modal" id="savedBannerPreview<?php echo $promotional['id']; ?>">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
