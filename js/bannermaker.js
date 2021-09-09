@@ -339,7 +339,9 @@ $(function() {
             } else {
                 pickimage_path = 'images/editorimages/' + pickimage_folder + '/' + pickimage_filename;
             }
-            let elem = $('<div id="' + newid + '" class="ui-widget-content canvaslayer picture draggable"><img src="' + pickimage_path + '" style="' + imgstyle + '"></div>');
+            // STYLE: background is image????? TODO:
+            // let elem = $('<div id="' + newid + '" class="ui-widget-content canvaslayer picture draggable"><img src="' + pickimage_path + '" style="' + imgstyle + '"></div>');
+             let elem = $(`<div id="${newid}" class="ui-widget-content canvaslayer picture draggable" style="background: url('${pickimage_path}') no-repeat center center; background-size: 100%;"></div>`);
             $('#canvascontainer').append(elem);
             elem.resizable({
                 handles: "nw, ne, sw, se",
