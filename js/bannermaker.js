@@ -329,7 +329,7 @@ $(function() {
         if (pickimage_filename !== 'none' && pickimage_filename !== undefined && pickimage_filename !== '') {
             const canvascontainer = document.getElementById("canvascontainer");
             // const imgstyle = "background: none; display:inline-block; width: 100%; height: 100%;";
-            const imgstyle = `background: none; display: inline-block; max-width: ${$("#bannerwidth").val()-20}px; max-height: ${$("#bannerheight").val()-20}px;`;
+            // const imgstyle = `background: none; display: inline-block; max-width: ${$("#bannerwidth").val()-20}px; max-height: ${$("#bannerheight").val()-20}px;`;
             const newid = $("#canvascontainer > div").length + 1;
             const pickimage_folder = $('#pickimagefolder').val();
             // apply the full sized image from editorimages image library, rather than the thumbnail.
@@ -341,7 +341,7 @@ $(function() {
             }
             // STYLE: background is image????? TODO:
             // let elem = $('<div id="' + newid + '" class="ui-widget-content canvaslayer picture draggable"><img src="' + pickimage_path + '" style="' + imgstyle + '"></div>');
-             let elem = $(`<div id="${newid}" class="ui-widget-content canvaslayer picture draggable" style="background: url('${pickimage_path}') no-repeat center center; background-size: cover;"></div>`);
+             let elem = $(`<div id="${newid}" class="ui-widget-content canvaslayer picture draggable" style="background: url('${pickimage_path}') no-repeat center center; background-size: cover; width: 100%; height: 100%;"></div>`);
             $('#canvascontainer').append(elem);
             elem.resizable({
                 handles: "nw, ne, sw, se",
@@ -554,11 +554,9 @@ $(function() {
         } else {
             bg = $('#canvascontainer').css('background-color');
         }
-        $(".ui-resizable-handle").hide();
+        $(".ui-resizable-handle").hide(); // hide the handles in the editing area so they don't show in the preview.
         window.scrollTo(0,0);
         html2canvas($("#canvascontainer"), {
-            // height: $("#bannerheight").val(),
-            // windowHeight: $("#bannerheight").val(),
             scrollX: -window.scrollX,
             scrollY: -window.scrollY,
             windowWidth: document.documentElement.offsetWidth,
@@ -607,6 +605,7 @@ $(function() {
             $('#img_obj').val(JSON.stringify(img_obj));
             // htmlcode field to save into the database.
             document.getElementById('htmlcode').value = document.getElementById('canvascontainer').innerHTML;
+            $(".ui-resizable-handle").show(); // show the handles in the editing area again.
         });
     });
 
