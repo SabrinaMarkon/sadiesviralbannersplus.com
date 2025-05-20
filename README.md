@@ -1,5 +1,5 @@
 # sadiesviralbannersplus.com
-Custom CMS and advertising site for Terry.
+Custom CMS and advertising site for client.
 
 Stack:
 PHP 7.4
